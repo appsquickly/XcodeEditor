@@ -1,4 +1,4 @@
-# Description
+*# Description
 
 An API for manipulating Xcode project files. 
 
@@ -30,9 +30,14 @@ Target* examples = [project targetWithName:@"Examples"];
 
 <link pending> 
 
+# Feature Requests and Contributions
+
+. . . are very welcome. 
+
 
 # Authors
 
-Jasper Blues - jasper.blues@expanz.com
+* Jasper Blues - jasper.blues@expanz.com
+* © 2011 - 2012 expanz.com
 
 
