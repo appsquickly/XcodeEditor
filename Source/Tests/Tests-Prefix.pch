@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'Tests2' target in the 'Tests2' project
+//
+
+#ifdef __OBJC__
+#define HC_SHORTHAND
+#import <Cocoa/Cocoa.h>
+
+#import "Kiwi.h"
+#import "NSString+TestResource.h"
+#import "Logging.h"
+
+#endif
