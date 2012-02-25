@@ -7,7 +7,7 @@ An API for manipulating Xcode project files.
 ## Adding Source Files to a Project
 
 ```objective-c
-Project* project = [[Project alloc] initWithFilePath:@"/tmp"];
+Project* project = [[Project alloc] initWithFilePath:@"MyProject.xcodeproj"];
 Group* group = [project groupWithPath:@"Main"];
 ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNewClass"];
 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
