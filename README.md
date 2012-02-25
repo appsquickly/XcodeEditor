@@ -28,7 +28,7 @@ Target* examples = [project targetWithName:@"Examples"];
 
 # Docs
 
-* <a hrerf="https://github.com/expanz/xcode-editor/wiki">Wiki</a>
+* <a href="https://github.com/expanz/xcode-editor/wiki">Wiki</a>
 * <a href="http://expanz.github.com/xcode-editor/api/index.html">API</a>
 * <a href="http://expanz.github.com/xcode-editor/coverage/Users/jblues/ExpanzProjects/xcode-editor1/Source/Main/index.html">Reports</a>
 
