@@ -1,4 +1,4 @@
-*# Description
+# Description
 
 An API for manipulating Xcode project files. 
 
