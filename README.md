@@ -10,8 +10,8 @@ An API for manipulating Xcode project files.
 Project* project = [[Project alloc] initWithFilePath:@"MyProject.xcodeproj"];
 Group* group = [project groupWithPath:@"Main"];
 ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNewClass"];
-[classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
-[classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+[classDefinition setHeader:[NSString stringWithTestResource:@"<some-header-text>"]];
+[classDefinition setSource:[NSString stringWithTestResource:@"<some-impl-text>"]];
 
 [group addClass:classDefinition];
 [project save];
