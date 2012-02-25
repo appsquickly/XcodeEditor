@@ -30,7 +30,7 @@ Target* examples = [project targetWithName:@"Examples"];
 
 * Wiki:
 * Api: http://expanz.github.com/xcode-editor/api/index.html
-* Reports: http://expanz.github.com/xcode-editor/coverage/index.html
+
 
 <link pending> 
 
