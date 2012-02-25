@@ -32,8 +32,28 @@ Target* examples = [project targetWithName:@"Examples"];
 * <a href="http://expanz.github.com/xcode-editor/api/index.html">API</a>
 * <a href="http://expanz.github.com/xcode-editor/coverage/Users/jblues/ExpanzProjects/xcode-editor1/Source/Main/index.html">Reports</a>
 
-<link pending> 
+# Building 
 
+## Just the Framework
+
+Open the project in XCode and choose Product/Build. 
+
+## Command-line Build with Unit Tests, Integration Tests, Code Coverge and API reports installed to Xcode. 
+
+### Requirements (one time only)
+
+Requires the Appledoc and lcov packages. A nice way to install these is with <a href="http://www.macports.org/install.php">MacPorts</a>
+
+```sh
+>sudo port install appledoc
+>sudo port install lcov
+```
+
+### Running the build (every other time)
+
+```sh
+>ant 
+```
 # Feature Requests and Contributions
 
 . . . are very welcome. 
