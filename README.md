@@ -42,17 +42,19 @@ Open the project in XCode and choose Product/Build.
 
 ### Requirements (one time only)
 
-Requires the Appledoc and lcov packages. A nice way to install these is with <a href="http://www.macports.org/install.php">MacPorts</a>
+In addition to Xcode, requires the Appledoc and lcov packages. A nice way to install these is with <a href="http://www.macports.org/install.php">MacPorts</a>.
 
 ```sh
->sudo port install appledoc
->sudo port install lcov
+sudo port install appledoc
+sudo port install lcov
 ```
+
+NB: Xcode 4.3+ requires command-line tools to be installed separately. 
 
 ### Running the build (every other time)
 
 ```sh
->ant 
+ant 
 ```
 # Feature Requests and Contributions
 
