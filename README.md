@@ -6,6 +6,7 @@ An API for manipulating Xcode project files.
 
 ## Adding Source Files to a Project
 
+```objective-c
 Project* project = [[Project alloc] initWithFilePath:@"/tmp"];
 Group* group = [project groupWithPath:@"Main"];
 ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNewClass"];
@@ -14,14 +15,16 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 
 [group addClass:classDefinition];
 [project save];
-
+```
 
 ## Specifying Source File Belongs to Target
 
+```objective-c
 FileResource* fileResource = [project projectFileWithPath:@"MyNewClass.m"];
 Target* examples = [project targetWithName:@"Examples"];
 [examples addMember:fileResource];
 [project save];
+```
 
 # API Docs
 
