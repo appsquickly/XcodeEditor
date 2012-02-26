@@ -15,7 +15,6 @@
 #import "XcodeProjectFileType.h"
 #import "xcode_KeyBuilder.h"
 #import "xcode_FileWriteQueue.h"
-#import "xcode_FileResource.h"
 #import "XcodeProjectNodeType.h"
 
 @interface xcode_Group (private)
@@ -31,7 +30,6 @@
 @implementation xcode_Group
 
 @synthesize project = _project;
-@synthesize name = _name;
 @synthesize path = _path;
 @synthesize key = _key;
 @synthesize children = _children;
@@ -53,6 +51,13 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
+- (NSString*) name {
+    if (_name == nil) {
+        return _path;
+    }
+    return _name;
+}
+
 - (void) addClass:(ClassDefinition*)classDefinition {
     NSDictionary* header = [self makeFileReference:[classDefinition headerFileName] type:SourceCodeHeader];
     NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];

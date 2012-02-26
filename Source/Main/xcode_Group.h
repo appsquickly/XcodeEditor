@@ -19,6 +19,7 @@
 @interface xcode_Group : NSObject {
 
 @private
+    NSString* _name;
     NSMutableArray* _children;
 }
 

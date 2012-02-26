@@ -23,8 +23,8 @@ SPEC_BEGIN(GroupSpec)
     __block Group* group;
 
     beforeEach(^{
-        project = [[Project alloc] initWithFilePath:@"/tmp"];
-        group = [project groupWithPath:@"Main"];
+        project = [[Project alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+        group = [project groupWithPath:@"Source/Main"];
         [group shouldNotBeNil];
     });
 
@@ -41,7 +41,7 @@ SPEC_BEGIN(GroupSpec)
         });
 
         it(@"should be able to describe itself.", ^{
-            [[[group description] should] equal:@"Group: name = (null), key=6B783BCF14AD8D190087E522, path=Main"];
+            [[[group description] should] equal:@"Group: name = Main, key=6B469FE914EF875900ED659C, path=Source/Main"];
         });
 
     });
@@ -67,7 +67,7 @@ SPEC_BEGIN(GroupSpec)
             FileResource* fileResource = [project projectFileWithPath:@"ESA_Sales_Foobar_ViewController.m"];
             [fileResource shouldNotBeNil];
 
-            Target* examples = [project targetWithName:@"Model-Object-Explorer"];
+            Target* examples = [project targetWithName:@"Examples"];
             [examples shouldNotBeNil];
             [examples addMember:fileResource];
 

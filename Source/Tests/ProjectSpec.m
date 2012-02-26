@@ -28,7 +28,7 @@ SPEC_BEGIN(ProjectSpec)
             NSArray* headerFiles = [project headerFiles];
             LogDebug(@"Headers: %@", headerFiles);
 
-            [[theValue([headerFiles count]) should] equal:[NSNumber numberWithInt:19]];            
+            [[theValue([headerFiles count]) should] equal:[NSNumber numberWithInt:18]];
         });
 
         it(@"should be able to list all the implementation files in a project", ^{
@@ -36,7 +36,7 @@ SPEC_BEGIN(ProjectSpec)
             NSArray* implementationFiles = [project implementationFiles];
             LogDebug(@"Implementation Files: %@", implementationFiles);
 
-            [[theValue([implementationFiles count]) should] equal:[NSNumber numberWithInt:22]];
+            [[theValue([implementationFiles count]) should] equal:[NSNumber numberWithInt:21]];
         });
     });
 

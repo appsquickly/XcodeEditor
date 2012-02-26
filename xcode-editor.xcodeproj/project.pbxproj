@@ -73,6 +73,8 @@
 		6B918B9714F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6BB5EE5F14F49B1B00B5B193 /* LRResty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB5EE5E14F49B1B00B5B193 /* LRResty.framework */; };
 		6BBD6C9714ECF28200451BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBD6C9614ECF28200451BA2 /* libz.dylib */; };
+		6BE4B285147E6B610059E44F /* (null) in Sources */ = {isa = PBXBuildFile; };
+		6BE4B285147E6B610059E451 /* expanz-iOS-SDK.zip in Resources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -142,6 +144,7 @@
 		6BC10169147775A40055CF03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BC1018B1477A42F0055CF03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BD8982D14EA2441007875F4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "expanz-iOS-SDK.zip"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +219,7 @@
 		6B3AD05714F8A3B400BCFE81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */,
 				6B3AD05814F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.header */,
 				6B3AD05914F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.impl */,
 				6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */,
@@ -366,6 +370,7 @@
 				6B55223214EA723700494CF3 /* Frameworks */,
 				6B55223314EA723700494CF3 /* Resources */,
 				6BD1B46314EBAD0E00F5AD1C /* CopyFiles */,
+				6B5A816C14F9FAE100D20018 /* extract test xcode project */,
 				6B55223414EA723700494CF3 /* ShellScript */,
 			);
 			buildRules = (
@@ -424,6 +429,7 @@
 				6B3AD06814F8A3B400BCFE81 /* project.pbxproj in Resources */,
 				6B65941E14F8A56C00F65AEC /* InfoPlist.strings in Resources */,
 				6B65942014F8A56C00F65AEC /* XcodeEditor-Info.plist in Resources */,
+				6BE4B285147E6B610059E451 /* expanz-iOS-SDK.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +448,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		6B5A816C14F9FAE100D20018 /* extract test xcode project */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "extract test xcode project";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -fr /tmp/expanz-iOS-SDK\nunzip ${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip -d /tmp\ncp ${SRCROOT}/Source/Tests/Resources/project.pbxproj /tmp";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -493,6 +513,7 @@
 				6B3AD06514F8A3B400BCFE81 /* ProjectSpec.m in Sources */,
 				6B3AD06A14F8A3B400BCFE81 /* NSString+TestResource.m in Sources */,
 				6B3AD06B14F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m in Sources */,
+				6BE4B285147E6B610059E44F /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,9 +584,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Tests/Tests-Prefix.pch";
@@ -599,9 +618,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Tests/Tests-Prefix.pch";
