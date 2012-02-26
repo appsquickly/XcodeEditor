@@ -17,7 +17,7 @@
 /**
 * Represents a file resource in an xcode project.
 */
-@interface xcode_FileResource : NSObject {
+@interface xcode_File : NSObject {
 
 @private
     __weak xcode_Project* _project;
@@ -25,9 +25,9 @@
 }
 
 @property(nonatomic, readonly) XcodeProjectFileType type;
-@property(nonatomic, strong, readonly) NSString* path;
+@property(nonatomic, strong, readonly) NSString* name;
 
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeProjectFileType)type path:(NSString*)path;
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeProjectFileType)type name:(NSString*)name;
 
 /**
 * If yes, indicates the file is able to be included for compilation in an `xcode_Target`.
@@ -35,6 +35,8 @@
 - (BOOL) isBuildFile;
 
 - (NSString*) buildFileKey;
+
+- (NSString*) fullPath;
 
 /**
 * Adds this file to the project as an `xcode_BuildFile`, ready to be included in targets.
@@ -44,4 +46,4 @@
 @end
 
 /* ================================================================================================================== */
-@compatibility_alias FileResource xcode_FileResource;
+@compatibility_alias File xcode_File;

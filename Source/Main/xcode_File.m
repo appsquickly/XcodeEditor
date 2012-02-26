@@ -9,25 +9,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_FileResource.h"
+#import "xcode_File.h"
 #import "xcode_Project.h"
 #import "XcodeProjectNodeType.h"
 #import "xcode_KeyBuilder.h"
+#import "xcode_Group.h"
 
-@implementation xcode_FileResource
+@implementation xcode_File
 
 @synthesize type = _type;
-@synthesize path = _path;
+@synthesize name = _name;
 
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeProjectFileType)type path:(NSString*)path {
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeProjectFileType)type name:(NSString*)name {
     self = [super init];
     if (self) {
         _project = project;
         _key = [key copy];
         _type = type;
-        _path = [path copy];
+        _name = [name copy];
     }
     return self;
 }
@@ -71,7 +72,7 @@
             NSMutableDictionary* sourceBuildFile = [[NSMutableDictionary alloc] init];
             [sourceBuildFile setObject:[NSString stringFromProjectNodeType:PBXBuildFile] forKey:@"isa"];
             [sourceBuildFile setObject:_key forKey:@"fileRef"];
-            NSString* buildFileKey = [[KeyBuilder forItemNamed:[_path stringByAppendingString:@".buildFile"]] build];
+            NSString* buildFileKey = [[KeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];
         }
         else if (_type == Framework) {
@@ -85,10 +86,14 @@
     }
 }
 
+- (NSString*) fullPath {
+    Group* group = [_project groupForFileWithKey:_key];
+    return [[group path] stringByAppendingPathComponent:_name];
+}
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"Project file: key=%@, path=%@", _key, _path];
+    return [NSString stringWithFormat:@"Project file: key=%@, name=%@", _key, _name];
 }
 
 

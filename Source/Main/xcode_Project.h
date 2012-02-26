@@ -13,7 +13,7 @@
 @class xcode_ClassDefinition;
 @class xcode_Group;
 @class xcode_FileWriteQueue;
-@class xcode_FileResource;
+@class xcode_File;
 @class xcode_Target;
 
 
@@ -46,12 +46,12 @@
 /**
 * Returns the project file with the specified key, or nil.
 */
-- (xcode_FileResource*) projectFileWithKey:(NSString*)key;
+- (xcode_File*) fileWithKey:(NSString*)key;
 
 /**
 * Returns the project file with the specified name, or nil.
 */
-- (xcode_FileResource*) projectFileWithPath:(NSString*)path;
+- (xcode_File*) fileWithName:(NSString*)name;
 
 /**
 * Returns all header files in the project, as an array of `xcode_ProjectFile` objects.
@@ -79,9 +79,14 @@
 - (xcode_Target*) targetWithName:(NSString*)name;
 
 /**
-* Returns the file key for the group with the specified name.
+* Returns the group with the specified path.
 */
 - (xcode_Group*) groupWithPath:(NSString*)path;
+
+/**
+* Returns the group for the file with the given key;
+*/
+- (xcode_Group*) groupForFileWithKey:(NSString*)key;
 
 /**
 * Saves a project after editing.

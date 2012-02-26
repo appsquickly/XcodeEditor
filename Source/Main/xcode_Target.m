@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "xcode_Target.h"
-#import "xcode_FileResource.h"
+#import "xcode_File.h"
 #import "xcode_Project.h"
 #import "XcodeProjectNodeType.h"
 
@@ -34,7 +34,7 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
-- (void) addMember:(xcode_FileResource*)member {
+- (void) addMember:(xcode_File*)member {
     LogDebug(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];

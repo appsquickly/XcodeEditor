@@ -16,14 +16,14 @@
 #import "xcode_Group.h"
 #import "xcode_FileWriteQueue.h"
 #import "xcode_Target.h"
-#import "xcode_FileResource.h"
+#import "xcode_File.h"
 
 
 @interface xcode_Project (private)
 
 - (NSArray*) projectFilesOfType:(XcodeProjectFileType)fileReferenceType;
 
-- (FileResource*) buildFileWithKey:(NSString*)key;
+- (File*) buildFileWithKey:(NSString*)key;
 
 @end
 
@@ -65,26 +65,26 @@
         if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXFileReference) {
             XcodeProjectFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asProjectFileType];
             NSString* path = [obj valueForKey:@"path"];
-            [results addObject:[[FileResource alloc] initWithProject:self key:key type:fileType path:path]];
+            [results addObject:[[File alloc] initWithProject:self key:key type:fileType name:path]];
         }
     }];
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"path" ascending:YES];
+    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-- (xcode_FileResource*) projectFileWithKey:(NSString*)key {
+- (xcode_File*) fileWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
     if (obj) {
         XcodeProjectFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asProjectFileType];
         NSString* path = [obj valueForKey:@"path"];
-        return [[FileResource alloc] initWithProject:self key:key type:fileType path:path];
+        return [[File alloc] initWithProject:self key:key type:fileType name:path];
     }
     return nil;
 }
 
-- (xcode_FileResource*) projectFileWithPath:(NSString*)path {
-    for (FileResource* projectFile in [self files]) {
-        if ([[projectFile path] isEqualToString:path]) {
+- (xcode_File*) fileWithName:(NSString*)name {
+    for (File* projectFile in [self files]) {
+        if ([[projectFile name] isEqualToString:name]) {
             return projectFile;
         }
     }
@@ -118,6 +118,16 @@
     return results;
 }
 
+- (Group*) groupForFileWithKey:(NSString*)key {
+    for (Group* group in [self groups]) {
+        if ([group childWithKey:key]) {
+            return group;
+        }
+    }
+    return nil;
+}
+
+
 - (NSArray*) targets {
 
     NSMutableArray* results = [[NSMutableArray alloc] init];
@@ -130,7 +140,7 @@
                 NSDictionary* buildPhase = [[self objects] objectForKey:buildPhaseKey];
                 if ([[buildPhase valueForKey:@"isa"] asProjectNodeType] == PBXSourcesBuildPhase) {
                     for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                        FileResource* targetMember = [self buildFileWithKey:buildFileKey];
+                        File* targetMember = [self buildFileWithKey:buildFileKey];
                         if (targetMember) {
                             [buildFiles addObject:[self buildFileWithKey:buildFileKey]];
                         }
@@ -173,25 +183,24 @@
 /* ================================================== Private Methods =============================================== */
 - (NSArray*) projectFilesOfType:(XcodeProjectFileType)projectFileType {
     NSMutableArray* results = [[NSMutableArray alloc] init];
-    for (FileResource* file in [self files]) {
+    for (File* file in [self files]) {
         if ([file type] == projectFileType) {
             [results addObject:file];
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"path" ascending:YES];
+    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
 
-- (FileResource*) buildFileWithKey:(NSString*)theKey {
+- (File*) buildFileWithKey:(NSString*)theKey {
     NSDictionary* obj = [[self objects] valueForKey:theKey];
     if (obj) {
         if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXBuildFile) {
-            return [self projectFileWithKey:[obj valueForKey:@"fileRef"]];
+            return [self fileWithKey:[obj valueForKey:@"fileRef"]];
         }
     }
     return nil;
 }
-
 
 @end

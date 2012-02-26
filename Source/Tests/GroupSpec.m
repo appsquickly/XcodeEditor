@@ -12,10 +12,8 @@
 #import "xcode_Group.h"
 #import "xcode_Project.h"
 #import "xcode_ClassDefinition.h"
-#import "NSString+TestResource.h"
-#import "xcode_FileResource.h"
+#import "xcode_File.h"
 #import "xcode_Target.h"
-#import "NSString+TestResource.h"
 
 SPEC_BEGIN(GroupSpec)
 
@@ -51,8 +49,7 @@ SPEC_BEGIN(GroupSpec)
 
         it(@"should allow adding a source file.", ^{
 
-            ClassDefinition
-                * classDefinition = [[ClassDefinition alloc] initWithName:@"ESA_Sales_Foobar_ViewController"];
+            ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyViewController"];
 
             [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
             [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
@@ -62,20 +59,27 @@ SPEC_BEGIN(GroupSpec)
             [group addClass:classDefinition];
             [project save];
 
-            LogDebug(@"Files: %@", [project files]);
-
-            FileResource* fileResource = [project projectFileWithPath:@"ESA_Sales_Foobar_ViewController.m"];
+            File* fileResource = [project fileWithName:@"MyViewController.m"];
             [fileResource shouldNotBeNil];
+            [[[fileResource fullPath] should] equal:@"Source/Main/MyViewController.m"];
 
             Target* examples = [project targetWithName:@"Examples"];
             [examples shouldNotBeNil];
             [examples addMember:fileResource];
 
-            fileResource = [project projectFileWithPath:@"ESA_Sales_Foobar_ViewController.m"];
-            [[[NSNumber numberWithBool:[fileResource isBuildFile]] should] beYes];
+            fileResource = [project fileWithName:@"MyViewController.m"];
+            [[theValue([fileResource isBuildFile]) should] beYes];
 
             [project save];
             LogDebug(@"Done");
+        });
+
+        it(@"should be able to provide a sorted list of it's children", ^{
+
+            NSArray* children = [group children];
+            LogDebug(@"Group children: %@", children);
+            [[[[children objectAtIndex:0] name] should] equal:@"Core"];
+            [[[[children objectAtIndex:4] name] should] equal:@"UserInterface"];
 
         });
     });

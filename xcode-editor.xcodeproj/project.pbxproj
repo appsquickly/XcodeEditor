@@ -11,9 +11,9 @@
 		6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */; };
 		6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */; };
 		6B3AD03214F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */; };
-		6B3AD03314F8A3AC00BCFE81 /* xcode_FileResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01B14F8A3AC00BCFE81 /* xcode_FileResource.h */; };
-		6B3AD03414F8A3AC00BCFE81 /* xcode_FileResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_FileResource.m */; };
-		6B3AD03514F8A3AC00BCFE81 /* xcode_FileResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_FileResource.m */; };
+		6B3AD03314F8A3AC00BCFE81 /* xcode_File.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01B14F8A3AC00BCFE81 /* xcode_File.h */; };
+		6B3AD03414F8A3AC00BCFE81 /* xcode_File.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_File.m */; };
+		6B3AD03514F8A3AC00BCFE81 /* xcode_File.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_File.m */; };
 		6B3AD03614F8A3AC00BCFE81 /* xcode_FileWriteQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01D14F8A3AC00BCFE81 /* xcode_FileWriteQueue.h */; };
 		6B3AD03714F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */; };
 		6B3AD03814F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */; };
@@ -98,8 +98,8 @@
 		6B3ACFE014F8A2FE00BCFE81 /* XcodeEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XcodeEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_ClassDefinition.h; sourceTree = "<group>"; };
 		6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_ClassDefinition.m; sourceTree = "<group>"; };
-		6B3AD01B14F8A3AC00BCFE81 /* xcode_FileResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FileResource.h; sourceTree = "<group>"; };
-		6B3AD01C14F8A3AC00BCFE81 /* xcode_FileResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FileResource.m; sourceTree = "<group>"; };
+		6B3AD01B14F8A3AC00BCFE81 /* xcode_File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_File.h; sourceTree = "<group>"; };
+		6B3AD01C14F8A3AC00BCFE81 /* xcode_File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_File.m; sourceTree = "<group>"; };
 		6B3AD01D14F8A3AC00BCFE81 /* xcode_FileWriteQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FileWriteQueue.h; sourceTree = "<group>"; };
 		6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FileWriteQueue.m; sourceTree = "<group>"; };
 		6B3AD01F14F8A3AC00BCFE81 /* xcode_Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_Group.h; sourceTree = "<group>"; };
@@ -179,8 +179,8 @@
 				6B65941914F8A56C00F65AEC /* Resources */,
 				6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */,
 				6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */,
-				6B3AD01B14F8A3AC00BCFE81 /* xcode_FileResource.h */,
-				6B3AD01C14F8A3AC00BCFE81 /* xcode_FileResource.m */,
+				6B3AD01B14F8A3AC00BCFE81 /* xcode_File.h */,
+				6B3AD01C14F8A3AC00BCFE81 /* xcode_File.m */,
 				6B3AD01D14F8A3AC00BCFE81 /* xcode_FileWriteQueue.h */,
 				6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */,
 				6B3AD01F14F8A3AC00BCFE81 /* xcode_Group.h */,
@@ -328,7 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */,
-				6B3AD03314F8A3AC00BCFE81 /* xcode_FileResource.h in Headers */,
+				6B3AD03314F8A3AC00BCFE81 /* xcode_File.h in Headers */,
 				6B3AD03614F8A3AC00BCFE81 /* xcode_FileWriteQueue.h in Headers */,
 				6B3AD03914F8A3AC00BCFE81 /* xcode_Group.h in Headers */,
 				6B3AD03C14F8A3AC00BCFE81 /* xcode_KeyBuilder.h in Headers */,
@@ -471,7 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B3AD03214F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */,
-				6B3AD03514F8A3AC00BCFE81 /* xcode_FileResource.m in Sources */,
+				6B3AD03514F8A3AC00BCFE81 /* xcode_File.m in Sources */,
 				6B3AD03814F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */,
 				6B3AD03B14F8A3AC00BCFE81 /* xcode_Group.m in Sources */,
 				6B3AD03E14F8A3AC00BCFE81 /* xcode_KeyBuilder.m in Sources */,
@@ -499,7 +499,7 @@
 				6B918B8914F52DCF00F71C40 /* (null) in Sources */,
 				6B918B9714F52DCF00F71C40 /* (null) in Sources */,
 				6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */,
-				6B3AD03414F8A3AC00BCFE81 /* xcode_FileResource.m in Sources */,
+				6B3AD03414F8A3AC00BCFE81 /* xcode_File.m in Sources */,
 				6B3AD03714F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */,
 				6B3AD03A14F8A3AC00BCFE81 /* xcode_Group.m in Sources */,
 				6B3AD03D14F8A3AC00BCFE81 /* xcode_KeyBuilder.m in Sources */,

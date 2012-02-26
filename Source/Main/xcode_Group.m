@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "xcode_File.h"
 #import "xcode_Group.h"
 #import "xcode_Project.h"
 #import "xcode_ClassDefinition.h"
-#import "XcodeProjectFileType.h"
 #import "xcode_KeyBuilder.h"
 #import "xcode_FileWriteQueue.h"
 #import "XcodeProjectNodeType.h"
@@ -77,6 +77,24 @@
     [_project.fileWriteQueue
         queueFile:[classDefinition sourceFileName] inDirectory:_path withContents:[classDefinition source]];
 }
+
+- (NSArray*) children {
+    NSMutableArray* children = [[NSMutableArray alloc] init];
+    for (NSString* childKey in _children) {
+        [children addObject:[_project fileWithKey:childKey]];
+    }
+    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    return [children sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+}
+
+- (xcode_File*) childWithKey:(NSString*)key {
+    if ([_children containsObject:key]) {
+        return [_project fileWithKey:key];
+    }
+    return nil;
+}
+
+
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {

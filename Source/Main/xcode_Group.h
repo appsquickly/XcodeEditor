@@ -12,6 +12,7 @@
 
 @class xcode_Project;
 @class xcode_ClassDefinition;
+@class xcode_File;
 
 /**
 * Represents a group in an Xcode project.
@@ -33,6 +34,15 @@
               children:(NSArray*)children;
 
 - (void) addClass:(xcode_ClassDefinition*)classDefinition;
+
+
+/**
+* Set of `xcode_File` belonging to this group.
+*/
+- (NSArray*) children;
+
+- (xcode_File*) childWithKey:(NSString*)key;
+
 
 @end
 
