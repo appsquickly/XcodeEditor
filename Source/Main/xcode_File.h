@@ -9,6 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 #import <Foundation/Foundation.h>
+#import "XcodeGroupMember.h"
 #import "XcodeProjectFileType.h"
 
 @class xcode_Project;
@@ -17,14 +18,14 @@
 /**
 * Represents a file resource in an xcode project.
 */
-@interface xcode_File : NSObject {
+@interface xcode_File : NSObject<XcodeGroupMember> {
 
 @private
     __weak xcode_Project* _project;
-    __strong NSString* _key;
 }
 
 @property(nonatomic, readonly) XcodeProjectFileType type;
+@property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readonly) NSString* name;
 
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeProjectFileType)type name:(NSString*)name;

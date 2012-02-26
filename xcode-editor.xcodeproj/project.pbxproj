@@ -71,10 +71,10 @@
 		6B918B7F14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6B918B8914F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6B918B9714F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6BB5EE5F14F49B1B00B5B193 /* LRResty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB5EE5E14F49B1B00B5B193 /* LRResty.framework */; };
 		6BBD6C9714ECF28200451BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBD6C9614ECF28200451BA2 /* libz.dylib */; };
 		6BE4B285147E6B610059E44F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6BE4B285147E6B610059E451 /* expanz-iOS-SDK.zip in Resources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */; };
+		6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E452 /* XcodeGroupMember.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -145,6 +145,7 @@
 		6BC1018B1477A42F0055CF03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BD8982D14EA2441007875F4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "expanz-iOS-SDK.zip"; sourceTree = "<group>"; };
+		6BE4B285147E6B610059E452 /* XcodeGroupMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeGroupMember.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +162,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BB5EE5F14F49B1B00B5B193 /* LRResty.framework in Frameworks */,
 				6BBD6C9714ECF28200451BA2 /* libz.dylib in Frameworks */,
 				6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */,
 				6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */,
@@ -176,6 +176,7 @@
 		6B3AD01814F8A3AC00BCFE81 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6BE4B285147E6B610059E452 /* XcodeGroupMember.h */,
 				6B65941914F8A56C00F65AEC /* Resources */,
 				6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */,
 				6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */,
@@ -338,6 +339,7 @@
 				6B3AD04814F8A3AC00BCFE81 /* XcodeProjectNodeType.h in Headers */,
 				6B65941514F8A53300F65AEC /* Logging.h in Headers */,
 				6B65942214F8A56C00F65AEC /* XcodeEditor-Prefix.pch in Headers */,
+				6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

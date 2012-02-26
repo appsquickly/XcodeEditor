@@ -25,12 +25,14 @@
 
 - (NSDictionary*) asDictionary;
 
+- (XcodeProjectNodeType) typeForKey:(NSString*)key;
+
 @end
 
 @implementation xcode_Group
 
 @synthesize project = _project;
-@synthesize path = _path;
+@synthesize pathRelativeToParent = _pathRelativeToParent;
 @synthesize key = _key;
 @synthesize children = _children;
 
@@ -43,7 +45,7 @@
         _project = project;
         _key = [key copy];
         _name = [name copy];
-        _path = [path copy];
+        _pathRelativeToParent = [path copy];
         _children = [[NSMutableArray alloc] init];
         [_children addObjectsFromArray:children];
     }
@@ -52,9 +54,6 @@
 
 /* ================================================ Interface Methods =============================================== */
 - (NSString*) name {
-    if (_name == nil) {
-        return _path;
-    }
     return _name;
 }
 
@@ -73,17 +72,23 @@
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
     [_project.fileWriteQueue
-        queueFile:[classDefinition headerFileName] inDirectory:_path withContents:[classDefinition header]];
+        queueFile:[classDefinition headerFileName] inDirectory:_pathRelativeToParent withContents:[classDefinition header]];
     [_project.fileWriteQueue
-        queueFile:[classDefinition sourceFileName] inDirectory:_path withContents:[classDefinition source]];
+        queueFile:[classDefinition sourceFileName] inDirectory:_pathRelativeToParent withContents:[classDefinition source]];
 }
 
 - (NSArray*) children {
     NSMutableArray* children = [[NSMutableArray alloc] init];
     for (NSString* childKey in _children) {
-        [children addObject:[_project fileWithKey:childKey]];
+        XcodeProjectNodeType type = [self typeForKey:childKey];
+        if (type == PBXGroup) {
+            [children addObject:[_project groupWithKey:childKey]];
+        }
+        else if (type == PBXFileReference) {
+            [children addObject:[_project fileWithKey:childKey]];
+        }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
     return [children sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
@@ -94,11 +99,24 @@
     return nil;
 }
 
+/* ================================================= Protocol Methods =============================================== */
+- (XcodeProjectNodeType) groupMemberType {
+    return PBXGroup;
+}
+
+- (NSString*) displayName {
+    if (_pathRelativeToParent == nil) {
+        return _name;
+    }
+    else {
+        return [_pathRelativeToParent lastPathComponent];
+    }
+}
 
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"Group: name = %@, key=%@, path=%@", _name, _key, _path];
+    return [NSString stringWithFormat:@"Group: name = %@, key=%@, path=%@", _name, _key, _pathRelativeToParent];
 }
 
 /* ================================================== Private Methods =============================================== */
@@ -125,9 +143,14 @@
     if (_name != nil) {
         [groupData setObject:_name forKey:@"name"];
     }
-    [groupData setObject:_path forKey:@"path"];
+    [groupData setObject:_pathRelativeToParent forKey:@"path"];
     [groupData setObject:_children forKey:@"children"];
     return groupData;
+}
+
+- (XcodeProjectNodeType) typeForKey:(NSString*)key {
+    NSDictionary* obj = [[_project objects] valueForKey:key];
+    return [[obj valueForKey:@"isa"] asProjectNodeType];    
 }
 
 

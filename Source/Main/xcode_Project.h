@@ -9,6 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 #import <Foundation/Foundation.h>
+#import "XcodeProjectNodeType.h"
 
 @class xcode_ClassDefinition;
 @class xcode_Group;
@@ -38,6 +39,7 @@
 */
 - (NSMutableDictionary*) objects;
 
+#pragma mark Files
 /**
 * Returns all file resources in the project, as an array of `xcode_ProjectFile` objects.
 */
@@ -63,11 +65,29 @@
 */
 - (NSArray*) implementationFiles;
 
+#pragma mark Groups
 /**
 * Lists the groups in an xcode project, returning an array of `xcode_Group` objects.
 */
 - (NSArray*) groups;
 
+/**
+* Returns the group with the given key, or nil.
+*/
+- (xcode_Group*) groupWithKey:(NSString*)key;
+
+/**
+* Returns the group with the specified path - the directory relative to the group's parent. Eg Source/Main
+*/
+- (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path;
+
+/**
+* Returns the group for the file with the given key;
+*/
+- (xcode_Group*) groupForFileWithKey:(NSString*)key;
+
+
+#pragma mark Targets
 /**
 * Lists the targets in an xcode project, returning an array of `xcode_Target` objects.
 */
@@ -78,16 +98,7 @@
 */
 - (xcode_Target*) targetWithName:(NSString*)name;
 
-/**
-* Returns the group with the specified path.
-*/
-- (xcode_Group*) groupWithPath:(NSString*)path;
-
-/**
-* Returns the group for the file with the given key;
-*/
-- (xcode_Group*) groupForFileWithKey:(NSString*)key;
-
+#pragma mark Saving
 /**
 * Saves a project after editing.
 */

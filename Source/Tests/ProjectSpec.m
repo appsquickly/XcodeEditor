@@ -11,6 +11,7 @@
 
 #import "xcode_Project.h"
 #import "xcode_Target.h"
+#import "xcode_Group.h"
 
 SPEC_BEGIN(ProjectSpec)
 
@@ -46,7 +47,9 @@ SPEC_BEGIN(ProjectSpec)
             NSArray* groups = [project groups];
             [groups shouldNotBeNil];
             [[groups shouldNot] beEmpty];
-            LogDebug(@"Groups: %@", groups);
+            for (Group* group in groups) {
+                LogDebug(@"Group: %@, children: %@", group, [group children]);
+            }
         });
 
     });

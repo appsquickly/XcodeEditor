@@ -15,7 +15,8 @@
 @implementation NSDictionary (ProjectNodeType)
 
 + (NSDictionary*) dictionaryWithProjectNodeTypesAsStrings {
-    return [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:PBXBuildFile], @"PBXBuildFile",
+    return [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:PBXNilType], @"PBXNilType",
+                                                      [NSNumber numberWithInteger:PBXBuildFile], @"PBXBuildFile",
                                                       [NSNumber numberWithInteger:PBXContainerItemProxy],
                                                       @"PBXContainerItemProxy",
                                                       [NSNumber numberWithInteger:PBXCopyFilesBuildPhase],

@@ -22,7 +22,7 @@ SPEC_BEGIN(GroupSpec)
 
     beforeEach(^{
         project = [[Project alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
-        group = [project groupWithPath:@"Source/Main"];
+        group = [project groupWithPathRelativeToParent:@"Source/Main"];
         [group shouldNotBeNil];
     });
 
@@ -34,7 +34,7 @@ SPEC_BEGIN(GroupSpec)
             [group shouldNotBeNil];
             [[[group key] should] equal:@"abcd1234"];
             [[[group name] should] equal:@"Main"];
-            [[[group path] should] equal:@"Source/Main"];
+            [[[group pathRelativeToParent] should] equal:@"Source/Main"];
             [[[group children] should] beEmpty];
         });
 
@@ -78,8 +78,8 @@ SPEC_BEGIN(GroupSpec)
 
             NSArray* children = [group children];
             LogDebug(@"Group children: %@", children);
-            [[[[children objectAtIndex:0] name] should] equal:@"Core"];
-            [[[[children objectAtIndex:4] name] should] equal:@"UserInterface"];
+            [[[[children objectAtIndex:0] displayName] should] equal:@"Core"];
+            [[[[children objectAtIndex:4] displayName] should] equal:@"UserInterface"];
 
         });
     });

@@ -9,6 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 #import <Foundation/Foundation.h>
+#import "XcodeGroupMember.h"
 
 @class xcode_Project;
 @class xcode_ClassDefinition;
@@ -17,7 +18,7 @@
 /**
 * Represents a group in an Xcode project.
 */
-@interface xcode_Group : NSObject {
+@interface xcode_Group : NSObject<XcodeGroupMember> {
 
 @private
     NSString* _name;
@@ -26,7 +27,7 @@
 
 @property(nonatomic, weak, readonly) xcode_Project* project;
 @property(nonatomic, strong, readonly) NSString* name;
-@property(nonatomic, strong, readonly) NSString* path;
+@property(nonatomic, strong, readonly) NSString* pathRelativeToParent;
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readonly) NSArray* children;
 
@@ -37,10 +38,13 @@
 
 
 /**
-* Set of `xcode_File` belonging to this group.
+* Set of `xcode_File` or `xcode_Group` objects belonging to this group.
 */
 - (NSArray*) children;
 
+/**
+* Returns the child with the specified key.
+*/
 - (xcode_File*) childWithKey:(NSString*)key;
 
 

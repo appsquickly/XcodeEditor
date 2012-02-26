@@ -59,6 +59,9 @@
     return [_project objectForKey:@"objects"];
 }
 
+
+
+
 - (NSArray*) files {
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
@@ -74,7 +77,7 @@
 
 - (xcode_File*) fileWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj) {
+    if (obj && [[obj valueForKey:@"isa"] asProjectNodeType] == PBXFileReference) {
         XcodeProjectFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asProjectFileType];
         NSString* path = [obj valueForKey:@"path"];
         return [[File alloc] initWithProject:self key:key type:fileType name:path];
@@ -106,16 +109,24 @@
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
 
         if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXGroup) {
-            NSString* name = [obj valueForKey:@"name"];
-            NSString* path = [obj valueForKey:@"path"];
-            NSArray* children = [obj valueForKey:@"children"];
-
-            Group* group = [[Group alloc] initWithProject:self key:key name:name path:path children:children];
-            [results addObject:group];
+            [results addObject:[self groupWithKey:key]];
         }
     }];
 
     return results;
+}
+
+- (Group*) groupWithKey:(NSString*)key {
+    NSDictionary* obj = [[self objects] valueForKey:key];
+    if (obj && [[obj valueForKey:@"isa"] asProjectNodeType] == PBXGroup) {
+
+        NSString* name = [obj valueForKey:@"name"];
+        NSString* path = [obj valueForKey:@"path"];
+        NSArray* children = [obj valueForKey:@"children"];
+
+        return [[Group alloc] initWithProject:self key:key name:name path:path children:children];
+    }
+    return nil;
 }
 
 - (Group*) groupForFileWithKey:(NSString*)key {
@@ -165,9 +176,9 @@
 }
 
 
-- (xcode_Group*) groupWithPath:(NSString*)path {
+- (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path {
     for (Group* group in [self groups]) {
-        if ([group.path isEqualToString:path]) {
+        if ([group.pathRelativeToParent isEqualToString:path]) {
             return group;
         }
     }

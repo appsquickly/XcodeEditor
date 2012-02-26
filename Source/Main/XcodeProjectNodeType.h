@@ -11,6 +11,7 @@
 
 
 typedef enum {
+    PBXNilType,
     PBXBuildFile,
     PBXContainerItemProxy,
     PBXCopyFilesBuildPhase,

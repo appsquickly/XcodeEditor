@@ -19,7 +19,7 @@
 
 @synthesize type = _type;
 @synthesize name = _name;
-
+@synthesize key = _key;
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeProjectFileType)type name:(NSString*)name {
@@ -88,8 +88,18 @@
 
 - (NSString*) fullPath {
     Group* group = [_project groupForFileWithKey:_key];
-    return [[group path] stringByAppendingPathComponent:_name];
+    return [[group pathRelativeToParent] stringByAppendingPathComponent:_name];
 }
+
+/* ================================================= Protocol Methods =============================================== */
+- (XcodeProjectNodeType) groupMemberType {
+    return PBXFileReference;
+}
+
+- (NSString*) displayName {
+    return _name;
+}
+
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
