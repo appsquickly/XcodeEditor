@@ -35,11 +35,11 @@ SPEC_BEGIN(GroupSpec)
             [[[group key] should] equal:@"abcd1234"];
             [[[group name] should] equal:@"Main"];
             [[[group pathRelativeToParent] should] equal:@"Source/Main"];
-            [[[group children] should] beEmpty];
+            [[[group members] should] beEmpty];
         });
 
         it(@"should be able to describe itself.", ^{
-            [[[group description] should] equal:@"Group: name = Main, key=6B469FE914EF875900ED659C, path=Source/Main"];
+            [[[group description] should] equal:@"Group: displayName = Main, key=6B469FE914EF875900ED659C"];
         });
 
     });
@@ -61,7 +61,7 @@ SPEC_BEGIN(GroupSpec)
 
             File* fileResource = [project fileWithName:@"MyViewController.m"];
             [fileResource shouldNotBeNil];
-            [[[fileResource fullPath] should] equal:@"Source/Main/MyViewController.m"];
+            [[[fileResource sourcePath] should] equal:@"Source/Main/MyViewController.m"];
 
             Target* examples = [project targetWithName:@"Examples"];
             [examples shouldNotBeNil];
@@ -76,7 +76,7 @@ SPEC_BEGIN(GroupSpec)
 
         it(@"should be able to provide a sorted list of it's children", ^{
 
-            NSArray* children = [group children];
+            NSArray* children = [group members];
             LogDebug(@"Group children: %@", children);
             [[[[children objectAtIndex:0] displayName] should] equal:@"Core"];
             [[[[children objectAtIndex:4] displayName] should] equal:@"UserInterface"];

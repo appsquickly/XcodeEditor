@@ -86,9 +86,22 @@
     }
 }
 
-- (NSString*) fullPath {
-    Group* group = [_project groupForFileWithKey:_key];
-    return [[group pathRelativeToParent] stringByAppendingPathComponent:_name];
+- (NSString*) sourcePath {
+    NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
+
+    Group* group;
+    NSString* key = _key;
+
+    while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil) {
+        [pathComponents addObject:[group pathRelativeToParent]];
+        key = [group key];
+    }
+
+    NSMutableString* fullPath = [[NSMutableString alloc] init];
+    for (int i = [pathComponents count] - 1; i >= 0; i--) {
+        [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
+    }
+    return [fullPath stringByAppendingPathComponent:_name];
 }
 
 /* ================================================= Protocol Methods =============================================== */
@@ -103,7 +116,7 @@
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"Project file: key=%@, name=%@", _key, _name];
+    return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name, [self sourcePath]];
 }
 
 

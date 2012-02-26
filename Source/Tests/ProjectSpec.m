@@ -12,6 +12,7 @@
 #import "xcode_Project.h"
 #import "xcode_Target.h"
 #import "xcode_Group.h"
+#import "xcode_File.h"
 
 SPEC_BEGIN(ProjectSpec)
 
@@ -30,6 +31,10 @@ SPEC_BEGIN(ProjectSpec)
             LogDebug(@"Headers: %@", headerFiles);
 
             [[theValue([headerFiles count]) should] equal:[NSNumber numberWithInt:18]];
+            for (File* file in headerFiles) {
+                LogDebug(@"File: %@", [file description]);
+            }
+            
         });
 
         it(@"should be able to list all the implementation files in a project", ^{
@@ -47,9 +52,6 @@ SPEC_BEGIN(ProjectSpec)
             NSArray* groups = [project groups];
             [groups shouldNotBeNil];
             [[groups shouldNot] beEmpty];
-            for (Group* group in groups) {
-                LogDebug(@"Group: %@, children: %@", group, [group children]);
-            }
         });
 
     });

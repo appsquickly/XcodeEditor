@@ -15,7 +15,6 @@
 #import "xcode_ClassDefinition.h"
 #import "xcode_KeyBuilder.h"
 #import "xcode_FileWriteQueue.h"
-#import "XcodeProjectNodeType.h"
 
 @interface xcode_Group (private)
 
@@ -77,7 +76,7 @@
         queueFile:[classDefinition sourceFileName] inDirectory:_pathRelativeToParent withContents:[classDefinition source]];
 }
 
-- (NSArray*) children {
+- (NSArray*) members {
     NSMutableArray* children = [[NSMutableArray alloc] init];
     for (NSString* childKey in _children) {
         XcodeProjectNodeType type = [self typeForKey:childKey];
@@ -92,11 +91,19 @@
     return [children sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-- (xcode_File*) childWithKey:(NSString*)key {
-    if ([_children containsObject:key]) {
-        return [_project fileWithKey:key];
+- (xcode_File*) memberWithKey:(NSString*)key {
+    id<XcodeGroupMember> groupMember = nil;
+    
+    if ([_children containsObject:key]) {                
+        XcodeProjectNodeType type = [self typeForKey:key];
+        if (type == PBXGroup) {
+            groupMember = [_project groupWithKey:key];
+        }
+        else if (type == PBXFileReference) {
+            groupMember = [_project fileWithKey:key];
+        }
     }
-    return nil;
+    return groupMember; 
 }
 
 /* ================================================= Protocol Methods =============================================== */
@@ -116,7 +123,7 @@
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"Group: name = %@, key=%@, path=%@", _name, _key, _pathRelativeToParent];
+    return [NSString stringWithFormat:@"Group: displayName = %@, key=%@", [self displayName], _key];
 }
 
 /* ================================================== Private Methods =============================================== */

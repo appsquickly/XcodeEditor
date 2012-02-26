@@ -129,9 +129,9 @@
     return nil;
 }
 
-- (Group*) groupForFileWithKey:(NSString*)key {
+- (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key {
     for (Group* group in [self groups]) {
-        if ([group childWithKey:key]) {
+        if ([group memberWithKey:key]) {
             return group;
         }
     }

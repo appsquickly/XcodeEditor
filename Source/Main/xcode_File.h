@@ -37,7 +37,7 @@
 
 - (NSString*) buildFileKey;
 
-- (NSString*) fullPath;
+- (NSString*) sourcePath;
 
 /**
 * Adds this file to the project as an `xcode_BuildFile`, ready to be included in targets.

@@ -82,9 +82,9 @@
 - (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path;
 
 /**
-* Returns the group for the file with the given key;
+* Returns the parent group for the group or file with the given key;
 */
-- (xcode_Group*) groupForFileWithKey:(NSString*)key;
+- (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key;
 
 
 #pragma mark Targets

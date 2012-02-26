@@ -40,12 +40,12 @@
 /**
 * Set of `xcode_File` or `xcode_Group` objects belonging to this group.
 */
-- (NSArray*) children;
+- (NSArray*) members;
 
 /**
 * Returns the child with the specified key.
 */
-- (xcode_File*) childWithKey:(NSString*)key;
+- (xcode_File*) memberWithKey:(NSString*)key;
 
 
 @end
