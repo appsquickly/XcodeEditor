@@ -45,7 +45,7 @@
 /**
 * Returns the child with the specified key.
 */
-- (xcode_File*) memberWithKey:(NSString*)key;
+- (id<XcodeGroupMember>) memberWithKey:(NSString*)key;
 
 
 @end

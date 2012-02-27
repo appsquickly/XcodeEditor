@@ -91,7 +91,7 @@
     return [children sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-- (xcode_File*) memberWithKey:(NSString*)key {
+- (id<XcodeGroupMember>) memberWithKey:(NSString*)key {
     id<XcodeGroupMember> groupMember = nil;
     
     if ([_children containsObject:key]) {                
