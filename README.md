@@ -63,6 +63,10 @@ ant
 
 . . . are very welcome. 
 
+# Compatibility 
+
+Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode. The AppCode IDE from
+jetbrains is not yet supported. 
 
 # Authors
 
