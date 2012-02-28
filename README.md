@@ -28,6 +28,9 @@ Target* examples = [project targetWithName:@"Examples"];
 
 # Docs
 
+The Source/Tests folder contains furhter usasge examples. A good starting point is to run the test target in Xcode.
+This will extract a test project to the /tmp directory, where you'll be able to see the outcome for yourself. 
+
 * <a href="https://github.com/expanz/xcode-editor/wiki">Wiki</a>
 * <a href="http://expanz.github.com/xcode-editor/api/index.html">API</a>
 * <a href="http://expanz.github.com/xcode-editor/coverage/Users/jblues/ExpanzProjects/xcode-editor1/Source/Main/index.html">Reports</a>
@@ -63,6 +66,12 @@ ant
 
 . . . are very welcome. 
 
+If you're using the API shoot me an email and tell me what you're doing with it. 
+
+# Compatibility 
+
+Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode. The AppCode IDE from
+jetbrains is not yet supported. 
 
 # Authors
 
