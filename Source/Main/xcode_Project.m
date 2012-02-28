@@ -11,7 +11,6 @@
 
 
 #import "xcode_Project.h"
-#import "XcodeProjectNodeType.h"
 #import "XcodeProjectFileType.h"
 #import "xcode_Group.h"
 #import "xcode_FileWriteQueue.h"
@@ -45,12 +44,6 @@
         _fileWriteQueue = [[FileWriteQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
     }
     return self;
-}
-
-- (id) initWithString:(NSString*)string {
-    return nil;
-    //To change the template use AppCode | Preferences | File Templates.
-
 }
 
 

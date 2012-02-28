@@ -32,8 +32,6 @@
 */
 - (id) initWithFilePath:(NSString*)filePath;
 
-- (id) initWithString:(NSString*)string;
-
 /**
 * Raw project data.
 */
