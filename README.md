@@ -28,7 +28,7 @@ Target* examples = [project targetWithName:@"Examples"];
 
 # Docs
 
-The Source/Tests folder contains furhter usasge examples. A good starting point is to run the test target in Xcode.
+The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
 This will extract a test project to the /tmp directory, where you'll be able to see the outcome for yourself. 
 
 * <a href="https://github.com/expanz/xcode-editor/wiki">Wiki</a>
