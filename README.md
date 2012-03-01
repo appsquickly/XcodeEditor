@@ -20,7 +20,7 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 ## Specifying Source File Belongs to Target
 
 ```objective-c
-File* sourceFile = [project projectFileWithPath:@"MyNewClass.m"];
+File* sourceFile = [project fileWithName:@"MyNewClass.m"];
 Target* examples = [project targetWithName:@"Examples"];
 [examples addMember:fileResource];
 [project save];
