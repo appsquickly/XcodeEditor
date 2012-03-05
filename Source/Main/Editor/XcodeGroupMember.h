@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XcodeProjectNodeType.h"
+#import "XcodeMemberType.h"
 
 @protocol XcodeGroupMember
 
@@ -17,5 +17,8 @@
 
 - (NSString*) displayName;
 
-- (XcodeProjectNodeType) groupMemberType;
+/**
+* Group members can either be other groups of source files.
+*/
+- (XcodeMemberType) groupMemberType;
 @end

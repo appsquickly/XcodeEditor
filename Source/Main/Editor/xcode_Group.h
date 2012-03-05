@@ -13,7 +13,8 @@
 
 @class xcode_Project;
 @class xcode_ClassDefinition;
-@class xcode_File;
+@class xcode_SourceFile;
+@class xcode_XibDefinition;
 
 /**
 * Represents a group in an Xcode project.
@@ -22,6 +23,7 @@
 
 @private
     NSString* _name;
+    NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
 }
 
@@ -36,6 +38,9 @@
 
 - (void) addClass:(xcode_ClassDefinition*)classDefinition;
 
+- (void) addXib:(xcode_XibDefinition*)xibDefinition;
+
+- (NSString*) pathRelativeToProjectRoot;
 
 /**
 * Set of `xcode_File` or `xcode_Group` objects belonging to this group.

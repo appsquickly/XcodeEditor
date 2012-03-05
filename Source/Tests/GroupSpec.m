@@ -12,7 +12,7 @@
 #import "xcode_Group.h"
 #import "xcode_Project.h"
 #import "xcode_ClassDefinition.h"
-#import "xcode_File.h"
+#import "xcode_SourceFile.h"
 #import "xcode_Target.h"
 
 SPEC_BEGIN(GroupSpec)
@@ -38,12 +38,22 @@ SPEC_BEGIN(GroupSpec)
             [[[group members] should] beEmpty];
         });
 
-        it(@"should be able to describe itself.", ^{
-            [[[group description] should] equal:@"Group: displayName = Main, key=6B469FE914EF875900ED659C"];
-        });
 
     });
 
+    describe(@"Properties", ^{
+
+        it(@"should be able to describe itself", ^{
+            [[[group description] should] equal:@"Group: displayName = Main, key=6B469FE914EF875900ED659C"];
+        });
+
+        it(@"should be able to return its full path relative to the project base directory", ^{
+
+            LogDebug(@"Path: %@", [group pathRelativeToProjectRoot]);
+
+        });
+
+    });
 
     describe(@"Source files.", ^{
 
@@ -59,7 +69,7 @@ SPEC_BEGIN(GroupSpec)
             [group addClass:classDefinition];
             [project save];
 
-            File* fileResource = [project fileWithName:@"MyViewController.m"];
+            SourceFile* fileResource = [project fileWithName:@"MyViewController.m"];
             [fileResource shouldNotBeNil];
             [[[fileResource sourcePath] should] equal:@"Source/Main/MyViewController.m"];
 

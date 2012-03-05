@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 @class xcode_Project;
-@class xcode_File;
+@class xcode_SourceFile;
 
 /**
 * Represents a target in an xcode project.
@@ -25,7 +25,7 @@
 
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name members:(NSArray*)members;
 
-- (void) addMember:(xcode_File*)member;
+- (void) addMember:(xcode_SourceFile*)member;
 
 
 @end

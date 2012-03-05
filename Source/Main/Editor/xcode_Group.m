@@ -9,7 +9,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_File.h"
+#import "xcode_XibDefinition.h"
+#import "xcode_SourceFile.h"
 #import "xcode_Group.h"
 #import "xcode_Project.h"
 #import "xcode_ClassDefinition.h"
@@ -20,11 +21,11 @@
 
 - (void) addChildWithKey:(NSString*)key;
 
-- (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeProjectFileType)type;
+- (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type;
 
 - (NSDictionary*) asDictionary;
 
-- (XcodeProjectNodeType) typeForKey:(NSString*)key;
+- (XcodeMemberType) typeForKey:(NSString*)key;
 
 @end
 
@@ -70,16 +71,43 @@
 
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
-    [_project.fileWriteQueue
-        queueFile:[classDefinition headerFileName] inDirectory:_pathRelativeToParent withContents:[classDefinition header]];
-    [_project.fileWriteQueue
-        queueFile:[classDefinition sourceFileName] inDirectory:_pathRelativeToParent withContents:[classDefinition source]];
+    [_project.fileWriteQueue queueFile:[classDefinition headerFileName] inDirectory:_pathRelativeToParent
+                          withContents:[classDefinition header]];
+    [_project.fileWriteQueue queueFile:[classDefinition sourceFileName] inDirectory:_pathRelativeToParent
+                          withContents:[classDefinition source]];
 }
+
+- (void) addXib:(XibDefinition*)xibDefinition {
+    //To change the template use AppCode | Preferences | File Templates.
+
+}
+
+
+- (NSString*) pathRelativeToProjectRoot {
+    if (_pathRelativeToProjectRoot == nil) {
+        NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
+        Group* group;
+        NSString* key = _key;
+
+        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil) {
+            [pathComponents addObject:[group pathRelativeToParent]];
+            key = [group key];
+        }
+
+        NSMutableString* fullPath = [[NSMutableString alloc] init];
+        for (int i = [pathComponents count] - 1; i >= 0; i--) {
+            [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
+        }
+        _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];
+    }
+    return _pathRelativeToProjectRoot;
+}
+
 
 - (NSArray*) members {
     NSMutableArray* children = [[NSMutableArray alloc] init];
     for (NSString* childKey in _children) {
-        XcodeProjectNodeType type = [self typeForKey:childKey];
+        XcodeMemberType type = [self typeForKey:childKey];
         if (type == PBXGroup) {
             [children addObject:[_project groupWithKey:childKey]];
         }
@@ -93,9 +121,9 @@
 
 - (id<XcodeGroupMember>) memberWithKey:(NSString*)key {
     id<XcodeGroupMember> groupMember = nil;
-    
-    if ([_children containsObject:key]) {                
-        XcodeProjectNodeType type = [self typeForKey:key];
+
+    if ([_children containsObject:key]) {
+        XcodeMemberType type = [self typeForKey:key];
         if (type == PBXGroup) {
             groupMember = [_project groupWithKey:key];
         }
@@ -103,11 +131,11 @@
             groupMember = [_project fileWithKey:key];
         }
     }
-    return groupMember; 
+    return groupMember;
 }
 
 /* ================================================= Protocol Methods =============================================== */
-- (XcodeProjectNodeType) groupMemberType {
+- (XcodeMemberType) groupMemberType {
     return PBXGroup;
 }
 
@@ -133,11 +161,11 @@
     }
 }
 
-- (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeProjectFileType)type {
+- (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type {
     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
-    [reference setObject:[NSString stringFromProjectNodeType:PBXFileReference] forKey:@"isa"];
+    [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"FileEncoding"];
-    [reference setObject:[NSString stringFromProjectFileType:type] forKey:@"lastKnownFileType"];
+    [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
     [reference setObject:name forKey:@"path"];
     [reference setObject:@"<group>" forKey:@"sourceTree"];
     return reference;
@@ -145,7 +173,7 @@
 
 - (NSDictionary*) asDictionary {
     NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];
-    [groupData setObject:[NSString stringFromProjectNodeType:PBXGroup] forKey:@"isa"];
+    [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@"isa"];
     [groupData setObject:@"<group>" forKey:@"sourceTree"];
     if (_name != nil) {
         [groupData setObject:_name forKey:@"name"];
@@ -155,9 +183,9 @@
     return groupData;
 }
 
-- (XcodeProjectNodeType) typeForKey:(NSString*)key {
+- (XcodeMemberType) typeForKey:(NSString*)key {
     NSDictionary* obj = [[_project objects] valueForKey:key];
-    return [[obj valueForKey:@"isa"] asProjectNodeType];    
+    return [[obj valueForKey:@"isa"] asMemberType];
 }
 
 

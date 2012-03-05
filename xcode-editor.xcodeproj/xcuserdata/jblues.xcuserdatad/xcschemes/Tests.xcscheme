@@ -4,26 +4,28 @@
    <BuildAction>
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES">
+            buildForTesting = "YES"
+            buildForRunning = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B55223514EA723700494CF3"
-               BuildableName = "Tests.octest"
                BlueprintName = "Tests"
-               ReferencedContainer = "container:xcode-editor.xcodeproj">
+               ReferencedContainer = "container:xcode-editor.xcodeproj"
+               BuildableName = "Tests.octest">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
-   <TestAction>
+   <TestAction
+      buildConfiguration = "Release">
       <Testables>
          <TestableReference>
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B55223514EA723700494CF3"
-               BuildableName = "Tests.octest"
                BlueprintName = "Tests"
-               ReferencedContainer = "container:xcode-editor.xcodeproj">
+               ReferencedContainer = "container:xcode-editor.xcodeproj"
+               BuildableName = "Tests.octest">
             </BuildableReference>
          </TestableReference>
       </Testables>

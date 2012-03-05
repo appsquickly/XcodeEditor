@@ -9,12 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 #import <Foundation/Foundation.h>
-#import "XcodeProjectNodeType.h"
+#import "XcodeMemberType.h"
 
 @class xcode_ClassDefinition;
 @class xcode_Group;
 @class xcode_FileWriteQueue;
-@class xcode_File;
+@class xcode_SourceFile;
 @class xcode_Target;
 
 
@@ -28,7 +28,7 @@
 @property(nonatomic, strong, readonly) xcode_FileWriteQueue* fileWriteQueue;
 
 /**
-* Creates a new project editor instance with the specified project.pbxproj file.
+* Creates a new project editor instance with the specified Project.xcodeproj file.
 */
 - (id) initWithFilePath:(NSString*)filePath;
 
@@ -46,12 +46,12 @@
 /**
 * Returns the project file with the specified key, or nil.
 */
-- (xcode_File*) fileWithKey:(NSString*)key;
+- (xcode_SourceFile*) fileWithKey:(NSString*)key;
 
 /**
 * Returns the project file with the specified name, or nil.
 */
-- (xcode_File*) fileWithName:(NSString*)name;
+- (xcode_SourceFile*) fileWithName:(NSString*)name;
 
 /**
 * Returns all header files in the project, as an array of `xcode_ProjectFile` objects.

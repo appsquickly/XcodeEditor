@@ -11,18 +11,18 @@
 
 
 #import "xcode_Project.h"
-#import "XcodeProjectFileType.h"
+#import "XcodeSourceFileType.h"
 #import "xcode_Group.h"
 #import "xcode_FileWriteQueue.h"
 #import "xcode_Target.h"
-#import "xcode_File.h"
+#import "xcode_SourceFile.h"
 
 
 @interface xcode_Project (private)
 
-- (NSArray*) projectFilesOfType:(XcodeProjectFileType)fileReferenceType;
+- (NSArray*) projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
 
-- (File*) buildFileWithKey:(NSString*)key;
+- (SourceFile*) buildFileWithKey:(NSString*)key;
 
 @end
 
@@ -58,28 +58,28 @@
 - (NSArray*) files {
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXFileReference) {
-            XcodeProjectFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asProjectFileType];
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
+            XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
             NSString* path = [obj valueForKey:@"path"];
-            [results addObject:[[File alloc] initWithProject:self key:key type:fileType name:path]];
+            [results addObject:[[SourceFile alloc] initWithProject:self key:key type:fileType name:path]];
         }
     }];
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-- (xcode_File*) fileWithKey:(NSString*)key {
+- (xcode_SourceFile*) fileWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj && [[obj valueForKey:@"isa"] asProjectNodeType] == PBXFileReference) {
-        XcodeProjectFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asProjectFileType];
+    if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
+        XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
         NSString* path = [obj valueForKey:@"path"];
-        return [[File alloc] initWithProject:self key:key type:fileType name:path];
+        return [[SourceFile alloc] initWithProject:self key:key type:fileType name:path];
     }
     return nil;
 }
 
-- (xcode_File*) fileWithName:(NSString*)name {
-    for (File* projectFile in [self files]) {
+- (xcode_SourceFile*) fileWithName:(NSString*)name {
+    for (SourceFile* projectFile in [self files]) {
         if ([[projectFile name] isEqualToString:name]) {
             return projectFile;
         }
@@ -101,7 +101,7 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
 
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXGroup) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
             [results addObject:[self groupWithKey:key]];
         }
     }];
@@ -111,7 +111,7 @@
 
 - (Group*) groupWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj && [[obj valueForKey:@"isa"] asProjectNodeType] == PBXGroup) {
+    if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* path = [obj valueForKey:@"path"];
@@ -137,14 +137,14 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
 
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXNativeTarget) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTarget) {
 
             NSMutableArray* buildFiles = [[NSMutableArray alloc] init];
             for (NSString* buildPhaseKey in [obj objectForKey:@"buildPhases"]) {
                 NSDictionary* buildPhase = [[self objects] objectForKey:buildPhaseKey];
-                if ([[buildPhase valueForKey:@"isa"] asProjectNodeType] == PBXSourcesBuildPhase) {
+                if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
                     for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                        File* targetMember = [self buildFileWithKey:buildFileKey];
+                        SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                         if (targetMember) {
                             [buildFiles addObject:[self buildFileWithKey:buildFileKey]];
                         }
@@ -185,9 +185,9 @@
 }
 
 /* ================================================== Private Methods =============================================== */
-- (NSArray*) projectFilesOfType:(XcodeProjectFileType)projectFileType {
+- (NSArray*) projectFilesOfType:(XcodeSourceFileType)projectFileType {
     NSMutableArray* results = [[NSMutableArray alloc] init];
-    for (File* file in [self files]) {
+    for (SourceFile* file in [self files]) {
         if ([file type] == projectFileType) {
             [results addObject:file];
         }
@@ -197,10 +197,10 @@
 }
 
 
-- (File*) buildFileWithKey:(NSString*)theKey {
+- (SourceFile*) buildFileWithKey:(NSString*)theKey {
     NSDictionary* obj = [[self objects] valueForKey:theKey];
     if (obj) {
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXBuildFile) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
             return [self fileWithKey:[obj valueForKey:@"fileRef"]];
         }
     }

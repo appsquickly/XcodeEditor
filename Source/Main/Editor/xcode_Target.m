@@ -10,9 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "xcode_Target.h"
-#import "xcode_File.h"
+#import "xcode_SourceFile.h"
 #import "xcode_Project.h"
-#import "XcodeProjectNodeType.h"
+#import "XcodeMemberType.h"
 
 @implementation xcode_Target
 
@@ -34,14 +34,14 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
-- (void) addMember:(xcode_File*)member {
+- (void) addMember:(xcode_SourceFile*)member {
     LogDebug(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
     LogDebug(@"Here's the target: %@", target);
     for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"]) {
         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-        if ([[buildPhase valueForKey:@"isa"] asProjectNodeType] == PBXSourcesBuildPhase) {
+        if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
             LogDebug(@"Here's the build phase: %@", buildPhase);
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
             //LogDebug(@"Files: %@", files);

@@ -8,19 +8,11 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+#import <Foundation/Foundation.h>
 
-typedef enum {
-    FileReferenceTypeOther,
-    Framework,
-    PropertyList,
-    SourceCodeHeader,
-    SourceCodeObjC,
-} XcodeProjectFileType;
 
-@interface NSString (XCodeProjectFileType)
-
-+ (NSString*) stringFromProjectFileType:(XcodeProjectFileType)type;
-
-- (XcodeProjectFileType) asProjectFileType;
+@interface xcode_XibDefinition : NSObject
 
 @end
+/* ================================================================================================================== */
+@compatibility_alias XibDefinition xcode_XibDefinition;

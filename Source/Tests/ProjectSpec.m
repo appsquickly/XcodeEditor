@@ -12,7 +12,7 @@
 #import "xcode_Project.h"
 #import "xcode_Target.h"
 #import "xcode_Group.h"
-#import "xcode_File.h"
+#import "xcode_SourceFile.h"
 
 SPEC_BEGIN(ProjectSpec)
 
@@ -31,7 +31,7 @@ SPEC_BEGIN(ProjectSpec)
             LogDebug(@"Headers: %@", headerFiles);
 
             [[theValue([headerFiles count]) should] equal:[NSNumber numberWithInt:18]];
-            for (File* file in headerFiles) {
+            for (SourceFile* file in headerFiles) {
                 LogDebug(@"File: %@", [file description]);
             }
             
@@ -50,6 +50,11 @@ SPEC_BEGIN(ProjectSpec)
 
         it(@"should be able to list all of the groups in a project", ^{
             NSArray* groups = [project groups];
+
+            for (Group* group in groups) {
+                LogDebug(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
+            }
+
             [groups shouldNotBeNil];
             [[groups shouldNot] beEmpty];
         });
