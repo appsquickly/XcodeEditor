@@ -27,6 +27,16 @@ Target* examples = [project targetWithName:@"Examples"];
 [project save];
 ```
 
+## Adding a Xib File
+
+This time, we'll use the convenience method on group to specify the targets at the same time.
+
+```objective-c
+XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile.xib" content:<xibText>];
+[group addXib:xibDefinition toTargets:[project targets]];
+[project save];
+```
+
 # Docs
 
 The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
