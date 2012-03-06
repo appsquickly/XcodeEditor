@@ -3,7 +3,6 @@
 //
 
 #ifdef __OBJC__
-#define HC_SHORTHAND
 #import <Cocoa/Cocoa.h>
 
 #import "Kiwi.h"

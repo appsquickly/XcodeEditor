@@ -6,6 +6,7 @@ An API for manipulating Xcode project files.
 
 ## Adding Source Files to a Project
 
+
 ```objective-c
 Project* project = [[Project alloc] initWithFilePath:@"MyProject.xcodeproj"];
 Group* group = [project groupWithPath:@"Main"];
@@ -23,6 +24,16 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 File* sourceFile = [project fileWithName:@"MyNewClass.m"];
 Target* examples = [project targetWithName:@"Examples"];
 [examples addMember:fileResource];
+[project save];
+```
+
+## Adding a Xib File
+
+This time, we'll use the convenience method on group to specify the targets at the same time.
+
+```objective-c
+XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile.xib" content:<xibText>];
+[group addXib:xibDefinition toTargets:[project targets]];
 [project save];
 ```
 
