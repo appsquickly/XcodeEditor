@@ -22,6 +22,8 @@
 
 @private
     __weak xcode_Project* _project;
+    NSNumber* _isBuildFile;
+    NSString* _buildFileKey;
 }
 
 @property(nonatomic, readonly) XcodeSourceFileType type;
@@ -34,6 +36,8 @@
 * If yes, indicates the file is able to be included for compilation in an `xcode_Target`.
 */
 - (BOOL) isBuildFile;
+
+- (BOOL) canBecomeBuildFile;
 
 - (NSString*) buildFileKey;
 

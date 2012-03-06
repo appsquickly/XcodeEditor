@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "xcode_FileWriteQueue.h"
 #import "xcode_XibDefinition.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Group.h"
 #import "xcode_Project.h"
 #import "xcode_ClassDefinition.h"
 #import "xcode_KeyBuilder.h"
-#import "xcode_FileWriteQueue.h"
 
 @interface xcode_Group (private)
 
@@ -39,10 +39,11 @@
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name path:(NSString*)path
-              children:(NSArray*)children {
+        children:(NSArray*)children {
     self = [super init];
     if (self) {
         _project = project;
+        _writeQueue = [_project fileWriteQueue];
         _key = [key copy];
         _name = [name copy];
         _pathRelativeToParent = [path copy];
@@ -68,18 +69,24 @@
 
     [self addChildWithKey:headerKey];
     [self addChildWithKey:sourceKey];
-
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
-    [_project.fileWriteQueue queueFile:[classDefinition headerFileName] inDirectory:_pathRelativeToParent
-                          withContents:[classDefinition header]];
-    [_project.fileWriteQueue queueFile:[classDefinition sourceFileName] inDirectory:_pathRelativeToParent
-                          withContents:[classDefinition source]];
+    [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]
+            withContents:[classDefinition header]];
+    [_writeQueue queueFile:[classDefinition sourceFileName] inDirectory:[self pathRelativeToProjectRoot]
+            withContents:[classDefinition source]];
 }
 
 - (void) addXib:(XibDefinition*)xibDefinition {
-    //To change the template use AppCode | Preferences | File Templates.
+    NSDictionary* xib = [self makeFileReference:[xibDefinition name] type:XibFile];
+    NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition name]] build];
+    [[_project objects] setObject:xib forKey:xibKey];
 
+    [self addChildWithKey:xibKey];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+
+    [_writeQueue queueFile:[xibDefinition name] inDirectory:[self pathRelativeToProjectRoot]
+            withContents:[xibDefinition content]];
 }
 
 

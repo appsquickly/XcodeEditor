@@ -13,6 +13,12 @@
 
 @interface xcode_XibDefinition : NSObject
 
+@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong, readonly) NSString* content;
+
+- (id) initWithName:(NSString*)name content:(NSString*)content;
+
+
 @end
 /* ================================================================================================================== */
 @compatibility_alias XibDefinition xcode_XibDefinition;

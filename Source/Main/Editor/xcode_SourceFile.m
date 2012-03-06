@@ -11,7 +11,6 @@
 
 #import "xcode_SourceFile.h"
 #import "xcode_Project.h"
-#import "XcodeMemberType.h"
 #import "xcode_KeyBuilder.h"
 #import "xcode_Group.h"
 
@@ -36,43 +35,51 @@
 /* ================================================ Interface Methods =============================================== */
 
 - (BOOL) isBuildFile {
-    __block BOOL isBuildFile = NO;
-    if (_type == SourceCodeObjC) {
+    if ([self canBecomeBuildFile] && _isBuildFile == nil) {
+        _isBuildFile = [NSNumber numberWithBool:NO];
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
-                    isBuildFile = YES;
+                    _isBuildFile = nil;
+                    _isBuildFile = [NSNumber numberWithBool:YES];
                 }
             }
         }];
     }
-    return isBuildFile;
+    LogDebug(@"Is build file: %@", [_isBuildFile boolValue] == YES? @"YES" : @"NO");
+    return [_isBuildFile boolValue];
 }
 
+- (BOOL) canBecomeBuildFile {
+    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == XibFile;
+}
+
+
 - (NSString*) buildFileKey {
-    __block NSString* buildFileKey;
-    if (_type == SourceCodeObjC) {
+    if (_buildFileKey == nil) {
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
-                    buildFileKey = key;
+                    _buildFileKey = key;
                 }
             }
         }];
     }
-    return buildFileKey;
+    return _buildFileKey;
 
 }
 
 
 - (void) becomeBuildFile {
     if (![self isBuildFile]) {
-        if (_type == SourceCodeObjC) {
+        if ([self canBecomeBuildFile]) {
             NSMutableDictionary* sourceBuildFile = [[NSMutableDictionary alloc] init];
             [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFile] forKey:@"isa"];
             [sourceBuildFile setObject:_key forKey:@"fileRef"];
             NSString* buildFileKey = [[KeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
+            LogDebug(@"Build file key: %@", buildFileKey);
             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];
+            LogDebug(@"Done becoming build file.");
         }
         else if (_type == Framework) {
             [NSException raise:NSInvalidArgumentException format:@"Add framework to target not implemented yet."];
@@ -87,7 +94,7 @@
 
 - (NSString*) sourcePath {
     return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]
-        stringByAppendingPathComponent:_name];
+            stringByAppendingPathComponent:_name];
 }
 
 /* ================================================= Protocol Methods =============================================== */

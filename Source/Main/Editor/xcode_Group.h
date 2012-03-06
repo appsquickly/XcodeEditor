@@ -15,6 +15,7 @@
 @class xcode_ClassDefinition;
 @class xcode_SourceFile;
 @class xcode_XibDefinition;
+@class xcode_FileWriteQueue;
 
 /**
 * Represents a group in an Xcode project.
@@ -25,6 +26,7 @@
     NSString* _name;
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
+    __weak xcode_FileWriteQueue* _writeQueue;
 }
 
 @property(nonatomic, weak, readonly) xcode_Project* project;

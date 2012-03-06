@@ -11,8 +11,19 @@
 #import "xcode_XibDefinition.h"
 
 
-@implementation xcode_XibDefinition {
+@implementation xcode_XibDefinition
 
+@synthesize name = _name;
+@synthesize content = _content;
+
+/* ================================================== Initializers ================================================== */
+- (id) initWithName:(NSString*)name content:(NSString*)content {
+    self = [super init];
+    if (self) {
+        _name = name;
+        _content = content;
+    }
+    return self;
 }
 
 @end
