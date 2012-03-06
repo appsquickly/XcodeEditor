@@ -10,17 +10,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef enum {
-    FileReferenceTypeOther,
+    FileTypeNil,
     Framework,
     PropertyList,
     SourceCodeHeader,
     SourceCodeObjC,
-} XcodeProjectFileType;
+    SourceCodeObjCPlusPlus,
+    XibFile
+} XcodeSourceFileType;
 
-@interface NSString (XCodeProjectFileType)
+@interface NSString (XCodeFileType)
 
-+ (NSString*) stringFromProjectFileType:(XcodeProjectFileType)type;
++ (NSString*) stringFromSourceFileType:(XcodeSourceFileType)type;
 
-- (XcodeProjectFileType) asProjectFileType;
+- (XcodeSourceFileType) asSourceFileType;
 
 @end

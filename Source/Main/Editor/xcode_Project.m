@@ -11,18 +11,16 @@
 
 
 #import "xcode_Project.h"
-#import "XcodeProjectFileType.h"
+#import "XcodeSourceFileType.h"
 #import "xcode_Group.h"
 #import "xcode_FileWriteQueue.h"
 #import "xcode_Target.h"
-#import "xcode_File.h"
+#import "xcode_SourceFile.h"
 
 
 @interface xcode_Project (private)
 
-- (NSArray*) projectFilesOfType:(XcodeProjectFileType)fileReferenceType;
-
-- (File*) buildFileWithKey:(NSString*)key;
+- (NSArray*) projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
 
 @end
 
@@ -37,7 +35,7 @@
     if (self) {
         _filePath = [filePath copy];
         _project = [[NSMutableDictionary alloc]
-            initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
+                initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
         if (!_project) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
@@ -48,38 +46,33 @@
 
 
 /* ================================================ Interface Methods =============================================== */
-- (NSMutableDictionary*) objects {
-    return [_project objectForKey:@"objects"];
-}
-
-
-
+#pragma mark Files
 
 - (NSArray*) files {
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXFileReference) {
-            XcodeProjectFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asProjectFileType];
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
+            XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
             NSString* path = [obj valueForKey:@"path"];
-            [results addObject:[[File alloc] initWithProject:self key:key type:fileType name:path]];
+            [results addObject:[[SourceFile alloc] initWithProject:self key:key type:fileType name:path]];
         }
     }];
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-- (xcode_File*) fileWithKey:(NSString*)key {
+- (xcode_SourceFile*) fileWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj && [[obj valueForKey:@"isa"] asProjectNodeType] == PBXFileReference) {
-        XcodeProjectFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asProjectFileType];
+    if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
+        XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
         NSString* path = [obj valueForKey:@"path"];
-        return [[File alloc] initWithProject:self key:key type:fileType name:path];
+        return [[SourceFile alloc] initWithProject:self key:key type:fileType name:path];
     }
     return nil;
 }
 
-- (xcode_File*) fileWithName:(NSString*)name {
-    for (File* projectFile in [self files]) {
+- (xcode_SourceFile*) fileWithName:(NSString*)name {
+    for (SourceFile* projectFile in [self files]) {
         if ([[projectFile name] isEqualToString:name]) {
             return projectFile;
         }
@@ -92,16 +85,30 @@
     return [self projectFilesOfType:SourceCodeHeader];
 }
 
-- (NSArray*) implementationFiles {
+- (NSArray*) objectiveCFiles {
     return [self projectFilesOfType:SourceCodeObjC];
 }
+
+- (NSArray*) objectiveCPlusPlusFiles {
+    return [self projectFilesOfType:SourceCodeObjCPlusPlus];
+}
+
+
+- (NSArray*) xibFiles {
+    return [self projectFilesOfType:XibFile];
+
+}
+
+
+/* ================================================================================================================== */
+#pragma mark Groups
 
 - (NSArray*) groups {
 
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
 
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXGroup) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
             [results addObject:[self groupWithKey:key]];
         }
     }];
@@ -111,13 +118,13 @@
 
 - (Group*) groupWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj && [[obj valueForKey:@"isa"] asProjectNodeType] == PBXGroup) {
+    if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* path = [obj valueForKey:@"path"];
         NSArray* children = [obj valueForKey:@"children"];
 
-        return [[Group alloc] initWithProject:self key:key name:name path:path children:children];
+        return [[Group alloc] initWithProject:self key:key alias:name path:path children:children];
     }
     return nil;
 }
@@ -132,31 +139,21 @@
 }
 
 
+/* ================================================================================================================== */
+#pragma mark Targets
+
 - (NSArray*) targets {
-
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXNativeTarget) {
-
-            NSMutableArray* buildFiles = [[NSMutableArray alloc] init];
-            for (NSString* buildPhaseKey in [obj objectForKey:@"buildPhases"]) {
-                NSDictionary* buildPhase = [[self objects] objectForKey:buildPhaseKey];
-                if ([[buildPhase valueForKey:@"isa"] asProjectNodeType] == PBXSourcesBuildPhase) {
-                    for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                        File* targetMember = [self buildFileWithKey:buildFileKey];
-                        if (targetMember) {
-                            [buildFiles addObject:[self buildFileWithKey:buildFileKey]];
-                        }
-                    }
-                }
+    if (_targets == nil) {
+        _targets = [[NSMutableArray alloc] init];
+        [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+            if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTarget) {
+                Target* target = [[Target alloc] initWithProject:self key:key name:[obj valueForKey:@"name"]];
+                [_targets addObject:target];
             }
-            Target* target =
-                [[Target alloc] initWithProject:self key:key name:[obj valueForKey:@"name"] members:buildFiles];
-            [results addObject:target];
-        }
-    }];
-    return results;
+        }];
+    }
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    return [_targets sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 
 - (Target*) targetWithName:(NSString*)name {
@@ -184,10 +181,16 @@
     [_project writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
 }
 
+- (NSMutableDictionary*) objects {
+    return [_project objectForKey:@"objects"];
+}
+
 /* ================================================== Private Methods =============================================== */
-- (NSArray*) projectFilesOfType:(XcodeProjectFileType)projectFileType {
+#pragma mark Private
+
+- (NSArray*) projectFilesOfType:(XcodeSourceFileType)projectFileType {
     NSMutableArray* results = [[NSMutableArray alloc] init];
-    for (File* file in [self files]) {
+    for (SourceFile* file in [self files]) {
         if ([file type] == projectFileType) {
             [results addObject:file];
         }
@@ -196,15 +199,5 @@
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-
-- (File*) buildFileWithKey:(NSString*)theKey {
-    NSDictionary* obj = [[self objects] valueForKey:theKey];
-    if (obj) {
-        if ([[obj valueForKey:@"isa"] asProjectNodeType] == PBXBuildFile) {
-            return [self fileWithKey:[obj valueForKey:@"fileRef"]];
-        }
-    }
-    return nil;
-}
 
 @end
