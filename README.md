@@ -29,10 +29,11 @@ Target* examples = [project targetWithName:@"Examples"];
 
 ## Adding a Xib File
 
-This time, we'll use the convenience method on group to specify the targets at the same time.
+This time, we'll use a convenience method on xcode_Group to specify the targets at the same time:
 
 ```objective-c
-XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile.xib" content:<xibText>];
+XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile.xib" 
+    content:<xibText>];
 [group addXib:xibDefinition toTargets:[project targets]];
 [project save];
 ```
