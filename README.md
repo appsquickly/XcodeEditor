@@ -6,6 +6,7 @@ An API for manipulating Xcode project files.
 
 ## Adding Source Files to a Project
 
+
 ```objective-c
 Project* project = [[Project alloc] initWithFilePath:@"MyProject.xcodeproj"];
 Group* group = [project groupWithPath:@"Main"];

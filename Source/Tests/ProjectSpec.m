@@ -89,6 +89,11 @@ SPEC_BEGIN(ProjectSpec)
                 [targets shouldNotBeNil];
                 [[targets shouldNot] beEmpty];
 
+                for (Target* target in targets) {
+                    NSArray* members = [target members];
+                    LogDebug(@"Members: %@", members);
+                }
+
             });
         });
 

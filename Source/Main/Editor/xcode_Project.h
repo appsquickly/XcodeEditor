@@ -23,6 +23,7 @@
 @private
     NSString* _filePath;
     NSMutableDictionary* _project;
+    NSMutableArray* _targets;
 }
 
 @property(nonatomic, strong, readonly) xcode_FileWriteQueue* fileWriteQueue;

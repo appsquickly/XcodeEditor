@@ -9,6 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "xcode_Target.h"
 #import "xcode_FileWriteQueue.h"
 #import "xcode_XibDefinition.h"
 #import "xcode_SourceFile.h"
@@ -27,6 +28,8 @@
 
 - (XcodeMemberType) typeForKey:(NSString*)key;
 
+- (void) addFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
+
 @end
 
 @implementation xcode_Group
@@ -35,17 +38,18 @@
 @synthesize pathRelativeToParent = _pathRelativeToParent;
 @synthesize key = _key;
 @synthesize children = _children;
+@synthesize alias = _alias;
 
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name path:(NSString*)path
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
         children:(NSArray*)children {
     self = [super init];
     if (self) {
         _project = project;
         _writeQueue = [_project fileWriteQueue];
         _key = [key copy];
-        _name = [name copy];
+        _alias = [alias copy];
         _pathRelativeToParent = [path copy];
         _children = [[NSMutableArray alloc] init];
         [_children addObjectsFromArray:children];
@@ -54,10 +58,7 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
-- (NSString*) name {
-    return _name;
-}
-
+#pragma mark Adding children
 - (void) addClass:(ClassDefinition*)classDefinition {
     NSDictionary* header = [self makeFileReference:[classDefinition headerFileName] type:SourceCodeHeader];
     NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];
@@ -77,6 +78,12 @@
             withContents:[classDefinition source]];
 }
 
+- (void) addClass:(ClassDefinition*)classDefinition toTargets:(NSArray*)targets {
+    [self addClass:classDefinition];
+    SourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
+    [self addFile:sourceFile toTargets:targets];
+}
+
 - (void) addXib:(XibDefinition*)xibDefinition {
     NSDictionary* xib = [self makeFileReference:[xibDefinition name] type:XibFile];
     NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition name]] build];
@@ -89,28 +96,16 @@
             withContents:[xibDefinition content]];
 }
 
-
-- (NSString*) pathRelativeToProjectRoot {
-    if (_pathRelativeToProjectRoot == nil) {
-        NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-        Group* group;
-        NSString* key = _key;
-
-        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil) {
-            [pathComponents addObject:[group pathRelativeToParent]];
-            key = [group key];
-        }
-
-        NSMutableString* fullPath = [[NSMutableString alloc] init];
-        for (int i = [pathComponents count] - 1; i >= 0; i--) {
-            [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
-        }
-        _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];
-    }
-    return _pathRelativeToProjectRoot;
+- (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
+    [self addXib:xibDefinition];
+    SourceFile* sourceFile = [_project fileWithName:[xibDefinition name]];
+    [self addFile:sourceFile toTargets:targets];
 }
 
 
+
+/* ================================================================================================================== */
+#pragma mark Locating children
 - (NSArray*) members {
     NSMutableArray* children = [[NSMutableArray alloc] init];
     for (NSString* childKey in _children) {
@@ -141,6 +136,30 @@
     return groupMember;
 }
 
+/* ================================================================================================================== */
+#pragma mark File paths
+
+- (NSString*) pathRelativeToProjectRoot {
+    if (_pathRelativeToProjectRoot == nil) {
+        NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
+        Group* group;
+        NSString* key = _key;
+
+        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil) {
+            [pathComponents addObject:[group pathRelativeToParent]];
+            key = [group key];
+        }
+
+        NSMutableString* fullPath = [[NSMutableString alloc] init];
+        for (int i = [pathComponents count] - 1; i >= 0; i--) {
+            [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
+        }
+        _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];
+    }
+    return _pathRelativeToProjectRoot;
+}
+
+
 /* ================================================= Protocol Methods =============================================== */
 - (XcodeMemberType) groupMemberType {
     return PBXGroup;
@@ -148,7 +167,7 @@
 
 - (NSString*) displayName {
     if (_pathRelativeToParent == nil) {
-        return _name;
+        return _alias;
     }
     else {
         return [_pathRelativeToParent lastPathComponent];
@@ -162,6 +181,7 @@
 }
 
 /* ================================================== Private Methods =============================================== */
+#pragma mark Private
 - (void) addChildWithKey:(NSString*)key {
     if (![_children containsObject:key]) {
         [_children addObject:key];
@@ -182,8 +202,8 @@
     NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];
     [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@"isa"];
     [groupData setObject:@"<group>" forKey:@"sourceTree"];
-    if (_name != nil) {
-        [groupData setObject:_name forKey:@"name"];
+    if (_alias != nil) {
+        [groupData setObject:_alias forKey:@"name"];
     }
     [groupData setObject:_pathRelativeToParent forKey:@"path"];
     [groupData setObject:_children forKey:@"children"];
@@ -193,6 +213,13 @@
 - (XcodeMemberType) typeForKey:(NSString*)key {
     NSDictionary* obj = [[_project objects] valueForKey:key];
     return [[obj valueForKey:@"isa"] asMemberType];
+}
+
+- (void) addFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {
+    LogDebug(@"Adding source file %@ to targets %@", sourceFile, targets);
+    for (Target* target in targets) {
+        [target addMember:sourceFile];
+    }
 }
 
 

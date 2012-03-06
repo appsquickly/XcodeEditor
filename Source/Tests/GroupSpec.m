@@ -31,10 +31,10 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow initialization with ", ^{
                 Group* group = [[Group alloc]
-                        initWithProject:project key:@"abcd1234" name:@"Main" path:@"Source/Main" children:nil];
+                        initWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
-                [[[group name] should] equal:@"Main"];
+                [[[group alias] should] equal:@"Main"];
                 [[[group pathRelativeToParent] should] equal:@"Source/Main"];
                 [[[group members] should] beEmpty];
             });
@@ -85,6 +85,18 @@ SPEC_BEGIN(GroupSpec)
                 LogDebug(@"Done adding source file.");
             });
 
+            it(@"should provide a convenience method to add a source file, and specify targets", ^{
+
+                ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"AnotherClassAdded"];
+
+                [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
+                [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+
+                [group addClass:classDefinition toTargets:[project targets]];
+                [project save];
+
+            });
+
             it(@"should allow adding a xib file.", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
@@ -106,15 +118,27 @@ SPEC_BEGIN(GroupSpec)
                 [project save];
                 LogDebug(@"Done adding xib file.");
 
+            });
+
+            it(@"should provide a convenience method to add a xib file, and specify targets", ^{
+
+                NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
+                XibDefinition* xibDefinition =
+                        [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile.xib" content:xibText];
+
+                [group addXib:xibDefinition toTargets:[project targets]];
+                [project save];
 
             });
+
 
             it(@"should be able to provide a sorted list of it's children", ^{
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
+                [[children should] haveCountOf:9];
                 [[[[children objectAtIndex:0] displayName] should] equal:@"AddedXibFile.xib"];
-                [[[[children objectAtIndex:5] displayName] should] equal:@"UserInterface"];
+                [[[[children objectAtIndex:8] displayName] should] equal:@"UserInterface"];
 
             });
         });

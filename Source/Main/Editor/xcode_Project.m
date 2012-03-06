@@ -22,8 +22,6 @@
 
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
 
-- (SourceFile*) buildFileWithKey:(NSString*)key;
-
 @end
 
 
@@ -37,7 +35,7 @@
     if (self) {
         _filePath = [filePath copy];
         _project = [[NSMutableDictionary alloc]
-            initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
+                initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
         if (!_project) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
@@ -126,7 +124,7 @@
         NSString* path = [obj valueForKey:@"path"];
         NSArray* children = [obj valueForKey:@"children"];
 
-        return [[Group alloc] initWithProject:self key:key name:name path:path children:children];
+        return [[Group alloc] initWithProject:self key:key alias:name path:path children:children];
     }
     return nil;
 }
@@ -145,30 +143,17 @@
 #pragma mark Targets
 
 - (NSArray*) targets {
-
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTarget) {
-
-            NSMutableArray* buildFiles = [[NSMutableArray alloc] init];
-            for (NSString* buildPhaseKey in [obj objectForKey:@"buildPhases"]) {
-                NSDictionary* buildPhase = [[self objects] objectForKey:buildPhaseKey];
-                if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
-                    for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                        SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
-                        if (targetMember) {
-                            [buildFiles addObject:[self buildFileWithKey:buildFileKey]];
-                        }
-                    }
-                }
+    if (_targets == nil) {
+        _targets = [[NSMutableArray alloc] init];
+        [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+            if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTarget) {
+                Target* target = [[Target alloc] initWithProject:self key:key name:[obj valueForKey:@"name"]];
+                [_targets addObject:target];
             }
-            Target* target =
-                [[Target alloc] initWithProject:self key:key name:[obj valueForKey:@"name"] members:buildFiles];
-            [results addObject:target];
-        }
-    }];
-    return results;
+        }];
+    }
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    return [_targets sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 
 - (Target*) targetWithName:(NSString*)name {
@@ -214,15 +199,5 @@
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-
-- (SourceFile*) buildFileWithKey:(NSString*)theKey {
-    NSDictionary* obj = [[self objects] valueForKey:theKey];
-    if (obj) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
-            return [self fileWithKey:[obj valueForKey:@"fileRef"]];
-        }
-    }
-    return nil;
-}
 
 @end

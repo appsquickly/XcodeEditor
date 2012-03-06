@@ -16,14 +16,19 @@
 /**
 * Represents a target in an xcode project.
 */
-@interface xcode_Target : NSObject
+@interface xcode_Target : NSObject {
+
+@private
+    NSMutableArray* _members;
+}
 
 @property (nonatomic, weak, readonly) xcode_Project* project;
 @property (nonatomic, strong, readonly) NSString* key;
 @property (nonatomic, strong, readonly) NSString* name;
-@property (nonatomic, strong, readonly) NSArray* members;
 
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name members:(NSArray*)members;
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name;
+
+- (NSArray*) members;
 
 - (void) addMember:(xcode_SourceFile*)member;
 
