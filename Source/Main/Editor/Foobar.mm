@@ -8,21 +8,11 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+#import "Foobar.h"
 
-typedef enum {
-    FileTypeNil,
-    Framework,
-    PropertyList,
-    SourceCodeHeader,
-    SourceCodeObjC,
-    SourceCodeObjCPlusPlus,
-    XibFile
-} XcodeSourceFileType;
 
-@interface NSString (XCodeFileType)
+@implementation Foobar {
 
-+ (NSString*) stringFromSourceFileType:(XcodeSourceFileType)type;
-
-- (XcodeSourceFileType) asSourceFileType;
+}
 
 @end

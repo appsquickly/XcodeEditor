@@ -78,6 +78,7 @@
 		6BE4B285147E6B610059E458 /* xcode_XibDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E457 /* xcode_XibDefinition.m */; };
 		6BE4B285147E6B610059E459 /* xcode_XibDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E457 /* xcode_XibDefinition.m */; };
 		6BE4B285147E6B610059E45B /* xcode_XibDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45A /* xcode_XibDefinition.h */; };
+		6BE4B285147E6B610059E45D /* Foobar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45C /* Foobar.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -152,6 +153,8 @@
 		6BE4B285147E6B610059E455 /* xcode_utils_Enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_utils_Enum.h; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E457 /* xcode_XibDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_XibDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E45A /* xcode_XibDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_XibDefinition.h; sourceTree = "<group>"; };
+		6BE4B285147E6B610059E45C /* Foobar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Foobar.mm; sourceTree = "<group>"; };
+		6BE4B285147E6B610059E45E /* Foobar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foobar.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +324,8 @@
 		6BE4B285147E6B610059E456 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				6BE4B285147E6B610059E45E /* Foobar.h */,
+				6BE4B285147E6B610059E45C /* Foobar.mm */,
 				6BE4B285147E6B610059E45A /* xcode_XibDefinition.h */,
 				6BE4B285147E6B610059E457 /* xcode_XibDefinition.m */,
 				6B3AD02A14F8A3AC00BCFE81 /* XcodeMemberType.m */,
@@ -544,6 +549,7 @@
 				6B3AD06B14F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m in Sources */,
 				6BE4B285147E6B610059E44F /* (null) in Sources */,
 				6BE4B285147E6B610059E458 /* xcode_XibDefinition.m in Sources */,
+				6BE4B285147E6B610059E45D /* Foobar.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

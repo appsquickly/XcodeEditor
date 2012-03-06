@@ -27,19 +27,16 @@
 
 @property(nonatomic, strong, readonly) xcode_FileWriteQueue* fileWriteQueue;
 
+/* ================================================== Initializers ================================================== */
 /**
 * Creates a new project editor instance with the specified Project.xcodeproj file.
 */
 - (id) initWithFilePath:(NSString*)filePath;
 
-/**
-* Raw project data.
-*/
-- (NSMutableDictionary*) objects;
-
+/* ================================================================================================================== */
 #pragma mark Files
 /**
-* Returns all file resources in the project, as an array of `xcode_ProjectFile` objects.
+* Returns all file resources in the project, as an array of `xcode_SourceFile` objects.
 */
 - (NSArray*) files;
 
@@ -54,15 +51,26 @@
 - (xcode_SourceFile*) fileWithName:(NSString*)name;
 
 /**
-* Returns all header files in the project, as an array of `xcode_ProjectFile` objects.
+* Returns all header files in the project, as an array of `xcode_SourceFile` objects.
 */
 - (NSArray*) headerFiles;
 
 /**
-* Returns all implementation (source) files in the project, as an array of `xcode_ProjectFile` objects.
+* Returns all implementation obj-c implementation files in the project, as an array of `xcode_SourceFile` objects.
 */
-- (NSArray*) implementationFiles;
+- (NSArray*) objectiveCFiles;
 
+/**
+* Returns all implementation obj-c++ implementation files in the project, as an array of `xcode_SourceFile` objects.
+*/
+- (NSArray*) objectiveCPlusPlusFiles;
+
+/**
+* Returns all the xib files in the project, as an array of `xcode_SourceFile` objects.
+*/
+- (NSArray*) xibFiles;
+
+/* ================================================================================================================== */
 #pragma mark Groups
 /**
 * Lists the groups in an xcode project, returning an array of `xcode_Group` objects.
@@ -84,7 +92,7 @@
 */
 - (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key;
 
-
+/* ================================================================================================================== */
 #pragma mark Targets
 /**
 * Lists the targets in an xcode project, returning an array of `xcode_Target` objects.
@@ -96,11 +104,19 @@
 */
 - (xcode_Target*) targetWithName:(NSString*)name;
 
+/* ================================================================================================================== */
 #pragma mark Saving
 /**
 * Saves a project after editing.
 */
 - (void) save;
+
+
+/* ================================================================================================================== */
+/**
+* Raw project data.
+*/
+- (NSMutableDictionary*) objects;
 
 @end
 

@@ -48,12 +48,7 @@
 
 
 /* ================================================ Interface Methods =============================================== */
-- (NSMutableDictionary*) objects {
-    return [_project objectForKey:@"objects"];
-}
-
-
-
+#pragma mark Files
 
 - (NSArray*) files {
     NSMutableArray* results = [[NSMutableArray alloc] init];
@@ -92,9 +87,23 @@
     return [self projectFilesOfType:SourceCodeHeader];
 }
 
-- (NSArray*) implementationFiles {
+- (NSArray*) objectiveCFiles {
     return [self projectFilesOfType:SourceCodeObjC];
 }
+
+- (NSArray*) objectiveCPlusPlusFiles {
+    return [self projectFilesOfType:SourceCodeObjCPlusPlus];
+}
+
+
+- (NSArray*) xibFiles {
+    return [self projectFilesOfType:XibFile];
+
+}
+
+
+/* ================================================================================================================== */
+#pragma mark Groups
 
 - (NSArray*) groups {
 
@@ -131,6 +140,9 @@
     return nil;
 }
 
+
+/* ================================================================================================================== */
+#pragma mark Targets
 
 - (NSArray*) targets {
 
@@ -184,7 +196,13 @@
     [_project writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
 }
 
+- (NSMutableDictionary*) objects {
+    return [_project objectForKey:@"objects"];
+}
+
 /* ================================================== Private Methods =============================================== */
+#pragma mark Private
+
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)projectFileType {
     NSMutableArray* results = [[NSMutableArray alloc] init];
     for (SourceFile* file in [self files]) {

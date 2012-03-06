@@ -8,21 +8,8 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+#import <Foundation/Foundation.h>
 
-typedef enum {
-    FileTypeNil,
-    Framework,
-    PropertyList,
-    SourceCodeHeader,
-    SourceCodeObjC,
-    SourceCodeObjCPlusPlus,
-    XibFile
-} XcodeSourceFileType;
 
-@interface NSString (XCodeFileType)
-
-+ (NSString*) stringFromSourceFileType:(XcodeSourceFileType)type;
-
-- (XcodeSourceFileType) asSourceFileType;
-
+@interface Foobar : NSObject
 @end
