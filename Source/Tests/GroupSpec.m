@@ -100,7 +100,7 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow adding a xib file.", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
-                XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"AddedXibFile.xib" content:xibText];
+                XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"AddedXibFile" content:xibText];
 
                 [group addXib:xibDefinition];
                 [project save];
@@ -112,7 +112,7 @@ SPEC_BEGIN(GroupSpec)
                 [examples shouldNotBeNil];
                 [examples addMember:xibFile];
 
-                xibFile = [project fileWithName:@"MyViewController.m"];
+                xibFile = [project fileWithName:@"AddedXibFile.xib"];
                 [[theValue([xibFile isBuildFile]) should] beYes];
 
                 [project save];
@@ -124,7 +124,7 @@ SPEC_BEGIN(GroupSpec)
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
                 XibDefinition* xibDefinition =
-                        [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile.xib" content:xibText];
+                        [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile" content:xibText];
 
                 [group addXib:xibDefinition toTargets:[project targets]];
                 [project save];

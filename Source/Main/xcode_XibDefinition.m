@@ -26,4 +26,9 @@
     return self;
 }
 
+- (NSString*) xibFileName {
+    return [_name stringByAppendingString:@".xib"];
+}
+
+
 @end

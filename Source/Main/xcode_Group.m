@@ -85,20 +85,20 @@
 }
 
 - (void) addXib:(XibDefinition*)xibDefinition {
-    NSDictionary* xib = [self makeFileReference:[xibDefinition name] type:XibFile];
-    NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition name]] build];
+    NSDictionary* xib = [self makeFileReference:[xibDefinition xibFileName] type:XibFile];
+    NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];
     [[_project objects] setObject:xib forKey:xibKey];
 
     [self addChildWithKey:xibKey];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
-    [_writeQueue queueFile:[xibDefinition name] inDirectory:[self pathRelativeToProjectRoot]
+    [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]
             withContents:[xibDefinition content]];
 }
 
 - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
     [self addXib:xibDefinition];
-    SourceFile* sourceFile = [_project fileWithName:[xibDefinition name]];
+    SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
     [self addFile:sourceFile toTargets:targets];
 }
 

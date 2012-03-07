@@ -32,7 +32,7 @@ Target* examples = [project targetWithName:@"Examples"];
 This time, we'll use a convenience method on xcode_Group to specify the targets at the same time:
 
 ```objective-c
-XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile.xib" content:@"<xibXml>"];
+XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile" content:@"<xibXml>"];
 [group addXib:xibDefinition toTargets:[project targets]];
 [project save];
 ```
