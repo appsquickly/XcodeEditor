@@ -18,6 +18,7 @@
 
 - (id) initWithName:(NSString*)name content:(NSString*)content;
 
+- (NSString*) xibFileName;
 
 @end
 /* ================================================================================================================== */
