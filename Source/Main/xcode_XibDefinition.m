@@ -17,6 +17,11 @@
 @synthesize content = _content;
 
 /* ================================================== Initializers ================================================== */
+- (id) initWithName:(NSString*)name {
+    return [self initWithName:name content:nil];
+}
+
+
 - (id) initWithName:(NSString*)name content:(NSString*)content {
     self = [super init];
     if (self) {
