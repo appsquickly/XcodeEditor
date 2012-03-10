@@ -40,13 +40,13 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/alias">&nbsp;&nbsp;&nbsp;&nbsp;alias</option>
+	
 	<option value="//api/name/children">&nbsp;&nbsp;&nbsp;&nbsp;children</option>
 	
 	<option value="//api/name/key">&nbsp;&nbsp;&nbsp;&nbsp;key</option>
 	
-	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
-	
-	<option value="//api/name/path">&nbsp;&nbsp;&nbsp;&nbsp;path</option>
+	<option value="//api/name/pathRelativeToParent">&nbsp;&nbsp;&nbsp;&nbsp;pathRelativeToParent</option>
 	
 	<option value="//api/name/project">&nbsp;&nbsp;&nbsp;&nbsp;project</option>
 	
@@ -59,7 +59,19 @@
 	
 	<option value="//api/name/addClass:">&nbsp;&nbsp;&nbsp;&nbsp;- addClass:</option>
 	
-	<option value="//api/name/initWithProject:key:name:path:children:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:name:path:children:</option>
+	<option value="//api/name/addClass:toTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- addClass:toTargets:</option>
+	
+	<option value="//api/name/addXib:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:</option>
+	
+	<option value="//api/name/addXib:toTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:toTargets:</option>
+	
+	<option value="//api/name/initWithProject:key:alias:path:children:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:alias:path:children:</option>
+	
+	<option value="//api/name/memberWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- memberWithKey:</option>
+	
+	<option value="//api/name/members">&nbsp;&nbsp;&nbsp;&nbsp;- members</option>
+	
+	<option value="//api/name/pathRelativeToProjectRoot">&nbsp;&nbsp;&nbsp;&nbsp;- pathRelativeToProjectRoot</option>
 	
 	
 	
@@ -85,13 +97,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/alias">alias</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/children">children</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/key">key</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/path">path</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToParent">pathRelativeToParent</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/project">project</a></span></li>
 	
@@ -105,7 +117,19 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addClass:">addClass:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:name:path:children:">initWithProject:key:name:path:children:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addClass:toTargets:">addClass:toTargets:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:">addXib:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:toTargets:">addXib:toTargets:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:alias:path:children:">initWithProject:key:alias:path:children:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/memberWithKey:">memberWithKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/members">members</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToProjectRoot">pathRelativeToProjectRoot</a></span></li>
 	
 </ul></li>
 
@@ -133,6 +157,9 @@
 	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/XcodeGroupMember.html">XcodeGroupMember</a></td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">xcode_Group.h</td>
 </tr>
@@ -144,7 +171,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Represents a group in an Xcode <a href="#//api/name/project">project</a>.</p>
+						<p>Represents a group container in an Xcode <a href="#//api/name/project">project</a>. A group can contain <a href="#//api/name/members">members</a> of type <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> or other
+groups.</p>
 					</div>
 					
 					
@@ -163,41 +191,41 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/project">&nbsp;&nbsp;project</a></code>
-		
+		<span class="tooltip"><p>The <a href="../Classes/xcode_Project.html">Xcode project</a> that this group belongs to.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
-		
+		<code><a href="#//api/name/alias">&nbsp;&nbsp;alias</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/alias">alias</a> of the group, which can be used to give the group a name other than the last path component.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/path">&nbsp;&nbsp;path</a></code>
-		
+		<code><a href="#//api/name/pathRelativeToParent">&nbsp;&nbsp;pathRelativeToParent</a></code>
+		<span class="tooltip"><p>The path of the group relative to the group&rsquo;s parent.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/key">&nbsp;&nbsp;key</a></code>
-		
+		<span class="tooltip"><p>The group&rsquo;s unique <a href="#//api/name/key">key</a>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/children">&nbsp;&nbsp;children</a></code>
-		
+		<span class="tooltip"><p>An array containing the groups <a href="#//api/name/members">members</a> as <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a> types.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithProject:key:name:path:children:">&ndash;&nbsp;initWithProject:key:name:path:children:</a></code>
+		<code><a href="#//api/name/initWithProject:key:alias:path:children:">&ndash;&nbsp;initWithProject:key:alias:path:children:</a></code>
 		
 	</span>
 	
@@ -205,7 +233,49 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addClass:">&ndash;&nbsp;addClass:</a></code>
-		
+		<span class="tooltip"><p>Adds a class to the group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addClass:toTargets:">&ndash;&nbsp;addClass:toTargets:</a></code>
+		<span class="tooltip"><p>Adds a class to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addXib:">&ndash;&nbsp;addXib:</a></code>
+		<span class="tooltip"><p>Adds a xib file to the group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addXib:toTargets:">&ndash;&nbsp;addXib:toTargets:</a></code>
+		<span class="tooltip"><p>Adds a xib to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/members">&ndash;&nbsp;members</a></code>
+		<span class="tooltip"><p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/memberWithKey:">&ndash;&nbsp;memberWithKey:</a></code>
+		<span class="tooltip"><p>Returns the child with the specified <a href="#//api/name/key">key</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pathRelativeToProjectRoot">&ndash;&nbsp;pathRelativeToProjectRoot</a></code>
+		<span class="tooltip"><p>Returns the full path of the group relative to the base of the <a href="#//api/name/project">project</a>.</p></span>
 	</span>
 	
 	
@@ -223,8 +293,81 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/alias" title="alias"></a>
+	<h3 class="subsubtitle method-title">alias</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="#//api/name/alias">alias</a> of the group, which can be used to give the group a name other than the last path component.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *alias</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The alias of the group, which can be used to give the group a name other than the last path component.</p>
+
+<p>See: <a href="../Protocols/XcodeGroupMember.html#//api/name/displayName">[XcodeGroupMember displayName]</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/children" title="children"></a>
 	<h3 class="subsubtitle method-title">children</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An array containing the groups <a href="#//api/name/members">members</a> as <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a> types.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *children</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An array containing the groups <a href="#//api/name/members">members</a> as <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a> types.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -234,18 +377,77 @@
 	<h3 class="subsubtitle method-title">key</h3>
 	
 	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/name" title="name"></a>
-	<h3 class="subsubtitle method-title">name</h3>
+	
+	<div class="method-subsection brief-description">
+		<p>The group&rsquo;s unique <a href="#//api/name/key">key</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *key</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The group&rsquo;s unique <a href="#//api/name/key">key</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/path" title="path"></a>
-	<h3 class="subsubtitle method-title">path</h3>
+	<a name="//api/name/pathRelativeToParent" title="pathRelativeToParent"></a>
+	<h3 class="subsubtitle method-title">pathRelativeToParent</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The path of the group relative to the group&rsquo;s parent.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *pathRelativeToParent</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The path of the group relative to the group&rsquo;s parent.</p>
+
+<p>See: <a href="../Protocols/XcodeGroupMember.html#//api/name/displayName">[XcodeGroupMember displayName]</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -253,6 +455,38 @@
 						<div class="section-method">
 	<a name="//api/name/project" title="project"></a>
 	<h3 class="subsubtitle method-title">project</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Classes/xcode_Project.html">Xcode project</a> that this group belongs to.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) xcode_Project *project</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="../Classes/xcode_Project.html">Xcode project</a> that this group belongs to.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -272,11 +506,277 @@
 	<h3 class="subsubtitle method-title">addClass:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a class to the group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addClass:(xcode_ClassDefinition *)<em>classDefinition</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a class to the group.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithProject:key:name:path:children:" title="initWithProject:key:name:path:children:"></a>
-	<h3 class="subsubtitle method-title">initWithProject:key:name:path:children:</h3>
+	<a name="//api/name/addClass:toTargets:" title="addClass:toTargets:"></a>
+	<h3 class="subsubtitle method-title">addClass:toTargets:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a class to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addClass:(xcode_ClassDefinition *)<em>classDefinition</em> toTargets:(NSArray *)<em>targets</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a class to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addXib:" title="addXib:"></a>
+	<h3 class="subsubtitle method-title">addXib:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a xib file to the group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addXib:(xcode_XibDefinition *)<em>xibDefinition</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a xib file to the group.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addXib:toTargets:" title="addXib:toTargets:"></a>
+	<h3 class="subsubtitle method-title">addXib:toTargets:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a xib to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addXib:(xcode_XibDefinition *)<em>xibDefinition</em> toTargets:(NSArray *)<em>targets</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a xib to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithProject:key:alias:path:children:" title="initWithProject:key:alias:path:children:"></a>
+	<h3 class="subsubtitle method-title">initWithProject:key:alias:path:children:</h3>
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/memberWithKey:" title="memberWithKey:"></a>
+	<h3 class="subsubtitle method-title">memberWithKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the child with the specified <a href="#//api/name/key">key</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id&lt;XcodeGroupMember&gt;)memberWithKey:(NSString *)<em>key</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the child with the specified <a href="#//api/name/key">key</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/members" title="members"></a>
+	<h3 class="subsubtitle method-title">members</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)members</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pathRelativeToProjectRoot" title="pathRelativeToProjectRoot"></a>
+	<h3 class="subsubtitle method-title">pathRelativeToProjectRoot</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the full path of the group relative to the base of the <a href="#//api/name/project">project</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)pathRelativeToProjectRoot</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the full path of the group relative to the base of the <a href="#//api/name/project">project</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -294,7 +794,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-02-25)</span><br />
+						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-03-10)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 759)</a>.</span></p>
 						
