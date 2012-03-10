@@ -5,7 +5,7 @@ git add ./coverage
 cp -fr build/reports/api ./api
 git add api
 git commit -a -m "publish reports to gh-pages"
-git push -u origin master
+git push -u origin gh-pages
 git checkout master
 
 
