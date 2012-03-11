@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntryHi">92.3 %</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntryMed">75.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -75,21 +75,26 @@
 <span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize content = _content;</span>
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      20 </span>            : - (id) initWithName:(NSString*)name content:(NSString*)content {
-<span class="lineNum">      21 </span><span class="lineCov">          2 :     self = [super init];</span>
-<span class="lineNum">      22 </span><span class="lineCov">          2 :     if (self) {</span>
-<span class="lineNum">      23 </span><span class="lineCov">          2 :         _name = name;</span>
-<span class="lineNum">      24 </span><span class="lineCov">          2 :         _content = content;</span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 :     return self;</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      28 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      29 </span>            : - (NSString*) xibFileName {
-<span class="lineNum">      30 </span><span class="lineCov">          7 :     return [_name stringByAppendingString:@&quot;.xib&quot;];</span>
-<span class="lineNum">      31 </span><span class="lineCov">          7 : }</span>
-<span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span>            : @end
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 : - (id) initWithName:(NSString*)name {</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     return [self initWithName:name content:nil];</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : - (id) initWithName:(NSString*)name content:(NSString*)content {
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     self = [super init];</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 :     if (self) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 :         _name = name;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          2 :         _content = content;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      31 </span><span class="lineCov">          2 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      34 </span>            : - (NSString*) xibFileName {
+<span class="lineNum">      35 </span><span class="lineCov">          7 :     return [_name stringByAppendingString:@&quot;.xib&quot;];</span>
+<span class="lineNum">      36 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : @end
 </pre>
       </td>
     </tr>
