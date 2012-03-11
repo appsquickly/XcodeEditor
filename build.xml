@@ -155,8 +155,10 @@
             #!/bin/sh
             cd ${basedir}
             git checkout gh-pages
+            rm -fr ./coverage
             cp -fr ${reports.dir}/coverage/ ./coverage
             git add ./coverage
+            rm -fr ./api
             cp -fr ${reports.dir}/api ./api
             git add api
             git commit -a -m "publish reports to gh-pages"
