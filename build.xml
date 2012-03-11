@@ -155,6 +155,7 @@
             #!/bin/sh
             cd ${basedir}
             git checkout gh-pages
+            git pull
             rm -fr ./coverage
             cp -fr ${reports.dir}/coverage/ ./coverage
             git add ./coverage
