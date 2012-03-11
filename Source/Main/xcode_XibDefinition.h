@@ -14,7 +14,9 @@
 @interface xcode_XibDefinition : NSObject
 
 @property(nonatomic, strong, readonly) NSString* name;
-@property(nonatomic, strong, readonly) NSString* content;
+@property(nonatomic, strong) NSString* content;
+
+- (id) initWithName:(NSString*)name;
 
 - (id) initWithName:(NSString*)name content:(NSString*)content;
 
