@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>LCOV - coverage.info - /Users/jblues/.jenkins/jobs/xcode-editor/workspace/Source/Main/xcode_Target.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../../index.html">top level</a> - <a href="index.html">Users/jblues/.jenkins/jobs/xcode-editor/workspace/Source/Main</a> - xcode_Target.m</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">59</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntryHi">95.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2012-03-11</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">       2 </span>            : //
+<span class="lineNum">       3 </span>            : //  EXPANZ
+<span class="lineNum">       4 </span>            : //  Copyright 2008-2011 EXPANZ
+<span class="lineNum">       5 </span>            : //  All Rights Reserved.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  NOTICE: Expanz permits you to use, modify, and distribute this file
+<span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
+<span class="lineNum">       9 </span>            : //
+<span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : #import &quot;xcode_Target.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;xcode_SourceFile.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;xcode_Project.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;XcodeMemberType.h&quot;
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : @interface xcode_Target (Private)
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : - (SourceFile*) buildFileWithKey:(NSString*)key;
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : - (void) targetMembersAreDirty;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : - (void) calculateTargetMembers;
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : @end
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineCov">         14 : @implementation xcode_Target</span>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : @synthesize project = _project;</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : @synthesize key = _key;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         24 : @synthesize name = _name;</span>
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      36 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
+<span class="lineNum">      37 </span><span class="lineCov">         19 :     self = [super init];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         19 :     if (self) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">         19 :         _project = project;</span>
+<span class="lineNum">      40 </span><span class="lineCov">         19 :         _key = key;</span>
+<span class="lineNum">      41 </span><span class="lineCov">         19 :         _name = [name copy];</span>
+<span class="lineNum">      42 </span><span class="lineCov">         19 :     }</span>
+<span class="lineNum">      43 </span><span class="lineCov">         19 :     return self;</span>
+<span class="lineNum">      44 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">         19 : </span>
+<span class="lineNum">      46 </span>            : /* ================================================ Interface Methods =============================================== */
+<span class="lineNum">      47 </span>            : - (NSArray*) members {
+<span class="lineNum">      48 </span><span class="lineCov">          3 :     if (_members == nil) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">          3 :         [self calculateTargetMembers];</span>
+<span class="lineNum">      50 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          3 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 :     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      55 </span>            : - (void) addMember:(xcode_SourceFile*)member {
+<span class="lineNum">      56 </span><span class="lineCov">         10 :     [member becomeBuildFile];</span>
+<span class="lineNum">      57 </span><span class="lineCov">         10 :     NSDictionary* target = [[_project objects] objectForKey:_key];</span>
+<span class="lineNum">      58 </span><span class="lineCov">         10 :     LogDebug(@&quot;Here's the target: %@&quot;, target);</span>
+<span class="lineNum">      59 </span><span class="lineCov">         10 :     for (NSString* buildPhaseKey in [target objectForKey:@&quot;buildPhases&quot;]) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">         34 :         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];</span>
+<span class="lineNum">      61 </span><span class="lineCov">         34 :         if ([[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == PBXSourcesBuildPhase) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">         34 :             LogDebug(@&quot;Here's the build phase: %@&quot;, buildPhase);</span>
+<span class="lineNum">      63 </span><span class="lineCov">         10 :             NSMutableArray* files = [buildPhase objectForKey:@&quot;files&quot;];</span>
+<span class="lineNum">      64 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">      65 </span>            :             LogDebug(@&quot;Adding key '%@' to PBXBuildPhase: %@&quot;, [member buildFileKey], buildPhaseKey);
+<span class="lineNum">      66 </span><span class="lineCov">         10 :             [files addObject:[member buildFileKey]];</span>
+<span class="lineNum">      67 </span><span class="lineCov">         10 :             [buildPhase setObject:files forKey:@&quot;files&quot;];</span>
+<span class="lineNum">      68 </span><span class="lineCov">         10 :         }</span>
+<span class="lineNum">      69 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">      70 </span><span class="lineCov">         34 :     [self targetMembersAreDirty];</span>
+<span class="lineNum">      71 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">      73 </span>            : /* ================================================== Utility Methods =============================================== */
+<span class="lineNum">      74 </span>            : - (NSString*) description {
+<span class="lineNum">      75 </span><span class="lineCov">         11 :     return [NSString stringWithFormat:@&quot;Target: name=%@, files=%@&quot;, _name, _members];</span>
+<span class="lineNum">      76 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : /* ================================================== Private Methods =============================================== */
+<span class="lineNum">      79 </span>            : - (SourceFile*) buildFileWithKey:(NSString*)theKey {
+<span class="lineNum">      80 </span><span class="lineCov">         67 :     NSDictionary* obj = [[_project objects] valueForKey:theKey];</span>
+<span class="lineNum">      81 </span><span class="lineCov">         67 :     if (obj) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">         67 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
+<span class="lineNum">      83 </span><span class="lineCov">         67 :             return [_project fileWithKey:[obj valueForKey:@&quot;fileRef&quot;]];</span>
+<span class="lineNum">      84 </span><span class="lineCov">         67 :         }</span>
+<span class="lineNum">      85 </span>            :     }
+<span class="lineNum">      86 </span>            :     return nil;
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      88 </span><span class="lineCov">         67 : </span>
+<span class="lineNum">      89 </span>            : - (void) targetMembersAreDirty {
+<span class="lineNum">      90 </span><span class="lineCov">         10 :     _members = nil;</span>
+<span class="lineNum">      91 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      92 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">      93 </span>            : - (void) calculateTargetMembers {
+<span class="lineNum">      94 </span><span class="lineCov">          3 :     _members = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      95 </span><span class="lineCov">          3 :     for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@&quot;buildPhases&quot;]) {</span>
+<span class="lineNum">      96 </span><span class="lineCov">          9 :         NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];</span>
+<span class="lineNum">      97 </span><span class="lineCov">          9 :         if ([[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == PBXSourcesBuildPhase) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          9 :             for (NSString* buildFileKey in [buildPhase objectForKey:@&quot;files&quot;]) {</span>
+<span class="lineNum">      99 </span><span class="lineCov">         37 :                 SourceFile* targetMember = [self buildFileWithKey:buildFileKey];</span>
+<span class="lineNum">     100 </span><span class="lineCov">         37 :                 if (targetMember) {</span>
+<span class="lineNum">     101 </span><span class="lineCov">         37 :                     [_members addObject:[self buildFileWithKey:buildFileKey]];</span>
+<span class="lineNum">     102 </span><span class="lineCov">         30 :                 }</span>
+<span class="lineNum">     103 </span><span class="lineCov">         30 :             }</span>
+<span class="lineNum">     104 </span><span class="lineCov">         37 :         }</span>
+<span class="lineNum">     105 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">     106 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     107 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
