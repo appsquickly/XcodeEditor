@@ -153,6 +153,7 @@
     <target name="--publish.site">
         <echo file="${temp.dir}/publish-site.sh">
             #!/bin/sh
+            cd ${basedir}
             git checkout gh-pages
             cp -fr ${reports.dir}/coverage/ ./coverage
             git add ./coverage
