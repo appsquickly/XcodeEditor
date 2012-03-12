@@ -16,6 +16,7 @@
 @class xcode_SourceFile;
 @class xcode_XibDefinition;
 @class xcode_FileWriteQueue;
+@class xcode_FrameworkDefinition;
 
 /**
 * Represents a group container in an Xcode project. A group can contain members of type `xcode_SourceFile` or other
@@ -85,6 +86,11 @@
  * Adds a xib to the group, making it a member of the specified [targets](xcode_Target).
 */
 - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets;
+
+/**
+* Adds a framework to the group.
+*/
+- (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition;
 
 /* ================================================================================================================== */
 #pragma mark Locating children

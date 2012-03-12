@@ -9,6 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import <XcodeEditor/xcode_FrameworkDefinition.h>
 #import "xcode_Target.h"
 #import "xcode_FileWriteQueue.h"
 #import "xcode_XibDefinition.h"
@@ -100,6 +101,15 @@
     [self addXib:xibDefinition];
     SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
     [self addFile:sourceFile toTargets:targets];
+}
+
+- (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition {
+    NSDictionary* framework = [self makeFileReference:[frameworkDefinition name] type:Framework];
+    NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
+    [[_project objects] setObject:framework forKey:frameworkKey];
+
+    [self addChildWithKey:frameworkKey];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
 
