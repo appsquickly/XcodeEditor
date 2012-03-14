@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>xcode_ClassDefinition Class Reference</title>
+		<title>xcode_FrameworkDefinition Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">xcode_ClassDefinition Class Reference</h1>
+				<h1 class="hideInXcode">xcode_FrameworkDefinition Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,11 +38,9 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/className">&nbsp;&nbsp;&nbsp;&nbsp;className</option>
+	<option value="//api/name/copyToDestination">&nbsp;&nbsp;&nbsp;&nbsp;copyToDestination</option>
 	
-	<option value="//api/name/header">&nbsp;&nbsp;&nbsp;&nbsp;header</option>
-	
-	<option value="//api/name/source">&nbsp;&nbsp;&nbsp;&nbsp;source</option>
+	<option value="//api/name/filePath">&nbsp;&nbsp;&nbsp;&nbsp;filePath</option>
 	
 	
 	
@@ -51,17 +49,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/headerFileName">&nbsp;&nbsp;&nbsp;&nbsp;- headerFileName</option>
+	<option value="//api/name/initWithFilePath:copyToDestination:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFilePath:copyToDestination:</option>
 	
-	<option value="//api/name/initWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:</option>
-	
-	<option value="//api/name/initWithName:language:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:language:</option>
-	
-	<option value="//api/name/isObjectiveC">&nbsp;&nbsp;&nbsp;&nbsp;- isObjectiveC</option>
-	
-	<option value="//api/name/isObjectiveCPlusPlus">&nbsp;&nbsp;&nbsp;&nbsp;- isObjectiveCPlusPlus</option>
-	
-	<option value="//api/name/sourceFileName">&nbsp;&nbsp;&nbsp;&nbsp;- sourceFileName</option>
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;- name</option>
 	
 	
 	
@@ -85,11 +75,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/className">className</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/copyToDestination">copyToDestination</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/header">header</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/source">source</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/filePath">filePath</a></span></li>
 	
 </ul></li>
 
@@ -99,17 +87,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/headerFileName">headerFileName</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFilePath:copyToDestination:">initWithFilePath:copyToDestination:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:">initWithName:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:language:">initWithName:language:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isObjectiveC">isObjectiveC</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isObjectiveCPlusPlus">isObjectiveCPlusPlus</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceFileName">sourceFileName</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
 	
 </ul></li>
 
@@ -118,7 +98,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="xcode_ClassDefinition Class Reference" name="top"></a>
+				<a title="xcode_FrameworkDefinition Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -127,7 +107,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">xcode_ClassDefinition Class Reference</h1>
+						<h1 class="title title-header">xcode_FrameworkDefinition Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -138,7 +118,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">xcode_ClassDefinition.h</td>
+	<td class="specification-value">xcode_FrameworkDefinition.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -158,63 +138,28 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/className">&nbsp;&nbsp;className</a></code>
+		<code><a href="#//api/name/filePath">&nbsp;&nbsp;filePath</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/header">&nbsp;&nbsp;header</a></code>
+		<code><a href="#//api/name/copyToDestination">&nbsp;&nbsp;copyToDestination</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/source">&nbsp;&nbsp;source</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:">&ndash;&nbsp;initWithName:</a></code>
-		<span class="tooltip"><p>Initializes a new objective-c class definition.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:language:">&ndash;&nbsp;initWithName:language:</a></code>
-		<span class="tooltip"><p>Initializes a new class definition with the specified language.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/isObjectiveC">&ndash;&nbsp;isObjectiveC</a></code>
+		<code><a href="#//api/name/initWithFilePath:copyToDestination:">&ndash;&nbsp;initWithFilePath:copyToDestination:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/isObjectiveCPlusPlus">&ndash;&nbsp;isObjectiveCPlusPlus</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/headerFileName">&ndash;&nbsp;headerFileName</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sourceFileName">&ndash;&nbsp;sourceFileName</a></code>
+		<code><a href="#//api/name/name">&ndash;&nbsp;name</a></code>
 		
 	</span>
 	
@@ -233,22 +178,15 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/className" title="className"></a>
-	<h3 class="subsubtitle method-title">className</h3>
+	<a name="//api/name/copyToDestination" title="copyToDestination"></a>
+	<h3 class="subsubtitle method-title">copyToDestination</h3>
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/header" title="header"></a>
-	<h3 class="subsubtitle method-title">header</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/source" title="source"></a>
-	<h3 class="subsubtitle method-title">source</h3>
+	<a name="//api/name/filePath" title="filePath"></a>
+	<h3 class="subsubtitle method-title">filePath</h3>
 	
 	
 </div>
@@ -264,107 +202,15 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/headerFileName" title="headerFileName"></a>
-	<h3 class="subsubtitle method-title">headerFileName</h3>
+	<a name="//api/name/initWithFilePath:copyToDestination:" title="initWithFilePath:copyToDestination:"></a>
+	<h3 class="subsubtitle method-title">initWithFilePath:copyToDestination:</h3>
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithName:" title="initWithName:"></a>
-	<h3 class="subsubtitle method-title">initWithName:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a new objective-c class definition.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>fileName</em></code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes a new objective-c class definition.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">xcode_ClassDefinition.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithName:language:" title="initWithName:language:"></a>
-	<h3 class="subsubtitle method-title">initWithName:language:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a new class definition with the specified language.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>className</em> language:(ClassDefinitionLanguage)<em>language</em></code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes a new class definition with the specified language.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">xcode_ClassDefinition.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/isObjectiveC" title="isObjectiveC"></a>
-	<h3 class="subsubtitle method-title">isObjectiveC</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/isObjectiveCPlusPlus" title="isObjectiveCPlusPlus"></a>
-	<h3 class="subsubtitle method-title">isObjectiveCPlusPlus</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/sourceFileName" title="sourceFileName"></a>
-	<h3 class="subsubtitle method-title">sourceFileName</h3>
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
 	
 	
 </div>
