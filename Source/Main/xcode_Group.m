@@ -21,7 +21,9 @@
 
 @interface xcode_Group (private)
 
-- (void) addChildWithKey:(NSString*)key;
+- (void) addMemberWithName:(NSString*)name key:(NSString*)key;
+
+- (void) flagMembersAsDirty;
 
 - (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type;
 
@@ -29,9 +31,10 @@
 
 - (XcodeMemberType) typeForKey:(NSString*)key;
 
-- (void) addFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
+- (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
 
 @end
+/* ================================================================================================================== */
 
 @implementation xcode_Group
 
@@ -69,8 +72,8 @@
     NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];
     [[_project objects] setObject:source forKey:sourceKey];
 
-    [self addChildWithKey:headerKey];
-    [self addChildWithKey:sourceKey];
+    [self addMemberWithName:[classDefinition headerFileName] key:headerKey];
+    [self addMemberWithName:[classDefinition sourceFileName] key:sourceKey];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
     [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]
@@ -82,15 +85,14 @@
 - (void) addClass:(ClassDefinition*)classDefinition toTargets:(NSArray*)targets {
     [self addClass:classDefinition];
     SourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
-    [self addFile:sourceFile toTargets:targets];
+    [self addSourceFile:sourceFile toTargets:targets];
 }
 
 - (void) addXib:(XibDefinition*)xibDefinition {
     NSDictionary* xib = [self makeFileReference:[xibDefinition xibFileName] type:XibFile];
     NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];
     [[_project objects] setObject:xib forKey:xibKey];
-
-    [self addChildWithKey:xibKey];
+    [self addMemberWithName:[xibDefinition name] key:xibKey];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
     [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]
@@ -100,15 +102,14 @@
 - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
     [self addXib:xibDefinition];
     SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
-    [self addFile:sourceFile toTargets:targets];
+    [self addSourceFile:sourceFile toTargets:targets];
 }
 
 - (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition {
     NSDictionary* framework = [self makeFileReference:[frameworkDefinition name] type:Framework];
     NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
     [[_project objects] setObject:framework forKey:frameworkKey];
-
-    [self addChildWithKey:frameworkKey];
+    [self addMemberWithName:[frameworkDefinition name] key:frameworkKey];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -117,18 +118,20 @@
 /* ================================================================================================================== */
 #pragma mark Locating children
 - (NSArray*) members {
-    NSMutableArray* children = [[NSMutableArray alloc] init];
-    for (NSString* childKey in _children) {
-        XcodeMemberType type = [self typeForKey:childKey];
-        if (type == PBXGroup) {
-            [children addObject:[_project groupWithKey:childKey]];
-        }
-        else if (type == PBXFileReference) {
-            [children addObject:[_project fileWithKey:childKey]];
+    if (_members == nil) {
+        _members = [[NSMutableArray alloc] init];
+        for (NSString* childKey in _children) {
+            XcodeMemberType type = [self typeForKey:childKey];
+            if (type == PBXGroup) {
+                [_members addObject:[_project groupWithKey:childKey]];
+            }
+            else if (type == PBXFileReference) {
+                [_members addObject:[_project fileWithKey:childKey]];
+            }
         }
     }
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
-    return [children sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+    return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
 - (id<XcodeGroupMember>) memberWithKey:(NSString*)key {
@@ -145,6 +148,16 @@
     }
     return groupMember;
 }
+
+- (id<XcodeGroupMember>) memberWithDisplayName:(NSString*)name {
+    for (id<XcodeGroupMember> member in [self members]) {
+        if ([[member displayName] isEqualToString:name]) {
+            return member;
+        }
+    }
+    return nil;
+}
+
 
 /* ================================================================================================================== */
 #pragma mark File paths
@@ -192,11 +205,21 @@
 
 /* ================================================== Private Methods =============================================== */
 #pragma mark Private
-- (void) addChildWithKey:(NSString*)key {
-    if (![_children containsObject:key]) {
+- (void) addMemberWithName:(NSString*)name key:(NSString*)key {
+
+    if (([self memberWithDisplayName:name] == nil)) {
         [_children addObject:key];
     }
+    else {
+        LogInfo(@"***WARNING*** Group already contains a member with name '%@', contents will be updated.", name);
+    }
+    [self flagMembersAsDirty];
 }
+
+- (void) flagMembersAsDirty {
+    _members = nil;
+}
+
 
 - (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type {
     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
@@ -225,7 +248,7 @@
     return [[obj valueForKey:@"isa"] asMemberType];
 }
 
-- (void) addFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {
+- (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {
     LogDebug(@"Adding source file %@ to targets %@", sourceFile, targets);
     for (Target* target in targets) {
         [target addMember:sourceFile];

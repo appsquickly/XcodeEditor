@@ -70,6 +70,9 @@ SPEC_BEGIN(ProjectSpec)
 
                 for (Group* group in groups) {
                     LogDebug(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
+                    for (id<XcodeGroupMember> member  in [group members]) {
+                        LogDebug(@"\t%@", [member displayName]);
+                    }
                 }
 
                 [groups shouldNotBeNil];

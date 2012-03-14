@@ -47,9 +47,12 @@
 - (xcode_SourceFile*) fileWithKey:(NSString*)key;
 
 /**
-* Returns the project file with the specified name, or nil.
+* Returns the project file with the specified name, or nil. If more than one project file matches the specified name,
+* which one is returned is undefined.
 */
 - (xcode_SourceFile*) fileWithName:(NSString*)name;
+
+
 
 /**
 * Returns all header files in the project, as an array of `xcode_SourceFile` objects.

@@ -97,6 +97,23 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
+            it(@"should return a warning if an existing class is overwritten", ^{
+
+                ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"AddedTwice"];
+                [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
+                [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+                [group addClass:classDefinition toTargets:[project targets]];
+                [project save];
+
+                classDefinition = [[ClassDefinition alloc] initWithName:@"AddedTwice"];
+                [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
+                [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
+                [group addClass:classDefinition toTargets:[project targets]];
+                [project save];
+
+
+            });
+
             it(@"should allow adding a xib file.", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
@@ -136,11 +153,19 @@ SPEC_BEGIN(GroupSpec)
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:9];
-                [[[[children objectAtIndex:0] displayName] should] equal:@"AddedXibFile.xib"];
-                [[[[children objectAtIndex:8] displayName] should] equal:@"UserInterface"];
+                [[children should] haveCountOf:11];
+                [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
+                [[[[children objectAtIndex:10] displayName] should] equal:@"UserInterface"];
 
             });
+
+            it(@"should be able to return a member by its name", ^{
+
+                SourceFile* member = [group memberWithDisplayName:@"AnotherClassAdded.m"];
+                [member shouldNotBeNil];
+
+            });
+
         });
 
 

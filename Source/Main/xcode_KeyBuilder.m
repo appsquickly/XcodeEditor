@@ -15,7 +15,8 @@
 
 /* ================================================= Class Methods ================================================== */
 + (xcode_KeyBuilder*) forItemNamed:(NSString*)name {
-    NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
+    NSString* salt = [[NSDate date] description];
+    NSData* data = [[name stringByAppendingString:salt] dataUsingEncoding:NSUTF8StringEncoding];
     return [[xcode_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];
 }
 

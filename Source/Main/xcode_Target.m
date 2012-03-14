@@ -12,15 +12,12 @@
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Project.h"
-#import "XcodeMemberType.h"
 
-@interface xcode_Target (Private)
+@interface xcode_Target (private)
 
 - (SourceFile*) buildFileWithKey:(NSString*)key;
 
-- (void) targetMembersAreDirty;
-
-- (void) calculateTargetMembers;
+- (void) flagMembersAsDirty;
 
 @end
 
@@ -46,7 +43,18 @@
 /* ================================================ Interface Methods =============================================== */
 - (NSArray*) members {
     if (_members == nil) {
-        [self calculateTargetMembers];
+        _members = [[NSMutableArray alloc] init];
+        for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"]) {
+            NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
+                for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
+                    SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    if (targetMember) {
+                        [_members addObject:[self buildFileWithKey:buildFileKey]];
+                    }
+                }
+            }
+        }
     }
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
@@ -67,7 +75,7 @@
             [buildPhase setObject:files forKey:@"files"];
         }
     }
-    [self targetMembersAreDirty];
+    [self flagMembersAsDirty];
 }
 
 /* ================================================== Utility Methods =============================================== */
@@ -86,23 +94,8 @@
     return nil;
 }
 
-- (void) targetMembersAreDirty {
+- (void) flagMembersAsDirty {
     _members = nil;
-}
-
-- (void) calculateTargetMembers {
-    _members = [[NSMutableArray alloc] init];
-    for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"]) {
-        NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-        if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
-            for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
-                if (targetMember) {
-                    [_members addObject:[self buildFileWithKey:buildFileKey]];
-                }
-            }
-        }
-    }
 }
 
 
