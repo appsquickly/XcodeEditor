@@ -69,6 +69,8 @@
 	
 	<option value="//api/name/initWithProject:key:alias:path:children:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:alias:path:children:</option>
 	
+	<option value="//api/name/memberWithDisplayName:">&nbsp;&nbsp;&nbsp;&nbsp;- memberWithDisplayName:</option>
+	
 	<option value="//api/name/memberWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- memberWithKey:</option>
 	
 	<option value="//api/name/members">&nbsp;&nbsp;&nbsp;&nbsp;- members</option>
@@ -128,6 +130,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:toTargets:">addXib:toTargets:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:alias:path:children:">initWithProject:key:alias:path:children:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/memberWithDisplayName:">memberWithDisplayName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/memberWithKey:">memberWithKey:</a></span></li>
 	
@@ -237,7 +241,8 @@ groups.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addClass:">&ndash;&nbsp;addClass:</a></code>
-		<span class="tooltip"><p>Adds a class to the group.</p></span>
+		<span class="tooltip"><p>Adds a class to the group, as specified by the ClassDefinition. If the group already contains a class by the same
+name, the contents will be updated.</p></span>
 	</span>
 	
 	
@@ -251,7 +256,7 @@ groups.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addXib:">&ndash;&nbsp;addXib:</a></code>
-		<span class="tooltip"><p>Adds a xib file to the group.</p></span>
+		<span class="tooltip"><p>Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.</p></span>
 	</span>
 	
 	
@@ -279,7 +284,14 @@ groups.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/memberWithKey:">&ndash;&nbsp;memberWithKey:</a></code>
-		<span class="tooltip"><p>Returns the child with the specified <a href="#//api/name/key">key</a>.</p></span>
+		<span class="tooltip"><p>Returns the child with the specified <a href="#//api/name/key">key</a>, or nil.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/memberWithDisplayName:">&ndash;&nbsp;memberWithDisplayName:</a></code>
+		<span class="tooltip"><p>Returns the child with the specified name, or nil.</p></span>
 	</span>
 	
 	
@@ -519,7 +531,8 @@ groups.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Adds a class to the group.</p>
+		<p>Adds a class to the group, as specified by the ClassDefinition. If the group already contains a class by the same
+name, the contents will be updated.</p>
 	</div>		
 	
 	
@@ -534,7 +547,8 @@ groups.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Adds a class to the group.</p>
+		<p>Adds a class to the group, as specified by the ClassDefinition. If the group already contains a class by the same
+name, the contents will be updated.</p>
 	</div>
 	
 	
@@ -636,7 +650,7 @@ groups.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Adds a xib file to the group.</p>
+		<p>Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.</p>
 	</div>		
 	
 	
@@ -651,7 +665,7 @@ groups.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Adds a xib file to the group.</p>
+		<p>Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.</p>
 	</div>
 	
 	
@@ -715,13 +729,52 @@ groups.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/memberWithDisplayName:" title="memberWithDisplayName:"></a>
+	<h3 class="subsubtitle method-title">memberWithDisplayName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the child with the specified name, or nil.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id&lt;XcodeGroupMember&gt;)memberWithDisplayName:(NSString *)<em>name</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the child with the specified name, or nil.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/memberWithKey:" title="memberWithKey:"></a>
 	<h3 class="subsubtitle method-title">memberWithKey:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the child with the specified <a href="#//api/name/key">key</a>.</p>
+		<p>Returns the child with the specified <a href="#//api/name/key">key</a>, or nil.</p>
 	</div>		
 	
 	
@@ -736,7 +789,7 @@ groups.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the child with the specified <a href="#//api/name/key">key</a>.</p>
+		<p>Returns the child with the specified <a href="#//api/name/key">key</a>, or nil.</p>
 	</div>
 	
 	
