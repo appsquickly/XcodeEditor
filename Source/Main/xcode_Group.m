@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <XcodeEditor/xcode_FrameworkDefinition.h>
+#import "xcode_FrameworkDefinition.h"
 #import "xcode_Target.h"
 #import "xcode_FileWriteQueue.h"
 #import "xcode_XibDefinition.h"
