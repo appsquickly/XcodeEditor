@@ -44,7 +44,7 @@ This will extract a test project to the /tmp directory, where you'll be able to 
 
 * <a href="https://github.com/expanz/xcode-editor/wiki">Wiki</a>
 * <a href="http://expanz.github.com/xcode-editor/api/index.html">API</a>
-* <a href="http://expanz.github.com/xcode-editor/coverage/Users/jblues/.jenkins/jobs/xcode-editor/workspace/Source/Main/index.html">Coverage Reports</a>
+* <a href="http://expanz.github.com/xcode-editor/coverage/index.html">Coverage Reports</a>
 
 # Building 
 
