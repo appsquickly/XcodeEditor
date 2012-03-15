@@ -114,7 +114,8 @@
 
         <echo file="${temp.dir}/genhtml.sh">
             #!/bin/sh
-            genhtml -p ${source.main.dir} --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} ${temp.dir}/coverage.info
+            genhtml -p ${source.main.dir} --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
+            --prefix ${basedir} ${temp.dir}/coverage.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
         <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true"/>
