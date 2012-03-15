@@ -73,8 +73,8 @@
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : @implementation NSDictionary (XcodeMemberType)
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">     148316 : + (NSDictionary*) dictionaryWithProjectNodeTypesAsStrings {</span>
-<span class="lineNum">      19 </span><span class="lineCov">     148316 :     return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(PBXNilType), @&quot;PBXNilType&quot;,</span>
+<span class="lineNum">      18 </span><span class="lineCov">     148296 : + (NSDictionary*) dictionaryWithProjectNodeTypesAsStrings {</span>
+<span class="lineNum">      19 </span><span class="lineCov">     148296 :     return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(PBXNilType), @&quot;PBXNilType&quot;,</span>
 <span class="lineNum">      20 </span>            :                                                       boxEnum(PBXBuildFile), @&quot;PBXBuildFile&quot;,
 <span class="lineNum">      21 </span>            :                                                       boxEnum(PBXContainerItemProxy), @&quot;PBXContainerItemProxy&quot;,
 <span class="lineNum">      22 </span>            :                                                       boxEnum(PBXCopyFilesBuildPhase), @&quot;PBXCopyFilesBuildPhase&quot;,
@@ -95,16 +95,16 @@
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : @implementation NSString (ProjectNodeType)
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">         30 : + (NSString*) stringFromMemberType:(XcodeMemberType)nodeType {</span>
-<span class="lineNum">      41 </span><span class="lineCov">         30 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
-<span class="lineNum">      42 </span><span class="lineCov">         30 :     return [[nodeTypesToString allKeysForObject:boxEnum(nodeType)] objectAtIndex:0];</span>
-<span class="lineNum">      43 </span><span class="lineCov">         30 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">         28 : + (NSString*) stringFromMemberType:(XcodeMemberType)nodeType {</span>
+<span class="lineNum">      41 </span><span class="lineCov">         28 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
+<span class="lineNum">      42 </span><span class="lineCov">         28 :     return [[nodeTypesToString allKeysForObject:boxEnum(nodeType)] objectAtIndex:0];</span>
+<span class="lineNum">      43 </span><span class="lineCov">         28 : }</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">     148286 : - (XcodeMemberType) asMemberType {</span>
-<span class="lineNum">      47 </span><span class="lineCov">     148286 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
-<span class="lineNum">      48 </span><span class="lineCov">     148286 :     return (XcodeMemberType) [[nodeTypesToString objectForKey:self] intValue];</span>
-<span class="lineNum">      49 </span><span class="lineCov">     148286 : }</span>
+<span class="lineNum">      46 </span><span class="lineCov">     148268 : - (XcodeMemberType) asMemberType {</span>
+<span class="lineNum">      47 </span><span class="lineCov">     148268 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
+<span class="lineNum">      48 </span><span class="lineCov">     148268 :     return (XcodeMemberType) [[nodeTypesToString objectForKey:self] intValue];</span>
+<span class="lineNum">      49 </span><span class="lineCov">     148268 : }</span>
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : @end
