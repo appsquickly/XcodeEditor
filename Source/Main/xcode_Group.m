@@ -64,33 +64,41 @@
 /* ================================================ Interface Methods =============================================== */
 #pragma mark Adding children
 - (void) addClass:(ClassDefinition*)classDefinition {
-    if ([self memberWithDisplayName:[classDefinition headerFileName]] == nil) {
+
+    SourceFile* currentHeaderFile = [self memberWithDisplayName:[classDefinition headerFileName]];
+    if ((currentHeaderFile) == nil) {
         NSDictionary* header = [self makeFileReference:[classDefinition headerFileName] type:SourceCodeHeader];
         NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];
         [[_project objects] setObject:header forKey:headerKey];
         [self addMemberWithKey:headerKey];
+        [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]
+                withContents:[classDefinition source]];
     }
     else {
         LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.", [self
                 displayName], [classDefinition headerFileName]);
+        [_writeQueue queueFile:[classDefinition headerFileName]
+                inDirectory:[[currentHeaderFile sourcePath] stringByDeletingLastPathComponent]
+                withContents:[classDefinition source]];
     }
 
-    if ([self memberWithDisplayName:[classDefinition sourceFileName]] == nil) {
+    SourceFile* currentSourceFile = [self memberWithDisplayName:[classDefinition sourceFileName]];
+    if ((currentSourceFile) == nil) {
         NSDictionary* source = [self makeFileReference:[classDefinition sourceFileName] type:SourceCodeObjC];
         NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];
         [[_project objects] setObject:source forKey:sourceKey];
         [self addMemberWithKey:sourceKey];
+        [_writeQueue queueFile:[classDefinition sourceFileName] inDirectory:[self pathRelativeToProjectRoot]
+                withContents:[classDefinition source]];
     }
     else {
         LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.", [self
                 displayName], [classDefinition sourceFileName]);
+        [_writeQueue queueFile:[classDefinition sourceFileName]
+                inDirectory:[[currentSourceFile sourcePath] stringByDeletingLastPathComponent]
+                withContents:[classDefinition source]];
     }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
-
-    [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]
-            withContents:[classDefinition header]];
-    [_writeQueue queueFile:[classDefinition sourceFileName] inDirectory:[self pathRelativeToProjectRoot]
-            withContents:[classDefinition source]];
 }
 
 - (void) addClass:(ClassDefinition*)classDefinition toTargets:(NSArray*)targets {
@@ -100,19 +108,24 @@
 }
 
 - (void) addXib:(XibDefinition*)xibDefinition {
-    if ([self memberWithDisplayName:[xibDefinition xibFileName]] == nil) {
+    SourceFile* currentXibFile = [self memberWithDisplayName:[xibDefinition xibFileName]];
+    if (currentXibFile == nil) {
         NSDictionary* xib = [self makeFileReference:[xibDefinition xibFileName] type:XibFile];
         NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];
         [[_project objects] setObject:xib forKey:xibKey];
         [self addMemberWithKey:xibKey];
+        [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]
+                withContents:[xibDefinition content]];
     }
     else {
         LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
                 displayName], [xibDefinition xibFileName]);
+        [_writeQueue queueFile:[xibDefinition xibFileName]
+                inDirectory:[[currentXibFile sourcePath] stringByDeletingLastPathComponent]
+                withContents:[xibDefinition content]];
     }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
-    [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]
-            withContents:[xibDefinition content]];
+
 }
 
 - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
