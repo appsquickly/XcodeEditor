@@ -72,7 +72,7 @@
 <span class="lineNum">      14 </span>            : #import &quot;xcode_KeyBuilder.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;xcode_Group.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">       3148 : @implementation xcode_SourceFile</span>
+<span class="lineNum">      17 </span><span class="lineCov">       3150 : @implementation xcode_SourceFile</span>
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span><span class="lineCov">        236 : @synthesize type = _type;</span>
 <span class="lineNum">      20 </span><span class="lineCov">       3424 : @synthesize name = _name;</span>
@@ -80,16 +80,16 @@
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      24 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type name:(NSString*)name {
-<span class="lineNum">      25 </span><span class="lineCov">       3259 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">       3259 :     if (self) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">       3259 :         _project = project;</span>
-<span class="lineNum">      28 </span><span class="lineCov">       3259 :         _key = [key copy];</span>
-<span class="lineNum">      29 </span><span class="lineCov">       3259 :         _type = type;</span>
-<span class="lineNum">      30 </span><span class="lineCov">       3259 :         _name = [name copy];</span>
-<span class="lineNum">      31 </span><span class="lineCov">       3259 :     }</span>
-<span class="lineNum">      32 </span><span class="lineCov">       3259 :     return self;</span>
-<span class="lineNum">      33 </span><span class="lineCov">       3259 : }</span>
-<span class="lineNum">      34 </span><span class="lineCov">       3259 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">       3261 :     self = [super init];</span>
+<span class="lineNum">      26 </span><span class="lineCov">       3261 :     if (self) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">       3261 :         _project = project;</span>
+<span class="lineNum">      28 </span><span class="lineCov">       3261 :         _key = [key copy];</span>
+<span class="lineNum">      29 </span><span class="lineCov">       3261 :         _type = type;</span>
+<span class="lineNum">      30 </span><span class="lineCov">       3261 :         _name = [name copy];</span>
+<span class="lineNum">      31 </span><span class="lineCov">       3261 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">       3261 :     return self;</span>
+<span class="lineNum">      33 </span><span class="lineCov">       3261 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">       3261 : </span>
 <span class="lineNum">      35 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (BOOL) isBuildFile {
@@ -148,8 +148,8 @@
 <span class="lineNum">      90 </span>            : }
 <span class="lineNum">      91 </span><span class="lineCov">         18 : </span>
 <span class="lineNum">      92 </span>            : - (NSString*) sourcePath {
-<span class="lineNum">      93 </span><span class="lineCov">        102 :     return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]</span>
-<span class="lineNum">      94 </span><span class="lineCov">        102 :             stringByAppendingPathComponent:_name];</span>
+<span class="lineNum">      93 </span><span class="lineCov">        104 :     return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]</span>
+<span class="lineNum">      94 </span><span class="lineCov">        104 :             stringByAppendingPathComponent:_name];</span>
 <span class="lineNum">      95 </span>            : }
 <span class="lineNum">      96 </span>            : 
 <span class="lineNum">      97 </span>            : /* ================================================= Protocol Methods =============================================== */
