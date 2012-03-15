@@ -16,12 +16,15 @@
 @private
     NSString* _baseDirectory;
     NSMutableDictionary* _data;
+    NSMutableDictionary* _frameworks;
 }
 
 
 - (id) initWithBaseDirectory:(NSString*)baseDirectory;
 
 - (void) queueFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
+
+- (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;
 
 - (void) writePendingFilesToDisk;
 

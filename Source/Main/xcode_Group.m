@@ -33,6 +33,10 @@
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
 
+- (void) warnPendingOverwrite:(NSString*)resourceName;
+
+- (NSString*) destinationPathFor:(FrameworkDefinition*)frameworkDefinition;
+
 @end
 /* ================================================================================================================== */
 
@@ -75,8 +79,7 @@
                 withContents:[classDefinition source]];
     }
     else {
-        LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.", [self
-                displayName], [classDefinition headerFileName]);
+        [self warnPendingOverwrite:[classDefinition headerFileName]];
         [_writeQueue queueFile:[classDefinition headerFileName]
                 inDirectory:[[currentHeaderFile sourcePath] stringByDeletingLastPathComponent]
                 withContents:[classDefinition source]];
@@ -92,8 +95,7 @@
                 withContents:[classDefinition source]];
     }
     else {
-        LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.", [self
-                displayName], [classDefinition sourceFileName]);
+        [self warnPendingOverwrite:[classDefinition sourceFileName]];
         [_writeQueue queueFile:[classDefinition sourceFileName]
                 inDirectory:[[currentSourceFile sourcePath] stringByDeletingLastPathComponent]
                 withContents:[classDefinition source]];
@@ -118,29 +120,51 @@
                 withContents:[xibDefinition content]];
     }
     else {
-        LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
-                displayName], [xibDefinition xibFileName]);
+        [self warnPendingOverwrite:[xibDefinition xibFileName]];
         [_writeQueue queueFile:[xibDefinition xibFileName]
                 inDirectory:[[currentXibFile sourcePath] stringByDeletingLastPathComponent]
                 withContents:[xibDefinition content]];
     }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
-
 }
 
-- (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
+- (void) addXib:(XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
     [self addXib:xibDefinition];
     SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
-- (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition {
-    NSDictionary* framework = [self makeFileReference:[frameworkDefinition name] type:Framework];
-    NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
-    [[_project objects] setObject:framework forKey:frameworkKey];
-    [self addMemberWithKey:frameworkKey];
+
+- (void) addFramework:(FrameworkDefinition*)frameworkDefinition {
+    NSString* destinationPath = [self destinationPathFor:frameworkDefinition];
+    LogDebug(@"$$$$$$$$$$$$$$$ destination path is: %@", destinationPath);
+    SourceFile* currentFrameworkFile = [self memberWithDisplayName:destinationPath];
+
+    if (currentFrameworkFile == nil) {
+        NSDictionary* framework = [self makeFileReference:destinationPath type:Framework];
+        NSString* frameworkKey = [[KeyBuilder forItemNamed:destinationPath] build];
+        [[_project objects] setObject:framework forKey:frameworkKey];
+        [self addMemberWithKey:frameworkKey];
+    }
+    else {
+        [self warnPendingOverwrite:[frameworkDefinition filePath]];
+    }
+
+    if ([frameworkDefinition copyToDestination]) {
+        [_writeQueue
+                queueFrameworkWithFilePath:[frameworkDefinition filePath] inDirectory:[self pathRelativeToProjectRoot]];
+
+    }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
+
+- (void) addFramework:(FrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets {
+    [self addFramework:frameworkDefinition];
+    LogDebug(@"Done adding 1st phase");
+    NSString* destinationPath = [self destinationPathFor:frameworkDefinition];
+    [self addSourceFile:[self memberWithDisplayName:destinationPath] toTargets:targets];
+}
+
 
 /* ================================================================================================================== */
 #pragma mark Locating children
@@ -272,6 +296,20 @@
     LogDebug(@"Adding source file %@ to targets %@", sourceFile, targets);
     for (Target* target in targets) {
         [target addMember:sourceFile];
+    }
+}
+
+- (void) warnPendingOverwrite:(NSString*)resourceName {
+    LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
+            displayName], resourceName);
+}
+
+- (NSString*) destinationPathFor:(FrameworkDefinition*)frameworkDefinition {
+    if ([frameworkDefinition copyToDestination]) {
+        return [[self pathRelativeToProjectRoot] stringByAppendingPathComponent:[frameworkDefinition name]];
+    }
+    else {
+        return [frameworkDefinition filePath];
     }
 }
 

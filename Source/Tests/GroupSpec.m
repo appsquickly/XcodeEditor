@@ -9,12 +9,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "xcode_FrameworkDefinition.h"
 #import "xcode_XibDefinition.h"
 #import "xcode_Group.h"
 #import "xcode_Project.h"
 #import "xcode_ClassDefinition.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Target.h"
+
+
+#define frameworkPath @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/Accelerate.framework/"
 
 SPEC_BEGIN(GroupSpec)
 
@@ -140,12 +144,20 @@ SPEC_BEGIN(GroupSpec)
             it(@"should provide a convenience method to add a xib file, and specify targets", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
-                XibDefinition* xibDefinition =
-                        [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile" content:xibText];
+                XibDefinition
+                        * xibDefinition = [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile" content:xibText];
 
                 [group addXib:xibDefinition toTargets:[project targets]];
                 [project save];
 
+            });
+
+            it(@"should allow adding a framework", ^{
+
+                FrameworkDefinition* frameworkDefinition =
+                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPath copyToDestination:NO];
+                [group addFramework:frameworkDefinition toTargets:[project targets]];
+                [project save];
             });
 
 
@@ -153,11 +165,12 @@ SPEC_BEGIN(GroupSpec)
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:11];
+                [[children should] haveCountOf:12];
                 [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
-                [[[[children objectAtIndex:10] displayName] should] equal:@"UserInterface"];
+                [[[[children objectAtIndex:11] displayName] should] equal:@"UserInterface"];
 
             });
+
 
             it(@"should be able to return a member by its name", ^{
 

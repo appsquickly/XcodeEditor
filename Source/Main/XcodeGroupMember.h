@@ -11,7 +11,7 @@
 
 #import "XcodeMemberType.h"
 
-@protocol XcodeGroupMember
+@protocol XcodeGroupMember<NSObject>
 
 - (NSString*) key;
 

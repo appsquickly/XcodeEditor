@@ -91,9 +91,15 @@
 - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets;
 
 /**
-* Adds a framework to the group.
+* Adds a framework to the group. If the group already contains the framework, the contents will be updated if the
+* framework definition's copyToDestination flag is yes, otherwise it will be ignored.
 */
 - (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition;
+
+/**
+* Adds a framework to the group, making it a member of the specified targets.
+*/
+- (void) addFramework:(xcode_FrameworkDefinition*)framework toTargets:(NSArray*)targets;
 
 /* ================================================================================================================== */
 #pragma mark Locating children
