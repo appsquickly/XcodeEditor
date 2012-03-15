@@ -21,7 +21,7 @@
 
 @interface xcode_Group (private)
 
-- (void) addMemberWithName:(NSString*)name key:(NSString*)key;
+- (void) addMemberWithKey:(NSString*)key;
 
 - (void) flagMembersAsDirty;
 
@@ -64,16 +64,27 @@
 /* ================================================ Interface Methods =============================================== */
 #pragma mark Adding children
 - (void) addClass:(ClassDefinition*)classDefinition {
-    NSDictionary* header = [self makeFileReference:[classDefinition headerFileName] type:SourceCodeHeader];
-    NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];
-    [[_project objects] setObject:header forKey:headerKey];
+    if ([self memberWithDisplayName:[classDefinition headerFileName]] == nil) {
+        NSDictionary* header = [self makeFileReference:[classDefinition headerFileName] type:SourceCodeHeader];
+        NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];
+        [[_project objects] setObject:header forKey:headerKey];
+        [self addMemberWithKey:headerKey];
+    }
+    else {
+        LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.", [self
+                displayName], [classDefinition headerFileName]);
+    }
 
-    NSDictionary* source = [self makeFileReference:[classDefinition sourceFileName] type:SourceCodeObjC];
-    NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];
-    [[_project objects] setObject:source forKey:sourceKey];
-
-    [self addMemberWithName:[classDefinition headerFileName] key:headerKey];
-    [self addMemberWithName:[classDefinition sourceFileName] key:sourceKey];
+    if ([self memberWithDisplayName:[classDefinition sourceFileName]] == nil) {
+        NSDictionary* source = [self makeFileReference:[classDefinition sourceFileName] type:SourceCodeObjC];
+        NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];
+        [[_project objects] setObject:source forKey:sourceKey];
+        [self addMemberWithKey:sourceKey];
+    }
+    else {
+        LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.", [self
+                displayName], [classDefinition sourceFileName]);
+    }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
     [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]
@@ -89,12 +100,17 @@
 }
 
 - (void) addXib:(XibDefinition*)xibDefinition {
-    NSDictionary* xib = [self makeFileReference:[xibDefinition xibFileName] type:XibFile];
-    NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];
-    [[_project objects] setObject:xib forKey:xibKey];
-    [self addMemberWithName:[xibDefinition name] key:xibKey];
+    if ([self memberWithDisplayName:[xibDefinition xibFileName]] == nil) {
+        NSDictionary* xib = [self makeFileReference:[xibDefinition xibFileName] type:XibFile];
+        NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];
+        [[_project objects] setObject:xib forKey:xibKey];
+        [self addMemberWithKey:xibKey];
+    }
+    else {
+        LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
+                displayName], [xibDefinition xibFileName]);
+    }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
-
     [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]
             withContents:[xibDefinition content]];
 }
@@ -109,11 +125,9 @@
     NSDictionary* framework = [self makeFileReference:[frameworkDefinition name] type:Framework];
     NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
     [[_project objects] setObject:framework forKey:frameworkKey];
-    [self addMemberWithName:[frameworkDefinition name] key:frameworkKey];
+    [self addMemberWithKey:frameworkKey];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
-
-
 
 /* ================================================================================================================== */
 #pragma mark Locating children
@@ -205,21 +219,14 @@
 
 /* ================================================== Private Methods =============================================== */
 #pragma mark Private
-- (void) addMemberWithName:(NSString*)name key:(NSString*)key {
-
-    if (([self memberWithDisplayName:name] == nil)) {
-        [_children addObject:key];
-    }
-    else {
-        LogInfo(@"***WARNING*** Group already contains a member with name '%@', contents will be updated.", name);
-    }
+- (void) addMemberWithKey:(NSString*)key {
+    [_children addObject:key];
     [self flagMembersAsDirty];
 }
 
 - (void) flagMembersAsDirty {
     _members = nil;
 }
-
 
 - (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type {
     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
