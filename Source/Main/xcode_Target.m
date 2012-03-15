@@ -63,15 +63,19 @@
 - (void) addMember:(xcode_SourceFile*)member {
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
-    LogDebug(@"Here's the target: %@", target);
+
     for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"]) {
         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
         if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
-            LogDebug(@"Here's the build phase: %@", buildPhase);
-            NSMutableArray* files = [buildPhase objectForKey:@"files"];
 
-            LogDebug(@"Adding key '%@' to PBXBuildPhase: %@", [member buildFileKey], buildPhaseKey);
-            [files addObject:[member buildFileKey]];
+            NSMutableArray* files = [buildPhase objectForKey:@"files"];
+            if (![files containsObject:[member buildFileKey]]) {
+                [files addObject:[member buildFileKey]];
+            }
+            else {
+                LogInfo(@"***WARNING*** Target %@ already includes %@", [self name], [member name]);
+            }
+
             [buildPhase setObject:files forKey:@"files"];
         }
     }

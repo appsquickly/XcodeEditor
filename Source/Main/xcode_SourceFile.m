@@ -46,7 +46,6 @@
             }
         }];
     }
-    LogDebug(@"Is build file: %@", [_isBuildFile boolValue] == YES? @"YES" : @"NO");
     return [_isBuildFile boolValue];
 }
 
@@ -77,9 +76,7 @@
             [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFile] forKey:@"isa"];
             [sourceBuildFile setObject:_key forKey:@"fileRef"];
             NSString* buildFileKey = [[KeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
-            LogDebug(@"Build file key: %@", buildFileKey);
             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];
-            LogDebug(@"Done becoming build file.");
         }
         else if (_type == Framework) {
             [NSException raise:NSInvalidArgumentException format:@"Add framework to target not implemented yet."];
