@@ -48,7 +48,8 @@ FrameworkDefinition* frameworkDefinition =
 [group addFramework:frameworkDefinition toTargets:[project targets]];
 [project save];
 ```
-Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the project.
+Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the 
+project, and subsequently linked from there. 
 
 # Docs
 
