@@ -43,7 +43,8 @@ XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile" 
 ### Adding a Framework
 
 ```objective-c
-FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
+FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc] initWithFilePath:@"<framework path>" 
+        copyToDestination:NO];
 [group addFramework:frameworkDefinition toTargets:[project targets]];
 [project save];
 ```
