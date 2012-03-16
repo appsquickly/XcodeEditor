@@ -4,7 +4,7 @@ An API for manipulating Xcode project files.
 
 # Usage
 
-## Adding Source Files to a Project
+### Adding Source Files to a Project
 
 
 ```objective-c
@@ -18,7 +18,7 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 [project save];
 ```
 
-## Specifying Source File Belongs to Target
+### Specifying Source File Belongs to Target
 
 ```objective-c
 File* sourceFile = [project fileWithName:@"MyNewClass.m"];
@@ -27,7 +27,7 @@ Target* examples = [project targetWithName:@"Examples"];
 [project save];
 ```
 
-## Adding a Xib File
+### Adding a Xib File
 
 This time, we'll use a convenience method on xcode_Group to specify the targets at the same time:
 
