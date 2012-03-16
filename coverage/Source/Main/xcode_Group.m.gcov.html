@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">156</td>
-            <td class="headerCovTableEntry">169</td>
-            <td class="headerCovTableEntryHi">92.3 %</td>
+            <td class="headerCovTableEntry">188</td>
+            <td class="headerCovTableEntry">195</td>
+            <td class="headerCovTableEntryHi">96.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-03-15</td>
+            <td class="headerValue">2012-03-16</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,258 +83,297 @@
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : - (void) flagMembersAsDirty;
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span>            : - (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type;
+<span class="lineNum">      28 </span>            : - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path type:(XcodeSourceFileType)type;
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : - (NSDictionary*) asDictionary;
+<span class="lineNum">      30 </span>            : - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type;
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            : - (XcodeMemberType) typeForKey:(NSString*)key;
+<span class="lineNum">      32 </span>            : - (NSDictionary*) asDictionary;
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span>            : - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
+<span class="lineNum">      34 </span>            : - (XcodeMemberType) typeForKey:(NSString*)key;
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : @end
-<span class="lineNum">      37 </span>            : /* ================================================================================================================== */
-<span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span><span class="lineCov">      10096 : @implementation xcode_Group</span>
+<span class="lineNum">      36 </span>            : - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : - (void) warnPendingOverwrite:(NSString*)resourceName;
+<span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 : @synthesize project = _project;</span>
-<span class="lineNum">      42 </span><span class="lineCov">        764 : @synthesize pathRelativeToParent = _pathRelativeToParent;</span>
-<span class="lineNum">      43 </span><span class="lineCov">        194 : @synthesize key = _key;</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : @synthesize children = _children;</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : @synthesize alias = _alias;</span>
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      49 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-<span class="lineNum">      50 </span><span class="lineCov">      10151 :         children:(NSArray*)children {</span>
-<span class="lineNum">      51 </span><span class="lineCov">      10151 :     self = [super init];</span>
-<span class="lineNum">      52 </span><span class="lineCov">      10151 :     if (self) {</span>
-<span class="lineNum">      53 </span><span class="lineCov">      10151 :         _project = project;</span>
-<span class="lineNum">      54 </span><span class="lineCov">      10151 :         _writeQueue = [_project fileWriteQueue];</span>
-<span class="lineNum">      55 </span><span class="lineCov">      10151 :         _key = [key copy];</span>
-<span class="lineNum">      56 </span><span class="lineCov">      10151 :         _alias = [alias copy];</span>
-<span class="lineNum">      57 </span><span class="lineCov">      10151 :         _pathRelativeToParent = [path copy];</span>
-<span class="lineNum">      58 </span><span class="lineCov">      10151 :         _children = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      59 </span><span class="lineCov">      10151 :         [_children addObjectsFromArray:children];</span>
-<span class="lineNum">      60 </span><span class="lineCov">      10151 :     }</span>
-<span class="lineNum">      61 </span><span class="lineCov">      10151 :     return self;</span>
-<span class="lineNum">      62 </span><span class="lineCov">      10151 : }</span>
-<span class="lineNum">      63 </span><span class="lineCov">      10151 : </span>
-<span class="lineNum">      64 </span>            : /* ================================================ Interface Methods =============================================== */
-<span class="lineNum">      65 </span>            : #pragma mark Adding children
-<span class="lineNum">      66 </span>            : - (void) addClass:(ClassDefinition*)classDefinition {
-<span class="lineNum">      67 </span><span class="lineCov">          4 : </span>
-<span class="lineNum">      68 </span>            :     SourceFile* currentHeaderFile = [self memberWithDisplayName:[classDefinition headerFileName]];
-<span class="lineNum">      69 </span><span class="lineCov">          4 :     if ((currentHeaderFile) == nil) {</span>
-<span class="lineNum">      70 </span><span class="lineCov">          4 :         NSDictionary* header = [self makeFileReference:[classDefinition headerFileName] type:SourceCodeHeader];</span>
-<span class="lineNum">      71 </span><span class="lineCov">          3 :         NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];</span>
-<span class="lineNum">      72 </span><span class="lineCov">          3 :         [[_project objects] setObject:header forKey:headerKey];</span>
-<span class="lineNum">      73 </span><span class="lineCov">          3 :         [self addMemberWithKey:headerKey];</span>
-<span class="lineNum">      74 </span><span class="lineCov">          3 :         [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]</span>
-<span class="lineNum">      75 </span><span class="lineCov">          3 :                 withContents:[classDefinition source]];</span>
-<span class="lineNum">      76 </span>            :     }
-<span class="lineNum">      77 </span><span class="lineCov">          3 :     else {</span>
-<span class="lineNum">      78 </span>            :         LogInfo(@&quot;*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.&quot;, [self
-<span class="lineNum">      79 </span><span class="lineCov">          1 :                 displayName], [classDefinition headerFileName]);</span>
-<span class="lineNum">      80 </span>            :         [_writeQueue queueFile:[classDefinition headerFileName]
-<span class="lineNum">      81 </span><span class="lineCov">          1 :                 inDirectory:[[currentHeaderFile sourcePath] stringByDeletingLastPathComponent]</span>
-<span class="lineNum">      82 </span>            :                 withContents:[classDefinition source]];
-<span class="lineNum">      83 </span>            :     }
-<span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span>            :     SourceFile* currentSourceFile = [self memberWithDisplayName:[classDefinition sourceFileName]];
-<span class="lineNum">      86 </span><span class="lineCov">          4 :     if ((currentSourceFile) == nil) {</span>
-<span class="lineNum">      87 </span><span class="lineCov">          4 :         NSDictionary* source = [self makeFileReference:[classDefinition sourceFileName] type:SourceCodeObjC];</span>
-<span class="lineNum">      88 </span><span class="lineCov">          3 :         NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];</span>
-<span class="lineNum">      89 </span><span class="lineCov">          3 :         [[_project objects] setObject:source forKey:sourceKey];</span>
-<span class="lineNum">      90 </span><span class="lineCov">          3 :         [self addMemberWithKey:sourceKey];</span>
-<span class="lineNum">      91 </span><span class="lineCov">          3 :         [_writeQueue queueFile:[classDefinition sourceFileName] inDirectory:[self pathRelativeToProjectRoot]</span>
-<span class="lineNum">      92 </span><span class="lineCov">          3 :                 withContents:[classDefinition source]];</span>
-<span class="lineNum">      93 </span>            :     }
-<span class="lineNum">      94 </span><span class="lineCov">          3 :     else {</span>
-<span class="lineNum">      95 </span>            :         LogInfo(@&quot;*** WARNING *** Group %@ already contains member with name %@. Contents will be updated.&quot;, [self
-<span class="lineNum">      96 </span><span class="lineCov">          1 :                 displayName], [classDefinition sourceFileName]);</span>
-<span class="lineNum">      97 </span>            :         [_writeQueue queueFile:[classDefinition sourceFileName]
-<span class="lineNum">      98 </span><span class="lineCov">          1 :                 inDirectory:[[currentSourceFile sourcePath] stringByDeletingLastPathComponent]</span>
-<span class="lineNum">      99 </span>            :                 withContents:[classDefinition source]];
-<span class="lineNum">     100 </span>            :     }
-<span class="lineNum">     101 </span>            :     [[_project objects] setObject:[self asDictionary] forKey:_key];
-<span class="lineNum">     102 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     103 </span><span class="lineCov">          4 : </span>
-<span class="lineNum">     104 </span>            : - (void) addClass:(ClassDefinition*)classDefinition toTargets:(NSArray*)targets {
-<span class="lineNum">     105 </span>            :     [self addClass:classDefinition];
-<span class="lineNum">     106 </span><span class="lineCov">          3 :     SourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];</span>
-<span class="lineNum">     107 </span><span class="lineCov">          3 :     [self addSourceFile:sourceFile toTargets:targets];</span>
-<span class="lineNum">     108 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     109 </span><span class="lineCov">          3 : </span>
-<span class="lineNum">     110 </span><span class="lineCov">          3 : - (void) addXib:(XibDefinition*)xibDefinition {</span>
-<span class="lineNum">     111 </span>            :     SourceFile* currentXibFile = [self memberWithDisplayName:[xibDefinition xibFileName]];
-<span class="lineNum">     112 </span><span class="lineCov">          2 :     if (currentXibFile == nil) {</span>
-<span class="lineNum">     113 </span><span class="lineCov">          2 :         NSDictionary* xib = [self makeFileReference:[xibDefinition xibFileName] type:XibFile];</span>
-<span class="lineNum">     114 </span><span class="lineCov">          2 :         NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];</span>
-<span class="lineNum">     115 </span><span class="lineCov">          2 :         [[_project objects] setObject:xib forKey:xibKey];</span>
-<span class="lineNum">     116 </span><span class="lineCov">          2 :         [self addMemberWithKey:xibKey];</span>
-<span class="lineNum">     117 </span><span class="lineCov">          2 :         [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]</span>
-<span class="lineNum">     118 </span><span class="lineCov">          2 :                 withContents:[xibDefinition content]];</span>
-<span class="lineNum">     119 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     120 </span>            :     else {
-<span class="lineNum">     121 </span><span class="lineCov">          2 :         LogInfo(@&quot;*** WARNING *** Group %@ already contains member with name %@. Contents will be updated&quot;, [self</span>
-<span class="lineNum">     122 </span>            :                 displayName], [xibDefinition xibFileName]);
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :         [_writeQueue queueFile:[xibDefinition xibFileName]</span>
-<span class="lineNum">     124 </span>            :                 inDirectory:[[currentXibFile sourcePath] stringByDeletingLastPathComponent]
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :                 withContents:[xibDefinition content]];</span>
-<span class="lineNum">     126 </span>            :     }
-<span class="lineNum">     127 </span>            :     [[_project objects] setObject:[self asDictionary] forKey:_key];
-<span class="lineNum">     128 </span>            : 
-<span class="lineNum">     129 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     130 </span>            : 
-<span class="lineNum">     131 </span><span class="lineCov">          2 : - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets {</span>
-<span class="lineNum">     132 </span>            :     [self addXib:xibDefinition];
-<span class="lineNum">     133 </span>            :     SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
-<span class="lineNum">     134 </span><span class="lineCov">          1 :     [self addSourceFile:sourceFile toTargets:targets];</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : - (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition {</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :     NSDictionary* framework = [self makeFileReference:[frameworkDefinition name] type:Framework];</span>
-<span class="lineNum">     139 </span>            :     NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 :     [[_project objects] setObject:framework forKey:frameworkKey];</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 :     [self addMemberWithKey:frameworkKey];</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     [[_project objects] setObject:[self asDictionary] forKey:_key];</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : /* ================================================================================================================== */</span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 : #pragma mark Locating children</span>
-<span class="lineNum">     147 </span>            : - (NSArray*) members {
-<span class="lineNum">     148 </span>            :     if (_members == nil) {
-<span class="lineNum">     149 </span>            :         _members = [[NSMutableArray alloc] init];
-<span class="lineNum">     150 </span><span class="lineCov">         31 :         for (NSString* childKey in _children) {</span>
-<span class="lineNum">     151 </span><span class="lineCov">         31 :             XcodeMemberType type = [self typeForKey:childKey];</span>
-<span class="lineNum">     152 </span><span class="lineCov">         30 :             if (type == PBXGroup) {</span>
-<span class="lineNum">     153 </span><span class="lineCov">        160 :                 [_members addObject:[_project groupWithKey:childKey]];</span>
-<span class="lineNum">     154 </span><span class="lineCov">        159 :             }</span>
-<span class="lineNum">     155 </span><span class="lineCov">        159 :             else if (type == PBXFileReference) {</span>
-<span class="lineNum">     156 </span><span class="lineCov">         50 :                 [_members addObject:[_project fileWithKey:childKey]];</span>
-<span class="lineNum">     157 </span><span class="lineCov">         50 :             }</span>
-<span class="lineNum">     158 </span><span class="lineCov">        109 :         }</span>
-<span class="lineNum">     159 </span><span class="lineCov">        107 :     }</span>
-<span class="lineNum">     160 </span><span class="lineCov">        107 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;displayName&quot; ascending:YES];</span>
-<span class="lineNum">     161 </span><span class="lineCov">        159 :     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
-<span class="lineNum">     162 </span><span class="lineCov">         30 : }</span>
-<span class="lineNum">     163 </span><span class="lineCov">         31 : </span>
-<span class="lineNum">     164 </span><span class="lineCov">         31 : - (id&lt;XcodeGroupMember&gt;) memberWithKey:(NSString*)key {</span>
-<span class="lineNum">     165 </span><span class="lineCov">         31 :     id&lt;XcodeGroupMember&gt; groupMember = nil;</span>
-<span class="lineNum">     166 </span>            : 
-<span class="lineNum">     167 </span><span class="lineCov">       5527 :     if ([_children containsObject:key]) {</span>
-<span class="lineNum">     168 </span><span class="lineCov">       5527 :         XcodeMemberType type = [self typeForKey:key];</span>
-<span class="lineNum">     169 </span>            :         if (type == PBXGroup) {
-<span class="lineNum">     170 </span><span class="lineCov">       5527 :             groupMember = [_project groupWithKey:key];</span>
-<span class="lineNum">     171 </span><span class="lineCov">        424 :         }</span>
-<span class="lineNum">     172 </span><span class="lineCov">        424 :         else if (type == PBXFileReference) {</span>
-<span class="lineNum">     173 </span><span class="lineCov">        320 :             groupMember = [_project fileWithKey:key];</span>
-<span class="lineNum">     174 </span><span class="lineCov">        320 :         }</span>
-<span class="lineNum">     175 </span><span class="lineCov">        104 :     }</span>
-<span class="lineNum">     176 </span><span class="lineCov">        104 :     return groupMember;</span>
-<span class="lineNum">     177 </span><span class="lineCov">        104 : }</span>
-<span class="lineNum">     178 </span>            : 
-<span class="lineNum">     179 </span><span class="lineCov">       5527 : - (id&lt;XcodeGroupMember&gt;) memberWithDisplayName:(NSString*)name {</span>
-<span class="lineNum">     180 </span><span class="lineCov">       5527 :     for (id&lt;XcodeGroupMember&gt; member in [self members]) {</span>
-<span class="lineNum">     181 </span>            :         if ([[member displayName] isEqualToString:name]) {
-<span class="lineNum">     182 </span><span class="lineCov">         11 :             return member;</span>
-<span class="lineNum">     183 </span><span class="lineCov">         61 :         }</span>
-<span class="lineNum">     184 </span><span class="lineCov">         61 :     }</span>
-<span class="lineNum">     185 </span><span class="lineCov">          3 :     return nil;</span>
-<span class="lineNum">     186 </span>            : }
-<span class="lineNum">     187 </span><span class="lineCov">         61 : </span>
-<span class="lineNum">     188 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">     189 </span><span class="lineCov">         11 : /* ================================================================================================================== */</span>
-<span class="lineNum">     190 </span>            : #pragma mark File paths
-<span class="lineNum">     191 </span>            : 
-<span class="lineNum">     192 </span>            : - (NSString*) pathRelativeToProjectRoot {
-<span class="lineNum">     193 </span>            :     if (_pathRelativeToProjectRoot == nil) {
-<span class="lineNum">     194 </span>            :         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-<span class="lineNum">     195 </span><span class="lineCov">        131 :         Group* group;</span>
-<span class="lineNum">     196 </span><span class="lineCov">        131 :         NSString* key = _key;</span>
-<span class="lineNum">     197 </span><span class="lineCov">        128 : </span>
-<span class="lineNum">     198 </span><span class="lineCov">        128 :         while ((group = [_project groupForGroupMemberWithKey:key]) != nil &amp;&amp; [group pathRelativeToParent] != nil) {</span>
-<span class="lineNum">     199 </span><span class="lineCov">        128 :             [pathComponents addObject:[group pathRelativeToParent]];</span>
-<span class="lineNum">     200 </span>            :             key = [group key];
-<span class="lineNum">     201 </span><span class="lineCov">        321 :         }</span>
-<span class="lineNum">     202 </span><span class="lineCov">        193 : </span>
-<span class="lineNum">     203 </span><span class="lineCov">        193 :         NSMutableString* fullPath = [[NSMutableString alloc] init];</span>
-<span class="lineNum">     204 </span><span class="lineCov">        193 :         for (int i = [pathComponents count] - 1; i &gt;= 0; i--) {</span>
-<span class="lineNum">     205 </span>            :             [fullPath appendFormat:@&quot;%@/&quot;, [pathComponents objectAtIndex:i]];
-<span class="lineNum">     206 </span><span class="lineCov">        128 :         }</span>
-<span class="lineNum">     207 </span><span class="lineCov">        321 :         _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];</span>
-<span class="lineNum">     208 </span><span class="lineCov">        193 :     }</span>
-<span class="lineNum">     209 </span>            :     return _pathRelativeToProjectRoot;
-<span class="lineNum">     210 </span><span class="lineCov">        128 : }</span>
-<span class="lineNum">     211 </span><span class="lineCov">        128 : </span>
-<span class="lineNum">     212 </span><span class="lineCov">        131 : </span>
-<span class="lineNum">     213 </span>            : /* ================================================= Protocol Methods =============================================== */
-<span class="lineNum">     214 </span>            : - (XcodeMemberType) groupMemberType {
-<span class="lineNum">     215 </span>            :     return PBXGroup;
-<span class="lineNum">     216 </span>            : }
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 : - (NSString*) displayName {</span>
-<span class="lineNum">     219 </span>            :     if (_pathRelativeToParent == nil) {
-<span class="lineNum">     220 </span>            :         return _alias;
-<span class="lineNum">     221 </span><span class="lineCov">        118 :     }</span>
-<span class="lineNum">     222 </span><span class="lineCov">        118 :     else {</span>
-<span class="lineNum">     223 </span><span class="lineCov">         10 :         return [_pathRelativeToParent lastPathComponent];</span>
-<span class="lineNum">     224 </span>            :     }
-<span class="lineNum">     225 </span>            : }
-<span class="lineNum">     226 </span><span class="lineCov">        108 : </span>
-<span class="lineNum">     227 </span>            : 
-<span class="lineNum">     228 </span><span class="lineCov">        118 : /* ================================================== Utility Methods =============================================== */</span>
-<span class="lineNum">     229 </span>            : - (NSString*) description {
-<span class="lineNum">     230 </span>            :     return [NSString stringWithFormat:@&quot;Group: displayName = %@, key=%@&quot;, [self displayName], _key];
-<span class="lineNum">     231 </span>            : }
-<span class="lineNum">     232 </span><span class="lineCov">          4 : </span>
-<span class="lineNum">     233 </span><span class="lineCov">          4 : /* ================================================== Private Methods =============================================== */</span>
-<span class="lineNum">     234 </span>            : #pragma mark Private
-<span class="lineNum">     235 </span>            : - (void) addMemberWithKey:(NSString*)key {
-<span class="lineNum">     236 </span>            :     [_children addObject:key];
-<span class="lineNum">     237 </span>            :     [self flagMembersAsDirty];
-<span class="lineNum">     238 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">     239 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">     240 </span><span class="lineCov">          8 : - (void) flagMembersAsDirty {</span>
-<span class="lineNum">     241 </span><span class="lineCov">          8 :     _members = nil;</span>
-<span class="lineNum">     242 </span>            : }
-<span class="lineNum">     243 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">     244 </span><span class="lineCov">          8 : - (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type {</span>
-<span class="lineNum">     245 </span><span class="lineCov">          8 :     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">     246 </span>            :     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@&quot;isa&quot;];
-<span class="lineNum">     247 </span>            :     [reference setObject:@&quot;4&quot; forKey:@&quot;FileEncoding&quot;];
-<span class="lineNum">     248 </span><span class="lineCov">          8 :     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@&quot;lastKnownFileType&quot;];</span>
-<span class="lineNum">     249 </span><span class="lineCov">          8 :     [reference setObject:name forKey:@&quot;path&quot;];</span>
-<span class="lineNum">     250 </span><span class="lineCov">          8 :     [reference setObject:@&quot;&lt;group&gt;&quot; forKey:@&quot;sourceTree&quot;];</span>
-<span class="lineNum">     251 </span><span class="lineCov">          8 :     return reference;</span>
-<span class="lineNum">     252 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">     253 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">     254 </span><span class="lineCov">          8 : - (NSDictionary*) asDictionary {</span>
-<span class="lineNum">     255 </span><span class="lineCov">          8 :     NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">     256 </span><span class="lineCov">          8 :     [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@&quot;isa&quot;];</span>
-<span class="lineNum">     257 </span>            :     [groupData setObject:@&quot;&lt;group&gt;&quot; forKey:@&quot;sourceTree&quot;];
-<span class="lineNum">     258 </span><span class="lineCov">          6 :     if (_alias != nil) {</span>
-<span class="lineNum">     259 </span><span class="lineCov">          6 :         [groupData setObject:_alias forKey:@&quot;name&quot;];</span>
-<span class="lineNum">     260 </span><span class="lineCov">          6 :     }</span>
-<span class="lineNum">     261 </span><span class="lineCov">          6 :     [groupData setObject:_pathRelativeToParent forKey:@&quot;path&quot;];</span>
-<span class="lineNum">     262 </span><span class="lineCov">          6 :     [groupData setObject:_children forKey:@&quot;children&quot;];</span>
-<span class="lineNum">     263 </span><span class="lineCov">          6 :     return groupData;</span>
-<span class="lineNum">     264 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     265 </span><span class="lineCov">          6 : </span>
-<span class="lineNum">     266 </span><span class="lineCov">          6 : - (XcodeMemberType) typeForKey:(NSString*)key {</span>
-<span class="lineNum">     267 </span><span class="lineCov">          6 :     NSDictionary* obj = [[_project objects] valueForKey:key];</span>
-<span class="lineNum">     268 </span><span class="lineCov">          6 :     return [[obj valueForKey:@&quot;isa&quot;] asMemberType];</span>
-<span class="lineNum">     269 </span>            : }
-<span class="lineNum">     270 </span><span class="lineCov">        583 : </span>
-<span class="lineNum">     271 </span><span class="lineCov">        583 : - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {</span>
-<span class="lineNum">     272 </span><span class="lineCov">        583 :     LogDebug(@&quot;Adding source file %@ to targets %@&quot;, sourceFile, targets);</span>
-<span class="lineNum">     273 </span><span class="lineCov">        583 :     for (Target* target in targets) {</span>
-<span class="lineNum">     274 </span>            :         [target addMember:sourceFile];
-<span class="lineNum">     275 </span>            :     }
-<span class="lineNum">     276 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     277 </span><span class="lineCov">          4 : </span>
-<span class="lineNum">     278 </span><span class="lineCov">         16 : </span>
-<span class="lineNum">     279 </span><span class="lineCov">         16 : @end</span>
+<span class="lineNum">      41 </span>            : @end
+<span class="lineNum">      42 </span>            : /* ================================================================================================================== */
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span><span class="lineCov">      14133 : @implementation xcode_Group</span>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : @synthesize project = _project;</span>
+<span class="lineNum">      47 </span><span class="lineCov">        851 : @synthesize pathRelativeToParent = _pathRelativeToParent;</span>
+<span class="lineNum">      48 </span><span class="lineCov">        194 : @synthesize key = _key;</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : @synthesize children = _children;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 : @synthesize alias = _alias;</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      54 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
+<span class="lineNum">      55 </span><span class="lineCov">      14196 :         children:(NSArray*)children {</span>
+<span class="lineNum">      56 </span><span class="lineCov">      14196 :     self = [super init];</span>
+<span class="lineNum">      57 </span><span class="lineCov">      14196 :     if (self) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">      14196 :         _project = project;</span>
+<span class="lineNum">      59 </span><span class="lineCov">      14196 :         _writeQueue = [_project fileWriteQueue];</span>
+<span class="lineNum">      60 </span><span class="lineCov">      14196 :         _key = [key copy];</span>
+<span class="lineNum">      61 </span><span class="lineCov">      14196 :         _alias = [alias copy];</span>
+<span class="lineNum">      62 </span><span class="lineCov">      14196 :         _pathRelativeToParent = [path copy];</span>
+<span class="lineNum">      63 </span><span class="lineCov">      14196 :         _children = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      64 </span><span class="lineCov">      14196 :         [_children addObjectsFromArray:children];</span>
+<span class="lineNum">      65 </span><span class="lineCov">      14196 :     }</span>
+<span class="lineNum">      66 </span><span class="lineCov">      14196 :     return self;</span>
+<span class="lineNum">      67 </span><span class="lineCov">      14196 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">      14196 : </span>
+<span class="lineNum">      69 </span>            : /* ================================================ Interface Methods =============================================== */
+<span class="lineNum">      70 </span>            : #pragma mark Adding children
+<span class="lineNum">      71 </span>            : - (void) addClass:(ClassDefinition*)classDefinition {
+<span class="lineNum">      72 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      73 </span>            :     SourceFile* currentHeaderFile = [self memberWithDisplayName:[classDefinition headerFileName]];
+<span class="lineNum">      74 </span><span class="lineCov">          4 :     if ((currentHeaderFile) == nil) {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          8 :         NSDictionary* header = [self makeFileReferenceWithPath:[classDefinition headerFileName] type:SourceCodeHeader];</span>
+<span class="lineNum">      76 </span><span class="lineCov">          7 :         NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];</span>
+<span class="lineNum">      77 </span><span class="lineCov">          3 :         [[_project objects] setObject:header forKey:headerKey];</span>
+<span class="lineNum">      78 </span><span class="lineCov">          3 :         [self addMemberWithKey:headerKey];</span>
+<span class="lineNum">      79 </span><span class="lineCov">          3 :         [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]</span>
+<span class="lineNum">      80 </span><span class="lineCov">          3 :                 withContents:[classDefinition source]];</span>
+<span class="lineNum">      81 </span>            :     }
+<span class="lineNum">      82 </span><span class="lineCov">          3 :     else {</span>
+<span class="lineNum">      83 </span>            :         [self warnPendingOverwrite:[classDefinition headerFileName]];
+<span class="lineNum">      84 </span><span class="lineCov">          1 :         [_writeQueue queueFile:[classDefinition headerFileName]</span>
+<span class="lineNum">      85 </span><span class="lineCov">          1 :                 inDirectory:[[currentHeaderFile sourcePath] stringByDeletingLastPathComponent]</span>
+<span class="lineNum">      86 </span>            :                 withContents:[classDefinition source]];
+<span class="lineNum">      87 </span>            :     }
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span>            :     SourceFile* currentSourceFile = [self memberWithDisplayName:[classDefinition sourceFileName]];
+<span class="lineNum">      90 </span><span class="lineCov">          4 :     if ((currentSourceFile) == nil) {</span>
+<span class="lineNum">      91 </span><span class="lineCov">          4 :         NSDictionary* source = [self makeFileReferenceWithPath:[classDefinition sourceFileName] type:SourceCodeObjC];</span>
+<span class="lineNum">      92 </span><span class="lineCov">          7 :         NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];</span>
+<span class="lineNum">      93 </span><span class="lineCov">          3 :         [[_project objects] setObject:source forKey:sourceKey];</span>
+<span class="lineNum">      94 </span><span class="lineCov">          3 :         [self addMemberWithKey:sourceKey];</span>
+<span class="lineNum">      95 </span><span class="lineCov">          3 :         [_writeQueue queueFile:[classDefinition sourceFileName] inDirectory:[self pathRelativeToProjectRoot]</span>
+<span class="lineNum">      96 </span><span class="lineCov">          3 :                 withContents:[classDefinition source]];</span>
+<span class="lineNum">      97 </span>            :     }
+<span class="lineNum">      98 </span><span class="lineCov">          3 :     else {</span>
+<span class="lineNum">      99 </span>            :         [self warnPendingOverwrite:[classDefinition sourceFileName]];
+<span class="lineNum">     100 </span><span class="lineCov">          1 :         [_writeQueue queueFile:[classDefinition sourceFileName]</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :                 inDirectory:[[currentSourceFile sourcePath] stringByDeletingLastPathComponent]</span>
+<span class="lineNum">     102 </span>            :                 withContents:[classDefinition source]];
+<span class="lineNum">     103 </span>            :     }
+<span class="lineNum">     104 </span>            :     [[_project objects] setObject:[self asDictionary] forKey:_key];
+<span class="lineNum">     105 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     106 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">     107 </span>            : - (void) addClass:(ClassDefinition*)classDefinition toTargets:(NSArray*)targets {
+<span class="lineNum">     108 </span>            :     [self addClass:classDefinition];
+<span class="lineNum">     109 </span><span class="lineCov">          3 :     SourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];</span>
+<span class="lineNum">     110 </span><span class="lineCov">          3 :     [self addSourceFile:sourceFile toTargets:targets];</span>
+<span class="lineNum">     111 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     112 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">     113 </span><span class="lineCov">          3 : - (void) addXib:(XibDefinition*)xibDefinition {</span>
+<span class="lineNum">     114 </span>            :     SourceFile* currentXibFile = [self memberWithDisplayName:[xibDefinition xibFileName]];
+<span class="lineNum">     115 </span><span class="lineCov">          2 :     if (currentXibFile == nil) {</span>
+<span class="lineNum">     116 </span><span class="lineCov">          2 :         NSDictionary* xib = [self makeFileReferenceWithPath:[xibDefinition xibFileName] type:XibFile];</span>
+<span class="lineNum">     117 </span><span class="lineCov">          4 :         NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];</span>
+<span class="lineNum">     118 </span><span class="lineCov">          4 :         [[_project objects] setObject:xib forKey:xibKey];</span>
+<span class="lineNum">     119 </span><span class="lineCov">          2 :         [self addMemberWithKey:xibKey];</span>
+<span class="lineNum">     120 </span><span class="lineCov">          2 :         [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]</span>
+<span class="lineNum">     121 </span><span class="lineCov">          2 :                 withContents:[xibDefinition content]];</span>
+<span class="lineNum">     122 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     123 </span>            :     else {
+<span class="lineNum">     124 </span><span class="lineCov">          2 :         [self warnPendingOverwrite:[xibDefinition xibFileName]];</span>
+<span class="lineNum">     125 </span>            :         [_writeQueue queueFile:[xibDefinition xibFileName]
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :                 inDirectory:[[currentXibFile sourcePath] stringByDeletingLastPathComponent]</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :                 withContents:[xibDefinition content]];</span>
+<span class="lineNum">     128 </span>            :     }
+<span class="lineNum">     129 </span>            :     [[_project objects] setObject:[self asDictionary] forKey:_key];
+<span class="lineNum">     130 </span>            : }
+<span class="lineNum">     131 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     132 </span><span class="lineCov">          2 : - (void) addXib:(XibDefinition*)xibDefinition toTargets:(NSArray*)targets {</span>
+<span class="lineNum">     133 </span>            :     [self addXib:xibDefinition];
+<span class="lineNum">     134 </span>            :     SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
+<span class="lineNum">     135 </span><span class="lineCov">          1 :     [self addSourceFile:sourceFile toTargets:targets];</span>
+<span class="lineNum">     136 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 : - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {</span>
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span>            :     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
+<span class="lineNum">     142 </span><span class="lineCov">          2 :         NSDictionary* fileReference;</span>
+<span class="lineNum">     143 </span>            :         if ([frameworkDefinition copyToDestination]) {
+<span class="lineNum">     144 </span><span class="lineCov">          2 :             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] type:Framework];</span>
+<span class="lineNum">     145 </span><span class="lineCov">          2 :             [_writeQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]</span>
+<span class="lineNum">     146 </span><span class="lineCov">          2 :                     inDirectory:[self pathRelativeToProjectRoot]];</span>
+<span class="lineNum">     147 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     148 </span><span class="lineCov">          1 :         else {</span>
+<span class="lineNum">     149 </span>            :             NSString* path = [frameworkDefinition filePath];
+<span class="lineNum">     150 </span><span class="lineCov">          1 :             NSString* name = [frameworkDefinition name];</span>
+<span class="lineNum">     151 </span>            :             fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
+<span class="lineNum">     152 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :         NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :         [[_project objects] setObject:fileReference forKey:frameworkKey];</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :         [self addMemberWithKey:frameworkKey];</span>
+<span class="lineNum">     156 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     157 </span><span class="lineCov">          2 :     else {</span>
+<span class="lineNum">     158 </span><span class="lineCov">          2 :         [self warnPendingOverwrite:[frameworkDefinition filePath]];</span>
+<span class="lineNum">     159 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     160 </span>            :     [[_project objects] setObject:[self asDictionary] forKey:_key];
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span><span class="lineCov">          2 : - (void) addFramework:(FrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets {</span>
+<span class="lineNum">     164 </span><span class="lineCov">          2 :     [self addFramework:frameworkDefinition];</span>
+<span class="lineNum">     165 </span>            :     [self addSourceFile:[self memberWithDisplayName:[frameworkDefinition name]] toTargets:targets];
+<span class="lineNum">     166 </span>            : }
+<span class="lineNum">     167 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     169 </span><span class="lineCov">          2 : /* ================================================================================================================== */</span>
+<span class="lineNum">     170 </span><span class="lineCov">          2 : #pragma mark Locating children</span>
+<span class="lineNum">     171 </span>            : - (NSArray*) members {
+<span class="lineNum">     172 </span>            :     if (_members == nil) {
+<span class="lineNum">     173 </span>            :         _members = [[NSMutableArray alloc] init];
+<span class="lineNum">     174 </span>            :         for (NSString* childKey in _children) {
+<span class="lineNum">     175 </span><span class="lineCov">         35 :             XcodeMemberType type = [self typeForKey:childKey];</span>
+<span class="lineNum">     176 </span><span class="lineCov">         35 :             if (type == PBXGroup) {</span>
+<span class="lineNum">     177 </span><span class="lineCov">         34 :                 [_members addObject:[_project groupWithKey:childKey]];</span>
+<span class="lineNum">     178 </span><span class="lineCov">        212 :             }</span>
+<span class="lineNum">     179 </span><span class="lineCov">        211 :             else if (type == PBXFileReference) {</span>
+<span class="lineNum">     180 </span><span class="lineCov">        211 :                 [_members addObject:[_project fileWithKey:childKey]];</span>
+<span class="lineNum">     181 </span><span class="lineCov">         62 :             }</span>
+<span class="lineNum">     182 </span><span class="lineCov">         62 :         }</span>
+<span class="lineNum">     183 </span><span class="lineCov">        149 :     }</span>
+<span class="lineNum">     184 </span><span class="lineCov">        147 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;displayName&quot; ascending:YES];</span>
+<span class="lineNum">     185 </span><span class="lineCov">        147 :     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
+<span class="lineNum">     186 </span><span class="lineCov">        211 : }</span>
+<span class="lineNum">     187 </span><span class="lineCov">         34 : </span>
+<span class="lineNum">     188 </span><span class="lineCov">         35 : - (id&lt;XcodeGroupMember&gt;) memberWithKey:(NSString*)key {</span>
+<span class="lineNum">     189 </span><span class="lineCov">         35 :     id&lt;XcodeGroupMember&gt; groupMember = nil;</span>
+<span class="lineNum">     190 </span><span class="lineCov">         35 : </span>
+<span class="lineNum">     191 </span>            :     if ([_children containsObject:key]) {
+<span class="lineNum">     192 </span><span class="lineCov">       7285 :         XcodeMemberType type = [self typeForKey:key];</span>
+<span class="lineNum">     193 </span><span class="lineCov">       7285 :         if (type == PBXGroup) {</span>
+<span class="lineNum">     194 </span>            :             groupMember = [_project groupWithKey:key];
+<span class="lineNum">     195 </span><span class="lineCov">       7285 :         }</span>
+<span class="lineNum">     196 </span><span class="lineCov">        497 :         else if (type == PBXFileReference) {</span>
+<span class="lineNum">     197 </span><span class="lineCov">        497 :             groupMember = [_project fileWithKey:key];</span>
+<span class="lineNum">     198 </span><span class="lineCov">        357 :         }</span>
+<span class="lineNum">     199 </span><span class="lineCov">        357 :     }</span>
+<span class="lineNum">     200 </span><span class="lineCov">        140 :     return groupMember;</span>
+<span class="lineNum">     201 </span><span class="lineCov">        140 : }</span>
+<span class="lineNum">     202 </span><span class="lineCov">        140 : </span>
+<span class="lineNum">     203 </span>            : - (id&lt;XcodeGroupMember&gt;) memberWithDisplayName:(NSString*)name {
+<span class="lineNum">     204 </span><span class="lineCov">       7285 :     for (id&lt;XcodeGroupMember&gt; member in [self members]) {</span>
+<span class="lineNum">     205 </span><span class="lineCov">       7285 :         if ([[member displayName] isEqualToString:name]) {</span>
+<span class="lineNum">     206 </span>            :             return member;
+<span class="lineNum">     207 </span><span class="lineCov">         15 :         }</span>
+<span class="lineNum">     208 </span><span class="lineCov">        100 :     }</span>
+<span class="lineNum">     209 </span><span class="lineCov">        100 :     return nil;</span>
+<span class="lineNum">     210 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     211 </span>            : 
+<span class="lineNum">     212 </span><span class="lineCov">        100 : </span>
+<span class="lineNum">     213 </span><span class="lineCov">         10 : /* ================================================================================================================== */</span>
+<span class="lineNum">     214 </span><span class="lineCov">         15 : #pragma mark File paths</span>
+<span class="lineNum">     215 </span>            : 
+<span class="lineNum">     216 </span>            : - (NSString*) pathRelativeToProjectRoot {
+<span class="lineNum">     217 </span>            :     if (_pathRelativeToProjectRoot == nil) {
+<span class="lineNum">     218 </span>            :         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
+<span class="lineNum">     219 </span>            :         Group* group;
+<span class="lineNum">     220 </span><span class="lineCov">        168 :         NSString* key = _key;</span>
+<span class="lineNum">     221 </span><span class="lineCov">        168 : </span>
+<span class="lineNum">     222 </span><span class="lineCov">        165 :         while ((group = [_project groupForGroupMemberWithKey:key]) != nil &amp;&amp; [group pathRelativeToParent] != nil) {</span>
+<span class="lineNum">     223 </span><span class="lineCov">        165 :             [pathComponents addObject:[group pathRelativeToParent]];</span>
+<span class="lineNum">     224 </span><span class="lineCov">        165 :             key = [group key];</span>
+<span class="lineNum">     225 </span>            :         }
+<span class="lineNum">     226 </span><span class="lineCov">        358 : </span>
+<span class="lineNum">     227 </span><span class="lineCov">        193 :         NSMutableString* fullPath = [[NSMutableString alloc] init];</span>
+<span class="lineNum">     228 </span><span class="lineCov">        193 :         for (int i = [pathComponents count] - 1; i &gt;= 0; i--) {</span>
+<span class="lineNum">     229 </span><span class="lineCov">        193 :             [fullPath appendFormat:@&quot;%@/&quot;, [pathComponents objectAtIndex:i]];</span>
+<span class="lineNum">     230 </span>            :         }
+<span class="lineNum">     231 </span><span class="lineCov">        165 :         _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];</span>
+<span class="lineNum">     232 </span><span class="lineCov">        358 :     }</span>
+<span class="lineNum">     233 </span><span class="lineCov">        193 :     return _pathRelativeToProjectRoot;</span>
+<span class="lineNum">     234 </span>            : }
+<span class="lineNum">     235 </span><span class="lineCov">        165 : </span>
+<span class="lineNum">     236 </span><span class="lineCov">        165 : </span>
+<span class="lineNum">     237 </span><span class="lineCov">        168 : /* ================================================= Protocol Methods =============================================== */</span>
+<span class="lineNum">     238 </span>            : - (XcodeMemberType) groupMemberType {
+<span class="lineNum">     239 </span>            :     return PBXGroup;
+<span class="lineNum">     240 </span>            : }
+<span class="lineNum">     241 </span>            : 
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 : - (NSString*) displayName {</span>
+<span class="lineNum">     243 </span><span class="lineNoCov">          0 :     if (_pathRelativeToParent == nil) {</span>
+<span class="lineNum">     244 </span>            :         return _alias;
+<span class="lineNum">     245 </span>            :     }
+<span class="lineNum">     246 </span><span class="lineCov">        138 :     else {</span>
+<span class="lineNum">     247 </span><span class="lineCov">        138 :         return [_pathRelativeToParent lastPathComponent];</span>
+<span class="lineNum">     248 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">     249 </span>            : }
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span><span class="lineCov">        128 : </span>
+<span class="lineNum">     252 </span>            : /* ================================================== Utility Methods =============================================== */
+<span class="lineNum">     253 </span><span class="lineCov">        138 : - (NSString*) description {</span>
+<span class="lineNum">     254 </span>            :     return [NSString stringWithFormat:@&quot;Group: displayName = %@, key=%@&quot;, [self displayName], _key];
+<span class="lineNum">     255 </span>            : }
+<span class="lineNum">     256 </span>            : 
+<span class="lineNum">     257 </span><span class="lineCov">          4 : /* ================================================== Private Methods =============================================== */</span>
+<span class="lineNum">     258 </span><span class="lineCov">          4 : #pragma mark Private</span>
+<span class="lineNum">     259 </span>            : - (void) addMemberWithKey:(NSString*)key {
+<span class="lineNum">     260 </span>            :     [_children addObject:key];
+<span class="lineNum">     261 </span>            :     [self flagMembersAsDirty];
+<span class="lineNum">     262 </span>            : }
+<span class="lineNum">     263 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">     264 </span><span class="lineCov">         10 : - (void) flagMembersAsDirty {</span>
+<span class="lineNum">     265 </span><span class="lineCov">         10 :     _members = nil;</span>
+<span class="lineNum">     266 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     267 </span>            : 
+<span class="lineNum">     268 </span><span class="lineCov">         10 : - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path type:(XcodeSourceFileType)type {</span>
+<span class="lineNum">     269 </span><span class="lineCov">         10 :     return [self makeFileReferenceWithPath:path name:nil type:type];</span>
+<span class="lineNum">     270 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     271 </span>            : 
+<span class="lineNum">     272 </span>            : - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
+<span class="lineNum">     273 </span><span class="lineCov">          9 :     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">     274 </span><span class="lineCov">          9 :     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@&quot;isa&quot;];</span>
+<span class="lineNum">     275 </span><span class="lineCov">          9 :     [reference setObject:@&quot;4&quot; forKey:@&quot;FileEncoding&quot;];</span>
+<span class="lineNum">     276 </span>            :     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@&quot;lastKnownFileType&quot;];
+<span class="lineNum">     277 </span>            :     if (name != nil) {
+<span class="lineNum">     278 </span><span class="lineCov">         10 :         [reference setObject:[name lastPathComponent] forKey:@&quot;name&quot;];</span>
+<span class="lineNum">     279 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">     280 </span><span class="lineCov">         10 :     if (path != nil) {</span>
+<span class="lineNum">     281 </span><span class="lineCov">         10 :         [reference setObject:path forKey:@&quot;path&quot;];</span>
+<span class="lineNum">     282 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">     283 </span><span class="lineCov">         10 :     [reference setObject:@&quot;&lt;group&gt;&quot; forKey:@&quot;sourceTree&quot;];</span>
+<span class="lineNum">     284 </span><span class="lineCov">          1 :     return reference;</span>
+<span class="lineNum">     285 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     286 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">     287 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">     288 </span><span class="lineCov">         10 : - (NSDictionary*) asDictionary {</span>
+<span class="lineNum">     289 </span><span class="lineCov">         10 :     NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">     290 </span><span class="lineCov">         10 :     [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@&quot;isa&quot;];</span>
+<span class="lineNum">     291 </span><span class="lineCov">         10 :     [groupData setObject:@&quot;&lt;group&gt;&quot; forKey:@&quot;sourceTree&quot;];</span>
+<span class="lineNum">     292 </span>            :     if (_alias != nil) {
+<span class="lineNum">     293 </span>            :         [groupData setObject:_alias forKey:@&quot;name&quot;];
+<span class="lineNum">     294 </span><span class="lineCov">          8 :     }</span>
+<span class="lineNum">     295 </span><span class="lineCov">          8 :     [groupData setObject:_pathRelativeToParent forKey:@&quot;path&quot;];</span>
+<span class="lineNum">     296 </span><span class="lineCov">          8 :     [groupData setObject:_children forKey:@&quot;children&quot;];</span>
+<span class="lineNum">     297 </span><span class="lineCov">          8 :     return groupData;</span>
+<span class="lineNum">     298 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">     299 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">     300 </span><span class="lineCov">          8 : - (XcodeMemberType) typeForKey:(NSString*)key {</span>
+<span class="lineNum">     301 </span><span class="lineCov">          8 :     NSDictionary* obj = [[_project objects] valueForKey:key];</span>
+<span class="lineNum">     302 </span><span class="lineCov">          8 :     return [[obj valueForKey:@&quot;isa&quot;] asMemberType];</span>
+<span class="lineNum">     303 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">     304 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">     305 </span>            : - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {
+<span class="lineNum">     306 </span><span class="lineCov">        708 :     LogDebug(@&quot;Adding source file %@ to targets %@&quot;, sourceFile, targets);</span>
+<span class="lineNum">     307 </span><span class="lineCov">        708 :     for (Target* target in targets) {</span>
+<span class="lineNum">     308 </span><span class="lineCov">        708 :         [target addMember:sourceFile];</span>
+<span class="lineNum">     309 </span><span class="lineCov">        708 :     }</span>
+<span class="lineNum">     310 </span>            : }
+<span class="lineNum">     311 </span>            : 
+<span class="lineNum">     312 </span><span class="lineCov">          6 : - (void) warnPendingOverwrite:(NSString*)resourceName {</span>
+<span class="lineNum">     313 </span><span class="lineCov">          6 :     LogInfo(@&quot;*** WARNING *** Group %@ already contains member with name %@. Contents will be updated&quot;, [self</span>
+<span class="lineNum">     314 </span><span class="lineCov">         24 :             displayName], resourceName);</span>
+<span class="lineNum">     315 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">     316 </span><span class="lineCov">         24 : </span>
+<span class="lineNum">     317 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">     318 </span>            : @end
 </pre>
       </td>
     </tr>

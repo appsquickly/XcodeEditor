@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">112</td>
-            <td class="headerCovTableEntry">118</td>
-            <td class="headerCovTableEntryHi">94.9 %</td>
+            <td class="headerCovTableEntry">115</td>
+            <td class="headerCovTableEntry">121</td>
+            <td class="headerCovTableEntryHi">95.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-03-15</td>
+            <td class="headerValue">2012-03-16</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,24 +83,24 @@
 <span class="lineNum">      25 </span>            : @end
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">         14 : @implementation xcode_Project</span>
+<span class="lineNum">      28 </span><span class="lineCov">         16 : @implementation xcode_Project</span>
 <span class="lineNum">      29 </span>            : 
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">      10151 : @synthesize fileWriteQueue = _fileWriteQueue;</span>
+<span class="lineNum">      31 </span><span class="lineCov">      14196 : @synthesize fileWriteQueue = _fileWriteQueue;</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      34 </span><span class="lineCov">         16 : - (id) initWithFilePath:(NSString*)filePath {</span>
-<span class="lineNum">      35 </span><span class="lineCov">         16 :     if (self) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">         16 :         _filePath = [filePath copy];</span>
-<span class="lineNum">      37 </span><span class="lineCov">         16 :         _project = [[NSMutableDictionary alloc]</span>
+<span class="lineNum">      34 </span><span class="lineCov">         18 : - (id) initWithFilePath:(NSString*)filePath {</span>
+<span class="lineNum">      35 </span><span class="lineCov">         18 :     if (self) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">         18 :         _filePath = [filePath copy];</span>
+<span class="lineNum">      37 </span><span class="lineCov">         18 :         _project = [[NSMutableDictionary alloc]</span>
 <span class="lineNum">      38 </span>            :                 initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@&quot;project.pbxproj&quot;]];
-<span class="lineNum">      39 </span><span class="lineCov">         16 :         if (!_project) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">         18 :         if (!_project) {</span>
 <span class="lineNum">      40 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;Project file not found at file path %@&quot;, _filePath];</span>
 <span class="lineNum">      41 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      42 </span><span class="lineCov">         16 :         _fileWriteQueue = [[FileWriteQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];</span>
-<span class="lineNum">      43 </span><span class="lineCov">         16 :     }</span>
-<span class="lineNum">      44 </span><span class="lineCov">         16 :     return self;</span>
-<span class="lineNum">      45 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">         18 :         _fileWriteQueue = [[FileWriteQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];</span>
+<span class="lineNum">      43 </span><span class="lineCov">         18 :     }</span>
+<span class="lineNum">      44 </span><span class="lineCov">         18 :     return self;</span>
+<span class="lineNum">      45 </span><span class="lineCov">         18 : }</span>
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span>            : 
 <span class="lineNum">      48 </span>            : /* ================================================ Interface Methods =============================================== */
@@ -119,146 +119,150 @@
 <span class="lineNum">      61 </span><span class="lineCov">         12 :     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
 <span class="lineNum">      62 </span><span class="lineCov">         12 : }</span>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">        278 : - (xcode_SourceFile*) fileWithKey:(NSString*)key {</span>
-<span class="lineNum">      65 </span><span class="lineCov">        278 :     NSDictionary* obj = [[self objects] valueForKey:key];</span>
-<span class="lineNum">      66 </span><span class="lineCov">        278 :     if (obj &amp;&amp; [[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXFileReference) {</span>
-<span class="lineNum">      67 </span><span class="lineCov">        271 :         XcodeSourceFileType fileType = [[obj valueForKey:@&quot;lastKnownFileType&quot;] asSourceFileType];</span>
-<span class="lineNum">      68 </span><span class="lineCov">        271 :         NSString* path = [obj valueForKey:@&quot;path&quot;];</span>
-<span class="lineNum">      69 </span><span class="lineCov">        271 :         return [[SourceFile alloc] initWithProject:self key:key type:fileType name:path];</span>
-<span class="lineNum">      70 </span><span class="lineCov">        271 :     }</span>
-<span class="lineNum">      71 </span><span class="lineCov">          7 :     return nil;</span>
-<span class="lineNum">      72 </span><span class="lineCov">        278 : }</span>
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineCov">          8 : - (xcode_SourceFile*) fileWithName:(NSString*)name {</span>
-<span class="lineNum">      75 </span><span class="lineCov">        360 :     for (SourceFile* projectFile in [self files]) {</span>
-<span class="lineNum">      76 </span><span class="lineCov">        360 :         if ([[projectFile name] isEqualToString:name]) {</span>
-<span class="lineNum">      77 </span><span class="lineCov">          8 :             return projectFile;</span>
-<span class="lineNum">      78 </span>            :         }
-<span class="lineNum">      79 </span><span class="lineCov">        360 :     }</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     return nil;</span>
-<span class="lineNum">      81 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">      82 </span>            : 
-<span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span><span class="lineCov">          1 : - (NSArray*) headerFiles {</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 :     return [self projectFilesOfType:SourceCodeHeader];</span>
-<span class="lineNum">      86 </span>            : }
+<span class="lineNum">      64 </span><span class="lineCov">        366 : - (xcode_SourceFile*) fileWithKey:(NSString*)key {</span>
+<span class="lineNum">      65 </span><span class="lineCov">        366 :     NSDictionary* obj = [[self objects] valueForKey:key];</span>
+<span class="lineNum">      66 </span><span class="lineCov">        366 :     if (obj &amp;&amp; [[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXFileReference) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">        359 :         XcodeSourceFileType fileType = [[obj valueForKey:@&quot;lastKnownFileType&quot;] asSourceFileType];</span>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineCov">        359 :         NSString* name = [obj valueForKey:@&quot;name&quot;];</span>
+<span class="lineNum">      70 </span><span class="lineCov">        359 :         if (name == nil) {</span>
+<span class="lineNum">      71 </span><span class="lineCov">        322 :             name = [obj valueForKey:@&quot;path&quot;];</span>
+<span class="lineNum">      72 </span><span class="lineCov">        322 :         }</span>
+<span class="lineNum">      73 </span><span class="lineCov">        359 :         return [[SourceFile alloc] initWithProject:self key:key type:fileType name:name];</span>
+<span class="lineNum">      74 </span><span class="lineCov">        359 :     }</span>
+<span class="lineNum">      75 </span><span class="lineCov">          7 :     return nil;</span>
+<span class="lineNum">      76 </span><span class="lineCov">        366 : }</span>
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span><span class="lineCov">          8 : - (xcode_SourceFile*) fileWithName:(NSString*)name {</span>
+<span class="lineNum">      79 </span><span class="lineCov">        360 :     for (SourceFile* projectFile in [self files]) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">        360 :         if ([[projectFile name] isEqualToString:name]) {</span>
+<span class="lineNum">      81 </span><span class="lineCov">          8 :             return projectFile;</span>
+<span class="lineNum">      82 </span>            :         }
+<span class="lineNum">      83 </span><span class="lineCov">        360 :     }</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      86 </span>            : 
 <span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span><span class="lineCov">          1 : - (NSArray*) objectiveCFiles {</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 :     return [self projectFilesOfType:SourceCodeObjC];</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 : - (NSArray*) headerFiles {</span>
+<span class="lineNum">      89 </span><span class="lineCov">          1 :     return [self projectFilesOfType:SourceCodeHeader];</span>
 <span class="lineNum">      90 </span>            : }
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineCov">          1 : - (NSArray*) objectiveCPlusPlusFiles {</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 :     return [self projectFilesOfType:SourceCodeObjCPlusPlus];</span>
+<span class="lineNum">      92 </span><span class="lineCov">          1 : - (NSArray*) objectiveCFiles {</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     return [self projectFilesOfType:SourceCodeObjC];</span>
 <span class="lineNum">      94 </span>            : }
 <span class="lineNum">      95 </span>            : 
-<span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span><span class="lineCov">          1 : - (NSArray*) xibFiles {</span>
-<span class="lineNum">      98 </span><span class="lineCov">          1 :     return [self projectFilesOfType:XibFile];</span>
+<span class="lineNum">      96 </span><span class="lineCov">          1 : - (NSArray*) objectiveCPlusPlusFiles {</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     return [self projectFilesOfType:SourceCodeObjCPlusPlus];</span>
+<span class="lineNum">      98 </span>            : }
 <span class="lineNum">      99 </span>            : 
-<span class="lineNum">     100 </span>            : }
-<span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span>            : /* ================================================================================================================== */
-<span class="lineNum">     104 </span>            : #pragma mark Groups
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span><span class="lineCov">          1 : - (NSArray*) xibFiles {</span>
+<span class="lineNum">     102 </span><span class="lineCov">          1 :     return [self projectFilesOfType:XibFile];</span>
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : }
 <span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span><span class="lineCov">        436 : - (NSArray*) groups {</span>
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span><span class="lineCov">     222658 :     NSMutableArray* results = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">     109 </span><span class="lineCov">     111547 :     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
-<span class="lineNum">     110 </span>            : 
-<span class="lineNum">     111 </span><span class="lineCov">     111111 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXGroup) {</span>
-<span class="lineNum">     112 </span><span class="lineCov">       9780 :             [results addObject:[self groupWithKey:key]];</span>
-<span class="lineNum">     113 </span><span class="lineCov">       9780 :         }</span>
-<span class="lineNum">     114 </span><span class="lineCov">     111111 :     }];</span>
-<span class="lineNum">     115 </span>            : 
-<span class="lineNum">     116 </span><span class="lineCov">        436 :     return results;</span>
-<span class="lineNum">     117 </span><span class="lineCov">        436 : }</span>
-<span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineCov">      10150 : - (Group*) groupWithKey:(NSString*)key {</span>
-<span class="lineNum">     120 </span><span class="lineCov">      10150 :     NSDictionary* obj = [[self objects] valueForKey:key];</span>
-<span class="lineNum">     121 </span><span class="lineCov">      10150 :     if (obj &amp;&amp; [[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXGroup) {</span>
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            : /* ================================================================================================================== */
+<span class="lineNum">     108 </span>            : #pragma mark Groups
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span><span class="lineCov">        511 : - (NSArray*) groups {</span>
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span><span class="lineCov">     366773 :     NSMutableArray* results = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">     113 </span><span class="lineCov">     183642 :     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span><span class="lineCov">     183131 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXGroup) {</span>
+<span class="lineNum">     116 </span><span class="lineCov">      13776 :             [results addObject:[self groupWithKey:key]];</span>
+<span class="lineNum">     117 </span><span class="lineCov">      13776 :         }</span>
+<span class="lineNum">     118 </span><span class="lineCov">     183131 :     }];</span>
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span><span class="lineCov">        511 :     return results;</span>
+<span class="lineNum">     121 </span><span class="lineCov">        511 : }</span>
 <span class="lineNum">     122 </span>            : 
-<span class="lineNum">     123 </span><span class="lineCov">      10150 :         NSString* name = [obj valueForKey:@&quot;name&quot;];</span>
-<span class="lineNum">     124 </span><span class="lineCov">      10150 :         NSString* path = [obj valueForKey:@&quot;path&quot;];</span>
-<span class="lineNum">     125 </span><span class="lineCov">      10150 :         NSArray* children = [obj valueForKey:@&quot;children&quot;];</span>
+<span class="lineNum">     123 </span><span class="lineCov">      14195 : - (Group*) groupWithKey:(NSString*)key {</span>
+<span class="lineNum">     124 </span><span class="lineCov">      14195 :     NSDictionary* obj = [[self objects] valueForKey:key];</span>
+<span class="lineNum">     125 </span><span class="lineCov">      14195 :     if (obj &amp;&amp; [[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXGroup) {</span>
 <span class="lineNum">     126 </span>            : 
-<span class="lineNum">     127 </span><span class="lineCov">      10150 :         return [[Group alloc] initWithProject:self key:key alias:name path:path children:children];</span>
-<span class="lineNum">     128 </span><span class="lineCov">      10150 :     }</span>
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     return nil;</span>
-<span class="lineNum">     130 </span><span class="lineCov">      10150 : }</span>
-<span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span><span class="lineCov">        425 : - (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key {</span>
-<span class="lineNum">     133 </span><span class="lineCov">       5527 :     for (Group* group in [self groups]) {</span>
-<span class="lineNum">     134 </span><span class="lineCov">       5527 :         if ([group memberWithKey:key]) {</span>
-<span class="lineNum">     135 </span><span class="lineCov">        424 :             return group;</span>
-<span class="lineNum">     136 </span>            :         }
-<span class="lineNum">     137 </span><span class="lineCov">       5527 :     }</span>
-<span class="lineNum">     138 </span><span class="lineCov">          1 :     return nil;</span>
-<span class="lineNum">     139 </span><span class="lineCov">        425 : }</span>
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span>            : 
-<span class="lineNum">     142 </span>            : /* ================================================================================================================== */
-<span class="lineNum">     143 </span>            : #pragma mark Targets
+<span class="lineNum">     127 </span><span class="lineCov">      14195 :         NSString* name = [obj valueForKey:@&quot;name&quot;];</span>
+<span class="lineNum">     128 </span><span class="lineCov">      14195 :         NSString* path = [obj valueForKey:@&quot;path&quot;];</span>
+<span class="lineNum">     129 </span><span class="lineCov">      14195 :         NSArray* children = [obj valueForKey:@&quot;children&quot;];</span>
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span><span class="lineCov">      14195 :         return [[Group alloc] initWithProject:self key:key alias:name path:path children:children];</span>
+<span class="lineNum">     132 </span><span class="lineCov">      14195 :     }</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">     134 </span><span class="lineCov">      14195 : }</span>
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span><span class="lineCov">        498 : - (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key {</span>
+<span class="lineNum">     137 </span><span class="lineCov">       7285 :     for (Group* group in [self groups]) {</span>
+<span class="lineNum">     138 </span><span class="lineCov">       7285 :         if ([group memberWithKey:key]) {</span>
+<span class="lineNum">     139 </span><span class="lineCov">        497 :             return group;</span>
+<span class="lineNum">     140 </span>            :         }
+<span class="lineNum">     141 </span><span class="lineCov">       7285 :     }</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :     return nil;</span>
+<span class="lineNum">     143 </span><span class="lineCov">        498 : }</span>
 <span class="lineNum">     144 </span>            : 
-<span class="lineNum">     145 </span><span class="lineCov">          8 : - (NSArray*) targets {</span>
-<span class="lineNum">     146 </span><span class="lineCov">          8 :     if (_targets == nil) {</span>
-<span class="lineNum">     147 </span><span class="lineCov">          6 :         _targets = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">     148 </span><span class="lineCov">       5697 :         [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
-<span class="lineNum">     149 </span><span class="lineCov">       5691 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXNativeTarget) {</span>
-<span class="lineNum">     150 </span><span class="lineCov">         23 :                 Target* target = [[Target alloc] initWithProject:self key:key name:[obj valueForKey:@&quot;name&quot;]];</span>
-<span class="lineNum">     151 </span><span class="lineCov">         23 :                 [_targets addObject:target];</span>
-<span class="lineNum">     152 </span><span class="lineCov">         23 :             }</span>
-<span class="lineNum">     153 </span><span class="lineCov">       5691 :         }];</span>
-<span class="lineNum">     154 </span><span class="lineCov">          6 :     }</span>
-<span class="lineNum">     155 </span><span class="lineCov">          8 :     NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
-<span class="lineNum">     156 </span><span class="lineCov">          8 :     return [_targets sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];</span>
-<span class="lineNum">     157 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">     158 </span>            : 
-<span class="lineNum">     159 </span><span class="lineCov">          2 : - (Target*) targetWithName:(NSString*)name {</span>
-<span class="lineNum">     160 </span><span class="lineCov">          2 :     for (Target* target in [self targets]) {</span>
-<span class="lineNum">     161 </span><span class="lineCov">          2 :         if ([[target name] isEqualToString:name]) {</span>
-<span class="lineNum">     162 </span><span class="lineCov">          2 :             return target;</span>
-<span class="lineNum">     163 </span>            :         }
-<span class="lineNum">     164 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 :     return nil;</span>
-<span class="lineNum">     166 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     167 </span>            : 
-<span class="lineNum">     168 </span>            : 
-<span class="lineNum">     169 </span><span class="lineCov">         10 : - (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path {</span>
-<span class="lineNum">     170 </span><span class="lineCov">        250 :     for (Group* group in [self groups]) {</span>
-<span class="lineNum">     171 </span><span class="lineCov">        250 :         if ([group.pathRelativeToParent isEqualToString:path]) {</span>
-<span class="lineNum">     172 </span><span class="lineCov">         10 :             return group;</span>
-<span class="lineNum">     173 </span>            :         }
-<span class="lineNum">     174 </span><span class="lineCov">        250 :     }</span>
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     return nil;</span>
-<span class="lineNum">     176 </span><span class="lineCov">         10 : }</span>
-<span class="lineNum">     177 </span>            : 
-<span class="lineNum">     178 </span>            : 
-<span class="lineNum">     179 </span><span class="lineCov">          8 : - (void) save {</span>
-<span class="lineNum">     180 </span><span class="lineCov">          8 :     [_fileWriteQueue writePendingFilesToDisk];</span>
-<span class="lineNum">     181 </span><span class="lineCov">          8 :     [_project writeToFile:[_filePath stringByAppendingPathComponent:@&quot;project.pbxproj&quot;] atomically:NO];</span>
-<span class="lineNum">     182 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">     183 </span>            : 
-<span class="lineNum">     184 </span><span class="lineCov">      11666 : - (NSMutableDictionary*) objects {</span>
-<span class="lineNum">     185 </span><span class="lineCov">      11666 :     return [_project objectForKey:@&quot;objects&quot;];</span>
-<span class="lineNum">     186 </span>            : }
+<span class="lineNum">     145 </span>            : 
+<span class="lineNum">     146 </span>            : /* ================================================================================================================== */
+<span class="lineNum">     147 </span>            : #pragma mark Targets
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span><span class="lineCov">         10 : - (NSArray*) targets {</span>
+<span class="lineNum">     150 </span><span class="lineCov">         10 :     if (_targets == nil) {</span>
+<span class="lineNum">     151 </span><span class="lineCov">          8 :         _targets = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">     152 </span><span class="lineCov">       7929 :         [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">       7921 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXNativeTarget) {</span>
+<span class="lineNum">     154 </span><span class="lineCov">         31 :                 Target* target = [[Target alloc] initWithProject:self key:key name:[obj valueForKey:@&quot;name&quot;]];</span>
+<span class="lineNum">     155 </span><span class="lineCov">         31 :                 [_targets addObject:target];</span>
+<span class="lineNum">     156 </span><span class="lineCov">         31 :             }</span>
+<span class="lineNum">     157 </span><span class="lineCov">       7921 :         }];</span>
+<span class="lineNum">     158 </span><span class="lineCov">          8 :     }</span>
+<span class="lineNum">     159 </span><span class="lineCov">         10 :     NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
+<span class="lineNum">     160 </span><span class="lineCov">         10 :     return [_targets sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];</span>
+<span class="lineNum">     161 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span><span class="lineCov">          2 : - (Target*) targetWithName:(NSString*)name {</span>
+<span class="lineNum">     164 </span><span class="lineCov">          2 :     for (Target* target in [self targets]) {</span>
+<span class="lineNum">     165 </span><span class="lineCov">          2 :         if ([[target name] isEqualToString:name]) {</span>
+<span class="lineNum">     166 </span><span class="lineCov">          2 :             return target;</span>
+<span class="lineNum">     167 </span>            :         }
+<span class="lineNum">     168 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            : 
+<span class="lineNum">     173 </span><span class="lineCov">         12 : - (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path {</span>
+<span class="lineNum">     174 </span><span class="lineCov">        300 :     for (Group* group in [self groups]) {</span>
+<span class="lineNum">     175 </span><span class="lineCov">        300 :         if ([group.pathRelativeToParent isEqualToString:path]) {</span>
+<span class="lineNum">     176 </span><span class="lineCov">         12 :             return group;</span>
+<span class="lineNum">     177 </span>            :         }
+<span class="lineNum">     178 </span><span class="lineCov">        300 :     }</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">     180 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">     181 </span>            : 
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span><span class="lineCov">         10 : - (void) save {</span>
+<span class="lineNum">     184 </span><span class="lineCov">         10 :     [_fileWriteQueue writePendingFilesToDisk];</span>
+<span class="lineNum">     185 </span><span class="lineCov">         10 :     [_project writeToFile:[_filePath stringByAppendingPathComponent:@&quot;project.pbxproj&quot;] atomically:NO];</span>
+<span class="lineNum">     186 </span><span class="lineCov">         10 : }</span>
 <span class="lineNum">     187 </span>            : 
-<span class="lineNum">     188 </span>            : /* ================================================== Private Methods =============================================== */
-<span class="lineNum">     189 </span>            : #pragma mark Private
-<span class="lineNum">     190 </span>            : 
-<span class="lineNum">     191 </span><span class="lineCov">          4 : - (NSArray*) projectFilesOfType:(XcodeSourceFileType)projectFileType {</span>
-<span class="lineNum">     192 </span><span class="lineCov">          4 :     NSMutableArray* results = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">     193 </span><span class="lineCov">        236 :     for (SourceFile* file in [self files]) {</span>
-<span class="lineNum">     194 </span><span class="lineCov">        236 :         if ([file type] == projectFileType) {</span>
-<span class="lineNum">     195 </span><span class="lineCov">         41 :             [results addObject:file];</span>
-<span class="lineNum">     196 </span><span class="lineCov">         41 :         }</span>
-<span class="lineNum">     197 </span><span class="lineCov">        236 :     }</span>
-<span class="lineNum">     198 </span><span class="lineCov">          4 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
-<span class="lineNum">     199 </span><span class="lineCov">          4 :     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
-<span class="lineNum">     200 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     201 </span>            : 
-<span class="lineNum">     202 </span>            : 
-<span class="lineNum">     203 </span>            : @end
+<span class="lineNum">     188 </span><span class="lineCov">      16065 : - (NSMutableDictionary*) objects {</span>
+<span class="lineNum">     189 </span><span class="lineCov">      16065 :     return [_project objectForKey:@&quot;objects&quot;];</span>
+<span class="lineNum">     190 </span>            : }
+<span class="lineNum">     191 </span>            : 
+<span class="lineNum">     192 </span>            : /* ================================================== Private Methods =============================================== */
+<span class="lineNum">     193 </span>            : #pragma mark Private
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span><span class="lineCov">          4 : - (NSArray*) projectFilesOfType:(XcodeSourceFileType)projectFileType {</span>
+<span class="lineNum">     196 </span><span class="lineCov">          4 :     NSMutableArray* results = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">     197 </span><span class="lineCov">        236 :     for (SourceFile* file in [self files]) {</span>
+<span class="lineNum">     198 </span><span class="lineCov">        236 :         if ([file type] == projectFileType) {</span>
+<span class="lineNum">     199 </span><span class="lineCov">         41 :             [results addObject:file];</span>
+<span class="lineNum">     200 </span><span class="lineCov">         41 :         }</span>
+<span class="lineNum">     201 </span><span class="lineCov">        236 :     }</span>
+<span class="lineNum">     202 </span><span class="lineCov">          4 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
+<span class="lineNum">     203 </span><span class="lineCov">          4 :     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
+<span class="lineNum">     204 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     205 </span>            : 
+<span class="lineNum">     206 </span>            : 
+<span class="lineNum">     207 </span>            : @end
 </pre>
       </td>
     </tr>
