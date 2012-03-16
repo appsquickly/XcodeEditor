@@ -18,6 +18,7 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 [project save];
 ```
 
+
 ### Specifying Source File Belongs to Target
 
 ```objective-c
@@ -26,6 +27,7 @@ Target* examples = [project targetWithName:@"Examples"];
 [examples addMember:fileResource];
 [project save];
 ```
+
 
 ### Adding a Xib File
 
@@ -36,6 +38,7 @@ XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile" 
 [group addXib:xibDefinition toTargets:[project targets]];
 [project save];
 ```
+
 
 ### Adding a Framework
 
