@@ -45,7 +45,6 @@
 		6B3AD06814F8A3B400BCFE81 /* project.pbxproj in Resources */ = {isa = PBXBuildFile; fileRef = 6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */; };
 		6B3AD06A14F8A3B400BCFE81 /* NSString+TestResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD05F14F8A3B400BCFE81 /* NSString+TestResource.m */; };
 		6B3AD06B14F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD06014F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m */; };
-		6B41FDA814F60C5E00004897 /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FDA714F60C5E00004897 /* libprofile_rt.dylib */; };
 		6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD8982D14EA2441007875F4 /* SenTestingKit.framework */; };
 		6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
 		6B65941514F8A53300F65AEC /* Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B65941414F8A53300F65AEC /* Logging.h */; };
@@ -59,21 +58,8 @@
 		6B65942314F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.header in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05814F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.header */; };
 		6B65942414F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.impl in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05914F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.impl */; };
 		6B65942514F8AAB100F65AEC /* project.pbxproj in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */; };
-		6B918B2B14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B2D14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B3D14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B4114F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B4314F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B4B14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B4D14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B5D14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B6914F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B7F14F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		6B918B8914F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		6B918B9714F52DCF00F71C40 /* (null) in Sources */ = {isa = PBXBuildFile; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6BBD6C9714ECF28200451BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBD6C9614ECF28200451BA2 /* libz.dylib */; };
 		6BE0AAF81505D7C4004C27DA /* ESA.Sales.Foobar.xib in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */; };
-		6BE4B285147E6B610059E44F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		6BE4B285147E6B610059E451 /* expanz-iOS-SDK.zip in Resources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */; };
 		6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E452 /* XcodeGroupMember.h */; };
 		6BE4B285147E6B610059E458 /* xcode_XibDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E457 /* xcode_XibDefinition.m */; };
@@ -181,7 +167,6 @@
 				6BBD6C9714ECF28200451BA2 /* libz.dylib in Frameworks */,
 				6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */,
 				6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */,
-				6B41FDA814F60C5E00004897 /* libprofile_rt.dylib in Frameworks */,
 				6B65941714F8A54400F65AEC /* libKiwi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,18 +500,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B918B2B14F52DCF00F71C40 /* (null) in Sources */,
-				6B918B2D14F52DCF00F71C40 /* (null) in Sources */,
-				6B918B3D14F52DCF00F71C40 /* (null) in Sources */,
-				6B918B4114F52DCF00F71C40 /* (null) in Sources */,
-				6B918B4314F52DCF00F71C40 /* (null) in Sources */,
-				6B918B4B14F52DCF00F71C40 /* (null) in Sources */,
-				6B918B4D14F52DCF00F71C40 /* (null) in Sources */,
-				6B918B5D14F52DCF00F71C40 /* (null) in Sources */,
-				6B918B6914F52DCF00F71C40 /* (null) in Sources */,
-				6B918B7F14F52DCF00F71C40 /* (null) in Sources */,
-				6B918B8914F52DCF00F71C40 /* (null) in Sources */,
-				6B918B9714F52DCF00F71C40 /* (null) in Sources */,
 				6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */,
 				6B3AD03414F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */,
 				6B3AD03714F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */,
@@ -542,7 +515,6 @@
 				6B3AD06514F8A3B400BCFE81 /* ProjectSpec.m in Sources */,
 				6B3AD06A14F8A3B400BCFE81 /* NSString+TestResource.m in Sources */,
 				6B3AD06B14F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m in Sources */,
-				6BE4B285147E6B610059E44F /* (null) in Sources */,
 				6BE4B285147E6B610059E458 /* xcode_XibDefinition.m in Sources */,
 				6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */,
 			);

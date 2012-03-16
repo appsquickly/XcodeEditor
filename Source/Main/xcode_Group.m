@@ -270,7 +270,13 @@
     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"FileEncoding"];
     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
-    [reference setObject:name forKey:@"path"];
+    if (type == Framework) {
+        [reference setObject:[name lastPathComponent] forKey:@"name"];
+        [reference setObject:name forKey:@"path"];
+    }
+    else {
+        [reference setObject:name forKey:@"path"];
+    }
     [reference setObject:@"<group>" forKey:@"sourceTree"];
     return reference;
 }

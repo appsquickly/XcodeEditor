@@ -18,7 +18,12 @@
 #import "xcode_Target.h"
 
 
-#define frameworkPath @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/Accelerate.framework/"
+#define frameworkPathNoCopy @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/\
+SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Accelerate.framework/"
+
+#define frameworkPathCopyToDest @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/\
+SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreMIDI.framework/"
+
 
 SPEC_BEGIN(GroupSpec)
 
@@ -155,9 +160,15 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow adding a framework", ^{
 
                 FrameworkDefinition* frameworkDefinition =
-                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPath copyToDestination:NO];
+                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPathNoCopy copyToDestination:NO];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
+
+                frameworkDefinition =
+                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPathCopyToDest copyToDestination:YES];
+                [group addFramework:frameworkDefinition toTargets:[project targets]];
+                [project save];
+
             });
 
 
@@ -166,7 +177,7 @@ SPEC_BEGIN(GroupSpec)
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
                 [[children should] haveCountOf:12];
-                [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
+                [[[[children objectAtIndex:1] displayName] should] equal:@"AddedTwice.h"];
                 [[[[children objectAtIndex:11] displayName] should] equal:@"UserInterface"];
 
             });

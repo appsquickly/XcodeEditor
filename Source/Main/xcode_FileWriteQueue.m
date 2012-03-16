@@ -37,7 +37,11 @@
 }
 
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory {
-    [_frameworks setObject:filePath forKey:[_baseDirectory stringByAppendingPathComponent:directory]];
+    NSURL* sourceUrl = [NSURL fileURLWithPath:filePath isDirectory:YES];
+    NSURL* destinationUrl = [NSURL fileURLWithPath:[[_baseDirectory stringByAppendingPathComponent:directory]
+                                                           stringByAppendingPathComponent:[filePath lastPathComponent]]
+            isDirectory:YES];
+    [_frameworks setObject:sourceUrl forKey:destinationUrl];
 }
 
 
@@ -51,20 +55,20 @@
     }];
     [_data removeAllObjects];
 
-    [_frameworks enumerateKeysAndObjectsUsingBlock:^(id frameworkPath, id destinationPath, BOOL* stop) {
+    [_frameworks enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationPath, NSURL* frameworkPath, BOOL* stop) {
         NSError* error;
 
-        if ([[NSFileManager defaultManager] isReadableFileAtPath:frameworkPath]) {
-            [[NSFileManager defaultManager] copyItemAtURL:frameworkPath toURL:destinationPath error:&error];
-        }
-        else {
-            [NSException raise:NSInternalInconsistencyException
-                    format:@"The file at path %@ is not readable. Does the file exist?", frameworkPath];
-        }
+        LogDebug(@"Source path: %@, destination path: %@", [frameworkPath absoluteString], [destinationPath
+                absoluteString]);
+
+        LogDebug(@"#########################");
+        [[NSFileManager defaultManager] copyItemAtURL:frameworkPath toURL:destinationPath error:&error];
+
 
         if (error) {
+            LogDebug(@"User info: %@", [error userInfo]);
             [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@",
-                                                                       frameworkPath];
+                                                                       [frameworkPath absoluteString]];
         }
     }];
     [_frameworks removeAllObjects];

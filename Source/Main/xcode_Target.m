@@ -12,6 +12,7 @@
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Project.h"
+#import "XcodeMemberType.h"
 
 @interface xcode_Target (private)
 
@@ -46,7 +47,8 @@
         _members = [[NSMutableArray alloc] init];
         for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"]) {
             NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
+            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase ||
+                    [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhase) {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
                     SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
@@ -66,12 +68,12 @@
 
     for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"]) {
         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-        if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase) {
+        if ([[buildPhase valueForKey:@"isa"] asMemberType] == [self buildPhaseFor:member]) {
 
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
             if (![files containsObject:[member buildFileKey]]) {
                 [files addObject:[member buildFileKey]];
-            }
+            }   q
             else {
                 LogInfo(@"***WARNING*** Target %@ already includes %@", [self name], [member name]);
             }
@@ -102,5 +104,19 @@
     _members = nil;
 }
 
+
+- (XcodeMemberType) buildPhaseFor:(SourceFile*)sourceFile {
+    if (sourceFile.type == SourceCodeObjC || sourceFile.type == SourceCodeObjCPlusPlus || sourceFile.type == XibFile) {
+        return PBXSourcesBuildPhase;
+    }
+    else if (sourceFile.type == Framework) {
+        return PBXFrameworksBuildPhase;
+    }
+    else {
+        NSString* type = [NSString stringFromSourceFileType:[sourceFile type]];
+        [NSException raise:NSInternalInconsistencyException format:@"Type %@ cannot be added to a target.", type];
+    }
+    return 0;
+}
 
 @end
