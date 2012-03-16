@@ -37,6 +37,15 @@ XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile" 
 [project save];
 ```
 
+### Adding a Framework
+
+```objective-c
+FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
+[group addFramework:frameworkDefinition toTargets:[project targets]];
+[project save];
+```
+Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the project.
+
 # Docs
 
 The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
