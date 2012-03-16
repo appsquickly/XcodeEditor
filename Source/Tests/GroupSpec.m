@@ -18,11 +18,8 @@
 #import "xcode_Target.h"
 
 
-#define frameworkPathNoCopy @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/\
-SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Accelerate.framework/"
-
-#define frameworkPathCopyToDest @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/\
-SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreMIDI.framework/"
+#define frameworkPathNoCopy @"/System/Library/Frameworks/LDAP.framework/"
+#define frameworkPathCopyToDestination @"/System/Library/Frameworks/CoreAudio.framework/"
 
 
 SPEC_BEGIN(GroupSpec)
@@ -165,7 +162,7 @@ SPEC_BEGIN(GroupSpec)
                 [project save];
 
                 frameworkDefinition =
-                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPathCopyToDest copyToDestination:YES];
+                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPathCopyToDestination copyToDestination:YES];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
 

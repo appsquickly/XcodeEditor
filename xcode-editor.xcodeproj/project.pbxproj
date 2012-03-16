@@ -589,6 +589,7 @@
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Tests/Tests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -600,10 +601,7 @@
 					"\"$(SRCROOT)/Dependencies/Libraries\"",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib\"",
 				);
-				OTHER_CFLAGS = (
-					"-ftest-coverage",
-					"-fprofile-arcs",
-				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-lstdc++",
 					"-ObjC",
@@ -623,6 +621,7 @@
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Tests/Tests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -634,10 +633,7 @@
 					"\"$(SRCROOT)/Dependencies/Libraries\"",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib\"",
 				);
-				OTHER_CFLAGS = (
-					"-ftest-coverage",
-					"-fprofile-arcs",
-				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-lstdc++",
 					"-ObjC",

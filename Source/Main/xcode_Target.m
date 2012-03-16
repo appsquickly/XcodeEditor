@@ -20,6 +20,8 @@
 
 - (void) flagMembersAsDirty;
 
+- (XcodeMemberType) buildPhaseFor:(SourceFile*)sourceFile;
+
 @end
 
 
@@ -73,7 +75,7 @@
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
             if (![files containsObject:[member buildFileKey]]) {
                 [files addObject:[member buildFileKey]];
-            }   q
+            }
             else {
                 LogInfo(@"***WARNING*** Target %@ already includes %@", [self name], [member name]);
             }
