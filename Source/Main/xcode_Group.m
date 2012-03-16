@@ -25,7 +25,9 @@
 
 - (void) flagMembersAsDirty;
 
-- (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type;
+- (NSDictionary*) makeFileReferenceWithPath:(NSString*)path type:(XcodeSourceFileType)type;
+
+- (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type;
 
 - (NSDictionary*) asDictionary;
 
@@ -35,7 +37,6 @@
 
 - (void) warnPendingOverwrite:(NSString*)resourceName;
 
-- (NSString*) destinationPathFor:(FrameworkDefinition*)frameworkDefinition;
 
 @end
 /* ================================================================================================================== */
@@ -71,7 +72,7 @@
 
     SourceFile* currentHeaderFile = [self memberWithDisplayName:[classDefinition headerFileName]];
     if ((currentHeaderFile) == nil) {
-        NSDictionary* header = [self makeFileReference:[classDefinition headerFileName] type:SourceCodeHeader];
+        NSDictionary* header = [self makeFileReferenceWithPath:[classDefinition headerFileName] type:SourceCodeHeader];
         NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];
         [[_project objects] setObject:header forKey:headerKey];
         [self addMemberWithKey:headerKey];
@@ -87,7 +88,7 @@
 
     SourceFile* currentSourceFile = [self memberWithDisplayName:[classDefinition sourceFileName]];
     if ((currentSourceFile) == nil) {
-        NSDictionary* source = [self makeFileReference:[classDefinition sourceFileName] type:SourceCodeObjC];
+        NSDictionary* source = [self makeFileReferenceWithPath:[classDefinition sourceFileName] type:SourceCodeObjC];
         NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];
         [[_project objects] setObject:source forKey:sourceKey];
         [self addMemberWithKey:sourceKey];
@@ -112,7 +113,7 @@
 - (void) addXib:(XibDefinition*)xibDefinition {
     SourceFile* currentXibFile = [self memberWithDisplayName:[xibDefinition xibFileName]];
     if (currentXibFile == nil) {
-        NSDictionary* xib = [self makeFileReference:[xibDefinition xibFileName] type:XibFile];
+        NSDictionary* xib = [self makeFileReferenceWithPath:[xibDefinition xibFileName] type:XibFile];
         NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];
         [[_project objects] setObject:xib forKey:xibKey];
         [self addMemberWithKey:xibKey];
@@ -136,33 +137,32 @@
 
 
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {
-    NSString* destinationPath = [self destinationPathFor:frameworkDefinition];
-    LogDebug(@"$$$$$$$$$$$$$$$ destination path is: %@", destinationPath);
-    SourceFile* currentFrameworkFile = [self memberWithDisplayName:destinationPath];
 
-    if (currentFrameworkFile == nil) {
-        NSDictionary* framework = [self makeFileReference:destinationPath type:Framework];
-        NSString* frameworkKey = [[KeyBuilder forItemNamed:destinationPath] build];
-        [[_project objects] setObject:framework forKey:frameworkKey];
+    if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
+        NSDictionary* fileReference;
+        if ([frameworkDefinition copyToDestination]) {
+            fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] type:Framework];
+            [_writeQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
+                    inDirectory:[self pathRelativeToProjectRoot]];
+        }
+        else {
+            NSString* path = [frameworkDefinition filePath];
+            NSString* name = [frameworkDefinition name];
+            fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
+        }
+        NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
+        [[_project objects] setObject:fileReference forKey:frameworkKey];
         [self addMemberWithKey:frameworkKey];
     }
     else {
         [self warnPendingOverwrite:[frameworkDefinition filePath]];
-    }
-
-    if ([frameworkDefinition copyToDestination]) {
-        [_writeQueue
-                queueFrameworkWithFilePath:[frameworkDefinition filePath] inDirectory:[self pathRelativeToProjectRoot]];
-
     }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets {
     [self addFramework:frameworkDefinition];
-    LogDebug(@"Done adding 1st phase");
-    NSString* destinationPath = [self destinationPathFor:frameworkDefinition];
-    [self addSourceFile:[self memberWithDisplayName:destinationPath] toTargets:targets];
+    [self addSourceFile:[self memberWithDisplayName:[frameworkDefinition name]] toTargets:targets];
 }
 
 
@@ -265,21 +265,25 @@
     _members = nil;
 }
 
-- (NSDictionary*) makeFileReference:(NSString*)name type:(XcodeSourceFileType)type {
+- (NSDictionary*) makeFileReferenceWithPath:(NSString*)path type:(XcodeSourceFileType)type {
+    return [self makeFileReferenceWithPath:path name:nil type:type];
+}
+
+- (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"FileEncoding"];
     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
-    if (type == Framework) {
+    if (name != nil) {
         [reference setObject:[name lastPathComponent] forKey:@"name"];
-        [reference setObject:name forKey:@"path"];
     }
-    else {
-        [reference setObject:name forKey:@"path"];
+    if (path != nil) {
+        [reference setObject:path forKey:@"path"];
     }
     [reference setObject:@"<group>" forKey:@"sourceTree"];
     return reference;
 }
+
 
 - (NSDictionary*) asDictionary {
     NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];
@@ -308,15 +312,6 @@
 - (void) warnPendingOverwrite:(NSString*)resourceName {
     LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
             displayName], resourceName);
-}
-
-- (NSString*) destinationPathFor:(FrameworkDefinition*)frameworkDefinition {
-    if ([frameworkDefinition copyToDestination]) {
-        return [[self pathRelativeToProjectRoot] stringByAppendingPathComponent:[frameworkDefinition name]];
-    }
-    else {
-        return [frameworkDefinition filePath];
-    }
 }
 
 

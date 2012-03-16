@@ -65,6 +65,7 @@
 }
 
 - (void) addMember:(xcode_SourceFile*)member {
+    LogDebug(@"$$$$$$$$$$$$$$$$$$$$$$$$ start adding member: %@", member);
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
 

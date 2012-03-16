@@ -65,8 +65,12 @@
     NSDictionary* obj = [[self objects] valueForKey:key];
     if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
         XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
-        NSString* path = [obj valueForKey:@"path"];
-        return [[SourceFile alloc] initWithProject:self key:key type:fileType name:path];
+
+        NSString* name = [obj valueForKey:@"name"];
+        if (name == nil) {
+            name = [obj valueForKey:@"path"];
+        }
+        return [[SourceFile alloc] initWithProject:self key:key type:fileType name:name];
     }
     return nil;
 }

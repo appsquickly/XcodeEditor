@@ -18,8 +18,20 @@
 #import "xcode_Target.h"
 
 
-#define frameworkPathNoCopy @"/System/Library/Frameworks/LDAP.framework/"
-#define frameworkPathCopyToDestination @"/System/Library/Frameworks/CoreAudio.framework/"
+@implementation FrameworkPathFactory
+
+static const NSString* SDK_PATH =
+        @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk";
+
++ (NSString*) eventKitUIPath {
+    return [SDK_PATH stringByAppendingPathComponent:@"/System/Library/Frameworks/EventKitUI.framework"];
+}
+
++ (NSString*) coreMidiPath {
+    return [SDK_PATH stringByAppendingPathComponent:@"/System/Library/Frameworks/CoreMIDI.framework"];
+}
+
+@end
 
 
 SPEC_BEGIN(GroupSpec)
@@ -154,18 +166,20 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
-            it(@"should allow adding a framework", ^{
+            it(@"should allow adding a framework on the system volume", ^{
 
-                FrameworkDefinition* frameworkDefinition =
-                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPathNoCopy copyToDestination:NO];
+                FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc]
+                        initWithFilePath:[FrameworkPathFactory eventKitUIPath] copyToDestination:NO];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
 
-                frameworkDefinition =
-                        [[FrameworkDefinition alloc] initWithFilePath:frameworkPathCopyToDestination copyToDestination:YES];
+            });
+
+            it(@"should allow adding a framework, copying it to the destination folder", ^{
+                FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc]
+                        initWithFilePath:[FrameworkPathFactory coreMidiPath] copyToDestination:YES];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
-
             });
 
 
@@ -173,9 +187,9 @@ SPEC_BEGIN(GroupSpec)
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:12];
-                [[[[children objectAtIndex:1] displayName] should] equal:@"AddedTwice.h"];
-                [[[[children objectAtIndex:11] displayName] should] equal:@"UserInterface"];
+                [[children should] haveCountOf:13];
+                [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
+                [[[[children objectAtIndex:12] displayName] should] equal:@"UserInterface"];
 
             });
 
