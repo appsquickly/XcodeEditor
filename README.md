@@ -24,7 +24,7 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 ```objective-c
 File* sourceFile = [project fileWithName:@"MyNewClass.m"];
 Target* examples = [project targetWithName:@"Examples"];
-[examples addMember:fileResource];
+[examples addMember:sourceFile];
 [project save];
 ```
 
