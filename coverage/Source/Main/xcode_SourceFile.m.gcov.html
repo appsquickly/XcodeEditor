@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-03-16</td>
+            <td class="headerValue">2012-03-19</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -96,14 +96,14 @@
 <span class="lineNum">      38 </span><span class="lineCov">         28 :     if ([self canBecomeBuildFile] &amp;&amp; _isBuildFile == nil) {</span>
 <span class="lineNum">      39 </span><span class="lineCov">         28 :         _isBuildFile = [NSNumber numberWithBool:NO];</span>
 <span class="lineNum">      40 </span><span class="lineCov">         10 :         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
-<span class="lineNum">      41 </span><span class="lineCov">      11110 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
-<span class="lineNum">      42 </span><span class="lineCov">      11100 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key]) {</span>
-<span class="lineNum">      43 </span><span class="lineCov">       6619 :                     _isBuildFile = nil;</span>
+<span class="lineNum">      41 </span><span class="lineCov">      11111 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">      11101 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key]) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">       6620 :                     _isBuildFile = nil;</span>
 <span class="lineNum">      44 </span><span class="lineCov">          3 :                     _isBuildFile = [NSNumber numberWithBool:YES];</span>
 <span class="lineNum">      45 </span><span class="lineCov">          3 :                 }</span>
 <span class="lineNum">      46 </span><span class="lineCov">          3 :             }</span>
 <span class="lineNum">      47 </span>            :         }];
-<span class="lineNum">      48 </span><span class="lineCov">      11100 :     }</span>
+<span class="lineNum">      48 </span><span class="lineCov">      11101 :     }</span>
 <span class="lineNum">      49 </span><span class="lineCov">         10 :     return [_isBuildFile boolValue];</span>
 <span class="lineNum">      50 </span><span class="lineCov">         28 : }</span>
 <span class="lineNum">      51 </span>            : 
@@ -115,13 +115,13 @@
 <span class="lineNum">      57 </span>            : - (NSString*) buildFileKey {
 <span class="lineNum">      58 </span><span class="lineCov">         48 :     if (_buildFileKey == nil) {</span>
 <span class="lineNum">      59 </span><span class="lineCov">         48 :         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
-<span class="lineNum">      60 </span><span class="lineCov">       8899 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
-<span class="lineNum">      61 </span><span class="lineCov">       8891 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key]) {</span>
-<span class="lineNum">      62 </span><span class="lineCov">       5303 :                     _buildFileKey = key;</span>
+<span class="lineNum">      60 </span><span class="lineCov">       8900 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">       8892 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key]) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">       5304 :                     _buildFileKey = key;</span>
 <span class="lineNum">      63 </span><span class="lineCov">          8 :                 }</span>
 <span class="lineNum">      64 </span><span class="lineCov">          8 :             }</span>
 <span class="lineNum">      65 </span>            :         }];
-<span class="lineNum">      66 </span><span class="lineCov">       8891 :     }</span>
+<span class="lineNum">      66 </span><span class="lineCov">       8892 :     }</span>
 <span class="lineNum">      67 </span><span class="lineCov">          8 :     return _buildFileKey;</span>
 <span class="lineNum">      68 </span><span class="lineCov">         48 : </span>
 <span class="lineNum">      69 </span>            : }
