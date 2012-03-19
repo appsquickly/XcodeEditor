@@ -25,9 +25,9 @@
 
 - (void) flagMembersAsDirty;
 
-- (NSDictionary*) makeFileReferenceWithPath:(NSString*)path type:(XcodeSourceFileType)type;
-
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type;
+
+- (void) referenceAndQueue:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type;
 
 - (NSDictionary*) asDictionary;
 
@@ -68,39 +68,10 @@
 
 /* ================================================ Interface Methods =============================================== */
 #pragma mark Adding children
+
 - (void) addClass:(ClassDefinition*)classDefinition {
-
-    SourceFile* currentHeaderFile = [self memberWithDisplayName:[classDefinition headerFileName]];
-    if ((currentHeaderFile) == nil) {
-        NSDictionary* header = [self makeFileReferenceWithPath:[classDefinition headerFileName] type:SourceCodeHeader];
-        NSString* headerKey = [[KeyBuilder forItemNamed:[classDefinition headerFileName]] build];
-        [[_project objects] setObject:header forKey:headerKey];
-        [self addMemberWithKey:headerKey];
-        [_writeQueue queueFile:[classDefinition headerFileName] inDirectory:[self pathRelativeToProjectRoot]
-                withContents:[classDefinition source]];
-    }
-    else {
-        [self warnPendingOverwrite:[classDefinition headerFileName]];
-        [_writeQueue queueFile:[classDefinition headerFileName]
-                inDirectory:[[currentHeaderFile sourcePath] stringByDeletingLastPathComponent]
-                withContents:[classDefinition header]];
-    }
-
-    SourceFile* currentSourceFile = [self memberWithDisplayName:[classDefinition sourceFileName]];
-    if ((currentSourceFile) == nil) {
-        NSDictionary* source = [self makeFileReferenceWithPath:[classDefinition sourceFileName] type:SourceCodeObjC];
-        NSString* sourceKey = [[KeyBuilder forItemNamed:[classDefinition sourceFileName]] build];
-        [[_project objects] setObject:source forKey:sourceKey];
-        [self addMemberWithKey:sourceKey];
-        [_writeQueue queueFile:[classDefinition sourceFileName] inDirectory:[self pathRelativeToProjectRoot]
-                withContents:[classDefinition source]];
-    }
-    else {
-        [self warnPendingOverwrite:[classDefinition sourceFileName]];
-        [_writeQueue queueFile:[classDefinition sourceFileName]
-                inDirectory:[[currentSourceFile sourcePath] stringByDeletingLastPathComponent]
-                withContents:[classDefinition source]];
-    }
+    [self referenceAndQueue:[classDefinition headerFileName] contents:[classDefinition header] type:SourceCodeHeader];
+    [self referenceAndQueue:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjC];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -111,21 +82,7 @@
 }
 
 - (void) addXib:(XibDefinition*)xibDefinition {
-    SourceFile* currentXibFile = [self memberWithDisplayName:[xibDefinition xibFileName]];
-    if (currentXibFile == nil) {
-        NSDictionary* xib = [self makeFileReferenceWithPath:[xibDefinition xibFileName] type:XibFile];
-        NSString* xibKey = [[KeyBuilder forItemNamed:[xibDefinition xibFileName]] build];
-        [[_project objects] setObject:xib forKey:xibKey];
-        [self addMemberWithKey:xibKey];
-        [_writeQueue queueFile:[xibDefinition xibFileName] inDirectory:[self pathRelativeToProjectRoot]
-                withContents:[xibDefinition content]];
-    }
-    else {
-        [self warnPendingOverwrite:[xibDefinition xibFileName]];
-        [_writeQueue queueFile:[xibDefinition xibFileName]
-                inDirectory:[[currentXibFile sourcePath] stringByDeletingLastPathComponent]
-                withContents:[xibDefinition content]];
-    }
+    [self referenceAndQueue:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -137,11 +94,10 @@
 
 
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {
-
     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
-            fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] type:Framework];
+            fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
             [_writeQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
                     inDirectory:[self pathRelativeToProjectRoot]];
         }
@@ -265,8 +221,21 @@
     _members = nil;
 }
 
-- (NSDictionary*) makeFileReferenceWithPath:(NSString*)path type:(XcodeSourceFileType)type {
-    return [self makeFileReferenceWithPath:path name:nil type:type];
+- (void) referenceAndQueue:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type {
+    NSString* filePath;
+    SourceFile* currentSourceFile = [self memberWithDisplayName:name];
+    if ((currentSourceFile) == nil) {
+        NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
+        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+        [[_project objects] setObject:reference forKey:fileKey];
+        [self addMemberWithKey:fileKey];
+        filePath = [self pathRelativeToProjectRoot];
+    }
+    else {
+        [self warnPendingOverwrite:name];
+        filePath = [[currentSourceFile sourcePath] stringByDeletingLastPathComponent];
+    }
+    [_writeQueue queueFile:name inDirectory:filePath withContents:contents];
 }
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
