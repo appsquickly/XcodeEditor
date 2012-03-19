@@ -83,7 +83,7 @@
         [self warnPendingOverwrite:[classDefinition headerFileName]];
         [_writeQueue queueFile:[classDefinition headerFileName]
                 inDirectory:[[currentHeaderFile sourcePath] stringByDeletingLastPathComponent]
-                withContents:[classDefinition source]];
+                withContents:[classDefinition header]];
     }
 
     SourceFile* currentSourceFile = [self memberWithDisplayName:[classDefinition sourceFileName]];
