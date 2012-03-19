@@ -4,7 +4,7 @@ An API for manipulating Xcode project files.
 
 # Usage
 
-## Adding Source Files to a Project
+### Adding Source Files to a Project
 
 
 ```objective-c
@@ -18,16 +18,18 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 [project save];
 ```
 
-## Specifying Source File Belongs to Target
+
+### Specifying Source File Belongs to Target
 
 ```objective-c
 File* sourceFile = [project fileWithName:@"MyNewClass.m"];
 Target* examples = [project targetWithName:@"Examples"];
-[examples addMember:fileResource];
+[examples addMember:sourceFile];
 [project save];
 ```
 
-## Adding a Xib File
+
+### Adding a Xib File
 
 This time, we'll use a convenience method on xcode_Group to specify the targets at the same time:
 
@@ -37,14 +39,17 @@ XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile" 
 [project save];
 ```
 
+
 ### Adding a Framework
 
 ```objective-c
-FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
+FrameworkDefinition* frameworkDefinition = 
+    [[FrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
 [group addFramework:frameworkDefinition toTargets:[project targets]];
 [project save];
 ```
-Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the project.
+Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the 
+project, and subsequently linked from there. 
 
 # Docs
 
