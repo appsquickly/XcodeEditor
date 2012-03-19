@@ -167,13 +167,13 @@
 <span class="lineNum">     109 </span>            : 
 <span class="lineNum">     110 </span><span class="lineCov">        511 : - (NSArray*) groups {</span>
 <span class="lineNum">     111 </span>            : 
-<span class="lineNum">     112 </span><span class="lineCov">     366849 :     NSMutableArray* results = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">     113 </span><span class="lineCov">     183680 :     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
+<span class="lineNum">     112 </span><span class="lineCov">     366773 :     NSMutableArray* results = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">     113 </span><span class="lineCov">     183642 :     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
 <span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span><span class="lineCov">     183169 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXGroup) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">     183131 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXGroup) {</span>
 <span class="lineNum">     116 </span><span class="lineCov">      13776 :             [results addObject:[self groupWithKey:key]];</span>
 <span class="lineNum">     117 </span><span class="lineCov">      13776 :         }</span>
-<span class="lineNum">     118 </span><span class="lineCov">     183169 :     }];</span>
+<span class="lineNum">     118 </span><span class="lineCov">     183131 :     }];</span>
 <span class="lineNum">     119 </span>            : 
 <span class="lineNum">     120 </span><span class="lineCov">        511 :     return results;</span>
 <span class="lineNum">     121 </span><span class="lineCov">        511 : }</span>
@@ -207,12 +207,12 @@
 <span class="lineNum">     149 </span><span class="lineCov">         10 : - (NSArray*) targets {</span>
 <span class="lineNum">     150 </span><span class="lineCov">         10 :     if (_targets == nil) {</span>
 <span class="lineNum">     151 </span><span class="lineCov">          8 :         _targets = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">     152 </span><span class="lineCov">       7930 :         [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
-<span class="lineNum">     153 </span><span class="lineCov">       7922 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXNativeTarget) {</span>
+<span class="lineNum">     152 </span><span class="lineCov">       7929 :         [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">       7921 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXNativeTarget) {</span>
 <span class="lineNum">     154 </span><span class="lineCov">         31 :                 Target* target = [[Target alloc] initWithProject:self key:key name:[obj valueForKey:@&quot;name&quot;]];</span>
 <span class="lineNum">     155 </span><span class="lineCov">         31 :                 [_targets addObject:target];</span>
 <span class="lineNum">     156 </span><span class="lineCov">         31 :             }</span>
-<span class="lineNum">     157 </span><span class="lineCov">       7922 :         }];</span>
+<span class="lineNum">     157 </span><span class="lineCov">       7921 :         }];</span>
 <span class="lineNum">     158 </span><span class="lineCov">          8 :     }</span>
 <span class="lineNum">     159 </span><span class="lineCov">         10 :     NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
 <span class="lineNum">     160 </span><span class="lineCov">         10 :     return [_targets sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];</span>
