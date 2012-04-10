@@ -116,9 +116,19 @@
             [results addObject:[self groupWithKey:key]];
         }
     }];
-
     return results;
 }
+
+//TODO: Optimize this implementation.
+- (Group*) rootGroup {
+    for (Group* group in [self groups]) {
+        if ([group displayName] == nil && [group pathRelativeToParent] == nil) {
+            return group;
+        }
+    }
+    return nil;
+}
+
 
 - (Group*) groupWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
@@ -133,7 +143,7 @@
     return nil;
 }
 
-- (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key {
+- (Group*) groupForGroupMemberWithKey:(NSString*)key {
     for (Group* group in [self groups]) {
         if ([group memberWithKey:key]) {
             return group;
@@ -142,6 +152,14 @@
     return nil;
 }
 
+- (Group*) groupWithPathRelativeToParent:(NSString*)path {
+    for (Group* group in [self groups]) {
+        if ([group.pathRelativeToParent isEqualToString:path]) {
+            return group;
+        }
+    }
+    return nil;
+}
 
 /* ================================================================================================================== */
 #pragma mark Targets
@@ -168,17 +186,6 @@
     }
     return nil;
 }
-
-
-- (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path {
-    for (Group* group in [self groups]) {
-        if ([group.pathRelativeToParent isEqualToString:path]) {
-            return group;
-        }
-    }
-    return nil;
-}
-
 
 - (void) save {
     [_fileWriteQueue writePendingFilesToDisk];

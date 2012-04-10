@@ -82,6 +82,11 @@
 - (NSArray*) groups;
 
 /**
+ * Returns the root (top-level) group.
+ */
+- (xcode_Group*)rootGroup;
+
+/**
 * Returns the group with the given key, or nil.
 */
 - (xcode_Group*) groupWithKey:(NSString*)key;

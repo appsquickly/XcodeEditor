@@ -69,6 +69,7 @@ SPEC_BEGIN(ProjectSpec)
                 NSArray* groups = [project groups];
 
                 for (Group* group in groups) {
+                    LogDebug(@"$$$$$$$$$$$Path: %@", [group pathRelativeToParent]);
                     LogDebug(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
                     for (id<XcodeGroupMember> member  in [group members]) {
                         LogDebug(@"\t%@", [member displayName]);
@@ -78,6 +79,18 @@ SPEC_BEGIN(ProjectSpec)
                 [groups shouldNotBeNil];
                 [[groups shouldNot] beEmpty];
             });
+
+            it(@"should provide access to the root (top-level) group", ^{
+
+                Group* rootGroup = [project rootGroup];
+                [[[[[rootGroup members] objectAtIndex:0] displayName] should] equal:@"External"];
+                [[[[[rootGroup members] objectAtIndex:1] displayName] should] equal:@"Frameworks"];
+                [[[[[rootGroup members] objectAtIndex:2] displayName] should] equal:@"Products"];
+                [[[[[rootGroup members] objectAtIndex:3] displayName] should] equal:@"Source"];
+
+            });
+
+
 
         });
 
