@@ -17,8 +17,10 @@
 
 - (NSString*) displayName;
 
+- (NSString*) pathRelativeToProjectRoot;
+
 /**
-* Group members can either be other groups of source files.
+* Group members can either be other groups (PBXGroup) or source files (PBXFileReference).
 */
 - (XcodeMemberType) groupMemberType;
 @end

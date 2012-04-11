@@ -14,9 +14,9 @@
 		6B3AD03314F8A3AC00BCFE81 /* xcode_SourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01B14F8A3AC00BCFE81 /* xcode_SourceFile.h */; };
 		6B3AD03414F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_SourceFile.m */; };
 		6B3AD03514F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_SourceFile.m */; };
-		6B3AD03614F8A3AC00BCFE81 /* xcode_FileWriteQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01D14F8A3AC00BCFE81 /* xcode_FileWriteQueue.h */; };
-		6B3AD03714F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */; };
-		6B3AD03814F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */; };
+		6B3AD03614F8A3AC00BCFE81 /* xcode_FileOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01D14F8A3AC00BCFE81 /* xcode_FileOperationQueue.h */; };
+		6B3AD03714F8A3AC00BCFE81 /* xcode_FileOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileOperationQueue.m */; };
+		6B3AD03814F8A3AC00BCFE81 /* xcode_FileOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileOperationQueue.m */; };
 		6B3AD03914F8A3AC00BCFE81 /* xcode_Group.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01F14F8A3AC00BCFE81 /* xcode_Group.h */; };
 		6B3AD03A14F8A3AC00BCFE81 /* xcode_Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02014F8A3AC00BCFE81 /* xcode_Group.m */; };
 		6B3AD03B14F8A3AC00BCFE81 /* xcode_Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02014F8A3AC00BCFE81 /* xcode_Group.m */; };
@@ -49,11 +49,9 @@
 		6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
 		6B65941514F8A53300F65AEC /* Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B65941414F8A53300F65AEC /* Logging.h */; };
 		6B65941714F8A54400F65AEC /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B65941614F8A54400F65AEC /* libKiwi.a */; };
-		6B65941814F8A54400F65AEC /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B65941614F8A54400F65AEC /* libKiwi.a */; };
 		6B65941E14F8A56C00F65AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B65941A14F8A56C00F65AEC /* InfoPlist.strings */; };
 		6B65941F14F8A56C00F65AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B65941A14F8A56C00F65AEC /* InfoPlist.strings */; };
 		6B65942014F8A56C00F65AEC /* XcodeEditor-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B65941C14F8A56C00F65AEC /* XcodeEditor-Info.plist */; };
-		6B65942114F8A56C00F65AEC /* XcodeEditor-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B65941C14F8A56C00F65AEC /* XcodeEditor-Info.plist */; };
 		6B65942214F8A56C00F65AEC /* XcodeEditor-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 6B65941D14F8A56C00F65AEC /* XcodeEditor-Prefix.pch */; };
 		6B65942314F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.header in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05814F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.header */; };
 		6B65942414F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.impl in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05914F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.impl */; };
@@ -96,8 +94,8 @@
 		6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_ClassDefinition.m; sourceTree = "<group>"; };
 		6B3AD01B14F8A3AC00BCFE81 /* xcode_SourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_SourceFile.h; sourceTree = "<group>"; };
 		6B3AD01C14F8A3AC00BCFE81 /* xcode_SourceFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_SourceFile.m; sourceTree = "<group>"; };
-		6B3AD01D14F8A3AC00BCFE81 /* xcode_FileWriteQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FileWriteQueue.h; sourceTree = "<group>"; };
-		6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FileWriteQueue.m; sourceTree = "<group>"; };
+		6B3AD01D14F8A3AC00BCFE81 /* xcode_FileOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FileOperationQueue.h; sourceTree = "<group>"; };
+		6B3AD01E14F8A3AC00BCFE81 /* xcode_FileOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FileOperationQueue.m; sourceTree = "<group>"; };
 		6B3AD01F14F8A3AC00BCFE81 /* xcode_Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_Group.h; sourceTree = "<group>"; };
 		6B3AD02014F8A3AC00BCFE81 /* xcode_Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_Group.m; sourceTree = "<group>"; };
 		6B3AD02114F8A3AC00BCFE81 /* xcode_KeyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_KeyBuilder.h; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B3ACFE114F8A2FE00BCFE81 /* Cocoa.framework in Frameworks */,
-				6B65941814F8A54400F65AEC /* libKiwi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +194,8 @@
 				6B3AD02114F8A3AC00BCFE81 /* xcode_KeyBuilder.h */,
 				6B3AD02014F8A3AC00BCFE81 /* xcode_Group.m */,
 				6B3AD01F14F8A3AC00BCFE81 /* xcode_Group.h */,
-				6B3AD01E14F8A3AC00BCFE81 /* xcode_FileWriteQueue.m */,
-				6B3AD01D14F8A3AC00BCFE81 /* xcode_FileWriteQueue.h */,
+				6B3AD01E14F8A3AC00BCFE81 /* xcode_FileOperationQueue.m */,
+				6B3AD01D14F8A3AC00BCFE81 /* xcode_FileOperationQueue.h */,
 				6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */,
 				6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */,
 				6B65941914F8A56C00F65AEC /* Resources */,
@@ -337,7 +334,7 @@
 			files = (
 				6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */,
 				6B3AD03314F8A3AC00BCFE81 /* xcode_SourceFile.h in Headers */,
-				6B3AD03614F8A3AC00BCFE81 /* xcode_FileWriteQueue.h in Headers */,
+				6B3AD03614F8A3AC00BCFE81 /* xcode_FileOperationQueue.h in Headers */,
 				6B3AD03914F8A3AC00BCFE81 /* xcode_Group.h in Headers */,
 				6B3AD03C14F8A3AC00BCFE81 /* xcode_KeyBuilder.h in Headers */,
 				6B3AD03F14F8A3AC00BCFE81 /* xcode_Project.h in Headers */,
@@ -399,7 +396,7 @@
 		6BC10157147775A40055CF03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = EXPANZ;
 			};
 			buildConfigurationList = 6BC1015A147775A40055CF03 /* Build configuration list for PBXProject "xcode-editor" */;
@@ -426,7 +423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B65941F14F8A56C00F65AEC /* InfoPlist.strings in Resources */,
-				6B65942114F8A56C00F65AEC /* XcodeEditor-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,7 +480,7 @@
 			files = (
 				6B3AD03214F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */,
 				6B3AD03514F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */,
-				6B3AD03814F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */,
+				6B3AD03814F8A3AC00BCFE81 /* xcode_FileOperationQueue.m in Sources */,
 				6B3AD03B14F8A3AC00BCFE81 /* xcode_Group.m in Sources */,
 				6B3AD03E14F8A3AC00BCFE81 /* xcode_KeyBuilder.m in Sources */,
 				6B3AD04114F8A3AC00BCFE81 /* xcode_Project.m in Sources */,
@@ -502,7 +498,7 @@
 			files = (
 				6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */,
 				6B3AD03414F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */,
-				6B3AD03714F8A3AC00BCFE81 /* xcode_FileWriteQueue.m in Sources */,
+				6B3AD03714F8A3AC00BCFE81 /* xcode_FileOperationQueue.m in Sources */,
 				6B3AD03A14F8A3AC00BCFE81 /* xcode_Group.m in Sources */,
 				6B3AD03D14F8A3AC00BCFE81 /* xcode_KeyBuilder.m in Sources */,
 				6B3AD04014F8A3AC00BCFE81 /* xcode_Project.m in Sources */,
@@ -553,10 +549,7 @@
 				GCC_PREFIX_HEADER = "Source/Main/Resources/XcodeEditor-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Source/Main/Resources/XcodeEditor-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Dependencies/Libraries\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -573,10 +566,7 @@
 				GCC_PREFIX_HEADER = "Source/Main/Resources/XcodeEditor-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Source/Main/Resources/XcodeEditor-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Dependencies/Libraries\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -593,13 +583,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Tests/Tests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/Libraries/Kiwi\"";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Source/Tests/Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/usr/lib\"",
-					"\"$(SRCROOT)/Dependencies/Libraries\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib\"",
+					Dependencies/Libraries,
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -610,6 +598,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TEST_AFTER_BUILD = YES;
+				USER_HEADER_SEARCH_PATHS = Dependencies/Libraries/Kiwi;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -625,13 +614,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Tests/Tests-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/Libraries/Kiwi\"";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Source/Tests/Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_DIR)/usr/lib\"",
-					"\"$(SRCROOT)/Dependencies/Libraries\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib\"",
+					Dependencies/Libraries,
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -642,6 +629,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TEST_AFTER_BUILD = YES;
+				USER_HEADER_SEARCH_PATHS = Dependencies/Libraries/Kiwi;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

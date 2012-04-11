@@ -12,9 +12,9 @@
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Project.h"
-#import "XcodeMemberType.h"
 
-@interface xcode_Target (private)
+/* ================================================================================================================== */
+@interface xcode_Target ()
 
 - (SourceFile*) buildFileWithKey:(NSString*)key;
 
