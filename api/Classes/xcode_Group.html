@@ -65,11 +65,15 @@
 	
 	<option value="//api/name/addFramework:toTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- addFramework:toTargets:</option>
 	
+	<option value="//api/name/addGroupWithPath:">&nbsp;&nbsp;&nbsp;&nbsp;- addGroupWithPath:</option>
+	
 	<option value="//api/name/addXib:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:</option>
 	
 	<option value="//api/name/addXib:toTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:toTargets:</option>
 	
 	<option value="//api/name/initWithProject:key:alias:path:children:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:alias:path:children:</option>
+	
+	<option value="//api/name/isRootGroup">&nbsp;&nbsp;&nbsp;&nbsp;- isRootGroup</option>
 	
 	<option value="//api/name/memberWithDisplayName:">&nbsp;&nbsp;&nbsp;&nbsp;- memberWithDisplayName:</option>
 	
@@ -77,7 +81,11 @@
 	
 	<option value="//api/name/members">&nbsp;&nbsp;&nbsp;&nbsp;- members</option>
 	
-	<option value="//api/name/pathRelativeToProjectRoot">&nbsp;&nbsp;&nbsp;&nbsp;- pathRelativeToProjectRoot</option>
+	<option value="//api/name/removeFromSuperGroup">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromSuperGroup</option>
+	
+	<option value="//api/name/removeFromSuperGroup:">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromSuperGroup:</option>
+	
+	<option value="//api/name/superGroup">&nbsp;&nbsp;&nbsp;&nbsp;- superGroup</option>
 	
 	
 	
@@ -129,11 +137,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addFramework:toTargets:">addFramework:toTargets:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addGroupWithPath:">addGroupWithPath:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:">addXib:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:toTargets:">addXib:toTargets:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:alias:path:children:">initWithProject:key:alias:path:children:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isRootGroup">isRootGroup</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/memberWithDisplayName:">memberWithDisplayName:</a></span></li>
 	
@@ -141,7 +153,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/members">members</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToProjectRoot">pathRelativeToProjectRoot</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromSuperGroup">removeFromSuperGroup</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromSuperGroup:">removeFromSuperGroup:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/superGroup">superGroup</a></span></li>
 	
 </ul></li>
 
@@ -244,6 +260,34 @@ groups.</p>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/removeFromSuperGroup">&ndash;&nbsp;removeFromSuperGroup</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeFromSuperGroup:">&ndash;&nbsp;removeFromSuperGroup:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/superGroup">&ndash;&nbsp;superGroup</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isRootGroup">&ndash;&nbsp;isRootGroup</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/addClass:">&ndash;&nbsp;addClass:</a></code>
 		<span class="tooltip"><p>Adds a class to the group, as specified by the ClassDefinition. If the group already contains a class by the same
 name, the contents will be updated.</p></span>
@@ -288,6 +332,13 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/addGroupWithPath:">&ndash;&nbsp;addGroupWithPath:</a></code>
+		<span class="tooltip"><p>Adds a group with a path relative to this group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/members">&ndash;&nbsp;members</a></code>
 		<span class="tooltip"><p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p></span>
 	</span>
@@ -304,13 +355,6 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<span class="tooltip">
 		<code><a href="#//api/name/memberWithDisplayName:">&ndash;&nbsp;memberWithDisplayName:</a></code>
 		<span class="tooltip"><p>Returns the child with the specified name, or nil.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/pathRelativeToProjectRoot">&ndash;&nbsp;pathRelativeToProjectRoot</a></code>
-		<span class="tooltip"><p>Returns the full path of the group relative to the base of the <a href="#//api/name/project">project</a>.</p></span>
 	</span>
 	
 	
@@ -697,6 +741,45 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/addGroupWithPath:" title="addGroupWithPath:"></a>
+	<h3 class="subsubtitle method-title">addGroupWithPath:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a group with a path relative to this group.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addGroupWithPath:(NSString *)<em>path</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a group with a path relative to this group.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/addXib:" title="addXib:"></a>
 	<h3 class="subsubtitle method-title">addXib:</h3>
 	
@@ -777,6 +860,13 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 						<div class="section-method">
 	<a name="//api/name/initWithProject:key:alias:path:children:" title="initWithProject:key:alias:path:children:"></a>
 	<h3 class="subsubtitle method-title">initWithProject:key:alias:path:children:</h3>
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isRootGroup" title="isRootGroup"></a>
+	<h3 class="subsubtitle method-title">isRootGroup</h3>
 	
 	
 </div>
@@ -899,40 +989,22 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/pathRelativeToProjectRoot" title="pathRelativeToProjectRoot"></a>
-	<h3 class="subsubtitle method-title">pathRelativeToProjectRoot</h3>
+	<a name="//api/name/removeFromSuperGroup" title="removeFromSuperGroup"></a>
+	<h3 class="subsubtitle method-title">removeFromSuperGroup</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns the full path of the group relative to the base of the <a href="#//api/name/project">project</a>.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>- (NSString *)pathRelativeToProjectRoot</code></div>
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeFromSuperGroup:" title="removeFromSuperGroup:"></a>
+	<h3 class="subsubtitle method-title">removeFromSuperGroup:</h3>
 	
 	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the full path of the group relative to the base of the <a href="#//api/name/project">project</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">xcode_Group.h</code><br />
-	</div>				
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/superGroup" title="superGroup"></a>
+	<h3 class="subsubtitle method-title">superGroup</h3>
 	
 	
 </div>
@@ -950,7 +1022,7 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-03-20)</span><br />
+						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-04-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 759)</a>.</span></p>
 						

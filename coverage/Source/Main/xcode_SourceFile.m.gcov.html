@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">55</td>
+            <td class="headerCovTableEntry">57</td>
             <td class="headerCovTableEntry">62</td>
-            <td class="headerCovTableEntryMed">88.7 %</td>
+            <td class="headerCovTableEntryHi">91.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-03-20</td>
+            <td class="headerValue">2012-04-11</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -72,7 +72,7 @@
 <span class="lineNum">      14 </span>            : #import &quot;xcode_KeyBuilder.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;xcode_Group.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">       3209 : @implementation xcode_SourceFile</span>
+<span class="lineNum">      17 </span><span class="lineCov">       3285 : @implementation xcode_SourceFile</span>
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span><span class="lineCov">        444 : @synthesize type = _type;</span>
 <span class="lineNum">      20 </span><span class="lineCov">       3431 : @synthesize name = _name;</span>
@@ -80,16 +80,16 @@
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      24 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type name:(NSString*)name {
-<span class="lineNum">      25 </span><span class="lineCov">       3349 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">       3349 :     if (self) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">       3349 :         _project = project;</span>
-<span class="lineNum">      28 </span><span class="lineCov">       3349 :         _key = [key copy];</span>
-<span class="lineNum">      29 </span><span class="lineCov">       3349 :         _type = type;</span>
-<span class="lineNum">      30 </span><span class="lineCov">       3349 :         _name = [name copy];</span>
-<span class="lineNum">      31 </span><span class="lineCov">       3349 :     }</span>
-<span class="lineNum">      32 </span><span class="lineCov">       3349 :     return self;</span>
-<span class="lineNum">      33 </span><span class="lineCov">       3349 : }</span>
-<span class="lineNum">      34 </span><span class="lineCov">       3349 : </span>
+<span class="lineNum">      25 </span><span class="lineCov">       3501 :     self = [super init];</span>
+<span class="lineNum">      26 </span><span class="lineCov">       3501 :     if (self) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">       3501 :         _project = project;</span>
+<span class="lineNum">      28 </span><span class="lineCov">       3501 :         _key = [key copy];</span>
+<span class="lineNum">      29 </span><span class="lineCov">       3501 :         _type = type;</span>
+<span class="lineNum">      30 </span><span class="lineCov">       3501 :         _name = [name copy];</span>
+<span class="lineNum">      31 </span><span class="lineCov">       3501 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">       3501 :     return self;</span>
+<span class="lineNum">      33 </span><span class="lineCov">       3501 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">       3501 : </span>
 <span class="lineNum">      35 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (BOOL) isBuildFile {
@@ -149,28 +149,27 @@
 <span class="lineNum">      91 </span>            :     LogDebug(@&quot;Done becoming build file&quot;);
 <span class="lineNum">      92 </span><span class="lineCov">         26 : }</span>
 <span class="lineNum">      93 </span><span class="lineCov">         26 : </span>
-<span class="lineNum">      94 </span>            : - (NSString*) sourcePath {
-<span class="lineNum">      95 </span><span class="lineCov">        140 :     return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]</span>
-<span class="lineNum">      96 </span><span class="lineCov">        140 :             stringByAppendingPathComponent:_name];</span>
-<span class="lineNum">      97 </span>            : }
+<span class="lineNum">      94 </span>            : /* ================================================= Protocol Methods =============================================== */
+<span class="lineNum">      95 </span>            : - (XcodeMemberType) groupMemberType {
+<span class="lineNum">      96 </span><span class="lineCov">         76 :     return PBXFileReference;</span>
+<span class="lineNum">      97 </span><span class="lineCov">         76 : }</span>
 <span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span>            : /* ================================================= Protocol Methods =============================================== */
-<span class="lineNum">     100 </span>            : - (XcodeMemberType) groupMemberType {
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     return PBXFileReference;</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span>            : - (NSString*) displayName {
-<span class="lineNum">     105 </span><span class="lineCov">        279 :     return _name;</span>
-<span class="lineNum">     106 </span><span class="lineCov">        279 : }</span>
+<span class="lineNum">      99 </span>            : - (NSString*) displayName {
+<span class="lineNum">     100 </span><span class="lineCov">        353 :     return _name;</span>
+<span class="lineNum">     101 </span><span class="lineCov">        353 : }</span>
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span>            : - (NSString*) pathRelativeToProjectRoot {
+<span class="lineNum">     104 </span><span class="lineCov">        216 :     return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]</span>
+<span class="lineNum">     105 </span><span class="lineCov">        216 :             stringByAppendingPathComponent:_name];</span>
+<span class="lineNum">     106 </span>            : }
 <span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            : 
-<span class="lineNum">     109 </span>            : /* ================================================== Utility Methods =============================================== */
-<span class="lineNum">     110 </span>            : - (NSString*) description {
-<span class="lineNum">     111 </span><span class="lineCov">        137 :     return [NSString stringWithFormat:@&quot;Project file: key=%@, name=%@, fullPath=%@&quot;, _key, _name, [self sourcePath]];</span>
-<span class="lineNum">     112 </span><span class="lineCov">        137 : }</span>
+<span class="lineNum">     108 </span>            : /* ================================================== Utility Methods =============================================== */
+<span class="lineNum">     109 </span>            : - (NSString*) description {
+<span class="lineNum">     110 </span><span class="lineCov">        137 :     return [NSString stringWithFormat:@&quot;Project file: key=%@, name=%@, fullPath=%@&quot;, _key, _name, [self pathRelativeToProjectRoot]];</span>
+<span class="lineNum">     111 </span><span class="lineCov">        137 : }</span>
+<span class="lineNum">     112 </span>            : 
 <span class="lineNum">     113 </span>            : 
-<span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span>            : @end
+<span class="lineNum">     114 </span>            : @end
 </pre>
       </td>
     </tr>

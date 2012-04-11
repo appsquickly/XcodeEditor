@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">19</td>
-            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-03-20</td>
+            <td class="headerValue">2012-04-11</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -72,34 +72,33 @@
 <span class="lineNum">      14 </span>            : @implementation xcode_KeyBuilder
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      17 </span><span class="lineCov">         33 : + (xcode_KeyBuilder*) forItemNamed:(NSString*)name {</span>
-<span class="lineNum">      18 </span><span class="lineCov">         33 :     NSString* salt = [[NSDate date] description];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         33 :     NSData* data = [[name stringByAppendingString:salt] dataUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      20 </span><span class="lineCov">         33 :     return [[xcode_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];</span>
-<span class="lineNum">      21 </span><span class="lineCov">         33 : }</span>
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      24 </span>            : - (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length {
-<span class="lineNum">      25 </span><span class="lineCov">         33 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">         33 :     if (self != nil) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">         33 :         CC_MD5(bytes, (int) length, _value);</span>
-<span class="lineNum">      28 </span><span class="lineCov">         33 :     }</span>
-<span class="lineNum">      29 </span><span class="lineCov">         33 :     return self;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         33 : }</span>
-<span class="lineNum">      31 </span><span class="lineCov">         33 : </span>
-<span class="lineNum">      32 </span>            : /* ================================================ Interface Methods =============================================== */
-<span class="lineNum">      33 </span>            : - (NSString*) build {
-<span class="lineNum">      34 </span><span class="lineCov">         33 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
-<span class="lineNum">      35 </span><span class="lineCov">         33 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
-<span class="lineNum">      36 </span><span class="lineCov">         33 :     NSInteger i;</span>
-<span class="lineNum">      37 </span>            :     for (i = 0; i &lt; byteLength; i++) {
-<span class="lineNum">      38 </span><span class="lineCov">        561 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
-<span class="lineNum">      39 </span><span class="lineCov">        528 :     }</span>
-<span class="lineNum">      40 </span>            :     return [stringValue substringToIndex:24];
-<span class="lineNum">      41 </span><span class="lineCov">         33 : }</span>
-<span class="lineNum">      42 </span><span class="lineCov">         33 : </span>
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : @end
+<span class="lineNum">      17 </span><span class="lineCov">         34 : + (xcode_KeyBuilder*) forItemNamed:(NSString*)name {</span>
+<span class="lineNum">      18 </span><span class="lineCov">         34 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      19 </span><span class="lineCov">         34 :     return [[xcode_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];</span>
+<span class="lineNum">      20 </span><span class="lineCov">         34 : }</span>
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      23 </span>            : - (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length {
+<span class="lineNum">      24 </span><span class="lineCov">         34 :     self = [super init];</span>
+<span class="lineNum">      25 </span><span class="lineCov">         34 :     if (self != nil) {</span>
+<span class="lineNum">      26 </span><span class="lineCov">         34 :         CC_MD5(bytes, (int) length, _value);</span>
+<span class="lineNum">      27 </span><span class="lineCov">         34 :     }</span>
+<span class="lineNum">      28 </span><span class="lineCov">         34 :     return self;</span>
+<span class="lineNum">      29 </span><span class="lineCov">         34 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">         34 : </span>
+<span class="lineNum">      31 </span>            : /* ================================================ Interface Methods =============================================== */
+<span class="lineNum">      32 </span>            : - (NSString*) build {
+<span class="lineNum">      33 </span><span class="lineCov">         34 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
+<span class="lineNum">      34 </span><span class="lineCov">         34 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
+<span class="lineNum">      35 </span><span class="lineCov">         34 :     NSInteger i;</span>
+<span class="lineNum">      36 </span>            :     for (i = 0; i &lt; byteLength; i++) {
+<span class="lineNum">      37 </span><span class="lineCov">        578 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
+<span class="lineNum">      38 </span><span class="lineCov">        544 :     }</span>
+<span class="lineNum">      39 </span>            :     return [stringValue substringToIndex:24];
+<span class="lineNum">      40 </span><span class="lineCov">         34 : }</span>
+<span class="lineNum">      41 </span><span class="lineCov">         34 : </span>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : @end
 </pre>
       </td>
     </tr>
