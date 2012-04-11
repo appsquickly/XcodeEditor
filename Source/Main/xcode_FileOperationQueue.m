@@ -21,6 +21,8 @@
 
 - (void) performFileDeletions;
 
+- (void) performCreateDirectories;
+
 @end
 
 
@@ -33,6 +35,7 @@
         _filesToWrite = [[NSMutableDictionary alloc] init];
         _frameworksToCopy = [[NSMutableDictionary alloc] init];
         _filesToDelete = [[NSMutableArray alloc] init];
+        _directoriesToCreate = [[NSMutableArray alloc] init];
         _baseDirectory = [baseDirectory copy];
     }
     return self;
@@ -56,11 +59,15 @@
     [_filesToDelete addObject:filePath];
 }
 
+- (void) queueDirectory:(NSString*)withName inDirectory:(NSString*)parentDirectory {
+    [_directoriesToCreate addObject:[self destinationPathFor:withName inProjectDirectory:parentDirectory]];
+}
 
 - (void) commitFileOperations {
     [self performFileWrites];
     [self performCopyFrameworks];
     [self performFileDeletions];
+    [self performCreateDirectories];
 }
 
 
@@ -107,6 +114,20 @@
         }
     }
     [_filesToDelete removeAllObjects];
+}
+
+- (void) performCreateDirectories {
+    for (NSString* filePath in _directoriesToCreate) {
+        NSFileManager* fileManager = [NSFileManager defaultManager];
+        if (![fileManager fileExistsAtPath:filePath isDirectory:YES]) {
+            if (![fileManager
+                    createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil]) {
+                [NSException raise:NSInvalidArgumentException format:@"Error: Create folder failed %@", filePath];
+            }
+        }
+
+    }
+
 }
 
 

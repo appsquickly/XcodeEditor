@@ -157,6 +157,15 @@
     [self addSourceFile:[self memberWithDisplayName:[frameworkDefinition name]] toTargets:targets];
 }
 
+- (void) addGroupWithPath:(NSString*)path {
+    NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
+    Group* group = [[Group alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil];
+    LogDebug(@"Here's the group: %@", [group asDictionary]);
+    [[_project objects] setObject:[group asDictionary] forKey:groupKey];
+    [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
+    [self addMemberWithKey:groupKey];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+}
 
 /* ================================================================================================================== */
 #pragma mark Locating children

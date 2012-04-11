@@ -17,7 +17,7 @@
 #import "xcode_SourceFile.h"
 #import "xcode_Target.h"
 
-@interface FrameworkPathFactory 
+@interface FrameworkPathFactory
 @end
 
 @implementation FrameworkPathFactory
@@ -76,7 +76,7 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
-        describe(@"Source files.", ^{
+        describe(@"Adding members.", ^{
 
             it(@"should allow adding a source file.", ^{
 
@@ -184,14 +184,23 @@ SPEC_BEGIN(GroupSpec)
                 [project save];
             });
 
+            it(@"should allow adding a group", ^{
 
+                [group addGroupWithPath:@"TestGroup"];
+                [project save];
+            });
+
+        });
+
+
+        describe(@"Listing members", ^{
             it(@"should be able to provide a sorted list of it's children", ^{
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:13];
+                [[children should] haveCountOf:14];
                 [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
-                [[[[children objectAtIndex:12] displayName] should] equal:@"UserInterface"];
+                [[[[children objectAtIndex:13] displayName] should] equal:@"UserInterface"];
 
             });
 
@@ -204,6 +213,7 @@ SPEC_BEGIN(GroupSpec)
             });
 
         });
+
 
         describe(@"Deleting", ^{
 

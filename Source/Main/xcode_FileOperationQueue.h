@@ -18,6 +18,7 @@
     NSMutableDictionary* _filesToWrite;
     NSMutableDictionary* _frameworksToCopy;
     NSMutableArray* _filesToDelete;
+    NSMutableArray* _directoriesToCreate;
 }
 
 
@@ -28,6 +29,8 @@
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;
 
 - (void) queueDeletion:(NSString*)filePath;
+
+- (void) queueDirectory:(NSString*)withName inDirectory:(NSString*)parentDirectory;
 
 - (void) commitFileOperations;
 
