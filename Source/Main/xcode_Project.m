@@ -13,12 +13,12 @@
 #import "xcode_Project.h"
 #import "XcodeSourceFileType.h"
 #import "xcode_Group.h"
-#import "xcode_FileWriteQueue.h"
+#import "xcode_FileOperationQueue.h"
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 
-
-@interface xcode_Project (private)
+/* ================================================================================================================== */
+@interface xcode_Project ()
 
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
 
@@ -39,7 +39,7 @@
         if (!_project) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
-        _fileWriteQueue = [[FileWriteQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
+        _fileWriteQueue = [[FileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
     }
     return self;
 }
@@ -116,9 +116,19 @@
             [results addObject:[self groupWithKey:key]];
         }
     }];
-
     return results;
 }
+
+//TODO: Optimize this implementation.
+- (Group*) rootGroup {
+    for (Group* group in [self groups]) {
+        if ([group isRootGroup]) {
+            return group;
+        }
+    }
+    return nil;
+}
+
 
 - (Group*) groupWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
@@ -133,7 +143,7 @@
     return nil;
 }
 
-- (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key {
+- (Group*) groupForGroupMemberWithKey:(NSString*)key {
     for (Group* group in [self groups]) {
         if ([group memberWithKey:key]) {
             return group;
@@ -142,6 +152,14 @@
     return nil;
 }
 
+- (Group*) groupWithPathRelativeToParent:(NSString*)path {
+    for (Group* group in [self groups]) {
+        if ([group.pathRelativeToParent isEqualToString:path]) {
+            return group;
+        }
+    }
+    return nil;
+}
 
 /* ================================================================================================================== */
 #pragma mark Targets
@@ -169,19 +187,8 @@
     return nil;
 }
 
-
-- (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path {
-    for (Group* group in [self groups]) {
-        if ([group.pathRelativeToParent isEqualToString:path]) {
-            return group;
-        }
-    }
-    return nil;
-}
-
-
 - (void) save {
-    [_fileWriteQueue writePendingFilesToDisk];
+    [_fileWriteQueue commitFileOperations];
     [_project writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
 }
 

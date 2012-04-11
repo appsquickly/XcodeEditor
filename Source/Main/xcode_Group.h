@@ -8,6 +8,7 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+
 #import <Foundation/Foundation.h>
 #import "XcodeGroupMember.h"
 
@@ -15,7 +16,7 @@
 @class xcode_ClassDefinition;
 @class xcode_SourceFile;
 @class xcode_XibDefinition;
-@class xcode_FileWriteQueue;
+@class xcode_FileOperationQueue;
 @class xcode_FrameworkDefinition;
 
 
@@ -28,7 +29,7 @@
 @private
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
-    __weak xcode_FileWriteQueue* _writeQueue;
+    __weak xcode_FileOperationQueue* _fileOperationQueue;
     NSMutableArray* _members;
 }
 
@@ -63,11 +64,24 @@
 */
 @property(nonatomic, strong, readonly) NSArray* children;
 
-/* ================================================== Initializers ================================================== */
+/* ================================================================================================================== */
+#pragma mark Initializers
+
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
         children:(NSArray*)children;
 
-/* ================================================ Interface Methods =============================================== */
+/* ================================================================================================================== */
+#pragma mark Super (parent) group
+
+- (void) removeFromSuperGroup;
+
+- (void) removeFromSuperGroup:(BOOL)deleteChildren;
+
+- (xcode_Group*) superGroup;
+
+- (BOOL) isRootGroup;
+
+/* ================================================================================================================== */
 #pragma mark Adding children
 /**
  * Adds a class to the group, as specified by the ClassDefinition. If the group already contains a class by the same
@@ -101,6 +115,11 @@
 */
 - (void) addFramework:(xcode_FrameworkDefinition*)framework toTargets:(NSArray*)targets;
 
+/**
+* Adds a group with a path relative to this group.
+*/
+- (void) addGroupWithPath:(NSString*)path;
+
 /* ================================================================================================================== */
 #pragma mark Locating children
 /**
@@ -118,12 +137,6 @@
 */
 - (id<XcodeGroupMember>) memberWithDisplayName:(NSString*)name;
 
-/* ================================================================================================================== */
-#pragma mark File paths
-/**
- * Returns the full path of the group relative to the base of the project.
-*/
-- (NSString*) pathRelativeToProjectRoot;
 
 @end
 

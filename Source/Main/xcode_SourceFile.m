@@ -91,11 +91,6 @@
     LogDebug(@"Done becoming build file");
 }
 
-- (NSString*) sourcePath {
-    return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]
-            stringByAppendingPathComponent:_name];
-}
-
 /* ================================================= Protocol Methods =============================================== */
 - (XcodeMemberType) groupMemberType {
     return PBXFileReference;
@@ -105,10 +100,14 @@
     return _name;
 }
 
+- (NSString*) pathRelativeToProjectRoot {
+    return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]
+            stringByAppendingPathComponent:_name];
+}
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name, [self sourcePath]];
+    return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name, [self pathRelativeToProjectRoot]];
 }
 
 

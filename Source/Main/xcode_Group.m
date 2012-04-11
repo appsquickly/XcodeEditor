@@ -11,7 +11,7 @@
 
 #import "xcode_FrameworkDefinition.h"
 #import "xcode_Target.h"
-#import "xcode_FileWriteQueue.h"
+#import "xcode_FileOperationQueue.h"
 #import "xcode_XibDefinition.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Group.h"
@@ -19,7 +19,8 @@
 #import "xcode_ClassDefinition.h"
 #import "xcode_KeyBuilder.h"
 
-@interface xcode_Group (private)
+/* ================================================================================================================== */
+@interface xcode_Group ()
 
 - (void) addMemberWithKey:(NSString*)key;
 
@@ -56,7 +57,7 @@
     self = [super init];
     if (self) {
         _project = project;
-        _writeQueue = [_project fileWriteQueue];
+        _fileOperationQueue = [_project fileWriteQueue];
         _key = [key copy];
         _alias = [alias copy];
         _pathRelativeToParent = [path copy];
@@ -67,6 +68,41 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
+#pragma mark Super (parent) group
+
+- (void) removeFromSuperGroup {
+    [self removeFromSuperGroup:NO];
+}
+
+- (void) removeFromSuperGroup:(BOOL)deleteChildren {
+    LogDebug(@"Removing group %@", [self pathRelativeToProjectRoot]);
+    if (deleteChildren) {
+        LogDebug(@"Deleting children");
+        for (id<XcodeGroupMember> groupMember in [self members]) {
+            if ([groupMember groupMemberType] == PBXGroup) {
+                Group* group = (Group*) groupMember;
+                [group removeFromSuperGroup:YES];
+                LogDebug(@"My full path is : %@", [group pathRelativeToProjectRoot]);
+
+            }
+            else {
+                [_fileOperationQueue queueDeletion:[groupMember pathRelativeToProjectRoot]];
+            }
+        }
+    }
+    [[_project objects] removeObjectForKey:_key];
+}
+
+- (xcode_Group*) superGroup {
+    return [_project groupForGroupMemberWithKey:_key];
+}
+
+- (BOOL) isRootGroup {
+    return [self pathRelativeToParent] == nil && [self displayName] == nil;
+}
+
+
+/* ================================================================================================================== */
 #pragma mark Adding children
 
 - (void) addClass:(ClassDefinition*)classDefinition {
@@ -98,7 +134,7 @@
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
-            [_writeQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
+            [_fileOperationQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
                     inDirectory:[self pathRelativeToProjectRoot]];
         }
         else {
@@ -165,31 +201,6 @@
     return nil;
 }
 
-
-/* ================================================================================================================== */
-#pragma mark File paths
-
-- (NSString*) pathRelativeToProjectRoot {
-    if (_pathRelativeToProjectRoot == nil) {
-        NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-        Group* group;
-        NSString* key = _key;
-
-        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil) {
-            [pathComponents addObject:[group pathRelativeToParent]];
-            key = [group key];
-        }
-
-        NSMutableString* fullPath = [[NSMutableString alloc] init];
-        for (int i = [pathComponents count] - 1; i >= 0; i--) {
-            [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
-        }
-        _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];
-    }
-    return _pathRelativeToProjectRoot;
-}
-
-
 /* ================================================= Protocol Methods =============================================== */
 - (XcodeMemberType) groupMemberType {
     return PBXGroup;
@@ -204,6 +215,25 @@
     }
 }
 
+- (NSString*) pathRelativeToProjectRoot {
+    if (_pathRelativeToProjectRoot == nil) {
+        NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
+        Group* group;
+        NSString* key = _key;
+
+        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && !([group pathRelativeToParent] == nil)) {
+            [pathComponents addObject:[group pathRelativeToParent]];
+            key = [group key];
+        }
+
+        NSMutableString* fullPath = [[NSMutableString alloc] init];
+        for (int i = [pathComponents count] - 1; i >= 0; i--) {
+            [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
+        }
+        _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];
+    }
+    return _pathRelativeToProjectRoot;
+}
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
@@ -233,9 +263,9 @@
     }
     else {
         [self warnPendingOverwrite:name];
-        filePath = [[currentSourceFile sourcePath] stringByDeletingLastPathComponent];
+        filePath = [[currentSourceFile pathRelativeToProjectRoot] stringByDeletingLastPathComponent];
     }
-    [_writeQueue queueFile:name inDirectory:filePath withContents:contents];
+    [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
 }
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {

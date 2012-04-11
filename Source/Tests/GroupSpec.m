@@ -17,6 +17,8 @@
 #import "xcode_SourceFile.h"
 #import "xcode_Target.h"
 
+@interface FrameworkPathFactory 
+@end
 
 @implementation FrameworkPathFactory
 
@@ -68,7 +70,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should be able to return its full path relative to the project base directory", ^{
 
-                LogDebug(@"Path: %@", [group pathRelativeToProjectRoot]);
+                LogDebug(@"############Path: %@", [group pathRelativeToProjectRoot]);
 
             });
 
@@ -90,7 +92,7 @@ SPEC_BEGIN(GroupSpec)
 
                 SourceFile* fileResource = [project fileWithName:@"MyViewController.m"];
                 [fileResource shouldNotBeNil];
-                [[[fileResource sourcePath] should] equal:@"Source/Main/MyViewController.m"];
+                [[[fileResource pathRelativeToProjectRoot] should] equal:@"Source/Main/MyViewController.m"];
 
                 Target* examples = [project targetWithName:@"Examples"];
                 [examples shouldNotBeNil];
@@ -198,6 +200,23 @@ SPEC_BEGIN(GroupSpec)
 
                 SourceFile* member = [group memberWithDisplayName:@"AnotherClassAdded.m"];
                 [member shouldNotBeNil];
+
+            });
+
+        });
+
+        describe(@"Deleting", ^{
+
+            it(@"should allow deleting a group, optionally removing also the contents.", ^{
+
+                Group* group = [project groupWithPathRelativeToParent:@"Tests"];
+                [group shouldNotBeNil];
+
+                [group removeFromSuperGroup:YES];
+                [project save];
+
+                Group* deleted = [project groupWithPathRelativeToParent:@"Tests"];
+                [deleted shouldBeNil];
 
             });
 

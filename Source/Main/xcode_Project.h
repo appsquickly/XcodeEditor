@@ -13,7 +13,7 @@
 
 @class xcode_ClassDefinition;
 @class xcode_Group;
-@class xcode_FileWriteQueue;
+@class xcode_FileOperationQueue;
 @class xcode_SourceFile;
 @class xcode_Target;
 
@@ -26,7 +26,7 @@
     NSMutableArray* _targets;
 }
 
-@property(nonatomic, strong, readonly) xcode_FileWriteQueue* fileWriteQueue;
+@property(nonatomic, strong, readonly) xcode_FileOperationQueue* fileWriteQueue;
 
 /* ================================================== Initializers ================================================== */
 /**
@@ -80,6 +80,11 @@
 * Lists the groups in an xcode project, returning an array of `xcode_Group` objects.
 */
 - (NSArray*) groups;
+
+/**
+ * Returns the root (top-level) group.
+ */
+- (xcode_Group*)rootGroup;
 
 /**
 * Returns the group with the given key, or nil.
