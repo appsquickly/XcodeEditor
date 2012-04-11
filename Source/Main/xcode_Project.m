@@ -13,12 +13,12 @@
 #import "xcode_Project.h"
 #import "XcodeSourceFileType.h"
 #import "xcode_Group.h"
-#import "xcode_FileWriteQueue.h"
+#import "xcode_FileOperationQueue.h"
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 
-
-@interface xcode_Project (private)
+/* ================================================================================================================== */
+@interface xcode_Project ()
 
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
 
@@ -39,7 +39,7 @@
         if (!_project) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
-        _fileWriteQueue = [[FileWriteQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
+        _fileWriteQueue = [[FileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
     }
     return self;
 }
@@ -122,7 +122,7 @@
 //TODO: Optimize this implementation.
 - (Group*) rootGroup {
     for (Group* group in [self groups]) {
-        if ([group displayName] == nil && [group pathRelativeToParent] == nil) {
+        if ([group isRootGroup]) {
             return group;
         }
     }
@@ -188,7 +188,7 @@
 }
 
 - (void) save {
-    [_fileWriteQueue writePendingFilesToDisk];
+    [_fileWriteQueue commitFileOperations];
     [_project writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
 }
 

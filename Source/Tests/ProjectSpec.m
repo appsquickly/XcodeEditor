@@ -69,7 +69,6 @@ SPEC_BEGIN(ProjectSpec)
                 NSArray* groups = [project groups];
 
                 for (Group* group in groups) {
-                    LogDebug(@"$$$$$$$$$$$Path: %@", [group pathRelativeToParent]);
                     LogDebug(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
                     for (id<XcodeGroupMember> member  in [group members]) {
                         LogDebug(@"\t%@", [member displayName]);

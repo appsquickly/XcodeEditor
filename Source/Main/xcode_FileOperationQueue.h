@@ -11,24 +11,27 @@
 #import <Foundation/Foundation.h>
 
 
-@interface xcode_FileWriteQueue : NSObject {
+@interface xcode_FileOperationQueue : NSObject {
 
 @private
     NSString* _baseDirectory;
-    NSMutableDictionary* _data;
-    NSMutableDictionary* _frameworks;
+    NSMutableDictionary* _filesToWrite;
+    NSMutableDictionary* _frameworksToCopy;
+    NSMutableArray* _filesToDelete;
 }
 
 
 - (id) initWithBaseDirectory:(NSString*)baseDirectory;
 
-- (void) queueFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
+- (void) queueWrite:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
 
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;
 
-- (void) writePendingFilesToDisk;
+- (void) queueDeletion:(NSString*)filePath;
+
+- (void) commitFileOperations;
 
 @end
 
 /* ================================================================================================================== */
-@compatibility_alias FileWriteQueue xcode_FileWriteQueue;
+@compatibility_alias FileOperationQueue xcode_FileOperationQueue;

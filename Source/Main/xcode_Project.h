@@ -13,7 +13,7 @@
 
 @class xcode_ClassDefinition;
 @class xcode_Group;
-@class xcode_FileWriteQueue;
+@class xcode_FileOperationQueue;
 @class xcode_SourceFile;
 @class xcode_Target;
 
@@ -26,7 +26,7 @@
     NSMutableArray* _targets;
 }
 
-@property(nonatomic, strong, readonly) xcode_FileWriteQueue* fileWriteQueue;
+@property(nonatomic, strong, readonly) xcode_FileOperationQueue* fileWriteQueue;
 
 /* ================================================== Initializers ================================================== */
 /**
