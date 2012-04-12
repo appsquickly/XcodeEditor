@@ -95,8 +95,15 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 
 # Compatibility 
 
-Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode. The AppCode IDE from
+* Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode. The AppCode IDE from
 JetBrains is not yet supported. 
+* It uses ARC and weak references so requires iOS 5.0 or OSX 10.7 64 bit. 
+
+# Who's using it? 
+
+* <a href="www.expanz.com">expanz</a>. A RAD framework that enables .NET developers in producing cross-platform and cloud apps. www.expanz.com
+* <a href="www.lesspainful.com">Less Painful</a> Automated functional testing for mobile applications. 
+* <a href="www.levelhelper.org">Level Helper</a>A RAD framework for developing 2D games on iOS & Android. 
 
 # Authors
 
