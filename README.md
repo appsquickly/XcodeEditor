@@ -107,7 +107,7 @@ JetBrains is not yet supported.
 
 # Authors
 
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778>Jasper Blues</a> - jasper.blues@expanz.com
+* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - jasper.blues@expanz.com
 * © 2011 - 2012 expanz.com
 
 # LICENSE
