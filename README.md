@@ -102,8 +102,8 @@ JetBrains is not yet supported.
 # Who's using it? 
 
 * <a href="http://www.expanz.com">expanz</a>: A RAD framework that enables .NET developers in producing cross-platform and cloud apps. www.expanz.com
-* <a href="http://www.lesspainful.com">: Less Painful</a> Automated functional testing for mobile applications. 
-* <a href="http://www.levelhelper.org">: Level Helper</a>A RAD framework for developing 2D games on iOS & Android. 
+* <a href="http://www.lesspainful.com">Less Painful</a>: Automated functional testing for mobile applications. 
+* <a href="http://www.levelhelper.org">Level Helper</a>: A RAD framework for developing 2D games on iOS & Android. 
 
 # Authors
 
