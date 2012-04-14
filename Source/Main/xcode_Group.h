@@ -59,10 +59,6 @@
 */
 @property(nonatomic, strong, readonly) NSString* key;
 
-/**
- * An array containing the groups members as `XcodeGroupMember` types.
-*/
-@property(nonatomic, strong, readonly) NSArray* children;
 
 /* ================================================================================================================== */
 #pragma mark Initializers
@@ -118,7 +114,7 @@
 /**
 * Adds a group with a path relative to this group.
 */
-- (void) addGroupWithPath:(NSString*)path;
+- (xcode_Group*) addGroupWithPath:(NSString*)path;
 
 /* ================================================================================================================== */
 #pragma mark Locating children

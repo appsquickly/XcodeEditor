@@ -13,10 +13,14 @@
 
 typedef enum {
     ObjectiveC,
-    ObjectiveCPlusPlus
+    ObjectiveCPlusPlus,
 } ClassDefinitionLanguage;
 
 @interface xcode_ClassDefinition : NSObject {
+
+    NSString* _className;
+    NSString* _header;
+    NSString* _source;
 
 @private
     ClassDefinitionLanguage _language;

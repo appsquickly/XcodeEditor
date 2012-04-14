@@ -12,7 +12,7 @@
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Project.h"
-
+#import "Logging.h"
 /* ================================================================================================================== */
 @interface xcode_Target ()
 
@@ -30,7 +30,6 @@
 @synthesize project = _project;
 @synthesize key = _key;
 @synthesize name = _name;
-
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {

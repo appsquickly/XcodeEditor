@@ -87,8 +87,7 @@
                                                                  [NSString stringFromSourceFileType:_type]];
         }
 
-    }
-    LogDebug(@"Done becoming build file");
+    }LogDebug(@"Done becoming build file");
 }
 
 /* ================================================= Protocol Methods =============================================== */
@@ -107,7 +106,8 @@
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name, [self pathRelativeToProjectRoot]];
+    return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name,
+                                      [self pathRelativeToProjectRoot]];
 }
 
 

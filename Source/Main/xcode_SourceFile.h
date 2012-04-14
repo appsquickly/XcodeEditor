@@ -14,7 +14,6 @@
 
 @class xcode_Project;
 
-
 /**
 * Represents a file resource in an xcode project.
 */

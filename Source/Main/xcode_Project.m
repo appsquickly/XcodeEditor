@@ -36,6 +36,7 @@
         _filePath = [filePath copy];
         _project = [[NSMutableDictionary alloc]
                 initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
+
         if (!_project) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
