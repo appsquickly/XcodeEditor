@@ -50,8 +50,8 @@ SPEC_BEGIN(GroupSpec)
         describe(@"Object creation", ^{
 
             it(@"should allow initialization with ", ^{
-                Group* group = [[Group alloc]
-                        initWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+                xcode_Group* group = [[xcode_Group alloc]
+									  initWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" tree:@"" children:nil];
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
                 [[[group alias] should] equal:@"Main"];

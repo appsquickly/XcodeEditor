@@ -236,7 +236,7 @@
 		BOOL foundSourceRoot = NO;
 
 		for( xcode_Group *group = self; group != nil; group = [_project groupForGroupMemberWithKey:group.key] ) {
-			NSLog(@"Key: %@; Name: %@; Tree: %@; Path: %@", group.key, group.alias, group.tree, group.pathRelativeToParent);
+			LogDebug(@"Key: %@; Name: %@; Tree: %@; Path: %@", group.key, group.alias, group.tree, group.pathRelativeToParent);
 
 			if( [group pathRelativeToParent] != nil ) {
 				[pathComponents addObject:[group pathRelativeToParent]];
