@@ -60,6 +60,11 @@
 @property(nonatomic, strong, readonly) NSString* key;
 
 /**
+ * The group's source tree.
+ */
+@property(nonatomic, strong, readonly) NSString* tree;
+
+/**
  * An array containing the groups members as `XcodeGroupMember` types.
 */
 @property(nonatomic, strong, readonly) NSArray* children;
@@ -67,8 +72,12 @@
 /* ================================================================================================================== */
 #pragma mark Initializers
 
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-        children:(NSArray*)children;
+- (id) initWithProject:(xcode_Project*)project 
+				   key:(NSString*)key 
+				 alias:(NSString*)alias 
+				  path:(NSString*)path
+				  tree:(NSString*)tree
+			  children:(NSArray*)children ;
 
 /* ================================================================================================================== */
 #pragma mark Super (parent) group

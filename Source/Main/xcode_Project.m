@@ -100,7 +100,10 @@
 
 - (NSArray*) xibFiles {
     return [self projectFilesOfType:XibFile];
+}
 
+- (NSArray*) imagePNGFiles {
+	return [self projectFilesOfType:ImageResourcePNG];
 }
 
 
@@ -136,9 +139,10 @@
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* path = [obj valueForKey:@"path"];
+		NSString *tree = [obj valueForKey:@"sourceTree"];
         NSArray* children = [obj valueForKey:@"children"];
 
-        return [[Group alloc] initWithProject:self key:key alias:name path:path children:children];
+        return [[Group alloc] initWithProject:self key:key alias:name path:path tree:tree children:children];
     }
     return nil;
 }
