@@ -101,8 +101,7 @@
 }
 
 - (NSString*) pathRelativeToProjectRoot {
-    return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot]
-            stringByAppendingPathComponent:_name];
+    return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot] stringByAppendingPathComponent:_name];
 }
 
 /* ================================================== Utility Methods =============================================== */
