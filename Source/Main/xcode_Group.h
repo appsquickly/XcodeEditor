@@ -128,6 +128,9 @@
 * Adds a group with a path relative to this group.
 */
 - (void) addGroupWithPath:(NSString*)path;
+- (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias;
+
+- (xcode_SourceFile*)reference:(NSString*)name relativePath:(NSString*)path type:(XcodeSourceFileType)type;
 
 /* ================================================================================================================== */
 #pragma mark Locating children
