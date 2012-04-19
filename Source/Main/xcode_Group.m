@@ -166,7 +166,7 @@
 - (void) addGroupWithPath:(NSString*)path {
     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
     Group* group = [[Group alloc] initWithProject:_project key:groupKey alias:nil path:path tree:@"" children:nil];
-    NSLog(@"Here's the group: %@", [group asDictionary]);
+    LogDebug(@"Here's the group: %@", [group asDictionary]);
     [[_project objects] setObject:[group asDictionary] forKey:groupKey];
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
     [self addMemberWithKey:groupKey];
@@ -176,7 +176,7 @@
 - (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias {
     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
     Group* group = [[Group alloc] initWithProject:_project key:groupKey alias:alias path:path tree:@"SOURCE_ROOT" children:nil];
-    NSLog(@"Here's the group: %@", [group asDictionary]);
+    LogDebug(@"Here's the group: %@", [group asDictionary]);
     [[_project objects] setObject:[group asDictionary] forKey:groupKey];
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
     [self addMemberWithKey:groupKey];
