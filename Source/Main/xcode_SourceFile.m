@@ -19,15 +19,21 @@
 @synthesize type = _type;
 @synthesize name = _name;
 @synthesize key = _key;
+@synthesize sourceTree = _sourceTree;
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type name:(NSString*)name {
+- (id) initWithProject:(xcode_Project*)project 
+				   key:(NSString*)key 
+				  type:(XcodeSourceFileType)type 
+				  name:(NSString*)name
+			sourceTree:(NSString*)tree {
     self = [super init];
     if (self) {
         _project = project;
         _key = [key copy];
         _type = type;
         _name = [name copy];
+		_sourceTree = [tree copy];
     }
     return self;
 }
@@ -101,7 +107,15 @@
 }
 
 - (NSString*) pathRelativeToProjectRoot {
-    return [[[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot] stringByAppendingPathComponent:_name];
+	if( [self.sourceTree isEqualToString:@"SOURCE_ROOT"] ) {
+		return _name;
+	}
+	else {
+		NSString *parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
+		NSString *result = [parentPath stringByAppendingPathComponent:_name];
+		LogDebug(@"%@ -> %@ -> %@", _name, parentPath, result);
+		return result;
+	}
 }
 
 /* ================================================== Utility Methods =============================================== */
