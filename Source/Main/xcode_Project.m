@@ -54,7 +54,12 @@
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
             XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
             NSString* path = [obj valueForKey:@"path"];
-            [results addObject:[[SourceFile alloc] initWithProject:self key:key type:fileType name:path]];
+			NSString *sourceTree = [obj valueForKey:@"sourceTree"];
+            [results addObject:[[SourceFile alloc] initWithProject:self 
+															   key:key 
+															  type:fileType 
+															  name:path 
+														sourceTree:(sourceTree ? sourceTree : @"<group>")]];
         }
     }];
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
@@ -67,10 +72,16 @@
         XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
 
         NSString* name = [obj valueForKey:@"name"];
+		NSString *sourceTree = [obj valueForKey:@"sourceTree"];
+		
         if (name == nil) {
             name = [obj valueForKey:@"path"];
         }
-        return [[SourceFile alloc] initWithProject:self key:key type:fileType name:name];
+        return [[SourceFile alloc] initWithProject:self 
+											   key:key 
+											  type:fileType 
+											  name:name 
+										sourceTree:(sourceTree ? sourceTree : @"<group>")];
     }
     return nil;
 }
@@ -100,7 +111,10 @@
 
 - (NSArray*) xibFiles {
     return [self projectFilesOfType:XibFile];
+}
 
+- (NSArray*) imagePNGFiles {
+	return [self projectFilesOfType:ImageResourcePNG];
 }
 
 
@@ -136,9 +150,10 @@
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* path = [obj valueForKey:@"path"];
+		NSString *tree = [obj valueForKey:@"sourceTree"];
         NSArray* children = [obj valueForKey:@"children"];
 
-        return [[Group alloc] initWithProject:self key:key alias:name path:path children:children];
+        return [[Group alloc] initWithProject:self key:key alias:name path:path tree:tree children:children];
     }
     return nil;
 }

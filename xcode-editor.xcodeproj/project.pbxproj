@@ -87,8 +87,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		23410461626A43088D61F460 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B17B89814BDAE3700F53089 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = Library/PrivateFrameworks/IDEKit.framework; sourceTree = DEVELOPER_DIR; };
 		6B3ACFE014F8A2FE00BCFE81 /* XcodeEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XcodeEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_ClassDefinition.h; sourceTree = "<group>"; };
 		6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_ClassDefinition.m; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 		6B65941D14F8A56C00F65AEC /* XcodeEditor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XcodeEditor-Prefix.pch"; sourceTree = "<group>"; };
 		6B789B7C14E37ACB00DAA872 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		6B789B7D14E37ACB00DAA872 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6BB5EE5E14F49B1B00B5B193 /* LRResty.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LRResty.framework; path = Library/Frameworks/LRResty.framework; sourceTree = SDKROOT; };
 		6BBD6C9614ECF28200451BA2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6BC10164147775A40055CF03 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6BC10167147775A40055CF03 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -292,16 +289,13 @@
 			isa = PBXGroup;
 			children = (
 				6B41FDA714F60C5E00004897 /* libprofile_rt.dylib */,
-				6BB5EE5E14F49B1B00B5B193 /* LRResty.framework */,
 				6BBD6C9614ECF28200451BA2 /* libz.dylib */,
 				6B789B7D14E37ACB00DAA872 /* QuartzCore.framework */,
 				6B789B7C14E37ACB00DAA872 /* Quartz.framework */,
-				6B17B89814BDAE3700F53089 /* IDEKit.framework */,
 				6BC10164147775A40055CF03 /* Cocoa.framework */,
 				6BC1018B1477A42F0055CF03 /* Foundation.framework */,
 				6BD8982D14EA2441007875F4 /* SenTestingKit.framework */,
 				6BC10166147775A40055CF03 /* Other Frameworks */,
-				23410461626A43088D61F460 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

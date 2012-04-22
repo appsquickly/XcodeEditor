@@ -29,8 +29,13 @@
 @property(nonatomic, readonly) XcodeSourceFileType type;
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong, readonly) NSString *sourceTree;
 
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type name:(NSString*)name;
+- (id)initWithProject:(xcode_Project*)project 
+				   key:(NSString*)key 
+				  type:(XcodeSourceFileType)type 
+				  name:(NSString*)name
+			sourceTree:(NSString*)_tree;
 
 /**
 * If yes, indicates the file is able to be included for compilation in an `xcode_Target`.
