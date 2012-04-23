@@ -69,12 +69,12 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : #import &quot;xcode_ClassDefinition.h&quot;
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">          9 : @implementation xcode_ClassDefinition</span>
+<span class="lineNum">      14 </span><span class="lineCov">         10 : @implementation xcode_ClassDefinition</span>
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize className = _className;</span>
-<span class="lineNum">      18 </span><span class="lineCov">         15 : @synthesize header = _header;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         15 : @synthesize source = _source;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         18 : @synthesize header = _header;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         18 : @synthesize source = _source;</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      22 </span><span class="lineCov">          7 : - (id) initWithName:(NSString*)className {</span>
@@ -82,44 +82,44 @@
 <span class="lineNum">      24 </span><span class="lineCov">          7 : }</span>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : - (id) initWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
-<span class="lineNum">      27 </span><span class="lineCov">         11 :     self = [super init];</span>
-<span class="lineNum">      28 </span><span class="lineCov">         11 :     if (self) {</span>
-<span class="lineNum">      29 </span><span class="lineCov">         11 :         _className = [className copy];</span>
-<span class="lineNum">      30 </span><span class="lineCov">         11 :         if (!(language == ObjectiveC || language == ObjectiveCPlusPlus)) {</span>
-<span class="lineNum">      31 </span><span class="lineCov">         11 :             [NSException</span>
-<span class="lineNum">      32 </span><span class="lineCov">          5 :                 raise:NSInvalidArgumentException format:@&quot;Language must be one of ObjectiveC, ObjectiveCPlusPlus&quot;];</span>
+<span class="lineNum">      27 </span><span class="lineCov">         12 :     self = [super init];</span>
+<span class="lineNum">      28 </span><span class="lineCov">         12 :     if (self) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">         12 :         _className = [className copy];</span>
+<span class="lineNum">      30 </span><span class="lineCov">         12 :         if (!(language == ObjectiveC || language == ObjectiveCPlusPlus)) {</span>
+<span class="lineNum">      31 </span><span class="lineCov">         12 :             [NSException</span>
+<span class="lineNum">      32 </span><span class="lineCov">          6 :                 raise:NSInvalidArgumentException format:@&quot;Language must be one of ObjectiveC, ObjectiveCPlusPlus&quot;];</span>
 <span class="lineNum">      33 </span>            :         }
 <span class="lineNum">      34 </span><span class="lineCov">          1 :         _language = language;</span>
-<span class="lineNum">      35 </span><span class="lineCov">         10 :     }</span>
-<span class="lineNum">      36 </span><span class="lineCov">         10 :     return self;</span>
-<span class="lineNum">      37 </span><span class="lineCov">         10 : }</span>
-<span class="lineNum">      38 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">         11 :     }</span>
+<span class="lineNum">      36 </span><span class="lineCov">         11 :     return self;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">      38 </span><span class="lineCov">         11 : </span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      41 </span>            : - (BOOL) isObjectiveC {
-<span class="lineNum">      42 </span><span class="lineCov">         10 :     return _language == ObjectiveC;</span>
-<span class="lineNum">      43 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">         17 :     return _language == ObjectiveC;</span>
+<span class="lineNum">      43 </span><span class="lineCov">         17 : }</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : - (BOOL) isObjectiveCPlusPlus {
-<span class="lineNum">      46 </span><span class="lineCov">          2 :     return _language == ObjectiveCPlusPlus;</span>
-<span class="lineNum">      47 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      46 </span><span class="lineCov">          5 :     return _language == ObjectiveCPlusPlus;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : - (NSString*) headerFileName {
-<span class="lineNum">      50 </span><span class="lineCov">          6 :     return [_className stringByAppendingString:@&quot;.h&quot;];</span>
-<span class="lineNum">      51 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          7 :     return [_className stringByAppendingString:@&quot;.h&quot;];</span>
+<span class="lineNum">      51 </span><span class="lineCov">          7 : </span>
 <span class="lineNum">      52 </span>            : }
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : - (NSString*) sourceFileName {
-<span class="lineNum">      55 </span><span class="lineCov">          9 :     NSString* sourceFileName; </span>
-<span class="lineNum">      56 </span><span class="lineCov">          9 :     if ([self isObjectiveC]) {</span>
-<span class="lineNum">      57 </span><span class="lineCov">          9 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
+<span class="lineNum">      55 </span><span class="lineCov">         11 :     NSString* sourceFileName; </span>
+<span class="lineNum">      56 </span><span class="lineCov">         11 :     if ([self isObjectiveC]) {</span>
+<span class="lineNum">      57 </span><span class="lineCov">         11 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
 <span class="lineNum">      58 </span><span class="lineCov">          8 :     }</span>
 <span class="lineNum">      59 </span><span class="lineCov">          8 :     else if ([self isObjectiveCPlusPlus]) {</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 :         sourceFileName = [_className stringByAppendingString:@&quot;.mm&quot;];</span>
-<span class="lineNum">      61 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :     return sourceFileName;</span>
-<span class="lineNum">      63 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">      64 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          3 :         sourceFileName = [_className stringByAppendingString:@&quot;.mm&quot;];</span>
+<span class="lineNum">      61 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      62 </span><span class="lineCov">          3 :     return sourceFileName;</span>
+<span class="lineNum">      63 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">      64 </span><span class="lineCov">         11 : </span>
 <span class="lineNum">      65 </span>            : 
 <span class="lineNum">      66 </span>            : @end
 </pre>
