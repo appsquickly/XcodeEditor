@@ -8,31 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		6B3ACFE114F8A2FE00BCFE81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
-		6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */; };
+		6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */; };
 		6B3AD03214F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */; };
-		6B3AD03314F8A3AC00BCFE81 /* xcode_SourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01B14F8A3AC00BCFE81 /* xcode_SourceFile.h */; };
+		6B3AD03314F8A3AC00BCFE81 /* xcode_SourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01B14F8A3AC00BCFE81 /* xcode_SourceFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03414F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_SourceFile.m */; };
 		6B3AD03514F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01C14F8A3AC00BCFE81 /* xcode_SourceFile.m */; };
-		6B3AD03614F8A3AC00BCFE81 /* xcode_FileOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01D14F8A3AC00BCFE81 /* xcode_FileOperationQueue.h */; };
+		6B3AD03614F8A3AC00BCFE81 /* xcode_FileOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01D14F8A3AC00BCFE81 /* xcode_FileOperationQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03714F8A3AC00BCFE81 /* xcode_FileOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileOperationQueue.m */; };
 		6B3AD03814F8A3AC00BCFE81 /* xcode_FileOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01E14F8A3AC00BCFE81 /* xcode_FileOperationQueue.m */; };
-		6B3AD03914F8A3AC00BCFE81 /* xcode_Group.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01F14F8A3AC00BCFE81 /* xcode_Group.h */; };
+		6B3AD03914F8A3AC00BCFE81 /* xcode_Group.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01F14F8A3AC00BCFE81 /* xcode_Group.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03A14F8A3AC00BCFE81 /* xcode_Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02014F8A3AC00BCFE81 /* xcode_Group.m */; };
 		6B3AD03B14F8A3AC00BCFE81 /* xcode_Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02014F8A3AC00BCFE81 /* xcode_Group.m */; };
-		6B3AD03C14F8A3AC00BCFE81 /* xcode_KeyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02114F8A3AC00BCFE81 /* xcode_KeyBuilder.h */; };
+		6B3AD03C14F8A3AC00BCFE81 /* xcode_KeyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02114F8A3AC00BCFE81 /* xcode_KeyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03D14F8A3AC00BCFE81 /* xcode_KeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02214F8A3AC00BCFE81 /* xcode_KeyBuilder.m */; };
 		6B3AD03E14F8A3AC00BCFE81 /* xcode_KeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02214F8A3AC00BCFE81 /* xcode_KeyBuilder.m */; };
-		6B3AD03F14F8A3AC00BCFE81 /* xcode_Project.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02314F8A3AC00BCFE81 /* xcode_Project.h */; };
+		6B3AD03F14F8A3AC00BCFE81 /* xcode_Project.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02314F8A3AC00BCFE81 /* xcode_Project.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD04014F8A3AC00BCFE81 /* xcode_Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02414F8A3AC00BCFE81 /* xcode_Project.m */; };
 		6B3AD04114F8A3AC00BCFE81 /* xcode_Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02414F8A3AC00BCFE81 /* xcode_Project.m */; };
-		6B3AD04214F8A3AC00BCFE81 /* xcode_Target.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02514F8A3AC00BCFE81 /* xcode_Target.h */; };
+		6B3AD04214F8A3AC00BCFE81 /* xcode_Target.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02514F8A3AC00BCFE81 /* xcode_Target.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD04314F8A3AC00BCFE81 /* xcode_Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02614F8A3AC00BCFE81 /* xcode_Target.m */; };
 		6B3AD04414F8A3AC00BCFE81 /* xcode_Target.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02614F8A3AC00BCFE81 /* xcode_Target.m */; };
-		6B3AD04514F8A3AC00BCFE81 /* XcodeSourceFileType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02714F8A3AC00BCFE81 /* XcodeSourceFileType.h */; };
+		6B3AD04514F8A3AC00BCFE81 /* XcodeSourceFileType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02714F8A3AC00BCFE81 /* XcodeSourceFileType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD04614F8A3AC00BCFE81 /* XcodeSourceFileType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02814F8A3AC00BCFE81 /* XcodeSourceFileType.m */; };
 		6B3AD04714F8A3AC00BCFE81 /* XcodeSourceFileType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02814F8A3AC00BCFE81 /* XcodeSourceFileType.m */; };
-		6B3AD04814F8A3AC00BCFE81 /* XcodeMemberType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02914F8A3AC00BCFE81 /* XcodeMemberType.h */; };
+		6B3AD04814F8A3AC00BCFE81 /* XcodeMemberType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02914F8A3AC00BCFE81 /* XcodeMemberType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD04914F8A3AC00BCFE81 /* XcodeMemberType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02A14F8A3AC00BCFE81 /* XcodeMemberType.m */; };
 		6B3AD04A14F8A3AC00BCFE81 /* XcodeMemberType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02A14F8A3AC00BCFE81 /* XcodeMemberType.m */; };
 		6B3AD06114F8A3B400BCFE81 /* ClassDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD05114F8A3B400BCFE81 /* ClassDefinitionSpec.m */; };
@@ -59,14 +59,15 @@
 		6BBD6C9714ECF28200451BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBD6C9614ECF28200451BA2 /* libz.dylib */; };
 		6BE0AAF81505D7C4004C27DA /* ESA.Sales.Foobar.xib in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */; };
 		6BE4B285147E6B610059E451 /* expanz-iOS-SDK.zip in Resources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */; };
-		6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E452 /* XcodeGroupMember.h */; };
+		6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E452 /* XcodeGroupMember.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BE4B285147E6B610059E458 /* xcode_XibDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E457 /* xcode_XibDefinition.m */; };
 		6BE4B285147E6B610059E459 /* xcode_XibDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E457 /* xcode_XibDefinition.m */; };
-		6BE4B285147E6B610059E45B /* xcode_XibDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45A /* xcode_XibDefinition.h */; };
+		6BE4B285147E6B610059E45B /* xcode_XibDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45A /* xcode_XibDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BE4B285147E6B610059E45D /* ESA.Sales.Foobar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */; };
 		6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
-		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; };
+		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11315443AA400C51251 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -146,6 +147,7 @@
 		6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FrameworkDefinition.h; sourceTree = "<group>"; };
+		E94DE11315443AA400C51251 /* XcodeEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		6B3AD01814F8A3AC00BCFE81 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E94DE11315443AA400C51251 /* XcodeEditor.h */,
 				6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */,
 				6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */,
 				6BE4B285147E6B610059E455 /* xcode_utils_Enum.h */,
@@ -346,6 +349,7 @@
 				6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */,
 				6BE4B285147E6B610059E45B /* xcode_XibDefinition.h in Headers */,
 				6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */,
+				E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +553,7 @@
 				GCC_PREFIX_HEADER = "Source/Main/Resources/XcodeEditor-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Source/Main/Resources/XcodeEditor-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -566,6 +571,7 @@
 				GCC_PREFIX_HEADER = "Source/Main/Resources/XcodeEditor-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Source/Main/Resources/XcodeEditor-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
