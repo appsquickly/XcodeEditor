@@ -16,7 +16,8 @@ typedef enum {
     SourceCodeHeader,
     SourceCodeObjC,
     SourceCodeObjCPlusPlus,
-    XibFile
+    XibFile,
+	ImageResourcePNG
 } XcodeSourceFileType;
 
 @interface NSString (XCodeFileType)

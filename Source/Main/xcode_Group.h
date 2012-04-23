@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import <XcodeEditor/XcodeEditor.h>
 #import "XcodeGroupMember.h"
 
 @class xcode_Project;
@@ -59,12 +60,25 @@
 */
 @property(nonatomic, strong, readonly) NSString* key;
 
+/**
+ * The group's source tree.
+ */
+@property(nonatomic, strong, readonly) NSString* tree;
+
+/**
+ * An array containing the groups members as `XcodeGroupMember` types.
+*/
+@property(nonatomic, strong, readonly) NSArray* children;
 
 /* ================================================================================================================== */
 #pragma mark Initializers
 
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-        children:(NSArray*)children;
+- (id) initWithProject:(xcode_Project*)project 
+				   key:(NSString*)key 
+				 alias:(NSString*)alias 
+				  path:(NSString*)path
+				  tree:(NSString*)tree
+			  children:(NSArray*)children ;
 
 /* ================================================================================================================== */
 #pragma mark Super (parent) group
@@ -114,7 +128,14 @@
 /**
 * Adds a group with a path relative to this group.
 */
-- (xcode_Group*) addGroupWithPath:(NSString*)path;
+- (void) addGroupWithPath:(NSString*)path;
+
+/**
+* TODO: @hiddenMemory, please document.
+*/
+- (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias;
+
+- (xcode_SourceFile*)reference:(NSString*)name relativePath:(NSString*)path type:(XcodeSourceFileType)type;
 
 /* ================================================================================================================== */
 #pragma mark Locating children

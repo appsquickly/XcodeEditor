@@ -12,10 +12,7 @@
 #import "xcode_FrameworkDefinition.h"
 #import "xcode_XibDefinition.h"
 #import "xcode_Group.h"
-#import "xcode_Project.h"
-#import "xcode_ClassDefinition.h"
-#import "xcode_SourceFile.h"
-#import "xcode_Target.h"
+
 
 @interface FrameworkPathFactory
 @end
@@ -51,7 +48,9 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow initialization with ", ^{
                 Group* group = [[Group alloc]
-                        initWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+                        initWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" tree:@""
+                        children:nil];
+
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
                 [[[group alias] should] equal:@"Main"];

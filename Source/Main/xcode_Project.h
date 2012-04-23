@@ -8,6 +8,7 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+
 #import <Foundation/Foundation.h>
 #import "XcodeMemberType.h"
 
@@ -73,6 +74,8 @@
 * Returns all the xib files in the project, as an array of `xcode_SourceFile` objects.
 */
 - (NSArray*) xibFiles;
+
+- (NSArray*) imagePNGFiles;
 
 /* ================================================================================================================== */
 #pragma mark Groups

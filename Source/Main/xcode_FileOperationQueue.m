@@ -119,15 +119,12 @@
 - (void) performCreateDirectories {
     for (NSString* filePath in _directoriesToCreate) {
         NSFileManager* fileManager = [NSFileManager defaultManager];
-        if (![fileManager fileExistsAtPath:filePath isDirectory:NULL]) {
-            if (![fileManager
-                    createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil]) {
+        if (![fileManager fileExistsAtPath:filePath]) {
+            if (![fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil]) {
                 [NSException raise:NSInvalidArgumentException format:@"Error: Create folder failed %@", filePath];
             }
         }
-
     }
-
 }
 
 

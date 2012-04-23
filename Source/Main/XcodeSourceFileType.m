@@ -17,11 +17,13 @@
 
 + (NSDictionary*) dictionaryWithFileReferenceTypesAsStrings {
     return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(SourceCodeHeader), @"sourcecode.c.h",
-                                                      boxEnum(SourceCodeObjC), @"sourcecode.c.objc",
-                                                      boxEnum(Framework), @"wrapper.framework",
-                                                      boxEnum(PropertyList), @"text.plist.strings",
-                                                      boxEnum(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
-                                                      boxEnum(XibFile), @"file.xib", nil];
+			boxEnum(SourceCodeObjC), @"sourcecode.c.objc",
+			boxEnum(Framework), @"wrapper.framework",
+			boxEnum(PropertyList), @"text.plist.strings",
+			boxEnum(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
+			boxEnum(XibFile), @"file.xib", 
+			boxEnum(ImageResourcePNG), @"image.png",
+			nil];
 }
 
 @end

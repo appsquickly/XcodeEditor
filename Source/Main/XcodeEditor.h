@@ -1,10 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  XcodeEditor.h
-//  xcode-editor
+//  EXPANZ
+//  Copyright 2008-2011 EXPANZ
+//  All Rights Reserved.
 //
-//  Created by Владислав Алексеев on 22.04.12.
-//  Copyright (c) 2012 EXPANZ. All rights reserved.
+//  NOTICE: Expanz permits you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
+
+
+//  Contributed by by Владислав Алексеев on 22.04.12 - thanks!
 
 #import <XcodeEditor/xcode_FrameworkDefinition.h>
 #import <XcodeEditor/XcodeSourceFileType.h>
