@@ -109,6 +109,13 @@ JetBrains is not yet supported.
 
 * <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper.blues@expanz.com?Subject=xcode-editor">jasper.blues@expanz.com</a>
 * © 2011 - 2012 expanz.com
+         
+### With contributions from: 
+
+* Chris Ross of Hidden Memory (http://www.hiddenmemory.co.uk/)
+* Vladislav Alekseev 
+
+Thanks! 
 
 # LICENSE
 
