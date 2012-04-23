@@ -50,6 +50,8 @@
 	
 	<option value="//api/name/project">&nbsp;&nbsp;&nbsp;&nbsp;project</option>
 	
+	<option value="//api/name/tree">&nbsp;&nbsp;&nbsp;&nbsp;tree</option>
+	
 	
 	
 	
@@ -67,11 +69,13 @@
 	
 	<option value="//api/name/addGroupWithPath:">&nbsp;&nbsp;&nbsp;&nbsp;- addGroupWithPath:</option>
 	
+	<option value="//api/name/addGroupWithPath:alias:">&nbsp;&nbsp;&nbsp;&nbsp;- addGroupWithPath:alias:</option>
+	
 	<option value="//api/name/addXib:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:</option>
 	
 	<option value="//api/name/addXib:toTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:toTargets:</option>
 	
-	<option value="//api/name/initWithProject:key:alias:path:children:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:alias:path:children:</option>
+	<option value="//api/name/initWithProject:key:alias:path:tree:children:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:alias:path:tree:children:</option>
 	
 	<option value="//api/name/isRootGroup">&nbsp;&nbsp;&nbsp;&nbsp;- isRootGroup</option>
 	
@@ -80,6 +84,8 @@
 	<option value="//api/name/memberWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- memberWithKey:</option>
 	
 	<option value="//api/name/members">&nbsp;&nbsp;&nbsp;&nbsp;- members</option>
+	
+	<option value="//api/name/reference:relativePath:type:">&nbsp;&nbsp;&nbsp;&nbsp;- reference:relativePath:type:</option>
 	
 	<option value="//api/name/removeFromSuperGroup">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromSuperGroup</option>
 	
@@ -121,6 +127,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/project">project</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tree">tree</a></span></li>
+	
 </ul></li>
 
 
@@ -139,11 +147,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addGroupWithPath:">addGroupWithPath:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addGroupWithPath:alias:">addGroupWithPath:alias:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:">addXib:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:toTargets:">addXib:toTargets:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:alias:path:children:">initWithProject:key:alias:path:children:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:alias:path:tree:children:">initWithProject:key:alias:path:tree:children:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isRootGroup">isRootGroup</a></span></li>
 	
@@ -152,6 +162,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/memberWithKey:">memberWithKey:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/members">members</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reference:relativePath:type:">reference:relativePath:type:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromSuperGroup">removeFromSuperGroup</a></span></li>
 	
@@ -246,6 +258,13 @@ groups.</p>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/tree">&nbsp;&nbsp;tree</a></code>
+		<span class="tooltip"><p>The group&rsquo;s source <a href="#//api/name/tree">tree</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/children">&nbsp;&nbsp;children</a></code>
 		<span class="tooltip"><p>An array containing the groups <a href="#//api/name/members">members</a> as <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a> types.</p></span>
 	</span>
@@ -253,7 +272,7 @@ groups.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithProject:key:alias:path:children:">&ndash;&nbsp;initWithProject:key:alias:path:children:</a></code>
+		<code><a href="#//api/name/initWithProject:key:alias:path:tree:children:">&ndash;&nbsp;initWithProject:key:alias:path:tree:children:</a></code>
 		
 	</span>
 	
@@ -334,6 +353,20 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<span class="tooltip">
 		<code><a href="#//api/name/addGroupWithPath:">&ndash;&nbsp;addGroupWithPath:</a></code>
 		<span class="tooltip"><p>Adds a group with a path relative to this group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addGroupWithPath:alias:">&ndash;&nbsp;addGroupWithPath:alias:</a></code>
+		<span class="tooltip"><p>TODO: @hiddenMemory, please document.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reference:relativePath:type:">&ndash;&nbsp;reference:relativePath:type:</a></code>
+		
 	</span>
 	
 	
@@ -570,6 +603,45 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/tree" title="tree"></a>
+	<h3 class="subsubtitle method-title">tree</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The group&rsquo;s source <a href="#//api/name/tree">tree</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *tree</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The group&rsquo;s source <a href="#//api/name/tree">tree</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -780,6 +852,45 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/addGroupWithPath:alias:" title="addGroupWithPath:alias:"></a>
+	<h3 class="subsubtitle method-title">addGroupWithPath:alias:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>TODO: @hiddenMemory, please document.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addGroupWithPath:(NSString *)<em>path</em> alias:(NSString *)<em>alias</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>TODO: @hiddenMemory, please document.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/addXib:" title="addXib:"></a>
 	<h3 class="subsubtitle method-title">addXib:</h3>
 	
@@ -858,8 +969,8 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithProject:key:alias:path:children:" title="initWithProject:key:alias:path:children:"></a>
-	<h3 class="subsubtitle method-title">initWithProject:key:alias:path:children:</h3>
+	<a name="//api/name/initWithProject:key:alias:path:tree:children:" title="initWithProject:key:alias:path:tree:children:"></a>
+	<h3 class="subsubtitle method-title">initWithProject:key:alias:path:tree:children:</h3>
 	
 	
 </div>
@@ -984,6 +1095,13 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">xcode_Group.h</code><br />
 	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reference:relativePath:type:" title="reference:relativePath:type:"></a>
+	<h3 class="subsubtitle method-title">reference:relativePath:type:</h3>
 	
 	
 </div>
