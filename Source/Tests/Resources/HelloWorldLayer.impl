@@ -1,0 +1,384 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Jasper Blues
+//  Copyright 2012 Jasper Blues
+//  All Rights Reserved.
+//
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+#import "HelloWorldLayer.h"
+#import "SimpleQueryCallback.h"
+#import "Box2DSprite.h"
+#import "Logging.h"
+#import "Meteor.h"
+
+//Pixel to metres ratio. Box2D uses metres as the unit for measurement.
+//This ratio defines how many pixels correspond to 1 Box2D "metre"
+//Box2D is optimized for objects of 1x1 metre therefore it makes sense
+//to define the ratio so that your most common object type is 1x1 metre.
+#define PTM_RATIO 32
+
+// enums that will be used as tags
+enum {
+    kTagTileMap,
+    kTagBatchNode,
+    kTagAnimation1,
+};
+
+
+/* ================================================================================================================== */
+@interface HelloWorldLayer ()
+
+- (void) setupWorld;
+
+- (void) setupGround;
+
+- (void) createSensor;
+
+@end
+
+/* ================================================================================================================== */
+
+@implementation HelloWorldLayer
+
+/* ================================================= Class Methods ================================================== */
++ (CCScene*) scene {
+    // 'scene' is an autorelease object.
+    CCScene* scene = [CCScene node];
+
+    // 'layer' is an autorelease object.
+    HelloWorldLayer* layer = [HelloWorldLayer node];
+
+    // add layer as a child to scene
+    [scene addChild:layer];
+
+    // return the scene
+    return scene;
+}
+
+/* ================================================== Initializers ================================================== */
+- (id) init {
+    if ((self = [super init])) {
+
+        self.isTouchEnabled = YES;
+        self.isAccelerometerEnabled = YES;
+
+        CGSize screenSize = [CCDirector sharedDirector].winSize;
+        CCLOG(@"Screen width %0.2f screen height %0.2f", screenSize.width, screenSize.height);
+
+        [self setupWorld];
+        [self setupGround];
+
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"scene3atlas-hd.plist"];
+        _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"scene3atlas-hd.png"];
+        [self addChild:_sceneSpriteBatchNode z:0];
+        [self createMeteorAtLocation:ccp(100, 300)];
+
+        [self createSensor];
+        [self schedule:@selector(tick:)];
+    }
+    return self;
+}
+
+/* ================================================ Interface Methods =============================================== */
+- (void) draw {
+    glDisable(GL_TEXTURE_2D);
+    glDisableClientState(GL_COLOR_ARRAY);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    //_world->DrawDebugData();
+
+    // restore default GL states
+    glEnable(GL_TEXTURE_2D);
+    glEnableClientState(GL_COLOR_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+}
+
+- (void) addBlockWithCoords:(CGPoint)p {
+    CCLOG(@"Add sprite %0.2f x %02.f", p.x, p.y);
+    CCSpriteBatchNode* batch = (CCSpriteBatchNode*) [self getChildByTag:kTagBatchNode];
+
+    //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
+    //just randomly picking one of the images
+    int idx = (CCRANDOM_0_1() > .5 ? 0 : 1);
+    int idy = (CCRANDOM_0_1() > .5 ? 0 : 1);
+    CCSprite* sprite = [CCSprite spriteWithBatchNode:batch rect:CGRectMake(32 * idx, 32 * idy, 32, 32)];
+    [batch addChild:sprite];
+
+    sprite.position = ccp( p.x, p.y);
+
+    // Define the dynamic body.
+    //Set up a 1m squared box in the physics world
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+
+    bodyDef.position.Set(p.x / PTM_RATIO, p.y / PTM_RATIO);
+    bodyDef.userData = (__bridge void*) sprite;
+    b2Body* body = _world->CreateBody(&bodyDef);
+
+    // Define another box shape for our dynamic body.
+    b2PolygonShape dynamicBox;
+    dynamicBox.SetAsBox(.5f, .5f);//These are mid points for our 1m box
+
+    // Define the dynamic body fixture.
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.3f;
+    body->CreateFixture(&fixtureDef);
+}
+
+
+- (void) createBodyAtLocation:(CGPoint)location
+        forSprite:(Box2DSprite*)sprite friction:(float32)friction
+        restitution:(float32)restitution density:(float32)density
+        isBox:(BOOL)isBox {
+
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position = b2Vec2(location.x / PTM_RATIO, location.y / PTM_RATIO);
+    bodyDef.allowSleep = false;
+    b2Body* body = _world->CreateBody(&bodyDef);
+    body->SetUserData((__bridge void*) sprite);
+    sprite.body = body;
+
+    b2FixtureDef fixtureDef;
+
+    if (isBox) {
+        b2PolygonShape shape;
+        shape.SetAsBox(sprite.contentSize.width / 2 / PTM_RATIO, sprite.contentSize.height / 2 / PTM_RATIO);
+        fixtureDef.shape = &shape;
+    }
+    else {
+        b2CircleShape shape;
+        shape.m_radius = sprite.contentSize.width / 2 / PTM_RATIO;
+        fixtureDef.shape = &shape;
+    }
+
+    fixtureDef.density = density;
+    fixtureDef.friction = friction;
+    fixtureDef.restitution = restitution;
+
+    body->CreateFixture(&fixtureDef);
+
+}
+
+- (void) createMeteorAtLocation:(CGPoint)location {
+
+    Meteor* sprite = [Meteor node];
+    [self createBodyAtLocation:location forSprite:sprite friction:0.1 restitution:0.3 density:1.0 isBox:FALSE];
+    [_sceneSpriteBatchNode addChild:sprite];
+
+}
+
+/* ================================================= Protocol Methods =============================================== */
+- (BOOL) ccTouchBegan:(UITouch*)touch withEvent:(UIEvent*)event {
+
+    LogDebug(@"Start touchin' !!!!!!!!!!!");
+
+    CGPoint touchLocation = [touch locationInView:[touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
+    touchLocation = [self convertToNodeSpace:touchLocation];
+    b2Vec2 locationWorld = b2Vec2(touchLocation.x / PTM_RATIO, touchLocation.y / PTM_RATIO);
+
+//    [self createBoxAtLocation:touchLocation
+//                     withSize:CGSizeMake(50, 50)];
+//
+
+
+    b2AABB aabb;
+    b2Vec2 delta = b2Vec2(1.0 / PTM_RATIO, 1.0 / PTM_RATIO);
+    aabb.lowerBound = locationWorld - delta;
+    aabb.upperBound = locationWorld + delta;
+    SimpleQueryCallback callback(locationWorld);
+    _world->QueryAABB(&callback, aabb);
+
+    if (callback.fixtureFound) {
+
+        b2Body* body = callback.fixtureFound->GetBody();
+        Box2DSprite* sprite = (__bridge id) body->GetUserData();
+        if (sprite == NULL) {
+            return FALSE;
+        }
+        if (![sprite mouseJointBegan]) {
+            return FALSE;
+        }
+
+        b2MouseJointDef mouseJointDef;
+        mouseJointDef.bodyA = _ground;
+        mouseJointDef.bodyB = body;
+        mouseJointDef.target = locationWorld;
+        mouseJointDef.maxForce = 100 * body->GetMass();
+        mouseJointDef.collideConnected = true;
+
+        _mouseJoint = (b2MouseJoint*) _world->CreateJoint(&mouseJointDef);
+        body->SetAwake(true);
+        return YES;
+
+    }
+    else {
+//        [self createBoxAtLocation:touchLocation
+//                         withSize:CGSizeMake(50, 50)];
+    }
+    return TRUE;
+
+}
+
+- (void) ccTouchMoved:(UITouch*)touch withEvent:(UIEvent*)event {
+    CGPoint touchLocation = [touch locationInView:[touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
+    touchLocation = [self convertToNodeSpace:touchLocation];
+    b2Vec2 locationWorld = b2Vec2(touchLocation.x / PTM_RATIO, touchLocation.y / PTM_RATIO);
+    if (_mouseJoint) {
+        _mouseJoint->SetTarget(locationWorld);
+    }
+}
+
+- (void) ccTouchEnded:(UITouch*)touch withEvent:(UIEvent*)event {
+    CCLOG(@"Stop touching!!!!!");
+    LogDebug(@"Stop touchin' !!!!!!!!!!!");
+    if (_mouseJoint) {
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
+}
+
+//- (void) ccTouchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+//    //Add a new body/atlas sprite at the touched location
+//    for (UITouch* touch in touches) {
+//        CGPoint location = [touch locationInView:[touch view]];
+//
+//        location = [[CCDirector sharedDirector] convertToGL:location];
+//        [self addNewBlockWithCoords:location];
+//    }
+//}
+
+//- (void) accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration {
+//    static float prevX = 0, prevY = 0;
+//
+//    //#define kFilterFactor 0.05f
+//#define kFilterFactor 1.0f    // don't use filter. the code is here just as an example
+//
+//    float accelX = (float) acceleration.x * kFilterFactor + (1 - kFilterFactor) * prevX;
+//    float accelY = (float) acceleration.y * kFilterFactor + (1 - kFilterFactor) * prevY;
+//
+//    prevX = accelX;
+//    prevY = accelY;
+//
+//    // accelerometer values are in "Portrait" mode. Change them to Landscape left
+//    // multiply the gravity by 10
+//    b2Vec2 gravity(-accelY * 10, accelX * 10);
+//
+//    _world->SetGravity(gravity);
+//}
+
+- (void) registerWithTouchDispatcher {
+    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+/* ================================================== Private Methods =============================================== */
+- (void) setupWorld {
+    b2Vec2 gravity;
+    gravity.Set(0.0f, -10.0f);
+
+    bool doSleep = true;
+
+    _world = new b2World(gravity, doSleep);
+    _world->SetContinuousPhysics(true);
+
+    _debugDraw = new GLESDebugDraw(PTM_RATIO);
+    _world->SetDebugDraw(_debugDraw);
+
+    uint32 flags = 0;
+    flags += b2DebugDraw::e_shapeBit;
+//		flags += b2DebugDraw::e_jointBit;
+//		flags += b2DebugDraw::e_aabbBit;
+//		flags += b2DebugDraw::e_pairBit;
+//		flags += b2DebugDraw::e_centerOfMassBit;
+    _debugDraw->SetFlags(flags);
+}
+
+- (void) setupGround {
+    CGSize screenSize = [CCDirector sharedDirector].winSize;
+    b2BodyDef groundBodyDef;
+    groundBodyDef.position.Set(0, 0); // bottom-left corner
+
+    // Call the body factory which allocates memory for the ground body
+    // from a pool and creates the ground box shape (also from a pool).
+    // The body is also added to the world.
+    _ground = _world->CreateBody(&groundBodyDef);
+
+    // Define the ground box shape.
+    b2PolygonShape groundBox;
+
+    // bottom
+    groundBox.SetAsEdge(b2Vec2(0, 0), b2Vec2(screenSize.width / PTM_RATIO, 0));
+    _ground->CreateFixture(&groundBox, 0);
+
+    // top
+    groundBox.SetAsEdge(b2Vec2(0, screenSize.height / PTM_RATIO),
+            b2Vec2(screenSize.width / PTM_RATIO, screenSize.height / PTM_RATIO));
+    _ground->CreateFixture(&groundBox, 0);
+
+    // left
+    groundBox.SetAsEdge(b2Vec2(0, screenSize.height / PTM_RATIO), b2Vec2(0, 0));
+    _ground->CreateFixture(&groundBox, 0);
+
+    // right
+    groundBox.SetAsEdge(b2Vec2(screenSize.width / PTM_RATIO, screenSize.height / PTM_RATIO),
+            b2Vec2(screenSize.width / PTM_RATIO, 0));
+    _ground->CreateFixture(&groundBox, 0);
+}
+
+- (void) createSensor {
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    CGSize sensorSize = CGSizeMake(100, 50);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        sensorSize = CGSizeMake(50, 25);
+    }
+
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.position = b2Vec2((winSize.width - sensorSize.width / 2) / PTM_RATIO, (sensorSize.height / 2) / PTM_RATIO);
+    _sensorBody = _world->CreateBody(&bodyDef);
+
+    b2PolygonShape shape;
+    shape.SetAsBox(sensorSize.width / PTM_RATIO, sensorSize.height / PTM_RATIO);
+
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &shape;
+    fixtureDef.isSensor = true;
+    _sensorBody->CreateFixture(&fixtureDef);
+}
+
+- (void) tick:(ccTime)dt {
+    //It is recommended that a fixed time step is used with Box2D for stability
+    //of the simulation, however, we are using a variable time step here.
+    //You need to make an informed choice, the following URL is useful
+    //http://gafferongames.com/game-physics/fix-your-timestep/
+
+    int32 velocityIterations = 4;
+    int32 positionIterations = 4;
+
+    // Instruct the world to perform a single step of simulation. It is
+    // generally best to keep the time step and iterations fixed.
+    _world->Step(dt, velocityIterations, positionIterations);
+
+
+    //Iterate over the bodies in the physics world
+    for (b2Body* b = _world->GetBodyList(); b; b = b->GetNext()) {
+        if (b->GetUserData() != NULL) {
+            //Synchronize the AtlasSprites position and rotation with the corresponding body
+            CCSprite* myActor = (__bridge id) b->GetUserData();
+            myActor.position = CGPointMake(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
+            myActor.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+        }
+    }
+}
+
+
+
+@end

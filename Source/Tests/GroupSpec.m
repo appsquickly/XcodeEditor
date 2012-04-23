@@ -75,7 +75,7 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
-        describe(@"Adding members.", ^{
+        describe(@"Adding source files.", ^{
 
             it(@"should allow adding a source file.", ^{
 
@@ -130,9 +130,28 @@ SPEC_BEGIN(GroupSpec)
                 [group addClass:classDefinition toTargets:[project targets]];
                 [project save];
 
+            });
+
+            it(@"should allow adding a source file of type objective-c++", ^{
+
+                project = [[Project alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+                group = [project groupWithPathRelativeToParent:@"Source"];
+
+                ClassDefinition* classDefinition =
+                        [[ClassDefinition alloc] initWithName:@"HelloWorldLayer" language:ObjectiveCPlusPlus];
+
+                [classDefinition setHeader:[NSString stringWithTestResource:@"HelloWorldLayer.header"]];
+                [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
+                [group addClass:classDefinition toTargets:[project targets]];
+
+                [project save];
 
             });
 
+
+        });
+
+        describe(@"adding xib files.", ^{
             it(@"should allow adding a xib file.", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
@@ -167,6 +186,10 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
+        });
+
+
+        describe(@"adding frameworks", ^{
             it(@"should allow adding a framework on the system volume", ^{
 
                 FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc]
@@ -183,11 +206,17 @@ SPEC_BEGIN(GroupSpec)
                 [project save];
             });
 
+        });
+
+
+        describe(@"Adding other types", ^{
+
             it(@"should allow adding a group", ^{
 
                 [group addGroupWithPath:@"TestGroup"];
                 [project save];
             });
+
 
         });
 

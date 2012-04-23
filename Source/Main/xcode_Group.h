@@ -31,6 +31,9 @@
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
     __weak xcode_FileOperationQueue* _fileOperationQueue;
+
+    //This is a computed property, based on the _children property. The contents of children (an array of
+    //keys of type NSString*) are resolved into the strongly typed id<XcodeGroupMember>
     NSMutableArray* _members;
 }
 
@@ -135,7 +138,6 @@
 */
 - (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias;
 
-- (xcode_SourceFile*)reference:(NSString*)name relativePath:(NSString*)path type:(XcodeSourceFileType)type;
 
 /* ================================================================================================================== */
 #pragma mark Locating children

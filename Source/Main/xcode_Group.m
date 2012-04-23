@@ -49,20 +49,20 @@
 @synthesize tree = _tree;
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project 
-				   key:(NSString*)key 
-				 alias:(NSString*)alias 
-				  path:(NSString*)path
-				  tree:(NSString*)tree
-			  children:(NSArray*)children {
-	
+- (id) initWithProject:(xcode_Project*)project
+        key:(NSString*)key
+        alias:(NSString*)alias
+        path:(NSString*)path
+        tree:(NSString*)tree
+        children:(NSArray*)children {
+
     self = [super init];
     if (self) {
         _project = project;
         _fileOperationQueue = [_project fileWriteQueue];
         _key = [key copy];
         _alias = [alias copy];
-		if( [tree length] ) { _tree = [tree copy]; } else { _tree = @"<group>"; }
+        if ([tree length]) {_tree = [tree copy];} else {_tree = @"<group>";}
         _pathRelativeToParent = [path copy];
         _children = [[NSMutableArray alloc] init];
         [_children addObjectsFromArray:children];
@@ -110,7 +110,14 @@
 
 - (void) addClass:(ClassDefinition*)classDefinition {
     [self referenceAndQueue:[classDefinition headerFileName] contents:[classDefinition header] type:SourceCodeHeader];
-    [self referenceAndQueue:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjC];
+
+    if ([classDefinition isObjectiveC]) {
+        [self referenceAndQueue:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjC];
+    }
+    else if ([classDefinition isObjectiveCPlusPlus]) {
+        [self referenceAndQueue:[classDefinition sourceFileName] contents:[classDefinition source]
+                type:SourceCodeObjCPlusPlus];
+    }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -137,6 +144,9 @@
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
+
+            LogDebug(@"Framework file path: %@", [frameworkDefinition filePath]);
+
             [_fileOperationQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
                     inDirectory:[self pathRelativeToProjectRoot]];
         }
@@ -172,7 +182,8 @@
 
 - (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias {
     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
-    Group* group = [[Group alloc] initWithProject:_project key:groupKey alias:alias path:path tree:@"SOURCE_ROOT" children:nil];
+    Group* group = [[Group alloc]
+            initWithProject:_project key:groupKey alias:alias path:path tree:@"SOURCE_ROOT" children:nil];
     LogDebug(@"Here's the group: %@", [group asDictionary]);
     [[_project objects] setObject:[group asDictionary] forKey:groupKey];
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
@@ -240,25 +251,25 @@
 - (NSString*) pathRelativeToProjectRoot {
     if (_pathRelativeToProjectRoot == nil) {
         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-		BOOL foundSourceRoot = NO;
+        BOOL foundSourceRoot = NO;
 
-		for( xcode_Group *group = self; group != nil; group = [_project groupForGroupMemberWithKey:group.key] ) {
-			LogDebug(@"Key: %@; Name: %@; Tree: %@; Path: %@", group.key, group.alias, group.tree, group.pathRelativeToParent);
+        for (xcode_Group* group = self; group != nil; group = [_project groupForGroupMemberWithKey:group.key]) {
+            LogDebug(@"Key: %@; Name: %@; Tree: %@; Path: %@", group.key, group.alias, group.tree, group.pathRelativeToParent);
 
-			if( [group pathRelativeToParent] != nil ) {
-				[pathComponents addObject:[group pathRelativeToParent]];
-			}
-			
-			if( [group.tree isEqualToString:@"SOURCE_ROOT"] ) {
-				foundSourceRoot = YES;
-				break;
-			}
+            if ([group pathRelativeToParent] != nil) {
+                [pathComponents addObject:[group pathRelativeToParent]];
+            }
+
+            if ([group.tree isEqualToString:@"SOURCE_ROOT"]) {
+                foundSourceRoot = YES;
+                break;
+            }
         }
 
         NSMutableString* fullPath = [[NSMutableString alloc] init];
-		for (int i = [pathComponents count] - 1; i >= 0; i--) {
-			[fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
-		}
+        for (int i = [pathComponents count] - 1; i >= 0; i--) {
+            [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
+        }
         _pathRelativeToProjectRoot = fullPath;
     }
     return _pathRelativeToProjectRoot;
@@ -297,19 +308,6 @@
     [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
 }
 
-- (xcode_SourceFile*)reference:(NSString*)name relativePath:(NSString*)path type:(XcodeSourceFileType)type {
-	SourceFile* currentSourceFile = [self memberWithDisplayName:name];
-    if ((currentSourceFile) == nil) {
-        NSDictionary* reference = [self makeFileReferenceWithPath:path name:path type:type];
-        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
-        [[_project objects] setObject:reference forKey:fileKey];
-        [self addMemberWithKey:fileKey];
-		currentSourceFile = [self memberWithKey:fileKey];
-		[[_project objects] setObject:[self asDictionary] forKey:_key];
-    }
-	return currentSourceFile;
-}
-
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
@@ -333,9 +331,9 @@
     if (_alias != nil) {
         [groupData setObject:_alias forKey:@"name"];
     }
-	if( _pathRelativeToParent ) {
-		[groupData setObject:_pathRelativeToParent forKey:@"path"];
-	}
+    if (_pathRelativeToParent) {
+        [groupData setObject:_pathRelativeToParent forKey:@"path"];
+    }
     [groupData setObject:_children forKey:@"children"];
     return groupData;
 }

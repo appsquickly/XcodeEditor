@@ -88,9 +88,14 @@
 }
 
 - (void) performCopyFrameworks {
-    [_frameworksToCopy enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationPath, NSURL* frameworkPath, BOOL* stop) {
+    [_frameworksToCopy enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationUrl, NSURL* frameworkPath, BOOL* stop) {
         NSError* error;
-        [[NSFileManager defaultManager] copyItemAtURL:frameworkPath toURL:destinationPath error:&error];
+        NSFileManager* fileManager = [NSFileManager defaultManager];
+
+        if ([fileManager fileExistsAtPath:[destinationUrl path]]) {
+            [fileManager removeItemAtURL:destinationUrl error:&error];
+        }
+        [fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error];
 
         if (error) {
             LogDebug(@"User info: %@", [error userInfo]);

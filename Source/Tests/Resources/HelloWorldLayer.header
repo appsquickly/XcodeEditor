@@ -1,0 +1,32 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Jasper Blues
+//  Copyright 2012 Jasper Blues
+//  All Rights Reserved.
+//
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+#import "cocos2d.h"
+#import "Box2D.h"
+#import "GLES-Render.h"
+
+
+@interface HelloWorldLayer : CCLayer {
+
+@private
+    b2World* _world;
+    b2Body* _ground;
+    GLESDebugDraw* _debugDraw;
+    b2Body* _sensorBody;
+    b2MouseJoint* _mouseJoint;
+    CCSpriteBatchNode* _sceneSpriteBatchNode;
+}
+
++ (CCScene*) scene;
+
+- (void) addBlockWithCoords:(CGPoint)p;
+
+@end

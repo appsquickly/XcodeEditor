@@ -56,6 +56,8 @@
 		6B65942314F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.header in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05814F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.header */; };
 		6B65942414F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.impl in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05914F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.impl */; };
 		6B65942514F8AAB100F65AEC /* project.pbxproj in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */; };
+		6BB7136F154575B3003614C2 /* HelloWorldLayer.impl in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
+		6BB71370154575B3003614C2 /* HelloWorldLayer.header in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		6BBD6C9714ECF28200451BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBD6C9614ECF28200451BA2 /* libz.dylib */; };
 		6BE0AAF81505D7C4004C27DA /* ESA.Sales.Foobar.xib in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */; };
 		6BE4B285147E6B610059E451 /* expanz-iOS-SDK.zip in Resources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */; };
@@ -68,6 +70,8 @@
 		6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11315443AA400C51251 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
+		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +81,8 @@
 			dstPath = /tmp;
 			dstSubfolderSpec = 0;
 			files = (
+				6BB7136F154575B3003614C2 /* HelloWorldLayer.impl in Copy Test Resources to /tmp */,
+				6BB71370154575B3003614C2 /* HelloWorldLayer.header in Copy Test Resources to /tmp */,
 				6B65942314F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.header in Copy Test Resources to /tmp */,
 				6BE0AAF81505D7C4004C27DA /* ESA.Sales.Foobar.xib in Copy Test Resources to /tmp */,
 				6B65942414F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.impl in Copy Test Resources to /tmp */,
@@ -145,6 +151,8 @@
 		6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FrameworkDefinition.h; sourceTree = "<group>"; };
 		E94DE11315443AA400C51251 /* XcodeEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
+		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
+		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +231,8 @@
 		6B3AD05714F8A3B400BCFE81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E94DE11415443AC100C51254 /* HelloWorldLayer.impl */,
+				E94DE11415443AC100C51252 /* HelloWorldLayer.header */,
 				6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */,
 				6BE4B285147E6B610059E450 /* expanz-iOS-SDK.zip */,
 				6B3AD05814F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.header */,
@@ -376,7 +386,7 @@
 				6B55223214EA723700494CF3 /* Frameworks */,
 				6B55223314EA723700494CF3 /* Resources */,
 				6BD1B46314EBAD0E00F5AD1C /* Copy Test Resources to /tmp */,
-				6B5A816C14F9FAE100D20018 /* extract test xcode project */,
+				6B5A816C14F9FAE100D20018 /* extract test xcode projects */,
 				6B55223414EA723700494CF3 /* ShellScript */,
 			);
 			buildRules = (
@@ -436,6 +446,8 @@
 				6B65942014F8A56C00F65AEC /* XcodeEditor-Info.plist in Resources */,
 				6BE4B285147E6B610059E451 /* expanz-iOS-SDK.zip in Resources */,
 				6BE4B285147E6B610059E45D /* ESA.Sales.Foobar.xib in Resources */,
+				E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */,
+				E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,19 +467,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		6B5A816C14F9FAE100D20018 /* extract test xcode project */ = {
+		6B5A816C14F9FAE100D20018 /* extract test xcode projects */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "extract test xcode project";
+			name = "extract test xcode projects";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -fr /tmp/expanz-iOS-SDK\nunzip ${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip -d /tmp\ncp ${SRCROOT}/Source/Tests/Resources/project.pbxproj /tmp";
+			shellScript = "unzip -d /tmp/ -o ${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip\nunzip -d /tmp/ -o ${SRCROOT}/Source/Tests/Resources/HelloBoxy.zip\n\ncp ${SRCROOT}/Source/Tests/Resources/project.pbxproj /tmp";
 		};
 /* End PBXShellScriptBuildPhase section */
 
