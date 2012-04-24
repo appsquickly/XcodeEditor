@@ -16,6 +16,9 @@
 @property(nonatomic, strong, readonly) NSString* filePath;
 @property(nonatomic, readonly) BOOL copyToDestination;
 
++ (xcode_FrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
+        copyToDestination:(BOOL)copyToDestination;
+
 - (id) initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;
 
 - (NSString*) name;

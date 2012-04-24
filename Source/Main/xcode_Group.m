@@ -48,6 +48,14 @@
 @synthesize alias = _alias;
 @synthesize tree = _tree;
 
+/* ================================================= Class Methods ================================================== */
++ (Group*) groupWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
+        tree:(NSString*)tree children:(NSArray*)children {
+
+    return [[[Group alloc] initWithProject:project key:key alias:alias path:path tree:tree children:children]
+            autorelease];
+}
+
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project
         key:(NSString*)key
@@ -59,7 +67,7 @@
     self = [super init];
     if (self) {
         _project = project;
-        _fileOperationQueue = [_project fileWriteQueue];
+        _fileOperationQueue = [_project fileOperationQueue];
         _key = [key copy];
         _alias = [alias copy];
         if ([tree length]) {_tree = [tree copy];} else {_tree = @"<group>";}
@@ -172,7 +180,7 @@
 
 - (void) addGroupWithPath:(NSString*)path {
     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
-    Group* group = [[Group alloc] initWithProject:_project key:groupKey alias:nil path:path tree:@"" children:nil];
+    Group* group = [Group groupWithProject:_project key:groupKey alias:nil path:path tree:@"" children:nil];
     LogDebug(@"Here's the group: %@", [group asDictionary]);
     [[_project objects] setObject:[group asDictionary] forKey:groupKey];
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
@@ -182,8 +190,7 @@
 
 - (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias {
     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
-    Group* group = [[Group alloc]
-            initWithProject:_project key:groupKey alias:alias path:path tree:@"SOURCE_ROOT" children:nil];
+    Group* group = [Group groupWithProject:_project key:groupKey alias:alias path:path tree:@"SOURCE_ROOT" children:nil];
     LogDebug(@"Here's the group: %@", [group asDictionary]);
     [[_project objects] setObject:[group asDictionary] forKey:groupKey];
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
@@ -251,7 +258,7 @@
 - (NSString*) pathRelativeToProjectRoot {
     if (_pathRelativeToProjectRoot == nil) {
         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-        BOOL foundSourceRoot = NO;
+  
 
         for (xcode_Group* group = self; group != nil; group = [_project groupForGroupMemberWithKey:group.key]) {
             LogDebug(@"Key: %@; Name: %@; Tree: %@; Path: %@", group.key, group.alias, group.tree, group.pathRelativeToParent);
@@ -261,7 +268,6 @@
             }
 
             if ([group.tree isEqualToString:@"SOURCE_ROOT"]) {
-                foundSourceRoot = YES;
                 break;
             }
         }
@@ -278,6 +284,16 @@
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
     return [NSString stringWithFormat:@"Group: displayName = %@, key=%@", [self displayName], _key];
+}
+
+
+- (void) dealloc {
+    [_pathRelativeToParent release];
+    [_key release];
+    [_children release];
+    [_alias release];
+    [_tree release];
+    [super dealloc];
 }
 
 /* ================================================== Private Methods =============================================== */
@@ -309,7 +325,7 @@
 }
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
-    NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* reference = [NSMutableDictionary dictionary];
     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"FileEncoding"];
     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
@@ -325,7 +341,7 @@
 
 
 - (NSDictionary*) asDictionary {
-    NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* groupData = [NSMutableDictionary dictionary];
     [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@"isa"];
     [groupData setObject:self.tree forKey:@"sourceTree"];
     if (_alias != nil) {
@@ -344,10 +360,12 @@
 }
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {
-    LogDebug(@"Adding source file %@ to targets %@", sourceFile, targets);
+    [targets retain];
+    LogDebug(@"################################## Adding source file %@ to targets %@", sourceFile, targets);
     for (Target* target in targets) {
         [target addMember:sourceFile];
     }
+    [targets release];
 }
 
 - (void) warnPendingOverwrite:(NSString*)resourceName {

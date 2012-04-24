@@ -17,9 +17,16 @@
 @implementation xcode_SourceFile
 
 @synthesize type = _type;
-@synthesize name = _name;
 @synthesize key = _key;
+@synthesize name = _name;
 @synthesize sourceTree = _sourceTree;
+
+/* ================================================= Class Methods ================================================== */
++ (xcode_SourceFile*) sourceFileWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type
+        name:(NSString*)name sourceTree:(NSString*)_tree {
+    return [[[SourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree] autorelease];
+}
+
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project
@@ -42,7 +49,7 @@
 
 - (BOOL) isBuildFile {
     if ([self canBecomeBuildFile] && _isBuildFile == nil) {
-        _isBuildFile = [NSNumber numberWithBool:NO];
+        _isBuildFile = [[NSNumber numberWithBool:NO] retain];
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
@@ -79,7 +86,7 @@
     LogDebug(@"$$$$$$$$$$$$$$$$$ Start becoming build file");
     if (![self isBuildFile]) {
         if ([self canBecomeBuildFile]) {
-            NSMutableDictionary* sourceBuildFile = [[NSMutableDictionary alloc] init];
+            NSMutableDictionary* sourceBuildFile = [NSMutableDictionary dictionary];
             [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFile] forKey:@"isa"];
             [sourceBuildFile setObject:_key forKey:@"fileRef"];
             NSString* buildFileKey = [[KeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
@@ -93,8 +100,7 @@
                                                                  [NSString stringFromSourceFileType:_type]];
         }
 
-    }
-    LogDebug(@"Done becoming build file");
+    }LogDebug(@"Done becoming build file");
 }
 
 /* ================================================= Protocol Methods =============================================== */
@@ -122,6 +128,15 @@
 - (NSString*) description {
     return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name,
                                       [self pathRelativeToProjectRoot]];
+}
+
+- (void) dealloc {
+    [_isBuildFile release];
+    [_buildFileKey release];
+    [_key release];
+    [_name release];
+    [_sourceTree release];
+    [super dealloc];
 }
 
 

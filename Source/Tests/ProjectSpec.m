@@ -12,7 +12,6 @@
 #import "xcode_Project.h"
 #import "xcode_Target.h"
 #import "xcode_Group.h"
-#import "xcode_SourceFile.h"
 
 SPEC_BEGIN(ProjectSpec)
 

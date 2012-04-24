@@ -31,6 +31,12 @@
 @synthesize key = _key;
 @synthesize name = _name;
 
+
+/* ================================================= Class Methods ================================================== */
++ (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
+    return [[[Target alloc] initWithProject:project key:key name:name] autorelease];
+}
+
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
     self = [super init];
@@ -89,6 +95,13 @@
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
     return [NSString stringWithFormat:@"Target: name=%@, files=%@", _name, _members];
+}
+
+- (void) dealloc {
+    [_members release];
+    [_key release];
+    [_name release];
+    [super dealloc];
 }
 
 /* ================================================== Private Methods =============================================== */

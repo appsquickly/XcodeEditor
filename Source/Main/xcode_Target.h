@@ -22,9 +22,11 @@
     NSMutableArray* _members;
 }
 
-@property (nonatomic, weak, readonly) xcode_Project* project;
+@property (nonatomic, assign, readonly) xcode_Project* project;
 @property (nonatomic, strong, readonly) NSString* key;
 @property (nonatomic, strong, readonly) NSString* name;
+
++ (xcode_Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name;
 
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name;
 

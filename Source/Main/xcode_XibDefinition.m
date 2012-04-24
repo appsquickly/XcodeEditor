@@ -16,6 +16,16 @@
 @synthesize name = _name;
 @synthesize content = _content;
 
+/* ================================================= Class Methods ================================================== */
++ (XibDefinition*) xibDefinitionWithName:(NSString*)name {
+    return [[[XibDefinition alloc] initWithName:name] autorelease];
+}
+
++ (XibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content {
+    return [[[XibDefinition alloc] initWithName:name content:content] autorelease];
+}
+
+
 /* ================================================== Initializers ================================================== */
 - (id) initWithName:(NSString*)name {
     return [self initWithName:name content:nil];
@@ -31,8 +41,16 @@
     return self;
 }
 
+/* ================================================ Interface Methods =============================================== */
 - (NSString*) xibFileName {
     return [_name stringByAppendingString:@".xib"];
+}
+
+/* ================================================== Utility Methods =============================================== */
+- (void) dealloc {
+    [_name release];
+    [_content release];
+    [super dealloc];
 }
 
 

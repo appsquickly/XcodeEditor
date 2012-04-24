@@ -16,6 +16,14 @@
 @synthesize filePath = _filePath;
 @synthesize copyToDestination = _copyToDestination;
 
+/* ================================================= Class Methods ================================================== */
++ (FrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
+        copyToDestination:(BOOL)copyToDestination {
+
+    return [[[FrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination] autorelease];
+}
+
+
 /* ================================================== Initializers ================================================== */
 - (id) initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination {
     self = [super init];
@@ -29,6 +37,12 @@
 /* ================================================ Interface Methods =============================================== */
 - (NSString*) name {
     return [_filePath lastPathComponent];
+}
+
+/* ================================================== Utility Methods =============================================== */
+- (void) dealloc {
+    [_filePath release];
+    [super dealloc];
 }
 
 

@@ -18,6 +18,16 @@
 @synthesize header = _header;
 @synthesize source = _source;
 
+/* ================================================= Class Methods ================================================== */
++ (ClassDefinition*) classDefinitionWithName:(NSString*)fileName {
+    return [[[ClassDefinition alloc] initWithName:fileName] autorelease];
+}
+
++ (ClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
+    return [[[ClassDefinition alloc] initWithName:className language:language] autorelease];
+}
+
+
 /* ================================================== Initializers ================================================== */
 - (id) initWithName:(NSString*)className {
     return [self initWithName:className language:ObjectiveC];
@@ -29,7 +39,7 @@
         _className = [className copy];
         if (!(language == ObjectiveC || language == ObjectiveCPlusPlus)) {
             [NSException
-                raise:NSInvalidArgumentException format:@"Language must be one of ObjectiveC, ObjectiveCPlusPlus"];
+                    raise:NSInvalidArgumentException format:@"Language must be one of ObjectiveC, ObjectiveCPlusPlus"];
         }
         _language = language;
     }
@@ -52,15 +62,22 @@
 }
 
 - (NSString*) sourceFileName {
-    NSString* sourceFileName; 
+    NSString* sourceFileName = nil;
     if ([self isObjectiveC]) {
         sourceFileName = [_className stringByAppendingString:@".m"];
     }
     else if ([self isObjectiveCPlusPlus]) {
         sourceFileName = [_className stringByAppendingString:@".mm"];
     }
-    return sourceFileName;
+    return [sourceFileName retain];
 }
 
+/* ================================================== Utility Methods =============================================== */
+- (void) dealloc {
+    [_className release];
+    [_header release];
+    [_source release];
+    [super dealloc];
+}
 
 @end

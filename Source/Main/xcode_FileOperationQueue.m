@@ -32,11 +32,11 @@
 - (id) initWithBaseDirectory:(NSString*)baseDirectory {
     self = [super init];
     if (self) {
+        _baseDirectory = [baseDirectory copy];
         _filesToWrite = [[NSMutableDictionary alloc] init];
         _frameworksToCopy = [[NSMutableDictionary alloc] init];
         _filesToDelete = [[NSMutableArray alloc] init];
         _directoriesToCreate = [[NSMutableArray alloc] init];
-        _baseDirectory = [baseDirectory copy];
     }
     return self;
 }
@@ -47,10 +47,11 @@
 }
 
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory {
+
     NSURL* sourceUrl = [NSURL fileURLWithPath:filePath isDirectory:YES];
-    NSURL* destinationUrl = [NSURL fileURLWithPath:[[_baseDirectory stringByAppendingPathComponent:directory]
-                                                           stringByAppendingPathComponent:[filePath lastPathComponent]]
-            isDirectory:YES];
+    NSString* destinationPath = [[_baseDirectory stringByAppendingPathComponent:directory]
+            stringByAppendingPathComponent:[filePath lastPathComponent]];
+    NSURL* destinationUrl = [NSURL fileURLWithPath:destinationPath isDirectory:YES];
     [_frameworksToCopy setObject:sourceUrl forKey:destinationUrl];
 }
 
@@ -64,10 +65,18 @@
 }
 
 - (void) commitFileOperations {
+    LogDebug(@"Starting to commit file operations!!!!!!!!!!!!!!!!!!");
     [self performFileWrites];
+    LogDebug(@"Done with file writes");
+
     [self performCopyFrameworks];
+    LogDebug(@"Done with copy frameworks");
+
     [self performFileDeletions];
+    LogDebug(@"Done with file deletes");
+
     [self performCreateDirectories];
+    LogDebug(@"Done with create directories");
 }
 
 
@@ -78,10 +87,10 @@
 
 - (void) performFileWrites {
     [_filesToWrite enumerateKeysAndObjectsUsingBlock:^(id filePath, id data, BOOL* stop) {
-        NSError* error;
-        [data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        if (error) {
-            [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@", filePath];
+        NSError* error = nil;
+        if (![data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
+            [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@, error: %@",
+                                                                       filePath, error];
         }
     }];
     [_filesToWrite removeAllObjects];
@@ -89,15 +98,14 @@
 
 - (void) performCopyFrameworks {
     [_frameworksToCopy enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationUrl, NSURL* frameworkPath, BOOL* stop) {
-        NSError* error;
+
         NSFileManager* fileManager = [NSFileManager defaultManager];
 
         if ([fileManager fileExistsAtPath:[destinationUrl path]]) {
-            [fileManager removeItemAtURL:destinationUrl error:&error];
+            [fileManager removeItemAtURL:destinationUrl error:nil];
         }
-        [fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error];
-
-        if (error) {
+        NSError* error = nil;
+        if (![fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error]) {
             LogDebug(@"User info: %@", [error userInfo]);
             [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@",
                                                                        [frameworkPath absoluteString]];
@@ -107,13 +115,14 @@
 }
 
 - (void) performFileDeletions {
+    LogDebug(@"Files to delete: %@", _filesToDelete);
+
     for (NSString* filePath in [_filesToDelete reverseObjectEnumerator]) {
-        NSError* error;
         NSString* fullPath = [_baseDirectory stringByAppendingPathComponent:filePath];
-        LogDebug(@"Full path to delete is: %@", fullPath);
-        [[NSFileManager defaultManager] removeItemAtPath:fullPath error:&error];
-        if (error) {
-            LogDebug(@"User info: %@", [error userInfo]);
+        NSError* error = nil;
+
+        if (![[NSFileManager defaultManager] removeItemAtPath:fullPath error:&error]) {
+            NSLog(@"failed to remove item at path; error == %@", error);
             [NSException raise:NSInternalInconsistencyException format:@"Error deleting file at filePath: %@",
                                                                        filePath];
         }
@@ -125,11 +134,22 @@
     for (NSString* filePath in _directoriesToCreate) {
         NSFileManager* fileManager = [NSFileManager defaultManager];
         if (![fileManager fileExistsAtPath:filePath]) {
-            if (![fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil]) {
+            if (![fileManager
+                    createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil]) {
                 [NSException raise:NSInvalidArgumentException format:@"Error: Create folder failed %@", filePath];
             }
         }
     }
+}
+
+/* ================================================== Utility Methods =============================================== */
+- (void) dealloc {
+    [_baseDirectory release];
+    [_filesToWrite release];
+    [_frameworksToCopy release];
+    [_filesToDelete release];
+    [_directoriesToCreate release];
+    [super dealloc];
 }
 
 

@@ -27,9 +27,12 @@
     NSMutableArray* _targets;
 }
 
-@property(nonatomic, strong, readonly) xcode_FileOperationQueue* fileWriteQueue;
+@property(nonatomic, strong, readonly) xcode_FileOperationQueue* fileOperationQueue;
 
 /* ================================================== Initializers ================================================== */
+
++ (xcode_Project*) projectWithFilePath:(NSString*)filePath;
+
 /**
 * Creates a new project editor instance with the specified Project.xcodeproj file.
 */

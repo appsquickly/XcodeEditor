@@ -30,6 +30,10 @@ typedef enum {
 @property(nonatomic, strong) NSString* header;
 @property(nonatomic, strong) NSString* source;
 
++ (xcode_ClassDefinition*) classDefinitionWithName:(NSString*)fileName;
+
++ (xcode_ClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
+
 /**
 * Initializes a new objective-c class definition.
 */

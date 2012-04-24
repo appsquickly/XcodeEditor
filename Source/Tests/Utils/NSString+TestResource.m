@@ -15,12 +15,12 @@
 
 + (NSString*) stringWithTestResource:(NSString*)resourceName {
     NSString* filePath = [@"/tmp" stringByAppendingPathComponent:resourceName];
-    NSError* error;
+    NSError* error = nil;
     NSString* contents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-    if (error) {
+    if (!contents) {
         [NSException raise:NSInvalidArgumentException format:@"No test resource named '%@'", filePath];
     }
-    return contents;
+    return [[contents retain] autorelease];
 }
 
 

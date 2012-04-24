@@ -30,7 +30,7 @@
 @private
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
-    __weak xcode_FileOperationQueue* _fileOperationQueue;
+    xcode_FileOperationQueue* _fileOperationQueue;
 
     //This is a computed property, based on the _children property. The contents of children (an array of
     //keys of type NSString*) are resolved into the strongly typed id<XcodeGroupMember>
@@ -42,7 +42,7 @@
 /**
  * The [Xcode project](xcode_Project) that this group belongs to.
 */
-@property(nonatomic, weak, readonly) xcode_Project* project;
+@property(nonatomic, assign, readonly) xcode_Project* project;
 
 /**
  * The alias of the group, which can be used to give the group a name other than the last path component.
@@ -76,12 +76,19 @@
 /* ================================================================================================================== */
 #pragma mark Initializers
 
-- (id) initWithProject:(xcode_Project*)project 
-				   key:(NSString*)key 
-				 alias:(NSString*)alias 
-				  path:(NSString*)path
-				  tree:(NSString*)tree
-			  children:(NSArray*)children ;
++ (xcode_Group*) groupWithProject:(xcode_Project*)project
+        key:(NSString*)key
+        alias:(NSString*)alias
+        path:(NSString*)path
+        tree:(NSString*)tree
+        children:(NSArray*)children;
+
+- (id) initWithProject:(xcode_Project*)project
+        key:(NSString*)key
+        alias:(NSString*)alias
+        path:(NSString*)path
+        tree:(NSString*)tree
+        children:(NSArray*)children;
 
 /* ================================================================================================================== */
 #pragma mark Super (parent) group

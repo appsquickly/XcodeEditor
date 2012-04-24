@@ -16,6 +16,10 @@
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong) NSString* content;
 
++ (xcode_XibDefinition*) xibDefinitionWithName:(NSString*)name;
+
++ (xcode_XibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content;
+
 - (id) initWithName:(NSString*)name;
 
 - (id) initWithName:(NSString*)name content:(NSString*)content;

@@ -72,6 +72,7 @@
 		E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11315443AA400C51251 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
+		E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51256 /* HelloBoxy.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -153,6 +154,7 @@
 		E94DE11315443AA400C51251 /* XcodeEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
+		E94DE11415443AC100C51256 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 		6B3AD05714F8A3B400BCFE81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E94DE11415443AC100C51256 /* HelloBoxy.zip */,
 				E94DE11415443AC100C51254 /* HelloWorldLayer.impl */,
 				E94DE11415443AC100C51252 /* HelloWorldLayer.header */,
 				6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */,
@@ -448,6 +451,7 @@
 				6BE4B285147E6B610059E45D /* ESA.Sales.Foobar.xib in Resources */,
 				E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */,
 				E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */,
+				E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +555,7 @@
 		6B3ACFED14F8A2FE00BCFE81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -569,7 +573,7 @@
 		6B3ACFEE14F8A2FE00BCFE81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -587,7 +591,7 @@
 		6B55224414EA723700494CF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -618,7 +622,7 @@
 		6B55224514EA723700494CF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;

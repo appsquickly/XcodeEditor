@@ -47,9 +47,9 @@ SPEC_BEGIN(GroupSpec)
         describe(@"Object creation", ^{
 
             it(@"should allow initialization with ", ^{
-                Group* group = [[Group alloc]
-                        initWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" tree:@""
-                        children:nil];
+                Group* group =
+                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" tree:@""
+                                children:nil];
 
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
@@ -75,11 +75,11 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
-        describe(@"Adding source files.", ^{
+        describe(@"Adding obj-c source files.", ^{
 
             it(@"should allow adding a source file.", ^{
 
-                ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyViewController"];
+                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"MyViewController"];
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
@@ -106,7 +106,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should provide a convenience method to add a source file, and specify targets", ^{
 
-                ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"AnotherClassAdded"];
+                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"AnotherClassAdded"];
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
@@ -118,13 +118,13 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should return a warning if an existing class is overwritten", ^{
 
-                ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"AddedTwice"];
+                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"AddedTwice"];
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
                 [group addClass:classDefinition toTargets:[project targets]];
                 [project save];
 
-                classDefinition = [[ClassDefinition alloc] initWithName:@"AddedTwice"];
+                classDefinition = [ClassDefinition classDefinitionWithName:@"AddedTwice"];
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
                 [group addClass:classDefinition toTargets:[project targets]];
@@ -132,21 +132,35 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
-            it(@"should allow adding a source file of type objective-c++", ^{
+        });
 
-                project = [[Project alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
-                group = [project groupWithPathRelativeToParent:@"Source"];
+        describe(@"adding objective-c++ files", ^{
+
+            it(@"should allow adding files of type obc-c++", ^{
+
+                Project* anotherProject = [[Project alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+                group = [anotherProject groupWithPathRelativeToParent:@"Source"];
 
                 ClassDefinition* classDefinition =
-                        [[ClassDefinition alloc] initWithName:@"HelloWorldLayer" language:ObjectiveCPlusPlus];
+                        [ClassDefinition classDefinitionWithName:@"HelloWorldLayer" language:ObjectiveCPlusPlus];
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"HelloWorldLayer.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
-                [group addClass:classDefinition toTargets:[project targets]];
+                LogDebug(@"Class definition: %@", classDefinition);
 
-                [project save];
+                //WTF? This crashes, but the following works?
+                //[group addClass:classDefinition toTargets:[anotherProject targets]];
+                [group addClass:classDefinition];
 
+                SourceFile* sourceFile = [anotherProject fileWithName:@"HelloWorldLayer.mm"];
+                [sourceFile shouldNotBeNil];
+                for (Target* target in [project targets]) {
+                    [target addMember:sourceFile];
+                }
+
+                [anotherProject save];
             });
+
 
 
         });
@@ -155,7 +169,7 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow adding a xib file.", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
-                XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"AddedXibFile" content:xibText];
+                XibDefinition* xibDefinition = [XibDefinition xibDefinitionWithName:@"AddedXibFile" content:xibText];
 
                 [group addXib:xibDefinition];
                 [project save];
@@ -179,7 +193,7 @@ SPEC_BEGIN(GroupSpec)
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
                 XibDefinition
-                        * xibDefinition = [[XibDefinition alloc] initWithName:@"AnotherAddedXibFile" content:xibText];
+                        * xibDefinition = [XibDefinition xibDefinitionWithName:@"AnotherAddedXibFile" content:xibText];
 
                 [group addXib:xibDefinition toTargets:[project targets]];
                 [project save];
@@ -192,16 +206,16 @@ SPEC_BEGIN(GroupSpec)
         describe(@"adding frameworks", ^{
             it(@"should allow adding a framework on the system volume", ^{
 
-                FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc]
-                        initWithFilePath:[FrameworkPathFactory eventKitUIPath] copyToDestination:NO];
+                FrameworkDefinition* frameworkDefinition = [FrameworkDefinition
+                        frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath] copyToDestination:NO];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
 
             });
 
             it(@"should allow adding a framework, copying it to the destination folder", ^{
-                FrameworkDefinition* frameworkDefinition = [[FrameworkDefinition alloc]
-                        initWithFilePath:[FrameworkPathFactory coreMidiPath] copyToDestination:YES];
+                FrameworkDefinition* frameworkDefinition = [FrameworkDefinition
+                        frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath] copyToDestination:YES];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
             });
