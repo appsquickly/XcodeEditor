@@ -42,6 +42,12 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
+- (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory {
+    NSString* filePath = [self destinationPathFor:name inProjectDirectory:directory];
+    return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+}
+
+
 - (void) queueWrite:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents {
     [_filesToWrite setObject:contents forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
 }
@@ -65,18 +71,10 @@
 }
 
 - (void) commitFileOperations {
-    LogDebug(@"Starting to commit file operations!!!!!!!!!!!!!!!!!!");
     [self performFileWrites];
-    LogDebug(@"Done with file writes");
-
     [self performCopyFrameworks];
-    LogDebug(@"Done with copy frameworks");
-
     [self performFileDeletions];
-    LogDebug(@"Done with file deletes");
-
     [self performCreateDirectories];
-    LogDebug(@"Done with create directories");
 }
 
 

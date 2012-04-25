@@ -24,6 +24,8 @@
 
 - (id) initWithBaseDirectory:(NSString*)baseDirectory;
 
+- (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory;
+
 - (void) queueWrite:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
 
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;
