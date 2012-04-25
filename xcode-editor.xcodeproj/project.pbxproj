@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */; };
 		6B3ACFE114F8A2FE00BCFE81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
 		6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */; };
@@ -508,6 +509,7 @@
 				6B3AD04A14F8A3AC00BCFE81 /* XcodeMemberType.m in Sources */,
 				6BE4B285147E6B610059E459 /* xcode_XibDefinition.m in Sources */,
 				6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */,
+				6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

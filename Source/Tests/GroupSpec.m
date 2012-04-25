@@ -56,8 +56,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow initialization with ", ^{
                 Group* group =
-                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main"
-                                children:nil];
+                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
@@ -145,7 +144,6 @@ SPEC_BEGIN(GroupSpec)
         describe(@"adding objective-c++ files", ^{
 
 
-
             it(@"should allow adding files of type obc-c++", ^{
 
                 Project* anotherProject = [Project projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
@@ -161,7 +159,6 @@ SPEC_BEGIN(GroupSpec)
                 [anotherProject save];
 
             });
-
 
 
         });
@@ -198,6 +195,21 @@ SPEC_BEGIN(GroupSpec)
 
                 [group addXib:xibDefinition toTargets:[project targets]];
                 [project save];
+
+            });
+
+            it(@"should provide an option to accept the existing file, if it exists.", ^{
+
+                NSString* newXibText = @"Don't blow away my contents if I already exists";
+                XibDefinition* xibDefinition = [XibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
+                [xibDefinition setFileOperationStyle:FileOperationStyleAcceptExisting];
+
+                [group addXib:xibDefinition toTargets:[project targets]];
+                [project save];
+
+                NSString* xibContent = [NSString stringWithTestResource:@"expanz-iOS-SDK/Source/Main/AddedXibFile.xib"];
+                LogDebug(@"Xib content: %@", xibContent);
+                [[xibContent shouldNot] equal:newXibText];
 
             });
 
