@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">60</td>
-            <td class="headerCovTableEntry">100</td>
-            <td class="headerCovTableEntryLo">60.0 %</td>
+            <td class="headerCovTableEntry">65</td>
+            <td class="headerCovTableEntry">98</td>
+            <td class="headerCovTableEntryLo">66.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -85,162 +85,160 @@
 <span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            : @implementation xcode_Target
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : @synthesize project = _project;</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : @synthesize key = _key;</span>
-<span class="lineNum">      32 </span><span class="lineCov">         46 : @synthesize name = _name;</span>
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      35 </span>            : + (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
-<span class="lineNum">      36 </span><span class="lineCov">         33 :     return [[[Target alloc] initWithProject:project key:key name:name] autorelease];</span>
-<span class="lineNum">      37 </span><span class="lineCov">         33 : }</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : @synthesize key = _key;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         51 : @synthesize name = _name;</span>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : /* ================================================= Class Methods ================================================== */
+<span class="lineNum">      34 </span>            : + (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
+<span class="lineNum">      35 </span><span class="lineCov">         37 :     return [[[Target alloc] initWithProject:project key:key name:name] autorelease];</span>
+<span class="lineNum">      36 </span><span class="lineCov">         37 : }</span>
+<span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      41 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
-<span class="lineNum">      42 </span>            :     self = [super init];
-<span class="lineNum">      43 </span><span class="lineCov">         33 :     if (self) {</span>
-<span class="lineNum">      44 </span><span class="lineCov">         33 :         _project = project;</span>
-<span class="lineNum">      45 </span><span class="lineCov">         33 :         _key = key;</span>
-<span class="lineNum">      46 </span><span class="lineCov">         33 :         _name = [name copy];</span>
-<span class="lineNum">      47 </span><span class="lineCov">         33 :     }</span>
-<span class="lineNum">      48 </span><span class="lineCov">         33 :     return self;</span>
-<span class="lineNum">      49 </span><span class="lineCov">         33 : }</span>
-<span class="lineNum">      50 </span><span class="lineCov">         33 : </span>
-<span class="lineNum">      51 </span>            : /* ================================================ Interface Methods =============================================== */
-<span class="lineNum">      52 </span>            : - (NSArray*) members {
-<span class="lineNum">      53 </span>            :     if (_members == nil) {
-<span class="lineNum">      54 </span><span class="lineCov">          3 :         _members = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      55 </span><span class="lineCov">          3 :         for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@&quot;buildPhases&quot;]) {</span>
-<span class="lineNum">      56 </span><span class="lineCov">          3 :             NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];</span>
-<span class="lineNum">      57 </span><span class="lineCov">          9 :             if ([[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == PBXSourcesBuildPhase ||</span>
-<span class="lineNum">      58 </span><span class="lineCov">          9 :                     [[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == PBXFrameworksBuildPhase) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">          9 :                 for (NSString* buildFileKey in [buildPhase objectForKey:@&quot;files&quot;]) {</span>
-<span class="lineNum">      60 </span>            :                     SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
-<span class="lineNum">      61 </span><span class="lineCov">         43 :                     if (targetMember) {</span>
-<span class="lineNum">      62 </span><span class="lineCov">         43 :                         [_members addObject:[self buildFileWithKey:buildFileKey]];</span>
-<span class="lineNum">      63 </span><span class="lineCov">         43 :                     }</span>
-<span class="lineNum">      64 </span><span class="lineCov">         36 :                 }</span>
-<span class="lineNum">      65 </span><span class="lineCov">         36 :             }</span>
-<span class="lineNum">      66 </span><span class="lineCov">         43 :         }</span>
-<span class="lineNum">      67 </span>            :     }
-<span class="lineNum">      68 </span><span class="lineCov">          9 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
-<span class="lineNum">      69 </span>            :     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
-<span class="lineNum">      70 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      71 </span><span class="lineCov">          3 : </span>
-<span class="lineNum">      72 </span>            : - (void) addMember:(xcode_SourceFile*)member {
-<span class="lineNum">      73 </span>            :     LogDebug(@&quot;$$$$$$$$$$$$$$$$$$$$$$$$ start adding member: %@&quot;, member);
-<span class="lineNum">      74 </span><span class="lineCov">         28 :     [member becomeBuildFile];</span>
-<span class="lineNum">      75 </span><span class="lineCov">         28 :     NSDictionary* target = [[_project objects] objectForKey:_key];</span>
-<span class="lineNum">      76 </span><span class="lineCov">         28 : </span>
-<span class="lineNum">      77 </span><span class="lineCov">         28 :     for (NSString* buildPhaseKey in [target objectForKey:@&quot;buildPhases&quot;]) {</span>
-<span class="lineNum">      78 </span>            :         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-<span class="lineNum">      79 </span><span class="lineCov">         96 :         if ([[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == [self buildPhaseFor:member]) {</span>
-<span class="lineNum">      80 </span><span class="lineCov">         96 : </span>
-<span class="lineNum">      81 </span><span class="lineCov">         96 :             NSMutableArray* files = [buildPhase objectForKey:@&quot;files&quot;];</span>
-<span class="lineNum">      82 </span>            :             if (![files containsObject:[member buildFileKey]]) {
-<span class="lineNum">      83 </span><span class="lineCov">         28 :                 [files addObject:[member buildFileKey]];</span>
-<span class="lineNum">      84 </span><span class="lineCov">         28 :             }</span>
-<span class="lineNum">      85 </span><span class="lineCov">         24 :             else {</span>
-<span class="lineNum">      86 </span><span class="lineCov">         24 :                 LogInfo(@&quot;***WARNING*** Target %@ already includes %@&quot;, [self name], [member name]);</span>
-<span class="lineNum">      87 </span>            :             }
-<span class="lineNum">      88 </span><span class="lineCov">          4 : </span>
-<span class="lineNum">      89 </span>            :             [buildPhase setObject:files forKey:@&quot;files&quot;];
-<span class="lineNum">      90 </span>            :         }
-<span class="lineNum">      91 </span><span class="lineCov">         28 :     }</span>
-<span class="lineNum">      92 </span><span class="lineCov">         28 :     [self flagMembersAsDirty];</span>
-<span class="lineNum">      93 </span><span class="lineCov">         96 : }</span>
-<span class="lineNum">      94 </span><span class="lineCov">         28 : </span>
-<span class="lineNum">      95 </span><span class="lineCov">         28 : - (NSDictionary*) buildRefWithFileRefKey {</span>
-<span class="lineNum">      96 </span>            :     NSMutableDictionary* buildRefWithFileRefDict = [NSMutableDictionary dictionary];
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     NSDictionary* allObjects = [_project objects];</span>
-<span class="lineNum">      99 </span>            : 
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     NSArray* keys = [allObjects allKeys];</span>
-<span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     for (NSString* key in keys) {</span>
-<span class="lineNum">     103 </span>            :         NSDictionary* dictionaryInfo = [allObjects objectForKey:key];
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :         NSString* type = [dictionaryInfo objectForKey:@&quot;isa&quot;];</span>
-<span class="lineNum">     106 </span>            :         if (type) {
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :             if ([type isEqualToString:@&quot;PBXBuildFile&quot;]) {</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :                 NSString* fileRef = [dictionaryInfo objectForKey:@&quot;fileRef&quot;];</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 :                 if (fileRef) {</span>
-<span class="lineNum">     111 </span>            :                     [buildRefWithFileRefDict setObject:key forKey:fileRef];
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :                 }</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     115 </span>            :     }
-<span class="lineNum">     116 </span>            :     return buildRefWithFileRefDict;
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     119 </span>            : - (void) removeMemberWithKey:(NSString*)key {
-<span class="lineNum">     120 </span>            : 
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     122 </span>            :     NSDictionary* buildRefWithFileRef = [self buildRefWithFileRefKey];
-<span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :     NSDictionary* target = [[_project objects] objectForKey:_key];</span>
-<span class="lineNum">     125 </span>            : 
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     NSString* buildRef = [buildRefWithFileRef objectForKey:key];</span>
-<span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 :     if (!buildRef) {</span>
-<span class="lineNum">     129 </span>            :         return;
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span>            :     for (NSString* buildPhaseKey in [target objectForKey:@&quot;buildPhases&quot;]) {
-<span class="lineNum">     133 </span>            :         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 :         NSMutableArray* files = [buildPhase objectForKey:@&quot;files&quot;];</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :         [files removeObjectIdenticalTo:buildRef];</span>
-<span class="lineNum">     137 </span>            :         [buildPhase setObject:files forKey:@&quot;files&quot;];
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :     [self flagMembersAsDirty];</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 : /* ================================================== Utility Methods =============================================== */</span>
-<span class="lineNum">     143 </span>            : - (NSString*) description {
-<span class="lineNum">     144 </span>            :     return [NSString stringWithFormat:@&quot;Target: name=%@, files=%@&quot;, _name, _members];
-<span class="lineNum">     145 </span><span class="lineCov">         29 : }</span>
-<span class="lineNum">     146 </span><span class="lineCov">         29 : </span>
-<span class="lineNum">     147 </span>            : - (void) dealloc {
-<span class="lineNum">     148 </span>            :     [_project release];
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 :     [_key release];</span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 :     [_name release];</span>
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 :     [super dealloc];</span>
-<span class="lineNum">     152 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     155 </span>            : /* ================================================== Private Methods =============================================== */
-<span class="lineNum">     156 </span>            : - (SourceFile*) buildFileWithKey:(NSString*)theKey {
-<span class="lineNum">     157 </span>            :     NSDictionary* obj = [[_project objects] valueForKey:theKey];
-<span class="lineNum">     158 </span><span class="lineCov">         79 :     if (obj) {</span>
-<span class="lineNum">     159 </span><span class="lineCov">         79 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
-<span class="lineNum">     160 </span><span class="lineCov">         79 :             return [_project fileWithKey:[obj valueForKey:@&quot;fileRef&quot;]];</span>
-<span class="lineNum">     161 </span><span class="lineCov">         79 :         }</span>
-<span class="lineNum">     162 </span><span class="lineCov">         79 :     }</span>
-<span class="lineNum">     163 </span>            :     return nil;
-<span class="lineNum">     164 </span>            : }
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     166 </span><span class="lineCov">         79 : - (void) flagMembersAsDirty {</span>
-<span class="lineNum">     167 </span>            :     _members = nil;
-<span class="lineNum">     168 </span><span class="lineCov">         28 : }</span>
-<span class="lineNum">     169 </span><span class="lineCov">         28 : </span>
-<span class="lineNum">     170 </span><span class="lineCov">         28 : </span>
-<span class="lineNum">     171 </span>            : - (XcodeMemberType) buildPhaseFor:(SourceFile*)sourceFile {
-<span class="lineNum">     172 </span>            :     if (sourceFile.type == SourceCodeObjC || sourceFile.type == SourceCodeObjCPlusPlus || sourceFile.type == XibFile) {
-<span class="lineNum">     173 </span><span class="lineCov">         96 :         return PBXSourcesBuildPhase;</span>
-<span class="lineNum">     174 </span><span class="lineCov">         51 :     }</span>
-<span class="lineNum">     175 </span><span class="lineCov">         68 :     else if (sourceFile.type == Framework) {</span>
-<span class="lineNum">     176 </span>            :         return PBXFrameworksBuildPhase;
-<span class="lineNum">     177 </span><span class="lineCov">         28 :     }</span>
-<span class="lineNum">     178 </span><span class="lineCov">         28 :     else {</span>
-<span class="lineNum">     179 </span>            :         NSString* type = [NSString stringFromSourceFileType:[sourceFile type]];
-<span class="lineNum">     180 </span>            :         [NSException raise:NSInternalInconsistencyException format:@&quot;Type %@ cannot be added to a target.&quot;, type];
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 :     return 0;</span>
-<span class="lineNum">     183 </span>            : }
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     185 </span><span class="lineCov">         96 : @end</span>
+<span class="lineNum">      39 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      40 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
+<span class="lineNum">      41 </span>            :     self = [super init];
+<span class="lineNum">      42 </span><span class="lineCov">         37 :     if (self) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">         37 :         _project = project;</span>
+<span class="lineNum">      44 </span><span class="lineCov">         37 :         _key = key;</span>
+<span class="lineNum">      45 </span><span class="lineCov">         37 :         _name = [name copy];</span>
+<span class="lineNum">      46 </span><span class="lineCov">         37 :     }</span>
+<span class="lineNum">      47 </span><span class="lineCov">         37 :     return self;</span>
+<span class="lineNum">      48 </span><span class="lineCov">         37 : }</span>
+<span class="lineNum">      49 </span><span class="lineCov">         37 : </span>
+<span class="lineNum">      50 </span>            : /* ================================================ Interface Methods =============================================== */
+<span class="lineNum">      51 </span>            : - (NSArray*) members {
+<span class="lineNum">      52 </span>            :     if (_members == nil) {
+<span class="lineNum">      53 </span><span class="lineCov">          3 :         _members = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 :         for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@&quot;buildPhases&quot;]) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 :             NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];</span>
+<span class="lineNum">      56 </span><span class="lineCov">          9 :             if ([[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == PBXSourcesBuildPhase ||</span>
+<span class="lineNum">      57 </span><span class="lineCov">          9 :                     [[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == PBXFrameworksBuildPhase) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">          9 :                 for (NSString* buildFileKey in [buildPhase objectForKey:@&quot;files&quot;]) {</span>
+<span class="lineNum">      59 </span>            :                     SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+<span class="lineNum">      60 </span><span class="lineCov">         43 :                     if (targetMember) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">         43 :                         [_members addObject:[self buildFileWithKey:buildFileKey]];</span>
+<span class="lineNum">      62 </span><span class="lineCov">         43 :                     }</span>
+<span class="lineNum">      63 </span><span class="lineCov">         36 :                 }</span>
+<span class="lineNum">      64 </span><span class="lineCov">         36 :             }</span>
+<span class="lineNum">      65 </span><span class="lineCov">         43 :         }</span>
+<span class="lineNum">      66 </span>            :     }
+<span class="lineNum">      67 </span><span class="lineCov">          9 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;name&quot; ascending:YES];</span>
+<span class="lineNum">      68 </span>            :     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+<span class="lineNum">      69 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      70 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      71 </span>            : - (void) addMember:(xcode_SourceFile*)member {
+<span class="lineNum">      72 </span>            :     LogDebug(@&quot;$$$$$$$$$$$$$$$$$$$$$$$$ start adding member: %@&quot;, member);
+<span class="lineNum">      73 </span><span class="lineCov">         32 :     [member becomeBuildFile];</span>
+<span class="lineNum">      74 </span><span class="lineCov">         32 :     NSDictionary* target = [[_project objects] objectForKey:_key];</span>
+<span class="lineNum">      75 </span><span class="lineCov">         32 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">         32 :     for (NSString* buildPhaseKey in [target objectForKey:@&quot;buildPhases&quot;]) {</span>
+<span class="lineNum">      77 </span>            :         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+<span class="lineNum">      78 </span><span class="lineCov">        110 :         if ([[buildPhase valueForKey:@&quot;isa&quot;] asMemberType] == [self buildPhaseFor:member]) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">        110 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">        110 :             NSMutableArray* files = [buildPhase objectForKey:@&quot;files&quot;];</span>
+<span class="lineNum">      81 </span>            :             if (![files containsObject:[member buildFileKey]]) {
+<span class="lineNum">      82 </span><span class="lineCov">         32 :                 [files addObject:[member buildFileKey]];</span>
+<span class="lineNum">      83 </span><span class="lineCov">         32 :             }</span>
+<span class="lineNum">      84 </span><span class="lineCov">         27 :             else {</span>
+<span class="lineNum">      85 </span><span class="lineCov">         27 :                 LogInfo(@&quot;***WARNING*** Target %@ already includes %@&quot;, [self name], [member name]);</span>
+<span class="lineNum">      86 </span>            :             }
+<span class="lineNum">      87 </span><span class="lineCov">          5 : </span>
+<span class="lineNum">      88 </span>            :             [buildPhase setObject:files forKey:@&quot;files&quot;];
+<span class="lineNum">      89 </span>            :         }
+<span class="lineNum">      90 </span><span class="lineCov">         32 :     }</span>
+<span class="lineNum">      91 </span><span class="lineCov">         32 :     [self flagMembersAsDirty];</span>
+<span class="lineNum">      92 </span><span class="lineCov">        110 : }</span>
+<span class="lineNum">      93 </span><span class="lineCov">         32 : </span>
+<span class="lineNum">      94 </span><span class="lineCov">         32 : - (NSDictionary*) buildRefWithFileRefKey {</span>
+<span class="lineNum">      95 </span>            :     NSMutableDictionary* buildRefWithFileRefDict = [NSMutableDictionary dictionary];
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     NSDictionary* allObjects = [_project objects];</span>
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 :     NSArray* keys = [allObjects allKeys];</span>
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     for (NSString* key in keys) {</span>
+<span class="lineNum">     102 </span>            :         NSDictionary* dictionaryInfo = [allObjects objectForKey:key];
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :         NSString* type = [dictionaryInfo objectForKey:@&quot;isa&quot;];</span>
+<span class="lineNum">     105 </span>            :         if (type) {
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :             if ([type isEqualToString:@&quot;PBXBuildFile&quot;]) {</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :                 NSString* fileRef = [dictionaryInfo objectForKey:@&quot;fileRef&quot;];</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     109 </span><span class="lineNoCov">          0 :                 if (fileRef) {</span>
+<span class="lineNum">     110 </span>            :                     [buildRefWithFileRefDict setObject:key forKey:fileRef];
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">     112 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     114 </span>            :     }
+<span class="lineNum">     115 </span>            :     return buildRefWithFileRefDict;
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     118 </span>            : - (void) removeMemberWithKey:(NSString*)key {
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     121 </span>            :     NSDictionary* buildRefWithFileRef = [self buildRefWithFileRefKey];
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     NSDictionary* target = [[_project objects] objectForKey:_key];</span>
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     NSString* buildRef = [buildRefWithFileRef objectForKey:key];</span>
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     if (!buildRef) {</span>
+<span class="lineNum">     128 </span>            :         return;
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            :     for (NSString* buildPhaseKey in [target objectForKey:@&quot;buildPhases&quot;]) {
+<span class="lineNum">     132 </span>            :         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :         NSMutableArray* files = [buildPhase objectForKey:@&quot;files&quot;];</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :         [files removeObjectIdenticalTo:buildRef];</span>
+<span class="lineNum">     136 </span>            :         [buildPhase setObject:files forKey:@&quot;files&quot;];
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     [self flagMembersAsDirty];</span>
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : /* ================================================== Utility Methods =============================================== */</span>
+<span class="lineNum">     142 </span>            : - (NSString*) description {
+<span class="lineNum">     143 </span>            :     return [NSString stringWithFormat:@&quot;Target: name=%@, files=%@&quot;, _name, _members];
+<span class="lineNum">     144 </span><span class="lineCov">         33 : }</span>
+<span class="lineNum">     145 </span><span class="lineCov">         33 : </span>
+<span class="lineNum">     146 </span>            : - (void) dealloc {
+<span class="lineNum">     147 </span>            :     [_key release];
+<span class="lineNum">     148 </span><span class="lineCov">         32 :     [_name release];</span>
+<span class="lineNum">     149 </span><span class="lineCov">         32 :     [super dealloc];</span>
+<span class="lineNum">     150 </span><span class="lineCov">         32 : }</span>
+<span class="lineNum">     151 </span><span class="lineCov">         32 : </span>
+<span class="lineNum">     152 </span><span class="lineCov">         32 : </span>
+<span class="lineNum">     153 </span>            : /* ================================================== Private Methods =============================================== */
+<span class="lineNum">     154 </span>            : - (SourceFile*) buildFileWithKey:(NSString*)theKey {
+<span class="lineNum">     155 </span>            :     NSDictionary* obj = [[_project objects] valueForKey:theKey];
+<span class="lineNum">     156 </span><span class="lineCov">         79 :     if (obj) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">         79 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
+<span class="lineNum">     158 </span><span class="lineCov">         79 :             return [_project fileWithKey:[obj valueForKey:@&quot;fileRef&quot;]];</span>
+<span class="lineNum">     159 </span><span class="lineCov">         79 :         }</span>
+<span class="lineNum">     160 </span><span class="lineCov">         79 :     }</span>
+<span class="lineNum">     161 </span>            :     return nil;
+<span class="lineNum">     162 </span>            : }
+<span class="lineNum">     163 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     164 </span><span class="lineCov">         79 : - (void) flagMembersAsDirty {</span>
+<span class="lineNum">     165 </span>            :     _members = nil;
+<span class="lineNum">     166 </span><span class="lineCov">         32 : }</span>
+<span class="lineNum">     167 </span><span class="lineCov">         32 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">         32 : </span>
+<span class="lineNum">     169 </span>            : - (XcodeMemberType) buildPhaseFor:(SourceFile*)sourceFile {
+<span class="lineNum">     170 </span>            :     if (sourceFile.type == SourceCodeObjC || sourceFile.type == SourceCodeObjCPlusPlus || sourceFile.type == XibFile) {
+<span class="lineNum">     171 </span><span class="lineCov">        110 :         return PBXSourcesBuildPhase;</span>
+<span class="lineNum">     172 </span><span class="lineCov">         65 :     }</span>
+<span class="lineNum">     173 </span><span class="lineCov">         82 :     else if (sourceFile.type == Framework) {</span>
+<span class="lineNum">     174 </span>            :         return PBXFrameworksBuildPhase;
+<span class="lineNum">     175 </span><span class="lineCov">         28 :     }</span>
+<span class="lineNum">     176 </span><span class="lineCov">         28 :     else {</span>
+<span class="lineNum">     177 </span>            :         NSString* type = [NSString stringFromSourceFileType:[sourceFile type]];
+<span class="lineNum">     178 </span>            :         [NSException raise:NSInternalInconsistencyException format:@&quot;Type %@ cannot be added to a target.&quot;, type];
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     return 0;</span>
+<span class="lineNum">     181 </span>            : }
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     183 </span><span class="lineCov">        110 : @end</span>
 </pre>
       </td>
     </tr>

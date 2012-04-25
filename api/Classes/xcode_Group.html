@@ -48,14 +48,12 @@
 	
 	<option value="//api/name/pathRelativeToParent">&nbsp;&nbsp;&nbsp;&nbsp;pathRelativeToParent</option>
 	
-	<option value="//api/name/project">&nbsp;&nbsp;&nbsp;&nbsp;project</option>
-	
 	
 	
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/groupWithProject:key:alias:path:tree:children:">&nbsp;&nbsp;&nbsp;&nbsp;+ groupWithProject:key:alias:path:tree:children:</option>
+	<option value="//api/name/groupWithProject:key:alias:path:children:">&nbsp;&nbsp;&nbsp;&nbsp;+ groupWithProject:key:alias:path:children:</option>
 	
 	
 	
@@ -88,11 +86,11 @@
 	
 	<option value="//api/name/members">&nbsp;&nbsp;&nbsp;&nbsp;- members</option>
 	
-	<option value="//api/name/removeFromSuperGroup">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromSuperGroup</option>
+	<option value="//api/name/parentGroup">&nbsp;&nbsp;&nbsp;&nbsp;- parentGroup</option>
 	
-	<option value="//api/name/removeFromSuperGroup:">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromSuperGroup:</option>
+	<option value="//api/name/removeFromParentGroup">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromParentGroup</option>
 	
-	<option value="//api/name/superGroup">&nbsp;&nbsp;&nbsp;&nbsp;- superGroup</option>
+	<option value="//api/name/removeFromParentGroup:">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromParentGroup:</option>
 	
 	
 	
@@ -126,15 +124,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToParent">pathRelativeToParent</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/project">project</a></span></li>
-	
 </ul></li>
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithProject:key:alias:path:tree:children:">groupWithProject:key:alias:path:tree:children:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithProject:key:alias:path:children:">groupWithProject:key:alias:path:children:</a></span></li>
 	
 </ul></li>
 
@@ -168,11 +164,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/members">members</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromSuperGroup">removeFromSuperGroup</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parentGroup">parentGroup</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromSuperGroup:">removeFromSuperGroup:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromParentGroup">removeFromParentGroup</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/superGroup">superGroup</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromParentGroup:">removeFromParentGroup:</a></span></li>
 	
 </ul></li>
 
@@ -214,7 +210,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Represents a group container in an Xcode <a href="#//api/name/project">project</a>. A group can contain <a href="#//api/name/members">members</a> of type <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> or other
+						<p>Represents a group container in an Xcode project. A group can contain <a href="#//api/name/members">members</a> of type <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> or other
 groups.</p>
 					</div>
 					
@@ -232,13 +228,6 @@ groups.</p>
 
 						<ul class="task-list">
 							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/project">&nbsp;&nbsp;project</a></code>
-		<span class="tooltip"><p>The <a href="../Classes/xcode_Project.html">Xcode project</a> that this group belongs to.</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/alias">&nbsp;&nbsp;alias</a></code>
 		<span class="tooltip"><p>The <a href="#//api/name/alias">alias</a> of the group, which can be used to give the group a name other than the last path component.</p></span>
@@ -268,7 +257,7 @@ groups.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/groupWithProject:key:alias:path:tree:children:">+&nbsp;groupWithProject:key:alias:path:tree:children:</a></code>
+		<code><a href="#//api/name/groupWithProject:key:alias:path:children:">+&nbsp;groupWithProject:key:alias:path:children:</a></code>
 		
 	</span>
 	
@@ -282,21 +271,21 @@ groups.</p>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/removeFromSuperGroup">&ndash;&nbsp;removeFromSuperGroup</a></code>
+		<code><a href="#//api/name/removeFromParentGroup">&ndash;&nbsp;removeFromParentGroup</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/removeFromSuperGroup:">&ndash;&nbsp;removeFromSuperGroup:</a></code>
+		<code><a href="#//api/name/removeFromParentGroup:">&ndash;&nbsp;removeFromParentGroup:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/superGroup">&ndash;&nbsp;superGroup</a></code>
+		<code><a href="#//api/name/parentGroup">&ndash;&nbsp;parentGroup</a></code>
 		
 	</span>
 	
@@ -560,45 +549,6 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 </div>
 						
-						<div class="section-method">
-	<a name="//api/name/project" title="project"></a>
-	<h3 class="subsubtitle method-title">project</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The <a href="../Classes/xcode_Project.html">Xcode project</a> that this group belongs to.</p>
-	</div>		
-	
-	
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) xcode_Project *project</code></div>
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The <a href="../Classes/xcode_Project.html">Xcode project</a> that this group belongs to.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">xcode_Group.h</code><br />
-	</div>				
-	
-	
-</div>
-						
 					</div>
 					
 					
@@ -608,8 +558,8 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/groupWithProject:key:alias:path:tree:children:" title="groupWithProject:key:alias:path:tree:children:"></a>
-	<h3 class="subsubtitle method-title">groupWithProject:key:alias:path:tree:children:</h3>
+	<a name="//api/name/groupWithProject:key:alias:path:children:" title="groupWithProject:key:alias:path:children:"></a>
+	<h3 class="subsubtitle method-title">groupWithProject:key:alias:path:children:</h3>
 	
 	
 </div>
@@ -1038,22 +988,22 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/removeFromSuperGroup" title="removeFromSuperGroup"></a>
-	<h3 class="subsubtitle method-title">removeFromSuperGroup</h3>
+	<a name="//api/name/parentGroup" title="parentGroup"></a>
+	<h3 class="subsubtitle method-title">parentGroup</h3>
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/removeFromSuperGroup:" title="removeFromSuperGroup:"></a>
-	<h3 class="subsubtitle method-title">removeFromSuperGroup:</h3>
+	<a name="//api/name/removeFromParentGroup" title="removeFromParentGroup"></a>
+	<h3 class="subsubtitle method-title">removeFromParentGroup</h3>
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/superGroup" title="superGroup"></a>
-	<h3 class="subsubtitle method-title">superGroup</h3>
+	<a name="//api/name/removeFromParentGroup:" title="removeFromParentGroup:"></a>
+	<h3 class="subsubtitle method-title">removeFromParentGroup:</h3>
 	
 	
 </div>

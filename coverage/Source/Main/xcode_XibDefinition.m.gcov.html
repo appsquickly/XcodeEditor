@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">17</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntryMed">77.3 %</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntryLo">73.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -72,16 +72,16 @@
 <span class="lineNum">      14 </span>            : @implementation xcode_XibDefinition
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span><span class="lineNoCov">          0 : @synthesize name = _name;</span>
-<span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize content = _content;</span>
+<span class="lineNum">      17 </span><span class="lineCov">          3 : @synthesize content = _content;</span>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : /* ================================================= Class Methods ================================================== */
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : /* ================================================= Class Methods ================================================== */</span>
 <span class="lineNum">      20 </span><span class="lineNoCov">          0 : + (XibDefinition*) xibDefinitionWithName:(NSString*)name {</span>
 <span class="lineNum">      21 </span><span class="lineNoCov">          0 :     return [[[XibDefinition alloc] initWithName:name] autorelease];</span>
 <span class="lineNum">      22 </span>            : }
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : + (XibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content {
-<span class="lineNum">      25 </span><span class="lineCov">          2 :     return [[[XibDefinition alloc] initWithName:name content:content] autorelease];</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      25 </span><span class="lineCov">          3 :     return [[[XibDefinition alloc] initWithName:name content:content] autorelease];</span>
+<span class="lineNum">      26 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : /* ================================================== Initializers ================================================== */
@@ -92,26 +92,26 @@
 <span class="lineNum">      34 </span>            : 
 <span class="lineNum">      35 </span>            : - (id) initWithName:(NSString*)name content:(NSString*)content {
 <span class="lineNum">      36 </span>            :     self = [super init];
-<span class="lineNum">      37 </span><span class="lineCov">          2 :     if (self) {</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 :         _name = name;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 :         _content = content;</span>
-<span class="lineNum">      40 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      41 </span><span class="lineCov">          2 :     return self;</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      43 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      37 </span><span class="lineCov">          3 :     if (self) {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :         _name = name;</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :         _content = content;</span>
+<span class="lineNum">      40 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      41 </span><span class="lineCov">          3 :     return self;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      44 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      45 </span>            : - (NSString*) xibFileName {
 <span class="lineNum">      46 </span>            :     return [_name stringByAppendingString:@&quot;.xib&quot;];
-<span class="lineNum">      47 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      48 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      47 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      48 </span><span class="lineCov">          5 : </span>
 <span class="lineNum">      49 </span>            : /* ================================================== Utility Methods =============================================== */
 <span class="lineNum">      50 </span>            : - (void) dealloc {
 <span class="lineNum">      51 </span>            :     [_name release];
-<span class="lineNum">      52 </span><span class="lineCov">          2 :     [_content release];</span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 :     [super dealloc];</span>
-<span class="lineNum">      54 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      55 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      56 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      52 </span><span class="lineCov">          3 :     [_content release];</span>
+<span class="lineNum">      53 </span><span class="lineCov">          3 :     [super dealloc];</span>
+<span class="lineNum">      54 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      57 </span>            : @end
 </pre>
       </td>
