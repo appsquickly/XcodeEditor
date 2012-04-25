@@ -100,7 +100,6 @@
             }
         }
     }
-//    [self removeMemberWithKey:_key];
     [[_project objects] removeObjectForKey:_key];
 }
 
@@ -179,18 +178,9 @@
 - (xcode_Group*) addGroupWithPath:(NSString*)path {
     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
 
-
-//    NSArray* groups = [[self project] groups];
-//    for(xcode_Group* gr in groups){
-//        if([[gr pathRelativeToParent] isEqualToString:path]){
-//            return nil;
-//        }
-//    }
-
     NSArray* members = [self members];
     for (id<XcodeGroupMember> groupMember in members) {
         if ([groupMember groupMemberType] == PBXGroup) {
-            //NSLog(@"PATH IN SUBGROUPS %@ %@", [groupMember pathRelativeToProjectRoot], [groupMember displayName]);
 
             if ([[[groupMember pathRelativeToProjectRoot] lastPathComponent] isEqualToString:path] ||
                     [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey]) {
@@ -200,10 +190,7 @@
     }
 
     Group* group = [[[Group alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil] autorelease];
-
     NSDictionary* groupDict = [group asDictionary];
-
-    //  LogDebug(@"Here's the group: %@", groupDict);
 
     [[_project objects] setObject:groupDict forKey:groupKey];
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
@@ -239,38 +226,13 @@
 
     NSMutableArray* arrayOfBuildFileKeys = [NSMutableArray array];
     for (id<XcodeGroupMember> groupMember in [self members]) {
-//        <key>bb33e8926797197e8ed55d7a</key>
-//		<dict>
-//        <key>fileRef</key>
-//        <string>053e5d40521df6331e6cbd57</string>
-//        <key>isa</key>
-//        <string>PBXBuildFile</string>
-//		</dict>
-
-        if ([[groupMember key] isEqualToString:@"053e5d40521df6331e6cbd57"]) {
-            NSLog(@"WE FOUND FILEREF KEY");
-        }
-
-        if ([[groupMember key] isEqualToString:@"bb33e8926797197e8ed55d7a"]) {
-            NSLog(@"WE FOUND PBXBUILDFILE KEY");
-        }
-
 
         if ([groupMember groupMemberType] == PBXGroup) {
             Group* group = (Group*) groupMember;
             [arrayOfBuildFileKeys addObjectsFromArray:[group buildFileKeys]];
         }
-//        else if([groupMember groupMemberType] == PBXBuildFile)
-//        {
-//            //NSLog(@"WE HAVE BUILD FILE %@", [groupMember key]);
-//            [arrayOfBuildFileKeys addObject:[groupMember key]];
-//        }
         else if ([groupMember groupMemberType] == PBXFileReference) {
-            //  NSLog(@"WE HAVE REFERENCE %@", [groupMember key]);
             [arrayOfBuildFileKeys addObject:[groupMember key]];
-        }
-        else {
-            //NSLog(@"WE HAVE ANOTHER FILE TYPE %d", [groupMember groupMemberType]);
         }
     }
     return arrayOfBuildFileKeys;
@@ -361,19 +323,6 @@
     [_children addObject:key];
     [self flagMembersAsDirty];
 }
-
-//- (void) removeMemberWithKey:(NSString*)key{
-//    NSMutableArray* array = [NSMutableArray array];
-//    for(NSString* child in _children){
-//        if([child isEqualToString:key]){
-//            [array addObject:child];
-//        }
-//    }
-//    [_children removeObjectsInArray:array];
-//    [array removeAllObjects];
-//    [self flagMembersAsDirty];
-//}
-
 
 - (void) flagMembersAsDirty {
     _members = nil;

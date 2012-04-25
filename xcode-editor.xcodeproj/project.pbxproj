@@ -45,6 +45,7 @@
 		6B3AD06814F8A3B400BCFE81 /* project.pbxproj in Resources */ = {isa = PBXBuildFile; fileRef = 6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */; };
 		6B3AD06A14F8A3B400BCFE81 /* NSString+TestResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD05F14F8A3B400BCFE81 /* NSString+TestResource.m */; };
 		6B3AD06B14F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD06014F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m */; };
+		6B51E2FE1547FEDD00DBA0BD /* xcode_AbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */; };
 		6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD8982D14EA2441007875F4 /* SenTestingKit.framework */; };
 		6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
 		6B65941514F8A53300F65AEC /* Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B65941414F8A53300F65AEC /* Logging.h */; };
@@ -128,6 +129,8 @@
 		6B3AD05F14F8A3B400BCFE81 /* NSString+TestResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TestResource.m"; sourceTree = "<group>"; };
 		6B3AD06014F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeFileReferenceTypeSpec.m; sourceTree = "<group>"; };
 		6B41FDA714F60C5E00004897 /* libprofile_rt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprofile_rt.dylib; path = Toolchains/XcodeDefault.xctoolchain/usr/lib/libprofile_rt.dylib; sourceTree = DEVELOPER_DIR; };
+		6B51E2FC1547FEDD00DBA0BD /* xcode_AbstractDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_AbstractDefinition.h; sourceTree = "<group>"; };
+		6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_AbstractDefinition.m; sourceTree = "<group>"; };
 		6B55223614EA723700494CF3 /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B65941414F8A53300F65AEC /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
 		6B65941614F8A54400F65AEC /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = Dependencies/Libraries/libKiwi.a; sourceTree = SOURCE_ROOT; };
@@ -183,6 +186,8 @@
 		6B3AD01814F8A3AC00BCFE81 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6B51E2FC1547FEDD00DBA0BD /* xcode_AbstractDefinition.h */,
+				6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */,
 				E94DE11315443AA400C51251 /* XcodeEditor.h */,
 				6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */,
 				6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */,
@@ -527,6 +532,7 @@
 				6B3AD06B14F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m in Sources */,
 				6BE4B285147E6B610059E458 /* xcode_XibDefinition.m in Sources */,
 				6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */,
+				6B51E2FE1547FEDD00DBA0BD /* xcode_AbstractDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

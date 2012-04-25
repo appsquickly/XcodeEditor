@@ -10,13 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "xcode_AbstractDefinition.h"
 
 typedef enum {
     ObjectiveC,
     ObjectiveCPlusPlus,
 } ClassDefinitionLanguage;
 
-@interface xcode_ClassDefinition : NSObject {
+@interface xcode_ClassDefinition : xcode_AbstractDefinition {
 
     NSString* _className;
     NSString* _header;

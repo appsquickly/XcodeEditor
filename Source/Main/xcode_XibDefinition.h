@@ -8,10 +8,12 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+
 #import <Foundation/Foundation.h>
+#import "xcode_AbstractDefinition.h"
 
 
-@interface xcode_XibDefinition : NSObject
+@interface xcode_XibDefinition : xcode_AbstractDefinition
 
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong) NSString* content;

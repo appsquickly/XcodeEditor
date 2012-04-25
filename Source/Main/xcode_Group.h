@@ -79,7 +79,6 @@
         key:(NSString*)key
         alias:(NSString*)alias
         path:(NSString*)path
-        tree:(NSString*)tree
         children:(NSArray*)children;
 
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path

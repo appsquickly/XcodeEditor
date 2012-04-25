@@ -8,10 +8,12 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+
 #import <Foundation/Foundation.h>
+#import "xcode_AbstractDefinition.h"
 
 
-@interface xcode_FrameworkDefinition : NSObject
+@interface xcode_FrameworkDefinition : xcode_AbstractDefinition
 
 @property(nonatomic, strong, readonly) NSString* filePath;
 @property(nonatomic, readonly) BOOL copyToDestination;
