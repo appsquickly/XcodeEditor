@@ -108,12 +108,12 @@
 <span class="lineNum">      50 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      51 </span>            : - (BOOL) isObjectiveC {
 <span class="lineNum">      52 </span>            :     return _language == ObjectiveC;
-<span class="lineNum">      53 </span><span class="lineCov">         16 : }</span>
-<span class="lineNum">      54 </span><span class="lineCov">         16 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">         17 : }</span>
+<span class="lineNum">      54 </span><span class="lineCov">         17 : </span>
 <span class="lineNum">      55 </span>            : - (BOOL) isObjectiveCPlusPlus {
 <span class="lineNum">      56 </span>            :     return _language == ObjectiveCPlusPlus;
-<span class="lineNum">      57 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">      58 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          5 : </span>
 <span class="lineNum">      59 </span>            : - (NSString*) headerFileName {
 <span class="lineNum">      60 </span>            :     return [_className stringByAppendingString:@&quot;.h&quot;];
 <span class="lineNum">      61 </span><span class="lineCov">          7 : </span>
@@ -121,15 +121,15 @@
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : - (NSString*) sourceFileName {
 <span class="lineNum">      65 </span>            :     NSString* sourceFileName = nil;
-<span class="lineNum">      66 </span><span class="lineCov">         10 :     if ([self isObjectiveC]) {</span>
-<span class="lineNum">      67 </span><span class="lineCov">         10 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
-<span class="lineNum">      68 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">      66 </span><span class="lineCov">         11 :     if ([self isObjectiveC]) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">         11 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
+<span class="lineNum">      68 </span><span class="lineCov">         11 :     }</span>
 <span class="lineNum">      69 </span><span class="lineCov">          8 :     else if ([self isObjectiveCPlusPlus]) {</span>
 <span class="lineNum">      70 </span><span class="lineCov">          8 :         sourceFileName = [_className stringByAppendingString:@&quot;.mm&quot;];</span>
-<span class="lineNum">      71 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      72 </span><span class="lineCov">          2 :     return [sourceFileName retain];</span>
-<span class="lineNum">      73 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      74 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">      71 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      72 </span><span class="lineCov">          3 :     return [sourceFileName retain];</span>
+<span class="lineNum">      73 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      74 </span><span class="lineCov">         11 : </span>
 <span class="lineNum">      75 </span>            : /* ================================================== Utility Methods =============================================== */
 <span class="lineNum">      76 </span>            : - (void) dealloc {
 <span class="lineNum">      77 </span>            :     [_className release];

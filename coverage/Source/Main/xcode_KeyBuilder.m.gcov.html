@@ -72,30 +72,30 @@
 <span class="lineNum">      14 </span>            : @implementation xcode_KeyBuilder
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      17 </span><span class="lineCov">         40 : + (xcode_KeyBuilder*) forItemNamed:(NSString*)name {</span>
-<span class="lineNum">      18 </span><span class="lineCov">         40 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         40 :     return [[[xcode_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]] autorelease];</span>
+<span class="lineNum">      17 </span><span class="lineCov">         38 : + (xcode_KeyBuilder*) forItemNamed:(NSString*)name {</span>
+<span class="lineNum">      18 </span><span class="lineCov">         38 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      19 </span><span class="lineCov">         38 :     return [[[xcode_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]] autorelease];</span>
 <span class="lineNum">      20 </span>            : }
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      23 </span>            : - (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length {
-<span class="lineNum">      24 </span><span class="lineCov">         40 :     self = [super init];</span>
-<span class="lineNum">      25 </span><span class="lineCov">         40 :     if (self != nil) {</span>
-<span class="lineNum">      26 </span><span class="lineCov">         40 :         CC_MD5(bytes, (int) length, _value);</span>
-<span class="lineNum">      27 </span><span class="lineCov">         40 :     }</span>
-<span class="lineNum">      28 </span><span class="lineCov">         40 :     return self;</span>
-<span class="lineNum">      29 </span><span class="lineCov">         40 : }</span>
+<span class="lineNum">      24 </span><span class="lineCov">         38 :     self = [super init];</span>
+<span class="lineNum">      25 </span><span class="lineCov">         38 :     if (self != nil) {</span>
+<span class="lineNum">      26 </span><span class="lineCov">         38 :         CC_MD5(bytes, (int) length, _value);</span>
+<span class="lineNum">      27 </span><span class="lineCov">         38 :     }</span>
+<span class="lineNum">      28 </span><span class="lineCov">         38 :     return self;</span>
+<span class="lineNum">      29 </span><span class="lineCov">         38 : }</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      32 </span>            : - (NSString*) build {
-<span class="lineNum">      33 </span><span class="lineCov">         40 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
-<span class="lineNum">      34 </span><span class="lineCov">         40 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
-<span class="lineNum">      35 </span><span class="lineCov">         40 :     NSInteger i;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         38 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
+<span class="lineNum">      34 </span><span class="lineCov">         38 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
+<span class="lineNum">      35 </span><span class="lineCov">         38 :     NSInteger i;</span>
 <span class="lineNum">      36 </span>            :     for (i = 0; i &lt; byteLength; i++) {
-<span class="lineNum">      37 </span><span class="lineCov">        680 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
-<span class="lineNum">      38 </span><span class="lineCov">        640 :     }</span>
+<span class="lineNum">      37 </span><span class="lineCov">        646 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
+<span class="lineNum">      38 </span><span class="lineCov">        608 :     }</span>
 <span class="lineNum">      39 </span>            :     return [stringValue substringToIndex:24];
-<span class="lineNum">      40 </span><span class="lineCov">         40 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">         38 : }</span>
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            : @end
