@@ -48,11 +48,16 @@ SPEC_BEGIN(GroupSpec)
             [group shouldNotBeNil];
         });
 
+        afterEach(^{
+            [project release];
+        });
+
         describe(@"Object creation", ^{
 
             it(@"should allow initialization with ", ^{
                 Group* group =
-                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main"
+                                children:nil];
 
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
@@ -139,21 +144,24 @@ SPEC_BEGIN(GroupSpec)
 
         describe(@"adding objective-c++ files", ^{
 
+
+
             it(@"should allow adding files of type obc-c++", ^{
 
-                Project* anotherProject = [[Project alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
-                group = [anotherProject groupWithPathRelativeToParent:@"Source"];
+                Project* anotherProject = [Project projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+                Group* anotherGroup = [anotherProject groupWithPathRelativeToParent:@"Source"];
 
                 ClassDefinition* classDefinition =
                         [ClassDefinition classDefinitionWithName:@"HelloWorldLayer" language:ObjectiveCPlusPlus];
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"HelloWorldLayer.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
-                LogDebug(@"Class definition header: %@", [classDefinition header]);
 
-                [group addClass:classDefinition toTargets:[anotherProject targets]];
+                [anotherGroup addClass:classDefinition toTargets:[anotherProject targets]];
                 [anotherProject save];
+
             });
+
 
 
         });

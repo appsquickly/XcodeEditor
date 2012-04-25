@@ -36,16 +36,12 @@
 @private
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
-    __weak xcode_FileOperationQueue* _fileOperationQueue;
+    xcode_FileOperationQueue* _fileOperationQueue;
     NSMutableArray* _members;
 }
 
 /* =================================================== Properties =================================================== */
 
-/**
- * The [Xcode project](xcode_Project) that this group belongs to.
-*/
-@property(nonatomic, weak, readonly) xcode_Project* project;
 
 /**
  * The alias of the group, which can be used to give the group a name other than the last path component.

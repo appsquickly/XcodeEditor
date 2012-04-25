@@ -19,6 +19,10 @@ SPEC_BEGIN(ProjectSpec)
             project = [[Project alloc] initWithFilePath:@"/tmp"];
         });
 
+        afterEach(^{
+            [project release];
+        });
+
 
         describe(@"Listing files files", ^{
 

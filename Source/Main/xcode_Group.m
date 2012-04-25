@@ -45,7 +45,6 @@
 
 @implementation xcode_Group
 
-@synthesize project = _project;
 @synthesize pathRelativeToParent = _pathRelativeToParent;
 @synthesize key = _key;
 @synthesize children = _children;
@@ -302,7 +301,6 @@
 }
 
 - (void) dealloc {
-
     [_pathRelativeToParent release];
     [_key release];
     [_alias release];
@@ -346,7 +344,7 @@
 }
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
-    NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* reference = [NSMutableDictionary dictionary];
     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"FileEncoding"];
     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];

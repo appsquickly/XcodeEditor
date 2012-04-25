@@ -23,7 +23,7 @@
 
 @private
     NSString* _filePath;
-    NSMutableDictionary* _project;
+    NSMutableDictionary* _dataStore;
     NSMutableArray* _targets;
 }
 

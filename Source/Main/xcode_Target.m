@@ -27,7 +27,6 @@
 
 @implementation xcode_Target
 
-@synthesize project = _project;
 @synthesize key = _key;
 @synthesize name = _name;
 
@@ -145,7 +144,6 @@
 }
 
 - (void) dealloc {
-    [_project release];
     [_key release];
     [_name release];
     [super dealloc];

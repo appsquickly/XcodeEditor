@@ -69,7 +69,7 @@
     else if ([self isObjectiveCPlusPlus]) {
         sourceFileName = [_className stringByAppendingString:@".mm"];
     }
-    return [sourceFileName retain];
+    return [[sourceFileName retain] autorelease];
 }
 
 /* ================================================== Utility Methods =============================================== */

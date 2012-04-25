@@ -35,10 +35,10 @@
 - (id) initWithFilePath:(NSString*)filePath {
     if (self) {
         _filePath = [filePath copy];
-        _project = [[NSMutableDictionary alloc]
+        _dataStore = [[NSMutableDictionary alloc]
                 initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
 
-        if (!_project) {
+        if (!_dataStore) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
         _fileOperationQueue =
@@ -52,7 +52,7 @@
 #pragma mark Files
 
 - (NSArray*) files {
-    NSMutableArray* results = [[NSMutableArray alloc] init];
+    NSMutableArray* results = [NSMutableArray array];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
             XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
@@ -77,7 +77,8 @@
         if (name == nil) {
             name = [obj valueForKey:@"path"];
         }
-        return [SourceFile sourceFileWithProject:self key:key type:fileType name:name sourceTree:(sourceTree ? sourceTree : @"<group>")];
+        return [SourceFile sourceFileWithProject:self key:key type:fileType name:name
+                sourceTree:(sourceTree ? sourceTree : @"<group>")];
     }
     return nil;
 }
@@ -200,18 +201,20 @@
 - (void) save {
     [_fileOperationQueue commitFileOperations];
     LogDebug(@"Done committing file operations");
-    [_project writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
+    [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
     LogDebug(@"Done writing project file.");
 }
 
 - (NSMutableDictionary*) objects {
-    return [_project objectForKey:@"objects"];
+    return [[[_dataStore objectForKey:@"objects"] retain] autorelease];
 }
 
 /* ================================================== Utility Methods =============================================== */
 - (void) dealloc {
+
+    //TODO: WTF? Why does this crash?
+//    [_dataStore release];
     [_filePath release];
-    [_project release];
     [_fileOperationQueue release];
     [_targets release];
     [super dealloc];
