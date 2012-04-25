@@ -97,7 +97,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 
 * Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode. The AppCode IDE from
 JetBrains is not yet supported. 
-* No longer uses ARC because one of my users needed to support 32 bit OSX. If you want to use it in an ARC project, you can safely a) Use the framework or b) Set the appropriate compiler flags (-fno-objc-arc)
+* No longer uses ARC (users wanted it to work on support 32 bit OSX). If you want to use it in an ARC project, you can safely a) Use the framework or b) Set the appropriate compiler flags (-fno-objc-arc)
 
 # Who's using it? 
 
