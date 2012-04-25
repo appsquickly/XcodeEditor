@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">215</td>
-            <td class="headerCovTableEntry">244</td>
-            <td class="headerCovTableEntryMed">88.1 %</td>
+            <td class="headerCovTableEntry">216</td>
+            <td class="headerCovTableEntry">245</td>
+            <td class="headerCovTableEntryMed">88.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -451,13 +451,13 @@
 <span class="lineNum">     393 </span><span class="lineCov">         10 :         [self warnPendingOverwrite:name];</span>
 <span class="lineNum">     394 </span><span class="lineCov">         10 :         filePath = [[currentSourceFile pathRelativeToProjectRoot] stringByDeletingLastPathComponent];</span>
 <span class="lineNum">     395 </span><span class="lineCov">         10 :     }</span>
-<span class="lineNum">     396 </span><span class="lineCov">         10 :     //[_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];</span>
+<span class="lineNum">     396 </span><span class="lineCov">         10 :     [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];</span>
 <span class="lineNum">     397 </span><span class="lineCov">         10 : }</span>
 <span class="lineNum">     398 </span>            : 
 <span class="lineNum">     399 </span><span class="lineCov">          2 : - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {</span>
 <span class="lineNum">     400 </span><span class="lineCov">          2 :     NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];</span>
 <span class="lineNum">     401 </span>            :     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@&quot;isa&quot;];
-<span class="lineNum">     402 </span>            :     [reference setObject:@&quot;4&quot; forKey:@&quot;FileEncoding&quot;];
+<span class="lineNum">     402 </span><span class="lineCov">         12 :     [reference setObject:@&quot;4&quot; forKey:@&quot;FileEncoding&quot;];</span>
 <span class="lineNum">     403 </span><span class="lineCov">         12 :     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@&quot;lastKnownFileType&quot;];</span>
 <span class="lineNum">     404 </span>            :     if (name != nil) {
 <span class="lineNum">     405 </span>            :         [reference setObject:[name lastPathComponent] forKey:@&quot;name&quot;];
