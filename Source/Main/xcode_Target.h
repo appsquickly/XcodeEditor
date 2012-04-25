@@ -18,11 +18,15 @@
 */
 @interface xcode_Target : NSObject {
 
+    xcode_Project* _project;
+    NSString* _key;
+    NSString* _name;
+
 @private
     NSMutableArray* _members;
 }
 
-@property (nonatomic, assign, readonly) xcode_Project* project;
+@property (nonatomic, weak, readonly) xcode_Project* project;
 @property (nonatomic, strong, readonly) NSString* key;
 @property (nonatomic, strong, readonly) NSString* name;
 
@@ -34,6 +38,7 @@
 
 - (void) addMember:(xcode_SourceFile*)member;
 
+-(void)removeMemberWithKey:(NSString*)key;
 
 @end
 

@@ -31,11 +31,11 @@
 @synthesize key = _key;
 @synthesize name = _name;
 
-
 /* ================================================= Class Methods ================================================== */
 + (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
     return [[[Target alloc] initWithProject:project key:key name:name] autorelease];
 }
+
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
@@ -92,17 +92,65 @@
     [self flagMembersAsDirty];
 }
 
+- (NSDictionary*) buildRefWithFileRefKey {
+    NSMutableDictionary* buildRefWithFileRefDict = [NSMutableDictionary dictionary];
+
+    NSDictionary* allObjects = [_project objects];
+
+    NSArray* keys = [allObjects allKeys];
+
+    for (NSString* key in keys) {
+        NSDictionary* dictionaryInfo = [allObjects objectForKey:key];
+
+        NSString* type = [dictionaryInfo objectForKey:@"isa"];
+        if (type) {
+            if ([type isEqualToString:@"PBXBuildFile"]) {
+                NSString* fileRef = [dictionaryInfo objectForKey:@"fileRef"];
+
+                if (fileRef) {
+                    [buildRefWithFileRefDict setObject:key forKey:fileRef];
+                }
+            }
+        }
+    }
+    return buildRefWithFileRefDict;
+}
+
+- (void) removeMemberWithKey:(NSString*)key {
+
+
+    NSDictionary* buildRefWithFileRef = [self buildRefWithFileRefKey];
+
+    NSDictionary* target = [[_project objects] objectForKey:_key];
+
+    NSString* buildRef = [buildRefWithFileRef objectForKey:key];
+
+    if (!buildRef) {
+        return;
+    }
+
+    for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"]) {
+        NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+        NSMutableArray* files = [buildPhase objectForKey:@"files"];
+
+        [files removeObjectIdenticalTo:buildRef];
+        [buildPhase setObject:files forKey:@"files"];
+    }
+    [self flagMembersAsDirty];
+}
+
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
     return [NSString stringWithFormat:@"Target: name=%@, files=%@", _name, _members];
 }
 
 - (void) dealloc {
-    [_members release];
+    [_project release];
     [_key release];
     [_name release];
     [super dealloc];
 }
+
 
 /* ================================================== Private Methods =============================================== */
 - (SourceFile*) buildFileWithKey:(NSString*)theKey {

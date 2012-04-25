@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import <XcodeEditor/XcodeEditor.h>
 #import "XcodeGroupMember.h"
 
 @class xcode_Project;
@@ -27,13 +26,17 @@
 */
 @interface xcode_Group : NSObject<XcodeGroupMember> {
 
+    xcode_Project* _project;
+
+    NSString* _pathRelativeToParent;
+    NSString* _key;
+    NSString* _alias;
+
+
 @private
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
-    xcode_FileOperationQueue* _fileOperationQueue;
-
-    //This is a computed property, based on the _children property. The contents of children (an array of
-    //keys of type NSString*) are resolved into the strongly typed id<XcodeGroupMember>
+    __weak xcode_FileOperationQueue* _fileOperationQueue;
     NSMutableArray* _members;
 }
 
@@ -42,7 +45,7 @@
 /**
  * The [Xcode project](xcode_Project) that this group belongs to.
 */
-@property(nonatomic, assign, readonly) xcode_Project* project;
+@property(nonatomic, weak, readonly) xcode_Project* project;
 
 /**
  * The alias of the group, which can be used to give the group a name other than the last path component.
@@ -64,14 +67,10 @@
 @property(nonatomic, strong, readonly) NSString* key;
 
 /**
- * The group's source tree.
- */
-@property(nonatomic, strong, readonly) NSString* tree;
-
-/**
  * An array containing the groups members as `XcodeGroupMember` types.
 */
-@property(nonatomic, strong, readonly) NSArray* children;
+@property(nonatomic, strong, readonly) NSMutableArray* children;
+
 
 /* ================================================================================================================== */
 #pragma mark Initializers
@@ -83,12 +82,8 @@
         tree:(NSString*)tree
         children:(NSArray*)children;
 
-- (id) initWithProject:(xcode_Project*)project
-        key:(NSString*)key
-        alias:(NSString*)alias
-        path:(NSString*)path
-        tree:(NSString*)tree
-        children:(NSArray*)children;
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
+        children:(NSMutableArray*)children;
 
 /* ================================================================================================================== */
 #pragma mark Super (parent) group
@@ -138,13 +133,7 @@
 /**
 * Adds a group with a path relative to this group.
 */
-- (void) addGroupWithPath:(NSString*)path;
-
-/**
-* TODO: @hiddenMemory, please document.
-*/
-- (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias;
-
+- (xcode_Group*) addGroupWithPath:(NSString*)path;
 
 /* ================================================================================================================== */
 #pragma mark Locating children
@@ -152,6 +141,9 @@
  * Instances of `xcode_SourceFile` and `xcode_Group` returned as the type `XcodeGroupMember`.
 */
 - (NSArray*) members;
+
+
+-(NSArray*)buildFileKeys;
 
 /**
  * Returns the child with the specified key, or nil.

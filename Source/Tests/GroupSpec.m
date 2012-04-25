@@ -12,6 +12,10 @@
 #import "xcode_FrameworkDefinition.h"
 #import "xcode_XibDefinition.h"
 #import "xcode_Group.h"
+#import "xcode_Project.h"
+#import "xcode_ClassDefinition.h"
+#import "xcode_SourceFile.h"
+#import "xcode_Target.h"
 
 
 @interface FrameworkPathFactory
@@ -148,16 +152,7 @@ SPEC_BEGIN(GroupSpec)
                 [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
                 LogDebug(@"Class definition: %@", classDefinition);
 
-                //WTF? This crashes, but the following works?
-                //[group addClass:classDefinition toTargets:[anotherProject targets]];
-                [group addClass:classDefinition];
-
-                SourceFile* sourceFile = [anotherProject fileWithName:@"HelloWorldLayer.mm"];
-                [sourceFile shouldNotBeNil];
-                for (Target* target in [project targets]) {
-                    [target addMember:sourceFile];
-                }
-
+                [group addClass:classDefinition toTargets:[anotherProject targets]];
                 [anotherProject save];
             });
 

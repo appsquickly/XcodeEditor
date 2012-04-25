@@ -15,7 +15,11 @@
 #import "xcode_XibDefinition.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Group.h"
+#import "xcode_Project.h"
+#import "xcode_ClassDefinition.h"
+#import "xcode_KeyBuilder.h"
 
+#import "Logging.h"
 /* ================================================================================================================== */
 @interface xcode_Group ()
 
@@ -46,32 +50,26 @@
 @synthesize key = _key;
 @synthesize children = _children;
 @synthesize alias = _alias;
-@synthesize tree = _tree;
+
 
 /* ================================================= Class Methods ================================================== */
 + (Group*) groupWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
         tree:(NSString*)tree children:(NSArray*)children {
 
-    return [[[Group alloc] initWithProject:project key:key alias:alias path:path tree:tree children:children]
-            autorelease];
+    return [[[Group alloc] initWithProject:project key:key alias:alias path:path children:children] autorelease];
 }
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project
-        key:(NSString*)key
-        alias:(NSString*)alias
-        path:(NSString*)path
-        tree:(NSString*)tree
-        children:(NSArray*)children {
-
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
+        children:(NSMutableArray*)children {
     self = [super init];
     if (self) {
         _project = project;
         _fileOperationQueue = [_project fileOperationQueue];
         _key = [key copy];
         _alias = [alias copy];
-        if ([tree length]) {_tree = [tree copy];} else {_tree = @"<group>";}
         _pathRelativeToParent = [path copy];
+
         _children = [[NSMutableArray alloc] init];
         [_children addObjectsFromArray:children];
     }
@@ -84,6 +82,7 @@
 - (void) removeFromSuperGroup {
     [self removeFromSuperGroup:NO];
 }
+
 
 - (void) removeFromSuperGroup:(BOOL)deleteChildren {
     LogDebug(@"Removing group %@", [self pathRelativeToProjectRoot]);
@@ -101,6 +100,7 @@
             }
         }
     }
+//    [self removeMemberWithKey:_key];
     [[_project objects] removeObjectForKey:_key];
 }
 
@@ -129,6 +129,7 @@
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
+
 - (void) addClass:(ClassDefinition*)classDefinition toTargets:(NSArray*)targets {
     [self addClass:classDefinition];
     SourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
@@ -152,9 +153,6 @@
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
-
-            LogDebug(@"Framework file path: %@", [frameworkDefinition filePath]);
-
             [_fileOperationQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
                     inDirectory:[self pathRelativeToProjectRoot]];
         }
@@ -178,24 +176,43 @@
     [self addSourceFile:[self memberWithDisplayName:[frameworkDefinition name]] toTargets:targets];
 }
 
-- (void) addGroupWithPath:(NSString*)path {
+- (xcode_Group*) addGroupWithPath:(NSString*)path {
     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
-    Group* group = [Group groupWithProject:_project key:groupKey alias:nil path:path tree:@"" children:nil];
-    LogDebug(@"Here's the group: %@", [group asDictionary]);
-    [[_project objects] setObject:[group asDictionary] forKey:groupKey];
-    [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
-    [self addMemberWithKey:groupKey];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
-}
 
-- (void) addGroupWithPath:(NSString*)path alias:(NSString*)alias {
-    NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
-    Group* group = [Group groupWithProject:_project key:groupKey alias:alias path:path tree:@"SOURCE_ROOT" children:nil];
-    LogDebug(@"Here's the group: %@", [group asDictionary]);
-    [[_project objects] setObject:[group asDictionary] forKey:groupKey];
+
+//    NSArray* groups = [[self project] groups];
+//    for(xcode_Group* gr in groups){
+//        if([[gr pathRelativeToParent] isEqualToString:path]){
+//            return nil;
+//        }
+//    }
+
+    NSArray* members = [self members];
+    for (id<XcodeGroupMember> groupMember in members) {
+        if ([groupMember groupMemberType] == PBXGroup) {
+            //NSLog(@"PATH IN SUBGROUPS %@ %@", [groupMember pathRelativeToProjectRoot], [groupMember displayName]);
+
+            if ([[[groupMember pathRelativeToProjectRoot] lastPathComponent] isEqualToString:path] ||
+                    [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey]) {
+                return nil;
+            }
+        }
+    }
+
+    Group* group = [[[Group alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil] autorelease];
+
+    NSDictionary* groupDict = [group asDictionary];
+
+    //  LogDebug(@"Here's the group: %@", groupDict);
+
+    [[_project objects] setObject:groupDict forKey:groupKey];
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
     [self addMemberWithKey:groupKey];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+
+    NSDictionary* dict = [self asDictionary];
+    [[_project objects] setObject:dict forKey:_key];
+
+    return group;
 }
 
 /* ================================================================================================================== */
@@ -215,6 +232,48 @@
     }
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+}
+
+
+- (NSArray*) buildFileKeys {
+
+    NSMutableArray* arrayOfBuildFileKeys = [NSMutableArray array];
+    for (id<XcodeGroupMember> groupMember in [self members]) {
+//        <key>bb33e8926797197e8ed55d7a</key>
+//		<dict>
+//        <key>fileRef</key>
+//        <string>053e5d40521df6331e6cbd57</string>
+//        <key>isa</key>
+//        <string>PBXBuildFile</string>
+//		</dict>
+
+        if ([[groupMember key] isEqualToString:@"053e5d40521df6331e6cbd57"]) {
+            NSLog(@"WE FOUND FILEREF KEY");
+        }
+
+        if ([[groupMember key] isEqualToString:@"bb33e8926797197e8ed55d7a"]) {
+            NSLog(@"WE FOUND PBXBUILDFILE KEY");
+        }
+
+
+        if ([groupMember groupMemberType] == PBXGroup) {
+            Group* group = (Group*) groupMember;
+            [arrayOfBuildFileKeys addObjectsFromArray:[group buildFileKeys]];
+        }
+//        else if([groupMember groupMemberType] == PBXBuildFile)
+//        {
+//            //NSLog(@"WE HAVE BUILD FILE %@", [groupMember key]);
+//            [arrayOfBuildFileKeys addObject:[groupMember key]];
+//        }
+        else if ([groupMember groupMemberType] == PBXFileReference) {
+            //  NSLog(@"WE HAVE REFERENCE %@", [groupMember key]);
+            [arrayOfBuildFileKeys addObject:[groupMember key]];
+        }
+        else {
+            //NSLog(@"WE HAVE ANOTHER FILE TYPE %d", [groupMember groupMemberType]);
+        }
+    }
+    return arrayOfBuildFileKeys;
 }
 
 - (id<XcodeGroupMember>) memberWithKey:(NSString*)key {
@@ -258,25 +317,19 @@
 - (NSString*) pathRelativeToProjectRoot {
     if (_pathRelativeToProjectRoot == nil) {
         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-  
+        Group* group;
+        NSString* key = _key;
 
-        for (xcode_Group* group = self; group != nil; group = [_project groupForGroupMemberWithKey:group.key]) {
-            LogDebug(@"Key: %@; Name: %@; Tree: %@; Path: %@", group.key, group.alias, group.tree, group.pathRelativeToParent);
-
-            if ([group pathRelativeToParent] != nil) {
-                [pathComponents addObject:[group pathRelativeToParent]];
-            }
-
-            if ([group.tree isEqualToString:@"SOURCE_ROOT"]) {
-                break;
-            }
+        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && !([group pathRelativeToParent] == nil)) {
+            [pathComponents addObject:[group pathRelativeToParent]];
+            key = [group key];
         }
 
         NSMutableString* fullPath = [[NSMutableString alloc] init];
         for (int i = [pathComponents count] - 1; i >= 0; i--) {
             [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
         }
-        _pathRelativeToProjectRoot = fullPath;
+        _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];
     }
     return _pathRelativeToProjectRoot;
 }
@@ -286,22 +339,41 @@
     return [NSString stringWithFormat:@"Group: displayName = %@, key=%@", [self displayName], _key];
 }
 
-
 - (void) dealloc {
+
     [_pathRelativeToParent release];
     [_key release];
-    [_children release];
     [_alias release];
-    [_tree release];
     [super dealloc];
 }
 
 /* ================================================== Private Methods =============================================== */
 #pragma mark Private
 - (void) addMemberWithKey:(NSString*)key {
+
+    for (NSString* childKey in _children) {
+        if ([childKey isEqualToString:key]) {
+            [self flagMembersAsDirty];
+            return;
+        }
+    }
+
     [_children addObject:key];
     [self flagMembersAsDirty];
 }
+
+//- (void) removeMemberWithKey:(NSString*)key{
+//    NSMutableArray* array = [NSMutableArray array];
+//    for(NSString* child in _children){
+//        if([child isEqualToString:key]){
+//            [array addObject:child];
+//        }
+//    }
+//    [_children removeObjectsInArray:array];
+//    [array removeAllObjects];
+//    [self flagMembersAsDirty];
+//}
+
 
 - (void) flagMembersAsDirty {
     _members = nil;
@@ -321,11 +393,11 @@
         [self warnPendingOverwrite:name];
         filePath = [[currentSourceFile pathRelativeToProjectRoot] stringByDeletingLastPathComponent];
     }
-    [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
+    //[_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
 }
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
-    NSMutableDictionary* reference = [NSMutableDictionary dictionary];
+    NSMutableDictionary* reference = [[NSMutableDictionary alloc] init];
     [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"FileEncoding"];
     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
@@ -335,21 +407,24 @@
     if (path != nil) {
         [reference setObject:path forKey:@"path"];
     }
-    [reference setObject:self.tree forKey:@"sourceTree"];
+    [reference setObject:@"<group>" forKey:@"sourceTree"];
     return reference;
 }
 
 
 - (NSDictionary*) asDictionary {
-    NSMutableDictionary* groupData = [NSMutableDictionary dictionary];
+    NSMutableDictionary* groupData = [[[NSMutableDictionary alloc] init] autorelease];
     [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@"isa"];
-    [groupData setObject:self.tree forKey:@"sourceTree"];
+    [groupData setObject:@"<group>" forKey:@"sourceTree"];
+
     if (_alias != nil) {
         [groupData setObject:_alias forKey:@"name"];
     }
+
     if (_pathRelativeToParent) {
         [groupData setObject:_pathRelativeToParent forKey:@"path"];
     }
+
     [groupData setObject:_children forKey:@"children"];
     return groupData;
 }
@@ -360,12 +435,10 @@
 }
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {
-    [targets retain];
-    LogDebug(@"################################## Adding source file %@ to targets %@", sourceFile, targets);
+    LogDebug(@"Adding source file %@ to targets %@", sourceFile, targets);
     for (Target* target in targets) {
         [target addMember:sourceFile];
     }
-    [targets release];
 }
 
 - (void) warnPendingOverwrite:(NSString*)resourceName {

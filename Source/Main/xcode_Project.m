@@ -10,9 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "xcode_Project.h"
-#import "XcodeSourceFileType.h"
-#import "xcode_Group.h"
+#import <XcodeEditor/XcodeEditor.h>
 
 /* ================================================================================================================== */
 @interface xcode_Project (Private)
@@ -68,7 +66,7 @@
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-- (xcode_SourceFile*) fileWithKey:(NSString*)key {
+- (SourceFile*) fileWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
     if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
         XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
@@ -84,7 +82,7 @@
     return nil;
 }
 
-- (xcode_SourceFile*) fileWithName:(NSString*)name {
+- (SourceFile*) fileWithName:(NSString*)name {
     for (SourceFile* projectFile in [self files]) {
         if ([[projectFile name] isEqualToString:name]) {
             return projectFile;
