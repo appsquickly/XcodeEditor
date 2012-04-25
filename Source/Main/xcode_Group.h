@@ -82,7 +82,7 @@
         children:(NSArray*)children;
 
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-        children:(NSMutableArray*)children;
+        children:(NSArray*)children;
 
 /* ================================================================================================================== */
 #pragma mark Super (parent) group

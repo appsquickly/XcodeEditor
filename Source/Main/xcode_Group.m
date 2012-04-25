@@ -61,7 +61,7 @@
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-        children:(NSMutableArray*)children {
+        children:(NSArray*)children {
     self = [super init];
     if (self) {
         _project = project;

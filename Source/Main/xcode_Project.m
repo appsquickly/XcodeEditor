@@ -146,7 +146,6 @@
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* path = [obj valueForKey:@"path"];
-        NSString* tree = [obj valueForKey:@"sourceTree"];
         NSArray* children = [obj valueForKey:@"children"];
 
         return [Group groupWithProject:self key:key alias:name path:path children:children];
