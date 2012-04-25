@@ -265,7 +265,7 @@ SPEC_BEGIN(GroupSpec)
                 Group* group = [project groupWithPathRelativeToParent:@"Tests"];
                 [group shouldNotBeNil];
 
-                [group removeFromSuperGroup:YES];
+                [group removeFromParentGroup:YES];
                 [project save];
 
                 Group* deleted = [project groupWithPathRelativeToParent:@"Tests"];

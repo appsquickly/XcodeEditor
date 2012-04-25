@@ -23,13 +23,14 @@
 /* ================================================================================================================== */
 @interface xcode_Group ()
 
+- (void) makeGroupMemberWithName:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type
+        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+
 - (void) addMemberWithKey:(NSString*)key;
 
 - (void) flagMembersAsDirty;
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type;
-
-- (void) referenceAndQueue:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type;
 
 - (NSDictionary*) asDictionary;
 
@@ -37,7 +38,10 @@
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
 
-- (void) warnPendingOverwrite:(NSString*)resourceName;
+- (void) queueFileWrite:(NSString*)name contents:(NSString*)contents
+        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle filePath:(NSString*)filePath;
+
+- (void) queueCopyToDestination:(FrameworkDefinition*)frameworkDefinition;
 
 
 @end
@@ -49,6 +53,7 @@
 @synthesize key = _key;
 @synthesize children = _children;
 @synthesize alias = _alias;
+
 
 
 /* ================================================= Class Methods ================================================== */
@@ -78,19 +83,19 @@
 /* ================================================ Interface Methods =============================================== */
 #pragma mark Super (parent) group
 
-- (void) removeFromSuperGroup {
-    [self removeFromSuperGroup:NO];
+- (void) removeFromParentGroup {
+    [self removeFromParentGroup:NO];
 }
 
 
-- (void) removeFromSuperGroup:(BOOL)deleteChildren {
+- (void) removeFromParentGroup:(BOOL)deleteChildren {
     LogDebug(@"Removing group %@", [self pathRelativeToProjectRoot]);
     if (deleteChildren) {
         LogDebug(@"Deleting children");
         for (id<XcodeGroupMember> groupMember in [self members]) {
             if ([groupMember groupMemberType] == PBXGroup) {
                 Group* group = (Group*) groupMember;
-                [group removeFromSuperGroup:YES];
+                [group removeFromParentGroup:YES];
                 LogDebug(@"My full path is : %@", [group pathRelativeToProjectRoot]);
 
             }
@@ -102,7 +107,7 @@
     [[_project objects] removeObjectForKey:_key];
 }
 
-- (xcode_Group*) superGroup {
+- (xcode_Group*) parentGroup {
     return [_project groupForGroupMemberWithKey:_key];
 }
 
@@ -115,14 +120,16 @@
 #pragma mark Adding children
 
 - (void) addClass:(ClassDefinition*)classDefinition {
-    [self referenceAndQueue:[classDefinition headerFileName] contents:[classDefinition header] type:SourceCodeHeader];
+    [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
+            type:SourceCodeHeader fileOperationStyle:[classDefinition fileOperationStyle]];
 
     if ([classDefinition isObjectiveC]) {
-        [self referenceAndQueue:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjC];
+        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
+                type:SourceCodeObjC fileOperationStyle:[classDefinition fileOperationStyle]];
     }
     else if ([classDefinition isObjectiveCPlusPlus]) {
-        [self referenceAndQueue:[classDefinition sourceFileName] contents:[classDefinition source]
-                type:SourceCodeObjCPlusPlus];
+        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
+                type:SourceCodeObjCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
     }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
@@ -135,7 +142,8 @@
 }
 
 - (void) addXib:(XibDefinition*)xibDefinition {
-    [self referenceAndQueue:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile];
+    [self makeGroupMemberWithName:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile
+            fileOperationStyle:[xibDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -148,30 +156,31 @@
 
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {
     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
+        LogDebug(@"Here we go!!!!");
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
+            LogDebug(@"Making file reference");
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
-            [_fileOperationQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
-                    inDirectory:[self pathRelativeToProjectRoot]];
+            [self queueCopyToDestination:frameworkDefinition];
         }
         else {
             NSString* path = [frameworkDefinition filePath];
             NSString* name = [frameworkDefinition name];
             fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
         }
+        LogDebug(@"Make framework key");
         NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
         [[_project objects] setObject:fileReference forKey:frameworkKey];
         [self addMemberWithKey:frameworkKey];
     }
-    else {
-        [self warnPendingOverwrite:[frameworkDefinition filePath]];
-    }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
+
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets {
     [self addFramework:frameworkDefinition];
-    [self addSourceFile:[self memberWithDisplayName:[frameworkDefinition name]] toTargets:targets];
+    SourceFile* frameworkSourceRef = (SourceFile*) [self memberWithDisplayName:[frameworkDefinition name]];
+    [self addSourceFile:frameworkSourceRef toTargets:targets];
 }
 
 - (xcode_Group*) addGroupWithPath:(NSString*)path {
@@ -317,7 +326,6 @@
             return;
         }
     }
-
     [_children addObject:key];
     [self flagMembersAsDirty];
 }
@@ -326,9 +334,13 @@
     _members = nil;
 }
 
-- (void) referenceAndQueue:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type {
+/* ================================================================================================================== */
+
+- (void) makeGroupMemberWithName:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type
+        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
+
     NSString* filePath;
-    SourceFile* currentSourceFile = [self memberWithDisplayName:name];
+    SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil) {
         NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
         NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
@@ -337,11 +349,54 @@
         filePath = [self pathRelativeToProjectRoot];
     }
     else {
-        [self warnPendingOverwrite:name];
         filePath = [[currentSourceFile pathRelativeToProjectRoot] stringByDeletingLastPathComponent];
     }
-    [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
+    [self queueFileWrite:name contents:contents fileOperationStyle:fileOperationStyle filePath:filePath];
 }
+
+- (void) queueFileWrite:(NSString*)name contents:(NSString*)contents
+        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle filePath:(NSString*)filePath {
+
+    BOOL writeFile = NO;
+    if (fileOperationStyle == FileOperationStyleOverwrite) {
+        writeFile = YES;
+        if ([_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {
+            LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
+                    displayName], name);
+        }
+    }
+    else if (fileOperationStyle == FileOperationStyleAcceptExisting &&
+            ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {
+        writeFile = YES;
+    }
+    if (writeFile) {
+        [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
+    }
+}
+
+
+- (void) queueCopyToDestination:(FrameworkDefinition*)frameworkDefinition {
+    LogDebug(@"Queue copy to destination");
+    BOOL copyFramework = NO;
+    if ([frameworkDefinition fileOperationStyle] == FileOperationStyleOverwrite) {
+        copyFramework = YES;
+    }
+    else if ([frameworkDefinition fileOperationStyle] == FileOperationStyleAcceptExisting) {
+        NSString* frameworkName = [[frameworkDefinition filePath] lastPathComponent];
+        if (![_fileOperationQueue
+                fileWithName:frameworkName existsInProjectDirectory:[self pathRelativeToProjectRoot]]) {
+            copyFramework = YES;
+        }
+
+    }
+    if (copyFramework) {
+        [_fileOperationQueue
+                queueFrameworkWithFilePath:[frameworkDefinition filePath] inDirectory:[self pathRelativeToProjectRoot]];
+    }
+}
+
+/* ================================================================================================================== */
+#pragma mark Dictionary Representations
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
     NSMutableDictionary* reference = [NSMutableDictionary dictionary];
@@ -387,11 +442,5 @@
         [target addMember:sourceFile];
     }
 }
-
-- (void) warnPendingOverwrite:(NSString*)resourceName {
-    LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
-            displayName], resourceName);
-}
-
 
 @end

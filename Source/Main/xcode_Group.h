@@ -36,12 +36,11 @@
 @private
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
-    xcode_FileOperationQueue* _fileOperationQueue;
+    __weak xcode_FileOperationQueue* _fileOperationQueue;
     NSMutableArray* _members;
 }
 
 /* =================================================== Properties =================================================== */
-
 
 /**
  * The alias of the group, which can be used to give the group a name other than the last path component.
@@ -81,13 +80,13 @@
         children:(NSArray*)children;
 
 /* ================================================================================================================== */
-#pragma mark Super (parent) group
+#pragma mark Parent group
 
-- (void) removeFromSuperGroup;
+- (void) removeFromParentGroup;
 
-- (void) removeFromSuperGroup:(BOOL)deleteChildren;
+- (void) removeFromParentGroup:(BOOL)deleteChildren;
 
-- (xcode_Group*) superGroup;
+- (xcode_Group*) parentGroup;
 
 - (BOOL) isRootGroup;
 
@@ -138,7 +137,7 @@
 - (NSArray*) members;
 
 
--(NSArray*)buildFileKeys;
+- (NSArray*) buildFileKeys;
 
 /**
  * Returns the child with the specified key, or nil.
