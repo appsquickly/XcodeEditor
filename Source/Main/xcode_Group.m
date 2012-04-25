@@ -393,7 +393,7 @@
         [self warnPendingOverwrite:name];
         filePath = [[currentSourceFile pathRelativeToProjectRoot] stringByDeletingLastPathComponent];
     }
-    //[_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
+    [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
 }
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {

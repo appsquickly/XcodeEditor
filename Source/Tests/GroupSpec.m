@@ -150,7 +150,7 @@ SPEC_BEGIN(GroupSpec)
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"HelloWorldLayer.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
-                LogDebug(@"Class definition: %@", classDefinition);
+                LogDebug(@"Class definition header: %@", [classDefinition header]);
 
                 [group addClass:classDefinition toTargets:[anotherProject targets]];
                 [anotherProject save];
