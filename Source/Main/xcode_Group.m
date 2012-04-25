@@ -54,7 +54,7 @@
 
 /* ================================================= Class Methods ================================================== */
 + (Group*) groupWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-        tree:(NSString*)tree children:(NSArray*)children {
+        children:(NSArray*)children {
 
     return [[[Group alloc] initWithProject:project key:key alias:alias path:path children:children] autorelease];
 }

@@ -52,8 +52,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow initialization with ", ^{
                 Group* group =
-                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" tree:@""
-                                children:nil];
+                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
@@ -155,7 +154,6 @@ SPEC_BEGIN(GroupSpec)
                 [group addClass:classDefinition toTargets:[anotherProject targets]];
                 [anotherProject save];
             });
-
 
 
         });

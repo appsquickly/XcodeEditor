@@ -149,7 +149,7 @@
         NSString* tree = [obj valueForKey:@"sourceTree"];
         NSArray* children = [obj valueForKey:@"children"];
 
-        return [Group groupWithProject:self key:key alias:name path:path tree:tree children:children];
+        return [Group groupWithProject:self key:key alias:name path:path children:children];
     }
     return nil;
 }
