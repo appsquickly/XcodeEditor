@@ -87,16 +87,16 @@
 <span class="lineNum">      29 </span>            : @implementation xcode_FileOperationQueue
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      32 </span><span class="lineCov">         24 : - (id) initWithBaseDirectory:(NSString*)baseDirectory {</span>
-<span class="lineNum">      33 </span><span class="lineCov">         24 :     self = [super init];</span>
-<span class="lineNum">      34 </span><span class="lineCov">         24 :     if (self) {</span>
-<span class="lineNum">      35 </span><span class="lineCov">         24 :         _baseDirectory = [baseDirectory copy];</span>
-<span class="lineNum">      36 </span><span class="lineCov">         24 :         _filesToWrite = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      37 </span><span class="lineCov">         24 :         _frameworksToCopy = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      38 </span><span class="lineCov">         24 :         _filesToDelete = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      39 </span><span class="lineCov">         24 :         _directoriesToCreate = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      40 </span><span class="lineCov">         24 :     }</span>
-<span class="lineNum">      41 </span><span class="lineCov">         24 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         25 : - (id) initWithBaseDirectory:(NSString*)baseDirectory {</span>
+<span class="lineNum">      33 </span><span class="lineCov">         25 :     self = [super init];</span>
+<span class="lineNum">      34 </span><span class="lineCov">         25 :     if (self) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">         25 :         _baseDirectory = [baseDirectory copy];</span>
+<span class="lineNum">      36 </span><span class="lineCov">         25 :         _filesToWrite = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      37 </span><span class="lineCov">         25 :         _frameworksToCopy = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         25 :         _filesToDelete = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      39 </span><span class="lineCov">         25 :         _directoriesToCreate = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      40 </span><span class="lineCov">         25 :     }</span>
+<span class="lineNum">      41 </span><span class="lineCov">         25 :     return self;</span>
 <span class="lineNum">      42 </span>            : }
 <span class="lineNum">      43 </span>            : 
 <span class="lineNum">      44 </span>            : /* ================================================ Interface Methods =============================================== */
@@ -204,12 +204,12 @@
 <span class="lineNum">     146 </span><span class="lineCov">         14 :     [_filesToWrite release];</span>
 <span class="lineNum">     147 </span>            :     [_frameworksToCopy release];
 <span class="lineNum">     148 </span>            :     [_filesToDelete release];
-<span class="lineNum">     149 </span><span class="lineCov">         24 :     [_directoriesToCreate release];</span>
-<span class="lineNum">     150 </span><span class="lineCov">         24 :     [super dealloc];</span>
-<span class="lineNum">     151 </span><span class="lineCov">         24 : }</span>
-<span class="lineNum">     152 </span><span class="lineCov">         24 : </span>
-<span class="lineNum">     153 </span><span class="lineCov">         24 : </span>
-<span class="lineNum">     154 </span><span class="lineCov">         24 : @end</span>
+<span class="lineNum">     149 </span><span class="lineCov">         25 :     [_directoriesToCreate release];</span>
+<span class="lineNum">     150 </span><span class="lineCov">         25 :     [super dealloc];</span>
+<span class="lineNum">     151 </span><span class="lineCov">         25 : }</span>
+<span class="lineNum">     152 </span><span class="lineCov">         25 : </span>
+<span class="lineNum">     153 </span><span class="lineCov">         25 : </span>
+<span class="lineNum">     154 </span><span class="lineCov">         25 : @end</span>
 </pre>
       </td>
     </tr>

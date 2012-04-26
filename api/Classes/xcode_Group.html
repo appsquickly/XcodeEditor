@@ -88,6 +88,8 @@
 	
 	<option value="//api/name/parentGroup">&nbsp;&nbsp;&nbsp;&nbsp;- parentGroup</option>
 	
+	<option value="//api/name/recursiveMembers">&nbsp;&nbsp;&nbsp;&nbsp;- recursiveMembers</option>
+	
 	<option value="//api/name/removeFromParentGroup">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromParentGroup</option>
 	
 	<option value="//api/name/removeFromParentGroup:">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromParentGroup:</option>
@@ -165,6 +167,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/members">members</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parentGroup">parentGroup</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recursiveMembers">recursiveMembers</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromParentGroup">removeFromParentGroup</a></span></li>
 	
@@ -352,6 +356,13 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<span class="tooltip">
 		<code><a href="#//api/name/members">&ndash;&nbsp;members</a></code>
 		<span class="tooltip"><p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/recursiveMembers">&ndash;&nbsp;recursiveMembers</a></code>
+		<span class="tooltip"><p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> from this group and any child groups.</p></span>
 	</span>
 	
 	
@@ -990,6 +1001,45 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 						<div class="section-method">
 	<a name="//api/name/parentGroup" title="parentGroup"></a>
 	<h3 class="subsubtitle method-title">parentGroup</h3>
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/recursiveMembers" title="recursiveMembers"></a>
+	<h3 class="subsubtitle method-title">recursiveMembers</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> from this group and any child groups.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)recursiveMembers</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> from this group and any child groups.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
 	
 	
 </div>

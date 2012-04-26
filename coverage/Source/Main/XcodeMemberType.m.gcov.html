@@ -73,8 +73,8 @@
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : @implementation NSDictionary (XcodeMemberType)
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">     640292 : + (NSDictionary*) dictionaryWithProjectNodeTypesAsStrings {</span>
-<span class="lineNum">      19 </span><span class="lineCov">     640292 :     return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(PBXNilType), @&quot;PBXNilType&quot;,</span>
+<span class="lineNum">      18 </span><span class="lineCov">     643100 : + (NSDictionary*) dictionaryWithProjectNodeTypesAsStrings {</span>
+<span class="lineNum">      19 </span><span class="lineCov">     643100 :     return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(PBXNilType), @&quot;PBXNilType&quot;,</span>
 <span class="lineNum">      20 </span>            :                                                       boxEnum(PBXBuildFile), @&quot;PBXBuildFile&quot;,
 <span class="lineNum">      21 </span>            :                                                       boxEnum(PBXContainerItemProxy), @&quot;PBXContainerItemProxy&quot;,
 <span class="lineNum">      22 </span>            :                                                       boxEnum(PBXCopyFilesBuildPhase), @&quot;PBXCopyFilesBuildPhase&quot;,
@@ -101,9 +101,9 @@
 <span class="lineNum">      43 </span>            : }
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">     640244 : - (XcodeMemberType) asMemberType {</span>
-<span class="lineNum">      47 </span><span class="lineCov">     640244 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
-<span class="lineNum">      48 </span><span class="lineCov">     640244 :     return (XcodeMemberType) [[nodeTypesToString objectForKey:self] intValue];</span>
+<span class="lineNum">      46 </span><span class="lineCov">     643052 : - (XcodeMemberType) asMemberType {</span>
+<span class="lineNum">      47 </span><span class="lineCov">     643052 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
+<span class="lineNum">      48 </span><span class="lineCov">     643052 :     return (XcodeMemberType) [[nodeTypesToString objectForKey:self] intValue];</span>
 <span class="lineNum">      49 </span>            : }
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : 
