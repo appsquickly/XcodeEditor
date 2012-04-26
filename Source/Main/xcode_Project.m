@@ -14,6 +14,7 @@
 #import "xcode_SourceFile.h"
 #import "xcode_Target.h"
 #import "xcode_FileOperationQueue.h"
+#import "XcodeSourceFileType.h"
 
 
 /* ================================================================================================================== */
