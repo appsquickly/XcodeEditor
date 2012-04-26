@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>xcode_FileOperationQueue Class Reference</title>
+		<title>xcode_utils_AbstractDictionaryBuilder Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">xcode_FileOperationQueue Class Reference</h1>
+				<h1 class="hideInXcode">xcode_utils_AbstractDictionaryBuilder Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -42,19 +42,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/commitFileOperations">&nbsp;&nbsp;&nbsp;&nbsp;- commitFileOperations</option>
-	
-	<option value="//api/name/fileWithName:existsInProjectDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- fileWithName:existsInProjectDirectory:</option>
-	
-	<option value="//api/name/initWithBaseDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithBaseDirectory:</option>
-	
-	<option value="//api/name/queueDeletion:">&nbsp;&nbsp;&nbsp;&nbsp;- queueDeletion:</option>
-	
-	<option value="//api/name/queueDirectory:inDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- queueDirectory:inDirectory:</option>
-	
-	<option value="//api/name/queueFrameworkWithFilePath:inDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- queueFrameworkWithFilePath:inDirectory:</option>
-	
-	<option value="//api/name/queueWrite:inDirectory:withContents:">&nbsp;&nbsp;&nbsp;&nbsp;- queueWrite:inDirectory:withContents:</option>
+	<option value="//api/name/build">&nbsp;&nbsp;&nbsp;&nbsp;- build</option>
 	
 	
 	
@@ -82,19 +70,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commitFileOperations">commitFileOperations</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fileWithName:existsInProjectDirectory:">fileWithName:existsInProjectDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithBaseDirectory:">initWithBaseDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueDeletion:">queueDeletion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueDirectory:inDirectory:">queueDirectory:inDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueFrameworkWithFilePath:inDirectory:">queueFrameworkWithFilePath:inDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueWrite:inDirectory:withContents:">queueWrite:inDirectory:withContents:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/build">build</a></span></li>
 	
 </ul></li>
 
@@ -103,7 +79,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="xcode_FileOperationQueue Class Reference" name="top"></a>
+				<a title="xcode_utils_AbstractDictionaryBuilder Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -112,7 +88,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">xcode_FileOperationQueue Class Reference</h1>
+						<h1 class="title title-header">xcode_utils_AbstractDictionaryBuilder Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -123,7 +99,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">xcode_FileOperationQueue.h</td>
+	<td class="specification-value">xcode_utils_AbstractDictionaryBuilder.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -143,49 +119,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithBaseDirectory:">&ndash;&nbsp;initWithBaseDirectory:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/fileWithName:existsInProjectDirectory:">&ndash;&nbsp;fileWithName:existsInProjectDirectory:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/queueWrite:inDirectory:withContents:">&ndash;&nbsp;queueWrite:inDirectory:withContents:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/queueFrameworkWithFilePath:inDirectory:">&ndash;&nbsp;queueFrameworkWithFilePath:inDirectory:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/queueDeletion:">&ndash;&nbsp;queueDeletion:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/queueDirectory:inDirectory:">&ndash;&nbsp;queueDirectory:inDirectory:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/commitFileOperations">&ndash;&nbsp;commitFileOperations</a></code>
+		<code><a href="#//api/name/build">&ndash;&nbsp;build</a></code>
 		
 	</span>
 	
@@ -208,50 +142,8 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/commitFileOperations" title="commitFileOperations"></a>
-	<h3 class="subsubtitle method-title">commitFileOperations</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/fileWithName:existsInProjectDirectory:" title="fileWithName:existsInProjectDirectory:"></a>
-	<h3 class="subsubtitle method-title">fileWithName:existsInProjectDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithBaseDirectory:" title="initWithBaseDirectory:"></a>
-	<h3 class="subsubtitle method-title">initWithBaseDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueDeletion:" title="queueDeletion:"></a>
-	<h3 class="subsubtitle method-title">queueDeletion:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueDirectory:inDirectory:" title="queueDirectory:inDirectory:"></a>
-	<h3 class="subsubtitle method-title">queueDirectory:inDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueFrameworkWithFilePath:inDirectory:" title="queueFrameworkWithFilePath:inDirectory:"></a>
-	<h3 class="subsubtitle method-title">queueFrameworkWithFilePath:inDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueWrite:inDirectory:withContents:" title="queueWrite:inDirectory:withContents:"></a>
-	<h3 class="subsubtitle method-title">queueWrite:inDirectory:withContents:</h3>
+	<a name="//api/name/build" title="build"></a>
+	<h3 class="subsubtitle method-title">build</h3>
 	
 	
 </div>
