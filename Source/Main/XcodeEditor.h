@@ -20,7 +20,7 @@
 #import <XcodeEditor/xcode_Target.h>
 #import <XcodeEditor/xcode_SourceFile.h>
 #import <XcodeEditor/xcode_Project.h>
-#import <XcodeEditor/xcode_KeyBuilder.h>
+#import "xcode_utils_KeyBuilder.h"
 #import <XcodeEditor/xcode_Group.h>
 #import <XcodeEditor/xcode_FileOperationQueue.h>
 #import <XcodeEditor/xcode_ClassDefinition.h>

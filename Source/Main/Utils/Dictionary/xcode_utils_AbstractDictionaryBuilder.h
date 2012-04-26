@@ -10,26 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonDigest.h>
 
-#define HASH_VALUE_STORAGE_SIZE 48
+@interface xcode_utils_AbstractDictionaryBuilder : NSObject {
 
-typedef struct {
-    char value[CC_MD5_DIGEST_LENGTH];
-} HashValueMD5Hash;
+NSMutableDictionary* _dictionary;
 
-
-@interface xcode_KeyBuilder : NSObject {
-    unsigned char _value[HASH_VALUE_STORAGE_SIZE];
 }
 
-+ (xcode_KeyBuilder*) forItemNamed:(NSString*)name;
-
-- (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length;
-
-- (NSString*) build;
+- (NSDictionary*) build;
 
 @end
 
 /* ================================================================================================================== */
-@compatibility_alias KeyBuilder xcode_KeyBuilder;
+@compatibility_alias AbstractDictionaryBuilder xcode_utils_AbstractDictionaryBuilder;

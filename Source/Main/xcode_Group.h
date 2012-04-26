@@ -36,8 +36,9 @@
 @private
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
-    __weak xcode_FileOperationQueue* _fileOperationQueue;
     NSMutableArray* _members;
+
+    __weak xcode_FileOperationQueue* _fileOperationQueue;
 }
 
 /* =================================================== Properties =================================================== */
@@ -84,7 +85,7 @@
 
 - (void) removeFromParentGroup;
 
-- (void) removeFromParentGroup:(BOOL)deleteChildren;
+- (void) removeFromParentGroup:(BOOL)deleteFiles;
 
 - (xcode_Group*) parentGroup;
 

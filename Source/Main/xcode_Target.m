@@ -93,9 +93,7 @@
 
 - (NSDictionary*) buildRefWithFileRefKey {
     NSMutableDictionary* buildRefWithFileRefDict = [NSMutableDictionary dictionary];
-
     NSDictionary* allObjects = [_project objects];
-
     NSArray* keys = [allObjects allKeys];
 
     for (NSString* key in keys) {
@@ -117,11 +115,8 @@
 
 - (void) removeMemberWithKey:(NSString*)key {
 
-
     NSDictionary* buildRefWithFileRef = [self buildRefWithFileRefKey];
-
     NSDictionary* target = [[_project objects] objectForKey:_key];
-
     NSString* buildRef = [buildRefWithFileRef objectForKey:key];
 
     if (!buildRef) {

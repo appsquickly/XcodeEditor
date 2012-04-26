@@ -9,14 +9,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_KeyBuilder.h"
+#import "xcode_utils_KeyBuilder.h"
 
-@implementation xcode_KeyBuilder
+@implementation xcode_utils_KeyBuilder
 
 /* ================================================= Class Methods ================================================== */
-+ (xcode_KeyBuilder*) forItemNamed:(NSString*)name {
++ (xcode_utils_KeyBuilder*) forItemNamed:(NSString*)name {
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
-    return [[[xcode_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]] autorelease];
+    return [[[xcode_utils_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]
+            autorelease];
 }
 
 /* ================================================== Initializers ================================================== */
