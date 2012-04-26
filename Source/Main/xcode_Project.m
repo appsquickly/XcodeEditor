@@ -9,8 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "xcode_Project.h"
+#import "xcode_Group.h"
+#import "xcode_SourceFile.h"
+#import "xcode_Target.h"
+#import "xcode_FileOperationQueue.h"
 
-#import <XcodeEditor/XcodeEditor.h>
 
 /* ================================================================================================================== */
 @interface xcode_Project (Private)
