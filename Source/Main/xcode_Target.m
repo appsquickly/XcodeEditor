@@ -133,6 +133,13 @@
     [self flagMembersAsDirty];
 }
 
+- (void) removeMembersWithKeys:(NSArray*)keys {
+    for (NSString* key in keys) {
+        [self removeMemberWithKey:key];
+    }
+}
+
+
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
     return [NSString stringWithFormat:@"Target: name=%@, files=%@", _name, _members];

@@ -105,6 +105,9 @@
         }
     }
     [[_project objects] removeObjectForKey:_key];
+    for (Target* target in [_project targets]) {
+        [target removeMembersWithKeys:[self recursiveMembers]];
+    }
 }
 
 - (xcode_Group*) parentGroup {
@@ -211,7 +214,8 @@
 }
 
 /* ================================================================================================================== */
-#pragma mark Locating children
+#pragma mark Members
+
 - (NSArray*) members {
     if (_members == nil) {
         _members = [[NSMutableArray alloc] init];
@@ -229,6 +233,21 @@
     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
+- (NSArray*) recursiveMembers {
+    NSMutableArray* recursiveMembers = [NSMutableArray array];
+    for (NSString* childKey in _children) {
+        XcodeMemberType type = [self typeForKey:childKey];
+        if (type == PBXGroup) {
+            Group* group = [_project groupWithKey:childKey];
+            NSArray* groupChildren = [group recursiveMembers];
+            [recursiveMembers addObjectsFromArray:groupChildren];
+        }
+        else if (type == PBXFileReference) {
+            [recursiveMembers addObject:childKey];
+        }
+    }
+    return [recursiveMembers arrayByAddingObjectsFromArray:recursiveMembers];
+}
 
 - (NSArray*) buildFileKeys {
 

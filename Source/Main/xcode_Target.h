@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+
 @class xcode_Project;
 @class xcode_SourceFile;
 
@@ -26,8 +27,8 @@
     NSMutableArray* _members;
 }
 
-@property (nonatomic, strong, readonly) NSString* key;
-@property (nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong, readonly) NSString* key;
+@property(nonatomic, strong, readonly) NSString* name;
 
 + (xcode_Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name;
 
@@ -37,7 +38,9 @@
 
 - (void) addMember:(xcode_SourceFile*)member;
 
--(void)removeMemberWithKey:(NSString*)key;
+- (void) removeMemberWithKey:(NSString*)key;
+
+- (void) removeMembersWithKeys:(NSArray*)keys;
 
 @end
 

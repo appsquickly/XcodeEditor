@@ -137,6 +137,11 @@
 */
 - (NSArray*) members;
 
+/**
+* Instances of `xcode_SourceFile` from this group and any child groups.
+*/
+- (NSArray*) recursiveMembers;
+
 
 - (NSArray*) buildFileKeys;
 

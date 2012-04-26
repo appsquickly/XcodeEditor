@@ -132,11 +132,11 @@
 }
 
 - (void) dealloc {
-//    [_isBuildFile release];
-//    [_buildFileKey release];
-//    [_key release];
-//    [_name release];
-//    [_sourceTree release];
+    [_isBuildFile release];
+    [_buildFileKey release];
+    [_key release];
+    [_name release];
+    [_sourceTree release];
     [super dealloc];
 }
 

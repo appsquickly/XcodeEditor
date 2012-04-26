@@ -267,6 +267,15 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
+            it(@"should be able to list all of it's members recursively.", ^{
+
+                LogDebug(@"Let's get recursive members!!!!");
+                NSArray* recursiveMembers = [group recursiveMembers];
+                LogDebug(@"$$$$$$$$$$$$$$$**********$*$*$*$*$*$* recursive members: %@", recursiveMembers);
+
+            });
+
+
         });
 
 
