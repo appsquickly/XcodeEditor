@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>xcode_FileOperationQueue Class Reference</title>
+		<title>xcode_SourceFileDefinition Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">xcode_FileOperationQueue Class Reference</h1>
+				<h1 class="hideInXcode">xcode_SourceFileDefinition Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -36,27 +36,31 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/data">&nbsp;&nbsp;&nbsp;&nbsp;data</option>
+	
+	<option value="//api/name/sourceFileName">&nbsp;&nbsp;&nbsp;&nbsp;sourceFileName</option>
+	
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/sourceDefinitionWithName:data:type:">&nbsp;&nbsp;&nbsp;&nbsp;+ sourceDefinitionWithName:data:type:</option>
+	
+	<option value="//api/name/sourceDefinitionWithName:text:type:">&nbsp;&nbsp;&nbsp;&nbsp;+ sourceDefinitionWithName:text:type:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/commitFileOperations">&nbsp;&nbsp;&nbsp;&nbsp;- commitFileOperations</option>
+	<option value="//api/name/initWithName:data:type:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:data:type:</option>
 	
-	<option value="//api/name/fileWithName:existsInProjectDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- fileWithName:existsInProjectDirectory:</option>
-	
-	<option value="//api/name/initWithBaseDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithBaseDirectory:</option>
-	
-	<option value="//api/name/queueDataFile:inDirectory:withContents:">&nbsp;&nbsp;&nbsp;&nbsp;- queueDataFile:inDirectory:withContents:</option>
-	
-	<option value="//api/name/queueDeletion:">&nbsp;&nbsp;&nbsp;&nbsp;- queueDeletion:</option>
-	
-	<option value="//api/name/queueDirectory:inDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- queueDirectory:inDirectory:</option>
-	
-	<option value="//api/name/queueFrameworkWithFilePath:inDirectory:">&nbsp;&nbsp;&nbsp;&nbsp;- queueFrameworkWithFilePath:inDirectory:</option>
-	
-	<option value="//api/name/queueTextFile:inDirectory:withContents:">&nbsp;&nbsp;&nbsp;&nbsp;- queueTextFile:inDirectory:withContents:</option>
+	<option value="//api/name/initWithName:text:type:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:text:type:</option>
 	
 	
 	
@@ -78,27 +82,33 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/data">data</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceFileName">sourceFileName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	
+</ul></li>
 
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceDefinitionWithName:data:type:">sourceDefinitionWithName:data:type:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceDefinitionWithName:text:type:">sourceDefinitionWithName:text:type:</a></span></li>
+	
+</ul></li>
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commitFileOperations">commitFileOperations</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:data:type:">initWithName:data:type:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fileWithName:existsInProjectDirectory:">fileWithName:existsInProjectDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithBaseDirectory:">initWithBaseDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueDataFile:inDirectory:withContents:">queueDataFile:inDirectory:withContents:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueDeletion:">queueDeletion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueDirectory:inDirectory:">queueDirectory:inDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueFrameworkWithFilePath:inDirectory:">queueFrameworkWithFilePath:inDirectory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueTextFile:inDirectory:withContents:">queueTextFile:inDirectory:withContents:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:text:type:">initWithName:text:type:</a></span></li>
 	
 </ul></li>
 
@@ -107,7 +117,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="xcode_FileOperationQueue Class Reference" name="top"></a>
+				<a title="xcode_SourceFileDefinition Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -116,7 +126,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">xcode_FileOperationQueue Class Reference</h1>
+						<h1 class="title title-header">xcode_SourceFileDefinition Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -124,10 +134,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
+	<td class="specification-value"><a href="../Classes/xcode_AbstractDefinition.html">xcode_AbstractDefinition</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">xcode_FileOperationQueue.h</td>
+	<td class="specification-value">xcode_SourceFileDefinition.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -147,56 +157,49 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithBaseDirectory:">&ndash;&nbsp;initWithBaseDirectory:</a></code>
+		<code><a href="#//api/name/sourceFileName">&nbsp;&nbsp;sourceFileName</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/data">&nbsp;&nbsp;data</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sourceDefinitionWithName:text:type:">+&nbsp;sourceDefinitionWithName:text:type:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fileWithName:existsInProjectDirectory:">&ndash;&nbsp;fileWithName:existsInProjectDirectory:</a></code>
+		<code><a href="#//api/name/sourceDefinitionWithName:data:type:">+&nbsp;sourceDefinitionWithName:data:type:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/queueTextFile:inDirectory:withContents:">&ndash;&nbsp;queueTextFile:inDirectory:withContents:</a></code>
+		<code><a href="#//api/name/initWithName:text:type:">&ndash;&nbsp;initWithName:text:type:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/queueDataFile:inDirectory:withContents:">&ndash;&nbsp;queueDataFile:inDirectory:withContents:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/queueFrameworkWithFilePath:inDirectory:">&ndash;&nbsp;queueFrameworkWithFilePath:inDirectory:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/queueDeletion:">&ndash;&nbsp;queueDeletion:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/queueDirectory:inDirectory:">&ndash;&nbsp;queueDirectory:inDirectory:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/commitFileOperations">&ndash;&nbsp;commitFileOperations</a></code>
+		<code><a href="#//api/name/initWithName:data:type:">&ndash;&nbsp;initWithName:data:type:</a></code>
 		
 	</span>
 	
@@ -210,7 +213,54 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/data" title="data"></a>
+	<h3 class="subsubtitle method-title">data</h3>
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sourceFileName" title="sourceFileName"></a>
+	<h3 class="subsubtitle method-title">sourceFileName</h3>
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
+	
+	
+</div>
+						
+					</div>
 					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/sourceDefinitionWithName:data:type:" title="sourceDefinitionWithName:data:type:"></a>
+	<h3 class="subsubtitle method-title">sourceDefinitionWithName:data:type:</h3>
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sourceDefinitionWithName:text:type:" title="sourceDefinitionWithName:text:type:"></a>
+	<h3 class="subsubtitle method-title">sourceDefinitionWithName:text:type:</h3>
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -219,57 +269,15 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/commitFileOperations" title="commitFileOperations"></a>
-	<h3 class="subsubtitle method-title">commitFileOperations</h3>
+	<a name="//api/name/initWithName:data:type:" title="initWithName:data:type:"></a>
+	<h3 class="subsubtitle method-title">initWithName:data:type:</h3>
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/fileWithName:existsInProjectDirectory:" title="fileWithName:existsInProjectDirectory:"></a>
-	<h3 class="subsubtitle method-title">fileWithName:existsInProjectDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithBaseDirectory:" title="initWithBaseDirectory:"></a>
-	<h3 class="subsubtitle method-title">initWithBaseDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueDataFile:inDirectory:withContents:" title="queueDataFile:inDirectory:withContents:"></a>
-	<h3 class="subsubtitle method-title">queueDataFile:inDirectory:withContents:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueDeletion:" title="queueDeletion:"></a>
-	<h3 class="subsubtitle method-title">queueDeletion:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueDirectory:inDirectory:" title="queueDirectory:inDirectory:"></a>
-	<h3 class="subsubtitle method-title">queueDirectory:inDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueFrameworkWithFilePath:inDirectory:" title="queueFrameworkWithFilePath:inDirectory:"></a>
-	<h3 class="subsubtitle method-title">queueFrameworkWithFilePath:inDirectory:</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/queueTextFile:inDirectory:withContents:" title="queueTextFile:inDirectory:withContents:"></a>
-	<h3 class="subsubtitle method-title">queueTextFile:inDirectory:withContents:</h3>
+	<a name="//api/name/initWithName:text:type:" title="initWithName:text:type:"></a>
+	<h3 class="subsubtitle method-title">initWithName:text:type:</h3>
 	
 	
 </div>

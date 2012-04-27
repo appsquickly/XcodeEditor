@@ -70,6 +70,8 @@
 	
 	<option value="//api/name/addGroupWithPath:">&nbsp;&nbsp;&nbsp;&nbsp;- addGroupWithPath:</option>
 	
+	<option value="//api/name/addSourceFile:">&nbsp;&nbsp;&nbsp;&nbsp;- addSourceFile:</option>
+	
 	<option value="//api/name/addXib:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:</option>
 	
 	<option value="//api/name/addXib:toTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:toTargets:</option>
@@ -149,6 +151,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addFramework:toTargets:">addFramework:toTargets:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addGroupWithPath:">addGroupWithPath:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addSourceFile:">addSourceFile:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:">addXib:</a></span></li>
 	
@@ -318,23 +322,16 @@ name, the contents will be updated.</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/addXib:">&ndash;&nbsp;addXib:</a></code>
-		<span class="tooltip"><p>Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/addXib:toTargets:">&ndash;&nbsp;addXib:toTargets:</a></code>
-		<span class="tooltip"><p>Adds a xib to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/addFramework:">&ndash;&nbsp;addFramework:</a></code>
 		<span class="tooltip"><p>Adds a framework to the group. If the group already contains the framework, the contents will be updated if the
 framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be ignored.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addGroupWithPath:">&ndash;&nbsp;addGroupWithPath:</a></code>
+		<span class="tooltip"><p>Adds a group with a path relative to this group.</p></span>
 	</span>
 	
 	
@@ -347,8 +344,22 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/addGroupWithPath:">&ndash;&nbsp;addGroupWithPath:</a></code>
-		<span class="tooltip"><p>Adds a group with a path relative to this group.</p></span>
+		<code><a href="#//api/name/addSourceFile:">&ndash;&nbsp;addSourceFile:</a></code>
+		<span class="tooltip"><p>Adds a source file of arbitrary type &ndash; image resource, header, etc.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addXib:">&ndash;&nbsp;addXib:</a></code>
+		<span class="tooltip"><p>Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addXib:toTargets:">&ndash;&nbsp;addXib:toTargets:</a></code>
+		<span class="tooltip"><p>Adds a xib to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p></span>
 	</span>
 	
 	
@@ -766,6 +777,45 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Adds a group with a path relative to this group.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addSourceFile:" title="addSourceFile:"></a>
+	<h3 class="subsubtitle method-title">addSourceFile:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a source file of arbitrary type &ndash; image resource, header, etc.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addSourceFile:(xcode_SourceFileDefinition *)<em>sourceFileDefinition</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a source file of arbitrary type &ndash; image resource, header, etc.</p>
 	</div>
 	
 	

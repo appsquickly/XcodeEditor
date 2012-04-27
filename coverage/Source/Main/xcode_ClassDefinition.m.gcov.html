@@ -73,12 +73,12 @@
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize className = _className;</span>
-<span class="lineNum">      18 </span><span class="lineCov">         23 : @synthesize header = _header;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         23 : @synthesize source = _source;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         19 : @synthesize header = _header;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         19 : @synthesize source = _source;</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      22 </span><span class="lineCov">          4 : + (ClassDefinition*) classDefinitionWithName:(NSString*)fileName {</span>
-<span class="lineNum">      23 </span><span class="lineCov">          4 :     return [[[ClassDefinition alloc] initWithName:fileName] autorelease];</span>
+<span class="lineNum">      22 </span><span class="lineCov">          5 : + (ClassDefinition*) classDefinitionWithName:(NSString*)fileName {</span>
+<span class="lineNum">      23 </span><span class="lineCov">          5 :     return [[[ClassDefinition alloc] initWithName:fileName] autorelease];</span>
 <span class="lineNum">      24 </span>            : }
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : + (ClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
@@ -88,57 +88,57 @@
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      32 </span><span class="lineCov">          6 : - (id) initWithName:(NSString*)className {</span>
-<span class="lineNum">      33 </span><span class="lineCov">         13 :     return [self initWithName:className language:ObjectiveC];</span>
-<span class="lineNum">      34 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         14 :     return [self initWithName:className language:ObjectiveC];</span>
+<span class="lineNum">      34 </span><span class="lineCov">          8 : }</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            : - (id) initWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
 <span class="lineNum">      37 </span>            :     self = [super init];
-<span class="lineNum">      38 </span><span class="lineCov">         12 :     if (self) {</span>
-<span class="lineNum">      39 </span><span class="lineCov">         12 :         _className = [className copy];</span>
-<span class="lineNum">      40 </span><span class="lineCov">         12 :         if (!(language == ObjectiveC || language == ObjectiveCPlusPlus)) {</span>
-<span class="lineNum">      41 </span><span class="lineCov">         12 :             [NSException</span>
-<span class="lineNum">      42 </span><span class="lineCov">         12 :                     raise:NSInvalidArgumentException format:@&quot;Language must be one of ObjectiveC, ObjectiveCPlusPlus&quot;];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         13 :     if (self) {</span>
+<span class="lineNum">      39 </span><span class="lineCov">         13 :         _className = [className copy];</span>
+<span class="lineNum">      40 </span><span class="lineCov">         13 :         if (!(language == ObjectiveC || language == ObjectiveCPlusPlus)) {</span>
+<span class="lineNum">      41 </span><span class="lineCov">         13 :             [NSException</span>
+<span class="lineNum">      42 </span><span class="lineCov">         13 :                     raise:NSInvalidArgumentException format:@&quot;Language must be one of ObjectiveC, ObjectiveCPlusPlus&quot;];</span>
 <span class="lineNum">      43 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">      44 </span>            :         _language = language;
 <span class="lineNum">      45 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      46 </span><span class="lineCov">         11 :     return self;</span>
-<span class="lineNum">      47 </span><span class="lineCov">         11 : }</span>
-<span class="lineNum">      48 </span><span class="lineCov">         11 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">         12 :     return self;</span>
+<span class="lineNum">      47 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      48 </span><span class="lineCov">         12 : </span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      51 </span>            : - (BOOL) isObjectiveC {
 <span class="lineNum">      52 </span>            :     return _language == ObjectiveC;
-<span class="lineNum">      53 </span><span class="lineCov">         17 : }</span>
-<span class="lineNum">      54 </span><span class="lineCov">         17 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">         20 : }</span>
+<span class="lineNum">      54 </span><span class="lineCov">         20 : </span>
 <span class="lineNum">      55 </span>            : - (BOOL) isObjectiveCPlusPlus {
 <span class="lineNum">      56 </span>            :     return _language == ObjectiveCPlusPlus;
 <span class="lineNum">      57 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      58 </span><span class="lineCov">          5 : </span>
 <span class="lineNum">      59 </span>            : - (NSString*) headerFileName {
 <span class="lineNum">      60 </span>            :     return [_className stringByAppendingString:@&quot;.h&quot;];
-<span class="lineNum">      61 </span><span class="lineCov">          7 : </span>
-<span class="lineNum">      62 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      61 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          8 : }</span>
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : - (NSString*) sourceFileName {
 <span class="lineNum">      65 </span>            :     NSString* sourceFileName = nil;
-<span class="lineNum">      66 </span><span class="lineCov">         11 :     if ([self isObjectiveC]) {</span>
-<span class="lineNum">      67 </span><span class="lineCov">         11 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
-<span class="lineNum">      68 </span><span class="lineCov">         11 :     }</span>
-<span class="lineNum">      69 </span><span class="lineCov">          8 :     else if ([self isObjectiveCPlusPlus]) {</span>
-<span class="lineNum">      70 </span><span class="lineCov">          8 :         sourceFileName = [_className stringByAppendingString:@&quot;.mm&quot;];</span>
+<span class="lineNum">      66 </span><span class="lineCov">         13 :     if ([self isObjectiveC]) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">         13 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
+<span class="lineNum">      68 </span><span class="lineCov">         13 :     }</span>
+<span class="lineNum">      69 </span><span class="lineCov">         10 :     else if ([self isObjectiveCPlusPlus]) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">         10 :         sourceFileName = [_className stringByAppendingString:@&quot;.mm&quot;];</span>
 <span class="lineNum">      71 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      72 </span><span class="lineCov">          3 :     return [[sourceFileName retain] autorelease];</span>
 <span class="lineNum">      73 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      74 </span><span class="lineCov">         11 : </span>
+<span class="lineNum">      74 </span><span class="lineCov">         13 : </span>
 <span class="lineNum">      75 </span>            : /* ================================================== Utility Methods =============================================== */
 <span class="lineNum">      76 </span>            : - (void) dealloc {
 <span class="lineNum">      77 </span>            :     [_className release];
-<span class="lineNum">      78 </span><span class="lineCov">          5 :     [_header release];</span>
-<span class="lineNum">      79 </span><span class="lineCov">          5 :     [_source release];</span>
-<span class="lineNum">      80 </span><span class="lineCov">          5 :     [super dealloc];</span>
-<span class="lineNum">      81 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">      82 </span><span class="lineCov">          5 : </span>
-<span class="lineNum">      83 </span><span class="lineCov">          5 : @end</span>
+<span class="lineNum">      78 </span><span class="lineCov">          6 :     [_header release];</span>
+<span class="lineNum">      79 </span><span class="lineCov">          6 :     [_source release];</span>
+<span class="lineNum">      80 </span><span class="lineCov">          6 :     [super dealloc];</span>
+<span class="lineNum">      81 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      82 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      83 </span><span class="lineCov">          6 : @end</span>
 </pre>
       </td>
     </tr>
