@@ -51,9 +51,51 @@ FrameworkDefinition* frameworkDefinition =
 Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the 
 project, and subsequently linked from there. 
 
+### Adding an Image Resource
+
+```objective-c
+
+SourceFileDefinition* sourceFileDefinition = [[SourceFileDefinition alloc]
+    initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:<your image file name>]
+    type:ImageResourcePNG];
+
+[group addSourceFile:sourceFileDefinition];
+[project save];
+```
+
+### Adding a Header
+
+```objective-c
+SourceFileDefinition* header = [[SourceFileDefinition alloc]
+    initWithName:@"SomeHeader.h" text:<your header text> type:SourceCodeHeader];
+
+[group addSourceFile:header];
+[project save];
+```
+
+### File write behavior
+
+Creates the reference in the project and writes the contents to disk. If a file already exists at the specified location, its contents will be updated.
+
+```objective-c
+[definition setFileOperationStyle:FileOperationStyleOverwrite];
+```
+
+Creates the reference in the project. If a file already exists at the specified location, the contents will not be updated.
+
+```objective-c
+[definition setFileOperationStyle:FileOperationStyleAcceptExisting];
+```
+
+Creates the reference in the project, but does not write to disk. The filesystem is expected to be updated through some other means.
+    
+```objective-c
+[definition setFileOperationStyle:FileOperationStyleReferenceOnly];
+```
+
 # Docs
 
-The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
+You've just read them! The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
 This will extract a test project to the /tmp directory, where you'll be able to see the outcome for yourself. 
 
 * <a href="https://github.com/expanz/xcode-editor/wiki">Wiki</a>
