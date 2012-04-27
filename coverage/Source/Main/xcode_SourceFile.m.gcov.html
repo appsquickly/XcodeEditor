@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">77</td>
-            <td class="headerCovTableEntry">83</td>
-            <td class="headerCovTableEntryHi">92.8 %</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntryHi">92.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -72,7 +72,7 @@
 <span class="lineNum">      14 </span>            : #import &quot;xcode_utils_KeyBuilder.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;xcode_Group.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : @implementation xcode_SourceFile
+<span class="lineNum">      17 </span><span class="lineCov">       4389 : @implementation xcode_SourceFile</span>
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span><span class="lineCov">        512 : @synthesize type = _type;</span>
 <span class="lineNum">      20 </span><span class="lineNoCov">          0 : @synthesize key = _key;</span>
@@ -82,9 +82,9 @@
 <span class="lineNum">      24 </span>            : /* ================================================= Class Methods ================================================== */
 <span class="lineNum">      25 </span>            : + (xcode_SourceFile*) sourceFileWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type
 <span class="lineNum">      26 </span><span class="lineCov">       4627 :         name:(NSString*)name sourceTree:(NSString*)_tree {</span>
-<span class="lineNum">      27 </span><span class="lineCov">       4627 :     return [[[SourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree] autorelease];</span>
+<span class="lineNum">      27 </span><span class="lineCov">       4627 :     return [[SourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];</span>
 <span class="lineNum">      28 </span><span class="lineCov">       4627 : }</span>
-<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      29 </span><span class="lineCov">       4627 : </span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      32 </span>            : - (id) initWithProject:(xcode_Project*)project
@@ -104,11 +104,11 @@
 <span class="lineNum">      46 </span><span class="lineCov">       4627 :     return self;</span>
 <span class="lineNum">      47 </span><span class="lineCov">       4627 : }</span>
 <span class="lineNum">      48 </span><span class="lineCov">       4627 : </span>
-<span class="lineNum">      49 </span>            : /* ================================================ Interface Methods =============================================== */
+<span class="lineNum">      49 </span><span class="lineCov">       4627 : /* ================================================ Interface Methods =============================================== */</span>
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : - (BOOL) isBuildFile {
 <span class="lineNum">      52 </span>            :     if ([self canBecomeBuildFile] &amp;&amp; _isBuildFile == nil) {
-<span class="lineNum">      53 </span><span class="lineCov">         38 :         _isBuildFile = [[NSNumber numberWithBool:NO] retain];</span>
+<span class="lineNum">      53 </span><span class="lineCov">         38 :         _isBuildFile = [NSNumber numberWithBool:NO];</span>
 <span class="lineNum">      54 </span><span class="lineCov">         38 :         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
 <span class="lineNum">      55 </span><span class="lineCov">         13 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
 <span class="lineNum">      56 </span><span class="lineCov">      14048 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key]) {</span>
@@ -182,24 +182,16 @@
 <span class="lineNum">     124 </span><span class="lineCov">        234 :         return result;</span>
 <span class="lineNum">     125 </span><span class="lineCov">        234 :     }</span>
 <span class="lineNum">     126 </span><span class="lineCov">        234 : }</span>
-<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     127 </span><span class="lineCov">        234 : </span>
 <span class="lineNum">     128 </span><span class="lineCov">        234 : /* ================================================== Utility Methods =============================================== */</span>
 <span class="lineNum">     129 </span>            : - (NSString*) description {
 <span class="lineNum">     130 </span>            :     return [NSString stringWithFormat:@&quot;Project file: key=%@, name=%@, fullPath=%@&quot;, _key, _name,
 <span class="lineNum">     131 </span><span class="lineCov">        154 :                                       [self pathRelativeToProjectRoot]];</span>
 <span class="lineNum">     132 </span><span class="lineCov">        154 : }</span>
 <span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span>            : - (void) dealloc {
-<span class="lineNum">     135 </span>            :     [_isBuildFile release];
-<span class="lineNum">     136 </span><span class="lineCov">       4285 :     [_buildFileKey release];</span>
-<span class="lineNum">     137 </span><span class="lineCov">       4285 :     [_key release];</span>
-<span class="lineNum">     138 </span><span class="lineCov">       4285 :     [_name release];</span>
-<span class="lineNum">     139 </span><span class="lineCov">       4285 :     [_sourceTree release];</span>
-<span class="lineNum">     140 </span><span class="lineCov">       4285 :     [super dealloc];</span>
-<span class="lineNum">     141 </span><span class="lineCov">       4285 : }</span>
-<span class="lineNum">     142 </span><span class="lineCov">       4285 : </span>
-<span class="lineNum">     143 </span><span class="lineCov">       4285 : </span>
-<span class="lineNum">     144 </span>            : @end
+<span class="lineNum">     134 </span>            : 
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span>            : @end
 </pre>
       </td>
     </tr>

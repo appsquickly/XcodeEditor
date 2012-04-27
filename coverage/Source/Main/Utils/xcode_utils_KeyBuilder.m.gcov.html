@@ -31,8 +31,8 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">15</td>
-            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
@@ -74,9 +74,9 @@
 <span class="lineNum">      16 </span>            : /* ================================================= Class Methods ================================================== */
 <span class="lineNum">      17 </span><span class="lineCov">         46 : + (xcode_utils_KeyBuilder*) forItemNamed:(NSString*)name {</span>
 <span class="lineNum">      18 </span><span class="lineCov">         46 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         46 :     return [[[xcode_utils_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]</span>
-<span class="lineNum">      20 </span>            :             autorelease];
-<span class="lineNum">      21 </span>            : }
+<span class="lineNum">      19 </span><span class="lineCov">         46 :     return [[xcode_utils_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];</span>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">         46 : }</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      24 </span>            : - (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length {
@@ -86,7 +86,7 @@
 <span class="lineNum">      28 </span><span class="lineCov">         46 :     }</span>
 <span class="lineNum">      29 </span><span class="lineCov">         46 :     return self;</span>
 <span class="lineNum">      30 </span><span class="lineCov">         46 : }</span>
-<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">         46 : </span>
 <span class="lineNum">      32 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      33 </span>            : - (NSString*) build {
 <span class="lineNum">      34 </span><span class="lineCov">         46 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
@@ -97,7 +97,7 @@
 <span class="lineNum">      39 </span><span class="lineCov">        736 :     }</span>
 <span class="lineNum">      40 </span>            :     return [stringValue substringToIndex:24];
 <span class="lineNum">      41 </span><span class="lineCov">         46 : }</span>
-<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">         46 : </span>
 <span class="lineNum">      43 </span>            : 
 <span class="lineNum">      44 </span>            : @end
 </pre>

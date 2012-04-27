@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">81</td>
-            <td class="headerCovTableEntry">92</td>
-            <td class="headerCovTableEntryMed">88.0 %</td>
+            <td class="headerCovTableEntry">77</td>
+            <td class="headerCovTableEntry">88</td>
+            <td class="headerCovTableEntryMed">87.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -84,7 +84,7 @@
 <span class="lineNum">      26 </span>            : @end
 <span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : @implementation xcode_FileOperationQueue
+<span class="lineNum">      29 </span><span class="lineCov">         26 : @implementation xcode_FileOperationQueue</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      32 </span><span class="lineCov">         28 : - (id) initWithBaseDirectory:(NSString*)baseDirectory {</span>
@@ -97,14 +97,14 @@
 <span class="lineNum">      39 </span><span class="lineCov">         28 :         _directoriesToCreate = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">      40 </span><span class="lineCov">         28 :     }</span>
 <span class="lineNum">      41 </span><span class="lineCov">         28 :     return self;</span>
-<span class="lineNum">      42 </span>            : }
+<span class="lineNum">      42 </span><span class="lineCov">         28 : }</span>
 <span class="lineNum">      43 </span>            : 
 <span class="lineNum">      44 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      45 </span>            : - (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory {
 <span class="lineNum">      46 </span><span class="lineCov">         15 :     NSString* filePath = [self destinationPathFor:name inProjectDirectory:directory];</span>
 <span class="lineNum">      47 </span><span class="lineCov">         15 :     return [[NSFileManager defaultManager] fileExistsAtPath:filePath];</span>
 <span class="lineNum">      48 </span><span class="lineCov">         15 : }</span>
-<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">         15 : </span>
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : - (void) queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents {
 <span class="lineNum">      52 </span>            :     [_filesToWrite setObject:[contents dataUsingEncoding:NSUTF8StringEncoding]
@@ -151,7 +151,7 @@
 <span class="lineNum">      93 </span>            :     [_filesToWrite enumerateKeysAndObjectsUsingBlock:^(NSString* filePath, NSData* data, BOOL* stop) {
 <span class="lineNum">      94 </span><span class="lineCov">         30 :         NSError* error = nil;</span>
 <span class="lineNum">      95 </span><span class="lineCov">         30 :         if (![data writeToFile:filePath options:NSDataWritingAtomic error:&amp;error]) {</span>
-<span class="lineNum">      96 </span>            :             [NSException raise:NSInternalInconsistencyException format:@&quot;Error writing file at filePath: %@, error: %@&quot;,
+<span class="lineNum">      96 </span><span class="lineCov">         30 :             [NSException raise:NSInternalInconsistencyException format:@&quot;Error writing file at filePath: %@, error: %@&quot;,</span>
 <span class="lineNum">      97 </span>            :                                                                        filePath, error];
 <span class="lineNum">      98 </span><span class="lineCov">         17 :         }</span>
 <span class="lineNum">      99 </span><span class="lineCov">         31 :     }];</span>
@@ -204,18 +204,8 @@
 <span class="lineNum">     146 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     147 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     148 </span>            : 
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : /* ================================================== Utility Methods =============================================== */</span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 : - (void) dealloc {</span>
-<span class="lineNum">     151 </span>            :     [_baseDirectory release];
-<span class="lineNum">     152 </span><span class="lineCov">          1 :     [_filesToWrite release];</span>
-<span class="lineNum">     153 </span><span class="lineCov">         17 :     [_frameworksToCopy release];</span>
-<span class="lineNum">     154 </span>            :     [_filesToDelete release];
-<span class="lineNum">     155 </span>            :     [_directoriesToCreate release];
-<span class="lineNum">     156 </span><span class="lineCov">         28 :     [super dealloc];</span>
-<span class="lineNum">     157 </span><span class="lineCov">         28 : }</span>
-<span class="lineNum">     158 </span><span class="lineCov">         28 : </span>
-<span class="lineNum">     159 </span><span class="lineCov">         28 : </span>
-<span class="lineNum">     160 </span><span class="lineCov">         28 : @end</span>
+<span class="lineNum">     149 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 : @end</span>
 </pre>
       </td>
     </tr>
