@@ -18,6 +18,19 @@
 @synthesize type = _type;
 @synthesize data = _data;
 
+/* ================================================= Class Methods ================================================== */
++ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
+        type:(XcodeSourceFileType)type {
+
+    return [[[SourceFileDefinition alloc] initWithName:name text:text type:type] autorelease];
+}
+
++ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
+        type:(XcodeSourceFileType)type {
+
+    return [[[SourceFileDefinition alloc] initWithName:name data:data type:type] autorelease];
+}
+
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type {

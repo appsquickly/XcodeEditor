@@ -19,6 +19,12 @@
 @property(nonatomic, strong, readonly) NSData* data;
 @property(nonatomic, readonly) XcodeSourceFileType type;
 
++ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
+        type:(XcodeSourceFileType)type;
+
++ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
+        type:(XcodeSourceFileType)type;
+
 - (id) initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type;
 
 - (id) initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type;
