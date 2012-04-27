@@ -18,12 +18,13 @@
 #import "xcode_Project.h"
 #import "xcode_ClassDefinition.h"
 #import "xcode_utils_KeyBuilder.h"
+#import "xcode_SourceFileDefinition.h"
 
 #import "Logging.h"
 /* ================================================================================================================== */
 @interface xcode_Group ()
 
-- (void) makeGroupMemberWithName:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type
+- (void) makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
 - (void) addMemberWithKey:(NSString*)key;
@@ -37,12 +38,6 @@
 - (XcodeMemberType) typeForKey:(NSString*)key;
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
-
-- (void) queueFileWrite:(NSString*)name contents:(NSString*)contents
-        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle filePath:(NSString*)filePath;
-
-- (void) queueCopyToDestination:(FrameworkDefinition*)frameworkDefinition;
-
 
 @end
 /* ================================================================================================================== */
@@ -81,7 +76,7 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
-#pragma mark Super (parent) group
+#pragma mark Parent group
 
 - (void) removeFromParentGroup {
     [self removeFromParentGroup:NO];
@@ -125,21 +120,19 @@
 
 - (void) addClass:(ClassDefinition*)classDefinition {
 
-    if ([classDefinition header]) {
-        [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
-                type:SourceCodeHeader fileOperationStyle:[classDefinition fileOperationStyle]];
+
+    [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
+            type:SourceCodeHeader fileOperationStyle:[classDefinition fileOperationStyle]];
+
+    if ([classDefinition isObjectiveC]) {
+        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
+                type:SourceCodeObjC fileOperationStyle:[classDefinition fileOperationStyle]];
+    }
+    else if ([classDefinition isObjectiveCPlusPlus]) {
+        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
+                type:SourceCodeObjCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
     }
 
-    if ([classDefinition source]) {
-        if ([classDefinition isObjectiveC]) {
-            [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
-                    type:SourceCodeObjC fileOperationStyle:[classDefinition fileOperationStyle]];
-        }
-        else if ([classDefinition isObjectiveCPlusPlus]) {
-            [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
-                    type:SourceCodeObjCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
-        }
-    }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -150,19 +143,6 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
-- (void) addXib:(XibDefinition*)xibDefinition {
-    [self makeGroupMemberWithName:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile
-            fileOperationStyle:[xibDefinition fileOperationStyle]];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
-}
-
-- (void) addXib:(XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
-    [self addXib:xibDefinition];
-    SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
-    [self addSourceFile:sourceFile toTargets:targets];
-}
-
-
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {
     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
         LogDebug(@"Here we go!!!!");
@@ -170,7 +150,22 @@
         if ([frameworkDefinition copyToDestination]) {
             LogDebug(@"Making file reference");
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
-            [self queueCopyToDestination:frameworkDefinition];
+            BOOL copyFramework = NO;
+            if ([frameworkDefinition fileOperationStyle] == FileOperationStyleOverwrite) {
+                copyFramework = YES;
+            }
+            else if ([frameworkDefinition fileOperationStyle] == FileOperationStyleAcceptExisting) {
+                NSString* frameworkName = [[frameworkDefinition filePath] lastPathComponent];
+                if (![_fileOperationQueue
+                        fileWithName:frameworkName existsInProjectDirectory:[self pathRelativeToProjectRoot]]) {
+                    copyFramework = YES;
+                }
+
+            }
+            if (copyFramework) {
+                [_fileOperationQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
+                        inDirectory:[self pathRelativeToProjectRoot]];
+            }
         }
         else {
             NSString* path = [frameworkDefinition filePath];
@@ -217,6 +212,24 @@
     [[_project objects] setObject:dict forKey:_key];
 
     return group;
+}
+
+- (void) addSourceFile:(SourceFileDefinition*)sourceFileDefinition {
+    [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName] contents:[sourceFileDefinition data]
+            type:[sourceFileDefinition type] fileOperationStyle:[sourceFileDefinition fileOperationStyle]];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+}
+
+- (void) addXib:(XibDefinition*)xibDefinition {
+    [self makeGroupMemberWithName:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile
+            fileOperationStyle:[xibDefinition fileOperationStyle]];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+}
+
+- (void) addXib:(XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
+    [self addXib:xibDefinition];
+    SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];
+    [self addSourceFile:sourceFile toTargets:targets];
 }
 
 /* ================================================================================================================== */
@@ -361,7 +374,7 @@
 
 /* ================================================================================================================== */
 
-- (void) makeGroupMemberWithName:(NSString*)name contents:(NSString*)contents type:(XcodeSourceFileType)type
+- (void) makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
 
     NSString* filePath;
@@ -376,11 +389,6 @@
     else {
         filePath = [[currentSourceFile pathRelativeToProjectRoot] stringByDeletingLastPathComponent];
     }
-    [self queueFileWrite:name contents:contents fileOperationStyle:fileOperationStyle filePath:filePath];
-}
-
-- (void) queueFileWrite:(NSString*)name contents:(NSString*)contents
-        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle filePath:(NSString*)filePath {
 
     BOOL writeFile = NO;
     if (fileOperationStyle == FileOperationStyleOverwrite) {
@@ -395,28 +403,12 @@
         writeFile = YES;
     }
     if (writeFile) {
-        [_fileOperationQueue queueWrite:name inDirectory:filePath withContents:contents];
-    }
-}
-
-
-- (void) queueCopyToDestination:(FrameworkDefinition*)frameworkDefinition {
-    LogDebug(@"Queue copy to destination");
-    BOOL copyFramework = NO;
-    if ([frameworkDefinition fileOperationStyle] == FileOperationStyleOverwrite) {
-        copyFramework = YES;
-    }
-    else if ([frameworkDefinition fileOperationStyle] == FileOperationStyleAcceptExisting) {
-        NSString* frameworkName = [[frameworkDefinition filePath] lastPathComponent];
-        if (![_fileOperationQueue
-                fileWithName:frameworkName existsInProjectDirectory:[self pathRelativeToProjectRoot]]) {
-            copyFramework = YES;
+        if ([contents isKindOfClass:[NSString class]]) {
+            [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];
         }
-
-    }
-    if (copyFramework) {
-        [_fileOperationQueue
-                queueFrameworkWithFilePath:[frameworkDefinition filePath] inDirectory:[self pathRelativeToProjectRoot]];
+        else {
+            [_fileOperationQueue queueDataFile:name inDirectory:filePath withContents:contents];
+        }
     }
 }
 

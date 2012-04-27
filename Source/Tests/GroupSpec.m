@@ -133,6 +133,16 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
+            it(@"should allow creating a reference only, without writing to disk", ^{
+
+                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"OneMoreClass"];
+                [classDefinition setFileOperationStyle:FileOperationStyleReferenceOnly];
+                [group addClass:classDefinition toTargets:[project targets]];
+                [project save];
+
+            });
+
+
         });
 
         describe(@"adding objective-c++ files", ^{
@@ -238,6 +248,25 @@ SPEC_BEGIN(GroupSpec)
                 [project save];
             });
 
+            it(@"should allow adding a header", ^{
+
+                SourceFileDefinition* header = [[SourceFileDefinition alloc]
+                        initWithName:@"SomeHeader.h" text:@"@protocol Foobar<NSObject> @end" type:SourceCodeHeader];
+                [group addSourceFile:header];
+                [project save];
+
+            });
+
+            it(@"should allow adding an image file", ^{
+
+                SourceFileDefinition* sourceFileDefinition = [[SourceFileDefinition alloc]
+                        initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:@"/tmp/goat-funny.png"]
+                        type:ImageResourcePNG];
+                [group addSourceFile:sourceFileDefinition];
+                [project save];
+
+            });
+
 
         });
 
@@ -247,9 +276,9 @@ SPEC_BEGIN(GroupSpec)
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:14];
+                [[children should] haveCountOf:18];
                 [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
-                [[[[children objectAtIndex:13] displayName] should] equal:@"UserInterface"];
+                [[[[children objectAtIndex:17] displayName] should] equal:@"UserInterface"];
 
             });
 

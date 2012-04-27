@@ -26,7 +26,9 @@
 
 - (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory;
 
-- (void) queueWrite:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
+- (void) queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
+
+- (void) queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents;
 
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;
 

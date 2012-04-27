@@ -48,9 +48,15 @@
 }
 
 
-- (void) queueWrite:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents {
-  [_filesToWrite setObject:contents forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
+- (void) queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents {
+    [_filesToWrite setObject:[contents dataUsingEncoding:NSUTF8StringEncoding]
+            forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
 }
+
+- (void) queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents {
+    [_filesToWrite setObject:contents forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
+}
+
 
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory {
 
@@ -84,9 +90,9 @@
 }
 
 - (void) performFileWrites {
-    [_filesToWrite enumerateKeysAndObjectsUsingBlock:^(id filePath, id data, BOOL* stop) {
+    [_filesToWrite enumerateKeysAndObjectsUsingBlock:^(NSString* filePath, NSData* data, BOOL* stop) {
         NSError* error = nil;
-        if (![data writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
+        if (![data writeToFile:filePath options:NSDataWritingAtomic error:&error]) {
             [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@, error: %@",
                                                                        filePath, error];
         }

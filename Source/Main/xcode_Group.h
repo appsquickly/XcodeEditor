@@ -18,6 +18,7 @@
 @class xcode_XibDefinition;
 @class xcode_FileOperationQueue;
 @class xcode_FrameworkDefinition;
+@class xcode_SourceFileDefinition;
 
 
 /**
@@ -105,6 +106,27 @@
 - (void) addClass:(xcode_ClassDefinition*)classDefinition toTargets:(NSArray*)targets;
 
 /**
+* Adds a framework to the group. If the group already contains the framework, the contents will be updated if the
+* framework definition's copyToDestination flag is yes, otherwise it will be ignored.
+*/
+- (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition;
+
+/**
+* Adds a group with a path relative to this group.
+*/
+- (xcode_Group*) addGroupWithPath:(NSString*)path;
+
+/**
+* Adds a framework to the group, making it a member of the specified targets.
+*/
+- (void) addFramework:(xcode_FrameworkDefinition*)framework toTargets:(NSArray*)targets;
+
+/**
+* Adds a source file of arbitrary type - image resource, header, etc.
+*/
+- (void) addSourceFile:(xcode_SourceFileDefinition*)sourceFileDefinition;
+
+/**
  * Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.
 */
 - (void) addXib:(xcode_XibDefinition*)xibDefinition;
@@ -113,22 +135,6 @@
  * Adds a xib to the group, making it a member of the specified [targets](xcode_Target).
 */
 - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets;
-
-/**
-* Adds a framework to the group. If the group already contains the framework, the contents will be updated if the
-* framework definition's copyToDestination flag is yes, otherwise it will be ignored.
-*/
-- (void) addFramework:(xcode_FrameworkDefinition*)frameworkDefinition;
-
-/**
-* Adds a framework to the group, making it a member of the specified targets.
-*/
-- (void) addFramework:(xcode_FrameworkDefinition*)framework toTargets:(NSArray*)targets;
-
-/**
-* Adds a group with a path relative to this group.
-*/
-- (xcode_Group*) addGroupWithPath:(NSString*)path;
 
 /* ================================================================================================================== */
 #pragma mark Locating children

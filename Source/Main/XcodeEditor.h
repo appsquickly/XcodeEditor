@@ -24,3 +24,4 @@
 #import <XcodeEditor/xcode_Group.h>
 #import <XcodeEditor/xcode_FileOperationQueue.h>
 #import <XcodeEditor/xcode_ClassDefinition.h>
+#import <XcodeEditor/xcode_SourceFileDefinition.h>

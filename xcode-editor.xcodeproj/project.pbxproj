@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */; };
 		6B01A05B154A206600122D48 /* xcode_AbstractDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B51E2FC1547FEDD00DBA0BD /* xcode_AbstractDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B01A07A154A337A00122D48 /* goat-funny.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B01A079154A337A00122D48 /* goat-funny.png */; };
+		6B01A07C154A34BC00122D48 /* goat-funny.png in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B01A079154A337A00122D48 /* goat-funny.png */; };
 		6B3ACFE114F8A2FE00BCFE81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
 		6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */; };
@@ -76,6 +78,9 @@
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
 		E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51256 /* HelloBoxy.zip */; };
+		E94DE11415443AC100C5125A /* xcode_SourceFileDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */; };
+		E94DE11415443AC100C5125B /* xcode_SourceFileDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */; };
+		E94DE11415443AC100C5125D /* xcode_SourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,6 +90,7 @@
 			dstPath = /tmp;
 			dstSubfolderSpec = 0;
 			files = (
+				6B01A07C154A34BC00122D48 /* goat-funny.png in Copy Test Resources to /tmp */,
 				6BB7136F154575B3003614C2 /* HelloWorldLayer.impl in Copy Test Resources to /tmp */,
 				6BB71370154575B3003614C2 /* HelloWorldLayer.header in Copy Test Resources to /tmp */,
 				6B65942314F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.header in Copy Test Resources to /tmp */,
@@ -98,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6B01A079154A337A00122D48 /* goat-funny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goat-funny.png"; sourceTree = "<group>"; };
 		6B3ACFE014F8A2FE00BCFE81 /* XcodeEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XcodeEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_ClassDefinition.h; sourceTree = "<group>"; };
 		6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_ClassDefinition.m; sourceTree = "<group>"; };
@@ -160,6 +167,8 @@
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
 		E94DE11415443AC100C51256 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
+		E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_SourceFileDefinition.m; sourceTree = "<group>"; };
+		E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_SourceFileDefinition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +197,8 @@
 		6B3AD01814F8A3AC00BCFE81 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */,
+				E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */,
 				6B51E2FC1547FEDD00DBA0BD /* xcode_AbstractDefinition.h */,
 				6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */,
 				E94DE11315443AA400C51251 /* XcodeEditor.h */,
@@ -238,6 +249,7 @@
 		6B3AD05714F8A3B400BCFE81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B01A079154A337A00122D48 /* goat-funny.png */,
 				E94DE11415443AC100C51256 /* HelloBoxy.zip */,
 				E94DE11415443AC100C51254 /* HelloWorldLayer.impl */,
 				E94DE11415443AC100C51252 /* HelloWorldLayer.header */,
@@ -365,6 +377,7 @@
 				6B3AD03C14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h in Headers */,
 				6B3AD03F14F8A3AC00BCFE81 /* xcode_Project.h in Headers */,
 				6B3AD04214F8A3AC00BCFE81 /* xcode_Target.h in Headers */,
+				E94DE11415443AC100C5125D /* xcode_SourceFileDefinition.h in Headers */,
 				6B3AD04514F8A3AC00BCFE81 /* XcodeSourceFileType.h in Headers */,
 				6B3AD04814F8A3AC00BCFE81 /* XcodeMemberType.h in Headers */,
 				6B65941514F8A53300F65AEC /* Logging.h in Headers */,
@@ -468,6 +481,7 @@
 				E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */,
 				E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */,
 				E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */,
+				6B01A07A154A337A00122D48 /* goat-funny.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +534,7 @@
 				6BE4B285147E6B610059E459 /* xcode_XibDefinition.m in Sources */,
 				6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */,
 				6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */,
+				E94DE11415443AC100C5125B /* xcode_SourceFileDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +560,7 @@
 				6BE4B285147E6B610059E458 /* xcode_XibDefinition.m in Sources */,
 				6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */,
 				6B51E2FE1547FEDD00DBA0BD /* xcode_AbstractDefinition.m in Sources */,
+				E94DE11415443AC100C5125A /* xcode_SourceFileDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
