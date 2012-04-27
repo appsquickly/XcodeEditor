@@ -49,7 +49,7 @@
 
 
 - (void) queueWrite:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents {
-    [_filesToWrite setObject:contents forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
+  [_filesToWrite setObject:contents forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
 }
 
 - (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory {

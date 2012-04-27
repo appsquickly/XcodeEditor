@@ -13,8 +13,10 @@
 #import "xcode_AbstractDefinition.h"
 
 
-@interface xcode_XibDefinition : xcode_AbstractDefinition
-
+@interface xcode_XibDefinition : xcode_AbstractDefinition {
+    NSString* _name;
+    NSString* _content;
+}
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong) NSString* content;
 

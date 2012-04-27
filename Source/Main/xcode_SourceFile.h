@@ -23,6 +23,10 @@
     xcode_Project* _project;
     NSNumber* _isBuildFile;
     NSString* _buildFileKey;
+    NSString* _name;
+    NSString* _sourceTree;
+    NSString* _key;
+    XcodeSourceFileType _type;
 }
 
 @property(nonatomic, readonly) XcodeSourceFileType type;

@@ -13,7 +13,10 @@
 #import "xcode_AbstractDefinition.h"
 
 
-@interface xcode_FrameworkDefinition : xcode_AbstractDefinition
+@interface xcode_FrameworkDefinition : xcode_AbstractDefinition {
+    NSString* _filePath;
+    BOOL _copyToDestination;
+}
 
 @property(nonatomic, strong, readonly) NSString* filePath;
 @property(nonatomic, readonly) BOOL copyToDestination;

@@ -21,7 +21,7 @@
 			boxEnum(Framework), @"wrapper.framework",
 			boxEnum(PropertyList), @"text.plist.strings",
 			boxEnum(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
-			boxEnum(XibFile), @"file.xib", 
+			boxEnum(XibFile), @"file.xib",
 			boxEnum(ImageResourcePNG), @"image.png",
 			nil];
 }

@@ -122,17 +122,23 @@
 /* ================================================================================================================== */
 #pragma mark Adding children
 
-- (void) addClass:(ClassDefinition*)classDefinition {
-    [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
-            type:SourceCodeHeader fileOperationStyle:[classDefinition fileOperationStyle]];
 
-    if ([classDefinition isObjectiveC]) {
-        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
-                type:SourceCodeObjC fileOperationStyle:[classDefinition fileOperationStyle]];
+- (void) addClass:(ClassDefinition*)classDefinition {
+
+    if ([classDefinition header]) {
+        [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
+                type:SourceCodeHeader fileOperationStyle:[classDefinition fileOperationStyle]];
     }
-    else if ([classDefinition isObjectiveCPlusPlus]) {
-        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
-                type:SourceCodeObjCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
+
+    if ([classDefinition source]) {
+        if ([classDefinition isObjectiveC]) {
+            [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
+                    type:SourceCodeObjC fileOperationStyle:[classDefinition fileOperationStyle]];
+        }
+        else if ([classDefinition isObjectiveCPlusPlus]) {
+            [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
+                    type:SourceCodeObjCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
+        }
     }
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }

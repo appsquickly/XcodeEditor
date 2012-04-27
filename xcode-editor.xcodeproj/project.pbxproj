@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */; };
+		6B01A05B154A206600122D48 /* xcode_AbstractDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B51E2FC1547FEDD00DBA0BD /* xcode_AbstractDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3ACFE114F8A2FE00BCFE81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
 		6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */; };
@@ -359,6 +360,7 @@
 				6B3AD03014F8A3AC00BCFE81 /* xcode_ClassDefinition.h in Headers */,
 				6B3AD03314F8A3AC00BCFE81 /* xcode_SourceFile.h in Headers */,
 				6B3AD03614F8A3AC00BCFE81 /* xcode_FileOperationQueue.h in Headers */,
+				6B01A05B154A206600122D48 /* xcode_AbstractDefinition.h in Headers */,
 				6B3AD03914F8A3AC00BCFE81 /* xcode_Group.h in Headers */,
 				6B3AD03C14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h in Headers */,
 				6B3AD03F14F8A3AC00BCFE81 /* xcode_Project.h in Headers */,
@@ -571,6 +573,7 @@
 		6B3ACFED14F8A2FE00BCFE81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -581,6 +584,7 @@
 				INFOPLIST_FILE = "Source/Main/Resources/XcodeEditor-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -589,6 +593,7 @@
 		6B3ACFEE14F8A2FE00BCFE81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -599,6 +604,7 @@
 				INFOPLIST_FILE = "Source/Main/Resources/XcodeEditor-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -607,6 +613,7 @@
 		6B55224414EA723700494CF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
@@ -638,6 +645,7 @@
 		6B55224514EA723700494CF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";

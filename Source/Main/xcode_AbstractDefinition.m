@@ -14,7 +14,6 @@
 
 @implementation xcode_AbstractDefinition
 
-
 @synthesize fileOperationStyle = _fileOperationStyle;
 
 

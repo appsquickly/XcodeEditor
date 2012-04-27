@@ -22,6 +22,8 @@
 @interface xcode_Project : NSObject {
 
 @private
+    xcode_FileOperationQueue* _fileOperationQueue;
+
     NSString* _filePath;
     NSMutableDictionary* _dataStore;
     NSMutableArray* _targets;
@@ -90,7 +92,7 @@
 /**
  * Returns the root (top-level) group.
  */
-- (xcode_Group*)rootGroup;
+- (xcode_Group*) rootGroup;
 
 /**
 * Returns the group with the given key, or nil.
