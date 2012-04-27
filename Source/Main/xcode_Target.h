@@ -19,7 +19,7 @@
 */
 @interface xcode_Target : NSObject {
 
-    xcode_Project* _project;
+    __weak xcode_Project* _project;
     NSString* _key;
     NSString* _name;
 

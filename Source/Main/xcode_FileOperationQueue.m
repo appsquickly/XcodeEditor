@@ -146,15 +146,5 @@
     }
 }
 
-/* ================================================== Utility Methods =============================================== */
-- (void) dealloc {
-    [_baseDirectory release];
-    [_filesToWrite release];
-    [_frameworksToCopy release];
-    [_filesToDelete release];
-    [_directoriesToCreate release];
-    [super dealloc];
-}
-
 
 @end

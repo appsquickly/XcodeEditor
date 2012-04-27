@@ -55,7 +55,7 @@
 + (Group*) groupWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
         children:(NSArray*)children {
 
-    return [[[Group alloc] initWithProject:project key:key alias:alias path:path children:children] autorelease];
+    return [[Group alloc] initWithProject:project key:key alias:alias path:path children:children];
 }
 
 /* ================================================== Initializers ================================================== */
@@ -201,7 +201,7 @@
         }
     }
 
-    Group* group = [[[Group alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil] autorelease];
+    Group* group = [[Group alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil];
     NSDictionary* groupDict = [group asDictionary];
 
     [[_project objects] setObject:groupDict forKey:groupKey];
@@ -347,13 +347,6 @@
     return [NSString stringWithFormat:@"Group: displayName = %@, key=%@", [self displayName], _key];
 }
 
-- (void) dealloc {
-    [_pathRelativeToParent release];
-    [_key release];
-    [_alias release];
-    [super dealloc];
-}
-
 /* ================================================== Private Methods =============================================== */
 #pragma mark Private
 - (void) addMemberWithKey:(NSString*)key {
@@ -432,7 +425,7 @@
 
 
 - (NSDictionary*) asDictionary {
-    NSMutableDictionary* groupData = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];
     [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@"isa"];
     [groupData setObject:@"<group>" forKey:@"sourceTree"];
 

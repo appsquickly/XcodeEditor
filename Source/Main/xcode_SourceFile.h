@@ -20,7 +20,8 @@
 @interface xcode_SourceFile : NSObject<XcodeGroupMember> {
 
 @private
-    xcode_Project* _project;
+    __weak xcode_Project* _project;
+
     NSNumber* _isBuildFile;
     NSString* _buildFileKey;
     NSString* _name;

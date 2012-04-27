@@ -42,10 +42,6 @@ SPEC_BEGIN(GroupSpec)
             [group shouldNotBeNil];
         });
 
-        afterEach(^{
-            [project release];
-        });
-
         describe(@"Object creation", ^{
 
             it(@"should allow initialization with ", ^{

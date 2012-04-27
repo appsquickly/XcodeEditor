@@ -27,8 +27,6 @@
 */
 @interface xcode_Group : NSObject<XcodeGroupMember> {
 
-    xcode_Project* _project;
-
     NSString* _pathRelativeToParent;
     NSString* _key;
     NSString* _alias;
@@ -40,6 +38,8 @@
     NSMutableArray* _members;
 
     __weak xcode_FileOperationQueue* _fileOperationQueue;
+    __weak xcode_Project* _project;
+
 }
 
 /* =================================================== Properties =================================================== */

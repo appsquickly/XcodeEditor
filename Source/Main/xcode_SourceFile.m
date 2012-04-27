@@ -24,7 +24,7 @@
 /* ================================================= Class Methods ================================================== */
 + (xcode_SourceFile*) sourceFileWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type
         name:(NSString*)name sourceTree:(NSString*)_tree {
-    return [[[SourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree] autorelease];
+    return [[SourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];
 }
 
 
@@ -50,7 +50,7 @@
 
 - (BOOL) isBuildFile {
     if ([self canBecomeBuildFile] && _isBuildFile == nil) {
-        _isBuildFile = [[NSNumber numberWithBool:NO] retain];
+        _isBuildFile = [NSNumber numberWithBool:NO];
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
@@ -131,14 +131,6 @@
                                       [self pathRelativeToProjectRoot]];
 }
 
-- (void) dealloc {
-    [_isBuildFile release];
-    [_buildFileKey release];
-    [_key release];
-    [_name release];
-    [_sourceTree release];
-    [super dealloc];
-}
 
 
 @end

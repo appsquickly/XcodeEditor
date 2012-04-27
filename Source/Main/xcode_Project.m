@@ -32,7 +32,7 @@
 
 /* ================================================= Class Methods ================================================== */
 + (Project*) projectWithFilePath:(NSString*)filePath {
-    return [[[Project alloc] initWithFilePath:filePath] autorelease];
+    return [[Project alloc] initWithFilePath:filePath];
 }
 
 
@@ -211,19 +211,9 @@
 }
 
 - (NSMutableDictionary*) objects {
-    return [[[_dataStore objectForKey:@"objects"] retain] autorelease];
+    return [_dataStore objectForKey:@"objects"];
 }
 
-/* ================================================== Utility Methods =============================================== */
-- (void) dealloc {
-
-    //TODO: WTF? Why does this crash?
-//    [_dataStore release];
-    [_filePath release];
-    [_fileOperationQueue release];
-    [_targets release];
-    [super dealloc];
-}
 
 /* ================================================== Private Methods =============================================== */
 #pragma mark Private

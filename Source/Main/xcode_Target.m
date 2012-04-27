@@ -32,7 +32,7 @@
 
 /* ================================================= Class Methods ================================================== */
 + (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
-    return [[[Target alloc] initWithProject:project key:key name:name] autorelease];
+    return [[Target alloc] initWithProject:project key:key name:name];
 }
 
 
@@ -144,13 +144,6 @@
 - (NSString*) description {
     return [NSString stringWithFormat:@"Target: name=%@, files=%@", _name, _members];
 }
-
-- (void) dealloc {
-    [_key release];
-    [_name release];
-    [super dealloc];
-}
-
 
 /* ================================================== Private Methods =============================================== */
 - (SourceFile*) buildFileWithKey:(NSString*)theKey {

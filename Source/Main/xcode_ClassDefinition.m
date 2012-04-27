@@ -20,11 +20,11 @@
 
 /* ================================================= Class Methods ================================================== */
 + (ClassDefinition*) classDefinitionWithName:(NSString*)fileName {
-    return [[[ClassDefinition alloc] initWithName:fileName] autorelease];
+    return [[ClassDefinition alloc] initWithName:fileName];
 }
 
 + (ClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
-    return [[[ClassDefinition alloc] initWithName:className language:language] autorelease];
+    return [[ClassDefinition alloc] initWithName:className language:language];
 }
 
 
@@ -69,15 +69,8 @@
     else if ([self isObjectiveCPlusPlus]) {
         sourceFileName = [_className stringByAppendingString:@".mm"];
     }
-    return [[sourceFileName retain] autorelease];
+    return sourceFileName;
 }
 
-/* ================================================== Utility Methods =============================================== */
-- (void) dealloc {
-    [_className release];
-    [_header release];
-    [_source release];
-    [super dealloc];
-}
 
 @end

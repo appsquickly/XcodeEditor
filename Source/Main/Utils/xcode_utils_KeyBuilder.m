@@ -16,8 +16,8 @@
 /* ================================================= Class Methods ================================================== */
 + (xcode_utils_KeyBuilder*) forItemNamed:(NSString*)name {
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
-    return [[[xcode_utils_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]
-            autorelease];
+    return [[xcode_utils_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];
+
 }
 
 /* ================================================== Initializers ================================================== */

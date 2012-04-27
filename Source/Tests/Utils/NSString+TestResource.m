@@ -20,7 +20,7 @@
     if (!contents) {
         [NSException raise:NSInvalidArgumentException format:@"No test resource named '%@'", filePath];
     }
-    return [[contents retain] autorelease];
+    return contents;
 }
 
 

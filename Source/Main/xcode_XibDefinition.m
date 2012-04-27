@@ -18,11 +18,11 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XibDefinition*) xibDefinitionWithName:(NSString*)name {
-    return [[[XibDefinition alloc] initWithName:name] autorelease];
+    return [[XibDefinition alloc] initWithName:name];
 }
 
 + (XibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content {
-    return [[[XibDefinition alloc] initWithName:name content:content] autorelease];
+    return [[XibDefinition alloc] initWithName:name content:content];
 }
 
 
@@ -45,13 +45,5 @@
 - (NSString*) xibFileName {
     return [_name stringByAppendingString:@".xib"];
 }
-
-/* ================================================== Utility Methods =============================================== */
-- (void) dealloc {
-    [_name release];
-    [_content release];
-    [super dealloc];
-}
-
 
 @end

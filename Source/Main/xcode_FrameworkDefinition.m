@@ -20,7 +20,7 @@
 + (FrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
         copyToDestination:(BOOL)copyToDestination {
 
-    return [[[FrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination] autorelease];
+    return [[FrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
 }
 
 
@@ -39,11 +39,6 @@
     return [_filePath lastPathComponent];
 }
 
-/* ================================================== Utility Methods =============================================== */
-- (void) dealloc {
-    [_filePath release];
-    [super dealloc];
-}
 
 
 @end

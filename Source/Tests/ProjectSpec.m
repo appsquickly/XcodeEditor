@@ -19,11 +19,6 @@ SPEC_BEGIN(ProjectSpec)
             project = [[Project alloc] initWithFilePath:@"/tmp"];
         });
 
-        afterEach(^{
-            [project release];
-        });
-
-
         describe(@"Listing files files", ^{
 
             it(@"should be able to list all the header files in a project.", ^{

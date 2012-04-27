@@ -22,13 +22,13 @@
 + (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
         type:(XcodeSourceFileType)type {
 
-    return [[[SourceFileDefinition alloc] initWithName:name text:text type:type] autorelease];
+    return [[SourceFileDefinition alloc] initWithName:name text:text type:type];
 }
 
 + (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
         type:(XcodeSourceFileType)type {
 
-    return [[[SourceFileDefinition alloc] initWithName:name data:data type:type] autorelease];
+    return [[SourceFileDefinition alloc] initWithName:name data:data type:type];
 }
 
 
@@ -53,14 +53,5 @@
     return self;
 
 }
-
-
-/* ================================================== Utility Methods =============================================== */
-- (void) dealloc {
-    [_sourceFileName release];
-    [_data release];
-    [super dealloc];
-}
-
 
 @end
