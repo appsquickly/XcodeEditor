@@ -13,7 +13,13 @@
 #import "xcode_AbstractDefinition.h"
 #import "XcodeSourceFileType.h"
 
-@interface xcode_SourceFileDefinition : xcode_AbstractDefinition;
+@interface xcode_SourceFileDefinition : xcode_AbstractDefinition {
+
+    NSString* _sourceFileName;
+    XcodeSourceFileType _type;
+    NSData* _data;
+
+}
 
 @property(nonatomic, strong, readonly) NSString* sourceFileName;
 @property(nonatomic, strong, readonly) NSData* data;
