@@ -9,13 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_FrameworkDefinition.h"
-#import "xcode_XibDefinition.h"
-#import "xcode_Group.h"
-#import "xcode_Project.h"
-#import "xcode_ClassDefinition.h"
-#import "xcode_SourceFile.h"
-#import "xcode_Target.h"
+#import "XcodeEditor.h"
 
 
 @interface FrameworkPathFactory

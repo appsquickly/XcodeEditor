@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "xcode_ClassDefinition.h"
+#import "XcodeEditor.h"
 
 SPEC_BEGIN(ClassDefinitionSpec)
 
