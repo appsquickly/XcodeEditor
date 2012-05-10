@@ -168,6 +168,13 @@
     else if (sourceFile.type == Framework) {
         return PBXFrameworksBuildPhase;
     }
+    else if (sourceFile.type == ImageResourcePNG || sourceFile.type == HTML || sourceFile.type == Bundle) {
+       return PBXResourcesBuildPhase;
+    }
+    else if (sourceFile.type == Archive) {
+       return PBXFrameworksBuildPhase;
+    }
+
     else {
         NSString* type = [NSString stringFromSourceFileType:[sourceFile type]];
         [NSException raise:NSInternalInconsistencyException format:@"Type %@ cannot be added to a target.", type];

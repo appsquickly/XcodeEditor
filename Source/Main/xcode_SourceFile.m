@@ -64,7 +64,7 @@
 }
 
 - (BOOL) canBecomeBuildFile {
-    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == XibFile || _type == Framework;
+    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive;
 }
 
 
