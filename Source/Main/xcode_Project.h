@@ -105,6 +105,12 @@
 - (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path;
 
 /**
+ * Returns the group with the specified display name path - the directory relative to the root group. Eg Source/Main
+ */
+- (xcode_Group*) groupWithDisplayNamePathRelativeToParent:(NSString*)path;
+
+
+/**
 * Returns the parent group for the group or file with the given key;
 */
 - (xcode_Group*) groupForGroupMemberWithKey:(NSString*)key;

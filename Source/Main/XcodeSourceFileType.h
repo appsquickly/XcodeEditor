@@ -10,14 +10,18 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef enum {
-    FileTypeNil,
-    Framework,
-    PropertyList,
-    SourceCodeHeader,
-    SourceCodeObjC,
-    SourceCodeObjCPlusPlus,
-    XibFile,
-	ImageResourcePNG
+    FileTypeNil,             // Unknown filetype 
+    Framework,               // .framework 
+    PropertyList,            // .plist 
+    SourceCodeHeader,        // .h     
+    SourceCodeObjC,          // .m     
+    SourceCodeObjCPlusPlus,  // .mm    
+    XibFile,                 // .xib   
+    ImageResourcePNG,        // .png
+    Bundle,                  // .bundle  .octet 
+    Archive,                 // .a files
+    HTML,                    // HTML file 
+    TEXT                     // Some text file 
 } XcodeSourceFileType;
 
 @interface NSString (XCodeFileType)

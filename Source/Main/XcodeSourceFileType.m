@@ -16,13 +16,18 @@
 @implementation NSDictionary (XcodeFileType)
 
 + (NSDictionary*) dictionaryWithFileReferenceTypesAsStrings {
-    return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(SourceCodeHeader), @"sourcecode.c.h",
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            boxEnum(SourceCodeHeader), @"sourcecode.c.h",
 			boxEnum(SourceCodeObjC), @"sourcecode.c.objc",
 			boxEnum(Framework), @"wrapper.framework",
 			boxEnum(PropertyList), @"text.plist.strings",
 			boxEnum(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
 			boxEnum(XibFile), @"file.xib",
 			boxEnum(ImageResourcePNG), @"image.png",
+            boxEnum(Bundle), @"wrapper.cfbundle",
+            boxEnum(Archive), @"archive.ar",
+            boxEnum(HTML), @"text.html",
+            boxEnum(TEXT), @"text",
 			nil];
 }
 
@@ -37,7 +42,7 @@
 
 - (XcodeSourceFileType) asSourceFileType {
     NSDictionary* typeStrings = [NSDictionary dictionaryWithFileReferenceTypesAsStrings];
-
+    
     if ([typeStrings objectForKey:self]) {
         return (XcodeSourceFileType) [[typeStrings objectForKey:self] intValue];
     }
