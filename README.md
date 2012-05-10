@@ -155,6 +155,7 @@ JetBrains is not yet supported.
 ### With contributions from: 
 
 * Chris Ross of Hidden Memory (http://www.hiddenmemory.co.uk/)
+* Paul Taykalo
 * Vladislav Alekseev 
 
 Thanks! 
