@@ -177,6 +177,21 @@
     return nil;
 }
 
+- (Group*) groupWithDisplayNamePathRelativeToParent:(NSString*)path {
+    NSArray * pathItems = [path componentsSeparatedByString:@"/"];
+    Group * currentGroup = [self rootGroup];
+    for (NSString * pathItem in pathItems) {
+        id<XcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
+        if ([group isKindOfClass:[Group class]]) {
+            currentGroup = group;
+        } else {
+            return nil;
+        }
+    }
+    return currentGroup;
+}
+
+
 /* ================================================================================================================== */
 #pragma mark Targets
 
