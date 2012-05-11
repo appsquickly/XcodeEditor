@@ -8,16 +8,16 @@
 
 @protocol KWVerifying<NSObject>
 
-- (NSString*) descriptionForAnonymousItNode;
+- (NSString *)descriptionForAnonymousItNode;
 
 #pragma mark -
 #pragma mark Setting Subjects
 
-- (void) setSubject:(id)anObject;
+- (void)setSubject:(id)anObject;
 
 #pragma mark -
 #pragma mark Ending Examples
 
-- (void) exampleWillEnd;
+- (void)exampleWillEnd;
 
 @end

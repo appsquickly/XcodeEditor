@@ -12,27 +12,26 @@
 
 @interface KWPendingNode : NSObject<KWExampleNode> {
 @private
-    KWCallSite* callSite;
-    NSString* description;
+    KWCallSite *callSite;
+    NSString *description;
 }
-@property(nonatomic, readonly, retain) KWContextNode* context;
+@property (nonatomic, readonly, retain) KWContextNode *context;
 
 #pragma mark -
 #pragma mark Initializing
 
-- (id) initWithCallSite:(KWCallSite*)aCallSite context:(KWContextNode*)context description:(NSString*)aDescription;
+- (id)initWithCallSite:(KWCallSite *)aCallSite context:(KWContextNode *)context description:(NSString *)aDescription;
 
-+ (id) pendingNodeWithCallSite:(KWCallSite*)aCallSite context:(KWContextNode*)context
-                   description:(NSString*)aDescription;
++ (id)pendingNodeWithCallSite:(KWCallSite *)aCallSite context:(KWContextNode *)context description:(NSString *)aDescription;
 
 #pragma mark -
 #pragma mark Getting Call Sites
 
-@property(nonatomic, readonly) KWCallSite* callSite;
+@property (nonatomic, readonly) KWCallSite *callSite;
 
 #pragma mark -
 #pragma mark Getting Descriptions
 
-@property(nonatomic, readonly) NSString* description;
+@property (nonatomic, readonly) NSString *description;
 
 @end

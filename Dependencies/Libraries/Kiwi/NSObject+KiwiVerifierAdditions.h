@@ -8,13 +8,12 @@
 
 @protocol KWVerifying;
 
-@interface NSObject (KiwiVerifierAdditions)
+@interface NSObject(KiwiVerifierAdditions)
 
 #pragma mark -
 #pragma mark Attaching to Verifiers
 
-- (id) attachToVerifier:(id<KWVerifying>)aVerifier;
-
-- (id) attachToVerifier:(id<KWVerifying>)firstVerifier verifier:(id<KWVerifying>)secondVerifier;
+- (id)attachToVerifier:(id<KWVerifying>)aVerifier;
+- (id)attachToVerifier:(id<KWVerifying>)firstVerifier verifier:(id<KWVerifying>)secondVerifier;
 
 @end

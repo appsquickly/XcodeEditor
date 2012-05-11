@@ -13,6 +13,6 @@
 #pragma mark -
 #pragma mark Reporting Failures
 
-- (void) reportFailure:(KWFailure*)failure;
+- (void)reportFailure:(KWFailure *)failure;
 
 @end

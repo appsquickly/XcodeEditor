@@ -14,12 +14,14 @@ extern "C" {
 
 #import "KWAfterAllNode.h"
 #import "KWAfterEachNode.h"
+#import "KWAny.h"
 #import "KWAsyncVerifier.h"
 #import "KWBeBetweenMatcher.h"
 #import "KWBeEmptyMatcher.h"
 #import "KWBeIdenticalToMatcher.h"
 #import "KWBeKindOfClassMatcher.h"
 #import "KWBeMemberOfClassMatcher.h"
+#import "KWBeSubclassOfClassMatcher.h"
 #import "KWBeTrueMatcher.h"
 #import "KWBeNilMatcher.h"
 #import "KWBeNonNilMatcher.h"
@@ -73,7 +75,8 @@ extern "C" {
 #import "KWUserDefinedMatcher.h"
 #import "KWValue.h"
 #import "KWVerifying.h"
-
+#import "KWCaptureSpy.h"
+    
 // Public Foundation Categories
 #import "NSObject+KiwiMockAdditions.h"
 #import "NSObject+KiwiStubAdditions.h"

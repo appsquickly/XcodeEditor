@@ -11,11 +11,11 @@
 
 #define kKW_DEFAULT_PROBE_DELAY 0.1
 
-@interface KWProbePoller : NSObject {
-    NSTimeInterval timeoutInterval;
-    NSTimeInterval delayInterval;
+@interface KWProbePoller : NSObject
+{
+  NSTimeInterval timeoutInterval;
+  NSTimeInterval delayInterval;
 }
-- (id) initWithTimeout:(NSTimeInterval)theTimeout delay:(NSTimeInterval)theDelay;
-
-- (BOOL) check:(id<KWProbe>)probe;
+- (id)initWithTimeout:(NSTimeInterval)theTimeout delay:(NSTimeInterval)theDelay;
+- (BOOL)check:(id<KWProbe>)probe;
 @end

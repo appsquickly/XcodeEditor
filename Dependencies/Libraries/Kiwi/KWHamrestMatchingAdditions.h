@@ -10,7 +10,7 @@
 
 @interface NSObject (KiwiHamcrestAdditions)
 
-- (BOOL) isEqualOrMatches:(id)object;
+- (BOOL)isEqualOrMatches:(id)object;
 
 @end
 
@@ -18,9 +18,19 @@
 
 @interface NSArray (KiwiHamcrestAdditions)
 
-- (BOOL) containsObjectEqualToOrMatching:(id)object;
-
-- (BOOL) containsObjectMatching:(id<HCMatcher>)matcher;
+- (BOOL)containsObjectEqualToOrMatching:(id)object;
+- (BOOL)containsObjectMatching:(id<HCMatcher>)matcher;
 
 @end
 
+@interface NSSet (KiwiHamcrestAdditions)
+
+- (BOOL)containsObjectEqualToOrMatching:(id)object;
+
+@end
+
+@interface NSOrderedSet (KiwiHamcrestAdditions)
+
+- (BOOL)containsObjectEqualToOrMatching:(id)object;
+
+@end

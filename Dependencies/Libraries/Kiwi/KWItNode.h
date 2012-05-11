@@ -14,15 +14,15 @@
 
 @interface KWItNode : KWBlockNode<KWExampleNode>
 
-@property(nonatomic, assign) KWExample* example;
-@property(nonatomic, retain, readonly) KWContextNode* context;
+@property (nonatomic, assign) KWExample *example;
+@property (nonatomic, retain, readonly) KWContextNode *context;
 
 #pragma mark -
 #pragma mark Initializing
 
-+ (id) itNodeWithCallSite:(KWCallSite*)aCallSite
-              description:(NSString*)aDescription
-                  context:(KWContextNode*)context
-                    block:(KWVoidBlock)aBlock;
++ (id)itNodeWithCallSite:(KWCallSite *)aCallSite 
+             description:(NSString *)aDescription 
+                 context:(KWContextNode *)context 
+                   block:(KWVoidBlock)aBlock;
 
 @end

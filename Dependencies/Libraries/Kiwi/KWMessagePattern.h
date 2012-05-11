@@ -9,46 +9,41 @@
 @interface KWMessagePattern : NSObject<NSCopying> {
 @private
     SEL selector;
-    NSArray* argumentFilters;
+    NSArray *argumentFilters;
 }
 
 #pragma mark -
 #pragma mark Initializing
 
-- (id) initWithSelector:(SEL)aSelector;
+- (id)initWithSelector:(SEL)aSelector;
+- (id)initWithSelector:(SEL)aSelector argumentFilters:(NSArray *)anArray;
+- (id)initWithSelector:(SEL)aSelector firstArgumentFilter:(id)firstArgumentFilter argumentList:(va_list)argumentList;
 
-- (id) initWithSelector:(SEL)aSelector argumentFilters:(NSArray*)anArray;
++ (id)messagePatternWithSelector:(SEL)aSelector;
++ (id)messagePatternWithSelector:(SEL)aSelector argumentFilters:(NSArray *)anArray;
++ (id)messagePatternWithSelector:(SEL)aSelector firstArgumentFilter:(id)firstArgumentFilter argumentList:(va_list)argumentList;
 
-- (id) initWithSelector:(SEL)aSelector firstArgumentFilter:(id)firstArgumentFilter argumentList:(va_list)argumentList;
-
-+ (id) messagePatternWithSelector:(SEL)aSelector;
-
-+ (id) messagePatternWithSelector:(SEL)aSelector argumentFilters:(NSArray*)anArray;
-
-+ (id) messagePatternWithSelector:(SEL)aSelector firstArgumentFilter:(id)firstArgumentFilter
-                     argumentList:(va_list)argumentList;
-
-+ (id) messagePatternFromInvocation:(NSInvocation*)anInvocation;
++ (id)messagePatternFromInvocation:(NSInvocation *)anInvocation;
 
 #pragma mark -
 #pragma mark Properties
 
-@property(nonatomic, readonly) SEL selector;
-@property(nonatomic, readonly) NSArray* argumentFilters;
+@property (nonatomic, readonly) SEL selector;
+@property (nonatomic, readonly) NSArray *argumentFilters;
 
 #pragma mark -
 #pragma mark Matching Invocations
 
-- (BOOL) matchesInvocation:(NSInvocation*)anInvocation;
+- (BOOL)matchesInvocation:(NSInvocation *)anInvocation;
 
 #pragma mark -
 #pragma mark Comparing Message Patterns
 
-- (BOOL) isEqualToMessagePattern:(KWMessagePattern*)aMessagePattern;
+- (BOOL)isEqualToMessagePattern:(KWMessagePattern *)aMessagePattern;
 
 #pragma mark -
 #pragma mark Retrieving String Representations
 
-- (NSString*) stringValue;
+- (NSString *)stringValue;
 
 @end

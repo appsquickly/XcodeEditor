@@ -13,6 +13,6 @@
 #pragma mark -
 #pragma mark Initializing
 
-+ (id) afterAllNodeWithCallSite:(KWCallSite*)aCallSite block:(KWVoidBlock)aBlock;
++ (id)afterAllNodeWithCallSite:(KWCallSite *)aCallSite block:(KWVoidBlock)aBlock;
 
 @end

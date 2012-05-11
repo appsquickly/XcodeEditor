@@ -25,12 +25,9 @@ typedef NSUInteger KWInequalityType;
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) beLessThan:(id)aValue;
-
-- (void) beLessThanOrEqualTo:(id)aValue;
-
-- (void) beGreaterThan:(id)aValue;
-
-- (void) beGreaterThanOrEqualTo:(id)aValue;
+- (void)beLessThan:(id)aValue;
+- (void)beLessThanOrEqualTo:(id)aValue;
+- (void)beGreaterThan:(id)aValue;
+- (void)beGreaterThanOrEqualTo:(id)aValue;
 
 @end

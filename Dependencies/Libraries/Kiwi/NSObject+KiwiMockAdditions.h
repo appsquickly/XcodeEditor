@@ -6,17 +6,15 @@
 
 #import "KiwiConfiguration.h"
 
-@interface NSObject (KiwiMockAdditions)
+@interface NSObject(KiwiMockAdditions)
 
 #pragma mark -
 #pragma mark Creating Mocks
 
-+ (id) mock;
++ (id)mock;
++ (id)mockWithName:(NSString *)aName;
 
-+ (id) mockWithName:(NSString*)aName;
-
-+ (id) nullMock;
-
-+ (id) nullMockWithName:(NSString*)aName;
++ (id)nullMock;
++ (id)nullMockWithName:(NSString *)aName;
 
 @end

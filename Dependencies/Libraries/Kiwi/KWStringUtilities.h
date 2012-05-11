@@ -9,15 +9,12 @@
 #pragma mark -
 #pragma mark Checking for Case Separated Words
 
-BOOL KWStringHasWordPrefix(NSString* string, NSString* prefix);
-
-BOOL KWStringHasStrictWordPrefix(NSString* string, NSString* prefix);
-
-BOOL KWStringHasWord(NSString* string, NSString* word);
+BOOL KWStringHasWordPrefix(NSString *string, NSString *prefix);
+BOOL KWStringHasStrictWordPrefix(NSString *string, NSString *prefix);
+BOOL KWStringHasWord(NSString *string, NSString *word);
 
 #pragma mark -
 #pragma mark Getting Type Encodings
 
-NSString* KWEncodingWithObjCTypes(const char* firstType, ...) NS_REQUIRES_NIL_TERMINATION;
-
-NSString* KWEncodingForVoidMethod(void);
+NSString *KWEncodingWithObjCTypes(const char *firstType, ...) NS_REQUIRES_NIL_TERMINATION;
+NSString *KWEncodingForVoidMethod(void);

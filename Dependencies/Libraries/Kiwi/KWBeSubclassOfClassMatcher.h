@@ -7,14 +7,14 @@
 #import "KiwiConfiguration.h"
 #import "KWMatcher.h"
 
-@interface KWEqualMatcher : KWMatcher {
+@interface KWBeSubclassOfClassMatcher : KWMatcher {
 @private
-    id otherSubject;
+    Class targetClass;
 }
 
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void)equal:(id)anObject;
+- (void)beSubclassOfClass:(Class)aClass;
 
 @end

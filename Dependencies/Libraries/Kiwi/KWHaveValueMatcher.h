@@ -12,20 +12,17 @@
 @interface KWHaveValueMatcher : KWMatcher {
 @private
 
-    NSString* expectedKey;
-    NSString* expectedKeyPath;
-    id expectedValue;
+  NSString *expectedKey;
+  NSString *expectedKeyPath;
+  id expectedValue;
 }
 
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) haveValue:(id)value forKey:(NSString*)key;
-
-- (void) haveValue:(id)value forKeyPath:(NSString*)keyPath;
-
-- (void) haveValueForKey:(NSString*)key;
-
-- (void) haveValueForKeyPath:(NSString*)keyPath;
+- (void)haveValue:(id)value forKey:(NSString *)key;
+- (void)haveValue:(id)value forKeyPath:(NSString *)keyPath;
+- (void)haveValueForKey:(NSString *)key;
+- (void)haveValueForKeyPath:(NSString *)keyPath;
 
 @end

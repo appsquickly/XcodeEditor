@@ -12,5 +12,5 @@
 @interface KWBeNonNilMatcher : KWMatcher {
 
 }
-- (void) beNonNil;
+- (void)beNonNil;
 @end

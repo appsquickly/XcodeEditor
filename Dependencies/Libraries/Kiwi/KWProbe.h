@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol KWProbe<NSObject>
-- (BOOL) isSatisfied;
-
-- (void) sample;
+@protocol KWProbe <NSObject>
+- (BOOL)isSatisfied;
+- (void)sample;
 @end

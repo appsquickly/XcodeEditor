@@ -9,19 +9,16 @@
 
 @interface KWBlockRaiseMatcher : KWMatcher {
 @private
-    NSException* exception;
-    NSException* actualException;
+    NSException *exception;
+    NSException *actualException;
 }
 
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) raise;
-
-- (void) raiseWithName:(NSString*)aName;
-
-- (void) raiseWithReason:(NSString*)aReason;
-
-- (void) raiseWithName:(NSString*)aName reason:(NSString*)aReason;
+- (void)raise;
+- (void)raiseWithName:(NSString *)aName;
+- (void)raiseWithReason:(NSString *)aReason;
+- (void)raiseWithName:(NSString *)aName reason:(NSString *)aReason;
 
 @end

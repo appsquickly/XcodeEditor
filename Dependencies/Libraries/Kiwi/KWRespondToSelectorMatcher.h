@@ -15,6 +15,6 @@
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) respondToSelector:(SEL)aSelector;
+- (void)respondToSelector:(SEL)aSelector;
 
 @end

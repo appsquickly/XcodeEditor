@@ -14,10 +14,10 @@
 #pragma mark -
 #pragma mark Accepting Visitors
 
-- (void) acceptExampleNodeVisitor:(id<KWExampleNodeVisitor>)aVisitor;
+- (void)acceptExampleNodeVisitor:(id<KWExampleNodeVisitor>)aVisitor;
 
 @optional
 
-- (NSArray*) contextStack;
+- (NSArray *)contextStack;
 
 @end

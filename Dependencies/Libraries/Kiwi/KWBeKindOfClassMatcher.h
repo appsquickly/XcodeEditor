@@ -15,6 +15,6 @@
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) beKindOfClass:(Class)aClass;
+- (void)beKindOfClass:(Class)aClass;
 
 @end

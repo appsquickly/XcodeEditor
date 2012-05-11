@@ -10,19 +10,16 @@
 @interface KWRaiseMatcher : KWMatcher {
 @private
     SEL selector;
-    NSException* exception;
-    NSException* actualException;
+    NSException *exception;
+    NSException *actualException;
 }
 
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) raiseWhenSent:(SEL)aSelector;
-
-- (void) raiseWithName:(NSString*)aName whenSent:(SEL)aSelector;
-
-- (void) raiseWithReason:(NSString*)aReason whenSent:(SEL)aSelector;
-
-- (void) raiseWithName:(NSString*)aName reason:(NSString*)aReason whenSent:(SEL)aSelector;
+- (void)raiseWhenSent:(SEL)aSelector;
+- (void)raiseWithName:(NSString *)aName whenSent:(SEL)aSelector;
+- (void)raiseWithReason:(NSString *)aReason whenSent:(SEL)aSelector;
+- (void)raiseWithName:(NSString *)aName reason:(NSString *)aReason whenSent:(SEL)aSelector;
 
 @end

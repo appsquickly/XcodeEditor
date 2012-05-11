@@ -11,6 +11,6 @@
 #pragma mark -
 #pragma mark Spying on Messages
 
-- (void) object:(id)anObject didReceiveInvocation:(NSInvocation*)anInvocation;
+- (void)object:(id)anObject didReceiveInvocation:(NSInvocation *)anInvocation;
 
 @end

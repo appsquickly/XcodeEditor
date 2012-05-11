@@ -10,28 +10,26 @@
 
 @class KWUserDefinedMatcherBuilder;
 
-typedef void (^KWMatchersBuildingBlock)(KWUserDefinedMatcherBuilder*);
+typedef void (^KWMatchersBuildingBlock)(KWUserDefinedMatcherBuilder *);
 
 @class KWUserDefinedMatcher;
 
 @interface KWMatchers : NSObject {
-    NSMutableDictionary* userDefinedMatchers;
+  NSMutableDictionary *userDefinedMatchers;
 }
-+ (id) matchers;
++ (id)matchers;
 
 #pragma mark -
 #pragma mark Defining Matchers
 
-+ (void) defineMatcher:(NSString*)selectorString as:(KWMatchersBuildingBlock)block;
-
-- (void) defineMatcher:(NSString*)selectorString as:(KWMatchersBuildingBlock)block;
-
-- (void) addUserDefinedMatcherBuilder:(KWUserDefinedMatcherBuilder*)builder;
++ (void)defineMatcher:(NSString *)selectorString as:(KWMatchersBuildingBlock)block;
+- (void)defineMatcher:(NSString *)selectorString as:(KWMatchersBuildingBlock)block;
+- (void)addUserDefinedMatcherBuilder:(KWUserDefinedMatcherBuilder *)builder;
 
 #pragma mark -
 #pragma mark Building Matchers
 
-- (KWUserDefinedMatcher*) matcherForSelector:(SEL)selector subject:(id)subject;
+- (KWUserDefinedMatcher *)matcherForSelector:(SEL)selector subject:(id)subject;
 @end
 
-void KWDefineMatchers(NSString* selectorString, KWMatchersBuildingBlock block);
+void KWDefineMatchers(NSString *selectorString, KWMatchersBuildingBlock block);

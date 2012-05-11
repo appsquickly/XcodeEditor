@@ -16,8 +16,7 @@
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) beWithin:(id)aDistance of:(id)aValue;
-
-- (void) equal:(double)aValue withDelta:(double)aDelta;
+- (void)beWithin:(id)aDistance of:(id)aValue;
+- (void)equal:(double)aValue withDelta:(double)aDelta;
 
 @end

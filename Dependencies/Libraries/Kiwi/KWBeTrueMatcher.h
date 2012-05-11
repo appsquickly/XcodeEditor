@@ -15,12 +15,9 @@
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) beTrue;
-
-- (void) beFalse;
-
-- (void) beYes;
-
-- (void) beNo;
+- (void)beTrue;
+- (void)beFalse;
+- (void)beYes;
+- (void)beNo;
 
 @end

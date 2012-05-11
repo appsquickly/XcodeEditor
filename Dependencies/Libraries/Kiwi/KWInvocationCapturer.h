@@ -11,25 +11,23 @@
 @interface KWInvocationCapturer : NSProxy {
 @private
     id delegate;
-    NSDictionary* userInfo;
+    NSDictionary *userInfo;
 }
 
 #pragma mark -
 #pragma mark Initializing
 
-- (id) initWithDelegate:(id)aDelegate;
+- (id)initWithDelegate:(id)aDelegate;
+- (id)initWithDelegate:(id)aDelegate userInfo:(NSDictionary *)aUserInfo;
 
-- (id) initWithDelegate:(id)aDelegate userInfo:(NSDictionary*)aUserInfo;
-
-+ (id) invocationCapturerWithDelegate:(id)aDelegate;
-
-+ (id) invocationCapturerWithDelegate:(id)aDelegate userInfo:(NSDictionary*)aUserInfo;
++ (id)invocationCapturerWithDelegate:(id)aDelegate;
++ (id)invocationCapturerWithDelegate:(id)aDelegate userInfo:(NSDictionary *)aUserInfo;
 
 #pragma mark -
 #pragma mark Properties
 
-@property(nonatomic, readonly) id delegate;
-@property(nonatomic, readonly) NSDictionary* userInfo;
+@property (nonatomic, readonly) id delegate;
+@property (nonatomic, readonly) NSDictionary *userInfo;
 
 @end
 
@@ -38,10 +36,7 @@
 #pragma mark -
 #pragma mark Capturing Invocations
 
-- (NSMethodSignature*) invocationCapturer:(KWInvocationCapturer*)anInvocationCapturer
-               methodSignatureForSelector:(SEL)aSelector;
-
-- (void) invocationCapturer:(KWInvocationCapturer*)anInvocationCapturer
-       didCaptureInvocation:(NSInvocation*)anInvocation;
+- (NSMethodSignature *)invocationCapturer:(KWInvocationCapturer *)anInvocationCapturer methodSignatureForSelector:(SEL)aSelector;
+- (void)invocationCapturer:(KWInvocationCapturer *)anInvocationCapturer didCaptureInvocation:(NSInvocation *)anInvocation;
 
 @end

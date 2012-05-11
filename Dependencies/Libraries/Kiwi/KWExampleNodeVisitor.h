@@ -22,20 +22,13 @@
 
 @optional
 
-- (void) visitContextNode:(KWContextNode*)aNode;
-
-- (void) visitRegisterMatchersNode:(KWRegisterMatchersNode*)aNode;
-
-- (void) visitBeforeAllNode:(KWBeforeAllNode*)aNode;
-
-- (void) visitAfterAllNode:(KWAfterAllNode*)aNode;
-
-- (void) visitBeforeEachNode:(KWBeforeEachNode*)aNode;
-
-- (void) visitAfterEachNode:(KWAfterEachNode*)aNode;
-
-- (void) visitItNode:(KWItNode*)aNode;
-
-- (void) visitPendingNode:(KWPendingNode*)aNode;
+- (void)visitContextNode:(KWContextNode *)aNode;
+- (void)visitRegisterMatchersNode:(KWRegisterMatchersNode *)aNode;
+- (void)visitBeforeAllNode:(KWBeforeAllNode *)aNode;
+- (void)visitAfterAllNode:(KWAfterAllNode *)aNode;
+- (void)visitBeforeEachNode:(KWBeforeEachNode *)aNode;
+- (void)visitAfterEachNode:(KWAfterEachNode *)aNode;
+- (void)visitItNode:(KWItNode *)aNode;
+- (void)visitPendingNode:(KWPendingNode *)aNode;
 
 @end

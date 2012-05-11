@@ -11,8 +11,8 @@
 @class KWExample;
 @class KWFailure;
 
-@protocol KWExampleDelegate<NSObject>
+@protocol KWExampleDelegate <NSObject>
 
-- (void) example:(KWExample*)example didFailWithFailure:(KWFailure*)failure;
+- (void)example:(KWExample *)example didFailWithFailure:(KWFailure *)failure;
 
 @end

@@ -18,18 +18,14 @@
 #pragma mark -
 #pragma mark Adding Verifiers
 
-+ (id) addVerifier:(id<KWVerifying>)aVerifier;
-
-+ (id) addExistVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite*)aCallSite;
-
-+ (id) addMatchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite*)aCallSite;
-
-+ (id) addAsyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite*)aCallSite
-                                   timeout:(NSInteger)timeout;
++ (id)addVerifier:(id<KWVerifying>)aVerifier;
++ (id)addExistVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite;
++ (id)addMatchVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite;
++ (id)addAsyncVerifierWithExpectationType:(KWExpectationType)anExpectationType callSite:(KWCallSite *)aCallSite timeout:(NSInteger)timeout;
 
 #pragma mark -
 #pragma mark Building Example Groups
 
-+ (void) buildExampleGroups;
++ (void)buildExampleGroups;
 
 @end

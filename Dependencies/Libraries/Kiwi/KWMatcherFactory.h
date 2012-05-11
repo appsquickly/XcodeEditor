@@ -13,26 +13,25 @@
 
 @interface KWMatcherFactory : NSObject {
 @private
-    NSMutableArray* registeredMatcherClasses;
-    NSMutableDictionary* matcherClassChains;
+    NSMutableArray *registeredMatcherClasses;
+    NSMutableDictionary *matcherClassChains;
 }
 
 #pragma mark -
 #pragma mark Initializing
 
-- (id) init;
+- (id)init;
 
 #pragma mark -
 #pragma mark Properties
 
-@property(nonatomic, readonly) NSArray* registeredMatcherClasses;
+@property (nonatomic, readonly) NSArray *registeredMatcherClasses;
 
 #pragma mark -
 #pragma mark Registering Matcher Classes
 
-- (void) registerMatcherClass:(Class)aClass;
-
-- (void) registerMatcherClassesWithNamespacePrefix:(NSString*)aNamespacePrefix;
+- (void)registerMatcherClass:(Class)aClass;
+- (void)registerMatcherClassesWithNamespacePrefix:(NSString *)aNamespacePrefix;
 
 #pragma mark -
 #pragma mark Registering User Defined Matchers
@@ -42,11 +41,11 @@
 #pragma mark -
 #pragma mark Getting Method Signatures
 
-- (NSMethodSignature*) methodSignatureForMatcherSelector:(SEL)aSelector;
+- (NSMethodSignature *)methodSignatureForMatcherSelector:(SEL)aSelector;
 
 #pragma mark -
 #pragma mark Getting Matchers
 
-- (KWMatcher*) matcherFromInvocation:(NSInvocation*)anInvocation subject:(id)subject;
+- (KWMatcher *)matcherFromInvocation:(NSInvocation *)anInvocation subject:(id)subject;
 
 @end

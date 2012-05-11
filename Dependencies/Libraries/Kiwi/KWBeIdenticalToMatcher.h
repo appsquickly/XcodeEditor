@@ -15,6 +15,6 @@
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) beIdenticalTo:(id)anObject;
+- (void)beIdenticalTo:(id)anObject;
 
 @end

@@ -11,8 +11,7 @@
 #pragma mark -
 #pragma mark Getting the Device Type
 
-+ (BOOL) isSimulator;
-
-+ (BOOL) isPhysical;
++ (BOOL)isSimulator;
++ (BOOL)isPhysical;
 
 @end

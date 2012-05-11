@@ -6,11 +6,11 @@
 
 #import "KiwiConfiguration.h"
 
-@interface NSValue (KiwiAdditions)
+@interface NSValue(KiwiAdditions)
 
 #pragma mark -
 #pragma mark Accessing Data
 
-- (NSData*) dataValue;
+- (NSData *)dataValue;
 
 @end

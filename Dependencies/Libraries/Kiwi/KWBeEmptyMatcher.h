@@ -15,6 +15,6 @@
 #pragma mark -
 #pragma mark Configuring Matchers
 
-- (void) beEmpty;
+- (void)beEmpty;
 
 @end
