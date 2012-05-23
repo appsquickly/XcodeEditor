@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-05-08</td>
+            <td class="headerValue">2012-05-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -74,41 +74,46 @@
 <span class="lineNum">      16 </span>            : @implementation NSDictionary (XcodeFileType)
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span><span class="lineCov">       4590 : + (NSDictionary*) dictionaryWithFileReferenceTypesAsStrings {</span>
-<span class="lineNum">      19 </span><span class="lineCov">       4590 :     return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(SourceCodeHeader), @&quot;sourcecode.c.h&quot;,</span>
-<span class="lineNum">      20 </span>            :                         boxEnum(SourceCodeObjC), @&quot;sourcecode.c.objc&quot;,
-<span class="lineNum">      21 </span>            :                         boxEnum(Framework), @&quot;wrapper.framework&quot;,
-<span class="lineNum">      22 </span>            :                         boxEnum(PropertyList), @&quot;text.plist.strings&quot;,
-<span class="lineNum">      23 </span>            :                         boxEnum(SourceCodeObjCPlusPlus), @&quot;sourcecode.cpp.objcpp&quot;,
-<span class="lineNum">      24 </span>            :                         boxEnum(XibFile), @&quot;file.xib&quot;,
-<span class="lineNum">      25 </span>            :                         boxEnum(ImageResourcePNG), @&quot;image.png&quot;,
-<span class="lineNum">      26 </span>            :                         nil];
-<span class="lineNum">      27 </span>            : }
-<span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : @end
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span>            : @implementation NSString (XcodeFileType)
-<span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">         18 : + (NSString*) stringFromSourceFileType:(XcodeSourceFileType)type {</span>
-<span class="lineNum">      34 </span><span class="lineCov">         18 :     return [[[NSDictionary dictionaryWithFileReferenceTypesAsStrings] allKeysForObject:boxEnum(type)] objectAtIndex:0];</span>
-<span class="lineNum">      35 </span>            : }
-<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      19 </span><span class="lineCov">       4590 :     return [NSDictionary dictionaryWithObjectsAndKeys:</span>
+<span class="lineNum">      20 </span>            :             boxEnum(SourceCodeHeader), @&quot;sourcecode.c.h&quot;,
+<span class="lineNum">      21 </span>            :                         boxEnum(SourceCodeObjC), @&quot;sourcecode.c.objc&quot;,
+<span class="lineNum">      22 </span>            :                         boxEnum(Framework), @&quot;wrapper.framework&quot;,
+<span class="lineNum">      23 </span>            :                         boxEnum(PropertyList), @&quot;text.plist.strings&quot;,
+<span class="lineNum">      24 </span>            :                         boxEnum(SourceCodeObjCPlusPlus), @&quot;sourcecode.cpp.objcpp&quot;,
+<span class="lineNum">      25 </span>            :                         boxEnum(XibFile), @&quot;file.xib&quot;,
+<span class="lineNum">      26 </span>            :                         boxEnum(ImageResourcePNG), @&quot;image.png&quot;,
+<span class="lineNum">      27 </span>            :             boxEnum(Bundle), @&quot;wrapper.cfbundle&quot;,
+<span class="lineNum">      28 </span>            :             boxEnum(Archive), @&quot;archive.ar&quot;,
+<span class="lineNum">      29 </span>            :             boxEnum(HTML), @&quot;text.html&quot;,
+<span class="lineNum">      30 </span>            :             boxEnum(TEXT), @&quot;text&quot;,
+<span class="lineNum">      31 </span>            :                         nil];
+<span class="lineNum">      32 </span>            : }
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : @end
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : @implementation NSString (XcodeFileType)
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">       4572 : - (XcodeSourceFileType) asSourceFileType {</span>
-<span class="lineNum">      39 </span><span class="lineCov">       4572 :     NSDictionary* typeStrings = [NSDictionary dictionaryWithFileReferenceTypesAsStrings];</span>
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">       4572 :     if ([typeStrings objectForKey:self]) {</span>
-<span class="lineNum">      42 </span><span class="lineCov">       4207 :         return (XcodeSourceFileType) [[typeStrings objectForKey:self] intValue];</span>
-<span class="lineNum">      43 </span>            :     }
-<span class="lineNum">      44 </span>            :     else {
-<span class="lineNum">      45 </span><span class="lineCov">        365 :         return FileTypeNil;</span>
-<span class="lineNum">      46 </span>            :     }
-<span class="lineNum">      47 </span><span class="lineCov">       4572 : }</span>
-<span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            : /* ================================================== Private Methods =============================================== */
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            : @end
+<span class="lineNum">      38 </span><span class="lineCov">         18 : + (NSString*) stringFromSourceFileType:(XcodeSourceFileType)type {</span>
+<span class="lineNum">      39 </span><span class="lineCov">         18 :     return [[[NSDictionary dictionaryWithFileReferenceTypesAsStrings] allKeysForObject:boxEnum(type)] objectAtIndex:0];</span>
+<span class="lineNum">      40 </span>            : }
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineCov">       4572 : - (XcodeSourceFileType) asSourceFileType {</span>
+<span class="lineNum">      44 </span><span class="lineCov">       4572 :     NSDictionary* typeStrings = [NSDictionary dictionaryWithFileReferenceTypesAsStrings];</span>
+<span class="lineNum">      45 </span>            :     
+<span class="lineNum">      46 </span><span class="lineCov">       4572 :     if ([typeStrings objectForKey:self]) {</span>
+<span class="lineNum">      47 </span><span class="lineCov">       4252 :         return (XcodeSourceFileType) [[typeStrings objectForKey:self] intValue];</span>
+<span class="lineNum">      48 </span>            :     }
+<span class="lineNum">      49 </span>            :     else {
+<span class="lineNum">      50 </span><span class="lineCov">        320 :         return FileTypeNil;</span>
+<span class="lineNum">      51 </span>            :     }
+<span class="lineNum">      52 </span><span class="lineCov">       4572 : }</span>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : /* ================================================== Private Methods =============================================== */
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : @end
 </pre>
       </td>
     </tr>

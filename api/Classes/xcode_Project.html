@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 759)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -59,6 +59,8 @@
 	<option value="//api/name/files">&nbsp;&nbsp;&nbsp;&nbsp;- files</option>
 	
 	<option value="//api/name/groupForGroupMemberWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- groupForGroupMemberWithKey:</option>
+	
+	<option value="//api/name/groupWithDisplayNamePathRelativeToParent:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithDisplayNamePathRelativeToParent:</option>
 	
 	<option value="//api/name/groupWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithKey:</option>
 	
@@ -133,6 +135,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/files">files</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupForGroupMemberWithKey:">groupForGroupMemberWithKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithDisplayNamePathRelativeToParent:">groupWithDisplayNamePathRelativeToParent:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithKey:">groupWithKey:</a></span></li>
 	
@@ -288,7 +292,7 @@ which one is returned is undefined.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/groups">&ndash;&nbsp;groups</a></code>
-		<span class="tooltip"><p>Lists the <a href="#//api/name/groups">groups</a> in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
+		<span class="tooltip"><p>Lists the groups in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
@@ -315,6 +319,13 @@ which one is returned is undefined.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/groupWithDisplayNamePathRelativeToParent:">&ndash;&nbsp;groupWithDisplayNamePathRelativeToParent:</a></code>
+		<span class="tooltip"><p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/groupForGroupMemberWithKey:">&ndash;&nbsp;groupForGroupMemberWithKey:</a></code>
 		<span class="tooltip"><p>Returns the parent group for the group or file with the given key;</p></span>
 	</span>
@@ -323,7 +334,7 @@ which one is returned is undefined.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/targets">&ndash;&nbsp;targets</a></code>
-		<span class="tooltip"><p>Lists the <a href="#//api/name/targets">targets</a> in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
+		<span class="tooltip"><p>Lists the targets in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
@@ -366,6 +377,10 @@ which one is returned is undefined.</p></span>
 	<h3 class="subsubtitle method-title">fileOperationQueue</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) xcode_FileOperationQueue *fileOperationQueue</code></div>
+
+    
 </div>
 						
 					</div>
@@ -381,6 +396,10 @@ which one is returned is undefined.</p></span>
 	<h3 class="subsubtitle method-title">projectWithFilePath:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>+ (xcode_Project *)projectWithFilePath:(NSString *)<em>filePath</em></code></div>
+
+    
 </div>
 						
 					</div>
@@ -401,9 +420,11 @@ which one is returned is undefined.</p></span>
 		<p>Returns the project file with the specified key, or nil.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_SourceFile *)fileWithKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	
 	
@@ -441,9 +462,11 @@ which one is returned is undefined.</p></span>
 which one is returned is undefined.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_SourceFile *)fileWithName:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	
 	
@@ -481,9 +504,11 @@ which one is returned is undefined.</p>
 		<p>Returns all file resources in the project, as an array of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)files</code></div>
-	
+
+    
 	
 	
 	
@@ -520,9 +545,11 @@ which one is returned is undefined.</p>
 		<p>Returns the parent group for the group or file with the given key;</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_Group *)groupForGroupMemberWithKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	
 	
@@ -550,6 +577,47 @@ which one is returned is undefined.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/groupWithDisplayNamePathRelativeToParent:" title="groupWithDisplayNamePathRelativeToParent:"></a>
+	<h3 class="subsubtitle method-title">groupWithDisplayNamePathRelativeToParent:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (xcode_Group *)groupWithDisplayNamePathRelativeToParent:(NSString *)<em>path</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Project.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/groupWithKey:" title="groupWithKey:"></a>
 	<h3 class="subsubtitle method-title">groupWithKey:</h3>
 	
@@ -559,9 +627,11 @@ which one is returned is undefined.</p>
 		<p>Returns the group with the given key, or nil.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_Group *)groupWithKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	
 	
@@ -598,9 +668,11 @@ which one is returned is undefined.</p>
 		<p>Returns the group with the specified path &ndash; the directory relative to the group&rsquo;s parent. Eg Source/Main</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_Group *)groupWithPathRelativeToParent:(NSString *)<em>path</em></code></div>
-	
+
+    
 	
 	
 	
@@ -634,12 +706,14 @@ which one is returned is undefined.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Lists the <a href="#//api/name/groups">groups</a> in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p>
+		<p>Lists the groups in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)groups</code></div>
-	
+
+    
 	
 	
 	
@@ -649,7 +723,7 @@ which one is returned is undefined.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Lists the <a href="#//api/name/groups">groups</a> in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p>
+		<p>Lists the groups in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>
 	
 	
@@ -676,9 +750,11 @@ which one is returned is undefined.</p>
 		<p>Returns all header <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)headerFiles</code></div>
-	
+
+    
 	
 	
 	
@@ -710,6 +786,10 @@ which one is returned is undefined.</p>
 	<h3 class="subsubtitle method-title">imagePNGFiles</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)imagePNGFiles</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -722,9 +802,11 @@ which one is returned is undefined.</p>
 		<p>Creates a new project editor instance with the specified Project.xcodeproj file.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithFilePath:(NSString *)<em>filePath</em></code></div>
-	
+
+    
 	
 	
 	
@@ -761,9 +843,11 @@ which one is returned is undefined.</p>
 		<p>Returns all implementation obj-c implementation <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)objectiveCFiles</code></div>
-	
+
+    
 	
 	
 	
@@ -800,9 +884,11 @@ which one is returned is undefined.</p>
 		<p>Returns all implementation obj-c++ implementation <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)objectiveCPlusPlusFiles</code></div>
-	
+
+    
 	
 	
 	
@@ -839,9 +925,11 @@ which one is returned is undefined.</p>
 		<p>Raw project data.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSMutableDictionary *)objects</code></div>
-	
+
+    
 	
 	
 	
@@ -878,9 +966,11 @@ which one is returned is undefined.</p>
 		<p>Returns the root (top-level) group.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_Group *)rootGroup</code></div>
-	
+
+    
 	
 	
 	
@@ -917,9 +1007,11 @@ which one is returned is undefined.</p>
 		<p>Saves a project after editing.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)save</code></div>
-	
+
+    
 	
 	
 	
@@ -956,9 +1048,11 @@ which one is returned is undefined.</p>
 		<p>Returns the target with the specified name, or nil.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_Target *)targetWithName:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	
 	
@@ -992,12 +1086,14 @@ which one is returned is undefined.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Lists the <a href="#//api/name/targets">targets</a> in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p>
+		<p>Lists the targets in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)targets</code></div>
-	
+
+    
 	
 	
 	
@@ -1007,7 +1103,7 @@ which one is returned is undefined.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Lists the <a href="#//api/name/targets">targets</a> in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p>
+		<p>Lists the targets in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>
 	
 	
@@ -1034,9 +1130,11 @@ which one is returned is undefined.</p>
 		<p>Returns all the xib <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)xibFiles</code></div>
-	
+
+    
 	
 	
 	
@@ -1076,9 +1174,9 @@ which one is returned is undefined.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-05-08)</span><br />
+						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-05-23)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 759)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1166,6 +1264,14 @@ which one is returned is undefined.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

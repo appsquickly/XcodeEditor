@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 759)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -238,7 +238,7 @@ groups.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/alias">&nbsp;&nbsp;alias</a></code>
-		<span class="tooltip"><p>The <a href="#//api/name/alias">alias</a> of the group, which can be used to give the group a name other than the last path component.</p></span>
+		<span class="tooltip"><p>The alias of the group, which can be used to give the group a name other than the last path component.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -252,7 +252,7 @@ groups.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/key">&nbsp;&nbsp;key</a></code>
-		<span class="tooltip"><p>The group&rsquo;s unique <a href="#//api/name/key">key</a>.</p></span>
+		<span class="tooltip"><p>The group&rsquo;s unique key.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -366,7 +366,7 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/members">&ndash;&nbsp;members</a></code>
-		<span class="tooltip"><p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p></span>
+		<span class="tooltip"><p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <code>xcode_Group</code> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p></span>
 	</span>
 	
 	
@@ -418,12 +418,14 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The <a href="#//api/name/alias">alias</a> of the group, which can be used to give the group a name other than the last path component.</p>
+		<p>The alias of the group, which can be used to give the group a name other than the last path component.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *alias</code></div>
-	
+
+    
 	
 	
 	
@@ -462,9 +464,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>An array containing the groups <a href="#//api/name/members">members</a> as <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a> types.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSMutableArray *children</code></div>
-	
+
+    
 	
 	
 	
@@ -498,12 +502,14 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The group&rsquo;s unique <a href="#//api/name/key">key</a>.</p>
+		<p>The group&rsquo;s unique key.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *key</code></div>
-	
+
+    
 	
 	
 	
@@ -513,7 +519,7 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The group&rsquo;s unique <a href="#//api/name/key">key</a>.</p>
+		<p>The group&rsquo;s unique key.</p>
 	</div>
 	
 	
@@ -540,9 +546,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>The path of the group relative to the group&rsquo;s parent.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *pathRelativeToParent</code></div>
-	
+
+    
 	
 	
 	
@@ -584,6 +592,10 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<h3 class="subsubtitle method-title">groupWithProject:key:alias:path:children:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>+ (xcode_Group *)groupWithProject:(xcode_Project *)<em>project</em> key:(NSString *)<em>key</em> alias:(NSString *)<em>alias</em> path:(NSString *)<em>path</em> children:(NSArray *)<em>children</em></code></div>
+
+    
 </div>
 						
 					</div>
@@ -605,9 +617,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 name, the contents will be updated.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addClass:(xcode_ClassDefinition *)<em>classDefinition</em></code></div>
-	
+
+    
 	
 	
 	
@@ -645,9 +659,11 @@ name, the contents will be updated.</p>
 		<p>Adds a class to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addClass:(xcode_ClassDefinition *)<em>classDefinition</em> toTargets:(NSArray *)<em>targets</em></code></div>
-	
+
+    
 	
 	
 	
@@ -685,9 +701,11 @@ name, the contents will be updated.</p>
 framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be ignored.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addFramework:(xcode_FrameworkDefinition *)<em>frameworkDefinition</em></code></div>
-	
+
+    
 	
 	
 	
@@ -725,9 +743,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Adds a framework to the group, making it a member of the specified targets.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addFramework:(xcode_FrameworkDefinition *)<em>framework</em> toTargets:(NSArray *)<em>targets</em></code></div>
-	
+
+    
 	
 	
 	
@@ -764,9 +784,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Adds a group with a path relative to this group.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (xcode_Group *)addGroupWithPath:(NSString *)<em>path</em></code></div>
-	
+
+    
 	
 	
 	
@@ -803,9 +825,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Adds a source file of arbitrary type &ndash; image resource, header, etc.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addSourceFile:(xcode_SourceFileDefinition *)<em>sourceFileDefinition</em></code></div>
-	
+
+    
 	
 	
 	
@@ -842,9 +866,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addXib:(xcode_XibDefinition *)<em>xibDefinition</em></code></div>
-	
+
+    
 	
 	
 	
@@ -881,9 +907,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Adds a xib to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addXib:(xcode_XibDefinition *)<em>xibDefinition</em> toTargets:(NSArray *)<em>targets</em></code></div>
-	
+
+    
 	
 	
 	
@@ -915,6 +943,10 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<h3 class="subsubtitle method-title">buildFileKeys</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)buildFileKeys</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -922,6 +954,10 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<h3 class="subsubtitle method-title">initWithProject:key:alias:path:children:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithProject:(xcode_Project *)<em>project</em> key:(NSString *)<em>key</em> alias:(NSString *)<em>alias</em> path:(NSString *)<em>path</em> children:(NSArray *)<em>children</em></code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -929,6 +965,10 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<h3 class="subsubtitle method-title">isRootGroup</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isRootGroup</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -941,9 +981,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Returns the child with the specified name, or nil.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;XcodeGroupMember&gt;)memberWithDisplayName:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	
 	
@@ -980,9 +1022,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Returns the child with the specified <a href="#//api/name/key">key</a>, or nil.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id&lt;XcodeGroupMember&gt;)memberWithKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1016,12 +1060,14 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p>
+		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <code>xcode_Group</code> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)members</code></div>
-	
+
+    
 	
 	
 	
@@ -1031,7 +1077,7 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <a href="xcode_Group.html"><code>xcode_Group</code></a> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p>
+		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> and <code>xcode_Group</code> returned as the type <a href="../Protocols/XcodeGroupMember.html"><code>XcodeGroupMember</code></a>.</p>
 	</div>
 	
 	
@@ -1053,6 +1099,10 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<h3 class="subsubtitle method-title">parentGroup</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (xcode_Group *)parentGroup</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -1065,9 +1115,11 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 		<p>Instances of <a href="../Classes/xcode_SourceFile.html"><code>xcode_SourceFile</code></a> from this group and any child groups.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)recursiveMembers</code></div>
-	
+
+    
 	
 	
 	
@@ -1099,6 +1151,10 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<h3 class="subsubtitle method-title">removeFromParentGroup</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeFromParentGroup</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -1106,6 +1162,10 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<h3 class="subsubtitle method-title">removeFromParentGroup:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeFromParentGroup:(BOOL)<em>deleteFiles</em></code></div>
+
+    
 </div>
 						
 					</div>
@@ -1121,9 +1181,9 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-05-08)</span><br />
+						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-05-23)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 759)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1211,6 +1271,14 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>
