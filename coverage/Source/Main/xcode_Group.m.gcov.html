@@ -376,14 +376,14 @@
 <span class="lineNum">     318 </span><span class="lineCov">         14 :         return _alias;</span>
 <span class="lineNum">     319 </span>            :     }
 <span class="lineNum">     320 </span>            :     else {
-<span class="lineNum">     321 </span><span class="lineCov">        236 :         return [_pathRelativeToParent lastPathComponent];</span>
-<span class="lineNum">     322 </span><span class="lineCov">        236 :     }</span>
+<span class="lineNum">     321 </span><span class="lineCov">        232 :         return [_pathRelativeToParent lastPathComponent];</span>
+<span class="lineNum">     322 </span><span class="lineCov">        232 :     }</span>
 <span class="lineNum">     323 </span><span class="lineCov">         32 : }</span>
 <span class="lineNum">     324 </span>            : 
 <span class="lineNum">     325 </span>            : - (NSString*) pathRelativeToProjectRoot {
-<span class="lineNum">     326 </span><span class="lineCov">        204 :     if (_pathRelativeToProjectRoot == nil) {</span>
+<span class="lineNum">     326 </span><span class="lineCov">        200 :     if (_pathRelativeToProjectRoot == nil) {</span>
 <span class="lineNum">     327 </span>            :         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-<span class="lineNum">     328 </span><span class="lineCov">        236 :         Group* group;</span>
+<span class="lineNum">     328 </span><span class="lineCov">        232 :         Group* group;</span>
 <span class="lineNum">     329 </span>            :         NSString* key = _key;
 <span class="lineNum">     330 </span><span class="lineCov">        295 : </span>
 <span class="lineNum">     331 </span><span class="lineCov">        295 :         while ((group = [_project groupForGroupMemberWithKey:key]) != nil &amp;&amp; !([group pathRelativeToParent] == nil)) {</span>
@@ -451,9 +451,9 @@
 <span class="lineNum">     393 </span><span class="lineCov">         17 :     }</span>
 <span class="lineNum">     394 </span><span class="lineCov">         14 :     else if (fileOperationStyle == FileOperationStyleAcceptExisting &amp;&amp;</span>
 <span class="lineNum">     395 </span><span class="lineCov">         14 :             ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {</span>
-<span class="lineNum">     396 </span><span class="lineCov">          6 :         writeFile = YES;</span>
+<span class="lineNum">     396 </span><span class="lineCov">          2 :         writeFile = YES;</span>
 <span class="lineNum">     397 </span>            :     }
-<span class="lineNum">     398 </span><span class="lineCov">          6 :     if (writeFile) {</span>
+<span class="lineNum">     398 </span><span class="lineCov">          2 :     if (writeFile) {</span>
 <span class="lineNum">     399 </span>            :         if ([contents isKindOfClass:[NSString class]]) {
 <span class="lineNum">     400 </span><span class="lineCov">          3 :             [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];</span>
 <span class="lineNum">     401 </span>            :         }
