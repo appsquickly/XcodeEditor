@@ -28,6 +28,7 @@
             boxEnum(Archive), @"archive.ar",
             boxEnum(HTML), @"text.html",
             boxEnum(TEXT), @"text",
+            boxEnum(XcodeProject), @"wrapper.pb-project",
 			nil];
 }
 

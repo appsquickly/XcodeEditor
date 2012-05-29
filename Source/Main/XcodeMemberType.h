@@ -19,6 +19,7 @@ typedef enum {
     PBXGroup,
     PBXNativeTarget,
     PBXProject,
+    PBXReferenceProxy,
     PBXResourcesBuildPhase,
     PBXSourcesBuildPhase,
     PBXTargetDependency,

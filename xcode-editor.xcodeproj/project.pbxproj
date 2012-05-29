@@ -74,6 +74,8 @@
 		6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E14CD24C15755B8C00A90952 /* xcode_XcodeprojDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E14CD24A15755B8C00A90952 /* xcode_XcodeprojDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E14CD24D15755B8C00A90952 /* xcode_XcodeprojDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */; };
 		E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11315443AA400C51251 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
@@ -163,6 +165,8 @@
 		6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FrameworkDefinition.h; sourceTree = "<group>"; };
+		E14CD24A15755B8C00A90952 /* xcode_XcodeprojDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_XcodeprojDefinition.h; sourceTree = "<group>"; };
+		E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_XcodeprojDefinition.m; sourceTree = "<group>"; };
 		E94DE11315443AA400C51251 /* XcodeEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 				6B3AD01D14F8A3AC00BCFE81 /* xcode_FileOperationQueue.h */,
 				6B3AD01A14F8A3AC00BCFE81 /* xcode_ClassDefinition.m */,
 				6B3AD01914F8A3AC00BCFE81 /* xcode_ClassDefinition.h */,
+				E14CD24A15755B8C00A90952 /* xcode_XcodeprojDefinition.h */,
+				E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */,
 				6B65941914F8A56C00F65AEC /* Resources */,
 				E94DE11415443AC100C51258 /* Utils */,
 			);
@@ -384,6 +390,7 @@
 				6B65942214F8A56C00F65AEC /* XcodeEditor-Prefix.pch in Headers */,
 				6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */,
 				6BE4B285147E6B610059E45B /* xcode_XibDefinition.h in Headers */,
+				E14CD24C15755B8C00A90952 /* xcode_XcodeprojDefinition.h in Headers */,
 				6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */,
 				E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */,
 			);
@@ -535,6 +542,7 @@
 				6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */,
 				6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */,
 				E94DE11415443AC100C5125B /* xcode_SourceFileDefinition.m in Sources */,
+				E14CD24D15755B8C00A90952 /* xcode_XcodeprojDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

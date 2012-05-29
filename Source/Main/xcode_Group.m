@@ -19,6 +19,7 @@
 #import "xcode_ClassDefinition.h"
 #import "xcode_utils_KeyBuilder.h"
 #import "xcode_SourceFileDefinition.h"
+#import "xcode_XcodeprojDefinition.h"
 
 #import "Logging.h"
 /* ================================================================================================================== */
@@ -232,6 +233,20 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
+- (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition xcodeprojFullPathName] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    // PBXContainerItemProxy
+    // PBXProject
+    // PBXReferenceProxy (new section)
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+}
+
+- (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+    [self addXcodeproj:xcodeprojDefinition];
+//    SourceFile* sourceFile = [_project fileWithName:[xcodeprojDefinition xcodeprojFileName]];
+//    [self addSourceFile:sourceFile toTargets:targets];
+}
+
 /* ================================================================================================================== */
 #pragma mark Members
 
@@ -402,6 +417,18 @@
         else {
             [_fileOperationQueue queueDataFile:name inDirectory:filePath withContents:contents];
         }
+    }
+}
+
+- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+              fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
+    
+    SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
+    if ((currentSourceFile) == nil) {
+        NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
+        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+        [[_project objects] setObject:reference forKey:fileKey];
+        [self addMemberWithKey:fileKey];
     }
 }
 

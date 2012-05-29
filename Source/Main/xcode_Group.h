@@ -19,6 +19,7 @@
 @class xcode_FileOperationQueue;
 @class xcode_FrameworkDefinition;
 @class xcode_SourceFileDefinition;
+@class xcode_XcodeprojDefinition;
 
 
 /**
@@ -135,6 +136,11 @@
  * Adds a xib to the group, making it a member of the specified [targets](xcode_Target).
 */
 - (void) addXib:(xcode_XibDefinition*)xibDefinition toTargets:(NSArray*)targets;
+
+/**
+ * Adds a subproject to the group. If the group already contains a subproject by the same name, the contents will be updated.
+ */
+- (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
 
 /* ================================================================================================================== */
 #pragma mark Locating children

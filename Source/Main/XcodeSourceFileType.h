@@ -21,7 +21,8 @@ typedef enum {
     Bundle,                  // .bundle  .octet 
     Archive,                 // .a files
     HTML,                    // HTML file 
-    TEXT                     // Some text file 
+    TEXT,                    // Some text file 
+    XcodeProject             // .xcodeproj
 } XcodeSourceFileType;
 
 @interface NSString (XCodeFileType)
