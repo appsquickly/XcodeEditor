@@ -14,7 +14,6 @@
 #import "xcode_SourceFile.h"
 #import "xcode_Target.h"
 #import "xcode_FileOperationQueue.h"
-#import "XcodeSourceFileType.h"
 
 
 /* ================================================================================================================== */
@@ -178,13 +177,14 @@
 }
 
 - (Group*) groupWithDisplayNamePathRelativeToParent:(NSString*)path {
-    NSArray * pathItems = [path componentsSeparatedByString:@"/"];
-    Group * currentGroup = [self rootGroup];
-    for (NSString * pathItem in pathItems) {
+    NSArray* pathItems = [path componentsSeparatedByString:@"/"];
+    Group* currentGroup = [self rootGroup];
+    for (NSString* pathItem in pathItems) {
         id<XcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
         if ([group isKindOfClass:[Group class]]) {
             currentGroup = group;
-        } else {
+        }
+        else {
             return nil;
         }
     }
