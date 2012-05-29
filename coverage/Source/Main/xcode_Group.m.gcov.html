@@ -100,9 +100,9 @@
 <span class="lineNum">      42 </span>            : @end
 <span class="lineNum">      43 </span>            : /* ================================================================================================================== */
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineCov">      35159 : @implementation xcode_Group</span>
+<span class="lineNum">      45 </span><span class="lineCov">      35383 : @implementation xcode_Group</span>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">       1565 : @synthesize pathRelativeToParent = _pathRelativeToParent;</span>
+<span class="lineNum">      47 </span><span class="lineCov">       1467 : @synthesize pathRelativeToParent = _pathRelativeToParent;</span>
 <span class="lineNum">      48 </span><span class="lineCov">        344 : @synthesize key = _key;</span>
 <span class="lineNum">      49 </span><span class="lineNoCov">          0 : @synthesize children = _children;</span>
 <span class="lineNum">      50 </span><span class="lineCov">          1 : @synthesize alias = _alias;</span>
@@ -111,29 +111,29 @@
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : /* ================================================= Class Methods ================================================== */
 <span class="lineNum">      55 </span>            : + (Group*) groupWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-<span class="lineNum">      56 </span><span class="lineCov">      35246 :         children:(NSArray*)children {</span>
-<span class="lineNum">      57 </span><span class="lineCov">      35246 : </span>
+<span class="lineNum">      56 </span><span class="lineCov">      35471 :         children:(NSArray*)children {</span>
+<span class="lineNum">      57 </span><span class="lineCov">      35471 : </span>
 <span class="lineNum">      58 </span>            :     return [[Group alloc] initWithProject:project key:key alias:alias path:path children:children];
-<span class="lineNum">      59 </span><span class="lineCov">      35246 : }</span>
-<span class="lineNum">      60 </span><span class="lineCov">      35246 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">      35471 : }</span>
+<span class="lineNum">      60 </span><span class="lineCov">      35471 : </span>
 <span class="lineNum">      61 </span>            : /* ================================================== Initializers ================================================== */
 <span class="lineNum">      62 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
 <span class="lineNum">      63 </span>            :         children:(NSArray*)children {
-<span class="lineNum">      64 </span><span class="lineCov">      35247 :     self = [super init];</span>
-<span class="lineNum">      65 </span><span class="lineCov">      35247 :     if (self) {</span>
-<span class="lineNum">      66 </span><span class="lineCov">      35247 :         _project = project;</span>
-<span class="lineNum">      67 </span><span class="lineCov">      35247 :         _fileOperationQueue = [_project fileOperationQueue];</span>
-<span class="lineNum">      68 </span><span class="lineCov">      35247 :         _key = [key copy];</span>
-<span class="lineNum">      69 </span><span class="lineCov">      35247 :         _alias = [alias copy];</span>
-<span class="lineNum">      70 </span><span class="lineCov">      35247 :         _pathRelativeToParent = [path copy];</span>
-<span class="lineNum">      71 </span><span class="lineCov">      35247 : </span>
-<span class="lineNum">      72 </span><span class="lineCov">      35247 :         _children = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      64 </span><span class="lineCov">      35472 :     self = [super init];</span>
+<span class="lineNum">      65 </span><span class="lineCov">      35472 :     if (self) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">      35472 :         _project = project;</span>
+<span class="lineNum">      67 </span><span class="lineCov">      35472 :         _fileOperationQueue = [_project fileOperationQueue];</span>
+<span class="lineNum">      68 </span><span class="lineCov">      35472 :         _key = [key copy];</span>
+<span class="lineNum">      69 </span><span class="lineCov">      35472 :         _alias = [alias copy];</span>
+<span class="lineNum">      70 </span><span class="lineCov">      35472 :         _pathRelativeToParent = [path copy];</span>
+<span class="lineNum">      71 </span><span class="lineCov">      35472 : </span>
+<span class="lineNum">      72 </span><span class="lineCov">      35472 :         _children = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">      73 </span>            :         [_children addObjectsFromArray:children];
-<span class="lineNum">      74 </span><span class="lineCov">      35247 :     }</span>
-<span class="lineNum">      75 </span><span class="lineCov">      35247 :     return self;</span>
-<span class="lineNum">      76 </span><span class="lineCov">      35247 : }</span>
-<span class="lineNum">      77 </span><span class="lineCov">      35247 : </span>
-<span class="lineNum">      78 </span><span class="lineCov">      35247 : /* ================================================ Interface Methods =============================================== */</span>
+<span class="lineNum">      74 </span><span class="lineCov">      35472 :     }</span>
+<span class="lineNum">      75 </span><span class="lineCov">      35472 :     return self;</span>
+<span class="lineNum">      76 </span><span class="lineCov">      35472 : }</span>
+<span class="lineNum">      77 </span><span class="lineCov">      35472 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">      35472 : /* ================================================ Interface Methods =============================================== */</span>
 <span class="lineNum">      79 </span>            : #pragma mark Parent group
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : - (void) removeFromParentGroup {
@@ -169,9 +169,9 @@
 <span class="lineNum">     111 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     112 </span>            : - (BOOL) isRootGroup {
 <span class="lineNum">     113 </span>            :     return [self pathRelativeToParent] == nil &amp;&amp; [self displayName] == nil;
-<span class="lineNum">     114 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">     115 </span><span class="lineCov">          9 : </span>
-<span class="lineNum">     116 </span><span class="lineCov">          9 : </span>
+<span class="lineNum">     114 </span><span class="lineCov">        508 : }</span>
+<span class="lineNum">     115 </span><span class="lineCov">        508 : </span>
+<span class="lineNum">     116 </span><span class="lineCov">        508 : </span>
 <span class="lineNum">     117 </span>            : /* ================================================================================================================== */
 <span class="lineNum">     118 </span>            : #pragma mark Adding children
 <span class="lineNum">     119 </span>            : 
@@ -298,22 +298,22 @@
 <span class="lineNum">     240 </span>            :         _members = [[NSMutableArray alloc] init];
 <span class="lineNum">     241 </span>            :         for (NSString* childKey in _children) {
 <span class="lineNum">     242 </span>            :             XcodeMemberType type = [self typeForKey:childKey];
-<span class="lineNum">     243 </span><span class="lineCov">         59 :             if (type == PBXGroup) {</span>
-<span class="lineNum">     244 </span><span class="lineCov">         59 :                 [_members addObject:[_project groupWithKey:childKey]];</span>
-<span class="lineNum">     245 </span><span class="lineCov">         55 :             }</span>
-<span class="lineNum">     246 </span><span class="lineCov">        417 :             else if (type == PBXFileReference) {</span>
-<span class="lineNum">     247 </span><span class="lineCov">        416 :                 [_members addObject:[_project fileWithKey:childKey]];</span>
-<span class="lineNum">     248 </span><span class="lineCov">        416 :             }</span>
-<span class="lineNum">     249 </span><span class="lineCov">        109 :         }</span>
-<span class="lineNum">     250 </span><span class="lineCov">        109 :     }</span>
-<span class="lineNum">     251 </span><span class="lineCov">        307 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;displayName&quot; ascending:YES];</span>
-<span class="lineNum">     252 </span><span class="lineCov">        304 :     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
-<span class="lineNum">     253 </span><span class="lineCov">        304 : }</span>
-<span class="lineNum">     254 </span><span class="lineCov">        416 : </span>
-<span class="lineNum">     255 </span><span class="lineCov">         55 : - (NSArray*) recursiveMembers {</span>
-<span class="lineNum">     256 </span><span class="lineCov">         59 :     NSMutableArray* recursiveMembers = [NSMutableArray array];</span>
-<span class="lineNum">     257 </span><span class="lineCov">         59 :     for (NSString* childKey in _children) {</span>
-<span class="lineNum">     258 </span><span class="lineCov">         59 :         XcodeMemberType type = [self typeForKey:childKey];</span>
+<span class="lineNum">     243 </span><span class="lineCov">        105 :             if (type == PBXGroup) {</span>
+<span class="lineNum">     244 </span><span class="lineCov">        105 :                 [_members addObject:[_project groupWithKey:childKey]];</span>
+<span class="lineNum">     245 </span><span class="lineCov">        101 :             }</span>
+<span class="lineNum">     246 </span><span class="lineCov">        691 :             else if (type == PBXFileReference) {</span>
+<span class="lineNum">     247 </span><span class="lineCov">        690 :                 [_members addObject:[_project fileWithKey:childKey]];</span>
+<span class="lineNum">     248 </span><span class="lineCov">        690 :             }</span>
+<span class="lineNum">     249 </span><span class="lineCov">        316 :         }</span>
+<span class="lineNum">     250 </span><span class="lineCov">        316 :     }</span>
+<span class="lineNum">     251 </span><span class="lineCov">        374 :     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@&quot;displayName&quot; ascending:YES];</span>
+<span class="lineNum">     252 </span><span class="lineCov">        370 :     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];</span>
+<span class="lineNum">     253 </span><span class="lineCov">        370 : }</span>
+<span class="lineNum">     254 </span><span class="lineCov">        690 : </span>
+<span class="lineNum">     255 </span><span class="lineCov">        101 : - (NSArray*) recursiveMembers {</span>
+<span class="lineNum">     256 </span><span class="lineCov">        105 :     NSMutableArray* recursiveMembers = [NSMutableArray array];</span>
+<span class="lineNum">     257 </span><span class="lineCov">        105 :     for (NSString* childKey in _children) {</span>
+<span class="lineNum">     258 </span><span class="lineCov">        105 :         XcodeMemberType type = [self typeForKey:childKey];</span>
 <span class="lineNum">     259 </span>            :         if (type == PBXGroup) {
 <span class="lineNum">     260 </span><span class="lineCov">         71 :             Group* group = [_project groupWithKey:childKey];</span>
 <span class="lineNum">     261 </span><span class="lineCov">         71 :             NSArray* groupChildren = [group recursiveMembers];</span>
@@ -362,28 +362,28 @@
 <span class="lineNum">     304 </span><span class="lineCov">      17265 :         if ([[member displayName] isEqualToString:name]) {</span>
 <span class="lineNum">     305 </span><span class="lineCov">      17265 :             return member;</span>
 <span class="lineNum">     306 </span>            :         }
-<span class="lineNum">     307 </span><span class="lineCov">         22 :     }</span>
-<span class="lineNum">     308 </span><span class="lineCov">        174 :     return nil;</span>
-<span class="lineNum">     309 </span><span class="lineCov">        174 : }</span>
-<span class="lineNum">     310 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">     307 </span><span class="lineCov">         68 :     }</span>
+<span class="lineNum">     308 </span><span class="lineCov">        359 :     return nil;</span>
+<span class="lineNum">     309 </span><span class="lineCov">        359 : }</span>
+<span class="lineNum">     310 </span><span class="lineCov">         51 : </span>
 <span class="lineNum">     311 </span>            : /* ================================================= Protocol Methods =============================================== */
-<span class="lineNum">     312 </span><span class="lineCov">        174 : - (XcodeMemberType) groupMemberType {</span>
-<span class="lineNum">     313 </span><span class="lineCov">         16 :     return PBXGroup;</span>
-<span class="lineNum">     314 </span><span class="lineCov">         22 : }</span>
+<span class="lineNum">     312 </span><span class="lineCov">        359 : - (XcodeMemberType) groupMemberType {</span>
+<span class="lineNum">     313 </span><span class="lineCov">         17 :     return PBXGroup;</span>
+<span class="lineNum">     314 </span><span class="lineCov">         68 : }</span>
 <span class="lineNum">     315 </span>            : 
 <span class="lineNum">     316 </span>            : - (NSString*) displayName {
 <span class="lineNum">     317 </span><span class="lineCov">         14 :     if (_pathRelativeToParent == nil) {</span>
 <span class="lineNum">     318 </span><span class="lineCov">         14 :         return _alias;</span>
 <span class="lineNum">     319 </span>            :     }
 <span class="lineNum">     320 </span>            :     else {
-<span class="lineNum">     321 </span><span class="lineCov">        236 :         return [_pathRelativeToParent lastPathComponent];</span>
-<span class="lineNum">     322 </span><span class="lineCov">        236 :     }</span>
-<span class="lineNum">     323 </span><span class="lineCov">         32 : }</span>
+<span class="lineNum">     321 </span><span class="lineCov">        654 :         return [_pathRelativeToParent lastPathComponent];</span>
+<span class="lineNum">     322 </span><span class="lineCov">        654 :     }</span>
+<span class="lineNum">     323 </span><span class="lineCov">        221 : }</span>
 <span class="lineNum">     324 </span>            : 
 <span class="lineNum">     325 </span>            : - (NSString*) pathRelativeToProjectRoot {
-<span class="lineNum">     326 </span><span class="lineCov">        204 :     if (_pathRelativeToProjectRoot == nil) {</span>
+<span class="lineNum">     326 </span><span class="lineCov">        433 :     if (_pathRelativeToProjectRoot == nil) {</span>
 <span class="lineNum">     327 </span>            :         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-<span class="lineNum">     328 </span><span class="lineCov">        236 :         Group* group;</span>
+<span class="lineNum">     328 </span><span class="lineCov">        654 :         Group* group;</span>
 <span class="lineNum">     329 </span>            :         NSString* key = _key;
 <span class="lineNum">     330 </span><span class="lineCov">        295 : </span>
 <span class="lineNum">     331 </span><span class="lineCov">        295 :         while ((group = [_project groupForGroupMemberWithKey:key]) != nil &amp;&amp; !([group pathRelativeToParent] == nil)) {</span>
@@ -406,8 +406,8 @@
 <span class="lineNum">     348 </span>            : }
 <span class="lineNum">     349 </span>            : 
 <span class="lineNum">     350 </span>            : /* ================================================== Private Methods =============================================== */
-<span class="lineNum">     351 </span><span class="lineCov">          5 : #pragma mark Private</span>
-<span class="lineNum">     352 </span><span class="lineCov">          5 : - (void) addMemberWithKey:(NSString*)key {</span>
+<span class="lineNum">     351 </span><span class="lineCov">          6 : #pragma mark Private</span>
+<span class="lineNum">     352 </span><span class="lineCov">          6 : - (void) addMemberWithKey:(NSString*)key {</span>
 <span class="lineNum">     353 </span>            : 
 <span class="lineNum">     354 </span>            :     for (NSString* childKey in _children) {
 <span class="lineNum">     355 </span>            :         if ([childKey isEqualToString:key]) {
@@ -506,10 +506,10 @@
 <span class="lineNum">     448 </span><span class="lineCov">         15 : </span>
 <span class="lineNum">     449 </span><span class="lineCov">         15 : - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {</span>
 <span class="lineNum">     450 </span>            :     LogDebug(@&quot;Adding source file %@ to targets %@&quot;, sourceFile, targets);
-<span class="lineNum">     451 </span><span class="lineCov">       1804 :     for (Target* target in targets) {</span>
-<span class="lineNum">     452 </span><span class="lineCov">       1804 :         [target addMember:sourceFile];</span>
-<span class="lineNum">     453 </span><span class="lineCov">       1804 :     }</span>
-<span class="lineNum">     454 </span><span class="lineCov">       1804 : }</span>
+<span class="lineNum">     451 </span><span class="lineCov">       2078 :     for (Target* target in targets) {</span>
+<span class="lineNum">     452 </span><span class="lineCov">       2078 :         [target addMember:sourceFile];</span>
+<span class="lineNum">     453 </span><span class="lineCov">       2078 :     }</span>
+<span class="lineNum">     454 </span><span class="lineCov">       2078 : }</span>
 <span class="lineNum">     455 </span>            : 
 <span class="lineNum">     456 </span>            : @end
 </pre>

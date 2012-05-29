@@ -73,8 +73,8 @@
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : @implementation NSDictionary (XcodeFileType)
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">       4590 : + (NSDictionary*) dictionaryWithFileReferenceTypesAsStrings {</span>
-<span class="lineNum">      19 </span><span class="lineCov">       4590 :     return [NSDictionary dictionaryWithObjectsAndKeys:</span>
+<span class="lineNum">      18 </span><span class="lineCov">       4656 : + (NSDictionary*) dictionaryWithFileReferenceTypesAsStrings {</span>
+<span class="lineNum">      19 </span><span class="lineCov">       4656 :     return [NSDictionary dictionaryWithObjectsAndKeys:</span>
 <span class="lineNum">      20 </span>            :             boxEnum(SourceCodeHeader), @&quot;sourcecode.c.h&quot;,
 <span class="lineNum">      21 </span>            :                         boxEnum(SourceCodeObjC), @&quot;sourcecode.c.objc&quot;,
 <span class="lineNum">      22 </span>            :                         boxEnum(Framework), @&quot;wrapper.framework&quot;,
@@ -98,16 +98,16 @@
 <span class="lineNum">      40 </span>            : }
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">       4572 : - (XcodeSourceFileType) asSourceFileType {</span>
-<span class="lineNum">      44 </span><span class="lineCov">       4572 :     NSDictionary* typeStrings = [NSDictionary dictionaryWithFileReferenceTypesAsStrings];</span>
+<span class="lineNum">      43 </span><span class="lineCov">       4638 : - (XcodeSourceFileType) asSourceFileType {</span>
+<span class="lineNum">      44 </span><span class="lineCov">       4638 :     NSDictionary* typeStrings = [NSDictionary dictionaryWithFileReferenceTypesAsStrings];</span>
 <span class="lineNum">      45 </span>            :     
-<span class="lineNum">      46 </span><span class="lineCov">       4572 :     if ([typeStrings objectForKey:self]) {</span>
-<span class="lineNum">      47 </span><span class="lineCov">       4252 :         return (XcodeSourceFileType) [[typeStrings objectForKey:self] intValue];</span>
+<span class="lineNum">      46 </span><span class="lineCov">       4638 :     if ([typeStrings objectForKey:self]) {</span>
+<span class="lineNum">      47 </span><span class="lineCov">       4296 :         return (XcodeSourceFileType) [[typeStrings objectForKey:self] intValue];</span>
 <span class="lineNum">      48 </span>            :     }
 <span class="lineNum">      49 </span>            :     else {
-<span class="lineNum">      50 </span><span class="lineCov">        320 :         return FileTypeNil;</span>
+<span class="lineNum">      50 </span><span class="lineCov">        342 :         return FileTypeNil;</span>
 <span class="lineNum">      51 </span>            :     }
-<span class="lineNum">      52 </span><span class="lineCov">       4572 : }</span>
+<span class="lineNum">      52 </span><span class="lineCov">       4638 : }</span>
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : /* ================================================== Private Methods =============================================== */
 <span class="lineNum">      55 </span>            : 

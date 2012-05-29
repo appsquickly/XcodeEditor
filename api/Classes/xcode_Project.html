@@ -60,11 +60,9 @@
 	
 	<option value="//api/name/groupForGroupMemberWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- groupForGroupMemberWithKey:</option>
 	
-	<option value="//api/name/groupWithDisplayNamePathRelativeToParent:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithDisplayNamePathRelativeToParent:</option>
-	
 	<option value="//api/name/groupWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithKey:</option>
 	
-	<option value="//api/name/groupWithPathRelativeToParent:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithPathRelativeToParent:</option>
+	<option value="//api/name/groupWithPathFromRoot:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithPathFromRoot:</option>
 	
 	<option value="//api/name/groups">&nbsp;&nbsp;&nbsp;&nbsp;- groups</option>
 	
@@ -136,11 +134,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupForGroupMemberWithKey:">groupForGroupMemberWithKey:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithDisplayNamePathRelativeToParent:">groupWithDisplayNamePathRelativeToParent:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithKey:">groupWithKey:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithPathRelativeToParent:">groupWithPathRelativeToParent:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithPathFromRoot:">groupWithPathFromRoot:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groups">groups</a></span></li>
 	
@@ -312,14 +308,7 @@ which one is returned is undefined.</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/groupWithPathRelativeToParent:">&ndash;&nbsp;groupWithPathRelativeToParent:</a></code>
-		<span class="tooltip"><p>Returns the group with the specified path &ndash; the directory relative to the group&rsquo;s parent. Eg Source/Main</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/groupWithDisplayNamePathRelativeToParent:">&ndash;&nbsp;groupWithDisplayNamePathRelativeToParent:</a></code>
+		<code><a href="#//api/name/groupWithPathFromRoot:">&ndash;&nbsp;groupWithPathFromRoot:</a></code>
 		<span class="tooltip"><p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p></span>
 	</span>
 	
@@ -577,47 +566,6 @@ which one is returned is undefined.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/groupWithDisplayNamePathRelativeToParent:" title="groupWithDisplayNamePathRelativeToParent:"></a>
-	<h3 class="subsubtitle method-title">groupWithDisplayNamePathRelativeToParent:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (xcode_Group *)groupWithDisplayNamePathRelativeToParent:(NSString *)<em>path</em></code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">xcode_Project.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/groupWithKey:" title="groupWithKey:"></a>
 	<h3 class="subsubtitle method-title">groupWithKey:</h3>
 	
@@ -659,18 +607,18 @@ which one is returned is undefined.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/groupWithPathRelativeToParent:" title="groupWithPathRelativeToParent:"></a>
-	<h3 class="subsubtitle method-title">groupWithPathRelativeToParent:</h3>
+	<a name="//api/name/groupWithPathFromRoot:" title="groupWithPathFromRoot:"></a>
+	<h3 class="subsubtitle method-title">groupWithPathFromRoot:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the group with the specified path &ndash; the directory relative to the group&rsquo;s parent. Eg Source/Main</p>
+		<p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (xcode_Group *)groupWithPathRelativeToParent:(NSString *)<em>path</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (xcode_Group *)groupWithPathFromRoot:(NSString *)<em>path</em></code></div>
 
     
 	
@@ -682,7 +630,7 @@ which one is returned is undefined.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the group with the specified path &ndash; the directory relative to the group&rsquo;s parent. Eg Source/Main</p>
+		<p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p>
 	</div>
 	
 	
