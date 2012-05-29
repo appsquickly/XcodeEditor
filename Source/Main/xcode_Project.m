@@ -14,7 +14,6 @@
 #import "xcode_SourceFile.h"
 #import "xcode_Target.h"
 #import "xcode_FileOperationQueue.h"
-#import "XcodeSourceFileType.h"
 
 
 /* ================================================================================================================== */
@@ -168,23 +167,17 @@
     return nil;
 }
 
-- (Group*) groupWithPathRelativeToParent:(NSString*)path {
-    for (Group* group in [self groups]) {
-        if ([group.pathRelativeToParent isEqualToString:path]) {
-            return group;
-        }
-    }
-    return nil;
-}
-
-- (Group*) groupWithDisplayNamePathRelativeToParent:(NSString*)path {
-    NSArray * pathItems = [path componentsSeparatedByString:@"/"];
-    Group * currentGroup = [self rootGroup];
-    for (NSString * pathItem in pathItems) {
+//TODO: This could fail if the path attribute on a given group is more than one directory. Start with candidates and
+//TODO: search backwards.
+- (Group*) groupWithPathFromRoot:(NSString*)path {
+    NSArray* pathItems = [path componentsSeparatedByString:@"/"];
+    Group* currentGroup = [self rootGroup];
+    for (NSString* pathItem in pathItems) {
         id<XcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
         if ([group isKindOfClass:[Group class]]) {
             currentGroup = group;
-        } else {
+        }
+        else {
             return nil;
         }
     }

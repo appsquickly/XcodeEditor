@@ -38,7 +38,7 @@ SPEC_BEGIN(GroupSpec)
 
         beforeEach(^{
             project = [[Project alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
-            group = [project groupWithPathRelativeToParent:@"Source/Main"];
+            group = [project groupWithPathFromRoot:@"Source/Main"];
             [group shouldNotBeNil];
         });
 
@@ -147,7 +147,7 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow adding files of type obc-c++", ^{
 
                 Project* anotherProject = [Project projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
-                Group* anotherGroup = [anotherProject groupWithPathRelativeToParent:@"Source"];
+                Group* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
                 ClassDefinition* classDefinition =
                         [ClassDefinition classDefinitionWithName:@"HelloWorldLayer" language:ObjectiveCPlusPlus];
@@ -302,13 +302,13 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow deleting a group, optionally removing also the contents.", ^{
 
-                Group* group = [project groupWithPathRelativeToParent:@"Tests"];
+                Group* group = [project groupWithPathFromRoot:@"Tests"];
                 [group shouldNotBeNil];
 
                 [group removeFromParentGroup:YES];
                 [project save];
 
-                Group* deleted = [project groupWithPathRelativeToParent:@"Tests"];
+                Group* deleted = [project groupWithPathFromRoot:@"Tests"];
                 [deleted shouldBeNil];
 
             });
