@@ -100,15 +100,9 @@
 - (xcode_Group*) groupWithKey:(NSString*)key;
 
 /**
-* Returns the group with the specified path - the directory relative to the group's parent. Eg Source/Main
-*/
-- (xcode_Group*) groupWithPathRelativeToParent:(NSString*)path;
-
-/**
  * Returns the group with the specified display name path - the directory relative to the root group. Eg Source/Main
  */
-- (xcode_Group*) groupWithDisplayNamePathRelativeToParent:(NSString*)path;
-
+- (xcode_Group*) groupWithPathFromRoot:(NSString*)path;
 
 /**
 * Returns the parent group for the group or file with the given key;

@@ -167,16 +167,9 @@
     return nil;
 }
 
-- (Group*) groupWithPathRelativeToParent:(NSString*)path {
-    for (Group* group in [self groups]) {
-        if ([group.pathRelativeToParent isEqualToString:path]) {
-            return group;
-        }
-    }
-    return nil;
-}
-
-- (Group*) groupWithDisplayNamePathRelativeToParent:(NSString*)path {
+//TODO: This could fail if the path attribute on a given group is more than one directory. Start with candidates and
+//TODO: search backwards.
+- (Group*) groupWithPathFromRoot:(NSString*)path {
     NSArray* pathItems = [path componentsSeparatedByString:@"/"];
     Group* currentGroup = [self rootGroup];
     for (NSString* pathItem in pathItems) {

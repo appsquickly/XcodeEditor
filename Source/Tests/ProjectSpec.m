@@ -19,7 +19,7 @@ SPEC_BEGIN(ProjectSpec)
             project = [[Project alloc] initWithFilePath:@"/tmp"];
         });
 
-        describe(@"Listing files files", ^{
+        describe(@"Listing files", ^{
 
             it(@"should be able to list all the header files in a project.", ^{
 
@@ -85,6 +85,13 @@ SPEC_BEGIN(ProjectSpec)
 
             });
 
+            it(@"should provide a way to locate a group from it's path to the root group", ^{
+
+                Group* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
+                [group shouldNotBeNil];
+                LogDebug(@"Group: %@", group);
+
+            });
 
 
         });
