@@ -17,6 +17,7 @@
 @class xcode_FileOperationQueue;
 @class xcode_SourceFile;
 @class xcode_Target;
+@class xcode_XcodeprojDefinition;
 
 
 @interface xcode_Project : NSObject {
@@ -43,7 +44,7 @@
 /* ================================================================================================================== */
 #pragma mark Build Products
 
-- (NSArray*) buildProducts;
+- (void)addProxies:(xcode_XcodeprojDefinition *)xcodeproj;
 
 #pragma mark Files
 /**

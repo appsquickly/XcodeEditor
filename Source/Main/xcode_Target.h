@@ -22,6 +22,8 @@
     __weak xcode_Project* _project;
     NSString* _key;
     NSString* _name;
+    NSString* _productName;
+    NSString* _productReference;
 
 @private
     NSMutableArray* _members;
@@ -29,10 +31,12 @@
 
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong, readonly) NSString* productName;
+@property(nonatomic, strong, readonly) NSString* productReference;
 
-+ (xcode_Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name;
++ (xcode_Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
 
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name;
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
 
 - (NSArray*) members;
 
