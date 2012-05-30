@@ -41,6 +41,10 @@
 - (id) initWithFilePath:(NSString*)filePath;
 
 /* ================================================================================================================== */
+#pragma mark Build Products
+
+- (NSArray*) buildProducts;
+
 #pragma mark Files
 /**
 * Returns all file resources in the project, as an array of `xcode_SourceFile` objects.

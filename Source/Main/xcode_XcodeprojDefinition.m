@@ -17,6 +17,8 @@
 @synthesize sourceFileName = _sourceFileName;
 @synthesize path = _path;
 @synthesize type = _type;
+@synthesize subproject = _subproject;
+@synthesize buildProducts = _buildProducts;
 
 /* ================================================= Class Methods ================================================== */
 + (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
@@ -25,12 +27,16 @@
 }
 
 /* ================================================== Initializers ================================================== */
+
+// TODO path is fully qualified;  want _path to be relative to SRCROOT
 - (id) initWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
     self = [super init];
     if (self) {
         _sourceFileName = [name copy];
         _path = [path copy];
         _type = type;
+        _subproject = [[Project alloc] initWithFilePath:[NSString stringWithFormat:@"%@/%@/.xcodeproj", path, name]];
+        _buildProducts = [_subproject buildProducts];
     }
     return self;
 }

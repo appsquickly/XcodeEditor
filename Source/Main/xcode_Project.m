@@ -53,6 +53,24 @@
 
 
 /* ================================================ Interface Methods =============================================== */
+
+#pragma mark Build Products
+
+- (NSArray *) buildProducts {
+    NSMutableArray* results = [NSMutableArray array];
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
+            NSString *productRefGroupKey = [obj valueForKey:@"productRefGroup"];
+            NSDictionary *products = [[self objects] valueForKey:productRefGroupKey];
+            NSArray *children = [products valueForKey:@"children"];
+            for (NSString *child in children) {
+                [results addObject:[[self objects] valueForKey:child]];
+            }
+        }
+    }];
+    return results;
+}
+
 #pragma mark Files
 
 - (NSArray*) files {

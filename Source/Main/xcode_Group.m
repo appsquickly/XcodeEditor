@@ -28,6 +28,9 @@
 - (void) makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
+- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+              fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+
 - (void) addMemberWithKey:(NSString*)key;
 
 - (void) flagMembersAsDirty;
@@ -234,13 +237,12 @@
 }
 
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+    // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition xcodeprojFullPathName] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
-    // PBXContainerItemProxy
-    // PBXProject
-    // PBXReferenceProxy (new section)
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
+// TODO implement
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     [self addXcodeproj:xcodeprojDefinition];
 //    SourceFile* sourceFile = [_project fileWithName:[xcodeprojDefinition xcodeprojFileName]];
@@ -433,6 +435,7 @@
 }
 
 /* ================================================================================================================== */
+
 #pragma mark Dictionary Representations
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {

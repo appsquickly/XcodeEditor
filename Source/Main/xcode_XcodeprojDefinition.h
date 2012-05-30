@@ -12,17 +12,22 @@
 #import <Foundation/Foundation.h>
 #import "xcode_AbstractDefinition.h"
 #import "XcodeSourceFileType.h"
+#import "xcode_Project.h"
 
 @interface xcode_XcodeprojDefinition : xcode_AbstractDefinition {
     
     NSString* _sourceFileName;
     NSString* _path;
     XcodeSourceFileType _type;
+    Project* _subproject;
+    NSArray* _buildProducts;
 }
 
 @property(nonatomic, strong, readonly) NSString* sourceFileName;
 @property(nonatomic, strong, readonly) NSString* path;
 @property(nonatomic, readonly) XcodeSourceFileType type;
+@property(nonatomic, strong, readonly) Project* subproject;
+@property(nonatomic, strong, readonly) NSArray* buildProducts;
 
 + (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type;
 
