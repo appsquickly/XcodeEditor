@@ -31,6 +31,10 @@
 - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
               fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
+- (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition;
+
+- (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition withKey:(NSString*)productKey;
+
 - (void) addMemberWithKey:(NSString*)key;
 
 - (void) flagMembersAsDirty;
@@ -244,23 +248,11 @@
     // create PBXContainerItemProxies and PBXReferenceProxies
     [_project addProxies:xcodeprojDefinition];
     
-    // TODO move this into its own method
     // create new Products PBXGroup for build products of subproject
-    // the keys for the children point to PBXReferenceProxies instead of PBXFileReferences
-    NSMutableArray* children = [[NSMutableArray alloc] init];
-    for (NSString* productName in [xcodeprojDefinition buildProducts]) {
-        [children addObject:[_project referenceProxyKeyForName:productName]];
-    }
-    NSString* productKey = [[KeyBuilder forItemNamed:@"Products"] build];
-    Group* productsGroup = [Group groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
-    [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];
+    NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
     
-    // add projectReferences key to PBXProject, pointing to new projects group and the file reference for the xcodeproj file
-    NSMutableDictionary* projectGroup = [[_project PBXProject] mutableCopy];
-    NSString* projectGroupKey = [_project PBXProjectKey];
-    NSMutableArray* projectReferences = [NSMutableArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition xcodeprojFullPathName]] key], @"ProjectRef", nil]];
-    [projectGroup setObject:projectReferences forKey:@"projectReferences"];
-    [[_project objects] setObject:projectGroup forKey:projectGroupKey];
+    // add projectReferences key to PBXProject
+    [self addProductsGroupToProject:xcodeprojDefinition withKey:productKey];
 }
 
 // TODO implement
@@ -453,6 +445,25 @@
         [[_project objects] setObject:reference forKey:fileKey];
         [self addMemberWithKey:fileKey];
     }
+}
+
+- (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition {
+    NSMutableArray* children = [[NSMutableArray alloc] init];
+    for (NSString* productName in [xcodeprojDefinition buildProducts]) {
+        [children addObject:[_project referenceProxyKeyForName:productName]];
+    }
+    NSString* productKey = [[KeyBuilder forItemNamed:@"Products"] build];
+    Group* productsGroup = [Group groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
+    [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];
+    return productKey;
+}
+
+- (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition withKey:(NSString*)productKey {
+    NSMutableDictionary* projectGroup = [[_project PBXProject] mutableCopy];
+    NSString* projectGroupKey = [_project PBXProjectKey];
+    NSMutableArray* projectReferences = [NSMutableArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition xcodeprojFullPathName]] key], @"ProjectRef", nil]];
+    [projectGroup setObject:projectReferences forKey:@"projectReferences"];
+    [[_project objects] setObject:projectGroup forKey:projectGroupKey];
 }
 
 /* ================================================================================================================== */
