@@ -48,5 +48,22 @@
     return [NSString stringWithFormat:@"%@/%@", _path, [_sourceFileName stringByAppendingString:@".xcodeproj"]];
 }
 
+// returns an array of names of the build products of this project
+- (NSArray *) buildProducts {
+    NSMutableArray* results = [NSMutableArray array];
+    NSDictionary* objects = [_subproject objects];
+    [objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
+            NSString *productRefGroupKey = [obj valueForKey:@"productRefGroup"];
+            NSDictionary *products = [objects valueForKey:productRefGroupKey];
+            NSArray *children = [products valueForKey:@"children"];
+            for (NSString *childKey in children) {
+                NSDictionary* child = [objects valueForKey:childKey];
+                [results addObject:[child valueForKey:@"path"]];
+            }
+        }
+    }];
+    return results;
+}
 
 @end

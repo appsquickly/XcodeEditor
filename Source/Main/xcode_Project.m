@@ -205,6 +205,40 @@
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
+- (NSString*) referenceProxyKeyForName:(NSString*)name {
+    __block NSString* result;
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy) {
+            if ([[obj valueForKey:@"path"] isEqualTo:name]) {
+                result = key;
+                *stop = YES;
+            }
+        }
+    }];
+    return result;
+}
+
+- (NSDictionary*) PBXProject {
+    __block NSDictionary* result;
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
+            result = obj;
+            *stop = YES;       
+        }
+    }];
+    return result;    
+}
+
+- (NSString*) PBXProjectKey {
+    __block NSString* result;
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
+            result = key;
+            *stop = YES;       
+        }
+    }];
+    return result;        
+}
 
 /* ================================================================================================================== */
 #pragma mark Groups

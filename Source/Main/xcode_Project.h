@@ -87,6 +87,12 @@
 
 - (NSArray*) imagePNGFiles;
 
+- (NSString*) referenceProxyKeyForName:(NSString*)name;
+
+- (NSDictionary*) PBXProject;
+
+- (NSString*) PBXProjectKey;
+
 /* ================================================================================================================== */
 #pragma mark Groups
 /**
