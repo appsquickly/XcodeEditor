@@ -93,6 +93,10 @@
 
 - (NSString*) PBXProjectKey;
 
+- (NSArray*) buildProductsForTargets;
+
+- (void)addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+
 /* ================================================================================================================== */
 #pragma mark Groups
 /**

@@ -142,6 +142,8 @@
  */
 - (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
 
+- (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+
 /* ================================================================================================================== */
 #pragma mark Locating children
 /**

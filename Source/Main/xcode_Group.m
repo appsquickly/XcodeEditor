@@ -240,6 +240,7 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
+// TODO could some of this logic be moved into either xcode_XcodeprojDefinition or xcode_BuildProduct?
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition xcodeprojFullPathName] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
@@ -255,11 +256,16 @@
     [self addProductsGroupToProject:xcodeprojDefinition withKey:productKey];
 }
 
-// TODO implement
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     [self addXcodeproj:xcodeprojDefinition];
-//    SourceFile* sourceFile = [_project fileWithName:[xcodeprojDefinition xcodeprojFileName]];
-//    [self addSourceFile:sourceFile toTargets:targets];
+    
+    // add subproject's build products to targets (does not add the subproject's test bundle)
+    NSArray* buildProductFiles = [_project buildProductsForTargets];
+    for (SourceFile* file in buildProductFiles) {
+        [self addSourceFile:file toTargets:targets];
+    }
+    // add main target of subproject as target dependency to main target of project
+    [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
 }
 
 /* ================================================================================================================== */

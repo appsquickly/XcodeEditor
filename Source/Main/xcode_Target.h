@@ -46,6 +46,8 @@
 
 - (void) removeMembersWithKeys:(NSArray*)keys;
 
+- (void) addDependency:(NSString*)key;
+
 @end
 
 /* ================================================================================================================== */

@@ -143,6 +143,12 @@
     }
 }
 
+- (void) addDependency:(NSString*)key {
+    NSDictionary* targetObj = [[_project objects] objectForKey:_key];
+    NSMutableArray* dependencies = [targetObj valueForKey:@"dependencies"];
+    [dependencies addObject:key];
+}
+
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
