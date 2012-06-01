@@ -240,7 +240,6 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
-// TODO could some of this logic be moved into either xcode_XcodeprojDefinition or xcode_BuildProduct?
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition xcodeprojFullPathName] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];

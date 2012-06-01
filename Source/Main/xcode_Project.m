@@ -75,7 +75,7 @@
 }
 
 - (NSString*) makeContainerItemProxyForName:(NSString*)name fileRef:(NSString*)fileRef proxyType:(NSString*)proxyType {
-    // remove one if it exists
+    // remove old if it exists
     NSString *existingProxyKey = [self findContainerItemProxyForName:name proxyType:proxyType];
     if (existingProxyKey) {
         [[self objects] removeObjectForKey:existingProxyKey];
@@ -96,26 +96,26 @@
     return key;
 }
 
-- (NSDictionary*) findReferenceProxyForName:(NSString*)name {
-    __block NSDictionary* proxy = nil;
+- (NSString*) findReferenceProxyForName:(NSString*)name {
+    __block NSString* proxyKey = nil;
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy) {
             NSString* path = [obj valueForKey:@"path"];
             if ([path isEqualToString:name]) {
-                proxy = obj;
+                proxyKey = key;
                 *stop = YES;
             }
         }
     }];
-    return proxy;
+    return proxyKey;
 }
 
-- (void)makeReferenceProxyForContainerItemProxy:(NSString*)containerItemProxyKey buildProductReference:(NSDictionary*)buildProductReference {
+- (void) makeReferenceProxyForContainerItemProxy:(NSString*)containerItemProxyKey buildProductReference:(NSDictionary*)buildProductReference {
     NSString* path = [buildProductReference valueForKey:@"path"];
-    // remove one if it exists
-    NSDictionary *existingProxy = [self findReferenceProxyForName:path];
-    if (existingProxy) {
-        [[self objects] removeObjectForKey:[existingProxy valueForKey:@"key"]];
+    // remove old if it exists
+    NSString *existingProxyKey = [self findReferenceProxyForName:path];
+    if (existingProxyKey) {
+        [[self objects] removeObjectForKey:existingProxyKey];
     }
     // make new one
     NSMutableDictionary* proxy = [NSMutableDictionary dictionary];
@@ -129,7 +129,37 @@
     [[self objects] setObject:proxy forKey:key];
 }
 
-- (void)addProxies:(XcodeprojDefinition *)xcodeproj {
+- (NSString*) findTargetDependencyForName:(NSString*)name {
+    __block NSString* dependencyKey = nil;
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXTargetDependency) {
+            NSString* targetName = [obj valueForKey:@"name"];
+            if ([targetName isEqualToString:name]) {
+                dependencyKey = key;
+                *stop = YES;
+            }
+        }
+    }];
+    return dependencyKey;
+}
+
+- (NSString*) makeTargetDependency:(NSString*)name forContainerItemProxyKey:(NSString*)containerItemProxyKey {
+    // remove old if it exists
+    NSString *existingDependencyKey = [self findTargetDependencyForName:name];
+    if (existingDependencyKey) {
+        [[self objects] removeObjectForKey:existingDependencyKey];
+    }
+    // make new one
+    NSMutableDictionary *targetDependency = [NSMutableDictionary dictionary];
+    [targetDependency setObject:[NSString stringFromMemberType:PBXTargetDependency] forKey:@"isa"];
+    [targetDependency setObject:name forKey:@"name"];
+    [targetDependency setObject:containerItemProxyKey forKey:@"targetProxy"];
+    NSString* targetDependencyKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", name]] build];
+    [[self objects] setObject:targetDependency forKey:targetDependencyKey];
+    return targetDependencyKey;
+}
+
+- (void) addProxies:(XcodeprojDefinition *)xcodeproj {
     NSString* fileRef = [[self fileWithName:[xcodeproj xcodeprojFullPathName]] key];
     for (NSDictionary* target in [xcodeproj.subproject targets]) {
         NSString* containerItemProxyKey = [self makeContainerItemProxyForName:[target valueForKey:@"productName"] fileRef:fileRef proxyType:@"2"];
@@ -161,18 +191,13 @@
     return results;
 }
 
-- (void)addAsTargetDependency:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+- (void) addAsTargetDependency:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     // make a new PBXContainerItemProxy
     NSString* name = [xcodeprojDefinition sourceFileName];
     NSString* key = [[self fileWithName:[xcodeprojDefinition xcodeprojFullPathName]] key];
     NSString* containerItemProxyKey = [self makeContainerItemProxyForName:name fileRef:key proxyType:@"1"];
     // make a PBXTargetDependency
-    NSMutableDictionary *targetDependency = [NSMutableDictionary dictionary];
-    [targetDependency setObject:[NSString stringFromMemberType:PBXTargetDependency] forKey:@"isa"];
-    [targetDependency setObject:name forKey:@"name"];
-    [targetDependency setObject:containerItemProxyKey forKey:@"targetProxy"];
-    NSString* targetDependencyKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", name]] build];
-    [[self objects] setObject:targetDependency forKey:targetDependencyKey];
+    NSString* targetDependencyKey = [self makeTargetDependency:name forContainerItemProxyKey:containerItemProxyKey];
     // add entry in each targets dependencies list
     for (Target* target in targets) {
         [target addDependency:targetDependencyKey];

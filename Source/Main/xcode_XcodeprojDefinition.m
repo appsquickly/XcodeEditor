@@ -27,7 +27,6 @@
 
 /* ================================================== Initializers ================================================== */
 
-// TODO path is fully qualified;  want _path to be relative to SRCROOT
 - (id) initWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
     self = [super init];
     if (self) {
@@ -64,6 +63,11 @@
         }
     }];
     return results;
+}
+
+/* ================================================== Utility Methods =============================================== */
+- (NSString*) description {
+    return [NSString stringWithFormat:@"XcodeprojDefinition: sourceFileName = %@, path=%@, type=%@", _sourceFileName, _path, _type];
 }
 
 @end

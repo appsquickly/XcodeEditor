@@ -40,6 +40,4 @@
 @end
 /* ================================================================================================================== */
 
-// TODO write a description method
-
 @compatibility_alias XcodeprojDefinition xcode_XcodeprojDefinition;

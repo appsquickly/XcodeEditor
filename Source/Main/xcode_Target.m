@@ -146,7 +146,16 @@
 - (void) addDependency:(NSString*)key {
     NSDictionary* targetObj = [[_project objects] objectForKey:_key];
     NSMutableArray* dependencies = [targetObj valueForKey:@"dependencies"];
-    [dependencies addObject:key];
+    // add only if not already there
+    BOOL found = NO;
+    for (NSString* dependency in dependencies) {
+        if ([dependency isEqualToString:key]) {
+            found = YES;
+            break;
+        }
+    }
+    if (!found)
+        [dependencies addObject:key];
 }
 
 
