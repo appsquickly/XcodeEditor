@@ -160,7 +160,7 @@
 }
 
 - (void) addProxies:(XcodeprojDefinition *)xcodeproj {
-    NSString* fileRef = [[self fileWithName:[xcodeproj xcodeprojFullPathName]] key];
+    NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
     for (NSDictionary* target in [xcodeproj.subproject targets]) {
         NSString* containerItemProxyKey = [self makeContainerItemProxyForName:[target valueForKey:@"productName"] fileRef:fileRef proxyType:@"2"];
         NSString* productFileReferenceKey = [target valueForKey:@"productReference"];
@@ -194,7 +194,7 @@
 - (void) addAsTargetDependency:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     // make a new PBXContainerItemProxy
     NSString* name = [xcodeprojDefinition sourceFileName];
-    NSString* key = [[self fileWithName:[xcodeprojDefinition xcodeprojFullPathName]] key];
+    NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
     NSString* containerItemProxyKey = [self makeContainerItemProxyForName:name fileRef:key proxyType:@"1"];
     // make a PBXTargetDependency
     NSString* targetDependencyKey = [self makeTargetDependency:name forContainerItemProxyKey:containerItemProxyKey];
@@ -302,6 +302,10 @@
         }
     }];
     return result;        
+}
+
+- (NSString*) path {
+    return _filePath;
 }
 
 /* ================================================================================================================== */

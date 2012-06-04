@@ -18,6 +18,7 @@
 @synthesize path = _path;
 @synthesize type = _type;
 @synthesize subproject = _subproject;
+@synthesize pathRelativeToProjectRoot = _pathRelativeToProjectRoot;
 
 /* ================================================= Class Methods ================================================== */
 + (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
@@ -27,6 +28,10 @@
 
 /* ================================================== Initializers ================================================== */
 
+// Note - because _path is used to find the external project, it's often going to be an absoulute path name.
+// We will need to convert it into a path relative to SRCROOT, but can't do that here as we don't have access
+// to the project.  It has to be done at the time this object is added to the group, which is part of the
+// project.
 - (id) initWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
     self = [super init];
     if (self) {

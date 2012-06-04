@@ -97,6 +97,8 @@
 
 - (void)addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
+- (NSString*) path;
+
 /* ================================================================================================================== */
 #pragma mark Groups
 /**

@@ -47,6 +47,8 @@
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
 
+- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath;
+
 @end
 /* ================================================================================================================== */
 
@@ -241,8 +243,11 @@
 }
 
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+    // set xcodeproj's path relative to the project root
+    xcodeprojDefinition.pathRelativeToProjectRoot = [self makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
+    
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
-    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition xcodeprojFullPathName] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
     
     // create PBXContainerItemProxies and PBXReferenceProxies
@@ -440,9 +445,33 @@
     }
 }
 
+- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath {
+    NSMutableArray* projectPathComponents = [[[_project path] pathComponents] mutableCopy];
+    NSArray* objectPathComponents = [fullPath pathComponents];
+    NSString* convertedPath = [[NSString alloc] init];
+    
+    // skip over path components from root that are equal
+    int limit = ([projectPathComponents count] > [objectPathComponents count]) ? [projectPathComponents count] : [objectPathComponents count];
+    int index1 = 0;
+    for (; index1 < limit; index1++) {
+        if ([[projectPathComponents objectAtIndex:index1] isEqualToString:[objectPathComponents objectAtIndex:index1]])
+            continue;
+        else
+            break;
+    }
+    // insert "../" for each remaining path component in project's xcodeproj path
+    for (int index2 = 0; index2 < ([projectPathComponents count] - index1); index2++) {
+        convertedPath = [convertedPath stringByAppendingString:@"../"];
+    }
+    // tack on the unique part of the object's path
+    for (int index3 = index1; index3 < [objectPathComponents count] - 1; index3++) {
+        convertedPath = [convertedPath stringByAppendingFormat:@"%@/", [objectPathComponents objectAtIndex:index3]];
+    }
+    return [convertedPath stringByAppendingString:[objectPathComponents lastObject]];
+}
+
 - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
               fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
-    
     SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil) {
         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
@@ -466,7 +495,7 @@
 - (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition withKey:(NSString*)productKey {
     NSMutableDictionary* projectGroup = [[_project PBXProject] mutableCopy];
     NSString* projectGroupKey = [_project PBXProjectKey];
-    NSMutableArray* projectReferences = [NSMutableArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition xcodeprojFullPathName]] key], @"ProjectRef", nil]];
+    NSMutableArray* projectReferences = [NSMutableArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key], @"ProjectRef", nil]];
     [projectGroup setObject:projectReferences forKey:@"projectReferences"];
     [[_project objects] setObject:projectGroup forKey:projectGroupKey];
 }
