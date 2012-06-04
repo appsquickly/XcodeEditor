@@ -520,7 +520,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "unzip -d /tmp/ -o ${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip\nunzip -d /tmp/ -o ${SRCROOT}/Source/Tests/Resources/HelloBoxy.zip\n\ncp ${SRCROOT}/Source/Tests/Resources/project.pbxproj /tmp";
+			shellScript = "unzip -d /tmp/ -o \"${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip\"\nunzip -d /tmp/ -o \"${SRCROOT}/Source/Tests/Resources/HelloBoxy.zip\"\n\ncp \"${SRCROOT}/Source/Tests/Resources/project.pbxproj\" /tmp";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -105,17 +105,17 @@
 
         <echo file="${temp.dir}/geninfo.sh">
             #!/bin/sh
-            geninfo ${temp.dir}/coverage-data/*.gcda --no-recursion -o ${temp.dir}/coverage-temp.info
+            geninfo "${temp.dir}/coverage-data/"*.gcda --no-recursion -o "${temp.dir}/coverage-temp.info"
             #Remove symbols we're not interested in.
-            lcov -r ${temp.dir}/coverage-temp.info _string.h > ${temp.dir}/coverage.info
+            lcov -r "${temp.dir}/coverage-temp.info" _string.h > "${temp.dir}/coverage.info"
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
         <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
 
         <echo file="${temp.dir}/genhtml.sh">
             #!/bin/sh
-            genhtml -p ${source.main.dir} --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
-            --prefix ${basedir} ${temp.dir}/coverage.info
+            genhtml -p "${source.main.dir}" --no-function-coverage --no-branch-coverage -o "${coverage.reports.dir}" \
+            --prefix "${basedir}" "${temp.dir}/coverage.info"
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
         <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true"/>
@@ -129,7 +129,9 @@
         <!-- In case it's turned up somehow, despite cleaning up. -->
         <delete file="${basedir}/docset-installed.txt"/>
 
-        <pathconvert pathsep=" " property="doc.files.list" refid="headers"/>
+        <pathconvert pathsep=" " property="doc.files.list" refid="headers">
+	    <map from='${source.main.dir}' to='"${source.main.dir}"' />
+	</pathconvert>
         <echo message="Documenting: ${doc.files.list}"/>
 
         <exec executable="appledoc">
