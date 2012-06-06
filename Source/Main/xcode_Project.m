@@ -378,7 +378,7 @@
                 if ([[obj valueForKey:@"remoteRef"] isEqualToString:identifier]) {
                     [returnValue addObject:key];
                 }
-            } else if (memberType == PBXTargetDependency) {
+            } else if (memberType == PBXTargetDependency || memberType == PBXGroup) {
                 if ([[obj valueForKey:@"name"] isEqualToString:identifier]) {
                     [returnValue addObject:key];
                 }
@@ -387,6 +387,10 @@
                     if ([dependencyKey isEqualToString:identifier]) {
                         [returnValue addObject:key];
                     }
+                }
+            } else if (memberType == PBXBuildFile) {
+                if ([[obj valueForKey:@"fileRef"] isEqualToString:identifier]) {
+                    [returnValue addObject:key];
                 }
             }
         }

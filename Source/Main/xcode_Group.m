@@ -262,7 +262,6 @@
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
-    // TODO should this be using xcodeprojDefinition._subproject instead of _project?
     NSArray* buildProductFiles = [_project buildProductsForTargets];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
@@ -271,8 +270,10 @@
     [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
 }
 
-// TODO does not work on second run
 - (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+    if (xcodeprojDefinition == nil)
+        return;
+    
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
@@ -300,38 +301,51 @@
     NSMutableDictionary* currentGroup = [[_project objects] valueForKey:_key];
     NSMutableArray* children = [currentGroup valueForKey:@"children"];
     [children removeObject:xcodeprojKey];
-    NSMutableArray* productsGroups = [[NSMutableArray alloc] init];
+    NSString* productsGroupKey;
     // remove entry from PBXProject's projectReferences, and remove it entirely if it's empty
     for (NSDictionary* projectRef in projectReferences) {
         if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:xcodeprojKey]) {
-            [productsGroups addObject:[projectRef valueForKey:@"ProductGroup"]];
+            // TODO - abort if it's already set
+            productsGroupKey = [projectRef valueForKey:@"ProductGroup"];
             [projectReferences removeObject:projectRef];
         }
     }
     if ([projectReferences count] == 0) {
         [PBXProject removeObjectForKey:@"projectReferences"];
     }
+    // remove subproject's build products from PDXBuildFiles
+    // Products/children -> PBXReferenceProxy -> fileRef of PBXBuildFile
+    NSDictionary* productsGroup = [[_project objects] objectForKey:productsGroupKey];
+    for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
+        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey];
+        // TODO - abort if more than one
+        // could be zero - we didn't add the test bundle as a build product
+        if ([buildFileKeys count] == 1) {
+            [[_project objects] removeObjectForKey:[buildFileKeys objectAtIndex:0]];
+        }
+    }
+    
     // remove Products groups
-    [productsGroups enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
-        [[_project objects] removeObjectForKey:obj];
-    }];
+    [[_project objects] removeObjectForKey:productsGroupKey];
 }
 
 - (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
+    if (xcodeprojDefinition == nil)
+        return;
+    
     [self removeXcodeproj:xcodeprojDefinition];
     
     // get the key for the PBXTargetDependency with name = xcodeproj file name (without extension)
-    // (there will always only be one)
+    // TODO - abort if more than one
     NSArray* targetDependencyKeys = [_project keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:[xcodeprojDefinition sourceFileName]];
-    // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget (look for the one with the target dependency in the dependencies array)
-    // (again, only one)
+    // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget
+    // TODO - abort if more than one
     NSArray* nativeTargetKeys = [_project keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:[targetDependencyKeys objectAtIndex:0]];
     // there is an entry for libModule.a in PBXFrameworksBuildPhase files, but it's hard to track down.  Wait and see if Xcode will remove it for us.
-    NSMutableDictionary* nativeTarget = [[[_project objects] valueForKey:[nativeTargetKeys objectAtIndex:0]] mutableCopy];
+    NSMutableDictionary* nativeTarget = [[_project objects] valueForKey:[nativeTargetKeys objectAtIndex:0]];
     NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
     [dependencies removeObject:[targetDependencyKeys objectAtIndex:0]];
     [nativeTarget setObject:dependencies forKey:@"dependencies"];
-    [[_project objects] setObject:nativeTarget forKey:[targetDependencyKeys objectAtIndex:0]];
 }
 
 /* ================================================================================================================== */
