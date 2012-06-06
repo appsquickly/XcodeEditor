@@ -47,8 +47,6 @@
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
 
-- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath;
-
 @end
 /* ================================================================================================================== */
 
@@ -244,7 +242,7 @@
 
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     // set xcodeproj's path relative to the project root
-    xcodeprojDefinition.pathRelativeToProjectRoot = [self makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
+    xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
@@ -264,12 +262,76 @@
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
+    // TODO should this be using xcodeprojDefinition._subproject instead of _project?
     NSArray* buildProductFiles = [_project buildProductsForTargets];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
     }
     // add main target of subproject as target dependency to main target of project
     [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
+}
+
+// TODO does not work on second run
+- (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+    // set xcodeproj's path relative to the project root
+    xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
+    
+    NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
+    
+    // get xcodeproj's PBXFileReference key
+    NSString* xcodeprojKey = [_project keyForProjectFileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]];
+    // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
+    [keysToDelete addObject:xcodeprojKey];
+    NSArray* containerItemProxyKeys = [_project keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey];
+    // use the PBXContainerItemProxy keys to get the PBXReferenceProxy keys
+    for (NSString* key in containerItemProxyKeys) {
+        [keysToDelete addObjectsFromArray:[_project keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:key]];
+        [keysToDelete addObject:key];
+    }
+    // use the PBXProject projectReference dictionary to get the key of of the correct PBXGroup Products
+    NSMutableDictionary *PBXProject = [_project PBXProject];
+    NSMutableArray* projectReferences = [PBXProject valueForKey:@"projectReferences"];
+
+    // remove all objects located above
+    [keysToDelete enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        [[_project objects] removeObjectForKey:obj];
+    }];
+    // remove from group
+    NSMutableDictionary* currentGroup = [[_project objects] valueForKey:_key];
+    NSMutableArray* children = [currentGroup valueForKey:@"children"];
+    [children removeObject:xcodeprojKey];
+    NSMutableArray* productsGroups = [[NSMutableArray alloc] init];
+    // remove entry from PBXProject's projectReferences, and remove it entirely if it's empty
+    for (NSDictionary* projectRef in projectReferences) {
+        if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:xcodeprojKey]) {
+            [productsGroups addObject:[projectRef valueForKey:@"ProductGroup"]];
+            [projectReferences removeObject:projectRef];
+        }
+    }
+    if ([projectReferences count] == 0) {
+        [PBXProject removeObjectForKey:@"projectReferences"];
+    }
+    // remove Products groups
+    [productsGroups enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        [[_project objects] removeObjectForKey:obj];
+    }];
+}
+
+- (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
+    [self removeXcodeproj:xcodeprojDefinition];
+    
+    // get the key for the PBXTargetDependency with name = xcodeproj file name (without extension)
+    // (there will always only be one)
+    NSArray* targetDependencyKeys = [_project keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:[xcodeprojDefinition sourceFileName]];
+    // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget (look for the one with the target dependency in the dependencies array)
+    // (again, only one)
+    NSArray* nativeTargetKeys = [_project keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:[targetDependencyKeys objectAtIndex:0]];
+    // there is an entry for libModule.a in PBXFrameworksBuildPhase files, but it's hard to track down.  Wait and see if Xcode will remove it for us.
+    NSMutableDictionary* nativeTarget = [[[_project objects] valueForKey:[nativeTargetKeys objectAtIndex:0]] mutableCopy];
+    NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
+    [dependencies removeObject:[targetDependencyKeys objectAtIndex:0]];
+    [nativeTarget setObject:dependencies forKey:@"dependencies"];
+    [[_project objects] setObject:nativeTarget forKey:[targetDependencyKeys objectAtIndex:0]];
 }
 
 /* ================================================================================================================== */
@@ -445,31 +507,6 @@
     }
 }
 
-- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath {
-    NSMutableArray* projectPathComponents = [[[_project path] pathComponents] mutableCopy];
-    NSArray* objectPathComponents = [fullPath pathComponents];
-    NSString* convertedPath = [[NSString alloc] init];
-    
-    // skip over path components from root that are equal
-    int limit = ([projectPathComponents count] > [objectPathComponents count]) ? [projectPathComponents count] : [objectPathComponents count];
-    int index1 = 0;
-    for (; index1 < limit; index1++) {
-        if ([[projectPathComponents objectAtIndex:index1] isEqualToString:[objectPathComponents objectAtIndex:index1]])
-            continue;
-        else
-            break;
-    }
-    // insert "../" for each remaining path component in project's xcodeproj path
-    for (int index2 = 0; index2 < ([projectPathComponents count] - index1); index2++) {
-        convertedPath = [convertedPath stringByAppendingString:@"../"];
-    }
-    // tack on the unique part of the object's path
-    for (int index3 = index1; index3 < [objectPathComponents count] - 1; index3++) {
-        convertedPath = [convertedPath stringByAppendingFormat:@"%@/", [objectPathComponents objectAtIndex:index3]];
-    }
-    return [convertedPath stringByAppendingString:[objectPathComponents lastObject]];
-}
-
 - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
               fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
     SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
@@ -492,6 +529,8 @@
     return productKey;
 }
 
+
+// TODO call makeProductsGroup from here, and also check if one already exists
 - (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition withKey:(NSString*)productKey {
     NSMutableDictionary* projectGroup = [[_project PBXProject] mutableCopy];
     NSString* projectGroupKey = [_project PBXProjectKey];

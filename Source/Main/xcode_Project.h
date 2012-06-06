@@ -11,6 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XcodeMemberType.h"
+#import "XcodeSourceFileType.h"
 
 @class xcode_ClassDefinition;
 @class xcode_Group;
@@ -89,15 +90,23 @@
 
 - (NSString*) referenceProxyKeyForName:(NSString*)name;
 
-- (NSDictionary*) PBXProject;
+- (NSMutableDictionary*) PBXProject;
 
 - (NSString*) PBXProjectKey;
 
 - (NSArray*) buildProductsForTargets;
 
-- (void)addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+- (void) addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
 - (NSString*) path;
+
+- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath;
+
+- (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)projPath type:(XcodeSourceFileType)type;
+
+- (NSString*) keyForProjectFileWithName:(NSString*)name;
+
+- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier;
 
 /* ================================================================================================================== */
 #pragma mark Groups

@@ -144,6 +144,10 @@
 
 - (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
+- (void) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
+
+- (void) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets;
+
 /* ================================================================================================================== */
 #pragma mark Locating children
 /**

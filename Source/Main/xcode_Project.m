@@ -269,6 +269,8 @@
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
+// TODO organize these methods
+
 - (NSString*) referenceProxyKeyForName:(NSString*)name {
     __block NSString* result;
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
@@ -282,9 +284,11 @@
     return result;
 }
 
-- (NSDictionary*) PBXProject {
-    __block NSDictionary* result;
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+
+// TODO this can be folded into method below
+- (NSMutableDictionary*) PBXProject {
+    __block NSMutableDictionary* result;
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSMutableDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
             result = obj;
             *stop = YES;       
@@ -307,6 +311,89 @@
 - (NSString*) path {
     return _filePath;
 }
+
+- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath {
+    NSMutableArray* projectPathComponents = [[[self path] pathComponents] mutableCopy];
+    NSArray* objectPathComponents = [fullPath pathComponents];
+    NSString* convertedPath = [[NSString alloc] init];
+    
+    // skip over path components from root that are equal
+    int limit = ([projectPathComponents count] > [objectPathComponents count]) ? [projectPathComponents count] : [objectPathComponents count];
+    int index1 = 0;
+    for (; index1 < limit; index1++) {
+        if ([[projectPathComponents objectAtIndex:index1] isEqualToString:[objectPathComponents objectAtIndex:index1]])
+            continue;
+        else
+            break;
+    }
+    // insert "../" for each remaining path component in project's xcodeproj path
+    for (int index2 = 0; index2 < ([projectPathComponents count] - index1); index2++) {
+        convertedPath = [convertedPath stringByAppendingString:@"../"];
+    }
+    // tack on the unique part of the object's path
+    for (int index3 = index1; index3 < [objectPathComponents count] - 1; index3++) {
+        convertedPath = [convertedPath stringByAppendingFormat:@"%@/", [objectPathComponents objectAtIndex:index3]];
+    }
+    return [convertedPath stringByAppendingString:[objectPathComponents lastObject]];
+}
+
+
+- (XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)projPath type:(XcodeSourceFileType)type {
+    XcodeprojDefinition* xcodeprojDefinition = nil;
+    NSString* fullName;
+    if (![name hasSuffix:@".xcodeproj"]) {
+        fullName = [name stringByAppendingString:@".xcodeproj"];
+    } else {
+        fullName = name;
+    }
+    NSString* filePath = [[self makePathRelativeToProjectRoot:projPath] stringByAppendingFormat:@"/%@", fullName];
+    for (SourceFile* file in [self files]) {
+        if ([filePath isEqualToString:[file name]]) {
+            xcodeprojDefinition = [[XcodeprojDefinition alloc] initWithName:name projPath:projPath type:type];
+            break;
+        }
+    }
+    return xcodeprojDefinition;
+}
+
+- (NSString*) keyForProjectFileWithName:(NSString*)name {
+    for (SourceFile* file in [self files]) {
+        if ([[file name] isEqualToString:name]) {
+            return [file key];
+            break;
+        }
+    }
+    return nil;
+}
+
+- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType  withIdentifier:(NSString*)identifier {
+    __block NSMutableArray* returnValue = [[NSMutableArray alloc] init];
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == memberType) {
+            if (memberType == PBXContainerItemProxy) {
+                if ([[obj valueForKey:@"containerPortal"] isEqualToString:identifier]) {
+                    [returnValue addObject:key];
+                }
+            } else if (memberType == PBXReferenceProxy) {
+                if ([[obj valueForKey:@"remoteRef"] isEqualToString:identifier]) {
+                    [returnValue addObject:key];
+                }
+            } else if (memberType == PBXTargetDependency) {
+                if ([[obj valueForKey:@"name"] isEqualToString:identifier]) {
+                    [returnValue addObject:key];
+                }
+            } else if (memberType == PBXNativeTarget) {
+                for (NSString* dependencyKey in [obj valueForKey:@"dependencies"]) {
+                    if ([dependencyKey isEqualToString:identifier]) {
+                        [returnValue addObject:key];
+                    }
+                }
+            }
+        }
+    }];
+    return returnValue;
+}
+
 
 /* ================================================================================================================== */
 #pragma mark Groups
@@ -425,6 +512,5 @@
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
-
 
 @end
