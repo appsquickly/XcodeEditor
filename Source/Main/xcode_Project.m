@@ -269,7 +269,7 @@
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
-// TODO organize these methods
+// J9 organize these methods
 
 - (NSString*) referenceProxyKeyForName:(NSString*)name {
     __block NSString* result;
@@ -284,29 +284,6 @@
     return result;
 }
 
-
-// TODO this can be folded into method below
-- (NSMutableDictionary*) PBXProject {
-    __block NSMutableDictionary* result;
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSMutableDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
-            result = obj;
-            *stop = YES;       
-        }
-    }];
-    return result;    
-}
-
-- (NSString*) PBXProjectKey {
-    __block NSString* result;
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
-            result = key;
-            *stop = YES;       
-        }
-    }];
-    return result;        
-}
 
 - (NSString*) path {
     return _filePath;
@@ -392,6 +369,8 @@
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:identifier]) {
                     [returnValue addObject:key];
                 }
+            } else if (memberType == PBXProject) {
+                [returnValue addObject:key];
             }
         }
     }];

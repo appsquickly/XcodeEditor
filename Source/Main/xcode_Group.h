@@ -140,13 +140,13 @@
 /**
  * Adds a subproject to the group. If the group already contains a subproject by the same name, the contents will be updated.
  */
-- (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
+- (BOOL) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
 
-- (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+- (BOOL) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
-- (void) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
+- (BOOL) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
 
-- (void) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets;
+- (BOOL) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets;
 
 /* ================================================================================================================== */
 #pragma mark Locating children

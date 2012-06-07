@@ -33,7 +33,7 @@
 
 - (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition;
 
-- (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition withKey:(NSString*)productKey;
+- (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition;
 
 - (void) addMemberWithKey:(NSString*)key;
 
@@ -240,7 +240,7 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
-- (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+- (BOOL) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
@@ -251,14 +251,13 @@
     // create PBXContainerItemProxies and PBXReferenceProxies
     [_project addProxies:xcodeprojDefinition];
     
-    // create new Products PBXGroup for build products of subproject
-    NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
-    
     // add projectReferences key to PBXProject
-    [self addProductsGroupToProject:xcodeprojDefinition withKey:productKey];
+    [self addProductsGroupToProject:xcodeprojDefinition];
+    
+    return YES;
 }
 
-- (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+- (BOOL) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
@@ -268,11 +267,13 @@
     }
     // add main target of subproject as target dependency to main target of project
     [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
+    
+    return YES;
 }
 
-- (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+- (BOOL) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     if (xcodeprojDefinition == nil)
-        return;
+        return NO;
     
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
@@ -290,8 +291,8 @@
         [keysToDelete addObject:key];
     }
     // use the PBXProject projectReference dictionary to get the key of of the correct PBXGroup Products
-    NSMutableDictionary *PBXProject = [_project PBXProject];
-    NSMutableArray* projectReferences = [PBXProject valueForKey:@"projectReferences"];
+    NSMutableDictionary *PBXProjectDict = [[_project objects] valueForKey:[[_project keysForProjectObjectsOfType:PBXProject withIdentifier:nil] objectAtIndex:0]];
+    NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
 
     // remove all objects located above
     [keysToDelete enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
@@ -301,25 +302,30 @@
     NSMutableDictionary* currentGroup = [[_project objects] valueForKey:_key];
     NSMutableArray* children = [currentGroup valueForKey:@"children"];
     [children removeObject:xcodeprojKey];
-    NSString* productsGroupKey;
+    NSString* productsGroupKey = nil;
     // remove entry from PBXProject's projectReferences, and remove it entirely if it's empty
     for (NSDictionary* projectRef in projectReferences) {
         if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:xcodeprojKey]) {
-            // TODO - abort if it's already set
+            // it's an error if we find more than one
+            if (productsGroupKey != nil) {
+                return NO;
+            }
             productsGroupKey = [projectRef valueForKey:@"ProductGroup"];
             [projectReferences removeObject:projectRef];
         }
     }
     if ([projectReferences count] == 0) {
-        [PBXProject removeObjectForKey:@"projectReferences"];
+        [PBXProjectDict removeObjectForKey:@"projectReferences"];
     }
     // remove subproject's build products from PDXBuildFiles
     // Products/children -> PBXReferenceProxy -> fileRef of PBXBuildFile
     NSDictionary* productsGroup = [[_project objects] objectForKey:productsGroupKey];
     for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
         NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey];
-        // TODO - abort if more than one
-        // could be zero - we didn't add the test bundle as a build product
+        if ([buildFileKeys count] > 1) {
+            return NO;
+        }
+         // could be zero - we didn't add the test bundle as a build product
         if ([buildFileKeys count] == 1) {
             [[_project objects] removeObjectForKey:[buildFileKeys objectAtIndex:0]];
         }
@@ -327,25 +333,33 @@
     
     // remove Products groups
     [[_project objects] removeObjectForKey:productsGroupKey];
+    
+    return YES;
 }
 
-- (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
+- (BOOL) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
     if (xcodeprojDefinition == nil)
-        return;
+        return NO;
     
     [self removeXcodeproj:xcodeprojDefinition];
     
     // get the key for the PBXTargetDependency with name = xcodeproj file name (without extension)
-    // TODO - abort if more than one
     NSArray* targetDependencyKeys = [_project keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:[xcodeprojDefinition sourceFileName]];
+    if ([targetDependencyKeys count] > 1) {
+        return NO;
+    }
     // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget
-    // TODO - abort if more than one
     NSArray* nativeTargetKeys = [_project keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:[targetDependencyKeys objectAtIndex:0]];
+    if ([nativeTargetKeys count] > 1) {
+        return NO;
+    }
     // there is an entry for libModule.a in PBXFrameworksBuildPhase files, but it's hard to track down.  Wait and see if Xcode will remove it for us.
     NSMutableDictionary* nativeTarget = [[_project objects] valueForKey:[nativeTargetKeys objectAtIndex:0]];
     NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
     [dependencies removeObject:[targetDependencyKeys objectAtIndex:0]];
     [nativeTarget setObject:dependencies forKey:@"dependencies"];
+    
+    return YES;
 }
 
 /* ================================================================================================================== */
@@ -544,13 +558,12 @@
 }
 
 
-// TODO call makeProductsGroup from here, and also check if one already exists
-- (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition withKey:(NSString*)productKey {
-    NSMutableDictionary* projectGroup = [[_project PBXProject] mutableCopy];
-    NSString* projectGroupKey = [_project PBXProjectKey];
+- (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition {
+    NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
+    
+    NSMutableDictionary* PBXProjectDict = [[_project objects] valueForKey:[[_project keysForProjectObjectsOfType:PBXProject withIdentifier:nil] objectAtIndex:0]];
     NSMutableArray* projectReferences = [NSMutableArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key], @"ProjectRef", nil]];
-    [projectGroup setObject:projectReferences forKey:@"projectReferences"];
-    [[_project objects] setObject:projectGroup forKey:projectGroupKey];
+    [PBXProjectDict setObject:projectReferences forKey:@"projectReferences"];
 }
 
 /* ================================================================================================================== */

@@ -90,10 +90,6 @@
 
 - (NSString*) referenceProxyKeyForName:(NSString*)name;
 
-- (NSMutableDictionary*) PBXProject;
-
-- (NSString*) PBXProjectKey;
-
 - (NSArray*) buildProductsForTargets;
 
 - (void) addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
