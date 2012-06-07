@@ -88,19 +88,17 @@
 
 - (NSArray*) imagePNGFiles;
 
+#pragma mark xcodeproj methods
+
 - (NSString*) referenceProxyKeyForName:(NSString*)name;
 
 - (NSArray*) buildProductsForTargets;
 
 - (void) addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
-- (NSString*) path;
-
 - (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath;
 
 - (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)projPath type:(XcodeSourceFileType)type;
-
-- (NSString*) keyForProjectFileWithName:(NSString*)name;
 
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier;
 

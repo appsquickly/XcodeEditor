@@ -28,7 +28,7 @@
 - (void) makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
-- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+- (NSString*) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
               fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
 - (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition;
@@ -245,7 +245,8 @@
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
-    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    // (will retrieve existing if already there)
+    xcodeprojDefinition.key = [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
     
     // create PBXContainerItemProxies and PBXReferenceProxies
@@ -281,7 +282,7 @@
     NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
     
     // get xcodeproj's PBXFileReference key
-    NSString* xcodeprojKey = [_project keyForProjectFileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]];
+    NSString* xcodeprojKey = xcodeprojDefinition.key;
     // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
     [keysToDelete addObject:xcodeprojKey];
     NSArray* containerItemProxyKeys = [_project keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey];
@@ -535,15 +536,19 @@
     }
 }
 
-- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+- (NSString*) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
               fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
+    NSString* fileKey;
     SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil) {
         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
-        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+        fileKey = [[KeyBuilder forItemNamed:name] build];
         [[_project objects] setObject:reference forKey:fileKey];
         [self addMemberWithKey:fileKey];
+    } else {
+        fileKey = [currentSourceFile key];
     }
+    return fileKey;
 }
 
 - (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition {

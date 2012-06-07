@@ -269,10 +269,12 @@
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
-// J9 organize these methods
+/* ================================================================================================================== */
+#pragma mark xcodeproj related methods
 
+// returns the key for the reference proxy with the given path (nil if not found)
 - (NSString*) referenceProxyKeyForName:(NSString*)name {
-    __block NSString* result;
+    __block NSString* result = nil;
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy) {
             if ([[obj valueForKey:@"path"] isEqualTo:name]) {
@@ -284,13 +286,9 @@
     return result;
 }
 
-
-- (NSString*) path {
-    return _filePath;
-}
-
+// compares the given path to the filePath of the project, and returns a relative version
 - (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath {
-    NSMutableArray* projectPathComponents = [[[self path] pathComponents] mutableCopy];
+    NSMutableArray* projectPathComponents = [[_filePath pathComponents] mutableCopy];
     NSArray* objectPathComponents = [fullPath pathComponents];
     NSString* convertedPath = [[NSString alloc] init];
     
@@ -314,7 +312,7 @@
     return [convertedPath stringByAppendingString:[objectPathComponents lastObject]];
 }
 
-
+// finds the given project file in the current project and returns an XcodeprojDefinition for it (nil if not found)
 - (XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)projPath type:(XcodeSourceFileType)type {
     XcodeprojDefinition* xcodeprojDefinition = nil;
     NSString* fullName;
@@ -333,16 +331,7 @@
     return xcodeprojDefinition;
 }
 
-- (NSString*) keyForProjectFileWithName:(NSString*)name {
-    for (SourceFile* file in [self files]) {
-        if ([[file name] isEqualToString:name]) {
-            return [file key];
-            break;
-        }
-    }
-    return nil;
-}
-
+// returns an array of keys for all project objects (not just files) that match the given criteria
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType  withIdentifier:(NSString*)identifier {
     __block NSMutableArray* returnValue = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
@@ -371,6 +360,7 @@
                 }
             } else if (memberType == PBXProject) {
                 [returnValue addObject:key];
+                *stop = YES;  // we know there's only one of these, so no need to keep going
             }
         }
     }];
