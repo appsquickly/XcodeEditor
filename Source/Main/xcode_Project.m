@@ -22,7 +22,6 @@
 @interface xcode_Project (Private)
 
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
-- (NSDictionary*) findContainerItemProxyForName:(NSString*)name;
 
 @end
 
@@ -56,153 +55,6 @@
 
 
 /* ================================================ Interface Methods =============================================== */
-
-#pragma mark Methods used when adding an xcodeproj to an existing project
-
-- (NSString*) findContainerItemProxyForName:(NSString*)name proxyType:(NSString*)proxyType {
-    __block NSString* itemKey = nil;
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXContainerItemProxy) {
-            NSString* remoteInfo = [obj valueForKey:@"remoteInfo"];
-            NSString* proxy = [obj valueForKey:@"proxyType"];
-            if ([remoteInfo isEqualToString:name] && [proxy isEqualToString:proxyType] ) {
-                itemKey = key;
-                *stop = YES;
-            }
-        }
-    }];
-    return itemKey;
-}
-
-- (NSString*) makeContainerItemProxyForName:(NSString*)name fileRef:(NSString*)fileRef proxyType:(NSString*)proxyType {
-    // remove old if it exists
-    NSString *existingProxyKey = [self findContainerItemProxyForName:name proxyType:proxyType];
-    if (existingProxyKey) {
-        [[self objects] removeObjectForKey:existingProxyKey];
-    }
-    // make new one
-    NSMutableDictionary* proxy = [NSMutableDictionary dictionary];
-    [proxy setObject:[NSString stringFromMemberType:PBXContainerItemProxy] forKey:@"isa"];
-    [proxy setObject:fileRef forKey:@"containerPortal"];
-    [proxy setObject:proxyType forKey:@"proxyType"];
-    // give it a random key - the keys xcode puts here are not in the project file anywhere else
-    NSString *key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-junk", name]] build];
-    [proxy setObject:key forKey:@"remoteGlobalIDString"];
-    [proxy setObject:name forKey:@"remoteInfo"];
-    // add to project. use proxyType to generate key, so that multiple keys for the same name don't overwrite each other
-    key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-containerProxy-%@", name, proxyType]] build];
-    [[self objects] setObject:proxy forKey:key];
-    
-    return key;
-}
-
-- (NSString*) findReferenceProxyForName:(NSString*)name {
-    __block NSString* proxyKey = nil;
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy) {
-            NSString* path = [obj valueForKey:@"path"];
-            if ([path isEqualToString:name]) {
-                proxyKey = key;
-                *stop = YES;
-            }
-        }
-    }];
-    return proxyKey;
-}
-
-- (void) makeReferenceProxyForContainerItemProxy:(NSString*)containerItemProxyKey buildProductReference:(NSDictionary*)buildProductReference {
-    NSString* path = [buildProductReference valueForKey:@"path"];
-    // remove old if it exists
-    NSString *existingProxyKey = [self findReferenceProxyForName:path];
-    if (existingProxyKey) {
-        [[self objects] removeObjectForKey:existingProxyKey];
-    }
-    // make new one
-    NSMutableDictionary* proxy = [NSMutableDictionary dictionary];
-    [proxy setObject:[NSString stringFromMemberType:PBXReferenceProxy] forKey:@"isa"];
-    [proxy setObject:[buildProductReference valueForKey:@"explicitFileType"] forKey:@"fileType"];
-    [proxy setObject:path forKey:@"path"];
-    [proxy setObject:containerItemProxyKey forKey:@"remoteRef"];
-    [proxy setObject:[buildProductReference valueForKey:@"sourceTree"] forKey:@"sourceTree"];
-    // add to project
-    NSString* key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-referenceProxy", path]] build];
-    [[self objects] setObject:proxy forKey:key];
-}
-
-- (NSString*) findTargetDependencyForName:(NSString*)name {
-    __block NSString* dependencyKey = nil;
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXTargetDependency) {
-            NSString* targetName = [obj valueForKey:@"name"];
-            if ([targetName isEqualToString:name]) {
-                dependencyKey = key;
-                *stop = YES;
-            }
-        }
-    }];
-    return dependencyKey;
-}
-
-- (NSString*) makeTargetDependency:(NSString*)name forContainerItemProxyKey:(NSString*)containerItemProxyKey {
-    // remove old if it exists
-    NSString *existingDependencyKey = [self findTargetDependencyForName:name];
-    if (existingDependencyKey) {
-        [[self objects] removeObjectForKey:existingDependencyKey];
-    }
-    // make new one
-    NSMutableDictionary *targetDependency = [NSMutableDictionary dictionary];
-    [targetDependency setObject:[NSString stringFromMemberType:PBXTargetDependency] forKey:@"isa"];
-    [targetDependency setObject:name forKey:@"name"];
-    [targetDependency setObject:containerItemProxyKey forKey:@"targetProxy"];
-    NSString* targetDependencyKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", name]] build];
-    [[self objects] setObject:targetDependency forKey:targetDependencyKey];
-    return targetDependencyKey;
-}
-
-- (void) addProxies:(XcodeprojDefinition *)xcodeproj {
-    NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
-    for (NSDictionary* target in [xcodeproj.subproject targets]) {
-        NSString* containerItemProxyKey = [self makeContainerItemProxyForName:[target valueForKey:@"productName"] fileRef:fileRef proxyType:@"2"];
-        NSString* productFileReferenceKey = [target valueForKey:@"productReference"];
-        NSDictionary* productFileReference = [[xcodeproj.subproject objects] valueForKey:productFileReferenceKey];
-        [self makeReferenceProxyForContainerItemProxy:containerItemProxyKey buildProductReference:productFileReference];
-    }
-}
-
-// this is kind of gross, but I didn't see any other way to avoid processing the test bundle, without giving
-// it its own type.  I don't want to add the subproject's test bundle to any of the main project's targets.
-- (NSArray*) buildProductsForTargets {
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy) {
-            XcodeSourceFileType type = [(NSString *)[obj valueForKey:@"fileType"] asSourceFileType];
-            NSString* path = (NSString *)[obj valueForKey:@"path"];
-            if (type == Archive) {
-                [results addObject:[SourceFile sourceFileWithProject:self key:key type:type name:path sourceTree:nil]];
-            } else {
-                if (type == Bundle) {
-                    if ([[path pathExtension] isEqualToString:@"bundle"]) {
-                        [results addObject:[SourceFile sourceFileWithProject:self key:key type:type name:path sourceTree:nil]];
-                    }
-                }
-            }
-        }
-    }];
-    return results;
-}
-
-- (void) addAsTargetDependency:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
-    // make a new PBXContainerItemProxy
-    NSString* name = [xcodeprojDefinition sourceFileName];
-    NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
-    NSString* containerItemProxyKey = [self makeContainerItemProxyForName:name fileRef:key proxyType:@"1"];
-    // make a PBXTargetDependency
-    NSString* targetDependencyKey = [self makeTargetDependency:name forContainerItemProxyKey:containerItemProxyKey];
-    // add entry in each targets dependencies list
-    for (Target* target in targets) {
-        [target addDependency:targetDependencyKey];
-    }
-}
 
 #pragma mark Files
 
@@ -270,7 +122,7 @@
 }
 
 /* ================================================================================================================== */
-#pragma mark xcodeproj related methods
+#pragma mark xcodeproj related public methods
 
 // returns the key for the reference proxy with the given path (nil if not found)
 - (NSString*) referenceProxyKeyForName:(NSString*)name {
@@ -284,6 +136,37 @@
         }
     }];
     return result;
+}
+
+// returns an array of build products, excluding bundles with extensions other than ".bundle" (which is kind
+// of gross, but I didn't see a better way to exclude test bundles without giving them their own XcodeSourceFileType
+- (NSArray*) buildProductsForTargets {
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy) {
+            XcodeSourceFileType type = [(NSString *)[obj valueForKey:@"fileType"] asSourceFileType];
+            NSString* path = (NSString *)[obj valueForKey:@"path"];
+            if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"]) {
+                 [results addObject:[SourceFile sourceFileWithProject:self key:key type:type name:path sourceTree:nil]];
+            }
+        }
+    }];
+    return results;
+}
+
+// makes PBXContainerItemProxy and PBXTargetDependency objects for the xcodeproj, and adds the dependency key
+// to all the specified targets
+- (void) addAsTargetDependency:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+    // make a new PBXContainerItemProxy
+    NSString* name = [xcodeprojDefinition sourceFileName];
+    NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
+    NSString* containerItemProxyKey = [self makeContainerItemProxyForName:name fileRef:key proxyType:@"1"];
+    // make a PBXTargetDependency
+    NSString* targetDependencyKey = [self makeTargetDependency:name forContainerItemProxyKey:containerItemProxyKey];
+    // add entry in each targets dependencies list
+    for (Target* target in targets) {
+        [target addDependency:targetDependencyKey];
+    }
 }
 
 // compares the given path to the filePath of the project, and returns a relative version
@@ -360,13 +243,123 @@
                 }
             } else if (memberType == PBXProject) {
                 [returnValue addObject:key];
-                *stop = YES;  // we know there's only one of these, so no need to keep going
+            } else if (memberType == PBXFileReference) {
+                if ([[obj valueForKey:@"path"] isEqualToString:identifier]) {
+                    [returnValue addObject:key];
+                }
+            } else {
+                [NSException raise:NSInvalidArgumentException format:@"Unrecognized member type %@", memberType];
             }
         }
     }];
     return returnValue;
 }
 
+// returns the dictionary for the PBXProject.  Raises an excpetion if more or less than 1 are found.
+- (NSMutableDictionary*) PBXProjectDict {
+    NSString* PBXProjectKey;
+    NSArray* PBXProjectKeys = [self keysForProjectObjectsOfType:PBXProject withIdentifier:nil];
+    if ([PBXProjectKeys count] != 1) {
+        [NSException raise:NSGenericException format:@"Invalid project file - found %@ copies of PBXProject", [PBXProjectKeys count]];
+    }
+    PBXProjectKey = [PBXProjectKeys objectAtIndex:0];
+    NSMutableDictionary *PBXProjectDict = [[self objects] valueForKey:PBXProjectKey];
+    return PBXProjectDict;
+}
+
+#pragma mark xcodeproj related private methods
+
+// returns the key of the PBXContainerItemProxy for the given name and proxy type
+- (NSString*) containerItemProxyKeyForName:(NSString*)name proxyType:(NSString*)proxyType {
+    NSMutableArray* results;
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXContainerItemProxy) {
+            NSString* remoteInfo = [obj valueForKey:@"remoteInfo"];
+            NSString* proxy = [obj valueForKey:@"proxyType"];
+            if ([remoteInfo isEqualToString:name] && [proxy isEqualToString:proxyType] ) {
+                [results addObject:key];
+            }
+        }
+    }];
+    if ([results count] > 1) {
+        [NSException raise:NSGenericException format:@"Found more than one PBXContainerItemProxy object for name %@, proxyType %@", name, proxyType];
+    }
+    return [results objectAtIndex:0];
+}
+
+- (NSString*) makeContainerItemProxyForName:(NSString*)name fileRef:(NSString*)fileRef proxyType:(NSString*)proxyType {
+    // remove old if it exists
+    NSString *existingProxyKey = [self containerItemProxyKeyForName:name proxyType:proxyType];
+    if (existingProxyKey) {
+        [[self objects] removeObjectForKey:existingProxyKey];
+    }
+    // make new one
+    NSMutableDictionary* proxy = [NSMutableDictionary dictionary];
+    [proxy setObject:[NSString stringFromMemberType:PBXContainerItemProxy] forKey:@"isa"];
+    [proxy setObject:fileRef forKey:@"containerPortal"];
+    [proxy setObject:proxyType forKey:@"proxyType"];
+    // give it a random key - the keys xcode puts here are not in the project file anywhere else
+    NSString *key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-junk", name]] build];
+    [proxy setObject:key forKey:@"remoteGlobalIDString"];
+    [proxy setObject:name forKey:@"remoteInfo"];
+    // add to project. use proxyType to generate key, so that multiple keys for the same name don't overwrite each other
+    key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-containerProxy-%@", name, proxyType]] build];
+    [[self objects] setObject:proxy forKey:key];
+    
+    return key;
+}
+
+// makes a PBXReferenceProxy object for a given PBXContainerProxy object.  Replaces pre-existing objects.
+- (void) makeReferenceProxyForContainerItemProxy:(NSString*)containerItemProxyKey buildProductReference:(NSDictionary*)buildProductReference {
+    NSString* path = [buildProductReference valueForKey:@"path"];
+    // remove old if any exists
+    NSArray *existingProxyKeys = [self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:path];
+    if ([existingProxyKeys count] > 0) {
+        for (NSString* existingProxyKey in existingProxyKeys) {
+            [[self objects] removeObjectForKey:existingProxyKey];
+        }
+    }
+    // make new one
+    NSMutableDictionary* proxy = [NSMutableDictionary dictionary];
+    [proxy setObject:[NSString stringFromMemberType:PBXReferenceProxy] forKey:@"isa"];
+    [proxy setObject:[buildProductReference valueForKey:@"explicitFileType"] forKey:@"fileType"];
+    [proxy setObject:path forKey:@"path"];
+    [proxy setObject:containerItemProxyKey forKey:@"remoteRef"];
+    [proxy setObject:[buildProductReference valueForKey:@"sourceTree"] forKey:@"sourceTree"];
+    // add to project
+    NSString* key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-referenceProxy", path]] build];
+    [[self objects] setObject:proxy forKey:key];
+}
+
+// makes a PBXTargetDependency object for a given PBXContainerItemProxy.  Replaces pre-existing objects.
+- (NSString*) makeTargetDependency:(NSString*)name forContainerItemProxyKey:(NSString*)containerItemProxyKey {
+    // remove old if it exists
+    NSArray *existingDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name];
+    if ([existingDependencyKeys count] > 0) {
+        for (NSString* existingDependencyKey in existingDependencyKeys) {
+            [[self objects] removeObjectForKey:existingDependencyKey];
+        }
+    }
+    // make new one
+    NSMutableDictionary *targetDependency = [NSMutableDictionary dictionary];
+    [targetDependency setObject:[NSString stringFromMemberType:PBXTargetDependency] forKey:@"isa"];
+    [targetDependency setObject:name forKey:@"name"];
+    [targetDependency setObject:containerItemProxyKey forKey:@"targetProxy"];
+    NSString* targetDependencyKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", name]] build];
+    [[self objects] setObject:targetDependency forKey:targetDependencyKey];
+    return targetDependencyKey;
+}
+
+// make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subproject
+- (void) addProxies:(XcodeprojDefinition *)xcodeproj {
+    NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
+    for (NSDictionary* target in [xcodeproj.subproject targets]) {
+        NSString* containerItemProxyKey = [self makeContainerItemProxyForName:[target valueForKey:@"productName"] fileRef:fileRef proxyType:@"2"];
+        NSString* productFileReferenceKey = [target valueForKey:@"productReference"];
+        NSDictionary* productFileReference = [[xcodeproj.subproject objects] valueForKey:productFileReferenceKey];
+        [self makeReferenceProxyForContainerItemProxy:containerItemProxyKey buildProductReference:productFileReference];
+    }
+}
 
 /* ================================================================================================================== */
 #pragma mark Groups

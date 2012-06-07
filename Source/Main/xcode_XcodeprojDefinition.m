@@ -19,7 +19,6 @@
 @synthesize type = _type;
 @synthesize subproject = _subproject;
 @synthesize pathRelativeToProjectRoot = _pathRelativeToProjectRoot;
-@synthesize key = _key;
 
 /* ================================================= Class Methods ================================================== */
 + (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
@@ -73,7 +72,7 @@
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"XcodeprojDefinition: key = %@, sourceFileName = %@, path=%@, type=%@", _key, _sourceFileName, _path, _type];
+    return [NSString stringWithFormat:@"XcodeprojDefinition: sourceFileName = %@, path=%@, type=%@", _sourceFileName, _path, _type];
 }
 
 @end

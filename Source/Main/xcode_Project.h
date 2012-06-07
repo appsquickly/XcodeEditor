@@ -102,6 +102,8 @@
 
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier;
 
+- (NSMutableDictionary*) PBXProjectDict;
+
 /* ================================================================================================================== */
 #pragma mark Groups
 /**

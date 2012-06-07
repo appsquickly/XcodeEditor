@@ -139,6 +139,7 @@
 
 /**
  * Adds a subproject to the group. If the group already contains a subproject by the same name, the contents will be updated.
+ * Returns boolean success/fail; if method fails, caller should assume that project file is corrupt (or file format has changed).
  */
 - (BOOL) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
 

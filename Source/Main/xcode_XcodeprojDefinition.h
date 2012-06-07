@@ -21,7 +21,6 @@
     XcodeSourceFileType _type;
     Project* _subproject;
     NSString* _pathRelativeToProjectRoot;
-    NSString* _key;
 }
 
 @property(nonatomic, strong, readonly) NSString* sourceFileName;
@@ -29,7 +28,6 @@
 @property(nonatomic, readonly) XcodeSourceFileType type;
 @property(nonatomic, strong, readonly) Project* subproject;
 @property(nonatomic, strong, readwrite) NSString* pathRelativeToProjectRoot;
-@property(nonatomic, strong, readwrite) NSString* key;
 
 + (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type;
 

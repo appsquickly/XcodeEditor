@@ -28,7 +28,7 @@
 - (void) makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
-- (NSString*) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
               fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
 - (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition;
@@ -240,13 +240,15 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
+
+// adds an xcodeproj as a subproject of the current project.  Will always return YES currently.
 - (BOOL) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
-    xcodeprojDefinition.key = [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
     
     // create PBXContainerItemProxies and PBXReferenceProxies
@@ -258,6 +260,8 @@
     return YES;
 }
 
+// adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
+// to targets.  Will always return YES currently.
 - (BOOL) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     [self addXcodeproj:xcodeprojDefinition];
     
@@ -272,6 +276,8 @@
     return YES;
 }
 
+// removes an xcodeproj from the current project.  Will return NO if the reference is not found in the current 
+// project, or if something unexpected is found which could indicate that the project file is corrupt;  YES otherwise.
 - (BOOL) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     if (xcodeprojDefinition == nil)
         return NO;
@@ -282,9 +288,13 @@
     NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
     
     // get xcodeproj's PBXFileReference key
-    NSString* xcodeprojKey = xcodeprojDefinition.key;
-    // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
+    NSArray* xcodeprojKeys = [_project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[xcodeprojDefinition pathRelativeToProjectRoot]];
+    if ([xcodeprojKeys count] != 1) {
+        [NSException raise:NSGenericException format:@"Did not find exactly one PBXFileReference for name %@", [xcodeprojDefinition pathRelativeToProjectRoot]];
+    }
+    NSString* xcodeprojKey = [xcodeprojKeys objectAtIndex:0];
     [keysToDelete addObject:xcodeprojKey];
+    // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
     NSArray* containerItemProxyKeys = [_project keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey];
     // use the PBXContainerItemProxy keys to get the PBXReferenceProxy keys
     for (NSString* key in containerItemProxyKeys) {
@@ -292,7 +302,7 @@
         [keysToDelete addObject:key];
     }
     // use the PBXProject projectReference dictionary to get the key of of the correct PBXGroup Products
-    NSMutableDictionary *PBXProjectDict = [[_project objects] valueForKey:[[_project keysForProjectObjectsOfType:PBXProject withIdentifier:nil] objectAtIndex:0]];
+    NSMutableDictionary *PBXProjectDict = [_project PBXProjectDict];
     NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
 
     // remove all objects located above
@@ -319,7 +329,6 @@
         [PBXProjectDict removeObjectForKey:@"projectReferences"];
     }
     // remove subproject's build products from PDXBuildFiles
-    // Products/children -> PBXReferenceProxy -> fileRef of PBXBuildFile
     NSDictionary* productsGroup = [[_project objects] objectForKey:productsGroupKey];
     for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
         NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey];
@@ -536,38 +545,50 @@
     }
 }
 
-- (NSString*) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+/* ================================================== Xcodeproj Methods ============================================= */
+
+// creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
+// member via path rather than name, because that is how subprojects are stored by Xcode
+- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
               fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
-    NSString* fileKey;
     SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil) {
         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
-        fileKey = [[KeyBuilder forItemNamed:name] build];
+        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
         [[_project objects] setObject:reference forKey:fileKey];
         [self addMemberWithKey:fileKey];
-    } else {
-        fileKey = [currentSourceFile key];
     }
-    return fileKey;
 }
 
+// makes a new group called Products and returns its key
 - (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition {
     NSMutableArray* children = [[NSMutableArray alloc] init];
+    NSString* uniquer = [[NSString alloc] init];
     for (NSString* productName in [xcodeprojDefinition buildProducts]) {
         [children addObject:[_project referenceProxyKeyForName:productName]];
+        uniquer = [uniquer stringByAppendingString:productName];
     }
-    NSString* productKey = [[KeyBuilder forItemNamed:@"Products"] build];
+    NSString* productKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
     Group* productsGroup = [Group groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
     [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];
     return productKey;
 }
 
-
+// makes a new Products group (by calling the method above), makes a new projectReferences array for it and 
+// then adds it to the PBXProject object
 - (void) addProductsGroupToProject:(XcodeprojDefinition*) xcodeprojDefinition {
     NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
     
-    NSMutableDictionary* PBXProjectDict = [[_project objects] valueForKey:[[_project keysForProjectObjectsOfType:PBXProject withIdentifier:nil] objectAtIndex:0]];
-    NSMutableArray* projectReferences = [NSMutableArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key], @"ProjectRef", nil]];
+    NSMutableDictionary* PBXProjectDict = [_project PBXProjectDict];
+    NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
+    NSMutableDictionary* newProjectReference = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            productKey, @"ProductGroup",
+                                            [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key],
+                                            @"ProjectRef", nil];
+    if (projectReferences == nil) {
+        projectReferences = [[NSMutableArray alloc] init];
+    }
+    [projectReferences addObject:newProjectReference];
     [PBXProjectDict setObject:projectReferences forKey:@"projectReferences"];
 }
 
