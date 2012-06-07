@@ -266,6 +266,7 @@
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
+    // J9 using buildProducts instead of buildProductsForTargets gives only the new files which is what we want, but includes the test bundle.  also, buildProducts returns filenames while buildProductsForTargets returns sourcefiles.  need to combine somehow
     NSArray* buildProductFiles = [_project buildProductsForTargets];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];

@@ -287,6 +287,7 @@
     return [results objectAtIndex:0];
 }
 
+// makes a PBXContainerItemProxy object for a given PBXFileReference object.  Replaces pre-existing objects.
 - (NSString*) makeContainerItemProxyForName:(NSString*)name fileRef:(NSString*)fileRef proxyType:(NSString*)proxyType {
     // remove old if it exists
     NSString *existingProxyKey = [self containerItemProxyKeyForName:name proxyType:proxyType];
