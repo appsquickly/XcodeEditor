@@ -125,6 +125,8 @@
 #pragma mark xcodeproj related public methods
 
 // returns the key for the reference proxy with the given path (nil if not found)
+// does not use keysForProjectObjectsOfType:withIdentifier: because the identifier it uses for
+// PBXReferenceProxy is different.
 - (NSString*) referenceProxyKeyForName:(NSString*)name {
     __block NSString* result = nil;
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
@@ -360,6 +362,67 @@
         NSDictionary* productFileReference = [[xcodeproj.subproject objects] valueForKey:productFileReferenceKey];
         [self makeReferenceProxyForContainerItemProxy:containerItemProxyKey buildProductReference:productFileReference];
     }
+}
+
+// remove the PBXContainerItemProxy and PBXReferenceProxy objects for the given object key (which is the PBXFilereference
+// for the xcodeproj file
+- (void) removeProxies:(NSString*)xcodeprojKey {
+    NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
+    // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
+    NSArray* containerItemProxyKeys = [self keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey];
+    // use the PBXContainerItemProxy keys to get the PBXReferenceProxy keys
+    for (NSString* key in containerItemProxyKeys) {
+        [keysToDelete addObjectsFromArray:[self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:key]];
+        [keysToDelete addObject:key];
+    }
+    // remove all objects located above
+    [keysToDelete enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        [[self objects] removeObjectForKey:obj];
+    }];
+}
+
+// removes a file reference from the projectReferences array in PBXProject (removing the array itself if this action
+// leaves it empty).  Returns the ProductGroup key from the removed reference.
+- (NSString*) removeFromProjectReferences:(NSString*)key {
+    NSMutableArray* projectReferences = [[self PBXProjectDict] valueForKey:@"projectReferences"];
+    // remove entry from PBXProject's projectReferences
+    NSString* productsGroupKey = nil;
+    for (NSDictionary* projectRef in projectReferences) {
+        if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:key]) {
+            // it's an error if we find more than one
+            if (productsGroupKey != nil) {
+                [NSException raise:NSGenericException format:@"Found more than one project reference for key %@", key];
+            }
+            productsGroupKey = [projectRef valueForKey:@"ProductGroup"];
+            [projectReferences removeObject:projectRef];
+        }
+    }
+    // if that was the last project reference, remove the array from the project
+    if ([projectReferences count] == 0) {
+        [[self PBXProjectDict] removeObjectForKey:@"projectReferences"];
+    }
+    return productsGroupKey;
+}
+
+- (void) removeTargetDependencies:(NSString*)name {
+    // get the key for the PBXTargetDependency with name = xcodeproj file name (without extension)
+    NSArray* targetDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name];
+    if ([targetDependencyKeys count] > 1) {
+        [NSException raise:NSGenericException format:@"Found more than one target dependency key for name %@", name];
+    }
+    NSString* targetDependencyKey = [targetDependencyKeys objectAtIndex:0];
+    // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget
+    NSArray* nativeTargetKeys = [self keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:targetDependencyKey];
+    if ([nativeTargetKeys count] > 1) {
+        [NSException raise:NSGenericException format:@"Found more than one native target for target dependency key %@", targetDependencyKey];
+    }
+    // remove the key for the PBXTargetDependency from the PBXNativeTarget's dependencies array (leave in place even if empty)
+    NSMutableDictionary* nativeTarget = [[self objects] valueForKey:[nativeTargetKeys objectAtIndex:0]];
+    NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
+    [dependencies removeObject:targetDependencyKey];
+    [nativeTarget setObject:dependencies forKey:@"dependencies"];
+    // remove the PBXTargetDependency
+    [[self objects] removeObjectForKey:targetDependencyKey];
 }
 
 /* ================================================================================================================== */

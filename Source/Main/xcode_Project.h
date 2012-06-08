@@ -43,9 +43,6 @@
 - (id) initWithFilePath:(NSString*)filePath;
 
 /* ================================================================================================================== */
-#pragma mark Build Products
-
-- (void)addProxies:(xcode_XcodeprojDefinition *)xcodeproj;
 
 #pragma mark Files
 /**
@@ -103,6 +100,14 @@
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier;
 
 - (NSMutableDictionary*) PBXProjectDict;
+
+- (void) removeProxies:(NSString*)xcodeprojKey;
+
+- (void) addProxies:(xcode_XcodeprojDefinition *)xcodeproj;
+
+- (NSString*) removeFromProjectReferences:(NSString*)key;
+
+- (void) removeTargetDependencies:(NSString*)name;
 
 /* ================================================================================================================== */
 #pragma mark Groups

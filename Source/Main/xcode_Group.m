@@ -286,89 +286,38 @@
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
-    NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
-    
     // get xcodeproj's PBXFileReference key
     NSArray* xcodeprojKeys = [_project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[xcodeprojDefinition pathRelativeToProjectRoot]];
     if ([xcodeprojKeys count] != 1) {
         [NSException raise:NSGenericException format:@"Did not find exactly one PBXFileReference for name %@", [xcodeprojDefinition pathRelativeToProjectRoot]];
     }
     NSString* xcodeprojKey = [xcodeprojKeys objectAtIndex:0];
-    [keysToDelete addObject:xcodeprojKey];
-    // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
-    NSArray* containerItemProxyKeys = [_project keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey];
-    // use the PBXContainerItemProxy keys to get the PBXReferenceProxy keys
-    for (NSString* key in containerItemProxyKeys) {
-        [keysToDelete addObjectsFromArray:[_project keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:key]];
-        [keysToDelete addObject:key];
-    }
-    // use the PBXProject projectReference dictionary to get the key of of the correct PBXGroup Products
-    NSMutableDictionary *PBXProjectDict = [_project PBXProjectDict];
-    NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
+    
+    // Remove from group and remove PBXFileReference
+    [self removeGroupMemberWithKey:xcodeprojKey];
 
-    // remove all objects located above
-    [keysToDelete enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
-        [[_project objects] removeObjectForKey:obj];
-    }];
-    // remove from group
-    NSMutableDictionary* currentGroup = [[_project objects] valueForKey:_key];
-    NSMutableArray* children = [currentGroup valueForKey:@"children"];
-    [children removeObject:xcodeprojKey];
-    NSString* productsGroupKey = nil;
-    // remove entry from PBXProject's projectReferences, and remove it entirely if it's empty
-    for (NSDictionary* projectRef in projectReferences) {
-        if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:xcodeprojKey]) {
-            // it's an error if we find more than one
-            if (productsGroupKey != nil) {
-                return NO;
-            }
-            productsGroupKey = [projectRef valueForKey:@"ProductGroup"];
-            [projectReferences removeObject:projectRef];
-        }
-    }
-    if ([projectReferences count] == 0) {
-        [PBXProjectDict removeObjectForKey:@"projectReferences"];
-    }
-    // remove subproject's build products from PDXBuildFiles
-    NSDictionary* productsGroup = [[_project objects] objectForKey:productsGroupKey];
-    for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
-        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey];
-        if ([buildFileKeys count] > 1) {
-            return NO;
-        }
-         // could be zero - we didn't add the test bundle as a build product
-        if ([buildFileKeys count] == 1) {
-            [[_project objects] removeObjectForKey:[buildFileKeys objectAtIndex:0]];
-        }
-    }
+    // remove PBXContainerItemProxies and PBXReferenceProxies
+    [_project removeProxies:xcodeprojKey];
     
-    // remove Products groups
-    [[_project objects] removeObjectForKey:productsGroupKey];
-    
+    // remove from the ProjectReferences array of PBXProject
+    NSString* productsGroupKey = [_project removeFromProjectReferences:xcodeprojKey];
+
+    // remove PDXBuildFile entries and Products group
+    [self removeProductsGroupFromProject:productsGroupKey];
+        
     return YES;
 }
 
+// removes an xcodeproj from the current project and the given targets.  Will return NO if the reference is not found in 
+// the current project, or if something unexpected is found which could indicate that the project file is corrupt;  YES 
+// otherwise.
 - (BOOL) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
     if (xcodeprojDefinition == nil)
         return NO;
     
     [self removeXcodeproj:xcodeprojDefinition];
     
-    // get the key for the PBXTargetDependency with name = xcodeproj file name (without extension)
-    NSArray* targetDependencyKeys = [_project keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:[xcodeprojDefinition sourceFileName]];
-    if ([targetDependencyKeys count] > 1) {
-        return NO;
-    }
-    // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget
-    NSArray* nativeTargetKeys = [_project keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:[targetDependencyKeys objectAtIndex:0]];
-    if ([nativeTargetKeys count] > 1) {
-        return NO;
-    }
-    // there is an entry for libModule.a in PBXFrameworksBuildPhase files, but it's hard to track down.  Wait and see if Xcode will remove it for us.
-    NSMutableDictionary* nativeTarget = [[_project objects] valueForKey:[nativeTargetKeys objectAtIndex:0]];
-    NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
-    [dependencies removeObject:[targetDependencyKeys objectAtIndex:0]];
-    [nativeTarget setObject:dependencies forKey:@"dependencies"];
+    [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
     
     return YES;
 }
@@ -548,6 +497,8 @@
 
 /* ================================================== Xcodeproj Methods ============================================= */
 
+#pragma mark Xcodeproj methods
+
 // creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
 // member via path rather than name, because that is how subprojects are stored by Xcode
 - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
@@ -591,6 +542,32 @@
     }
     [projectReferences addObject:newProjectReference];
     [PBXProjectDict setObject:projectReferences forKey:@"projectReferences"];
+}
+
+// removes PBXFileReference from group and project
+- (void)removeGroupMemberWithKey:(NSString*)key {
+    NSMutableArray* children = [self valueForKey:@"children"];
+    [children removeObject:key];
+    // remove PBXFileReference
+    [[_project objects] removeObjectForKey:key];
+}
+
+- (void)removeProductsGroupFromProject:(NSString*)key {
+    // remove product group's build products from PDXBuildFiles
+    NSDictionary* productsGroup = [[_project objects] objectForKey:key];
+    for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
+        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey];
+        if ([buildFileKeys count] > 1) {
+            [NSException raise:NSGenericException format:@"Found more than one PBXBuildFile entry for key %@", childKey];
+        }
+        // could be zero - we didn't add the test bundle as a build product
+        if ([buildFileKeys count] == 1) {
+            [[_project objects] removeObjectForKey:[buildFileKeys objectAtIndex:0]];
+        }
+    }
+    
+    // remove Products groups
+    [[_project objects] removeObjectForKey:key];
 }
 
 /* ================================================================================================================== */
