@@ -266,8 +266,7 @@
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
-    // J9 using buildProducts instead of buildProductsForTargets gives only the new files which is what we want, but includes the test bundle.  also, buildProducts returns filenames while buildProductsForTargets returns sourcefiles.  need to combine somehow
-    NSArray* buildProductFiles = [_project buildProductsForTargets];
+    NSArray* buildProductFiles = [_project buildProductsForTargets:xcodeprojDefinition.key];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
     }
@@ -286,21 +285,14 @@
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
-    // get xcodeproj's PBXFileReference key
-    NSArray* xcodeprojKeys = [_project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[xcodeprojDefinition pathRelativeToProjectRoot]];
-    if ([xcodeprojKeys count] != 1) {
-        [NSException raise:NSGenericException format:@"Did not find exactly one PBXFileReference for name %@", [xcodeprojDefinition pathRelativeToProjectRoot]];
-    }
-    NSString* xcodeprojKey = [xcodeprojKeys objectAtIndex:0];
-    
     // Remove from group and remove PBXFileReference
-    [self removeGroupMemberWithKey:xcodeprojKey];
+    [self removeGroupMemberWithKey:xcodeprojDefinition.key];
 
     // remove PBXContainerItemProxies and PBXReferenceProxies
-    [_project removeProxies:xcodeprojKey];
+    [_project removeProxies:xcodeprojDefinition.key];
     
     // remove from the ProjectReferences array of PBXProject
-    NSString* productsGroupKey = [_project removeFromProjectReferences:xcodeprojKey];
+    NSString* productsGroupKey = [_project removeFromProjectReferences:xcodeprojDefinition.key];
 
     // remove PDXBuildFile entries and Products group
     [self removeProductsGroupFromProject:productsGroupKey];
@@ -516,7 +508,7 @@
 - (NSString*) makeProductsGroup:(XcodeprojDefinition*) xcodeprojDefinition {
     NSMutableArray* children = [[NSMutableArray alloc] init];
     NSString* uniquer = [[NSString alloc] init];
-    for (NSString* productName in [xcodeprojDefinition buildProducts]) {
+    for (NSString* productName in [xcodeprojDefinition buildProductNames]) {
         [children addObject:[_project referenceProxyKeyForName:productName]];
         uniquer = [uniquer stringByAppendingString:productName];
     }

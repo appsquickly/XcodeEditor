@@ -141,15 +141,21 @@
 }
 
 // returns an array of build products, excluding bundles with extensions other than ".bundle" (which is kind
-// of gross, but I didn't see a better way to exclude test bundles without giving them their own XcodeSourceFileType
-- (NSArray*) buildProductsForTargets {
+// of gross, but I didn't see a better way to exclude test bundles without giving them their own XcodeSourceFileType)
+- (NSArray*) buildProductsForTargets:(NSString*)xcodeprojKey {
     NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy) {
-            XcodeSourceFileType type = [(NSString *)[obj valueForKey:@"fileType"] asSourceFileType];
-            NSString* path = (NSString *)[obj valueForKey:@"path"];
-            if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"]) {
-                 [results addObject:[SourceFile sourceFileWithProject:self key:key type:type name:path sourceTree:nil]];
+            // make sure it belongs to the xcodeproj we're adding
+            NSString* remoteRef = [obj valueForKey:@"remoteRef"];
+            NSDictionary* containerProxy = [[self objects] valueForKey:remoteRef];
+            NSString* containerPortal = [containerProxy valueForKey:@"containerPortal"];
+            if ([containerPortal isEqualToString:xcodeprojKey]) {
+                XcodeSourceFileType type = [(NSString *)[obj valueForKey:@"fileType"] asSourceFileType];
+                NSString* path = (NSString *)[obj valueForKey:@"path"];
+                if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"]) {
+                    [results addObject:[SourceFile sourceFileWithProject:self key:key type:type name:path sourceTree:nil]];
+                }
             }
         }
     }];

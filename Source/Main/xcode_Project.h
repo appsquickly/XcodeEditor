@@ -89,7 +89,7 @@
 
 - (NSString*) referenceProxyKeyForName:(NSString*)name;
 
-- (NSArray*) buildProductsForTargets;
+- (NSArray*) buildProductsForTargets:(NSString*)xcodeprojKey;
 
 - (void) addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 

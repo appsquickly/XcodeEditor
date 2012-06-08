@@ -19,6 +19,7 @@
 @synthesize type = _type;
 @synthesize subproject = _subproject;
 @synthesize pathRelativeToProjectRoot = _pathRelativeToProjectRoot;
+@synthesize key = _key;
 
 /* ================================================= Class Methods ================================================== */
 + (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
@@ -53,7 +54,7 @@
 }
 
 // returns an array of names of the build products of this project
-- (NSArray *) buildProducts {
+- (NSArray *) buildProductNames {
     NSMutableArray* results = [NSMutableArray array];
     NSDictionary* objects = [_subproject objects];
     [objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
@@ -68,6 +69,18 @@
         }
     }];
     return results;
+}
+
+// returns the key of the PBXFileReference of the xcodeproj file
+- (NSString*) key:(Project *)project {
+    if (_key == nil) {
+        NSArray* xcodeprojKeys = [project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[self pathRelativeToProjectRoot]];
+        if ([xcodeprojKeys count] != 1) {
+            [NSException raise:NSGenericException format:@"Did not find exactly one PBXFileReference for name %@", [self pathRelativeToProjectRoot]];
+        }
+        _key = [xcodeprojKeys objectAtIndex:0];
+    }
+    return _key;
 }
 
 /* ================================================== Utility Methods =============================================== */
