@@ -396,6 +396,7 @@
     NSMutableArray* projectReferences = [[self PBXProjectDict] valueForKey:@"projectReferences"];
     // remove entry from PBXProject's projectReferences
     NSString* productsGroupKey = nil;
+    NSMutableArray* referencesToRemove = [[NSMutableArray alloc] init];
     for (NSDictionary* projectRef in projectReferences) {
         if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:key]) {
             // it's an error if we find more than one
@@ -403,8 +404,11 @@
                 [NSException raise:NSGenericException format:@"Found more than one project reference for key %@", key];
             }
             productsGroupKey = [projectRef valueForKey:@"ProductGroup"];
-            [projectReferences removeObject:projectRef];
+            [referencesToRemove addObject:projectRef];
         }
+    }
+    for (NSDictionary* projectRef in referencesToRemove) {
+        [projectReferences removeObject:projectRef];
     }
     // if that was the last project reference, remove the array from the project
     if ([projectReferences count] == 0) {

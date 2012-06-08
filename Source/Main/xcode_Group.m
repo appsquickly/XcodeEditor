@@ -266,13 +266,13 @@
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
-    NSArray* buildProductFiles = [_project buildProductsForTargets:xcodeprojDefinition.key];
+    NSArray* buildProductFiles = [_project buildProductsForTargets:[xcodeprojDefinition xcodeprojKey:_project]];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
     }
     // add main target of subproject as target dependency to main target of project
     [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
-    
+
     return YES;
 }
 
@@ -284,15 +284,16 @@
     
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
+    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKey:_project];
     
     // Remove from group and remove PBXFileReference
-    [self removeGroupMemberWithKey:xcodeprojDefinition.key];
+    [self removeGroupMemberWithKey:xcodeprojKey];
 
     // remove PBXContainerItemProxies and PBXReferenceProxies
-    [_project removeProxies:xcodeprojDefinition.key];
+    [_project removeProxies:xcodeprojKey];
     
     // remove from the ProjectReferences array of PBXProject
-    NSString* productsGroupKey = [_project removeFromProjectReferences:xcodeprojDefinition.key];
+    NSString* productsGroupKey = [_project removeFromProjectReferences:xcodeprojKey];
 
     // remove PDXBuildFile entries and Products group
     [self removeProductsGroupFromProject:productsGroupKey];

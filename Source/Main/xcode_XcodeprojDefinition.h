@@ -41,7 +41,7 @@
 
 - (NSArray *) buildProductNames;
 
-- (NSString*) key:(Project *)project;
+- (NSString*) xcodeprojKey:(Project *)project;
 
 @end
 /* ================================================================================================================== */
