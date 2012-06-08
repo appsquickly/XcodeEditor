@@ -513,6 +513,10 @@
         uniquer = [uniquer stringByAppendingString:productName];
     }
     NSString* productKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
+    // check for existing group wth same children
+    if ([[_project objects] objectForKey:productKey] != nil) {
+        [NSException raise:NSGenericException format:@"Product group already exists!"];
+    }
     Group* productsGroup = [Group groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
     [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];
     return productKey;
