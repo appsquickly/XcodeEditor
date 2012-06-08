@@ -241,8 +241,8 @@
 }
 
 
-// adds an xcodeproj as a subproject of the current project.  Will always return YES currently.
-- (BOOL) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+// adds an xcodeproj as a subproject of the current project.
+- (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     
@@ -256,13 +256,11 @@
     
     // add projectReferences key to PBXProject
     [self addProductsGroupToProject:xcodeprojDefinition];
-    
-    return YES;
 }
 
 // adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
-// to targets.  Will always return YES currently.
-- (BOOL) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+// to targets.
+- (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
@@ -272,15 +270,12 @@
     }
     // add main target of subproject as target dependency to main target of project
     [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
-
-    return YES;
 }
 
-// removes an xcodeproj from the current project.  Will return NO if the reference is not found in the current 
-// project, or if something unexpected is found which could indicate that the project file is corrupt;  YES otherwise.
-- (BOOL) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+// removes an xcodeproj from the current project.
+- (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     if (xcodeprojDefinition == nil)
-        return NO;
+        return;
     
     // set xcodeproj's path relative to the project root
     xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
@@ -297,22 +292,9 @@
 
     // remove PDXBuildFile entries and Products group
     [self removeProductsGroupFromProject:productsGroupKey];
-        
-    return YES;
-}
-
-// removes an xcodeproj from the current project and the given targets.  Will return NO if the reference is not found in 
-// the current project, or if something unexpected is found which could indicate that the project file is corrupt;  YES 
-// otherwise.
-- (BOOL) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
-    if (xcodeprojDefinition == nil)
-        return NO;
     
-    [self removeXcodeproj:xcodeprojDefinition];
-    
+    // remove from all targets
     [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
-    
-    return YES;
 }
 
 /* ================================================================================================================== */

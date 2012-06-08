@@ -140,14 +140,12 @@
 /**
  * Adds a subproject to the group. If the group already contains a subproject by the same name, the contents will be updated.
  * Returns boolean success/fail; if method fails, caller should assume that project file is corrupt (or file format has changed).
- */
-- (BOOL) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
+*/
+- (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
 
-- (BOOL) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+- (void) addXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
-- (BOOL) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
-
-- (BOOL) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets;
+- (void) removeXcodeproj:(xcode_XcodeprojDefinition*)xcodeprojDefinition;
 
 /* ================================================================================================================== */
 #pragma mark Locating children
