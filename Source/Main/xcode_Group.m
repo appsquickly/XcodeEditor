@@ -548,10 +548,7 @@
     // remove product group's build products from PDXBuildFiles
     NSDictionary* productsGroup = [[_project objects] objectForKey:key];
     for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
-        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey];
-        if ([buildFileKeys count] > 1) {
-            [NSException raise:NSGenericException format:@"Found more than one PBXBuildFile entry for key %@", childKey];
-        }
+        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:YES];
         // could be zero - we didn't add the test bundle as a build product
         if ([buildFileKeys count] == 1) {
             [[_project objects] removeObjectForKey:[buildFileKeys objectAtIndex:0]];
