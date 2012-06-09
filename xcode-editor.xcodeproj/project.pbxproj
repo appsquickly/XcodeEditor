@@ -76,6 +76,7 @@
 		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E14CD24C15755B8C00A90952 /* xcode_XcodeprojDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E14CD24A15755B8C00A90952 /* xcode_XcodeprojDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E14CD24D15755B8C00A90952 /* xcode_XcodeprojDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */; };
+		E17822631582E212003721BA /* xcode_XcodeprojDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */; };
 		E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11315443AA400C51251 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
@@ -550,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E17822631582E212003721BA /* xcode_XcodeprojDefinition.m in Sources */,
 				6B3AD03114F8A3AC00BCFE81 /* xcode_ClassDefinition.m in Sources */,
 				6B3AD03414F8A3AC00BCFE81 /* xcode_SourceFile.m in Sources */,
 				6B3AD03714F8A3AC00BCFE81 /* xcode_FileOperationQueue.m in Sources */,

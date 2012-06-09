@@ -31,7 +31,7 @@
 @property(nonatomic, strong, readwrite) NSString* pathRelativeToProjectRoot;
 @property(nonatomic, strong, readonly) NSString* key;
 
-+ (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type;
++ (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)path;
 
 - (id) initWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type;
 

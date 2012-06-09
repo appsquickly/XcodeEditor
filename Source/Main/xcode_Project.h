@@ -95,8 +95,6 @@
 
 - (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath;
 
-- (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)projPath type:(XcodeSourceFileType)type;
-
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier singleton:(BOOL)singleton;
 
 - (NSMutableDictionary*) PBXProjectDict;

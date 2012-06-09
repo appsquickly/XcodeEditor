@@ -22,9 +22,9 @@
 @synthesize key = _key;
 
 /* ================================================= Class Methods ================================================== */
-+ (xcode_XcodeprojDefinition*) sourceDefinitionWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
++ (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)path {
     
-    return [[XcodeprojDefinition alloc] initWithName:name projPath:path type:type];
+    return [[XcodeprojDefinition alloc] initWithName:name projPath:path type:XcodeProject];
 }
 
 /* ================================================== Initializers ================================================== */

@@ -203,25 +203,6 @@
     return [convertedPath stringByAppendingString:[objectPathComponents lastObject]];
 }
 
-// finds the given project file in the current project and returns an XcodeprojDefinition for it (nil if not found)
-- (XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)projPath type:(XcodeSourceFileType)type {
-    XcodeprojDefinition* xcodeprojDefinition = nil;
-    NSString* fullName;
-    if (![name hasSuffix:@".xcodeproj"]) {
-        fullName = [name stringByAppendingString:@".xcodeproj"];
-    } else {
-        fullName = name;
-    }
-    NSString* filePath = [[self makePathRelativeToProjectRoot:projPath] stringByAppendingFormat:@"/%@", fullName];
-    for (SourceFile* file in [self files]) {
-        if ([filePath isEqualToString:[file name]]) {
-            xcodeprojDefinition = [[XcodeprojDefinition alloc] initWithName:name projPath:projPath type:type];
-            break;
-        }
-    }
-    return xcodeprojDefinition;
-}
-
 // returns an array of keys for all project objects (not just files) that match the given criteria
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType  withIdentifier:(NSString*)identifier singleton:(BOOL)singleton {
     __block NSMutableArray* returnValue = [[NSMutableArray alloc] init];

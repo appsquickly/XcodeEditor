@@ -239,7 +239,7 @@ SPEC_BEGIN(GroupSpec)
         describe(@"adding xcodeproj files.", ^{
             it(@"should allow adding a xcodeproj file.", ^{
                 
-                XcodeprojDefinition *xcodeprojDefinition = [[XcodeprojDefinition alloc] initWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy" type:XcodeProject];
+                XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy"];
                 
                 [group addXcodeproj:xcodeprojDefinition];
                 [project save];
@@ -248,6 +248,8 @@ SPEC_BEGIN(GroupSpec)
             
             it(@"should provide a convenience method to add a xcodeproj file, and specify targets", ^{
                 
+                XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy"];
+
                 [group addXcodeproj:xcodeprojDefinition toTargets:[project targets]];
                 [project save];
                 
@@ -258,7 +260,7 @@ SPEC_BEGIN(GroupSpec)
         describe(@"removing xcodeproj files.", ^{
             it(@"should allow removing a xcodeproj file.", ^{
                 
-                XcodeprojDefinition *xcodeprojDefinition = [[XcodeprojDefinition alloc] initWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy" type:XcodeProject];
+                XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy"];
                 
                 [group removeXcodeproj:xcodeprojDefinition];
                 [project save];
@@ -303,9 +305,9 @@ SPEC_BEGIN(GroupSpec)
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:18];
+                [[children should] haveCountOf:19];
                 [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
-                [[[[children objectAtIndex:17] displayName] should] equal:@"UserInterface"];
+                [[[[children objectAtIndex:17] displayName] should] equal:@"TestGroup"];
 
             });
 
