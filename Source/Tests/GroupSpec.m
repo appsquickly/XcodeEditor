@@ -236,6 +236,37 @@ SPEC_BEGIN(GroupSpec)
         });
 
 
+        describe(@"adding xcodeproj files.", ^{
+            it(@"should allow adding a xcodeproj file.", ^{
+                
+                XcodeprojDefinition *xcodeprojDefinition = [[XcodeprojDefinition alloc] initWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy" type:XcodeProject];
+                
+                [group addXcodeproj:xcodeprojDefinition];
+                [project save];
+                
+            });
+            
+            it(@"should provide a convenience method to add a xcodeproj file, and specify targets", ^{
+                
+                [group addXcodeproj:xcodeprojDefinition toTargets:[project targets]];
+                [project save];
+                
+            });
+            
+        });
+
+        describe(@"removing xcodeproj files.", ^{
+            it(@"should allow removing a xcodeproj file.", ^{
+                
+                XcodeprojDefinition *xcodeprojDefinition = [[XcodeprojDefinition alloc] initWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy" type:XcodeProject];
+                
+                [group removeXcodeproj:xcodeprojDefinition];
+                [project save];
+                
+            });
+            
+        });
+
         describe(@"Adding other types", ^{
 
             it(@"should allow adding a group", ^{
