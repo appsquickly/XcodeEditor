@@ -243,14 +243,14 @@
             } else {
                 [NSException raise:NSInvalidArgumentException format:@"Unrecognized member type %@", [NSString stringFromMemberType:memberType]];
             }
-            if (singleton && [returnValue count] > 1) {
-                [NSException raise:NSGenericException format:@"Searched for one instance of member type %@ with value %@, but found %d", [NSString stringFromMemberType:memberType], identifier, [returnValue count]];
-            }
-            if (required && [returnValue count] == 0) {
-                [NSException raise:NSGenericException format:@"Searched for instances of member type %@ with value %@, but did not find any", [NSString stringFromMemberType:memberType], identifier];
-            }
         }
     }];
+    if (singleton && [returnValue count] > 1) {
+        [NSException raise:NSGenericException format:@"Searched for one instance of member type %@ with value %@, but found %d", [NSString stringFromMemberType:memberType], identifier, [returnValue count]];
+    }
+    if (required && [returnValue count] == 0) {
+        [NSException raise:NSGenericException format:@"Searched for instances of member type %@ with value %@, but did not find any", [NSString stringFromMemberType:memberType], identifier];
+    }
     return returnValue;
 }
 
@@ -366,7 +366,7 @@
     NSArray* containerItemProxyKeys = [self keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey singleton:NO required:YES];
     // use the PBXContainerItemProxy keys to get the PBXReferenceProxy keys
     for (NSString* key in containerItemProxyKeys) {
-        [keysToDelete addObjectsFromArray:[self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:key singleton:NO required:YES]];
+        [keysToDelete addObjectsFromArray:[self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:key singleton:NO required:NO]];
         [keysToDelete addObject:key];
     }
     // remove all objects located above
