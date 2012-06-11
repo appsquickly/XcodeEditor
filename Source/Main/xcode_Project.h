@@ -95,7 +95,7 @@
 
 - (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath;
 
-- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier singleton:(BOOL)singleton;
+- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier singleton:(BOOL)singleton required:(BOOL)required;
 
 - (NSMutableDictionary*) PBXProjectDict;
 

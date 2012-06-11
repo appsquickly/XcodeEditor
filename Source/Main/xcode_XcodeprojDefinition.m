@@ -74,10 +74,7 @@
 // returns the key of the PBXFileReference of the xcodeproj file
 - (NSString*) xcodeprojKey:(Project *)project {
     if (_key == nil) {
-        NSArray* xcodeprojKeys = [project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[self pathRelativeToProjectRoot] singleton:YES];
-        if ([xcodeprojKeys count] == 0) {
-            [NSException raise:NSGenericException format:@"Did not find a PBXFileReference for name %@", [self pathRelativeToProjectRoot]];
-        }
+        NSArray* xcodeprojKeys = [project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[self pathRelativeToProjectRoot] singleton:YES required:YES];
         _key = [xcodeprojKeys objectAtIndex:0];
     }
     return _key;

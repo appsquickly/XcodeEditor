@@ -47,6 +47,10 @@
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
 
+- (void)removeGroupMemberWithKey:(NSString*)key;
+
+- (void)removeProductsGroupFromProject:(NSString*)key;
+
 @end
 /* ================================================================================================================== */
 
@@ -531,7 +535,7 @@
     // remove product group's build products from PDXBuildFiles
     NSDictionary* productsGroup = [[_project objects] objectForKey:key];
     for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
-        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:YES];
+        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:YES required:NO];
         // could be zero - we didn't add the test bundle as a build product
         if ([buildFileKeys count] == 1) {
             [[_project objects] removeObjectForKey:[buildFileKeys objectAtIndex:0]];

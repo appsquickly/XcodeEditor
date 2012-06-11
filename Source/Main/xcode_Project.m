@@ -23,6 +23,8 @@
 
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
 
+- (NSString*) makeContainerItemProxyForName:(NSString*)name fileRef:(NSString*)fileRef proxyType:(NSString*)proxyType;
+
 @end
 
 
@@ -204,7 +206,7 @@
 }
 
 // returns an array of keys for all project objects (not just files) that match the given criteria
-- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType  withIdentifier:(NSString*)identifier singleton:(BOOL)singleton {
+- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType  withIdentifier:(NSString*)identifier singleton:(BOOL)singleton required:(BOOL)required {
     __block NSMutableArray* returnValue = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == memberType) {
@@ -242,6 +244,9 @@
             if (singleton && [returnValue count] > 1) {
                 [NSException raise:NSGenericException format:@"Searched for one instance of member type %@ with value %@, but found %d", memberType, identifier, [returnValue count]];
             }
+            if (required && [returnValue count] == 0) {
+                [NSException raise:NSGenericException format:@"Searched for instances of member type %@ with value %@, but did not find any", memberType, identifier];
+            }
         }
     }];
     return returnValue;
@@ -250,10 +255,7 @@
 // returns the dictionary for the PBXProject.  Raises an exception if more or less than 1 are found.
 - (NSMutableDictionary*) PBXProjectDict {
     NSString* PBXProjectKey;
-    NSArray* PBXProjectKeys = [self keysForProjectObjectsOfType:PBXProject withIdentifier:nil singleton:YES];
-    if ([PBXProjectKeys count] == 0) {
-        [NSException raise:NSGenericException format:@"Did not find PBXProject", [PBXProjectKeys count]];
-    }
+    NSArray* PBXProjectKeys = [self keysForProjectObjectsOfType:PBXProject withIdentifier:nil singleton:YES required:YES];
     PBXProjectKey = [PBXProjectKeys objectAtIndex:0];
     NSMutableDictionary *PBXProjectDict = [[self objects] valueForKey:PBXProjectKey];
     return PBXProjectDict;
@@ -274,7 +276,7 @@
         }
     }];
     if ([results count] > 1) {
-        [NSException raise:NSGenericException format:@"Found more than one PBXContainerItemProxy object for name %@, proxyType %@", name, proxyType];
+        [NSException raise:NSGenericException format:@"Searched for one instance of member type %@ with value %@, but found %d", @"PBXContainerItemProxy", [NSString stringWithFormat:@"%@ and proxyType of %@", name, proxyType], [results count]];
     }
     return [results objectAtIndex:0];
 }
@@ -306,7 +308,7 @@
 - (void) makeReferenceProxyForContainerItemProxy:(NSString*)containerItemProxyKey buildProductReference:(NSDictionary*)buildProductReference {
     NSString* path = [buildProductReference valueForKey:@"path"];
     // remove old if any exists
-    NSArray *existingProxyKeys = [self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:path singleton:NO];
+    NSArray *existingProxyKeys = [self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:path singleton:NO required:NO];
     if ([existingProxyKeys count] > 0) {
         for (NSString* existingProxyKey in existingProxyKeys) {
             [[self objects] removeObjectForKey:existingProxyKey];
@@ -327,7 +329,7 @@
 // makes a PBXTargetDependency object for a given PBXContainerItemProxy.  Replaces pre-existing objects.
 - (NSString*) makeTargetDependency:(NSString*)name forContainerItemProxyKey:(NSString*)containerItemProxyKey {
     // remove old if it exists
-    NSArray *existingDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name singleton:NO];
+    NSArray *existingDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name singleton:NO required:NO];
     if ([existingDependencyKeys count] > 0) {
         for (NSString* existingDependencyKey in existingDependencyKeys) {
             [[self objects] removeObjectForKey:existingDependencyKey];
@@ -355,14 +357,14 @@
 }
 
 // remove the PBXContainerItemProxy and PBXReferenceProxy objects for the given object key (which is the PBXFilereference
-// for the xcodeproj file
+// for the xcodeproj file.
 - (void) removeProxies:(NSString*)xcodeprojKey {
     NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
     // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
-    NSArray* containerItemProxyKeys = [self keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey singleton:NO];
+    NSArray* containerItemProxyKeys = [self keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey singleton:NO required:YES];
     // use the PBXContainerItemProxy keys to get the PBXReferenceProxy keys
     for (NSString* key in containerItemProxyKeys) {
-        [keysToDelete addObjectsFromArray:[self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:key singleton:NO]];
+        [keysToDelete addObjectsFromArray:[self keysForProjectObjectsOfType:PBXReferenceProxy withIdentifier:key singleton:NO required:YES]];
         [keysToDelete addObject:key];
     }
     // remove all objects located above
@@ -398,18 +400,14 @@
     return productsGroupKey;
 }
 
+// removes a specific xcodeproj file from any targets (by name).  It's not an error if no entries are found,
+// because we support adding a project file without adding it to any targets.
 - (void) removeTargetDependencies:(NSString*)name {
     // get the key for the PBXTargetDependency with name = xcodeproj file name (without extension)
-    NSArray* targetDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name singleton:YES];
-    if ([targetDependencyKeys count] == 0) {
-        [NSException raise:NSGenericException format:@"Did not find target dependency key for name %@", name];
-    }
+    NSArray* targetDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name singleton:YES required:NO];
     NSString* targetDependencyKey = [targetDependencyKeys objectAtIndex:0];
     // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget
-    NSArray* nativeTargetKeys = [self keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:targetDependencyKey singleton:YES];
-    if ([nativeTargetKeys count] == 0) {
-        [NSException raise:NSGenericException format:@"Did not find target dependency key %@", targetDependencyKey];
-    }
+    NSArray* nativeTargetKeys = [self keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:targetDependencyKey singleton:YES required:NO];
     // remove the key for the PBXTargetDependency from the PBXNativeTarget's dependencies array (leave in place even if empty)
     NSMutableDictionary* nativeTarget = [[self objects] valueForKey:[nativeTargetKeys objectAtIndex:0]];
     NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
