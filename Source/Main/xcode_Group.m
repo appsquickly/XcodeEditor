@@ -265,7 +265,7 @@
     [self addXcodeproj:xcodeprojDefinition];
     
     // add subproject's build products to targets (does not add the subproject's test bundle)
-    NSArray* buildProductFiles = [_project buildProductsForTargets:[xcodeprojDefinition xcodeprojKey:_project]];
+    NSArray* buildProductFiles = [_project buildProductsForTargets:[xcodeprojDefinition xcodeprojKeyForProject:_project]];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
     }
@@ -278,7 +278,7 @@
     if (xcodeprojDefinition == nil)
         return;
     
-    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKey:_project];
+    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
     
     // Remove from group and remove PBXFileReference
     [self removeGroupMemberWithKey:xcodeprojKey];
@@ -306,7 +306,7 @@
     if (xcodeprojDefinition == nil)
         return;
 
-    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKey:_project];
+    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
 
     // Remove PBXBundleFile entries and corresponding inclusion in PBXFrameworksBuildPhase and PBXResourcesBuidPhase
     NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];

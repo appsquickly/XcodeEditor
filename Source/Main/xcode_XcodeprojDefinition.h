@@ -39,9 +39,11 @@
 
 - (NSArray *) buildProductNames;
 
-- (NSString*) xcodeprojKey:(Project *)project;
+- (NSString*) xcodeprojKeyForProject:(Project *)project;
 
 - (NSString*) pathRelativeToProjectRoot:(Project*)project;
+
+- (NSString*) description;
 
 @end
 /* ================================================================================================================== */
