@@ -241,13 +241,13 @@
                     [returnValue addObject:key];
                 }
             } else {
-                [NSException raise:NSInvalidArgumentException format:@"Unrecognized member type %@", memberType];
+                [NSException raise:NSInvalidArgumentException format:@"Unrecognized member type %@", [NSString stringFromMemberType:memberType]];
             }
             if (singleton && [returnValue count] > 1) {
-                [NSException raise:NSGenericException format:@"Searched for one instance of member type %@ with value %@, but found %d", memberType, identifier, [returnValue count]];
+                [NSException raise:NSGenericException format:@"Searched for one instance of member type %@ with value %@, but found %d", [NSString stringFromMemberType:memberType], identifier, [returnValue count]];
             }
             if (required && [returnValue count] == 0) {
-                [NSException raise:NSGenericException format:@"Searched for instances of member type %@ with value %@, but did not find any", memberType, identifier];
+                [NSException raise:NSGenericException format:@"Searched for instances of member type %@ with value %@, but did not find any", [NSString stringFromMemberType:memberType], identifier];
             }
         }
     }];
