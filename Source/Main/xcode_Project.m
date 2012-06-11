@@ -125,6 +125,11 @@
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
+// need this value to construct relative path in XcodeprojDefinition
+- (NSString*) filePath {
+    return _filePath;
+}
+
 /* ================================================================================================================== */
 #pragma mark xcodeproj related public methods
 
@@ -171,7 +176,7 @@
 - (void) addAsTargetDependency:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     // make a new PBXContainerItemProxy
     NSString* name = [xcodeprojDefinition sourceFileName];
-    NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
+    NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot:self]] key];
     NSString* containerItemProxyKey = [self makeContainerItemProxyForName:name fileRef:key proxyType:@"1"];
     // make a PBXTargetDependency
     NSString* targetDependencyKey = [self makeTargetDependency:name forContainerItemProxyKey:containerItemProxyKey];
@@ -179,32 +184,6 @@
     for (Target* target in targets) {
         [target addDependency:targetDependencyKey];
     }
-}
-
-// compares the given path to the filePath of the project, and returns a relative version
-- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath {
-    NSMutableArray* projectPathComponents = [[_filePath pathComponents] mutableCopy];
-    NSArray* objectPathComponents = [fullPath pathComponents];
-    NSString* convertedPath = [[NSString alloc] init];
-    
-    // skip over path components from root that are equal
-    int limit = ([projectPathComponents count] > [objectPathComponents count]) ? [projectPathComponents count] : [objectPathComponents count];
-    int index1 = 0;
-    for (; index1 < limit; index1++) {
-        if ([[projectPathComponents objectAtIndex:index1] isEqualToString:[objectPathComponents objectAtIndex:index1]])
-            continue;
-        else
-            break;
-    }
-    // insert "../" for each remaining path component in project's xcodeproj path
-    for (int index2 = 0; index2 < ([projectPathComponents count] - index1); index2++) {
-        convertedPath = [convertedPath stringByAppendingString:@"../"];
-    }
-    // tack on the unique part of the object's path
-    for (int index3 = index1; index3 < [objectPathComponents count] - 1; index3++) {
-        convertedPath = [convertedPath stringByAppendingFormat:@"%@/", [objectPathComponents objectAtIndex:index3]];
-    }
-    return [convertedPath stringByAppendingString:[objectPathComponents lastObject]];
 }
 
 // returns an array of keys for all project objects (not just files) that match the given criteria
@@ -265,9 +244,7 @@
     return PBXProjectDict;
 }
 
-#pragma mark xcodeproj related private methods
-
-// returns the key of the PBXContainerItemProxy for the given name and proxy type
+// returns the key of the PBXContainerItemProxy for the given name and proxy type. nil if not found.
 - (NSString*) containerItemProxyKeyForName:(NSString*)name proxyType:(NSString*)proxyType {
     NSMutableArray* results;
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
@@ -282,8 +259,13 @@
     if ([results count] > 1) {
         [NSException raise:NSGenericException format:@"Searched for one instance of member type %@ with value %@, but found %d", @"PBXContainerItemProxy", [NSString stringWithFormat:@"%@ and proxyType of %@", name, proxyType], [results count]];
     }
+    if ([results count] == 0) {
+        return nil;
+    }
     return [results objectAtIndex:0];
 }
+
+#pragma mark xcodeproj related private methods
 
 // makes a PBXContainerItemProxy object for a given PBXFileReference object.  Replaces pre-existing objects.
 - (NSString*) makeContainerItemProxyForName:(NSString*)name fileRef:(NSString*)fileRef proxyType:(NSString*)proxyType {
@@ -351,7 +333,7 @@
 
 // make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subproject
 - (void) addProxies:(XcodeprojDefinition *)xcodeproj {
-    NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
+    NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot:self]] key];
     for (NSDictionary* target in [xcodeproj.subproject targets]) {
         NSString* containerItemProxyKey = [self makeContainerItemProxyForName:[target valueForKey:@"productName"] fileRef:fileRef proxyType:@"2"];
         NSString* productFileReferenceKey = [target valueForKey:@"productReference"];
@@ -377,13 +359,10 @@
     }];
 }
 
-// removes a file reference from the projectReferences array in PBXProject (removing the array itself if this action
-// leaves it empty).  Returns the ProductGroup key from the removed reference.
-- (NSString*) removeFromProjectReferences:(NSString*)key {
+// returns the Products group key for the given PBXFileReference key, nil if not found.
+- (NSString*) productsGroupKeyForKey:(NSString*)key {
     NSMutableArray* projectReferences = [[self PBXProjectDict] valueForKey:@"projectReferences"];
-    // remove entry from PBXProject's projectReferences
     NSString* productsGroupKey = nil;
-    NSMutableArray* referencesToRemove = [[NSMutableArray alloc] init];
     for (NSDictionary* projectRef in projectReferences) {
         if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:key]) {
             // it's an error if we find more than one
@@ -391,6 +370,19 @@
                 [NSException raise:NSGenericException format:@"Found more than one project reference for key %@", key];
             }
             productsGroupKey = [projectRef valueForKey:@"ProductGroup"];
+        }
+    }
+    return productsGroupKey;
+}
+
+// removes a file reference from the projectReferences array in PBXProject (removing the array itself if this action
+// leaves it empty).
+- (void) removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey {
+    NSMutableArray* projectReferences = [[self PBXProjectDict] valueForKey:@"projectReferences"];
+    // remove entry from PBXProject's projectReferences
+    NSMutableArray* referencesToRemove = [[NSMutableArray alloc] init];
+    for (NSDictionary* projectRef in projectReferences) {
+        if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:key]) {
             [referencesToRemove addObject:projectRef];
         }
     }
@@ -401,7 +393,6 @@
     if ([projectReferences count] == 0) {
         [[self PBXProjectDict] removeObjectForKey:@"projectReferences"];
     }
-    return productsGroupKey;
 }
 
 // removes a specific xcodeproj file from any targets (by name).  It's not an error if no entries are found,

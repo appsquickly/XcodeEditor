@@ -85,6 +85,8 @@
 
 - (NSArray*) imagePNGFiles;
 
+- (NSString*) filePath;
+
 #pragma mark xcodeproj methods
 
 - (NSString*) referenceProxyKeyForName:(NSString*)name;
@@ -92,8 +94,6 @@
 - (NSArray*) buildProductsForTargets:(NSString*)xcodeprojKey;
 
 - (void) addAsTargetDependency:(xcode_XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
-
-- (NSString*) makePathRelativeToProjectRoot:(NSString*)fullPath;
 
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier singleton:(BOOL)singleton required:(BOOL)required;
 
@@ -103,9 +103,13 @@
 
 - (void) addProxies:(xcode_XcodeprojDefinition *)xcodeproj;
 
-- (NSString*) removeFromProjectReferences:(NSString*)key;
+- (void) removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey;
 
 - (void) removeTargetDependencies:(NSString*)name;
+
+- (NSString*) containerItemProxyKeyForName:(NSString*)name proxyType:(NSString*)proxyType;
+
+- (NSString*) productsGroupKeyForKey:(NSString*)key;
 
 /* ================================================================================================================== */
 #pragma mark Groups

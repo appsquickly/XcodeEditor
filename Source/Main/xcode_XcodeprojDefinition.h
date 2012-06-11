@@ -20,7 +20,6 @@
     NSString* _path;
     XcodeSourceFileType _type;
     Project* _subproject;
-    NSString* _pathRelativeToProjectRoot;
     NSString* _key;
 }
 
@@ -28,7 +27,6 @@
 @property(nonatomic, strong, readonly) NSString* path;
 @property(nonatomic, readonly) XcodeSourceFileType type;
 @property(nonatomic, strong, readonly) Project* subproject;
-@property(nonatomic, strong, readwrite) NSString* pathRelativeToProjectRoot;
 @property(nonatomic, strong, readonly) NSString* key;
 
 + (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)path;
@@ -42,6 +40,8 @@
 - (NSArray *) buildProductNames;
 
 - (NSString*) xcodeprojKey:(Project *)project;
+
+- (NSString*) pathRelativeToProjectRoot:(Project*)project;
 
 @end
 /* ================================================================================================================== */

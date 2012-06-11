@@ -247,12 +247,9 @@
 
 // adds an xcodeproj as a subproject of the current project.
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
-    // set xcodeproj's path relative to the project root
-    xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
-    
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
-    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot:_project] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
     
     // create PBXContainerItemProxies and PBXReferenceProxies
@@ -281,8 +278,6 @@
     if (xcodeprojDefinition == nil)
         return;
     
-    // set xcodeproj's path relative to the project root
-    xcodeprojDefinition.pathRelativeToProjectRoot = [_project makePathRelativeToProjectRoot:[xcodeprojDefinition xcodeprojFullPathName]];
     NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKey:_project];
     
     // Remove from group and remove PBXFileReference
@@ -291,13 +286,39 @@
     // remove PBXContainerItemProxies and PBXReferenceProxies
     [_project removeProxies:xcodeprojKey];
     
+    // get the key for the Products group
+    NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];
+    
     // remove from the ProjectReferences array of PBXProject
-    NSString* productsGroupKey = [_project removeFromProjectReferences:xcodeprojKey];
+    [_project removeFromProjectReferences:xcodeprojKey forProductsGroup:productsGroupKey];
 
-    // remove PDXBuildFile entries and Products group
+    // remove PDXBuildFile entries
     [self removeProductsGroupFromProject:productsGroupKey];
     
+    // remove Products group
+    [[_project objects] removeObjectForKey:productsGroupKey];
+    
     // remove from all targets
+    [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
+}
+
+- (void) removeXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
+    if (xcodeprojDefinition == nil)
+        return;
+
+    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKey:_project];
+
+    // Remove PBXBundleFile entries and corresponding inclusion in PBXFrameworksBuildPhase and PBXResourcesBuidPhase
+    NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];
+    [self removeProductsGroupFromProject:productsGroupKey];
+   
+    // Remove the PBXContainerItemProxy for this xcodeproj with proxyType 1
+    NSString* containerItemProxyKey = [_project containerItemProxyKeyForName:[xcodeprojDefinition pathRelativeToProjectRoot:_project] proxyType:@"1"];
+    if (containerItemProxyKey != nil) {
+        [[_project objects] removeObjectForKey:containerItemProxyKey];
+    }
+    
+    // Remove PBXTargetDependency and entry in PBXNativeTarget
     [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
 }
 
@@ -514,7 +535,7 @@
     NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
     NSMutableDictionary* newProjectReference = [NSDictionary dictionaryWithObjectsAndKeys:
                                             productKey, @"ProductGroup",
-                                            [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key],
+                                                [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot:_project]] key],
                                             @"ProjectRef", nil];
     if (projectReferences == nil) {
         projectReferences = [[NSMutableArray alloc] init];
@@ -550,8 +571,7 @@
     }
 }
 
-// removes entries from PBXBuildFiles, PBXFrameworksBuildPhase and PBXResourcesBuildPhase, and removes the 
-// Products group for the given key
+// removes entries from PBXBuildFiles, PBXFrameworksBuildPhase and PBXResourcesBuildPhase
 - (void)removeProductsGroupFromProject:(NSString*)key {
     // remove product group's build products from PDXBuildFiles
     NSDictionary* productsGroup = [[_project objects] objectForKey:key];
@@ -565,9 +585,6 @@
             [self removeBuildPhaseFileKey:buildFileKey forType:PBXResourcesBuildPhase];
         }
     }
-    
-    // remove Products groups
-    [[_project objects] removeObjectForKey:key];
 }
 
 /* ================================================================================================================== */
