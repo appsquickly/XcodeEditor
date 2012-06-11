@@ -527,10 +527,31 @@
 - (void)removeGroupMemberWithKey:(NSString*)key {
     NSMutableArray* children = [self valueForKey:@"children"];
     [children removeObject:key];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
     // remove PBXFileReference
     [[_project objects] removeObjectForKey:key];
 }
 
+// removes the given key from the files arrays of the given section, if found (intended to be used with
+// PBXFrameworksBuildPhase and PBXResourcesBuildPhase)
+// they are not required because we are currently not adding these entries;  Xcode is doing it for us. The existing
+// code for adding to a target doesn't do it, and I didn't add it since Xcode will take care of it for me and I was
+// avoiding modifying existing code as much as possible)
+- (void)removeBuildPhaseFileKey:(NSString*)key forType:(XcodeMemberType)memberType {
+    NSArray* buildPhases = [_project keysForProjectObjectsOfType:memberType withIdentifier:nil singleton:NO required:NO];
+    for (NSString* buildPhaseKey in buildPhases) {
+        NSDictionary* buildPhaseDict = [[_project objects] valueForKey:buildPhaseKey];
+        NSMutableArray* fileKeys = [buildPhaseDict valueForKey:@"files"];
+        for (NSString* fileKey in fileKeys)  {
+            if ([fileKey isEqualToString:key]) {
+                [fileKeys removeObject:fileKey];
+            }
+        }
+    }
+}
+
+// removes entries from PBXBuildFiles, PBXFrameworksBuildPhase and PBXResourcesBuildPhase, and removes the 
+// Products group for the given key
 - (void)removeProductsGroupFromProject:(NSString*)key {
     // remove product group's build products from PDXBuildFiles
     NSDictionary* productsGroup = [[_project objects] objectForKey:key];
@@ -538,7 +559,10 @@
         NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:YES required:NO];
         // could be zero - we didn't add the test bundle as a build product
         if ([buildFileKeys count] == 1) {
-            [[_project objects] removeObjectForKey:[buildFileKeys objectAtIndex:0]];
+            NSString* buildFileKey = [buildFileKeys objectAtIndex:0];
+            [[_project objects] removeObjectForKey:buildFileKey];
+            [self removeBuildPhaseFileKey:buildFileKey forType:PBXFrameworksBuildPhase];
+            [self removeBuildPhaseFileKey:buildFileKey forType:PBXResourcesBuildPhase];
         }
     }
     

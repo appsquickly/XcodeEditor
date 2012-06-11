@@ -240,6 +240,8 @@
                 if ([[obj valueForKey:@"path"] isEqualToString:identifier]) {
                     [returnValue addObject:key];
                 }
+            } else if (memberType == PBXFrameworksBuildPhase || memberType == PBXResourcesBuildPhase) {
+                [returnValue addObject:key];
             } else {
                 [NSException raise:NSInvalidArgumentException format:@"Unrecognized member type %@", [NSString stringFromMemberType:memberType]];
             }
