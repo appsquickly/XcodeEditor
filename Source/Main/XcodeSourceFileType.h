@@ -15,7 +15,8 @@ typedef enum {
     PropertyList,            // .plist 
     SourceCodeHeader,        // .h     
     SourceCodeObjC,          // .m     
-    SourceCodeObjCPlusPlus,  // .mm    
+    SourceCodeObjCPlusPlus,  // .mm
+    SourceCodeCPlusPlus,     // .cpp
     XibFile,                 // .xib   
     ImageResourcePNG,        // .png
     Bundle,                  // .bundle  .octet 

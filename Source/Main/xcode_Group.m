@@ -21,6 +21,7 @@
 #import "xcode_SourceFileDefinition.h"
 
 #import "Logging.h"
+
 /* ================================================================================================================== */
 @interface xcode_Group ()
 
@@ -40,6 +41,7 @@
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
 
 @end
+
 /* ================================================================================================================== */
 
 @implementation xcode_Group
@@ -48,7 +50,6 @@
 @synthesize key = _key;
 @synthesize children = _children;
 @synthesize alias = _alias;
-
 
 
 /* ================================================= Class Methods ================================================== */
@@ -120,9 +121,10 @@
 
 - (void) addClass:(ClassDefinition*)classDefinition {
 
-
-    [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
-            type:SourceCodeHeader fileOperationStyle:[classDefinition fileOperationStyle]];
+    if ([classDefinition header]) {
+        [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
+                type:SourceCodeHeader fileOperationStyle:[classDefinition fileOperationStyle]];
+    }
 
     if ([classDefinition isObjectiveC]) {
         [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
@@ -131,6 +133,10 @@
     else if ([classDefinition isObjectiveCPlusPlus]) {
         [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
                 type:SourceCodeObjCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
+    }
+    else if ([classDefinition isCPlusPlus]) {
+        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
+                type:SourceCodeCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
     }
 
     [[_project objects] setObject:[self asDictionary] forKey:_key];
@@ -145,7 +151,6 @@
 
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {
     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
-        LogDebug(@"Here we go!!!!");
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
             LogDebug(@"Making file reference");
@@ -156,8 +161,8 @@
             }
             else if ([frameworkDefinition fileOperationStyle] == FileOperationStyleAcceptExisting) {
                 NSString* frameworkName = [[frameworkDefinition filePath] lastPathComponent];
-                if (![_fileOperationQueue
-                        fileWithName:frameworkName existsInProjectDirectory:[self pathRelativeToProjectRoot]]) {
+                if (![_fileOperationQueue fileWithName:frameworkName
+                        existsInProjectDirectory:[self pathRelativeToProjectRoot]]) {
                     copyFramework = YES;
                 }
 
@@ -387,14 +392,14 @@
     if (fileOperationStyle == FileOperationStyleOverwrite) {
         writeFile = YES;
         if ([_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {
-            LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self
-                    displayName], name);
+            LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self displayName], name);
         }
     }
     else if (fileOperationStyle == FileOperationStyleAcceptExisting &&
             ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {
         writeFile = YES;
     }
+    //TODO: Fix this hack. Should use polymorphism or something.
     if (writeFile) {
         if ([contents isKindOfClass:[NSString class]]) {
             [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];

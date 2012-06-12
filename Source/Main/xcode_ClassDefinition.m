@@ -37,7 +37,7 @@
     self = [super init];
     if (self) {
         _className = [className copy];
-        if (!(language == ObjectiveC || language == ObjectiveCPlusPlus)) {
+        if (!(language == ObjectiveC || language == ObjectiveCPlusPlus || language == CPlusPlus)) {
             [NSException
                     raise:NSInvalidArgumentException format:@"Language must be one of ObjectiveC, ObjectiveCPlusPlus"];
         }
@@ -56,6 +56,10 @@
     return _language == ObjectiveCPlusPlus;
 }
 
+- (BOOL) isCPlusPlus{
+    return _language == CPlusPlus;
+}
+
 - (NSString*) headerFileName {
     return [_className stringByAppendingString:@".h"];
 
@@ -68,6 +72,9 @@
     }
     else if ([self isObjectiveCPlusPlus]) {
         sourceFileName = [_className stringByAppendingString:@".mm"];
+    }
+    else if([self isCPlusPlus]){
+        sourceFileName = [_className stringByAppendingString:@".cpp"];
     }
     return sourceFileName;
 }

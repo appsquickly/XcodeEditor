@@ -64,9 +64,28 @@
 }
 
 - (BOOL) canBecomeBuildFile {
-    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive;
+    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type ==
+            XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type ==
+            Archive;
 }
 
+
+- (XcodeMemberType) buildPhase {
+    if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type ==
+            XibFile) {
+        return PBXSourcesBuildPhase;
+    }
+    else if (_type == Framework) {
+        return PBXFrameworksBuildPhase;
+    }
+    else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle) {
+        return PBXResourcesBuildPhase;
+    }
+    else if (_type == Archive) {
+        return PBXFrameworksBuildPhase;
+    }
+    return PBXNilType;
+}
 
 - (NSString*) buildFileKey {
     if (_buildFileKey == nil) {
@@ -84,7 +103,6 @@
 
 
 - (void) becomeBuildFile {
-    LogDebug(@"$$$$$$$$$$$$$$$$$ Start becoming build file");
     if (![self isBuildFile]) {
         if ([self canBecomeBuildFile]) {
             NSMutableDictionary* sourceBuildFile = [NSMutableDictionary dictionary];
@@ -97,11 +115,11 @@
             [NSException raise:NSInvalidArgumentException format:@"Add framework to target not implemented yet."];
         }
         else {
-            [NSException raise:NSInvalidArgumentException format:@"Project file of type %@ can't become a build file.",
-                                                                 [NSString stringFromSourceFileType:_type]];
+            [NSException raise:NSInvalidArgumentException
+                    format:@"Project file of type %@ can't become a build file.", [NSString stringFromSourceFileType:_type]];
         }
 
-    }LogDebug(@"Done becoming build file");
+    }
 }
 
 /* ================================================= Protocol Methods =============================================== */
@@ -127,10 +145,8 @@
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name,
-                                      [self pathRelativeToProjectRoot]];
+    return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name, [self pathRelativeToProjectRoot]];
 }
-
 
 
 @end

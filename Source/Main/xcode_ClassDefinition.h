@@ -15,6 +15,7 @@
 typedef enum {
     ObjectiveC,
     ObjectiveCPlusPlus,
+    CPlusPlus,
 } ClassDefinitionLanguage;
 
 @interface xcode_ClassDefinition : xcode_AbstractDefinition {
@@ -48,6 +49,8 @@ typedef enum {
 - (BOOL) isObjectiveC;
 
 - (BOOL) isObjectiveCPlusPlus;
+
+- (BOOL) isCPlusPlus;
 
 - (NSString*) headerFileName;
 

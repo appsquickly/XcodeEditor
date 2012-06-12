@@ -42,6 +42,7 @@ SPEC_BEGIN(GroupSpec)
             [group shouldNotBeNil];
         });
 
+/* ================================================================================================================== */
         describe(@"Object creation", ^{
 
             it(@"should allow initialization with ", ^{
@@ -58,6 +59,7 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
+/* ================================================================================================================== */
         describe(@"Properties", ^{
 
             it(@"should be able to describe itself", ^{
@@ -72,6 +74,7 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
+/* ================================================================================================================== */
         describe(@"Adding obj-c source files.", ^{
 
             it(@"should allow adding a source file.", ^{
@@ -141,6 +144,7 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
+/* ================================================================================================================== */
         describe(@"adding objective-c++ files", ^{
 
 
@@ -160,9 +164,29 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
+        });
+
+
+/* ================================================================================================================== */
+        describe(@"Adding CPP files", ^{
+
+            it(@"should allow using a class definition to add cpp files", ^{
+
+                Project* anotherProject = [Project projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+                Group* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
+
+                ClassDefinition* definition = [ClassDefinition classDefinitionWithName:@"Person" language:CPlusPlus];
+                [definition setSource:[NSString stringWithTestResource:@"Person.impl"]];
+
+                [anotherGroup addClass:definition toTargets:[anotherProject targets]];
+                [anotherProject save];
+
+            });
+
 
         });
 
+/* ================================================================================================================== */
         describe(@"adding xib files.", ^{
             it(@"should allow adding a xib file.", ^{
 
@@ -215,27 +239,29 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
-
+/* ================================================================================================================== */
         describe(@"adding frameworks", ^{
             it(@"should allow adding a framework on the system volume", ^{
 
-                FrameworkDefinition* frameworkDefinition = [FrameworkDefinition
-                        frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath] copyToDestination:NO];
+                FrameworkDefinition* frameworkDefinition =
+                        [FrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath]
+                                copyToDestination:NO];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
 
             });
 
             it(@"should allow adding a framework, copying it to the destination folder", ^{
-                FrameworkDefinition* frameworkDefinition = [FrameworkDefinition
-                        frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath] copyToDestination:YES];
+                FrameworkDefinition* frameworkDefinition =
+                        [FrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath]
+                                copyToDestination:YES];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
             });
 
         });
 
-
+/* ================================================================================================================== */
         describe(@"Adding other types", ^{
 
             it(@"should allow adding a group", ^{
@@ -266,15 +292,15 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
-
+/* ================================================================================================================== */
         describe(@"Listing members", ^{
             it(@"should be able to provide a sorted list of it's children", ^{
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:18];
+                [[children should] haveCountOf:17];
                 [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
-                [[[[children objectAtIndex:17] displayName] should] equal:@"UserInterface"];
+                [[[[children objectAtIndex:16] displayName] should] equal:@"UserInterface"];
 
             });
 
@@ -297,7 +323,7 @@ SPEC_BEGIN(GroupSpec)
 
         });
 
-
+/* ================================================================================================================== */
         describe(@"Deleting", ^{
 
             it(@"should allow deleting a group, optionally removing also the contents.", ^{

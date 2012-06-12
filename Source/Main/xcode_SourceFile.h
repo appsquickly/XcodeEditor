@@ -54,6 +54,8 @@
 
 - (BOOL) canBecomeBuildFile;
 
+- (XcodeMemberType) buildPhase;
+
 - (NSString*) buildFileKey;
 
 /**

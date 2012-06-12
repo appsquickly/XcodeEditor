@@ -20,8 +20,6 @@
 
 - (void) flagMembersAsDirty;
 
-- (XcodeMemberType) buildPhaseFor:(SourceFile*)sourceFile;
-
 @end
 
 
@@ -75,7 +73,7 @@
 
     for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"]) {
         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-        if ([[buildPhase valueForKey:@"isa"] asMemberType] == [self buildPhaseFor:member]) {
+        if ([[buildPhase valueForKey:@"isa"] asMemberType] == [member buildPhase]) {
 
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
             if (![files containsObject:[member buildFileKey]]) {
@@ -160,26 +158,5 @@
     _members = nil;
 }
 
-
-- (XcodeMemberType) buildPhaseFor:(SourceFile*)sourceFile {
-    if (sourceFile.type == SourceCodeObjC || sourceFile.type == SourceCodeObjCPlusPlus || sourceFile.type == XibFile) {
-        return PBXSourcesBuildPhase;
-    }
-    else if (sourceFile.type == Framework) {
-        return PBXFrameworksBuildPhase;
-    }
-    else if (sourceFile.type == ImageResourcePNG || sourceFile.type == HTML || sourceFile.type == Bundle) {
-       return PBXResourcesBuildPhase;
-    }
-    else if (sourceFile.type == Archive) {
-       return PBXFrameworksBuildPhase;
-    }
-
-    else {
-        NSString* type = [NSString stringFromSourceFileType:[sourceFile type]];
-        [NSException raise:NSInternalInconsistencyException format:@"Type %@ cannot be added to a target.", type];
-    }
-    return 0;
-}
 
 @end
