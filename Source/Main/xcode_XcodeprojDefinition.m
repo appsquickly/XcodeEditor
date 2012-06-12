@@ -32,10 +32,8 @@
 
 /* ================================================== Initializers ================================================== */
 
-// Note - because _path is used to find the external project, it's often going to be an absoulute path name.
-// We will need to convert it into a path relative to SRCROOT, but can't do that here as we don't have access
-// to the project.  It has to be done at the time this object is added to the group, which is part of the
-// project.
+// Note - _path is most often going to be an absolute path.  The method pathRelativeToProjectRoot below should be
+// used to get the form that's stored in the main project file.
 - (id) initWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
     self = [super init];
     if (self) {
