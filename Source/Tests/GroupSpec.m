@@ -236,8 +236,8 @@ SPEC_BEGIN(GroupSpec)
         });
 
 
-        describe(@"adding xcodeproj files.", ^{
-            it(@"should allow adding a xcodeproj file.", ^{
+        describe(@"adding xcodeproj files", ^{
+            it(@"should allow adding a xcodeproj file", ^{
                 
                 XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy"];
                 
@@ -248,7 +248,7 @@ SPEC_BEGIN(GroupSpec)
             
             it(@"should provide a convenience method to add a xcodeproj file, and specify targets", ^{
                 
-                XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy"];
+                XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"ArchiveProj" projPath:@"/tmp/ArchiveProj"];
 
                 [group addXcodeproj:xcodeprojDefinition toTargets:[project targets]];
                 [project save];
@@ -257,8 +257,8 @@ SPEC_BEGIN(GroupSpec)
             
         });
 
-        describe(@"removing xcodeproj files.", ^{
-            it(@"should allow removing a xcodeproj file.", ^{
+        describe(@"removing xcodeproj files", ^{
+            it(@"should allow removing a xcodeproj file", ^{
                 
                 XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"HelloBoxy" projPath:@"/tmp/HelloBoxy"];
                 
@@ -267,6 +267,15 @@ SPEC_BEGIN(GroupSpec)
                 
             });
             
+            it(@"should allow removing a xcodeproj file, and specify targets", ^{
+                
+                XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"ArchiveProj" projPath:@"/tmp/ArchiveProj"];
+                
+                [group removeXcodeproj:xcodeprojDefinition fromTargets:[project targets]];
+                [project save];
+                
+            });
+
         });
 
         describe(@"Adding other types", ^{
