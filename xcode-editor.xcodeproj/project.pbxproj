@@ -77,8 +77,6 @@
 		E14CD24C15755B8C00A90952 /* xcode_XcodeprojDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E14CD24A15755B8C00A90952 /* xcode_XcodeprojDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E14CD24D15755B8C00A90952 /* xcode_XcodeprojDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */; };
 		E17822631582E212003721BA /* xcode_XcodeprojDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */; };
-		E1D4FD141587BF6C00008D80 /* ArchiveProj.zip in Resources */ = {isa = PBXBuildFile; fileRef = E1D4FD131587BF6C00008D80 /* ArchiveProj.zip */; };
-		E1D4FD151587C06400008D80 /* ArchiveProj.zip in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = E1D4FD131587BF6C00008D80 /* ArchiveProj.zip */; };
 		E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11315443AA400C51251 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
@@ -102,7 +100,6 @@
 				6BE0AAF81505D7C4004C27DA /* ESA.Sales.Foobar.xib in Copy Test Resources to /tmp */,
 				6B65942414F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.impl in Copy Test Resources to /tmp */,
 				6B65942514F8AAB100F65AEC /* project.pbxproj in Copy Test Resources to /tmp */,
-				E1D4FD151587C06400008D80 /* ArchiveProj.zip in Copy Test Resources to /tmp */,
 			);
 			name = "Copy Test Resources to /tmp";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,7 +168,6 @@
 		6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FrameworkDefinition.h; sourceTree = "<group>"; };
 		E14CD24A15755B8C00A90952 /* xcode_XcodeprojDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_XcodeprojDefinition.h; sourceTree = "<group>"; };
 		E14CD24B15755B8C00A90952 /* xcode_XcodeprojDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_XcodeprojDefinition.m; sourceTree = "<group>"; };
-		E1D4FD131587BF6C00008D80 /* ArchiveProj.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ArchiveProj.zip; sourceTree = "<group>"; };
 		E94DE11315443AA400C51251 /* XcodeEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
@@ -269,7 +265,6 @@
 				6B3AD05814F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.header */,
 				6B3AD05914F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.impl */,
 				6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */,
-				E1D4FD131587BF6C00008D80 /* ArchiveProj.zip */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -495,7 +490,6 @@
 				E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */,
 				E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */,
 				6B01A07A154A337A00122D48 /* goat-funny.png in Resources */,
-				E1D4FD141587BF6C00008D80 /* ArchiveProj.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +521,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "unzip -d /tmp/ -o \"${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip\"\nunzip -d /tmp/ -o \"${SRCROOT}/Source/Tests/Resources/HelloBoxy.zip\"\nunzip -d /tmp/ -o \"${SRCROOT}/Source/Tests/Resources/ArchiveProj.zip\"\n\ncp \"${SRCROOT}/Source/Tests/Resources/project.pbxproj\" /tmp";
+			shellScript = "unzip -d /tmp/ -o \"${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip\"\nunzip -d /tmp/ -o \"${SRCROOT}/Source/Tests/Resources/HelloBoxy.zip\"\n\ncp \"${SRCROOT}/Source/Tests/Resources/project.pbxproj\" /tmp";
 		};
 /* End PBXShellScriptBuildPhase section */
 

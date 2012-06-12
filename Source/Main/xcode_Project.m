@@ -186,9 +186,7 @@
     }
 }
 
-// returns an array of keys for all project objects (not just files) that match the given criteria.  Since this is
-// a convenience method intended to save typing elsewhere, each type has its own field to match to rather than each
-// matching on name or path as you might expect.
+// returns an array of keys for all project objects (not just files) that match the given criteria
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType  withIdentifier:(NSString*)identifier singleton:(BOOL)singleton required:(BOOL)required {
     __block NSMutableArray* returnValue = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
@@ -407,15 +405,13 @@
         return;
     }
     NSString* targetDependencyKey = [targetDependencyKeys objectAtIndex:0];
-    // use the key for the PBXTargetDependency to get the key for any PBXNativeTargets that depend on it
-    NSArray* nativeTargetKeys = [self keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:targetDependencyKey singleton:NO required:NO];
-    // remove the key for the PBXTargetDependency from the PBXNativeTarget's dependencies arrays (leave in place even if empty)
-    for (NSString* nativeTargetKey in nativeTargetKeys) {
-        NSMutableDictionary* nativeTarget = [[self objects] objectForKey:nativeTargetKey];
-        NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
-        [dependencies removeObject:targetDependencyKey];
-        [nativeTarget setObject:dependencies forKey:@"dependencies"];
-    }
+    // use the key for the PBXTargetDependency to get the key for the PBXNativeTarget
+    NSArray* nativeTargetKeys = [self keysForProjectObjectsOfType:PBXNativeTarget withIdentifier:targetDependencyKey singleton:YES required:NO];
+    // remove the key for the PBXTargetDependency from the PBXNativeTarget's dependencies array (leave in place even if empty)
+    NSMutableDictionary* nativeTarget = [[self objects] valueForKey:[nativeTargetKeys objectAtIndex:0]];
+    NSMutableArray* dependencies = [nativeTarget valueForKey:@"dependencies"];
+    [dependencies removeObject:targetDependencyKey];
+    [nativeTarget setObject:dependencies forKey:@"dependencies"];
     // remove the PBXTargetDependency
     [[self objects] removeObjectForKey:targetDependencyKey];
 }
