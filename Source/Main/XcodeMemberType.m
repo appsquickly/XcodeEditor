@@ -30,6 +30,7 @@ static NSDictionary * _projectNodeTypesAsStrings;
                                                                                boxEnum(PBXGroup), @"PBXGroup",
                                                                                boxEnum(PBXNativeTarget), @"PBXNativeTarget",
                                                                                boxEnum(PBXProject), @"PBXProject",
+                                                                               boxEnum(PBXReferenceProxy), @"PBXReferenceProxy",
                                                                                boxEnum(PBXResourcesBuildPhase), @"PBXResourcesBuildPhase",
                                                                                boxEnum(PBXSourcesBuildPhase), @"PBXSourcesBuildPhase",
                                                                                boxEnum(PBXTargetDependency), @"PBXTargetDependency",

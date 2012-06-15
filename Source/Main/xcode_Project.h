@@ -11,12 +11,14 @@
 
 #import <Foundation/Foundation.h>
 #import "XcodeMemberType.h"
+#import "XcodeSourceFileType.h"
 
 @class xcode_ClassDefinition;
 @class xcode_Group;
 @class xcode_FileOperationQueue;
 @class xcode_SourceFile;
 @class xcode_Target;
+@class xcode_ProjectDefinition;
 
 
 @interface xcode_Project : NSObject {
@@ -41,6 +43,7 @@
 - (id) initWithFilePath:(NSString*)filePath;
 
 /* ================================================================================================================== */
+
 #pragma mark Files
 /**
 * Returns all file resources in the project, as an array of `xcode_SourceFile` objects.
@@ -57,8 +60,6 @@
 * which one is returned is undefined.
 */
 - (xcode_SourceFile*) fileWithName:(NSString*)name;
-
-
 
 /**
 * Returns all header files in the project, as an array of `xcode_SourceFile` objects.
@@ -81,6 +82,32 @@
 - (NSArray*) xibFiles;
 
 - (NSArray*) imagePNGFiles;
+
+- (NSString*) filePath;
+
+#pragma mark xcodeproj methods
+
+- (NSString*) referenceProxyKeyForName:(NSString*)name;
+
+- (NSArray*) buildProductsForTargets:(NSString*)xcodeprojKey;
+
+- (void) addAsTargetDependency:(xcode_ProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+
+- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier singleton:(BOOL)singleton required:(BOOL)required;
+
+- (NSMutableDictionary*) PBXProjectDict;
+
+- (void) removeProxies:(NSString*)xcodeprojKey;
+
+- (void) addProxies:(xcode_ProjectDefinition*)xcodeproj;
+
+- (void) removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey;
+
+- (void) removeTargetDependencies:(NSString*)name;
+
+- (NSString*) containerItemProxyKeyForName:(NSString*)name proxyType:(NSString*)proxyType;
+
+- (NSString*) productsGroupKeyForKey:(NSString*)key;
 
 /* ================================================================================================================== */
 #pragma mark Groups

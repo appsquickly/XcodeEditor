@@ -19,6 +19,7 @@
 #import "xcode_ClassDefinition.h"
 #import "xcode_utils_KeyBuilder.h"
 #import "xcode_SourceFileDefinition.h"
+#import "xcode_ProjectDefinition.h"
 
 #import "Logging.h"
 
@@ -27,6 +28,13 @@
 
 - (void) makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+
+- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+
+- (NSString*) makeProductsGroup:(ProjectDefinition*)xcodeprojDefinition;
+
+- (void) addProductsGroupToProject:(ProjectDefinition*)xcodeprojDefinition;
 
 - (void) addMemberWithKey:(NSString*)key;
 
@@ -39,6 +47,10 @@
 - (XcodeMemberType) typeForKey:(NSString*)key;
 
 - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
+
+- (void) removeGroupMemberWithKey:(NSString*)key;
+
+- (void) removeProductsGroupFromProject:(NSString*)key;
 
 @end
 
@@ -237,6 +249,89 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
+
+- (void) addProject:(xcode_ProjectDefinition*)xcodeprojDefinition {
+    // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
+    // (will retrieve existing if already there)
+    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName]
+            path:[xcodeprojDefinition pathRelativeToProjectRoot:_project] type:XcodeProject
+            fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+
+    // create PBXContainerItemProxies and PBXReferenceProxies
+    [_project addProxies:xcodeprojDefinition];
+
+    // add projectReferences key to PBXProject
+    [self addProductsGroupToProject:xcodeprojDefinition];
+}
+
+// adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
+// to targets.
+- (void) addProject:(xcode_ProjectDefinition*)projectDefinition toTargets:(NSArray*)targets {
+    [self addProject:projectDefinition];
+
+    // add subproject's build products to targets (does not add the subproject's test bundle)
+    NSArray* buildProductFiles = [_project buildProductsForTargets:[projectDefinition xcodeprojKeyForProject:_project]];
+    for (SourceFile* file in buildProductFiles) {
+        [self addSourceFile:file toTargets:targets];
+    }
+    // add main target of subproject as target dependency to main target of project
+    [_project addAsTargetDependency:projectDefinition toTargets:targets];
+}
+
+// removes an xcodeproj from the current project.
+- (void) removeProject:(xcode_ProjectDefinition*)xcodeprojDefinition {
+    if (xcodeprojDefinition == nil) {
+        return;
+    }
+
+    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
+
+    // Remove from group and remove PBXFileReference
+    [self removeGroupMemberWithKey:xcodeprojKey];
+
+    // remove PBXContainerItemProxies and PBXReferenceProxies
+    [_project removeProxies:xcodeprojKey];
+
+    // get the key for the Products group
+    NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];
+
+    // remove from the ProjectReferences array of PBXProject
+    [_project removeFromProjectReferences:xcodeprojKey forProductsGroup:productsGroupKey];
+
+    // remove PDXBuildFile entries
+    [self removeProductsGroupFromProject:productsGroupKey];
+
+    // remove Products group
+    [[_project objects] removeObjectForKey:productsGroupKey];
+
+    // remove from all targets
+    [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
+}
+
+- (void) removeProject:(xcode_ProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets {
+    if (projectDefinition == nil) {
+        return;
+    }
+
+    NSString* xcodeprojKey = [projectDefinition xcodeprojKeyForProject:_project];
+
+    // Remove PBXBundleFile entries and corresponding inclusion in PBXFrameworksBuildPhase and PBXResourcesBuidPhase
+    NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];
+    [self removeProductsGroupFromProject:productsGroupKey];
+
+    // Remove the PBXContainerItemProxy for this xcodeproj with proxyType 1
+    NSString* containerItemProxyKey =
+            [_project containerItemProxyKeyForName:[projectDefinition pathRelativeToProjectRoot:_project]
+                    proxyType:@"1"];
+    if (containerItemProxyKey != nil) {
+        [[_project objects] removeObjectForKey:containerItemProxyKey];
+    }
+
+    // Remove PBXTargetDependency and entry in PBXNativeTarget
+    [_project removeTargetDependencies:[projectDefinition sourceFileName]];
+}
+
 /* ================================================================================================================== */
 #pragma mark Members
 
@@ -410,7 +505,102 @@
     }
 }
 
+/* ================================================== Xcodeproj Methods ============================================= */
+
+#pragma mark Xcodeproj methods
+
+// creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
+// member via path rather than name, because that is how subprojects are stored by Xcode
+- (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
+        fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
+    SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
+    if ((currentSourceFile) == nil) {
+        NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
+        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+        [[_project objects] setObject:reference forKey:fileKey];
+        [self addMemberWithKey:fileKey];
+    }
+}
+
+// makes a new group called Products and returns its key
+- (NSString*) makeProductsGroup:(ProjectDefinition*)xcodeprojDefinition {
+    NSMutableArray* children = [[NSMutableArray alloc] init];
+    NSString* uniquer = [[NSString alloc] init];
+    for (NSString* productName in [xcodeprojDefinition buildProductNames]) {
+        [children addObject:[_project referenceProxyKeyForName:productName]];
+        uniquer = [uniquer stringByAppendingString:productName];
+    }
+    NSString* productKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
+    Group* productsGroup =
+            [Group groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
+    [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];
+    return productKey;
+}
+
+// makes a new Products group (by calling the method above), makes a new projectReferences array for it and 
+// then adds it to the PBXProject object
+- (void) addProductsGroupToProject:(ProjectDefinition*)xcodeprojDefinition {
+    NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
+
+    NSMutableDictionary* PBXProjectDict = [_project PBXProjectDict];
+    NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
+    NSMutableDictionary* newProjectReference =
+            [NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot:_project]]
+                    key], @"ProjectRef", nil];
+    if (projectReferences == nil) {
+        projectReferences = [[NSMutableArray alloc] init];
+    }
+    [projectReferences addObject:newProjectReference];
+    [PBXProjectDict setObject:projectReferences forKey:@"projectReferences"];
+}
+
+// removes PBXFileReference from group and project
+- (void) removeGroupMemberWithKey:(NSString*)key {
+    NSMutableArray* children = [self valueForKey:@"children"];
+    [children removeObject:key];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    // remove PBXFileReference
+    [[_project objects] removeObjectForKey:key];
+}
+
+// removes the given key from the files arrays of the given section, if found (intended to be used with
+// PBXFrameworksBuildPhase and PBXResourcesBuildPhase)
+// they are not required because we are currently not adding these entries;  Xcode is doing it for us. The existing
+// code for adding to a target doesn't do it, and I didn't add it since Xcode will take care of it for me and I was
+// avoiding modifying existing code as much as possible)
+- (void) removeBuildPhaseFileKey:(NSString*)key forType:(XcodeMemberType)memberType {
+    NSArray* buildPhases =
+            [_project keysForProjectObjectsOfType:memberType withIdentifier:nil singleton:NO required:NO];
+    for (NSString* buildPhaseKey in buildPhases) {
+        NSDictionary* buildPhaseDict = [[_project objects] valueForKey:buildPhaseKey];
+        NSMutableArray* fileKeys = [buildPhaseDict valueForKey:@"files"];
+        for (NSString* fileKey in fileKeys) {
+            if ([fileKey isEqualToString:key]) {
+                [fileKeys removeObject:fileKey];
+            }
+        }
+    }
+}
+
+// removes entries from PBXBuildFiles, PBXFrameworksBuildPhase and PBXResourcesBuildPhase
+- (void) removeProductsGroupFromProject:(NSString*)key {
+    // remove product group's build products from PDXBuildFiles
+    NSDictionary* productsGroup = [[_project objects] objectForKey:key];
+    for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
+        NSArray* buildFileKeys =
+                [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:YES required:NO];
+        // could be zero - we didn't add the test bundle as a build product
+        if ([buildFileKeys count] == 1) {
+            NSString* buildFileKey = [buildFileKeys objectAtIndex:0];
+            [[_project objects] removeObjectForKey:buildFileKey];
+            [self removeBuildPhaseFileKey:buildFileKey forType:PBXFrameworksBuildPhase];
+            [self removeBuildPhaseFileKey:buildFileKey forType:PBXResourcesBuildPhase];
+        }
+    }
+}
+
 /* ================================================================================================================== */
+
 #pragma mark Dictionary Representations
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {

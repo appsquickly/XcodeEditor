@@ -27,20 +27,24 @@
 
 @synthesize key = _key;
 @synthesize name = _name;
+@synthesize productName = _productName;
+@synthesize productReference = _productReference;
 
 /* ================================================= Class Methods ================================================== */
-+ (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
-    return [[Target alloc] initWithProject:project key:key name:name];
++ (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference {
+    return [[Target alloc] initWithProject:project key:key name:name productName:productName productReference:productReference];
 }
 
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name {
+- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference {
     self = [super init];
     if (self) {
         _project = project;
         _key = key;
         _name = [name copy];
+        _productName = [productName copy];
+        _productReference = [productReference copy];
     }
     return self;
 }
@@ -135,6 +139,21 @@
     for (NSString* key in keys) {
         [self removeMemberWithKey:key];
     }
+}
+
+- (void) addDependency:(NSString*)key {
+    NSDictionary* targetObj = [[_project objects] objectForKey:_key];
+    NSMutableArray* dependencies = [targetObj valueForKey:@"dependencies"];
+    // add only if not already there
+    BOOL found = NO;
+    for (NSString* dependency in dependencies) {
+        if ([dependency isEqualToString:key]) {
+            found = YES;
+            break;
+        }
+    }
+    if (!found)
+        [dependencies addObject:key];
 }
 
 

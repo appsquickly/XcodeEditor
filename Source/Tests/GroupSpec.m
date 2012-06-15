@@ -9,8 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XcodeEditor.h"
-
+#import "xcode_Group.h"
+#import "xcode_ProjectDefinition.h"
+#import "xcode_ClassDefinition.h"
+#import "xcode_SourceFile.h"
+#import "xcode_XibDefinition.h"
+#import "xcode_Target.h"
+#import "xcode_FrameworkDefinition.h"
+#import "xcode_SourceFileDefinition.h"
 
 @interface FrameworkPathFactory
 @end
@@ -262,6 +268,55 @@ SPEC_BEGIN(GroupSpec)
         });
 
 /* ================================================================================================================== */
+        describe(@"adding xcodeproj files", ^{
+            it(@"should allow adding a xcodeproj file", ^{
+
+                ProjectDefinition* projectDefinition =
+                        [ProjectDefinition projectDefinitionWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy"];
+
+                [group addProject:projectDefinition];
+                [project save];
+
+            });
+
+            it(@"should provide a convenience method to add a xcodeproj file, and specify targets", ^{
+
+                ProjectDefinition* xcodeprojDefinition =
+                        [ProjectDefinition projectDefinitionWithName:@"ArchiveProj" path:@"/tmp/ArchiveProj"];
+
+                [group addProject:xcodeprojDefinition toTargets:[project targets]];
+                [project save];
+
+            });
+
+        });
+
+        describe(@"removing xcodeproj files", ^{
+            it(@"should allow removing a xcodeproj file", ^{
+
+                ProjectDefinition* xcodeprojDefinition =
+                        [ProjectDefinition projectDefinitionWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy"];
+
+                [group removeProject:xcodeprojDefinition];
+                [project save];
+
+            });
+
+            it(@"should allow removing a xcodeproj file, and specify targets", ^{
+
+                ProjectDefinition* xcodeprojDefinition =
+                        [ProjectDefinition projectDefinitionWithName:@"ArchiveProj" path:@"/tmp/ArchiveProj"];
+
+                [group removeProject:xcodeprojDefinition fromTargets:[project targets]];
+                [project save];
+
+            });
+
+        });
+
+
+
+/* ================================================================================================================== */
         describe(@"Adding other types", ^{
 
             it(@"should allow adding a group", ^{
@@ -298,9 +353,9 @@ SPEC_BEGIN(GroupSpec)
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:17];
+                [[children should] haveCountOf:18];
                 [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
-                [[[[children objectAtIndex:16] displayName] should] equal:@"UserInterface"];
+                [[[[children objectAtIndex:17] displayName] should] equal:@"UserInterface"];
 
             });
 

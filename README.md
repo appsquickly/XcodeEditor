@@ -9,7 +9,7 @@ An API for manipulating Xcode project files.
 
 ```objective-c
 Project* project = [[Project alloc] initWithFilePath:@"MyProject.xcodeproj"];
-Group* group = [project groupWithPath:@"Main"];
+Group* group = [project groupWithPathFromRoot:@"Main"];
 ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNewClass"];
 [classDefinition setHeader:@"<some-header-text>"];
 [classDefinition setSource:@"<some-impl-text>"];
@@ -71,6 +71,17 @@ SourceFileDefinition* header = [[SourceFileDefinition alloc]
 
 [group addSourceFile:header];
 [project save];
+```
+
+### Adding a subproject
+```objective-c
+xcodeprojDefinition = [project xcodeprojDefinitionWithName:@"mySubproject" projPath=@"/Path/To/Subproject" type:XcodeProject];
+[group addXcodeproj:xcodeprojDefinition toTargets:[project targets]];
+```
+
+### Removing a subproject
+```objective-c
+[group removeXcodeproj:xcodeprojDefinition];
 ```
 
 ### File write behavior
