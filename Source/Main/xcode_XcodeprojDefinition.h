@@ -21,6 +21,7 @@
     XcodeSourceFileType _type;
     Project* _subproject;
     NSString* _key;
+    NSString* _fullProjectPath;
 }
 
 @property(nonatomic, strong, readonly) NSString* sourceFileName;
@@ -28,6 +29,7 @@
 @property(nonatomic, readonly) XcodeSourceFileType type;
 @property(nonatomic, strong, readonly) Project* subproject;
 @property(nonatomic, strong, readonly) NSString* key;
+@property(nonatomic, strong, readwrite) NSString* fullProjectPath;
 
 + (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)path;
 
@@ -41,9 +43,11 @@
 
 - (NSString*) xcodeprojKeyForProject:(Project *)project;
 
-- (NSString*) pathRelativeToProjectRoot:(Project*)project;
+- (NSString*) pathRelativeToProjectRoot;
 
 - (NSString*) description;
+
+- (void) initFullProjectPath:(NSString *)fullProjectPath groupPath:(NSString *)groupPath;
 
 @end
 /* ================================================================================================================== */

@@ -247,9 +247,11 @@
 
 // adds an xcodeproj as a subproject of the current project.
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
-    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot:_project] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
     
     // create PBXContainerItemProxies and PBXReferenceProxies
@@ -278,6 +280,9 @@
     if (xcodeprojDefinition == nil)
         return;
     
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+
     NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
     
     // Remove from group and remove PBXFileReference
@@ -306,6 +311,9 @@
     if (xcodeprojDefinition == nil)
         return;
 
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+
     NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
 
     // Remove PBXBundleFile entries and corresponding inclusion in PBXFrameworksBuildPhase and PBXResourcesBuidPhase
@@ -313,7 +321,7 @@
     [self removeProductsGroupFromProject:productsGroupKey];
    
     // Remove the PBXContainerItemProxy for this xcodeproj with proxyType 1
-    NSString* containerItemProxyKey = [_project containerItemProxyKeyForName:[xcodeprojDefinition pathRelativeToProjectRoot:_project] proxyType:@"1"];
+    NSString* containerItemProxyKey = [_project containerItemProxyKeyForName:[xcodeprojDefinition pathRelativeToProjectRoot] proxyType:@"1"];
     if (containerItemProxyKey != nil) {
         [[_project objects] removeObjectForKey:containerItemProxyKey];
     }
@@ -535,7 +543,7 @@
     NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
     NSMutableDictionary* newProjectReference = [NSDictionary dictionaryWithObjectsAndKeys:
                                             productKey, @"ProductGroup",
-                                                [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot:_project]] key],
+                                                [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key],
                                             @"ProjectRef", nil];
     if (projectReferences == nil) {
         projectReferences = [[NSMutableArray alloc] init];

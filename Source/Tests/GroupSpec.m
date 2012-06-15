@@ -267,7 +267,7 @@ SPEC_BEGIN(GroupSpec)
                 
             });
             
-            it(@"should allow removing a xcodeproj file, and specify targets", ^{
+            it(@"should allow removing an xcodeproj file from specified targets", ^{
                 
                 XcodeprojDefinition* xcodeprojDefinition = [XcodeprojDefinition xcodeprojDefinitionWithName:@"ArchiveProj" projPath:@"/tmp/ArchiveProj"];
                 

@@ -176,7 +176,7 @@
 - (void) addAsTargetDependency:(XcodeprojDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     // make a new PBXContainerItemProxy
     NSString* name = [xcodeprojDefinition sourceFileName];
-    NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot:self]] key];
+    NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
     NSString* containerItemProxyKey = [self makeContainerItemProxyForName:name fileRef:key proxyType:@"1"];
     // make a PBXTargetDependency
     NSString* targetDependencyKey = [self makeTargetDependency:name forContainerItemProxyKey:containerItemProxyKey];
@@ -335,9 +335,9 @@
 
 // make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subproject
 - (void) addProxies:(XcodeprojDefinition *)xcodeproj {
-    NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot:self]] key];
+    NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
     for (NSDictionary* target in [xcodeproj.subproject targets]) {
-        NSString* containerItemProxyKey = [self makeContainerItemProxyForName:[target valueForKey:@"productName"] fileRef:fileRef proxyType:@"2"];
+        NSString* containerItemProxyKey = [self makeContainerItemProxyForName:[target valueForKey:@"name"] fileRef:fileRef proxyType:@"2"];
         NSString* productFileReferenceKey = [target valueForKey:@"productReference"];
         NSDictionary* productFileReference = [[xcodeproj.subproject objects] valueForKey:productFileReferenceKey];
         [self makeReferenceProxyForContainerItemProxy:containerItemProxyKey buildProductReference:productFileReference];
@@ -345,7 +345,7 @@
 }
 
 // remove the PBXContainerItemProxy and PBXReferenceProxy objects for the given object key (which is the PBXFilereference
-// for the xcodeproj file.
+// for the xcodeproj file)
 - (void) removeProxies:(NSString*)xcodeprojKey {
     NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
     // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys

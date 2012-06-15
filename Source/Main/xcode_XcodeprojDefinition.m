@@ -23,6 +23,7 @@
 @synthesize subproject = _subproject;
 @synthesize relativePath = _relativePath;
 @synthesize key = _key;
+@synthesize fullProjectPath = _fullProjectPath;
 
 /* ================================================= Class Methods ================================================== */
 + (xcode_XcodeprojDefinition*) xcodeprojDefinitionWithName:(NSString*)name projPath:(NSString*)path {
@@ -75,21 +76,34 @@
 // returns the key of the PBXFileReference of the xcodeproj file
 - (NSString*) xcodeprojKeyForProject:(Project *)project {
     if (_key == nil) {
-        NSArray* xcodeprojKeys = [project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[self pathRelativeToProjectRoot:project] singleton:YES required:YES];
+        NSArray* xcodeprojKeys = [project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[self pathRelativeToProjectRoot] singleton:YES required:YES];
         _key = [xcodeprojKeys objectAtIndex:0];
     }
     return _key;
 }
 
-// compares the given path to the filePath of the project, and returns a relative version
-- (NSString*) pathRelativeToProjectRoot:(Project*)project {
+- (void) initFullProjectPath:(NSString *)fullProjectPath groupPath:(NSString *)groupPath {
+    if (groupPath != nil) {
+        NSMutableArray* fullPathComponents = [[fullProjectPath pathComponents] mutableCopy];
+        [fullPathComponents removeLastObject];
+        fullProjectPath = [[NSString pathWithComponents:fullPathComponents] stringByAppendingFormat:@"/%@", groupPath];
+    }
+    _fullProjectPath = fullProjectPath;
+
+}
+
+// compares the given path to the filePath of the project, and returns a relative version. _fullProjectPath, which has
+// to hve been previously set, is the full path to the project *plus* the path to the xcodeproj's group, if any.
+- (NSString*) pathRelativeToProjectRoot {
     if (_relativePath == nil) {
-        NSMutableArray* projectPathComponents = [[project.filePath pathComponents] mutableCopy];
+        if (_fullProjectPath == nil)
+            [NSException raise:NSInvalidArgumentException format:@"fullProjectPath has not been set"];
+        NSMutableArray* projectPathComponents = [[_fullProjectPath pathComponents] mutableCopy];
         NSArray* objectPathComponents = [[self xcodeprojFullPathName] pathComponents];
         NSString* convertedPath = [[NSString alloc] init];
         
         // skip over path components from root that are equal
-        int limit = ([projectPathComponents count] > [objectPathComponents count]) ? [projectPathComponents count] : [objectPathComponents count];
+        int limit = ([projectPathComponents count] < [objectPathComponents count]) ? [projectPathComponents count] : [objectPathComponents count];
         int index1 = 0;
         for (; index1 < limit; index1++) {
             if ([[projectPathComponents objectAtIndex:index1] isEqualToString:[objectPathComponents objectAtIndex:index1]])
