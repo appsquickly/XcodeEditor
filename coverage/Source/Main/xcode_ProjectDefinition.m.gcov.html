@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>LCOV - coverage.info - Source/Main/xcode_ProjectDefinition.m</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - xcode_ProjectDefinition.m</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">60</td>
+            <td class="headerCovTableEntry">67</td>
+            <td class="headerCovTableEntryMed">89.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2012-06-15</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">       2 </span>            : //
+<span class="lineNum">       3 </span>            : //  Synapticats, LLC
+<span class="lineNum">       4 </span>            : //  Copyright 2012 Synapticats, LLC
+<span class="lineNum">       5 </span>            : //  All Rights Reserved.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  NOTICE: Expanz and Synapticats, LLC permit you to use, modify, and
+<span class="lineNum">       8 </span>            : //  distribute this file in accordance with the terms of the license agreement
+<span class="lineNum">       9 </span>            : //  accompanying it.
+<span class="lineNum">      10 </span>            : //
+<span class="lineNum">      11 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : #import &quot;xcode_ProjectDefinition.h&quot;
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : @interface xcode_ProjectDefinition ()
+<span class="lineNum">      16 </span><span class="lineNoCov">          0 : @property(nonatomic, strong, readwrite) NSString* relativePath;</span>
+<span class="lineNum">      17 </span>            : @end
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineCov">          4 : @implementation xcode_ProjectDefinition</span>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">          3 : @synthesize sourceFileName = _sourceFileName;</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : @synthesize path = _path;</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : @synthesize type = _type;</span>
+<span class="lineNum">      24 </span><span class="lineCov">          7 : @synthesize subproject = _subproject;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : @synthesize relativePath = _relativePath;</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : @synthesize key = _key;</span>
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : /* ================================================= Class Methods ================================================== */
+<span class="lineNum">      29 </span>            : + (xcode_ProjectDefinition*) projectDefinitionWithName:(NSString*)name path:(NSString*)path {
+<span class="lineNum">      30 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      31 </span>            :     return [[ProjectDefinition alloc] initWithName:name projPath:path type:XcodeProject];
+<span class="lineNum">      32 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      34 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : // Note - _path is most often going to be an absolute path.  The method pathRelativeToProjectRoot below should be
+<span class="lineNum">      37 </span>            : // used to get the form that's stored in the main project file.
+<span class="lineNum">      38 </span>            : - (id) initWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type {
+<span class="lineNum">      39 </span>            :     self = [super init];
+<span class="lineNum">      40 </span><span class="lineCov">          4 :     if (self) {</span>
+<span class="lineNum">      41 </span><span class="lineCov">          4 :         _sourceFileName = [name copy];</span>
+<span class="lineNum">      42 </span><span class="lineCov">          4 :         _path = [path copy];</span>
+<span class="lineNum">      43 </span><span class="lineCov">          4 :         _type = type;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          4 :         _subproject = [[Project alloc] initWithFilePath:[NSString stringWithFormat:@&quot;%@/%@.xcodeproj&quot;, path, name]];</span>
+<span class="lineNum">      45 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">      46 </span><span class="lineCov">          4 :     return self;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      48 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      49 </span><span class="lineCov">          4 : /* ================================================ Interface Methods =============================================== */</span>
+<span class="lineNum">      50 </span>            : - (NSString*) xcodeprojFileName {
+<span class="lineNum">      51 </span>            :     return [_sourceFileName stringByAppendingString:@&quot;.xcodeproj&quot;];
+<span class="lineNum">      52 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      54 </span>            : - (NSString*) xcodeprojFullPathName {
+<span class="lineNum">      55 </span>            :     return [NSString stringWithFormat:@&quot;%@/%@&quot;, _path, [_sourceFileName stringByAppendingString:@&quot;.xcodeproj&quot;]];
+<span class="lineNum">      56 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      57 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      58 </span>            : // returns an array of names of the build products of this project
+<span class="lineNum">      59 </span>            : - (NSArray*) buildProductNames {
+<span class="lineNum">      60 </span>            :     NSMutableArray* results = [NSMutableArray array];
+<span class="lineNum">      61 </span><span class="lineCov">          2 :     NSDictionary* objects = [_subproject objects];</span>
+<span class="lineNum">      62 </span><span class="lineCov">       1530 :     [objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">        766 :         if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXProject) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">        766 :             NSString* productRefGroupKey = [obj valueForKey:@&quot;productRefGroup&quot;];</span>
+<span class="lineNum">      65 </span><span class="lineCov">        764 :             NSDictionary* products = [objects valueForKey:productRefGroupKey];</span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 :             NSArray* children = [products valueForKey:@&quot;children&quot;];</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 :             for (NSString* childKey in children) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">          2 :                 NSDictionary* child = [objects valueForKey:childKey];</span>
+<span class="lineNum">      69 </span><span class="lineCov">          5 :                 [results addObject:[child valueForKey:@&quot;path&quot;]];</span>
+<span class="lineNum">      70 </span><span class="lineCov">          5 :             }</span>
+<span class="lineNum">      71 </span><span class="lineCov">          5 :         }</span>
+<span class="lineNum">      72 </span><span class="lineCov">          5 :     }];</span>
+<span class="lineNum">      73 </span><span class="lineCov">          2 :     return results;</span>
+<span class="lineNum">      74 </span><span class="lineCov">        764 : }</span>
+<span class="lineNum">      75 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      76 </span><span class="lineCov">          2 : // returns the key of the PBXFileReference of the xcodeproj file</span>
+<span class="lineNum">      77 </span>            : - (NSString*) xcodeprojKeyForProject:(Project*)project {
+<span class="lineNum">      78 </span>            :     if (_key == nil) {
+<span class="lineNum">      79 </span><span class="lineCov">          3 :         NSArray* xcodeprojKeys = [project keysForProjectObjectsOfType:PBXFileReference</span>
+<span class="lineNum">      80 </span><span class="lineCov">          3 :                 withIdentifier:[self pathRelativeToProjectRoot:project] singleton:YES required:YES];</span>
+<span class="lineNum">      81 </span>            :         _key = [xcodeprojKeys objectAtIndex:0];
+<span class="lineNum">      82 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      83 </span><span class="lineCov">          3 :     return _key;</span>
+<span class="lineNum">      84 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      85 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">          3 : // compares the given path to the filePath of the project, and returns a relative version</span>
+<span class="lineNum">      87 </span>            : - (NSString*) pathRelativeToProjectRoot:(Project*)project {
+<span class="lineNum">      88 </span>            :     if (_relativePath == nil) {
+<span class="lineNum">      89 </span><span class="lineCov">         11 :         NSMutableArray* projectPathComponents = [[project.filePath pathComponents] mutableCopy];</span>
+<span class="lineNum">      90 </span><span class="lineCov">         11 :         NSArray* objectPathComponents = [[self xcodeprojFullPathName] pathComponents];</span>
+<span class="lineNum">      91 </span><span class="lineCov">          4 :         NSString* convertedPath = [[NSString alloc] init];</span>
+<span class="lineNum">      92 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      93 </span><span class="lineCov">          4 :         // skip over path components from root that are equal</span>
+<span class="lineNum">      94 </span>            :         int limit = ([projectPathComponents count] &gt; [objectPathComponents count]) ? [projectPathComponents count] :
+<span class="lineNum">      95 </span>            :                     [objectPathComponents count];
+<span class="lineNum">      96 </span>            :         int index1 = 0;
+<span class="lineNum">      97 </span><span class="lineCov">          4 :         for (; index1 &lt; limit; index1++) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">          4 :             if ([[projectPathComponents objectAtIndex:index1]</span>
+<span class="lineNum">      99 </span><span class="lineCov">         12 :                     isEqualToString:[objectPathComponents objectAtIndex:index1]]) {</span>
+<span class="lineNum">     100 </span><span class="lineCov">         12 :                 continue;</span>
+<span class="lineNum">     101 </span>            :             }
+<span class="lineNum">     102 </span>            :             else {
+<span class="lineNum">     103 </span>            :                 break;
+<span class="lineNum">     104 </span>            :             }
+<span class="lineNum">     105 </span>            :         }
+<span class="lineNum">     106 </span>            :         // insert &quot;../&quot; for each remaining path component in project's xcodeproj path
+<span class="lineNum">     107 </span>            :         for (int index2 = 0; index2 &lt; ([projectPathComponents count] - index1); index2++) {
+<span class="lineNum">     108 </span>            :             convertedPath = [convertedPath stringByAppendingString:@&quot;../&quot;];
+<span class="lineNum">     109 </span><span class="lineCov">         12 :         }</span>
+<span class="lineNum">     110 </span><span class="lineCov">          8 :         // tack on the unique part of the object's path</span>
+<span class="lineNum">     111 </span>            :         for (int index3 = index1; index3 &lt; [objectPathComponents count] - 1; index3++) {
+<span class="lineNum">     112 </span>            :             convertedPath = [convertedPath stringByAppendingFormat:@&quot;%@/&quot;, [objectPathComponents objectAtIndex:index3]];
+<span class="lineNum">     113 </span><span class="lineCov">          8 :         }</span>
+<span class="lineNum">     114 </span><span class="lineCov">          4 :         _relativePath = [[convertedPath stringByAppendingString:[objectPathComponents lastObject]] copy];</span>
+<span class="lineNum">     115 </span>            :     }
+<span class="lineNum">     116 </span><span class="lineCov">          4 :     return _relativePath;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     118 </span><span class="lineCov">         11 : </span>
+<span class="lineNum">     119 </span><span class="lineCov">         11 : </span>
+<span class="lineNum">     120 </span>            : /* ================================================== Utility Methods =============================================== */
+<span class="lineNum">     121 </span>            : - (NSString*) description {
+<span class="lineNum">     122 </span>            :     return [NSString stringWithFormat:@&quot;XcodeprojDefinition: sourceFileName = %@, path=%@, type=%@&quot;, _sourceFileName, _path, _type];
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     125 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -70,6 +70,10 @@
 	
 	<option value="//api/name/addGroupWithPath:">&nbsp;&nbsp;&nbsp;&nbsp;- addGroupWithPath:</option>
 	
+	<option value="//api/name/addProject:">&nbsp;&nbsp;&nbsp;&nbsp;- addProject:</option>
+	
+	<option value="//api/name/addProject:toTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- addProject:toTargets:</option>
+	
 	<option value="//api/name/addSourceFile:">&nbsp;&nbsp;&nbsp;&nbsp;- addSourceFile:</option>
 	
 	<option value="//api/name/addXib:">&nbsp;&nbsp;&nbsp;&nbsp;- addXib:</option>
@@ -95,6 +99,10 @@
 	<option value="//api/name/removeFromParentGroup">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromParentGroup</option>
 	
 	<option value="//api/name/removeFromParentGroup:">&nbsp;&nbsp;&nbsp;&nbsp;- removeFromParentGroup:</option>
+	
+	<option value="//api/name/removeProject:">&nbsp;&nbsp;&nbsp;&nbsp;- removeProject:</option>
+	
+	<option value="//api/name/removeProject:fromTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- removeProject:fromTargets:</option>
 	
 	
 	
@@ -152,6 +160,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addGroupWithPath:">addGroupWithPath:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addProject:">addProject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addProject:toTargets:">addProject:toTargets:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addSourceFile:">addSourceFile:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXib:">addXib:</a></span></li>
@@ -177,6 +189,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromParentGroup">removeFromParentGroup</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeFromParentGroup:">removeFromParentGroup:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeProject:">removeProject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeProject:fromTargets:">removeProject:fromTargets:</a></span></li>
 	
 </ul></li>
 
@@ -360,6 +376,37 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	<span class="tooltip">
 		<code><a href="#//api/name/addXib:toTargets:">&ndash;&nbsp;addXib:toTargets:</a></code>
 		<span class="tooltip"><p>Adds a xib to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addProject:">&ndash;&nbsp;addProject:</a></code>
+		<span class="tooltip"><p>Adds a sub-project to the group. If the group already contains a sub-project by the same name, the contents will be
+updated.
+Returns boolean success/fail; if method fails, caller should assume that project file is corrupt (or file format has
+changed).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addProject:toTargets:">&ndash;&nbsp;addProject:toTargets:</a></code>
+		<span class="tooltip"><p>Adds a sub-project to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeProject:">&ndash;&nbsp;removeProject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeProject:fromTargets:">&ndash;&nbsp;removeProject:fromTargets:</a></code>
+		
 	</span>
 	
 	
@@ -816,6 +863,94 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/addProject:" title="addProject:"></a>
+	<h3 class="subsubtitle method-title">addProject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a sub-project to the group. If the group already contains a sub-project by the same name, the contents will be
+updated.
+Returns boolean success/fail; if method fails, caller should assume that project file is corrupt (or file format has
+changed).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addProject:(xcode_ProjectDefinition *)<em>projectDefinition</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a sub-project to the group. If the group already contains a sub-project by the same name, the contents will be
+updated.
+Returns boolean success/fail; if method fails, caller should assume that project file is corrupt (or file format has
+changed).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addProject:toTargets:" title="addProject:toTargets:"></a>
+	<h3 class="subsubtitle method-title">addProject:toTargets:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a sub-project to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addProject:(xcode_ProjectDefinition *)<em>projectDefinition</em> toTargets:(NSArray *)<em>targets</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a sub-project to the group, making it a member of the specified <a href="../Classes/xcode_Target.html">targets</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">xcode_Group.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/addSourceFile:" title="addSourceFile:"></a>
 	<h3 class="subsubtitle method-title">addSourceFile:</h3>
 	
@@ -1164,6 +1299,28 @@ framework definition&rsquo;s copyToDestination flag is yes, otherwise it will be
 	
 
 	<div class="method-subsection method-declaration"><code>- (void)removeFromParentGroup:(BOOL)<em>deleteFiles</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeProject:" title="removeProject:"></a>
+	<h3 class="subsubtitle method-title">removeProject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeProject:(xcode_ProjectDefinition *)<em>projectDefinition</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeProject:fromTargets:" title="removeProject:fromTargets:"></a>
+	<h3 class="subsubtitle method-title">removeProject:fromTargets:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeProject:(xcode_ProjectDefinition *)<em>projectDefinition</em> fromTargets:(NSArray *)<em>targets</em></code></div>
 
     
 </div>
