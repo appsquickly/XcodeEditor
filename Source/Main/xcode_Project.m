@@ -410,7 +410,7 @@
 // because we support adding a project file without adding it to any targets.
 - (void) removeTargetDependencies:(NSString*)name {
     // get the key for the PBXTargetDependency with name = xcodeproj file name (without extension)
-    NSArray* targetDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name singleton:YES required:NO];
+    NSArray* targetDependencyKeys = [self keysForProjectObjectsOfType:PBXTargetDependency withIdentifier:name singleton:NO required:NO];
     // we might not find any if the project wasn't added to targets in the first place
     if ([targetDependencyKeys count] == 0) {
         return;
