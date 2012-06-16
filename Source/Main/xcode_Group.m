@@ -249,6 +249,7 @@
 - (void) addXcodeproj:(XcodeprojDefinition*)xcodeprojDefinition {
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
     [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+    
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
     [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName] path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
