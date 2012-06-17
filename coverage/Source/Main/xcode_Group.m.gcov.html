@@ -478,14 +478,14 @@
 <span class="lineNum">     420 </span><span class="lineCov">         14 :     else {</span>
 <span class="lineNum">     421 </span>            :         return [_pathRelativeToParent lastPathComponent];
 <span class="lineNum">     422 </span>            :     }
-<span class="lineNum">     423 </span><span class="lineCov">        764 : }</span>
-<span class="lineNum">     424 </span><span class="lineCov">        764 : </span>
+<span class="lineNum">     423 </span><span class="lineCov">        769 : }</span>
+<span class="lineNum">     424 </span><span class="lineCov">        769 : </span>
 <span class="lineNum">     425 </span><span class="lineCov">        271 : - (NSString*) pathRelativeToProjectRoot {</span>
 <span class="lineNum">     426 </span>            :     if (_pathRelativeToProjectRoot == nil) {
 <span class="lineNum">     427 </span>            :         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-<span class="lineNum">     428 </span><span class="lineCov">        493 :         Group* group;</span>
+<span class="lineNum">     428 </span><span class="lineCov">        498 :         Group* group;</span>
 <span class="lineNum">     429 </span>            :         NSString* key = _key;
-<span class="lineNum">     430 </span><span class="lineCov">        764 : </span>
+<span class="lineNum">     430 </span><span class="lineCov">        769 : </span>
 <span class="lineNum">     431 </span>            :         while ((group = [_project groupForGroupMemberWithKey:key]) != nil &amp;&amp; !([group pathRelativeToParent] == nil)) {
 <span class="lineNum">     432 </span><span class="lineCov">        298 :             [pathComponents addObject:[group pathRelativeToParent]];</span>
 <span class="lineNum">     433 </span><span class="lineCov">        298 :             key = [group key];</span>
@@ -553,8 +553,8 @@
 <span class="lineNum">     495 </span><span class="lineCov">         17 :         writeFile = YES;</span>
 <span class="lineNum">     496 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">     497 </span><span class="lineCov">         15 :     //TODO: Fix this hack. Should use polymorphism or something.</span>
-<span class="lineNum">     498 </span><span class="lineCov">          2 :     if (writeFile) {</span>
-<span class="lineNum">     499 </span><span class="lineCov">          2 :         if ([contents isKindOfClass:[NSString class]]) {</span>
+<span class="lineNum">     498 </span><span class="lineCov">          7 :     if (writeFile) {</span>
+<span class="lineNum">     499 </span><span class="lineCov">          7 :         if ([contents isKindOfClass:[NSString class]]) {</span>
 <span class="lineNum">     500 </span>            :             [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];
 <span class="lineNum">     501 </span><span class="lineCov">          2 :         }</span>
 <span class="lineNum">     502 </span>            :         else {
