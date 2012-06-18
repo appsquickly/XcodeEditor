@@ -32,9 +32,9 @@
 - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
-- (NSString*) makeProductsGroup:(ProjectDefinition*)xcodeprojDefinition;
+- (NSString*) makeProductsGroup:(xcode_ProjectDefinition*)xcodeprojDefinition;
 
-- (void) addProductsGroupToProject:(ProjectDefinition*)xcodeprojDefinition;
+- (void) addProductsGroupToProject:(xcode_ProjectDefinition*)xcodeprojDefinition;
 
 - (void) addMemberWithKey:(NSString*)key;
 
@@ -146,10 +146,6 @@
         [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
                 type:SourceCodeObjCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
     }
-    else if ([classDefinition isCPlusPlus]) {
-        [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source]
-                type:SourceCodeCPlusPlus fileOperationStyle:[classDefinition fileOperationStyle]];
-    }
 
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
@@ -163,6 +159,7 @@
 
 - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {
     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
+        LogDebug(@"Here we go!!!!");
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
             LogDebug(@"Making file reference");
@@ -250,11 +247,15 @@
 }
 
 
+// adds an xcodeproj as a subproject of the current project.
 - (void) addProject:(xcode_ProjectDefinition*)xcodeprojDefinition {
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
     [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName]
-            path:[xcodeprojDefinition pathRelativeToProjectRoot:_project] type:XcodeProject
+            path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject
             fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
@@ -267,16 +268,17 @@
 
 // adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
 // to targets.
-- (void) addProject:(xcode_ProjectDefinition*)projectDefinition toTargets:(NSArray*)targets {
-    [self addProject:projectDefinition];
+- (void) addProject:(xcode_ProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+    [self addProject:xcodeprojDefinition];
 
     // add subproject's build products to targets (does not add the subproject's test bundle)
-    NSArray* buildProductFiles = [_project buildProductsForTargets:[projectDefinition xcodeprojKeyForProject:_project]];
+    NSArray* buildProductFiles =
+            [_project buildProductsForTargets:[xcodeprojDefinition xcodeprojKeyForProject:_project]];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
     }
     // add main target of subproject as target dependency to main target of project
-    [_project addAsTargetDependency:projectDefinition toTargets:targets];
+    [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
 }
 
 // removes an xcodeproj from the current project.
@@ -284,6 +286,9 @@
     if (xcodeprojDefinition == nil) {
         return;
     }
+
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
     NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
 
@@ -309,12 +314,15 @@
     [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
 }
 
-- (void) removeProject:(xcode_ProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets {
-    if (projectDefinition == nil) {
+- (void) removeProject:(xcode_ProjectDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
+    if (xcodeprojDefinition == nil) {
         return;
     }
 
-    NSString* xcodeprojKey = [projectDefinition xcodeprojKeyForProject:_project];
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+
+    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
 
     // Remove PBXBundleFile entries and corresponding inclusion in PBXFrameworksBuildPhase and PBXResourcesBuidPhase
     NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];
@@ -322,14 +330,13 @@
 
     // Remove the PBXContainerItemProxy for this xcodeproj with proxyType 1
     NSString* containerItemProxyKey =
-            [_project containerItemProxyKeyForName:[projectDefinition pathRelativeToProjectRoot:_project]
-                    proxyType:@"1"];
+            [_project containerItemProxyKeyForName:[xcodeprojDefinition pathRelativeToProjectRoot] proxyType:@"1"];
     if (containerItemProxyKey != nil) {
         [[_project objects] removeObjectForKey:containerItemProxyKey];
     }
 
     // Remove PBXTargetDependency and entry in PBXNativeTarget
-    [_project removeTargetDependencies:[projectDefinition sourceFileName]];
+    [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
 }
 
 /* ================================================================================================================== */
@@ -494,7 +501,6 @@
             ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {
         writeFile = YES;
     }
-    //TODO: Fix this hack. Should use polymorphism or something.
     if (writeFile) {
         if ([contents isKindOfClass:[NSString class]]) {
             [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];
@@ -523,7 +529,7 @@
 }
 
 // makes a new group called Products and returns its key
-- (NSString*) makeProductsGroup:(ProjectDefinition*)xcodeprojDefinition {
+- (NSString*) makeProductsGroup:(xcode_ProjectDefinition*)xcodeprojDefinition {
     NSMutableArray* children = [[NSMutableArray alloc] init];
     NSString* uniquer = [[NSString alloc] init];
     for (NSString* productName in [xcodeprojDefinition buildProductNames]) {
@@ -539,13 +545,13 @@
 
 // makes a new Products group (by calling the method above), makes a new projectReferences array for it and 
 // then adds it to the PBXProject object
-- (void) addProductsGroupToProject:(ProjectDefinition*)xcodeprojDefinition {
+- (void) addProductsGroupToProject:(xcode_ProjectDefinition*)xcodeprojDefinition {
     NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
 
     NSMutableDictionary* PBXProjectDict = [_project PBXProjectDict];
     NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
     NSMutableDictionary* newProjectReference =
-            [NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot:_project]]
+            [NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]]
                     key], @"ProjectRef", nil];
     if (projectReferences == nil) {
         projectReferences = [[NSMutableArray alloc] init];
@@ -588,7 +594,7 @@
     NSDictionary* productsGroup = [[_project objects] objectForKey:key];
     for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
         NSArray* buildFileKeys =
-                [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:YES required:NO];
+                [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:NO required:NO];
         // could be zero - we didn't add the test bundle as a build product
         if ([buildFileKeys count] == 1) {
             NSString* buildFileKey = [buildFileKeys objectAtIndex:0];

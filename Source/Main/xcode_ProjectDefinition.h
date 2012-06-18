@@ -15,12 +15,13 @@
 #import "xcode_Project.h"
 
 @interface xcode_ProjectDefinition : xcode_AbstractDefinition {
-    
+
     NSString* _sourceFileName;
     NSString* _path;
     XcodeSourceFileType _type;
     Project* _subproject;
     NSString* _key;
+    NSString* _fullProjectPath;
 }
 
 @property(nonatomic, strong, readonly) NSString* sourceFileName;
@@ -28,22 +29,25 @@
 @property(nonatomic, readonly) XcodeSourceFileType type;
 @property(nonatomic, strong, readonly) Project* subproject;
 @property(nonatomic, strong, readonly) NSString* key;
+@property(nonatomic, strong, readwrite) NSString* fullProjectPath;
 
 + (xcode_ProjectDefinition*) projectDefinitionWithName:(NSString*)name path:(NSString*)path;
 
-- (id) initWithName:(NSString*)name projPath:(NSString*)path type:(XcodeSourceFileType)type;
+- (id) initWithName:(NSString*)name path:(NSString*)path;
 
 - (NSString*) xcodeprojFileName;
 
 - (NSString*) xcodeprojFullPathName;
 
-- (NSArray *) buildProductNames;
+- (NSArray*) buildProductNames;
 
-- (NSString*) xcodeprojKeyForProject:(Project *)project;
+- (NSString*) xcodeprojKeyForProject:(Project*)project;
 
-- (NSString*) pathRelativeToProjectRoot:(Project*)project;
+- (NSString*) pathRelativeToProjectRoot;
 
 - (NSString*) description;
+
+- (void) initFullProjectPath:(NSString*)fullProjectPath groupPath:(NSString*)groupPath;
 
 @end
 /* ================================================================================================================== */

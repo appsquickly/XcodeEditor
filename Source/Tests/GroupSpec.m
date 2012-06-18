@@ -140,7 +140,8 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow creating a reference only, without writing to disk", ^{
 
-                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"OneMoreClass"];
+                ClassDefinition
+                        * classDefinition = [ClassDefinition classDefinitionWithName:@"ClassWithoutSourceFileYet"];
                 [classDefinition setFileOperationStyle:FileOperationStyleReferenceOnly];
                 [group addClass:classDefinition toTargets:[project targets]];
                 [project save];
@@ -292,6 +293,7 @@ SPEC_BEGIN(GroupSpec)
         });
 
         describe(@"removing xcodeproj files", ^{
+
             it(@"should allow removing a xcodeproj file", ^{
 
                 ProjectDefinition* xcodeprojDefinition =
@@ -302,12 +304,14 @@ SPEC_BEGIN(GroupSpec)
 
             });
 
+
             it(@"should allow removing a xcodeproj file, and specify targets", ^{
 
                 ProjectDefinition* xcodeprojDefinition =
                         [ProjectDefinition projectDefinitionWithName:@"ArchiveProj" path:@"/tmp/ArchiveProj"];
 
                 [group removeProject:xcodeprojDefinition fromTargets:[project targets]];
+
                 [project save];
 
             });
