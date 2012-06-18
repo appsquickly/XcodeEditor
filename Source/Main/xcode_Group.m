@@ -550,9 +550,12 @@
 
     NSMutableDictionary* PBXProjectDict = [_project PBXProjectDict];
     NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
-    NSMutableDictionary* newProjectReference =
-            [NSDictionary dictionaryWithObjectsAndKeys:productKey, @"ProductGroup", [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]]
-                    key], @"ProjectRef", nil];
+
+    NSMutableDictionary* newProjectReference = [[NSMutableDictionary alloc] init];
+    [newProjectReference setObject:productKey forKey:@"ProductGroup"];
+    NSString* projectFileKey = [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
+    [newProjectReference setObject:projectFileKey forKey:@"ProjectRef"];
+
     if (projectReferences == nil) {
         projectReferences = [[NSMutableArray alloc] init];
     }
