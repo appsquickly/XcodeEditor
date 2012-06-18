@@ -74,7 +74,7 @@
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize className = _className;</span>
 <span class="lineNum">      18 </span><span class="lineCov">         25 : @synthesize header = _header;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         22 : @synthesize source = _source;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         21 : @synthesize source = _source;</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : /* ================================================= Class Methods ================================================== */
 <span class="lineNum">      22 </span><span class="lineCov">          5 : + (ClassDefinition*) classDefinitionWithName:(NSString*)fileName {</span>
@@ -108,16 +108,16 @@
 <span class="lineNum">      50 </span>            : /* ================================================ Interface Methods =============================================== */
 <span class="lineNum">      51 </span>            : - (BOOL) isObjectiveC {
 <span class="lineNum">      52 </span>            :     return _language == ObjectiveC;
-<span class="lineNum">      53 </span><span class="lineCov">         23 : }</span>
-<span class="lineNum">      54 </span><span class="lineCov">         23 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">         22 : }</span>
+<span class="lineNum">      54 </span><span class="lineCov">         22 : </span>
 <span class="lineNum">      55 </span>            : - (BOOL) isObjectiveCPlusPlus {
 <span class="lineNum">      56 </span>            :     return _language == ObjectiveCPlusPlus;
-<span class="lineNum">      57 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">      58 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      57 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          7 : </span>
 <span class="lineNum">      59 </span>            : - (BOOL) isCPlusPlus{
 <span class="lineNum">      60 </span>            :     return _language == CPlusPlus;
-<span class="lineNum">      61 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      62 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      63 </span>            : - (NSString*) headerFileName {
 <span class="lineNum">      64 </span>            :     return [_className stringByAppendingString:@&quot;.h&quot;];
 <span class="lineNum">      65 </span><span class="lineCov">          7 : </span>
@@ -125,19 +125,19 @@
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span>            : - (NSString*) sourceFileName {
 <span class="lineNum">      69 </span>            :     NSString* sourceFileName = nil;
-<span class="lineNum">      70 </span><span class="lineCov">         15 :     if ([self isObjectiveC]) {</span>
-<span class="lineNum">      71 </span><span class="lineCov">         15 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
-<span class="lineNum">      72 </span><span class="lineCov">         15 :     }</span>
+<span class="lineNum">      70 </span><span class="lineCov">         14 :     if ([self isObjectiveC]) {</span>
+<span class="lineNum">      71 </span><span class="lineCov">         14 :         sourceFileName = [_className stringByAppendingString:@&quot;.m&quot;];</span>
+<span class="lineNum">      72 </span><span class="lineCov">         14 :     }</span>
 <span class="lineNum">      73 </span><span class="lineCov">         10 :     else if ([self isObjectiveCPlusPlus]) {</span>
 <span class="lineNum">      74 </span><span class="lineCov">         10 :         sourceFileName = [_className stringByAppendingString:@&quot;.mm&quot;];</span>
-<span class="lineNum">      75 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      75 </span><span class="lineCov">          4 :     }</span>
 <span class="lineNum">      76 </span><span class="lineCov">          3 :     else if([self isCPlusPlus]){</span>
 <span class="lineNum">      77 </span><span class="lineCov">          3 :         sourceFileName = [_className stringByAppendingString:@&quot;.cpp&quot;];</span>
-<span class="lineNum">      78 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      79 </span><span class="lineCov">          2 :     return sourceFileName;</span>
-<span class="lineNum">      80 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      81 </span><span class="lineCov">         15 : </span>
-<span class="lineNum">      82 </span><span class="lineCov">         15 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     return sourceFileName;</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      81 </span><span class="lineCov">         14 : </span>
+<span class="lineNum">      82 </span><span class="lineCov">         14 : </span>
 <span class="lineNum">      83 </span>            : @end
 </pre>
       </td>

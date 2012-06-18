@@ -38,6 +38,8 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/fullProjectPath">&nbsp;&nbsp;&nbsp;&nbsp;fullProjectPath</option>
+	
 	<option value="//api/name/key">&nbsp;&nbsp;&nbsp;&nbsp;key</option>
 	
 	<option value="//api/name/path">&nbsp;&nbsp;&nbsp;&nbsp;path</option>
@@ -64,9 +66,11 @@
 	
 	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
 	
-	<option value="//api/name/initWithName:projPath:type:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:projPath:type:</option>
+	<option value="//api/name/initFullProjectPath:groupPath:">&nbsp;&nbsp;&nbsp;&nbsp;- initFullProjectPath:groupPath:</option>
 	
-	<option value="//api/name/pathRelativeToProjectRoot:">&nbsp;&nbsp;&nbsp;&nbsp;- pathRelativeToProjectRoot:</option>
+	<option value="//api/name/initWithName:path:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:path:</option>
+	
+	<option value="//api/name/pathRelativeToProjectRoot">&nbsp;&nbsp;&nbsp;&nbsp;- pathRelativeToProjectRoot</option>
 	
 	<option value="//api/name/xcodeprojFileName">&nbsp;&nbsp;&nbsp;&nbsp;- xcodeprojFileName</option>
 	
@@ -96,6 +100,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fullProjectPath">fullProjectPath</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/key">key</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/path">path</a></span></li>
@@ -124,9 +130,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:projPath:type:">initWithName:projPath:type:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initFullProjectPath:groupPath:">initFullProjectPath:groupPath:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToProjectRoot:">pathRelativeToProjectRoot:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:path:">initWithName:path:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToProjectRoot">pathRelativeToProjectRoot</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/xcodeprojFileName">xcodeprojFileName</a></span></li>
 	
@@ -216,6 +224,13 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/fullProjectPath">&nbsp;&nbsp;fullProjectPath</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/projectDefinitionWithName:path:">+&nbsp;projectDefinitionWithName:path:</a></code>
 		
 	</span>
@@ -223,7 +238,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:projPath:type:">&ndash;&nbsp;initWithName:projPath:type:</a></code>
+		<code><a href="#//api/name/initWithName:path:">&ndash;&nbsp;initWithName:path:</a></code>
 		
 	</span>
 	
@@ -258,7 +273,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/pathRelativeToProjectRoot:">&ndash;&nbsp;pathRelativeToProjectRoot:</a></code>
+		<code><a href="#//api/name/pathRelativeToProjectRoot">&ndash;&nbsp;pathRelativeToProjectRoot</a></code>
 		
 	</span>
 	
@@ -266,6 +281,13 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/description">&ndash;&nbsp;description</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initFullProjectPath:groupPath:">&ndash;&nbsp;initFullProjectPath:groupPath:</a></code>
 		
 	</span>
 	
@@ -282,6 +304,17 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/fullProjectPath" title="fullProjectPath"></a>
+	<h3 class="subsubtitle method-title">fullProjectPath</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readwrite) NSString *fullProjectPath</code></div>
+
+    
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/key" title="key"></a>
@@ -388,23 +421,34 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithName:projPath:type:" title="initWithName:projPath:type:"></a>
-	<h3 class="subsubtitle method-title">initWithName:projPath:type:</h3>
+	<a name="//api/name/initFullProjectPath:groupPath:" title="initFullProjectPath:groupPath:"></a>
+	<h3 class="subsubtitle method-title">initFullProjectPath:groupPath:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> projPath:(NSString *)<em>path</em> type:(XcodeSourceFileType)<em>type</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)initFullProjectPath:(NSString *)<em>fullProjectPath</em> groupPath:(NSString *)<em>groupPath</em></code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/pathRelativeToProjectRoot:" title="pathRelativeToProjectRoot:"></a>
-	<h3 class="subsubtitle method-title">pathRelativeToProjectRoot:</h3>
+	<a name="//api/name/initWithName:path:" title="initWithName:path:"></a>
+	<h3 class="subsubtitle method-title">initWithName:path:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)pathRelativeToProjectRoot:(Project *)<em>project</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> path:(NSString *)<em>path</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pathRelativeToProjectRoot" title="pathRelativeToProjectRoot"></a>
+	<h3 class="subsubtitle method-title">pathRelativeToProjectRoot</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)pathRelativeToProjectRoot</code></div>
 
     
 </div>
