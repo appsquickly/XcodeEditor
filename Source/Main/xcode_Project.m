@@ -15,7 +15,7 @@
 #import "xcode_Target.h"
 #import "xcode_FileOperationQueue.h"
 #import "xcode_utils_KeyBuilder.h"
-#import "xcode_ProjectDefinition.h"
+#import "xcode_SubProjectDefinition.h"
 
 
 /* ================================================================================================================== */
@@ -176,15 +176,15 @@
 
 // makes PBXContainerItemProxy and PBXTargetDependency objects for the xcodeproj, and adds the dependency key
 // to all the specified targets
-- (void) addAsTargetDependency:(ProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+- (void) addAsTargetDependency:(SubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     for (Target* target in targets) {
         // make a new PBXContainerItemProxy
         NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
         NSString* containerItemProxyKey =
-                [self makeContainerItemProxyForName:[xcodeprojDefinition sourceFileName] fileRef:key proxyType:@"1"
+                [self makeContainerItemProxyForName:[xcodeprojDefinition name] fileRef:key proxyType:@"1"
                         uniqueName:[target name]];
         // make a PBXTargetDependency
-        NSString* targetDependencyKey = [self makeTargetDependency:[xcodeprojDefinition sourceFileName]
+        NSString* targetDependencyKey = [self makeTargetDependency:[xcodeprojDefinition name]
                 forContainerItemProxyKey:containerItemProxyKey uniqueName:[target name]];
         // add entry in each targets dependencies list
         [target addDependency:targetDependencyKey];
@@ -372,15 +372,15 @@
     return targetDependencyKey;
 }
 
-// make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subproject
-- (void) addProxies:(ProjectDefinition*)xcodeproj {
+// make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subProject
+- (void) addProxies:(SubProjectDefinition*)xcodeproj {
     NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
-    for (NSDictionary* target in [xcodeproj.subproject targets]) {
+    for (NSDictionary* target in [xcodeproj.subProject targets]) {
         NSString* containerItemProxyKey =
                 [self makeContainerItemProxyForName:[target valueForKey:@"name"] fileRef:fileRef proxyType:@"2"
                         uniqueName:nil];
         NSString* productFileReferenceKey = [target valueForKey:@"productReference"];
-        NSDictionary* productFileReference = [[xcodeproj.subproject objects] valueForKey:productFileReferenceKey];
+        NSDictionary* productFileReference = [[xcodeproj.subProject objects] valueForKey:productFileReferenceKey];
         [self makeReferenceProxyForContainerItemProxy:containerItemProxyKey buildProductReference:productFileReference];
     }
 }

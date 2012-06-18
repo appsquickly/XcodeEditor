@@ -18,7 +18,7 @@
 @class xcode_FileOperationQueue;
 @class xcode_SourceFile;
 @class xcode_Target;
-@class xcode_ProjectDefinition;
+@class xcode_SubProjectDefinition;
 
 
 @interface xcode_Project : NSObject {
@@ -91,7 +91,7 @@
 
 - (NSArray*) buildProductsForTargets:(NSString*)xcodeprojKey;
 
-- (void) addAsTargetDependency:(xcode_ProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+- (void) addAsTargetDependency:(xcode_SubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier singleton:(BOOL)singleton required:(BOOL)required;
 
@@ -99,7 +99,7 @@
 
 - (void) removeProxies:(NSString*)xcodeprojKey;
 
-- (void) addProxies:(xcode_ProjectDefinition*)xcodeproj;
+- (void) addProxies:(xcode_SubProjectDefinition*)xcodeproj;
 
 - (void) removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey;
 

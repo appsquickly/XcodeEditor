@@ -10,30 +10,35 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "xcode_AbstractDefinition.h"
-#import "XcodeSourceFileType.h"
-#import "xcode_Project.h"
+#import <XcodeEditor/xcode_AbstractDefinition.h>
+#import <XcodeEditor/XcodeSourceFileType.h>
 
-@interface xcode_ProjectDefinition : xcode_AbstractDefinition {
+@class xcode_Project;
 
-    NSString* _sourceFileName;
+
+@interface xcode_SubProjectDefinition : xcode_AbstractDefinition {
+
+    NSString* _name;
     NSString* _path;
     XcodeSourceFileType _type;
-    Project* _subproject;
+    xcode_Project* _subProject;
     NSString* _key;
     NSString* _fullProjectPath;
 }
 
-@property(nonatomic, strong, readonly) NSString* sourceFileName;
+
+@property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong, readonly) NSString* path;
 @property(nonatomic, readonly) XcodeSourceFileType type;
-@property(nonatomic, strong, readonly) Project* subproject;
+@property(nonatomic, strong, readonly) xcode_Project* subProject;
+@property(nonatomic, strong, readonly) xcode_Project* parentProject;
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readwrite) NSString* fullProjectPath;
 
-+ (xcode_ProjectDefinition*) projectDefinitionWithName:(NSString*)name path:(NSString*)path;
++ (xcode_SubProjectDefinition*) subProjectDefinitionWithName:(NSString*)name path:(NSString*)path
+        parentProject:(xcode_Project*)parentProject;
 
-- (id) initWithName:(NSString*)name path:(NSString*)path;
+- (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(xcode_Project*)parentProject;
 
 - (NSString*) xcodeprojFileName;
 
@@ -41,7 +46,7 @@
 
 - (NSArray*) buildProductNames;
 
-- (NSString*) xcodeprojKeyForProject:(Project*)project;
+- (NSString*) xcodeprojKeyForProject:(xcode_Project*)project;
 
 - (NSString*) pathRelativeToProjectRoot;
 
@@ -52,4 +57,4 @@
 @end
 /* ================================================================================================================== */
 
-@compatibility_alias ProjectDefinition xcode_ProjectDefinition;
+@compatibility_alias SubProjectDefinition xcode_SubProjectDefinition;

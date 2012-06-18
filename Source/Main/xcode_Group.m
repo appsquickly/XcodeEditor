@@ -19,7 +19,7 @@
 #import "xcode_ClassDefinition.h"
 #import "xcode_utils_KeyBuilder.h"
 #import "xcode_SourceFileDefinition.h"
-#import "xcode_ProjectDefinition.h"
+#import "xcode_SubProjectDefinition.h"
 
 #import "Logging.h"
 
@@ -32,9 +32,9 @@
 - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
-- (NSString*) makeProductsGroup:(xcode_ProjectDefinition*)xcodeprojDefinition;
+- (NSString*) makeProductsGroup:(xcode_SubProjectDefinition*)xcodeprojDefinition;
 
-- (void) addProductsGroupToProject:(xcode_ProjectDefinition*)xcodeprojDefinition;
+- (void) addProductsGroupToProject:(xcode_SubProjectDefinition*)xcodeprojDefinition;
 
 - (void) addMemberWithKey:(NSString*)key;
 
@@ -248,7 +248,7 @@
 
 
 // adds an xcodeproj as a subproject of the current project.
-- (void) addProject:(xcode_ProjectDefinition*)xcodeprojDefinition {
+- (void) addProject:(xcode_SubProjectDefinition*)xcodeprojDefinition {
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
     [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
@@ -268,7 +268,7 @@
 
 // adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
 // to targets.
-- (void) addProject:(xcode_ProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+- (void) addProject:(xcode_SubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
     [self addProject:xcodeprojDefinition];
 
     // add subproject's build products to targets (does not add the subproject's test bundle)
@@ -282,7 +282,7 @@
 }
 
 // removes an xcodeproj from the current project.
-- (void) removeProject:(xcode_ProjectDefinition*)xcodeprojDefinition {
+- (void) removeProject:(xcode_SubProjectDefinition*)xcodeprojDefinition {
     if (xcodeprojDefinition == nil) {
         return;
     }
@@ -311,10 +311,10 @@
     [[_project objects] removeObjectForKey:productsGroupKey];
 
     // remove from all targets
-    [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
+    [_project removeTargetDependencies:[xcodeprojDefinition name]];
 }
 
-- (void) removeProject:(xcode_ProjectDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
+- (void) removeProject:(xcode_SubProjectDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
     if (xcodeprojDefinition == nil) {
         return;
     }
@@ -336,7 +336,7 @@
     }
 
     // Remove PBXTargetDependency and entry in PBXNativeTarget
-    [_project removeTargetDependencies:[xcodeprojDefinition sourceFileName]];
+    [_project removeTargetDependencies:[xcodeprojDefinition name]];
 }
 
 /* ================================================================================================================== */
@@ -529,7 +529,7 @@
 }
 
 // makes a new group called Products and returns its key
-- (NSString*) makeProductsGroup:(xcode_ProjectDefinition*)xcodeprojDefinition {
+- (NSString*) makeProductsGroup:(xcode_SubProjectDefinition*)xcodeprojDefinition {
     NSMutableArray* children = [[NSMutableArray alloc] init];
     NSString* uniquer = [[NSString alloc] init];
     for (NSString* productName in [xcodeprojDefinition buildProductNames]) {
@@ -545,7 +545,7 @@
 
 // makes a new Products group (by calling the method above), makes a new projectReferences array for it and 
 // then adds it to the PBXProject object
-- (void) addProductsGroupToProject:(xcode_ProjectDefinition*)xcodeprojDefinition {
+- (void) addProductsGroupToProject:(xcode_SubProjectDefinition*)xcodeprojDefinition {
     NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
 
     NSMutableDictionary* PBXProjectDict = [_project PBXProjectDict];

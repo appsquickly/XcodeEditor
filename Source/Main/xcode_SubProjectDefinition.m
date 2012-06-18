@@ -9,56 +9,60 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_ProjectDefinition.h"
+#import <XcodeEditor/xcode_Project.h>
+#import "xcode_SubProjectDefinition.h"
 
-@interface xcode_ProjectDefinition ()
+@interface xcode_SubProjectDefinition ()
 @property(nonatomic, strong, readwrite) NSString* relativePath;
 @end
 
-@implementation xcode_ProjectDefinition
+@implementation xcode_SubProjectDefinition
 
-@synthesize sourceFileName = _sourceFileName;
+@synthesize name = _name;
 @synthesize path = _path;
 @synthesize type = _type;
-@synthesize subproject = _subproject;
+@synthesize parentProject = _parentProject;
+@synthesize subProject = _subProject;
 @synthesize relativePath = _relativePath;
 @synthesize key = _key;
 @synthesize fullProjectPath = _fullProjectPath;
 
 /* ================================================= Class Methods ================================================== */
-+ (ProjectDefinition*) projectDefinitionWithName:(NSString*)name path:(NSString*)path {
++ (SubProjectDefinition*) subProjectDefinitionWithName:(NSString*)name path:(NSString*)path
+        parentProject:(Project*)parentProject {
 
-    return [[ProjectDefinition alloc] initWithName:name path:path];
+    return [[SubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject];
 }
 
 /* ================================================== Initializers ================================================== */
 
 // Note - _path is most often going to be an absolute path.  The method pathRelativeToProjectRoot below should be
 // used to get the form that's stored in the main project file.
-- (id) initWithName:(NSString*)name path:(NSString*)path {
+- (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(Project*)parentProject {
     self = [super init];
     if (self) {
-        _sourceFileName = [name copy];
+        _name = [name copy];
         _path = [path copy];
         _type = XcodeProject;
-        _subproject = [[Project alloc] initWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
+        _parentProject = parentProject;
+        _subProject = [[Project alloc] initWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
     }
     return self;
 }
 
 /* ================================================ Interface Methods =============================================== */
 - (NSString*) xcodeprojFileName {
-    return [_sourceFileName stringByAppendingString:@".xcodeproj"];
+    return [_name stringByAppendingString:@".xcodeproj"];
 }
 
 - (NSString*) xcodeprojFullPathName {
-    return [NSString stringWithFormat:@"%@/%@", _path, [_sourceFileName stringByAppendingString:@".xcodeproj"]];
+    return [NSString stringWithFormat:@"%@/%@", _path, [_name stringByAppendingString:@".xcodeproj"]];
 }
 
 // returns an array of names of the build products of this project
 - (NSArray*) buildProductNames {
     NSMutableArray* results = [NSMutableArray array];
-    NSDictionary* objects = [_subproject objects];
+    NSDictionary* objects = [_subProject objects];
     [objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
             NSString* productRefGroupKey = [obj valueForKey:@"productRefGroup"];
@@ -134,7 +138,7 @@
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"XcodeprojDefinition: sourceFileName = %@, path=%@, type=%@", _sourceFileName, _path, _type];
+    return [NSString stringWithFormat:@"XcodeprojDefinition: sourceFileName = %@, path=%@, type=%@", _name, _path, _type];
 }
 
 @end

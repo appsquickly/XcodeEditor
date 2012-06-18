@@ -9,7 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XcodeEditor.h"
+
+
+#import <XcodeEditor/xcode_Project.h>
+#import <XcodeEditor/xcode_SourceFile.h>
+#import <XcodeEditor/xcode_Target.h>
+#import <XcodeEditor/xcode_Group.h>
+
 
 SPEC_BEGIN(ProjectSpec)
 

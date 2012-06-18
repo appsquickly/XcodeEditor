@@ -49,7 +49,7 @@
 		6B3AD06814F8A3B400BCFE81 /* project.pbxproj in Resources */ = {isa = PBXBuildFile; fileRef = 6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */; };
 		6B3AD06A14F8A3B400BCFE81 /* NSString+TestResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD05F14F8A3B400BCFE81 /* NSString+TestResource.m */; };
 		6B3AD06B14F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD06014F8A3B400BCFE81 /* XcodeFileReferenceTypeSpec.m */; };
-		6B4B61221588A070003639E8 /* xcode_ProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* xcode_ProjectDefinition.m */; };
+		6B4B61221588A070003639E8 /* xcode_SubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* xcode_SubProjectDefinition.m */; };
 		6B4B61281588A4D6003639E8 /* Person.impl in Resources */ = {isa = PBXBuildFile; fileRef = 6B4B61271588A4D6003639E8 /* Person.impl */; };
 		6B4B612A1588A4E1003639E8 /* Person.impl in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B4B61271588A4D6003639E8 /* Person.impl */; };
 		6B51E2FE1547FEDD00DBA0BD /* xcode_AbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */; };
@@ -77,14 +77,13 @@
 		6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11315443AA400C51251 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
 		E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51256 /* HelloBoxy.zip */; };
 		E94DE11415443AC100C5125A /* xcode_SourceFileDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */; };
 		E94DE11415443AC100C5125B /* xcode_SourceFileDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */; };
 		E94DE11415443AC100C5125D /* xcode_SourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E94DE11415443AC100C51260 /* xcode_ProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* xcode_ProjectDefinition.m */; };
+		E94DE11415443AC100C51260 /* xcode_SubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* xcode_SubProjectDefinition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -169,14 +168,13 @@
 		6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FrameworkDefinition.h; sourceTree = "<group>"; };
-		E94DE11315443AA400C51251 /* XcodeEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
 		E94DE11415443AC100C51256 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
 		E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_SourceFileDefinition.m; sourceTree = "<group>"; };
 		E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_SourceFileDefinition.h; sourceTree = "<group>"; };
-		E94DE11415443AC100C5125E /* xcode_ProjectDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_ProjectDefinition.h; sourceTree = "<group>"; };
-		E94DE11415443AC100C5125F /* xcode_ProjectDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_ProjectDefinition.m; sourceTree = "<group>"; };
+		E94DE11415443AC100C5125E /* xcode_SubProjectDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_SubProjectDefinition.h; sourceTree = "<group>"; };
+		E94DE11415443AC100C5125F /* xcode_SubProjectDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_SubProjectDefinition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,13 +203,12 @@
 		6B3AD01814F8A3AC00BCFE81 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E94DE11415443AC100C5125F /* xcode_ProjectDefinition.m */,
-				E94DE11415443AC100C5125E /* xcode_ProjectDefinition.h */,
+				E94DE11415443AC100C5125F /* xcode_SubProjectDefinition.m */,
+				E94DE11415443AC100C5125E /* xcode_SubProjectDefinition.h */,
 				E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */,
 				E94DE11415443AC100C51259 /* xcode_SourceFileDefinition.m */,
 				6B51E2FC1547FEDD00DBA0BD /* xcode_AbstractDefinition.h */,
 				6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */,
-				E94DE11315443AA400C51251 /* XcodeEditor.h */,
 				6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */,
 				6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */,
 				6B3AD02814F8A3AC00BCFE81 /* XcodeSourceFileType.m */,
@@ -396,7 +393,6 @@
 				6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */,
 				6BE4B285147E6B610059E45B /* xcode_XibDefinition.h in Headers */,
 				6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */,
-				E94DE11415443AC100C51251 /* XcodeEditor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +543,7 @@
 				6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */,
 				6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */,
 				E94DE11415443AC100C5125B /* xcode_SourceFileDefinition.m in Sources */,
-				6B4B61221588A070003639E8 /* xcode_ProjectDefinition.m in Sources */,
+				6B4B61221588A070003639E8 /* xcode_SubProjectDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +570,7 @@
 				6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */,
 				6B51E2FE1547FEDD00DBA0BD /* xcode_AbstractDefinition.m in Sources */,
 				E94DE11415443AC100C5125A /* xcode_SourceFileDefinition.m in Sources */,
-				E94DE11415443AC100C51260 /* xcode_ProjectDefinition.m in Sources */,
+				E94DE11415443AC100C51260 /* xcode_SubProjectDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

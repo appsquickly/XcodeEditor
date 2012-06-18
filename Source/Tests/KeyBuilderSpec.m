@@ -9,7 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XcodeEditor.h"
+
+
+#import <XcodeEditor/xcode_utils_KeyBuilder.h>
 
 SPEC_BEGIN(KeyBuilderSpec)
 

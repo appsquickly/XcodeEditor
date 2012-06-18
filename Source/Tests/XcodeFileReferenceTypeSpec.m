@@ -9,7 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "XcodeEditor.h"
+
+
+#import <XcodeEditor/XcodeSourceFileType.h>
 
 SPEC_BEGIN(XCodeFileReferenceSpec)
 
