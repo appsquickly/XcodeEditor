@@ -274,10 +274,10 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow adding a xcodeproj file", ^{
 
                 SubProjectDefinition* projectDefinition =
-                        [SubProjectDefinition subProjectDefinitionWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
+                        [SubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
                                 parentProject:project];
 
-                [group addProject:projectDefinition];
+                [group addSubProject:projectDefinition];
                 [project save];
 
             });
@@ -285,10 +285,10 @@ SPEC_BEGIN(GroupSpec)
             it(@"should provide a convenience method to add a xcodeproj file, and specify targets", ^{
 
                 SubProjectDefinition* xcodeprojDefinition =
-                        [SubProjectDefinition subProjectDefinitionWithName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
+                        [SubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
                                 parentProject:project];
 
-                [group addProject:xcodeprojDefinition toTargets:[project targets]];
+                [group addSubProject:xcodeprojDefinition toTargets:[project targets]];
                 [project save];
 
             });
@@ -300,10 +300,10 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow removing a xcodeproj file", ^{
 
                 SubProjectDefinition* xcodeprojDefinition =
-                        [SubProjectDefinition subProjectDefinitionWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
+                        [SubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
                                 parentProject:project];
 
-                [group removeProject:xcodeprojDefinition];
+                [group removeSubProject:xcodeprojDefinition];
                 [project save];
 
             });
@@ -312,10 +312,10 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow removing a xcodeproj file, and specify targets", ^{
 
                 SubProjectDefinition* xcodeprojDefinition =
-                        [SubProjectDefinition subProjectDefinitionWithName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
+                        [SubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
                                 parentProject:project];
 
-                [group removeProject:xcodeprojDefinition fromTargets:[project targets]];
+                [group removeSubProject:xcodeprojDefinition fromTargets:[project targets]];
 
                 [project save];
 

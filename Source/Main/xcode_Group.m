@@ -249,48 +249,48 @@
 
 
 // adds an xcodeproj as a subproject of the current project.
-- (void) addProject:(xcode_SubProjectDefinition*)xcodeprojDefinition {
+- (void) addSubProject:(xcode_SubProjectDefinition*)projectDefinition {
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
-    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+    [projectDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
-    [self makeGroupMemberWithName:[xcodeprojDefinition projectFileName]
-            path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject
-            fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
+    [self makeGroupMemberWithName:[projectDefinition projectFileName]
+            path:[projectDefinition pathRelativeToProjectRoot] type:XcodeProject
+            fileOperationStyle:[projectDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
     // create PBXContainerItemProxies and PBXReferenceProxies
-    [_project addProxies:xcodeprojDefinition];
+    [_project addProxies:projectDefinition];
 
     // add projectReferences key to PBXProject
-    [self addProductsGroupToProject:xcodeprojDefinition];
+    [self addProductsGroupToProject:projectDefinition];
 }
 
 // adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
 // to targets.
-- (void) addProject:(xcode_SubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
-    [self addProject:xcodeprojDefinition];
+- (void) addSubProject:(xcode_SubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets {
+    [self addSubProject:projectDefinition];
 
     // add subproject's build products to targets (does not add the subproject's test bundle)
-    NSArray* buildProductFiles = [_project buildProductsForTargets:[xcodeprojDefinition projectKey]];
+    NSArray* buildProductFiles = [_project buildProductsForTargets:[projectDefinition projectKey]];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
     }
     // add main target of subproject as target dependency to main target of project
-    [_project addAsTargetDependency:xcodeprojDefinition toTargets:targets];
+    [_project addAsTargetDependency:projectDefinition toTargets:targets];
 }
 
 // removes an xcodeproj from the current project.
-- (void) removeProject:(xcode_SubProjectDefinition*)xcodeprojDefinition {
-    if (xcodeprojDefinition == nil) {
+- (void) removeSubProject:(xcode_SubProjectDefinition*)projectDefinition {
+    if (projectDefinition == nil) {
         return;
     }
 
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
-    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+    [projectDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
-    NSString* xcodeprojKey = [xcodeprojDefinition projectKey];
+    NSString* xcodeprojKey = [projectDefinition projectKey];
 
     // Remove from group and remove PBXFileReference
     [self removeGroupMemberWithKey:xcodeprojKey];
@@ -311,18 +311,18 @@
     [[_project objects] removeObjectForKey:productsGroupKey];
 
     // remove from all targets
-    [_project removeTargetDependencies:[xcodeprojDefinition name]];
+    [_project removeTargetDependencies:[projectDefinition name]];
 }
 
-- (void) removeProject:(xcode_SubProjectDefinition*)xcodeprojDefinition fromTargets:(NSArray*)targets {
-    if (xcodeprojDefinition == nil) {
+- (void) removeSubProject:(xcode_SubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets {
+    if (projectDefinition == nil) {
         return;
     }
 
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
-    [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
+    [projectDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
-    NSString* xcodeprojKey = [xcodeprojDefinition projectKey];
+    NSString* xcodeprojKey = [projectDefinition projectKey];
 
     // Remove PBXBundleFile entries and corresponding inclusion in PBXFrameworksBuildPhase and PBXResourcesBuidPhase
     NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];
@@ -330,13 +330,13 @@
 
     // Remove the PBXContainerItemProxy for this xcodeproj with proxyType 1
     NSString* containerItemProxyKey =
-            [_project containerItemProxyKeyForName:[xcodeprojDefinition pathRelativeToProjectRoot] proxyType:@"1"];
+            [_project containerItemProxyKeyForName:[projectDefinition pathRelativeToProjectRoot] proxyType:@"1"];
     if (containerItemProxyKey != nil) {
         [[_project objects] removeObjectForKey:containerItemProxyKey];
     }
 
     // Remove PBXTargetDependency and entry in PBXNativeTarget
-    [_project removeTargetDependencies:[xcodeprojDefinition name]];
+    [_project removeTargetDependencies:[projectDefinition name]];
 }
 
 /* ================================================================================================================== */

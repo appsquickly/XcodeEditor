@@ -29,8 +29,8 @@
 @synthesize fullProjectPath = _fullProjectPath;
 
 /* ================================================= Class Methods ================================================== */
-+ (SubProjectDefinition*) subProjectDefinitionWithName:(NSString*)name path:(NSString*)path
-        parentProject:(Project*)parentProject {
++ (SubProjectDefinition*) withName:(NSString*)name path:(NSString*)path
+        parentProject:(xcode_Project*)parentProject {
 
     return [[SubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject];
 }

@@ -35,7 +35,7 @@
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readwrite) NSString* fullProjectPath;
 
-+ (xcode_SubProjectDefinition*) subProjectDefinitionWithName:(NSString*)name path:(NSString*)path
++ (xcode_SubProjectDefinition*) withName:(NSString*)name path:(NSString*)path
         parentProject:(xcode_Project*)parentProject;
 
 - (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(xcode_Project*)parentProject;

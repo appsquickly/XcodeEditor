@@ -73,15 +73,16 @@ SourceFileDefinition* header = [[SourceFileDefinition alloc]
 [project save];
 ```
 
-### Adding a subproject
+### Adding a sub-project
+
 ```objective-c
-xcodeprojDefinition = [project xcodeprojDefinitionWithName:@"mySubproject" projPath=@"/Path/To/Subproject" type:XcodeProject];
-[group addXcodeproj:xcodeprojDefinition toTargets:[project targets]];
+subProjectDefinition = [SubProjectDefinition withName:@"mySubproject" projPath=@"/Path/To/Subproject" type:XcodeProject];
+[group addSubProject:subProjectDefinition toTargets:[project targets]];
 ```
 
-### Removing a subproject
+### Removing a sub-project
 ```objective-c
-[group removeXcodeproj:xcodeprojDefinition];
+[group removeSubProject:subProjectDefinition];  //TODO: project should be able to remove itself from parent.
 ```
 
 ### File write behavior
@@ -165,6 +166,8 @@ JetBrains is not yet supported.
          
 ### With contributions from: 
 
+* Janine Ohmer - support adding and removing sub-projects (http://www.synapticats.com).
+* Bogdan Vladu - support adding and removing groups (www.levelhelper.org).
 * Chris Ross of Hidden Memory (http://www.hiddenmemory.co.uk/)
 * Paul Taykalo
 * Vladislav Alekseev 

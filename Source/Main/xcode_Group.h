@@ -143,16 +143,16 @@
  * Returns boolean success/fail; if method fails, caller should assume that project file is corrupt (or file format has
  * changed).
 */
-- (void) addProject:(xcode_SubProjectDefinition*)projectDefinition;
+- (void) addSubProject:(xcode_SubProjectDefinition*)projectDefinition;
 
 /**
 * Adds a sub-project to the group, making it a member of the specified [targets](xcode_Target).
 */
-- (void) addProject:(xcode_SubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets;
+- (void) addSubProject:(xcode_SubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets;
 
-- (void) removeProject:(xcode_SubProjectDefinition*)projectDefinition;
+- (void) removeSubProject:(xcode_SubProjectDefinition*)projectDefinition;
 
-- (void) removeProject:(xcode_SubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets;
+- (void) removeSubProject:(xcode_SubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets;
 
 /* ================================================================================================================== */
 #pragma mark Locating children
