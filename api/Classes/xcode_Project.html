@@ -126,6 +126,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_SubProject Methods">SubProject Methods</a></span></li>
+	
 </ul></li>
 
 
@@ -252,7 +254,7 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
@@ -342,6 +344,77 @@ which one is returned is undefined.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/groups">&ndash;&nbsp;groups</a></code>
+		<span class="tooltip"><p>Lists the groups in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/rootGroup">&ndash;&nbsp;rootGroup</a></code>
+		<span class="tooltip"><p>Returns the root (top-level) group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/groupWithKey:">&ndash;&nbsp;groupWithKey:</a></code>
+		<span class="tooltip"><p>Returns the group with the given key, or nil.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/groupWithPathFromRoot:">&ndash;&nbsp;groupWithPathFromRoot:</a></code>
+		<span class="tooltip"><p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/groupForGroupMemberWithKey:">&ndash;&nbsp;groupForGroupMemberWithKey:</a></code>
+		<span class="tooltip"><p>Returns the parent group for the group or file with the given key;</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/targets">&ndash;&nbsp;targets</a></code>
+		<span class="tooltip"><p>Lists the targets in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/targetWithName:">&ndash;&nbsp;targetWithName:</a></code>
+		<span class="tooltip"><p>Returns the target with the specified name, or nil.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/save">&ndash;&nbsp;save</a></code>
+		<span class="tooltip"><p>Saves a project after editing.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/objects">&ndash;&nbsp;objects</a></code>
+		<span class="tooltip"><p>Raw project data.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="SubProject Methods" name="task_SubProject Methods"></a>
+						<h3 class="subsubtitle task-title">SubProject Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
 		<code><a href="#//api/name/referenceProxyKeyForName:">&ndash;&nbsp;referenceProxyKeyForName:</a></code>
 		
 	</span>
@@ -417,69 +490,6 @@ which one is returned is undefined.</p></span>
 	</span>
 	
 	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/groups">&ndash;&nbsp;groups</a></code>
-		<span class="tooltip"><p>Lists the groups in an xcode project, returning an array of <a href="../Classes/xcode_Group.html"><code>xcode_Group</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/rootGroup">&ndash;&nbsp;rootGroup</a></code>
-		<span class="tooltip"><p>Returns the root (top-level) group.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/groupWithKey:">&ndash;&nbsp;groupWithKey:</a></code>
-		<span class="tooltip"><p>Returns the group with the given key, or nil.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/groupWithPathFromRoot:">&ndash;&nbsp;groupWithPathFromRoot:</a></code>
-		<span class="tooltip"><p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/groupForGroupMemberWithKey:">&ndash;&nbsp;groupForGroupMemberWithKey:</a></code>
-		<span class="tooltip"><p>Returns the parent group for the group or file with the given key;</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/targets">&ndash;&nbsp;targets</a></code>
-		<span class="tooltip"><p>Lists the targets in an xcode project, returning an array of <a href="../Classes/xcode_Target.html"><code>xcode_Target</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/targetWithName:">&ndash;&nbsp;targetWithName:</a></code>
-		<span class="tooltip"><p>Returns the target with the specified name, or nil.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/save">&ndash;&nbsp;save</a></code>
-		<span class="tooltip"><p>Saves a project after editing.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/objects">&ndash;&nbsp;objects</a></code>
-		<span class="tooltip"><p>Raw project data.</p></span>
-	</span>
-	
-	
 </li>
 						</ul>
 						
@@ -548,7 +558,7 @@ which one is returned is undefined.</p></span>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)addAsTargetDependency:(xcode_ProjectDefinition *)<em>xcodeprojDefinition</em> toTargets:(NSArray *)<em>targets</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)addAsTargetDependency:(xcode_SubProjectDefinition *)<em>xcodeprojDefinition</em> toTargets:(NSArray *)<em>targets</em></code></div>
 
     
 </div>
@@ -559,7 +569,7 @@ which one is returned is undefined.</p></span>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)addProxies:(xcode_ProjectDefinition *)<em>xcodeproj</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)addProxies:(xcode_SubProjectDefinition *)<em>xcodeproj</em></code></div>
 
     
 </div>
@@ -1386,7 +1396,7 @@ which one is returned is undefined.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-06-18)</span><br />
+						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-06-20)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

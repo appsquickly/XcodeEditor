@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>xcode_ProjectDefinition Class Reference</title>
+		<title>xcode_SubProjectDefinition Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">xcode_ProjectDefinition Class Reference</h1>
+				<h1 class="hideInXcode">xcode_SubProjectDefinition Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -42,11 +42,13 @@
 	
 	<option value="//api/name/key">&nbsp;&nbsp;&nbsp;&nbsp;key</option>
 	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	
+	<option value="//api/name/parentProject">&nbsp;&nbsp;&nbsp;&nbsp;parentProject</option>
+	
 	<option value="//api/name/path">&nbsp;&nbsp;&nbsp;&nbsp;path</option>
 	
-	<option value="//api/name/sourceFileName">&nbsp;&nbsp;&nbsp;&nbsp;sourceFileName</option>
-	
-	<option value="//api/name/subproject">&nbsp;&nbsp;&nbsp;&nbsp;subproject</option>
+	<option value="//api/name/subProject">&nbsp;&nbsp;&nbsp;&nbsp;subProject</option>
 	
 	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
 	
@@ -55,7 +57,7 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/projectDefinitionWithName:path:">&nbsp;&nbsp;&nbsp;&nbsp;+ projectDefinitionWithName:path:</option>
+	<option value="//api/name/withName:path:parentProject:">&nbsp;&nbsp;&nbsp;&nbsp;+ withName:path:parentProject:</option>
 	
 	
 	
@@ -66,17 +68,17 @@
 	
 	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
 	
+	<option value="//api/name/fullPathName">&nbsp;&nbsp;&nbsp;&nbsp;- fullPathName</option>
+	
 	<option value="//api/name/initFullProjectPath:groupPath:">&nbsp;&nbsp;&nbsp;&nbsp;- initFullProjectPath:groupPath:</option>
 	
-	<option value="//api/name/initWithName:path:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:path:</option>
+	<option value="//api/name/initWithName:path:parentProject:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:path:parentProject:</option>
 	
 	<option value="//api/name/pathRelativeToProjectRoot">&nbsp;&nbsp;&nbsp;&nbsp;- pathRelativeToProjectRoot</option>
 	
-	<option value="//api/name/xcodeprojFileName">&nbsp;&nbsp;&nbsp;&nbsp;- xcodeprojFileName</option>
+	<option value="//api/name/projectFileName">&nbsp;&nbsp;&nbsp;&nbsp;- projectFileName</option>
 	
-	<option value="//api/name/xcodeprojFullPathName">&nbsp;&nbsp;&nbsp;&nbsp;- xcodeprojFullPathName</option>
-	
-	<option value="//api/name/xcodeprojKeyForProject:">&nbsp;&nbsp;&nbsp;&nbsp;- xcodeprojKeyForProject:</option>
+	<option value="//api/name/projectKey">&nbsp;&nbsp;&nbsp;&nbsp;- projectKey</option>
 	
 	
 	
@@ -104,11 +106,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/key">key</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parentProject">parentProject</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/path">path</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceFileName">sourceFileName</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subproject">subproject</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subProject">subProject</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
 	
@@ -118,7 +122,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/projectDefinitionWithName:path:">projectDefinitionWithName:path:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/withName:path:parentProject:">withName:path:parentProject:</a></span></li>
 	
 </ul></li>
 
@@ -130,17 +134,17 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fullPathName">fullPathName</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initFullProjectPath:groupPath:">initFullProjectPath:groupPath:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:path:">initWithName:path:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:path:parentProject:">initWithName:path:parentProject:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToProjectRoot">pathRelativeToProjectRoot</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/xcodeprojFileName">xcodeprojFileName</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/projectFileName">projectFileName</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/xcodeprojFullPathName">xcodeprojFullPathName</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/xcodeprojKeyForProject:">xcodeprojKeyForProject:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/projectKey">projectKey</a></span></li>
 	
 </ul></li>
 
@@ -149,7 +153,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="xcode_ProjectDefinition Class Reference" name="top"></a>
+				<a title="xcode_SubProjectDefinition Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -158,7 +162,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">xcode_ProjectDefinition Class Reference</h1>
+						<h1 class="title title-header">xcode_SubProjectDefinition Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -169,7 +173,7 @@
 	<td class="specification-value"><a href="../Classes/xcode_AbstractDefinition.html">xcode_AbstractDefinition</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">xcode_ProjectDefinition.h</td>
+	<td class="specification-value">xcode_SubProjectDefinition.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -189,7 +193,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sourceFileName">&nbsp;&nbsp;sourceFileName</a></code>
+		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -210,7 +214,14 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/subproject">&nbsp;&nbsp;subproject</a></code>
+		<code><a href="#//api/name/subProject">&nbsp;&nbsp;subProject</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parentProject">&nbsp;&nbsp;parentProject</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -231,28 +242,28 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/projectDefinitionWithName:path:">+&nbsp;projectDefinitionWithName:path:</a></code>
+		<code><a href="#//api/name/withName:path:parentProject:">+&nbsp;withName:path:parentProject:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:path:">&ndash;&nbsp;initWithName:path:</a></code>
+		<code><a href="#//api/name/initWithName:path:parentProject:">&ndash;&nbsp;initWithName:path:parentProject:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/xcodeprojFileName">&ndash;&nbsp;xcodeprojFileName</a></code>
+		<code><a href="#//api/name/projectFileName">&ndash;&nbsp;projectFileName</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/xcodeprojFullPathName">&ndash;&nbsp;xcodeprojFullPathName</a></code>
+		<code><a href="#//api/name/fullPathName">&ndash;&nbsp;fullPathName</a></code>
 		
 	</span>
 	
@@ -266,7 +277,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/xcodeprojKeyForProject:">&ndash;&nbsp;xcodeprojKeyForProject:</a></code>
+		<code><a href="#//api/name/projectKey">&ndash;&nbsp;projectKey</a></code>
 		
 	</span>
 	
@@ -328,6 +339,28 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *name</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parentProject" title="parentProject"></a>
+	<h3 class="subsubtitle method-title">parentProject</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) xcode_Project *parentProject</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/path" title="path"></a>
 	<h3 class="subsubtitle method-title">path</h3>
 	
@@ -339,23 +372,12 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/sourceFileName" title="sourceFileName"></a>
-	<h3 class="subsubtitle method-title">sourceFileName</h3>
+	<a name="//api/name/subProject" title="subProject"></a>
+	<h3 class="subsubtitle method-title">subProject</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *sourceFileName</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/subproject" title="subproject"></a>
-	<h3 class="subsubtitle method-title">subproject</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) Project *subproject</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) xcode_Project *subProject</code></div>
 
     
 </div>
@@ -380,12 +402,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/projectDefinitionWithName:path:" title="projectDefinitionWithName:path:"></a>
-	<h3 class="subsubtitle method-title">projectDefinitionWithName:path:</h3>
+	<a name="//api/name/withName:path:parentProject:" title="withName:path:parentProject:"></a>
+	<h3 class="subsubtitle method-title">withName:path:parentProject:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (xcode_ProjectDefinition *)projectDefinitionWithName:(NSString *)<em>name</em> path:(NSString *)<em>path</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (xcode_SubProjectDefinition *)withName:(NSString *)<em>name</em> path:(NSString *)<em>path</em> parentProject:(xcode_Project *)<em>parentProject</em></code></div>
 
     
 </div>
@@ -421,6 +443,17 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/fullPathName" title="fullPathName"></a>
+	<h3 class="subsubtitle method-title">fullPathName</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)fullPathName</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initFullProjectPath:groupPath:" title="initFullProjectPath:groupPath:"></a>
 	<h3 class="subsubtitle method-title">initFullProjectPath:groupPath:</h3>
 	
@@ -432,12 +465,12 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithName:path:" title="initWithName:path:"></a>
-	<h3 class="subsubtitle method-title">initWithName:path:</h3>
+	<a name="//api/name/initWithName:path:parentProject:" title="initWithName:path:parentProject:"></a>
+	<h3 class="subsubtitle method-title">initWithName:path:parentProject:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> path:(NSString *)<em>path</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> path:(NSString *)<em>path</em> parentProject:(xcode_Project *)<em>parentProject</em></code></div>
 
     
 </div>
@@ -454,34 +487,23 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/xcodeprojFileName" title="xcodeprojFileName"></a>
-	<h3 class="subsubtitle method-title">xcodeprojFileName</h3>
+	<a name="//api/name/projectFileName" title="projectFileName"></a>
+	<h3 class="subsubtitle method-title">projectFileName</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)xcodeprojFileName</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/xcodeprojFullPathName" title="xcodeprojFullPathName"></a>
-	<h3 class="subsubtitle method-title">xcodeprojFullPathName</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (NSString *)xcodeprojFullPathName</code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)projectFileName</code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/xcodeprojKeyForProject:" title="xcodeprojKeyForProject:"></a>
-	<h3 class="subsubtitle method-title">xcodeprojKeyForProject:</h3>
+	<a name="//api/name/projectKey" title="projectKey"></a>
+	<h3 class="subsubtitle method-title">projectKey</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)xcodeprojKeyForProject:(Project *)<em>project</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)projectKey</code></div>
 
     
 </div>
@@ -499,7 +521,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-06-18)</span><br />
+						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-06-20)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
