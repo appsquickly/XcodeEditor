@@ -20,6 +20,7 @@
 #import "xcode_utils_KeyBuilder.h"
 #import "xcode_SourceFileDefinition.h"
 #import "xcode_SubProjectDefinition.h"
+#import "xcode_Project+SubProject.h"
 
 #import "Logging.h"
 
@@ -254,7 +255,7 @@
 
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
-    [self makeGroupMemberWithName:[xcodeprojDefinition xcodeprojFileName]
+    [self makeGroupMemberWithName:[xcodeprojDefinition projectFileName]
             path:[xcodeprojDefinition pathRelativeToProjectRoot] type:XcodeProject
             fileOperationStyle:[xcodeprojDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
@@ -272,8 +273,7 @@
     [self addProject:xcodeprojDefinition];
 
     // add subproject's build products to targets (does not add the subproject's test bundle)
-    NSArray* buildProductFiles =
-            [_project buildProductsForTargets:[xcodeprojDefinition xcodeprojKeyForProject:_project]];
+    NSArray* buildProductFiles = [_project buildProductsForTargets:[xcodeprojDefinition projectKey]];
     for (SourceFile* file in buildProductFiles) {
         [self addSourceFile:file toTargets:targets];
     }
@@ -290,7 +290,7 @@
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
     [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
-    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
+    NSString* xcodeprojKey = [xcodeprojDefinition projectKey];
 
     // Remove from group and remove PBXFileReference
     [self removeGroupMemberWithKey:xcodeprojKey];
@@ -322,7 +322,7 @@
     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
     [xcodeprojDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
-    NSString* xcodeprojKey = [xcodeprojDefinition xcodeprojKeyForProject:_project];
+    NSString* xcodeprojKey = [xcodeprojDefinition projectKey];
 
     // Remove PBXBundleFile entries and corresponding inclusion in PBXFrameworksBuildPhase and PBXResourcesBuidPhase
     NSString* productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];

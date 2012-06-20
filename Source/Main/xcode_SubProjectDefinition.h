@@ -40,13 +40,13 @@
 
 - (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(xcode_Project*)parentProject;
 
-- (NSString*) xcodeprojFileName;
+- (NSString*) projectFileName;
 
-- (NSString*) xcodeprojFullPathName;
+- (NSString*) fullPathName;
 
 - (NSArray*) buildProductNames;
 
-- (NSString*) xcodeprojKeyForProject:(xcode_Project*)project;
+- (NSString*) projectKey;
 
 - (NSString*) pathRelativeToProjectRoot;
 

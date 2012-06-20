@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <XcodeEditor/xcode_Project.h>
+#import "xcode_Project+SubProject.h"
 #import "xcode_SubProjectDefinition.h"
 
 @interface xcode_SubProjectDefinition ()
@@ -51,11 +52,11 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
-- (NSString*) xcodeprojFileName {
+- (NSString*) projectFileName {
     return [_name stringByAppendingString:@".xcodeproj"];
 }
 
-- (NSString*) xcodeprojFullPathName {
+- (NSString*) fullPathName {
     return [NSString stringWithFormat:@"%@/%@", _path, [_name stringByAppendingString:@".xcodeproj"]];
 }
 
@@ -78,11 +79,10 @@
 }
 
 // returns the key of the PBXFileReference of the xcodeproj file
-- (NSString*) xcodeprojKeyForProject:(Project*)project {
+- (NSString*) projectKey {
     if (_key == nil) {
-        NSArray* xcodeprojKeys =
-                [project keysForProjectObjectsOfType:PBXFileReference withIdentifier:[self pathRelativeToProjectRoot]
-                        singleton:YES required:YES];
+        NSArray* xcodeprojKeys = [_parentProject keysForProjectObjectsOfType:PBXFileReference
+                withIdentifier:[self pathRelativeToProjectRoot] singleton:YES required:YES];
         _key = [xcodeprojKeys objectAtIndex:0];
     }
     return _key;
@@ -106,7 +106,7 @@
             [NSException raise:NSInvalidArgumentException format:@"fullProjectPath has not been set"];
         }
         NSMutableArray* projectPathComponents = [[_fullProjectPath pathComponents] mutableCopy];
-        NSArray* objectPathComponents = [[self xcodeprojFullPathName] pathComponents];
+        NSArray* objectPathComponents = [[self fullPathName] pathComponents];
         NSString* convertedPath = [[NSString alloc] init];
 
         // skip over path components from root that are equal
