@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-06-25</td>
+            <td class="headerValue">2012-06-26</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -485,14 +485,14 @@
 <span class="lineNum">     427 </span><span class="lineCov">         14 :     else {</span>
 <span class="lineNum">     428 </span>            :         return [_pathRelativeToParent lastPathComponent];
 <span class="lineNum">     429 </span>            :     }
-<span class="lineNum">     430 </span><span class="lineCov">        758 : }</span>
-<span class="lineNum">     431 </span><span class="lineCov">        758 : </span>
+<span class="lineNum">     430 </span><span class="lineCov">        754 : }</span>
+<span class="lineNum">     431 </span><span class="lineCov">        754 : </span>
 <span class="lineNum">     432 </span><span class="lineCov">        267 : - (NSString*) pathRelativeToProjectRoot {</span>
 <span class="lineNum">     433 </span>            :     if (_pathRelativeToProjectRoot == nil) {
 <span class="lineNum">     434 </span>            :         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-<span class="lineNum">     435 </span><span class="lineCov">        491 :         Group* group;</span>
+<span class="lineNum">     435 </span><span class="lineCov">        487 :         Group* group;</span>
 <span class="lineNum">     436 </span>            :         NSString* key = _key;
-<span class="lineNum">     437 </span><span class="lineCov">        758 : </span>
+<span class="lineNum">     437 </span><span class="lineCov">        754 : </span>
 <span class="lineNum">     438 </span>            :         while ((group = [_project groupForGroupMemberWithKey:key]) != nil &amp;&amp; !([group pathRelativeToParent] == nil)) {
 <span class="lineNum">     439 </span><span class="lineCov">        294 :             [pathComponents addObject:[group pathRelativeToParent]];</span>
 <span class="lineNum">     440 </span><span class="lineCov">        294 :             key = [group key];</span>
@@ -560,8 +560,8 @@
 <span class="lineNum">     502 </span><span class="lineCov">         16 :         writeFile = YES;</span>
 <span class="lineNum">     503 </span><span class="lineCov">         14 :     }</span>
 <span class="lineNum">     504 </span><span class="lineCov">         14 :     if (writeFile) {</span>
-<span class="lineNum">     505 </span><span class="lineCov">          6 :         if ([contents isKindOfClass:[NSString class]]) {</span>
-<span class="lineNum">     506 </span><span class="lineCov">          6 :             [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];</span>
+<span class="lineNum">     505 </span><span class="lineCov">          2 :         if ([contents isKindOfClass:[NSString class]]) {</span>
+<span class="lineNum">     506 </span><span class="lineCov">          2 :             [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];</span>
 <span class="lineNum">     507 </span>            :         }
 <span class="lineNum">     508 </span><span class="lineCov">          2 :         else {</span>
 <span class="lineNum">     509 </span>            :             [_fileOperationQueue queueDataFile:name inDirectory:filePath withContents:contents];
