@@ -7,6 +7,6 @@
 
 #import "Kiwi.h"
 #import "NSString+TestResource.h"
-#import "Logging.h"
+#import "OCLogTemplate.h"
 
 #endif

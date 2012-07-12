@@ -55,7 +55,6 @@
 		6B51E2FE1547FEDD00DBA0BD /* xcode_AbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */; };
 		6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD8982D14EA2441007875F4 /* SenTestingKit.framework */; };
 		6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
-		6B65941514F8A53300F65AEC /* Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B65941414F8A53300F65AEC /* Logging.h */; };
 		6B65941714F8A54400F65AEC /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B65941614F8A54400F65AEC /* libKiwi.a */; };
 		6B65941E14F8A56C00F65AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B65941A14F8A56C00F65AEC /* InfoPlist.strings */; };
 		6B65941F14F8A56C00F65AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B65941A14F8A56C00F65AEC /* InfoPlist.strings */; };
@@ -77,6 +76,7 @@
 		6BE4B285147E6B610059E45F /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
 		E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51256 /* HelloBoxy.zip */; };
@@ -85,10 +85,10 @@
 		E94DE11415443AC100C5125D /* xcode_SourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51260 /* xcode_SubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* xcode_SubProjectDefinition.m */; };
 		E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51261 /* SubProjectDefinitionSpec.m */; };
-		E94DE11415443AC100C51264 /* xcode_Group+SubProjects.m in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51265 /* xcode_Group+SubProjects.m in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51269 /* xcode_Group+SubProject.m in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C5126A /* xcode_Group+SubProject.m in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51264 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51265 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51269 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C5126A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E94DE11415443AC100C5126E /* xcode_Project+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* xcode_Project+SubProject.m */; };
 		E94DE11415443AC100C5126F /* xcode_Project+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* xcode_Project+SubProject.m */; };
 		E94DE11415443AC100C51271 /* xcode_Project+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51270 /* xcode_Project+SubProject.h */; };
@@ -154,7 +154,6 @@
 		6B51E2FC1547FEDD00DBA0BD /* xcode_AbstractDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_AbstractDefinition.h; sourceTree = "<group>"; };
 		6B51E2FD1547FEDD00DBA0BD /* xcode_AbstractDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_AbstractDefinition.m; sourceTree = "<group>"; };
 		6B55223614EA723700494CF3 /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B65941414F8A53300F65AEC /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
 		6B65941614F8A54400F65AEC /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = Dependencies/Libraries/libKiwi.a; sourceTree = SOURCE_ROOT; };
 		6B65941B14F8A56C00F65AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B65941C14F8A56C00F65AEC /* XcodeEditor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XcodeEditor-Info.plist"; sourceTree = "<group>"; };
@@ -176,6 +175,7 @@
 		6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FrameworkDefinition.h; sourceTree = "<group>"; };
+		6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
 		E94DE11415443AC100C51256 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
@@ -296,19 +296,11 @@
 		6B65941214F8A53300F65AEC /* External */ = {
 			isa = PBXGroup;
 			children = (
+				6BE9748C15AF0B31004472E2 /* OCLogTemplate */,
 				6B65941614F8A54400F65AEC /* libKiwi.a */,
-				6B65941314F8A53300F65AEC /* Objective-Loggerheads */,
 			);
 			name = External;
 			path = Dependencies/External;
-			sourceTree = "<group>";
-		};
-		6B65941314F8A53300F65AEC /* Objective-Loggerheads */ = {
-			isa = PBXGroup;
-			children = (
-				6B65941414F8A53300F65AEC /* Logging.h */,
-			);
-			path = "Objective-Loggerheads";
 			sourceTree = "<group>";
 		};
 		6B65941914F8A56C00F65AEC /* Resources */ = {
@@ -374,6 +366,14 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		6BE9748C15AF0B31004472E2 /* OCLogTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */,
+			);
+			path = OCLogTemplate;
+			sourceTree = "<group>";
+		};
 		E94DE11415443AC100C51258 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,12 +402,12 @@
 				E94DE11415443AC100C5125D /* xcode_SourceFileDefinition.h in Headers */,
 				6B3AD04514F8A3AC00BCFE81 /* XcodeSourceFileType.h in Headers */,
 				6B3AD04814F8A3AC00BCFE81 /* XcodeMemberType.h in Headers */,
-				6B65941514F8A53300F65AEC /* Logging.h in Headers */,
 				6B65942214F8A56C00F65AEC /* XcodeEditor-Prefix.pch in Headers */,
 				6BE4B285147E6B610059E453 /* XcodeGroupMember.h in Headers */,
 				6BE4B285147E6B610059E45B /* xcode_XibDefinition.h in Headers */,
 				6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */,
 				E94DE11415443AC100C51271 /* xcode_Project+SubProject.h in Headers */,
+				6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,8 +559,8 @@
 				6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */,
 				E94DE11415443AC100C5125B /* xcode_SourceFileDefinition.m in Sources */,
 				6B4B61221588A070003639E8 /* xcode_SubProjectDefinition.m in Sources */,
-				E94DE11415443AC100C51265 /* xcode_Group+SubProjects.m in Sources */,
-				E94DE11415443AC100C5126A /* xcode_Group+SubProject.m in Sources */,
+				E94DE11415443AC100C51265 /* (null) in Sources */,
+				E94DE11415443AC100C5126A /* (null) in Sources */,
 				E94DE11415443AC100C5126F /* xcode_Project+SubProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,8 +590,8 @@
 				E94DE11415443AC100C5125A /* xcode_SourceFileDefinition.m in Sources */,
 				E94DE11415443AC100C51260 /* xcode_SubProjectDefinition.m in Sources */,
 				E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */,
-				E94DE11415443AC100C51264 /* xcode_Group+SubProjects.m in Sources */,
-				E94DE11415443AC100C51269 /* xcode_Group+SubProject.m in Sources */,
+				E94DE11415443AC100C51264 /* (null) in Sources */,
+				E94DE11415443AC100C51269 /* (null) in Sources */,
 				E94DE11415443AC100C5126E /* xcode_Project+SubProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

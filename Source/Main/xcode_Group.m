@@ -22,7 +22,6 @@
 #import "xcode_SubProjectDefinition.h"
 #import "xcode_Project+SubProject.h"
 
-#import "Logging.h"
 
 /* ================================================================================================================== */
 @interface xcode_Group ()

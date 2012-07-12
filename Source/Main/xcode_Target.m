@@ -12,7 +12,6 @@
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Project.h"
-#import "Logging.h"
 /* ================================================================================================================== */
 @interface xcode_Target ()
 
