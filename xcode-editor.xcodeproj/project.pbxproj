@@ -216,6 +216,7 @@
 		6B3AD01814F8A3AC00BCFE81 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */,
 				E94DE11415443AC100C51270 /* xcode_Project+SubProject.h */,
 				E94DE11415443AC100C5126D /* xcode_Project+SubProject.m */,
 				E94DE11415443AC100C5125F /* xcode_SubProjectDefinition.m */,
@@ -379,7 +380,6 @@
 		E94DE11415443AC100C51258 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */,
 				6B3AD02214F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m */,
 				6B3AD02114F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h */,
 				6BE4B285147E6B610059E455 /* xcode_utils_Enum.h */,
