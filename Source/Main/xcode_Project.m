@@ -14,8 +14,7 @@
 #import "xcode_SourceFile.h"
 #import "xcode_Target.h"
 #import "xcode_FileOperationQueue.h"
-#import "xcode_utils_KeyBuilder.h"
-#import "xcode_SubProjectDefinition.h"
+#import "OCLogTemplate.h"
 
 
 /* ================================================================================================================== */

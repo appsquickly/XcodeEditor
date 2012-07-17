@@ -77,6 +77,7 @@
 		6BE4B285147E6B610059E460 /* xcode_FrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */; };
+		BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
 		E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51256 /* HelloBoxy.zip */; };
@@ -85,10 +86,10 @@
 		E94DE11415443AC100C5125D /* xcode_SourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125C /* xcode_SourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51260 /* xcode_SubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* xcode_SubProjectDefinition.m */; };
 		E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51261 /* SubProjectDefinitionSpec.m */; };
-		E94DE11415443AC100C51264 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51265 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51269 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C5126A /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51264 /* PBXBuildFile */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51265 /* PBXBuildFile */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51269 /* PBXBuildFile */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C5126A /* PBXBuildFile */ = {isa = PBXBuildFile; };
 		E94DE11415443AC100C5126E /* xcode_Project+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* xcode_Project+SubProject.m */; };
 		E94DE11415443AC100C5126F /* xcode_Project+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* xcode_Project+SubProject.m */; };
 		E94DE11415443AC100C51271 /* xcode_Project+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51270 /* xcode_Project+SubProject.h */; };
@@ -176,6 +177,7 @@
 		6BE4B285147E6B610059E45E /* xcode_FrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_FrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* xcode_FrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_FrameworkDefinition.h; sourceTree = "<group>"; };
 		6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
+		BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
 		E94DE11415443AC100C51256 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 		E94DE11415443AC100C51258 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */,
 				6B3AD02214F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m */,
 				6B3AD02114F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h */,
 				6BE4B285147E6B610059E455 /* xcode_utils_Enum.h */,
@@ -408,6 +411,7 @@
 				6BE4B285147E6B610059E462 /* xcode_FrameworkDefinition.h in Headers */,
 				E94DE11415443AC100C51271 /* xcode_Project+SubProject.h in Headers */,
 				6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */,
+				BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,8 +563,8 @@
 				6B019F6F154832C400122D48 /* xcode_AbstractDefinition.m in Sources */,
 				E94DE11415443AC100C5125B /* xcode_SourceFileDefinition.m in Sources */,
 				6B4B61221588A070003639E8 /* xcode_SubProjectDefinition.m in Sources */,
-				E94DE11415443AC100C51265 /* (null) in Sources */,
-				E94DE11415443AC100C5126A /* (null) in Sources */,
+				E94DE11415443AC100C51265 /* PBXBuildFile */,
+				E94DE11415443AC100C5126A /* PBXBuildFile */,
 				E94DE11415443AC100C5126F /* xcode_Project+SubProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,8 +594,8 @@
 				E94DE11415443AC100C5125A /* xcode_SourceFileDefinition.m in Sources */,
 				E94DE11415443AC100C51260 /* xcode_SubProjectDefinition.m in Sources */,
 				E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */,
-				E94DE11415443AC100C51264 /* (null) in Sources */,
-				E94DE11415443AC100C51269 /* (null) in Sources */,
+				E94DE11415443AC100C51264 /* PBXBuildFile */,
+				E94DE11415443AC100C51269 /* PBXBuildFile */,
 				E94DE11415443AC100C5126E /* xcode_Project+SubProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

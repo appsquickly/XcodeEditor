@@ -13,6 +13,7 @@
 #import "xcode_Project.h"
 #import "xcode_utils_KeyBuilder.h"
 #import "xcode_Group.h"
+#import "OCLogTemplate.h"
 
 @implementation xcode_SourceFile
 

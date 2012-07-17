@@ -21,6 +21,7 @@
 #import "xcode_SourceFileDefinition.h"
 #import "xcode_SubProjectDefinition.h"
 #import "xcode_Project+SubProject.h"
+#import "OCLogTemplate.h"
 
 
 /* ================================================================================================================== */

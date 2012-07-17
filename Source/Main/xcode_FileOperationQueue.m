@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "xcode_FileOperationQueue.h"
+#import "OCLogTemplate.h"
 
 @interface xcode_FileOperationQueue ()
 

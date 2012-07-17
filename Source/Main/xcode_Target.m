@@ -12,6 +12,8 @@
 #import "xcode_Target.h"
 #import "xcode_SourceFile.h"
 #import "xcode_Project.h"
+#import "OCLogTemplate.h"
+#import "OCLogTemplate.h"
 /* ================================================================================================================== */
 @interface xcode_Target ()
 
