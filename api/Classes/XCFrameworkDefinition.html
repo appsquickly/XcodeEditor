@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>xcode_SourceFileDefinition Class Reference</title>
+		<title>XCFrameworkDefinition Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">xcode_SourceFileDefinition Class Reference</h1>
+				<h1 class="hideInXcode">XCFrameworkDefinition Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,29 +38,25 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/data">&nbsp;&nbsp;&nbsp;&nbsp;data</option>
+	<option value="//api/name/copyToDestination">&nbsp;&nbsp;&nbsp;&nbsp;copyToDestination</option>
 	
-	<option value="//api/name/sourceFileName">&nbsp;&nbsp;&nbsp;&nbsp;sourceFileName</option>
-	
-	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	<option value="//api/name/filePath">&nbsp;&nbsp;&nbsp;&nbsp;filePath</option>
 	
 	
 	
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/sourceDefinitionWithName:data:type:">&nbsp;&nbsp;&nbsp;&nbsp;+ sourceDefinitionWithName:data:type:</option>
-	
-	<option value="//api/name/sourceDefinitionWithName:text:type:">&nbsp;&nbsp;&nbsp;&nbsp;+ sourceDefinitionWithName:text:type:</option>
+	<option value="//api/name/frameworkDefinitionWithFilePath:copyToDestination:">&nbsp;&nbsp;&nbsp;&nbsp;+ frameworkDefinitionWithFilePath:copyToDestination:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithName:data:type:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:data:type:</option>
+	<option value="//api/name/initWithFilePath:copyToDestination:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFilePath:copyToDestination:</option>
 	
-	<option value="//api/name/initWithName:text:type:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:text:type:</option>
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;- name</option>
 	
 	
 	
@@ -84,11 +80,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/data">data</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/copyToDestination">copyToDestination</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceFileName">sourceFileName</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/filePath">filePath</a></span></li>
 	
 </ul></li>
 
@@ -96,9 +90,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceDefinitionWithName:data:type:">sourceDefinitionWithName:data:type:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceDefinitionWithName:text:type:">sourceDefinitionWithName:text:type:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/frameworkDefinitionWithFilePath:copyToDestination:">frameworkDefinitionWithFilePath:copyToDestination:</a></span></li>
 	
 </ul></li>
 
@@ -106,9 +98,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:data:type:">initWithName:data:type:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFilePath:copyToDestination:">initWithFilePath:copyToDestination:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:text:type:">initWithName:text:type:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
 	
 </ul></li>
 
@@ -117,7 +109,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="xcode_SourceFileDefinition Class Reference" name="top"></a>
+				<a title="XCFrameworkDefinition Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -126,7 +118,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">xcode_SourceFileDefinition Class Reference</h1>
+						<h1 class="title title-header">XCFrameworkDefinition Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -134,10 +126,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/xcode_AbstractDefinition.html">xcode_AbstractDefinition</a> : NSObject</td>
+	<td class="specification-value"><a href="../Classes/XCAbstractDefinition.html">XCAbstractDefinition</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">xcode_SourceFileDefinition.h</td>
+	<td class="specification-value">XCFrameworkDefinition.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -157,49 +149,35 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sourceFileName">&nbsp;&nbsp;sourceFileName</a></code>
+		<code><a href="#//api/name/filePath">&nbsp;&nbsp;filePath</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/data">&nbsp;&nbsp;data</a></code>
+		<code><a href="#//api/name/copyToDestination">&nbsp;&nbsp;copyToDestination</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sourceDefinitionWithName:text:type:">+&nbsp;sourceDefinitionWithName:text:type:</a></code>
+		<code><a href="#//api/name/frameworkDefinitionWithFilePath:copyToDestination:">+&nbsp;frameworkDefinitionWithFilePath:copyToDestination:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sourceDefinitionWithName:data:type:">+&nbsp;sourceDefinitionWithName:data:type:</a></code>
+		<code><a href="#//api/name/initWithFilePath:copyToDestination:">&ndash;&nbsp;initWithFilePath:copyToDestination:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:text:type:">&ndash;&nbsp;initWithName:text:type:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:data:type:">&ndash;&nbsp;initWithName:data:type:</a></code>
+		<code><a href="#//api/name/name">&ndash;&nbsp;name</a></code>
 		
 	</span>
 	
@@ -218,34 +196,23 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/data" title="data"></a>
-	<h3 class="subsubtitle method-title">data</h3>
+	<a name="//api/name/copyToDestination" title="copyToDestination"></a>
+	<h3 class="subsubtitle method-title">copyToDestination</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSData *data</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/sourceFileName" title="sourceFileName"></a>
-	<h3 class="subsubtitle method-title">sourceFileName</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *sourceFileName</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL copyToDestination</code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/type" title="type"></a>
-	<h3 class="subsubtitle method-title">type</h3>
+	<a name="//api/name/filePath" title="filePath"></a>
+	<h3 class="subsubtitle method-title">filePath</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) XcodeSourceFileType type</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *filePath</code></div>
 
     
 </div>
@@ -259,23 +226,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/sourceDefinitionWithName:data:type:" title="sourceDefinitionWithName:data:type:"></a>
-	<h3 class="subsubtitle method-title">sourceDefinitionWithName:data:type:</h3>
+	<a name="//api/name/frameworkDefinitionWithFilePath:copyToDestination:" title="frameworkDefinitionWithFilePath:copyToDestination:"></a>
+	<h3 class="subsubtitle method-title">frameworkDefinitionWithFilePath:copyToDestination:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (xcode_SourceFileDefinition *)sourceDefinitionWithName:(NSString *)<em>name</em> data:(NSData *)<em>data</em> type:(XcodeSourceFileType)<em>type</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/sourceDefinitionWithName:text:type:" title="sourceDefinitionWithName:text:type:"></a>
-	<h3 class="subsubtitle method-title">sourceDefinitionWithName:text:type:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>+ (xcode_SourceFileDefinition *)sourceDefinitionWithName:(NSString *)<em>name</em> text:(NSString *)<em>text</em> type:(XcodeSourceFileType)<em>type</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (XCFrameworkDefinition *)frameworkDefinitionWithFilePath:(NSString *)<em>filePath</em> copyToDestination:(BOOL)<em>copyToDestination</em></code></div>
 
     
 </div>
@@ -289,23 +245,23 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithName:data:type:" title="initWithName:data:type:"></a>
-	<h3 class="subsubtitle method-title">initWithName:data:type:</h3>
+	<a name="//api/name/initWithFilePath:copyToDestination:" title="initWithFilePath:copyToDestination:"></a>
+	<h3 class="subsubtitle method-title">initWithFilePath:copyToDestination:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> data:(NSData *)<em>data</em> type:(XcodeSourceFileType)<em>type</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithFilePath:(NSString *)<em>filePath</em> copyToDestination:(BOOL)<em>copyToDestination</em></code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithName:text:type:" title="initWithName:text:type:"></a>
-	<h3 class="subsubtitle method-title">initWithName:text:type:</h3>
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> text:(NSString *)<em>text</em> type:(XcodeSourceFileType)<em>type</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)name</code></div>
 
     
 </div>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Main/xcode_Project+SubProject.m</title>
+  <title>LCOV - coverage.info - Source/Main/XCProject+SubProject.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - xcode_Project+SubProject.m</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - XCProject+SubProject.m</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -67,14 +67,14 @@
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &lt;XcodeEditor/xcode_SourceFile.h&gt;
-<span class="lineNum">      13 </span>            : #import &lt;XcodeEditor/xcode_Target.h&gt;
-<span class="lineNum">      14 </span>            : #import &lt;XcodeEditor/xcode_utils_KeyBuilder.h&gt;
-<span class="lineNum">      15 </span>            : #import &quot;xcode_Project+SubProject.h&quot;
-<span class="lineNum">      16 </span>            : #import &quot;xcode_SubProjectDefinition.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;XCSourceFile.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;XCTarget.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;XCKeyBuilder.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;XCProject+SubProject.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;XCSubProjectDefinition.h&quot;
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : @implementation xcode_Project (SubProject)
+<span class="lineNum">      19 </span>            : @implementation XCProject (SubProject)
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : #pragma mark sub-project related public methods
@@ -109,7 +109,7 @@
 <span class="lineNum">      51 </span><span class="lineCov">          3 :                 XcodeSourceFileType type = [(NSString*) [obj valueForKey:@&quot;fileType&quot;] asSourceFileType];</span>
 <span class="lineNum">      52 </span><span class="lineCov">          3 :                 NSString* path = (NSString*) [obj valueForKey:@&quot;path&quot;];</span>
 <span class="lineNum">      53 </span><span class="lineCov">          3 :                 if (type != Bundle || [[path pathExtension] isEqualToString:@&quot;bundle&quot;]) {</span>
-<span class="lineNum">      54 </span><span class="lineCov">          2 :                     [results addObject:[SourceFile sourceFileWithProject:self key:key type:type name:path</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 :                     [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:type name:path</span>
 <span class="lineNum">      55 </span>            :                                                sourceTree:nil]];
 <span class="lineNum">      56 </span><span class="lineCov">          2 :                 }</span>
 <span class="lineNum">      57 </span><span class="lineCov">          3 :             }</span>
@@ -120,8 +120,8 @@
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : // makes PBXContainerItemProxy and PBXTargetDependency objects for the xcodeproj, and adds the dependency key
 <span class="lineNum">      64 </span>            : // to all the specified targets
-<span class="lineNum">      65 </span>            : - (void) addAsTargetDependency:(SubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
-<span class="lineNum">      66 </span><span class="lineCov">          1 :     for (Target* target in targets) {</span>
+<span class="lineNum">      65 </span>            : - (void) addAsTargetDependency:(XCSubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+<span class="lineNum">      66 </span><span class="lineCov">          1 :     for (XCTarget* target in targets) {</span>
 <span class="lineNum">      67 </span><span class="lineCov">          4 :         // make a new PBXContainerItemProxy</span>
 <span class="lineNum">      68 </span>            :         NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
 <span class="lineNum">      69 </span><span class="lineCov">          4 :         NSString* containerItemProxyKey =</span>
@@ -254,11 +254,11 @@
 <span class="lineNum">     196 </span><span class="lineCov">          9 :     [proxy setObject:fileRef forKey:@&quot;containerPortal&quot;];</span>
 <span class="lineNum">     197 </span><span class="lineNoCov">          0 :     [proxy setObject:proxyType forKey:@&quot;proxyType&quot;];</span>
 <span class="lineNum">     198 </span><span class="lineNoCov">          0 :     // give it a random key - the keys xcode puts here are not in the project file anywhere else</span>
-<span class="lineNum">     199 </span>            :     NSString* key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-junk&quot;, keyName]] build];
+<span class="lineNum">     199 </span>            :     NSString* key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-junk&quot;, keyName]] build];
 <span class="lineNum">     200 </span><span class="lineCov">          9 :     [proxy setObject:key forKey:@&quot;remoteGlobalIDString&quot;];</span>
 <span class="lineNum">     201 </span><span class="lineCov">          9 :     [proxy setObject:name forKey:@&quot;remoteInfo&quot;];</span>
 <span class="lineNum">     202 </span><span class="lineCov">          9 :     // add to project. use proxyType to generate key, so that multiple keys for the same name don't overwrite each other</span>
-<span class="lineNum">     203 </span><span class="lineCov">          9 :     key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-containerProxy-%@&quot;, keyName, proxyType]] build];</span>
+<span class="lineNum">     203 </span><span class="lineCov">          9 :     key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-containerProxy-%@&quot;, keyName, proxyType]] build];</span>
 <span class="lineNum">     204 </span>            :     [[self objects] setObject:proxy forKey:key];
 <span class="lineNum">     205 </span><span class="lineCov">          9 : </span>
 <span class="lineNum">     206 </span><span class="lineCov">          9 :     return key;</span>
@@ -284,7 +284,7 @@
 <span class="lineNum">     226 </span><span class="lineNoCov">          0 :     [proxy setObject:containerItemProxyKey forKey:@&quot;remoteRef&quot;];</span>
 <span class="lineNum">     227 </span><span class="lineNoCov">          0 :     [proxy setObject:[buildProductReference valueForKey:@&quot;sourceTree&quot;] forKey:@&quot;sourceTree&quot;];</span>
 <span class="lineNum">     228 </span>            :     // add to project
-<span class="lineNum">     229 </span><span class="lineCov">          5 :     NSString* key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-referenceProxy&quot;, path]] build];</span>
+<span class="lineNum">     229 </span><span class="lineCov">          5 :     NSString* key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-referenceProxy&quot;, path]] build];</span>
 <span class="lineNum">     230 </span><span class="lineCov">          5 :     [[self objects] setObject:proxy forKey:key];</span>
 <span class="lineNum">     231 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">     232 </span><span class="lineCov">          5 : </span>
@@ -312,13 +312,13 @@
 <span class="lineNum">     254 </span><span class="lineCov">          4 :     [targetDependency setObject:name forKey:@&quot;name&quot;];</span>
 <span class="lineNum">     255 </span><span class="lineNoCov">          0 :     [targetDependency setObject:containerItemProxyKey forKey:@&quot;targetProxy&quot;];</span>
 <span class="lineNum">     256 </span><span class="lineNoCov">          0 :     NSString* targetDependencyKey =</span>
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 :             [[KeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-targetProxy&quot;, keyName]] build];</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :             [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-targetProxy&quot;, keyName]] build];</span>
 <span class="lineNum">     258 </span><span class="lineNoCov">          0 :     [[self objects] setObject:targetDependency forKey:targetDependencyKey];</span>
 <span class="lineNum">     259 </span>            :     return targetDependencyKey;
 <span class="lineNum">     260 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">     261 </span><span class="lineCov">          4 : </span>
 <span class="lineNum">     262 </span><span class="lineCov">          4 : // make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subProject</span>
-<span class="lineNum">     263 </span><span class="lineCov">          4 : - (void) addProxies:(SubProjectDefinition*)xcodeproj {</span>
+<span class="lineNum">     263 </span><span class="lineCov">          4 : - (void) addProxies:(XCSubProjectDefinition*)xcodeproj {</span>
 <span class="lineNum">     264 </span>            :     NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
 <span class="lineNum">     265 </span><span class="lineCov">          4 :     for (NSDictionary* target in [xcodeproj.subProject targets]) {</span>
 <span class="lineNum">     266 </span><span class="lineCov">          4 :         NSString* containerItemProxyKey =</span>

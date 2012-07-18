@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Main/Utils/xcode_utils_KeyBuilder.m</title>
+  <title>LCOV - coverage.info - Source/Main/Utils/XCKeyBuilder.m</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Main/Utils</a> - xcode_utils_KeyBuilder.m</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Main/Utils</a> - XCKeyBuilder.m</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -67,14 +67,14 @@
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &quot;xcode_utils_KeyBuilder.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;XCKeyBuilder.h&quot;
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span>            : @implementation xcode_utils_KeyBuilder
+<span class="lineNum">      14 </span>            : @implementation XCKeyBuilder
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      17 </span><span class="lineCov">         84 : + (xcode_utils_KeyBuilder*) forItemNamed:(NSString*)name {</span>
+<span class="lineNum">      17 </span><span class="lineCov">         84 : + (XCKeyBuilder*) forItemNamed:(NSString*)name {</span>
 <span class="lineNum">      18 </span><span class="lineCov">         84 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         84 :     return [[xcode_utils_KeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];</span>
+<span class="lineNum">      19 </span><span class="lineCov">         84 :     return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span><span class="lineCov">         84 : }</span>
 <span class="lineNum">      22 </span>            : 

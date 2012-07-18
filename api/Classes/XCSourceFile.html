@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>xcode_SubProjectDefinition Class Reference</title>
+		<title>XCSourceFile Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">xcode_SubProjectDefinition Class Reference</h1>
+				<h1 class="hideInXcode">XCSourceFile Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,6 +26,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -38,17 +40,11 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/fullProjectPath">&nbsp;&nbsp;&nbsp;&nbsp;fullProjectPath</option>
-	
 	<option value="//api/name/key">&nbsp;&nbsp;&nbsp;&nbsp;key</option>
 	
 	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
 	
-	<option value="//api/name/parentProject">&nbsp;&nbsp;&nbsp;&nbsp;parentProject</option>
-	
-	<option value="//api/name/path">&nbsp;&nbsp;&nbsp;&nbsp;path</option>
-	
-	<option value="//api/name/subProject">&nbsp;&nbsp;&nbsp;&nbsp;subProject</option>
+	<option value="//api/name/sourceTree">&nbsp;&nbsp;&nbsp;&nbsp;sourceTree</option>
 	
 	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
 	
@@ -57,28 +53,24 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/withName:path:parentProject:">&nbsp;&nbsp;&nbsp;&nbsp;+ withName:path:parentProject:</option>
+	<option value="//api/name/sourceFileWithProject:key:type:name:sourceTree:">&nbsp;&nbsp;&nbsp;&nbsp;+ sourceFileWithProject:key:type:name:sourceTree:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/buildProductNames">&nbsp;&nbsp;&nbsp;&nbsp;- buildProductNames</option>
+	<option value="//api/name/becomeBuildFile">&nbsp;&nbsp;&nbsp;&nbsp;- becomeBuildFile</option>
 	
-	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
+	<option value="//api/name/buildFileKey">&nbsp;&nbsp;&nbsp;&nbsp;- buildFileKey</option>
 	
-	<option value="//api/name/fullPathName">&nbsp;&nbsp;&nbsp;&nbsp;- fullPathName</option>
+	<option value="//api/name/buildPhase">&nbsp;&nbsp;&nbsp;&nbsp;- buildPhase</option>
 	
-	<option value="//api/name/initFullProjectPath:groupPath:">&nbsp;&nbsp;&nbsp;&nbsp;- initFullProjectPath:groupPath:</option>
+	<option value="//api/name/canBecomeBuildFile">&nbsp;&nbsp;&nbsp;&nbsp;- canBecomeBuildFile</option>
 	
-	<option value="//api/name/initWithName:path:parentProject:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:path:parentProject:</option>
+	<option value="//api/name/initWithProject:key:type:name:sourceTree:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:type:name:sourceTree:</option>
 	
-	<option value="//api/name/pathRelativeToProjectRoot">&nbsp;&nbsp;&nbsp;&nbsp;- pathRelativeToProjectRoot</option>
-	
-	<option value="//api/name/projectFileName">&nbsp;&nbsp;&nbsp;&nbsp;- projectFileName</option>
-	
-	<option value="//api/name/projectKey">&nbsp;&nbsp;&nbsp;&nbsp;- projectKey</option>
+	<option value="//api/name/isBuildFile">&nbsp;&nbsp;&nbsp;&nbsp;- isBuildFile</option>
 	
 	
 	
@@ -89,6 +81,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -102,17 +96,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fullProjectPath">fullProjectPath</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/key">key</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parentProject">parentProject</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/path">path</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subProject">subProject</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceTree">sourceTree</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
 	
@@ -122,7 +110,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/withName:path:parentProject:">withName:path:parentProject:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceFileWithProject:key:type:name:sourceTree:">sourceFileWithProject:key:type:name:sourceTree:</a></span></li>
 	
 </ul></li>
 
@@ -130,21 +118,17 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildProductNames">buildProductNames</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/becomeBuildFile">becomeBuildFile</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildFileKey">buildFileKey</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fullPathName">fullPathName</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildPhase">buildPhase</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initFullProjectPath:groupPath:">initFullProjectPath:groupPath:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/canBecomeBuildFile">canBecomeBuildFile</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:path:parentProject:">initWithName:path:parentProject:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:type:name:sourceTree:">initWithProject:key:type:name:sourceTree:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pathRelativeToProjectRoot">pathRelativeToProjectRoot</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/projectFileName">projectFileName</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/projectKey">projectKey</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isBuildFile">isBuildFile</a></span></li>
 	
 </ul></li>
 
@@ -153,7 +137,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="xcode_SubProjectDefinition Class Reference" name="top"></a>
+				<a title="XCSourceFile Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -162,7 +146,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">xcode_SubProjectDefinition Class Reference</h1>
+						<h1 class="title title-header">XCSourceFile Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -170,13 +154,24 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/xcode_AbstractDefinition.html">xcode_AbstractDefinition</a> : NSObject</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/XcodeGroupMember.html">XcodeGroupMember</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">xcode_SubProjectDefinition.h</td>
+	<td class="specification-value">XCSourceFile.h</td>
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Represents a file resource in an xcode project.</p>
+					</div>
 					
 					
 					
@@ -193,35 +188,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/path">&nbsp;&nbsp;path</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/subProject">&nbsp;&nbsp;subProject</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/parentProject">&nbsp;&nbsp;parentProject</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -235,71 +202,64 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fullProjectPath">&nbsp;&nbsp;fullProjectPath</a></code>
+		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/withName:path:parentProject:">+&nbsp;withName:path:parentProject:</a></code>
+		<code><a href="#//api/name/sourceTree">&nbsp;&nbsp;sourceTree</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sourceFileWithProject:key:type:name:sourceTree:">+&nbsp;sourceFileWithProject:key:type:name:sourceTree:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:path:parentProject:">&ndash;&nbsp;initWithName:path:parentProject:</a></code>
+		<code><a href="#//api/name/initWithProject:key:type:name:sourceTree:">&ndash;&nbsp;initWithProject:key:type:name:sourceTree:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/projectFileName">&ndash;&nbsp;projectFileName</a></code>
+		<code><a href="#//api/name/isBuildFile">&ndash;&nbsp;isBuildFile</a></code>
+		<span class="tooltip"><p>If yes, indicates the file is able to be included for compilation in an <a href="../Classes/XCTarget.html"><code>XCTarget</code></a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/canBecomeBuildFile">&ndash;&nbsp;canBecomeBuildFile</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/fullPathName">&ndash;&nbsp;fullPathName</a></code>
+		<code><a href="#//api/name/buildPhase">&ndash;&nbsp;buildPhase</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/buildProductNames">&ndash;&nbsp;buildProductNames</a></code>
+		<code><a href="#//api/name/buildFileKey">&ndash;&nbsp;buildFileKey</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/projectKey">&ndash;&nbsp;projectKey</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/pathRelativeToProjectRoot">&ndash;&nbsp;pathRelativeToProjectRoot</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/description">&ndash;&nbsp;description</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initFullProjectPath:groupPath:">&ndash;&nbsp;initFullProjectPath:groupPath:</a></code>
-		
+		<code><a href="#//api/name/becomeBuildFile">&ndash;&nbsp;becomeBuildFile</a></code>
+		<span class="tooltip"><p>Adds this file to the project as an <code>xcode_BuildFile</code>, ready to be included in targets.</p></span>
 	</span>
 	
 	
@@ -315,17 +275,6 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/fullProjectPath" title="fullProjectPath"></a>
-	<h3 class="subsubtitle method-title">fullProjectPath</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readwrite) NSString *fullProjectPath</code></div>
-
-    
-</div>
 						
 						<div class="section-method">
 	<a name="//api/name/key" title="key"></a>
@@ -350,34 +299,12 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/parentProject" title="parentProject"></a>
-	<h3 class="subsubtitle method-title">parentProject</h3>
+	<a name="//api/name/sourceTree" title="sourceTree"></a>
+	<h3 class="subsubtitle method-title">sourceTree</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) xcode_Project *parentProject</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/path" title="path"></a>
-	<h3 class="subsubtitle method-title">path</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *path</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/subProject" title="subProject"></a>
-	<h3 class="subsubtitle method-title">subProject</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) xcode_Project *subProject</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *sourceTree</code></div>
 
     
 </div>
@@ -402,12 +329,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/withName:path:parentProject:" title="withName:path:parentProject:"></a>
-	<h3 class="subsubtitle method-title">withName:path:parentProject:</h3>
+	<a name="//api/name/sourceFileWithProject:key:type:name:sourceTree:" title="sourceFileWithProject:key:type:name:sourceTree:"></a>
+	<h3 class="subsubtitle method-title">sourceFileWithProject:key:type:name:sourceTree:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (xcode_SubProjectDefinition *)withName:(NSString *)<em>name</em> path:(NSString *)<em>path</em> parentProject:(xcode_Project *)<em>parentProject</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (XCSourceFile *)sourceFileWithProject:(XCProject *)<em>project</em> key:(NSString *)<em>key</em> type:(XcodeSourceFileType)<em>type</em> name:(NSString *)<em>name</em> sourceTree:(NSString *)<em>tree</em></code></div>
 
     
 </div>
@@ -421,91 +348,129 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/buildProductNames" title="buildProductNames"></a>
-	<h3 class="subsubtitle method-title">buildProductNames</h3>
+	<a name="//api/name/becomeBuildFile" title="becomeBuildFile"></a>
+	<h3 class="subsubtitle method-title">becomeBuildFile</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds this file to the project as an <code>xcode_BuildFile</code>, ready to be included in targets.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)becomeBuildFile</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds this file to the project as an <code>xcode_BuildFile</code>, ready to be included in targets.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">XCSourceFile.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/buildFileKey" title="buildFileKey"></a>
+	<h3 class="subsubtitle method-title">buildFileKey</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSArray *)buildProductNames</code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)buildFileKey</code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/description" title="description"></a>
-	<h3 class="subsubtitle method-title">description</h3>
+	<a name="//api/name/buildPhase" title="buildPhase"></a>
+	<h3 class="subsubtitle method-title">buildPhase</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)description</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/fullPathName" title="fullPathName"></a>
-	<h3 class="subsubtitle method-title">fullPathName</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (NSString *)fullPathName</code></div>
+	<div class="method-subsection method-declaration"><code>- (XcodeMemberType)buildPhase</code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initFullProjectPath:groupPath:" title="initFullProjectPath:groupPath:"></a>
-	<h3 class="subsubtitle method-title">initFullProjectPath:groupPath:</h3>
+	<a name="//api/name/canBecomeBuildFile" title="canBecomeBuildFile"></a>
+	<h3 class="subsubtitle method-title">canBecomeBuildFile</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)initFullProjectPath:(NSString *)<em>fullProjectPath</em> groupPath:(NSString *)<em>groupPath</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithName:path:parentProject:" title="initWithName:path:parentProject:"></a>
-	<h3 class="subsubtitle method-title">initWithName:path:parentProject:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> path:(NSString *)<em>path</em> parentProject:(xcode_Project *)<em>parentProject</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)canBecomeBuildFile</code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/pathRelativeToProjectRoot" title="pathRelativeToProjectRoot"></a>
-	<h3 class="subsubtitle method-title">pathRelativeToProjectRoot</h3>
+	<a name="//api/name/initWithProject:key:type:name:sourceTree:" title="initWithProject:key:type:name:sourceTree:"></a>
+	<h3 class="subsubtitle method-title">initWithProject:key:type:name:sourceTree:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)pathRelativeToProjectRoot</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/projectFileName" title="projectFileName"></a>
-	<h3 class="subsubtitle method-title">projectFileName</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (NSString *)projectFileName</code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithProject:(XCProject *)<em>project</em> key:(NSString *)<em>key</em> type:(XcodeSourceFileType)<em>type</em> name:(NSString *)<em>name</em> sourceTree:(NSString *)<em>tree</em></code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/projectKey" title="projectKey"></a>
-	<h3 class="subsubtitle method-title">projectKey</h3>
+	<a name="//api/name/isBuildFile" title="isBuildFile"></a>
+	<h3 class="subsubtitle method-title">isBuildFile</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>If yes, indicates the file is able to be included for compilation in an <a href="../Classes/XCTarget.html"><code>XCTarget</code></a>.</p>
+	</div>		
+	
+    
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)projectKey</code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)isBuildFile</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If yes, indicates the file is able to be included for compilation in an <a href="../Classes/XCTarget.html"><code>XCTarget</code></a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">XCSourceFile.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>

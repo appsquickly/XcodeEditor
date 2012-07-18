@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Main/xcode_SourceFile.m</title>
+  <title>LCOV - coverage.info - Source/Main/XCSourceFile.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - xcode_SourceFile.m</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - XCSourceFile.m</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -67,13 +67,13 @@
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &quot;xcode_SourceFile.h&quot;
-<span class="lineNum">      13 </span>            : #import &quot;xcode_Project.h&quot;
-<span class="lineNum">      14 </span>            : #import &quot;xcode_utils_KeyBuilder.h&quot;
-<span class="lineNum">      15 </span>            : #import &quot;xcode_Group.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;XCSourceFile.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;XCProject.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;XCKeyBuilder.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;XCGroup.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;OCLogTemplate.h&quot;
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">       7618 : @implementation xcode_SourceFile</span>
+<span class="lineNum">      18 </span><span class="lineCov">       7618 : @implementation XCSourceFile</span>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span><span class="lineCov">        236 : @synthesize type = _type;</span>
 <span class="lineNum">      21 </span><span class="lineCov">          8 : @synthesize key = _key;</span>
@@ -81,14 +81,14 @@
 <span class="lineNum">      23 </span><span class="lineCov">        244 : @synthesize sourceTree = _sourceTree;</span>
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      26 </span>            : + (xcode_SourceFile*) sourceFileWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type
+<span class="lineNum">      26 </span>            : + (XCSourceFile*) sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
 <span class="lineNum">      27 </span><span class="lineCov">       7853 :         name:(NSString*)name sourceTree:(NSString*)_tree {</span>
-<span class="lineNum">      28 </span><span class="lineCov">       7853 :     return [[SourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];</span>
+<span class="lineNum">      28 </span><span class="lineCov">       7853 :     return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];</span>
 <span class="lineNum">      29 </span><span class="lineCov">       7853 : }</span>
 <span class="lineNum">      30 </span><span class="lineCov">       7853 : </span>
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      33 </span>            : - (id) initWithProject:(xcode_Project*)project
+<span class="lineNum">      33 </span>            : - (id) initWithProject:(XCProject*)project
 <span class="lineNum">      34 </span>            :         key:(NSString*)key
 <span class="lineNum">      35 </span><span class="lineCov">       7853 :         type:(XcodeSourceFileType)type</span>
 <span class="lineNum">      36 </span><span class="lineCov">       7853 :         name:(NSString*)name</span>
@@ -167,7 +167,7 @@
 <span class="lineNum">     109 </span><span class="lineCov">         44 :             NSMutableDictionary* sourceBuildFile = [NSMutableDictionary dictionary];</span>
 <span class="lineNum">     110 </span><span class="lineCov">         36 :             [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFile] forKey:@&quot;isa&quot;];</span>
 <span class="lineNum">     111 </span><span class="lineCov">         36 :             [sourceBuildFile setObject:_key forKey:@&quot;fileRef&quot;];</span>
-<span class="lineNum">     112 </span><span class="lineCov">         36 :             NSString* buildFileKey = [[KeyBuilder forItemNamed:[_name stringByAppendingString:@&quot;.buildFile&quot;]] build];</span>
+<span class="lineNum">     112 </span><span class="lineCov">         36 :             NSString* buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@&quot;.buildFile&quot;]] build];</span>
 <span class="lineNum">     113 </span><span class="lineCov">         36 :             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];</span>
 <span class="lineNum">     114 </span><span class="lineCov">         36 :         }</span>
 <span class="lineNum">     115 </span><span class="lineCov">         36 :         else if (_type == Framework) {</span>

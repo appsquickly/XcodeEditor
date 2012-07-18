@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Main/xcode_FrameworkDefinition.m</title>
+  <title>LCOV - coverage.info - Source/Main/XCFrameworkDefinition.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - xcode_FrameworkDefinition.m</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - XCFrameworkDefinition.m</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -66,19 +66,19 @@
 <span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
-<span class="lineNum">      11 </span>            : #import &quot;xcode_FrameworkDefinition.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;XCFrameworkDefinition.h&quot;
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">          2 : @implementation xcode_FrameworkDefinition</span>
+<span class="lineNum">      14 </span><span class="lineCov">          2 : @implementation XCFrameworkDefinition</span>
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span><span class="lineCov">          2 : @synthesize filePath = _filePath;</span>
 <span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize copyToDestination = _copyToDestination;</span>
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      20 </span>            : + (FrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
+<span class="lineNum">      20 </span>            : + (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
 <span class="lineNum">      21 </span><span class="lineCov">          2 :         copyToDestination:(BOOL)copyToDestination {</span>
 <span class="lineNum">      22 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      23 </span>            :     return [[FrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
+<span class="lineNum">      23 </span>            :     return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
 <span class="lineNum">      24 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">      25 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">      26 </span>            : 

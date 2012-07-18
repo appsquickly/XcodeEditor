@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Main/xcode_Group.m</title>
+  <title>LCOV - coverage.info - Source/Main/XCGroup.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - xcode_Group.m</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - XCGroup.m</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -67,23 +67,23 @@
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &quot;xcode_FrameworkDefinition.h&quot;
-<span class="lineNum">      13 </span>            : #import &quot;xcode_Target.h&quot;
-<span class="lineNum">      14 </span>            : #import &quot;xcode_FileOperationQueue.h&quot;
-<span class="lineNum">      15 </span>            : #import &quot;xcode_XibDefinition.h&quot;
-<span class="lineNum">      16 </span>            : #import &quot;xcode_SourceFile.h&quot;
-<span class="lineNum">      17 </span>            : #import &quot;xcode_Group.h&quot;
-<span class="lineNum">      18 </span>            : #import &quot;xcode_Project.h&quot;
-<span class="lineNum">      19 </span>            : #import &quot;xcode_ClassDefinition.h&quot;
-<span class="lineNum">      20 </span>            : #import &quot;xcode_utils_KeyBuilder.h&quot;
-<span class="lineNum">      21 </span>            : #import &quot;xcode_SourceFileDefinition.h&quot;
-<span class="lineNum">      22 </span>            : #import &quot;xcode_SubProjectDefinition.h&quot;
-<span class="lineNum">      23 </span>            : #import &quot;xcode_Project+SubProject.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;XCFrameworkDefinition.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;XCTarget.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;XCFileOperationQueue.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;XCXibDefinition.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;XCSourceFile.h&quot;
+<span class="lineNum">      17 </span>            : #import &quot;XCGroup.h&quot;
+<span class="lineNum">      18 </span>            : #import &quot;XCProject.h&quot;
+<span class="lineNum">      19 </span>            : #import &quot;XCClassDefinition.h&quot;
+<span class="lineNum">      20 </span>            : #import &quot;XCKeyBuilder.h&quot;
+<span class="lineNum">      21 </span>            : #import &quot;XCSourceFileDefinition.h&quot;
+<span class="lineNum">      22 </span>            : #import &quot;XCSubProjectDefinition.h&quot;
+<span class="lineNum">      23 </span>            : #import &quot;XCProject+SubProject.h&quot;
 <span class="lineNum">      24 </span>            : #import &quot;OCLogTemplate.h&quot;
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span>            : /* ================================================================================================================== */
-<span class="lineNum">      28 </span>            : @interface xcode_Group ()
+<span class="lineNum">      28 </span>            : @interface XCGroup ()
 <span class="lineNum">      29 </span>            : 
 <span class="lineNum">      30 </span>            : - (void) makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
 <span class="lineNum">      31 </span>            :         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
@@ -91,9 +91,9 @@
 <span class="lineNum">      33 </span>            : - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
 <span class="lineNum">      34 </span>            :         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : - (NSString*) makeProductsGroup:(xcode_SubProjectDefinition*)xcodeprojDefinition;
+<span class="lineNum">      36 </span>            : - (NSString*) makeProductsGroup:(XCSubProjectDefinition*)xcodeprojDefinition;
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span>            : - (void) addProductsGroupToProject:(xcode_SubProjectDefinition*)xcodeprojDefinition;
+<span class="lineNum">      38 </span>            : - (void) addProductsGroupToProject:(XCSubProjectDefinition*)xcodeprojDefinition;
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : - (void) addMemberWithKey:(NSString*)key;
 <span class="lineNum">      41 </span>            : 
@@ -105,7 +105,7 @@
 <span class="lineNum">      47 </span>            : 
 <span class="lineNum">      48 </span>            : - (XcodeMemberType) typeForKey:(NSString*)key;
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span>            : - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets;
+<span class="lineNum">      50 </span>            : - (void) addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets;
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : - (void) removeGroupMemberWithKey:(NSString*)key;
 <span class="lineNum">      53 </span>            : 
@@ -115,7 +115,7 @@
 <span class="lineNum">      57 </span>            : 
 <span class="lineNum">      58 </span>            : /* ================================================================================================================== */
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">      36737 : @implementation xcode_Group</span>
+<span class="lineNum">      60 </span><span class="lineCov">      36737 : @implementation XCGroup</span>
 <span class="lineNum">      61 </span>            : 
 <span class="lineNum">      62 </span><span class="lineCov">       1583 : @synthesize pathRelativeToParent = _pathRelativeToParent;</span>
 <span class="lineNum">      63 </span><span class="lineCov">        344 : @synthesize key = _key;</span>
@@ -124,14 +124,14 @@
 <span class="lineNum">      66 </span>            : 
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      69 </span>            : + (Group*) groupWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
+<span class="lineNum">      69 </span>            : + (XCGroup*) groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
 <span class="lineNum">      70 </span><span class="lineCov">      36830 :         children:(NSArray*)children {</span>
 <span class="lineNum">      71 </span><span class="lineCov">      36830 : </span>
-<span class="lineNum">      72 </span>            :     return [[Group alloc] initWithProject:project key:key alias:alias path:path children:children];
+<span class="lineNum">      72 </span>            :     return [[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children];
 <span class="lineNum">      73 </span><span class="lineCov">      36830 : }</span>
 <span class="lineNum">      74 </span><span class="lineCov">      36830 : </span>
 <span class="lineNum">      75 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      76 </span>            : - (id) initWithProject:(xcode_Project*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
+<span class="lineNum">      76 </span>            : - (id) initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
 <span class="lineNum">      77 </span>            :         children:(NSArray*)children {
 <span class="lineNum">      78 </span><span class="lineCov">      36831 :     self = [super init];</span>
 <span class="lineNum">      79 </span><span class="lineCov">      36831 :     if (self) {</span>
@@ -161,7 +161,7 @@
 <span class="lineNum">     103 </span><span class="lineCov">         12 :         LogDebug(@&quot;Deleting children&quot;);</span>
 <span class="lineNum">     104 </span><span class="lineCov">         12 :         for (id&lt;XcodeGroupMember&gt; groupMember in [self members]) {</span>
 <span class="lineNum">     105 </span><span class="lineCov">         12 :             if ([groupMember groupMemberType] == PBXGroup) {</span>
-<span class="lineNum">     106 </span><span class="lineCov">         87 :                 Group* group = (Group*) groupMember;</span>
+<span class="lineNum">     106 </span><span class="lineCov">         87 :                 XCGroup* group = (XCGroup*) groupMember;</span>
 <span class="lineNum">     107 </span><span class="lineCov">         87 :                 [group removeFromParentGroup:YES];</span>
 <span class="lineNum">     108 </span><span class="lineCov">         11 :                 LogDebug(@&quot;My full path is : %@&quot;, [group pathRelativeToProjectRoot]);</span>
 <span class="lineNum">     109 </span><span class="lineCov">         11 : </span>
@@ -172,12 +172,12 @@
 <span class="lineNum">     114 </span><span class="lineCov">         76 :         }</span>
 <span class="lineNum">     115 </span>            :     }
 <span class="lineNum">     116 </span><span class="lineCov">         87 :     [[_project objects] removeObjectForKey:_key];</span>
-<span class="lineNum">     117 </span><span class="lineCov">         12 :     for (Target* target in [_project targets]) {</span>
+<span class="lineNum">     117 </span><span class="lineCov">         12 :     for (XCTarget* target in [_project targets]) {</span>
 <span class="lineNum">     118 </span><span class="lineCov">         12 :         [target removeMembersWithKeys:[self recursiveMembers]];</span>
 <span class="lineNum">     119 </span><span class="lineCov">         48 :     }</span>
 <span class="lineNum">     120 </span><span class="lineCov">         48 : }</span>
 <span class="lineNum">     121 </span><span class="lineCov">         48 : </span>
-<span class="lineNum">     122 </span><span class="lineCov">         12 : - (xcode_Group*) parentGroup {</span>
+<span class="lineNum">     122 </span><span class="lineCov">         12 : - (XCGroup*) parentGroup {</span>
 <span class="lineNum">     123 </span>            :     return [_project groupForGroupMemberWithKey:_key];
 <span class="lineNum">     124 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     125 </span><span class="lineNoCov">          0 : </span>
@@ -190,7 +190,7 @@
 <span class="lineNum">     132 </span>            : #pragma mark Adding children
 <span class="lineNum">     133 </span>            : 
 <span class="lineNum">     134 </span>            : 
-<span class="lineNum">     135 </span>            : - (void) addClass:(ClassDefinition*)classDefinition {
+<span class="lineNum">     135 </span>            : - (void) addClass:(XCClassDefinition*)classDefinition {
 <span class="lineNum">     136 </span>            : 
 <span class="lineNum">     137 </span><span class="lineCov">          7 :     if ([classDefinition header]) {</span>
 <span class="lineNum">     138 </span>            :         [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header]
@@ -210,13 +210,13 @@
 <span class="lineNum">     152 </span>            : }
 <span class="lineNum">     153 </span><span class="lineCov">          7 : </span>
 <span class="lineNum">     154 </span><span class="lineCov">          7 : </span>
-<span class="lineNum">     155 </span>            : - (void) addClass:(ClassDefinition*)classDefinition toTargets:(NSArray*)targets {
+<span class="lineNum">     155 </span>            : - (void) addClass:(XCClassDefinition*)classDefinition toTargets:(NSArray*)targets {
 <span class="lineNum">     156 </span>            :     [self addClass:classDefinition];
-<span class="lineNum">     157 </span>            :     SourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
+<span class="lineNum">     157 </span>            :     XCSourceFile* sourceFile = [_project fileWithName:[classDefinition sourceFileName]];
 <span class="lineNum">     158 </span><span class="lineCov">          6 :     [self addSourceFile:sourceFile toTargets:targets];</span>
 <span class="lineNum">     159 </span><span class="lineCov">          6 : }</span>
 <span class="lineNum">     160 </span><span class="lineCov">          6 : </span>
-<span class="lineNum">     161 </span><span class="lineCov">          6 : - (void) addFramework:(FrameworkDefinition*)frameworkDefinition {</span>
+<span class="lineNum">     161 </span><span class="lineCov">          6 : - (void) addFramework:(XCFrameworkDefinition*)frameworkDefinition {</span>
 <span class="lineNum">     162 </span><span class="lineCov">          6 :     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {</span>
 <span class="lineNum">     163 </span>            :         LogDebug(@&quot;Here we go!!!!&quot;);
 <span class="lineNum">     164 </span><span class="lineCov">          2 :         NSDictionary* fileReference;</span>
@@ -246,7 +246,7 @@
 <span class="lineNum">     188 </span>            :             fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
 <span class="lineNum">     189 </span><span class="lineCov">          1 :         }</span>
 <span class="lineNum">     190 </span><span class="lineCov">          1 :         LogDebug(@&quot;Make framework key&quot;);</span>
-<span class="lineNum">     191 </span><span class="lineCov">          1 :         NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :         NSString* frameworkKey = [[XCKeyBuilder forItemNamed:[frameworkDefinition name]] build];</span>
 <span class="lineNum">     192 </span><span class="lineCov">          1 :         [[_project objects] setObject:fileReference forKey:frameworkKey];</span>
 <span class="lineNum">     193 </span><span class="lineCov">          2 :         [self addMemberWithKey:frameworkKey];</span>
 <span class="lineNum">     194 </span><span class="lineCov">          2 :     }</span>
@@ -254,14 +254,14 @@
 <span class="lineNum">     196 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     197 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     198 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">     199 </span><span class="lineCov">          2 : - (void) addFramework:(FrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets {</span>
+<span class="lineNum">     199 </span><span class="lineCov">          2 : - (void) addFramework:(XCFrameworkDefinition*)frameworkDefinition toTargets:(NSArray*)targets {</span>
 <span class="lineNum">     200 </span>            :     [self addFramework:frameworkDefinition];
-<span class="lineNum">     201 </span>            :     SourceFile* frameworkSourceRef = (SourceFile*) [self memberWithDisplayName:[frameworkDefinition name]];
+<span class="lineNum">     201 </span>            :     XCSourceFile* frameworkSourceRef = (XCSourceFile*) [self memberWithDisplayName:[frameworkDefinition name]];
 <span class="lineNum">     202 </span>            :     [self addSourceFile:frameworkSourceRef toTargets:targets];
 <span class="lineNum">     203 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     204 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">     205 </span><span class="lineCov">          2 : - (xcode_Group*) addGroupWithPath:(NSString*)path {</span>
-<span class="lineNum">     206 </span><span class="lineCov">          2 :     NSString* groupKey = [[KeyBuilder forItemNamed:path] build];</span>
+<span class="lineNum">     205 </span><span class="lineCov">          2 : - (XCGroup*) addGroupWithPath:(NSString*)path {</span>
+<span class="lineNum">     206 </span><span class="lineCov">          2 :     NSString* groupKey = [[XCKeyBuilder forItemNamed:path] build];</span>
 <span class="lineNum">     207 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     208 </span>            :     NSArray* members = [self members];
 <span class="lineNum">     209 </span><span class="lineCov">          1 :     for (id&lt;XcodeGroupMember&gt; groupMember in members) {</span>
@@ -274,7 +274,7 @@
 <span class="lineNum">     216 </span><span class="lineCov">          3 :         }</span>
 <span class="lineNum">     217 </span>            :     }
 <span class="lineNum">     218 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     219 </span>            :     Group* group = [[Group alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil];
+<span class="lineNum">     219 </span>            :     XCGroup* group = [[XCGroup alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil];
 <span class="lineNum">     220 </span>            :     NSDictionary* groupDict = [group asDictionary];
 <span class="lineNum">     221 </span><span class="lineCov">         15 : </span>
 <span class="lineNum">     222 </span>            :     [[_project objects] setObject:groupDict forKey:groupKey];
@@ -287,27 +287,27 @@
 <span class="lineNum">     229 </span>            :     return group;
 <span class="lineNum">     230 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     231 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">     232 </span>            : - (void) addSourceFile:(SourceFileDefinition*)sourceFileDefinition {
+<span class="lineNum">     232 </span>            : - (void) addSourceFile:(XCSourceFileDefinition*)sourceFileDefinition {
 <span class="lineNum">     233 </span><span class="lineCov">          1 :     [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName] contents:[sourceFileDefinition data]</span>
 <span class="lineNum">     234 </span><span class="lineCov">          1 :             type:[sourceFileDefinition type] fileOperationStyle:[sourceFileDefinition fileOperationStyle]];</span>
 <span class="lineNum">     235 </span>            :     [[_project objects] setObject:[self asDictionary] forKey:_key];
 <span class="lineNum">     236 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     237 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">     238 </span>            : - (void) addXib:(XibDefinition*)xibDefinition {
+<span class="lineNum">     238 </span>            : - (void) addXib:(XCXibDefinition*)xibDefinition {
 <span class="lineNum">     239 </span><span class="lineCov">          2 :     [self makeGroupMemberWithName:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile</span>
 <span class="lineNum">     240 </span><span class="lineCov">          2 :             fileOperationStyle:[xibDefinition fileOperationStyle]];</span>
 <span class="lineNum">     241 </span>            :     [[_project objects] setObject:[self asDictionary] forKey:_key];
 <span class="lineNum">     242 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">     243 </span><span class="lineCov">          3 : </span>
-<span class="lineNum">     244 </span>            : - (void) addXib:(XibDefinition*)xibDefinition toTargets:(NSArray*)targets {
+<span class="lineNum">     244 </span>            : - (void) addXib:(XCXibDefinition*)xibDefinition toTargets:(NSArray*)targets {
 <span class="lineNum">     245 </span><span class="lineCov">          3 :     [self addXib:xibDefinition];</span>
-<span class="lineNum">     246 </span><span class="lineCov">          3 :     SourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];</span>
+<span class="lineNum">     246 </span><span class="lineCov">          3 :     XCSourceFile* sourceFile = [_project fileWithName:[xibDefinition xibFileName]];</span>
 <span class="lineNum">     247 </span>            :     [self addSourceFile:sourceFile toTargets:targets];
 <span class="lineNum">     248 </span>            : }
 <span class="lineNum">     249 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     250 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     251 </span><span class="lineCov">          2 : // adds an xcodeproj as a subproject of the current project.</span>
-<span class="lineNum">     252 </span><span class="lineCov">          2 : - (void) addSubProject:(xcode_SubProjectDefinition*)projectDefinition {</span>
+<span class="lineNum">     252 </span><span class="lineCov">          2 : - (void) addSubProject:(XCSubProjectDefinition*)projectDefinition {</span>
 <span class="lineNum">     253 </span><span class="lineCov">          2 :     // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any</span>
 <span class="lineNum">     254 </span>            :     [projectDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 <span class="lineNum">     255 </span>            : 
@@ -327,12 +327,12 @@
 <span class="lineNum">     269 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     270 </span>            : // adds an xcodeproj as a subproject of the current project, and also adds all build products except for test bundle(s)
 <span class="lineNum">     271 </span>            : // to targets.
-<span class="lineNum">     272 </span><span class="lineCov">          2 : - (void) addSubProject:(xcode_SubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets {</span>
+<span class="lineNum">     272 </span><span class="lineCov">          2 : - (void) addSubProject:(XCSubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets {</span>
 <span class="lineNum">     273 </span><span class="lineCov">          2 :     [self addSubProject:projectDefinition];</span>
 <span class="lineNum">     274 </span>            : 
 <span class="lineNum">     275 </span>            :     // add subproject's build products to targets (does not add the subproject's test bundle)
 <span class="lineNum">     276 </span>            :     NSArray* buildProductFiles = [_project buildProductsForTargets:[projectDefinition projectKey]];
-<span class="lineNum">     277 </span>            :     for (SourceFile* file in buildProductFiles) {
+<span class="lineNum">     277 </span>            :     for (XCSourceFile* file in buildProductFiles) {
 <span class="lineNum">     278 </span><span class="lineCov">          1 :         [self addSourceFile:file toTargets:targets];</span>
 <span class="lineNum">     279 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     280 </span>            :     // add main target of subproject as target dependency to main target of project
@@ -340,7 +340,7 @@
 <span class="lineNum">     282 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     283 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     284 </span><span class="lineCov">          2 : // removes an xcodeproj from the current project.</span>
-<span class="lineNum">     285 </span><span class="lineCov">          2 : - (void) removeSubProject:(xcode_SubProjectDefinition*)projectDefinition {</span>
+<span class="lineNum">     285 </span><span class="lineCov">          2 : - (void) removeSubProject:(XCSubProjectDefinition*)projectDefinition {</span>
 <span class="lineNum">     286 </span>            :     if (projectDefinition == nil) {
 <span class="lineNum">     287 </span><span class="lineCov">          1 :         return;</span>
 <span class="lineNum">     288 </span><span class="lineCov">          1 :     }</span>
@@ -372,7 +372,7 @@
 <span class="lineNum">     314 </span><span class="lineCov">          1 :     [_project removeTargetDependencies:[projectDefinition name]];</span>
 <span class="lineNum">     315 </span>            : }
 <span class="lineNum">     316 </span>            : 
-<span class="lineNum">     317 </span><span class="lineCov">          1 : - (void) removeSubProject:(xcode_SubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets {</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 : - (void) removeSubProject:(XCSubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets {</span>
 <span class="lineNum">     318 </span>            :     if (projectDefinition == nil) {
 <span class="lineNum">     319 </span>            :         return;
 <span class="lineNum">     320 </span><span class="lineCov">          1 :     }</span>
@@ -422,7 +422,7 @@
 <span class="lineNum">     364 </span><span class="lineCov">        113 :     for (NSString* childKey in _children) {</span>
 <span class="lineNum">     365 </span><span class="lineCov">        117 :         XcodeMemberType type = [self typeForKey:childKey];</span>
 <span class="lineNum">     366 </span><span class="lineCov">        117 :         if (type == PBXGroup) {</span>
-<span class="lineNum">     367 </span><span class="lineCov">        117 :             Group* group = [_project groupWithKey:childKey];</span>
+<span class="lineNum">     367 </span><span class="lineCov">        117 :             XCGroup* group = [_project groupWithKey:childKey];</span>
 <span class="lineNum">     368 </span>            :             NSArray* groupChildren = [group recursiveMembers];
 <span class="lineNum">     369 </span><span class="lineCov">         71 :             [recursiveMembers addObjectsFromArray:groupChildren];</span>
 <span class="lineNum">     370 </span><span class="lineCov">         71 :         }</span>
@@ -439,7 +439,7 @@
 <span class="lineNum">     381 </span><span class="lineCov">        536 :     for (id&lt;XcodeGroupMember&gt; groupMember in [self members]) {</span>
 <span class="lineNum">     382 </span><span class="lineCov">         71 : </span>
 <span class="lineNum">     383 </span><span class="lineCov">         71 :         if ([groupMember groupMemberType] == PBXGroup) {</span>
-<span class="lineNum">     384 </span>            :             Group* group = (Group*) groupMember;
+<span class="lineNum">     384 </span>            :             XCGroup* group = (XCGroup*) groupMember;
 <span class="lineNum">     385 </span><span class="lineNoCov">          0 :             [arrayOfBuildFileKeys addObjectsFromArray:[group buildFileKeys]];</span>
 <span class="lineNum">     386 </span>            :         }
 <span class="lineNum">     387 </span><span class="lineNoCov">          0 :         else if ([groupMember groupMemberType] == PBXFileReference) {</span>
@@ -490,7 +490,7 @@
 <span class="lineNum">     432 </span><span class="lineCov">        267 : - (NSString*) pathRelativeToProjectRoot {</span>
 <span class="lineNum">     433 </span>            :     if (_pathRelativeToProjectRoot == nil) {
 <span class="lineNum">     434 </span>            :         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-<span class="lineNum">     435 </span><span class="lineCov">        491 :         Group* group;</span>
+<span class="lineNum">     435 </span><span class="lineCov">        491 :         XCGroup* group;</span>
 <span class="lineNum">     436 </span>            :         NSString* key = _key;
 <span class="lineNum">     437 </span><span class="lineCov">        758 : </span>
 <span class="lineNum">     438 </span>            :         while ((group = [_project groupForGroupMemberWithKey:key]) != nil &amp;&amp; !([group pathRelativeToParent] == nil)) {
@@ -536,10 +536,10 @@
 <span class="lineNum">     478 </span><span class="lineCov">         18 :         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {</span>
 <span class="lineNum">     479 </span><span class="lineCov">         18 : </span>
 <span class="lineNum">     480 </span><span class="lineCov">         18 :     NSString* filePath;</span>
-<span class="lineNum">     481 </span>            :     SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
+<span class="lineNum">     481 </span>            :     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
 <span class="lineNum">     482 </span>            :     if ((currentSourceFile) == nil) {
 <span class="lineNum">     483 </span>            :         NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
-<span class="lineNum">     484 </span>            :         NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+<span class="lineNum">     484 </span>            :         NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
 <span class="lineNum">     485 </span><span class="lineCov">         16 :         [[_project objects] setObject:reference forKey:fileKey];</span>
 <span class="lineNum">     486 </span><span class="lineCov">         16 :         [self addMemberWithKey:fileKey];</span>
 <span class="lineNum">     487 </span>            :         filePath = [self pathRelativeToProjectRoot];
@@ -577,33 +577,33 @@
 <span class="lineNum">     519 </span>            : // member via path rather than name, because that is how subprojects are stored by Xcode
 <span class="lineNum">     520 </span><span class="lineCov">         16 : - (void) makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type</span>
 <span class="lineNum">     521 </span>            :         fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle {
-<span class="lineNum">     522 </span>            :     SourceFile* currentSourceFile = (SourceFile*) [self memberWithDisplayName:name];
+<span class="lineNum">     522 </span>            :     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
 <span class="lineNum">     523 </span>            :     if ((currentSourceFile) == nil) {
 <span class="lineNum">     524 </span>            :         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
-<span class="lineNum">     525 </span>            :         NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+<span class="lineNum">     525 </span>            :         NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
 <span class="lineNum">     526 </span>            :         [[_project objects] setObject:reference forKey:fileKey];
 <span class="lineNum">     527 </span>            :         [self addMemberWithKey:fileKey];
 <span class="lineNum">     528 </span>            :     }
 <span class="lineNum">     529 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     530 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     531 </span><span class="lineCov">          2 : // makes a new group called Products and returns its key</span>
-<span class="lineNum">     532 </span><span class="lineCov">          2 : - (NSString*) makeProductsGroup:(xcode_SubProjectDefinition*)xcodeprojDefinition {</span>
+<span class="lineNum">     532 </span><span class="lineCov">          2 : - (NSString*) makeProductsGroup:(XCSubProjectDefinition*)xcodeprojDefinition {</span>
 <span class="lineNum">     533 </span><span class="lineCov">          2 :     NSMutableArray* children = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">     534 </span><span class="lineCov">          2 :     NSString* uniquer = [[NSString alloc] init];</span>
 <span class="lineNum">     535 </span><span class="lineCov">          2 :     for (NSString* productName in [xcodeprojDefinition buildProductNames]) {</span>
 <span class="lineNum">     536 </span><span class="lineCov">          2 :         [children addObject:[_project referenceProxyKeyForName:productName]];</span>
 <span class="lineNum">     537 </span><span class="lineCov">          2 :         uniquer = [uniquer stringByAppendingString:productName];</span>
 <span class="lineNum">     538 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     539 </span>            :     NSString* productKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-Products&quot;, uniquer]] build];
-<span class="lineNum">     540 </span>            :     Group* productsGroup =
-<span class="lineNum">     541 </span><span class="lineCov">          2 :             [Group groupWithProject:_project key:productKey alias:@&quot;Products&quot; path:nil children:children];</span>
+<span class="lineNum">     539 </span>            :     NSString* productKey = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@&quot;%@-Products&quot;, uniquer]] build];
+<span class="lineNum">     540 </span>            :     XCGroup* productsGroup =
+<span class="lineNum">     541 </span><span class="lineCov">          2 :             [XCGroup groupWithProject:_project key:productKey alias:@&quot;Products&quot; path:nil children:children];</span>
 <span class="lineNum">     542 </span><span class="lineCov">          2 :     [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];</span>
 <span class="lineNum">     543 </span><span class="lineCov">          2 :     return productKey;</span>
 <span class="lineNum">     544 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">     545 </span><span class="lineCov">          5 : </span>
 <span class="lineNum">     546 </span><span class="lineCov">          5 : // makes a new Products group (by calling the method above), makes a new projectReferences array for it and </span>
 <span class="lineNum">     547 </span><span class="lineCov">          5 : // then adds it to the PBXProject object</span>
-<span class="lineNum">     548 </span><span class="lineCov">          2 : - (void) addProductsGroupToProject:(xcode_SubProjectDefinition*)xcodeprojDefinition {</span>
+<span class="lineNum">     548 </span><span class="lineCov">          2 : - (void) addProductsGroupToProject:(XCSubProjectDefinition*)xcodeprojDefinition {</span>
 <span class="lineNum">     549 </span>            :     NSString* productKey = [self makeProductsGroup:xcodeprojDefinition];
 <span class="lineNum">     550 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">     551 </span><span class="lineCov">          2 :     NSMutableDictionary* PBXProjectDict = [_project PBXProjectDict];</span>
@@ -708,9 +708,9 @@
 <span class="lineNum">     650 </span>            :     return [[obj valueForKey:@&quot;isa&quot;] asMemberType];
 <span class="lineNum">     651 </span><span class="lineCov">         21 : }</span>
 <span class="lineNum">     652 </span><span class="lineCov">         19 : </span>
-<span class="lineNum">     653 </span><span class="lineCov">         19 : - (void) addSourceFile:(SourceFile*)sourceFile toTargets:(NSArray*)targets {</span>
+<span class="lineNum">     653 </span><span class="lineCov">         19 : - (void) addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets {</span>
 <span class="lineNum">     654 </span>            :     LogDebug(@&quot;Adding source file %@ to targets %@&quot;, sourceFile, targets);
-<span class="lineNum">     655 </span><span class="lineCov">         21 :     for (Target* target in targets) {</span>
+<span class="lineNum">     655 </span><span class="lineCov">         21 :     for (XCTarget* target in targets) {</span>
 <span class="lineNum">     656 </span><span class="lineCov">         21 :         [target addMember:sourceFile];</span>
 <span class="lineNum">     657 </span><span class="lineCov">         21 :     }</span>
 <span class="lineNum">     658 </span>            : }

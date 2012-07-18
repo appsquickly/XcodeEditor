@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Main/xcode_SourceFileDefinition.m</title>
+  <title>LCOV - coverage.info - Source/Main/XCSourceFileDefinition.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - xcode_SourceFileDefinition.m</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - XCSourceFileDefinition.m</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -67,26 +67,26 @@
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &quot;xcode_SourceFileDefinition.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;XCSourceFileDefinition.h&quot;
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">          2 : @implementation xcode_SourceFileDefinition</span>
+<span class="lineNum">      15 </span><span class="lineCov">          2 : @implementation XCSourceFileDefinition</span>
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize sourceFileName = _sourceFileName;</span>
 <span class="lineNum">      18 </span><span class="lineCov">          2 : @synthesize type = _type;</span>
 <span class="lineNum">      19 </span><span class="lineCov">          2 : @synthesize data = _data;</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      22 </span>            : + (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
+<span class="lineNum">      22 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
 <span class="lineNum">      23 </span><span class="lineNoCov">          0 :         type:(XcodeSourceFileType)type {</span>
 <span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      25 </span>            :     return [[SourceFileDefinition alloc] initWithName:name text:text type:type];
+<span class="lineNum">      25 </span>            :     return [[XCSourceFileDefinition alloc] initWithName:name text:text type:type];
 <span class="lineNum">      26 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      28 </span>            : + (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
+<span class="lineNum">      28 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
 <span class="lineNum">      29 </span>            :         type:(XcodeSourceFileType)type {
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     return [[SourceFileDefinition alloc] initWithName:name data:data type:type];</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     return [[XCSourceFileDefinition alloc] initWithName:name data:data type:type];</span>
 <span class="lineNum">      32 </span>            : }
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
