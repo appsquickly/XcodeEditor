@@ -10,18 +10,18 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import <XcodeEditor/xcode_AbstractDefinition.h>
+#import "XCAbstractDefinition.h"
 #import <XcodeEditor/XcodeSourceFileType.h>
 
-@class xcode_Project;
+@class XCProject;
 
 
-@interface xcode_SubProjectDefinition : xcode_AbstractDefinition {
+@interface XCSubProjectDefinition : XCAbstractDefinition {
 
     NSString* _name;
     NSString* _path;
     XcodeSourceFileType _type;
-    xcode_Project* _subProject;
+    XCProject* _subProject;
     NSString* _key;
     NSString* _fullProjectPath;
 }
@@ -30,15 +30,15 @@
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong, readonly) NSString* path;
 @property(nonatomic, readonly) XcodeSourceFileType type;
-@property(nonatomic, strong, readonly) xcode_Project* subProject;
-@property(nonatomic, strong, readonly) xcode_Project* parentProject;
+@property(nonatomic, strong, readonly) XCProject* subProject;
+@property(nonatomic, strong, readonly) XCProject* parentProject;
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readwrite) NSString* fullProjectPath;
 
-+ (xcode_SubProjectDefinition*) withName:(NSString*)name path:(NSString*)path
-        parentProject:(xcode_Project*)parentProject;
++ (XCSubProjectDefinition*) withName:(NSString*)name path:(NSString*)path
+        parentProject:(XCProject*)parentProject;
 
-- (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(xcode_Project*)parentProject;
+- (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(XCProject*)parentProject;
 
 - (NSString*) projectFileName;
 
@@ -55,6 +55,3 @@
 - (void) initFullProjectPath:(NSString*)fullProjectPath groupPath:(NSString*)groupPath;
 
 @end
-/* ================================================================================================================== */
-
-@compatibility_alias SubProjectDefinition xcode_SubProjectDefinition;

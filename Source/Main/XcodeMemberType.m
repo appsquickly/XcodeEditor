@@ -11,7 +11,7 @@
 
 
 #import "XcodeMemberType.h"
-#import "xcode_utils_Enum.h"
+#import "XCEnumUtils.h"
 
 @implementation NSDictionary (XcodeMemberType)
 

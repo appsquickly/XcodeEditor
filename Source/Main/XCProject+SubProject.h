@@ -10,16 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import <XcodeEditor/xcode_Project.h>
+#import "XCProject.h"
 
-@interface xcode_Project (SubProject)
+@interface XCProject (SubProject)
 
 
 - (NSString*) referenceProxyKeyForName:(NSString*)name;
 
 - (NSArray*) buildProductsForTargets:(NSString*)xcodeprojKey;
 
-- (void) addAsTargetDependency:(xcode_SubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+- (void) addAsTargetDependency:(XCSubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
 - (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier
         singleton:(BOOL)singleton required:(BOOL)required;
@@ -28,7 +28,7 @@
 
 - (void) removeProxies:(NSString*)xcodeprojKey;
 
-- (void) addProxies:(xcode_SubProjectDefinition*)xcodeproj;
+- (void) addProxies:(XCSubProjectDefinition*)xcodeproj;
 
 - (void) removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey;
 

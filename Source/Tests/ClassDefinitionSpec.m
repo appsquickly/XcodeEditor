@@ -10,16 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <XcodeEditor/xcode_ClassDefinition.h>
+#import "XCClassDefinition.h"
 
 SPEC_BEGIN(ClassDefinitionSpec)
 
-    __block ClassDefinition* classDefinition;
+    __block XCClassDefinition* classDefinition;
 
     describe(@"Object creation", ^{
 
         it(@"should allow initialization with a fileName attribute", ^{
-            classDefinition = [[ClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController"];
+            classDefinition = [[XCClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController"];
 
             [classDefinition.className shouldNotBeNil];
             [[classDefinition.className should] equal:@"ESA_Sales_Browse_ViewController"];
@@ -28,14 +28,14 @@ SPEC_BEGIN(ClassDefinitionSpec)
 
         it(@"should allow initialization with a filename and language attribute", ^{
             classDefinition =
-                [[ClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController" language:ObjectiveCPlusPlus];
+                [[XCClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController" language:ObjectiveCPlusPlus];
             [[[NSNumber numberWithBool:[classDefinition isObjectiveCPlusPlus]] should] beYes];
         });
 
         it(@"should throw an exception if one of the above languages is not specified", ^{
             @try {
                 classDefinition =
-                    [[ClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController" language:999];
+                    [[XCClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController" language:999];
                 [NSException raise:@"Test fails." format:@"Expected exception to be thrown"];
             }
             @catch (NSException* e) {
@@ -48,13 +48,13 @@ SPEC_BEGIN(ClassDefinitionSpec)
     describe(@"filenames", ^{
 
         it(@"should return the conventional file names for objective-c classes.", ^{
-            classDefinition = [[ClassDefinition alloc] initWithName:@"MyClass" language:ObjectiveC];
+            classDefinition = [[XCClassDefinition alloc] initWithName:@"MyClass" language:ObjectiveC];
             [[[classDefinition headerFileName] should] equal:@"MyClass.h"];
             [[[classDefinition sourceFileName] should] equal:@"MyClass.m"];
         });
 
         it(@"should return the conventional file names for objective-c++ classes", ^{
-            classDefinition = [[ClassDefinition alloc] initWithName:@"MyClass" language:ObjectiveCPlusPlus];
+            classDefinition = [[XCClassDefinition alloc] initWithName:@"MyClass" language:ObjectiveCPlusPlus];
             [[[classDefinition headerFileName] should] equal:@"MyClass.h"];
             [[[classDefinition sourceFileName] should] equal:@"MyClass.mm"];
         });
@@ -65,7 +65,7 @@ SPEC_BEGIN(ClassDefinitionSpec)
     describe(@"Setting content", ^{
 
         beforeEach(^{
-            classDefinition = [[ClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController"];
+            classDefinition = [[XCClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController"];
         });
 
 

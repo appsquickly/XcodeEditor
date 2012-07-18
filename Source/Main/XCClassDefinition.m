@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_ClassDefinition.h"
+#import "XCClassDefinition.h"
 
-@implementation xcode_ClassDefinition
+@implementation XCClassDefinition
 
 
 @synthesize className = _className;
@@ -19,12 +19,12 @@
 @synthesize source = _source;
 
 /* ================================================= Class Methods ================================================== */
-+ (ClassDefinition*) classDefinitionWithName:(NSString*)fileName {
-    return [[ClassDefinition alloc] initWithName:fileName];
++ (XCClassDefinition*) classDefinitionWithName:(NSString*)fileName {
+    return [[XCClassDefinition alloc] initWithName:fileName];
 }
 
-+ (ClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
-    return [[ClassDefinition alloc] initWithName:className language:language];
++ (XCClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
+    return [[XCClassDefinition alloc] initWithName:className language:language];
 }
 
 

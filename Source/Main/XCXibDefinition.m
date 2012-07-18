@@ -8,21 +8,21 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-#import "xcode_XibDefinition.h"
+#import "XCXibDefinition.h"
 
 
-@implementation xcode_XibDefinition
+@implementation XCXibDefinition
 
 @synthesize name = _name;
 @synthesize content = _content;
 
 /* ================================================= Class Methods ================================================== */
-+ (XibDefinition*) xibDefinitionWithName:(NSString*)name {
-    return [[XibDefinition alloc] initWithName:name];
++ (XCXibDefinition*) xibDefinitionWithName:(NSString*)name {
+    return [[XCXibDefinition alloc] initWithName:name];
 }
 
-+ (XibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content {
-    return [[XibDefinition alloc] initWithName:name content:content];
++ (XCXibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content {
+    return [[XCXibDefinition alloc] initWithName:name content:content];
 }
 
 

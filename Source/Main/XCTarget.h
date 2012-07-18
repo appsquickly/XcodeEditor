@@ -11,15 +11,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class xcode_Project;
-@class xcode_SourceFile;
+@class XCProject;
+@class XCSourceFile;
 
 /**
 * Represents a target in an xcode project.
 */
-@interface xcode_Target : NSObject {
+@interface XCTarget : NSObject {
 
-    __weak xcode_Project* _project;
+    __weak XCProject* _project;
     NSString* _key;
     NSString* _name;
     NSString* _productName;
@@ -34,13 +34,13 @@
 @property(nonatomic, strong, readonly) NSString* productName;
 @property(nonatomic, strong, readonly) NSString* productReference;
 
-+ (xcode_Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
++ (XCTarget*) targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
 
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
+- (id) initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
 
 - (NSArray*) members;
 
-- (void) addMember:(xcode_SourceFile*)member;
+- (void) addMember:(XCSourceFile*)member;
 
 - (void) removeMemberWithKey:(NSString*)key;
 
@@ -50,5 +50,3 @@
 
 @end
 
-/* ================================================================================================================== */
-@compatibility_alias Target xcode_Target;

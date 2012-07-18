@@ -10,19 +10,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "xcode_AbstractDefinition.h"
+#import "XCAbstractDefinition.h"
 
 
-@interface xcode_XibDefinition : xcode_AbstractDefinition {
+@interface XCXibDefinition : XCAbstractDefinition {
     NSString* _name;
     NSString* _content;
 }
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong) NSString* content;
 
-+ (xcode_XibDefinition*) xibDefinitionWithName:(NSString*)name;
++ (XCXibDefinition*) xibDefinitionWithName:(NSString*)name;
 
-+ (xcode_XibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content;
++ (XCXibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content;
 
 - (id) initWithName:(NSString*)name;
 
@@ -31,5 +31,3 @@
 - (NSString*) xibFileName;
 
 @end
-/* ================================================================================================================== */
-@compatibility_alias XibDefinition xcode_XibDefinition;

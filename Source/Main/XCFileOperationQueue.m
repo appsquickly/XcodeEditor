@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_FileOperationQueue.h"
+#import "XCFileOperationQueue.h"
 #import "OCLogTemplate.h"
 
-@interface xcode_FileOperationQueue ()
+@interface XCFileOperationQueue ()
 
 - (NSString*) destinationPathFor:(NSString*)fileName inProjectDirectory:(NSString*)directory;
 
@@ -27,7 +27,7 @@
 @end
 
 
-@implementation xcode_FileOperationQueue
+@implementation XCFileOperationQueue
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithBaseDirectory:(NSString*)baseDirectory {

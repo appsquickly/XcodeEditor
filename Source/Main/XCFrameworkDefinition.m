@@ -8,19 +8,19 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-#import "xcode_FrameworkDefinition.h"
+#import "XCFrameworkDefinition.h"
 
 
-@implementation xcode_FrameworkDefinition
+@implementation XCFrameworkDefinition
 
 @synthesize filePath = _filePath;
 @synthesize copyToDestination = _copyToDestination;
 
 /* ================================================= Class Methods ================================================== */
-+ (FrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
++ (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
         copyToDestination:(BOOL)copyToDestination {
 
-    return [[FrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
+    return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
 }
 
 

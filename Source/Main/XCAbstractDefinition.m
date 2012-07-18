@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_AbstractDefinition.h"
+#import "XCAbstractDefinition.h"
 
 
-@implementation xcode_AbstractDefinition
+@implementation XCAbstractDefinition
 
 @synthesize fileOperationStyle = _fileOperationStyle;
 

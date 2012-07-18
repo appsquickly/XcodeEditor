@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "xcode_AbstractDefinition.h"
+#import "XCAbstractDefinition.h"
 
 typedef enum {
     ObjectiveC,
@@ -18,7 +18,7 @@ typedef enum {
     CPlusPlus,
 } ClassDefinitionLanguage;
 
-@interface xcode_ClassDefinition : xcode_AbstractDefinition {
+@interface XCClassDefinition : XCAbstractDefinition {
 
     NSString* _className;
     NSString* _header;
@@ -32,9 +32,9 @@ typedef enum {
 @property(nonatomic, strong) NSString* header;
 @property(nonatomic, strong) NSString* source;
 
-+ (xcode_ClassDefinition*) classDefinitionWithName:(NSString*)fileName;
++ (XCClassDefinition*) classDefinitionWithName:(NSString*)fileName;
 
-+ (xcode_ClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
++ (XCClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
 
 /**
 * Initializes a new objective-c class definition.
@@ -57,6 +57,3 @@ typedef enum {
 - (NSString*) sourceFileName;
 
 @end
-
-/* ================================================================================================================== */
-@compatibility_alias ClassDefinition xcode_ClassDefinition;

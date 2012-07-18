@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_SourceFile.h"
-#import "xcode_Project.h"
+#import "XCSourceFile.h"
+#import "XCProject.h"
 #import "xcode_utils_KeyBuilder.h"
-#import "xcode_Group.h"
+#import "XCGroup.h"
 #import "OCLogTemplate.h"
 
-@implementation xcode_SourceFile
+@implementation XCSourceFile
 
 @synthesize type = _type;
 @synthesize key = _key;
@@ -23,14 +23,14 @@
 @synthesize sourceTree = _sourceTree;
 
 /* ================================================= Class Methods ================================================== */
-+ (xcode_SourceFile*) sourceFileWithProject:(xcode_Project*)project key:(NSString*)key type:(XcodeSourceFileType)type
++ (XCSourceFile*) sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
         name:(NSString*)name sourceTree:(NSString*)_tree {
-    return [[SourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];
+    return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];
 }
 
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project
+- (id) initWithProject:(XCProject*)project
         key:(NSString*)key
         type:(XcodeSourceFileType)type
         name:(NSString*)name

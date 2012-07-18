@@ -12,15 +12,15 @@
 #import "XcodeGroupMember.h"
 #import "XcodeSourceFileType.h"
 
-@class xcode_Project;
+@class XCProject;
 
 /**
 * Represents a file resource in an xcode project.
 */
-@interface xcode_SourceFile : NSObject<XcodeGroupMember> {
+@interface XCSourceFile : NSObject<XcodeGroupMember> {
 
 @private
-    __weak xcode_Project* _project;
+    __weak XCProject* _project;
 
     NSNumber* _isBuildFile;
     NSString* _buildFileKey;
@@ -35,20 +35,20 @@
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong, readonly) NSString* sourceTree;
 
-+ (xcode_SourceFile*) sourceFileWithProject:(xcode_Project*)project
++ (XCSourceFile*) sourceFileWithProject:(XCProject*)project
         key:(NSString*)key
         type:(XcodeSourceFileType)type
         name:(NSString*)name
         sourceTree:(NSString*)tree;
 
-- (id) initWithProject:(xcode_Project*)project
+- (id) initWithProject:(XCProject*)project
         key:(NSString*)key
         type:(XcodeSourceFileType)type
         name:(NSString*)name
         sourceTree:(NSString*)tree;
 
 /**
-* If yes, indicates the file is able to be included for compilation in an `xcode_Target`.
+* If yes, indicates the file is able to be included for compilation in an `XCTarget`.
 */
 - (BOOL) isBuildFile;
 
@@ -64,6 +64,3 @@
 - (void) becomeBuildFile;
 
 @end
-
-/* ================================================================================================================== */
-@compatibility_alias SourceFile xcode_SourceFile;

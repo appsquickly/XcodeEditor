@@ -10,10 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "xcode_AbstractDefinition.h"
+#import "XCAbstractDefinition.h"
 #import "XcodeSourceFileType.h"
 
-@interface xcode_SourceFileDefinition : xcode_AbstractDefinition {
+@interface XCSourceFileDefinition : XCAbstractDefinition {
 
     NSString* _sourceFileName;
     XcodeSourceFileType _type;
@@ -25,10 +25,10 @@
 @property(nonatomic, strong, readonly) NSData* data;
 @property(nonatomic, readonly) XcodeSourceFileType type;
 
-+ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
++ (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
         type:(XcodeSourceFileType)type;
 
-+ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
++ (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
         type:(XcodeSourceFileType)type;
 
 - (id) initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type;
@@ -37,5 +37,3 @@
 
 
 @end
-/* ================================================================================================================== */
-@compatibility_alias SourceFileDefinition xcode_SourceFileDefinition;

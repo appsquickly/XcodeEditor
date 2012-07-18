@@ -35,7 +35,7 @@ typedef enum {
 /**
 * Holds properties to all types of resource that can be added to an Xcode project.
 */
-@interface xcode_AbstractDefinition : NSObject {
+@interface XCAbstractDefinition : NSObject {
     XcodeFileOperationStyle _fileOperationStyle;
 }
 

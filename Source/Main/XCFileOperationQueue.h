@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface xcode_FileOperationQueue : NSObject {
+@interface XCFileOperationQueue : NSObject {
 
 @private
     NSString* _baseDirectory;
@@ -40,5 +40,3 @@
 
 @end
 
-/* ================================================================================================================== */
-@compatibility_alias FileOperationQueue xcode_FileOperationQueue;

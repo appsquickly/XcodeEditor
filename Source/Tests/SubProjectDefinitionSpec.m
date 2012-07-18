@@ -10,17 +10,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <XcodeEditor/xcode_Project.h>
-#import "xcode_SubProjectDefinition.h"
+#import "XCProject.h"
+#import "XCSubProjectDefinition.h"
 
 SPEC_BEGIN(SubProjectDefinitionSpec)
 
 
-        __block Project* project;
+        __block XCProject* project;
 
 
         beforeEach(^{
-            project = [[Project alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+            project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
         });
 
 /* ================================================================================================================== */
@@ -28,7 +28,7 @@ SPEC_BEGIN(SubProjectDefinitionSpec)
 
             it(@"should allow initialization with name, path, ", ^{
 
-                SubProjectDefinition* subProjectDefinition = [[SubProjectDefinition alloc]
+                XCSubProjectDefinition* subProjectDefinition = [[XCSubProjectDefinition alloc]
                         initWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:project];
 
                 [subProjectDefinition shouldNotBeNil];

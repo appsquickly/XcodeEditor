@@ -11,18 +11,18 @@
 
 
 
-#import <XcodeEditor/xcode_Project.h>
-#import <XcodeEditor/xcode_SourceFile.h>
-#import <XcodeEditor/xcode_Target.h>
-#import <XcodeEditor/xcode_Group.h>
+#import "XCProject.h"
+#import "XCSourceFile.h"
+#import "XCTarget.h"
+#import "XCGroup.h"
 
 
 SPEC_BEGIN(ProjectSpec)
 
-        __block Project* project;
+        __block XCProject* project;
 
         beforeEach(^{
-            project = [[Project alloc] initWithFilePath:@"/tmp"];
+            project = [[XCProject alloc] initWithFilePath:@"/tmp"];
         });
 
         describe(@"Listing files", ^{
@@ -33,7 +33,7 @@ SPEC_BEGIN(ProjectSpec)
                 LogDebug(@"Headers: %@", headerFiles);
 
                 [[theValue([headerFiles count]) should] equal:[NSNumber numberWithInt:18]];
-                for (SourceFile* file in headerFiles) {
+                for (XCSourceFile* file in headerFiles) {
                     LogDebug(@"File: %@", [file description]);
                 }
 
@@ -70,7 +70,7 @@ SPEC_BEGIN(ProjectSpec)
             it(@"should be able to list all of the groups in a project", ^{
                 NSArray* groups = [project groups];
 
-                for (Group* group in groups) {
+                for (XCGroup* group in groups) {
                     LogDebug(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
                     for (id<XcodeGroupMember> member  in [group members]) {
                         LogDebug(@"\t%@", [member displayName]);
@@ -83,7 +83,7 @@ SPEC_BEGIN(ProjectSpec)
 
             it(@"should provide access to the root (top-level) group", ^{
 
-                Group* rootGroup = [project rootGroup];
+                XCGroup* rootGroup = [project rootGroup];
                 [[[[[rootGroup members] objectAtIndex:0] displayName] should] equal:@"External"];
                 [[[[[rootGroup members] objectAtIndex:1] displayName] should] equal:@"Frameworks"];
                 [[[[[rootGroup members] objectAtIndex:2] displayName] should] equal:@"Products"];
@@ -93,7 +93,7 @@ SPEC_BEGIN(ProjectSpec)
 
             it(@"should provide a way to locate a group from it's path to the root group", ^{
 
-                Group* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
+                XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
                 [group shouldNotBeNil];
                 LogDebug(@"Group: %@", group);
 
@@ -107,13 +107,13 @@ SPEC_BEGIN(ProjectSpec)
             it(@"should be able to list the targets in an xcode project", ^{
 
                 NSArray* targets = [project targets];
-                for (Target* target in [project targets]) {
+                for (XCTarget* target in [project targets]) {
                     LogDebug(@"%@", target);
                 }
                 [targets shouldNotBeNil];
                 [[targets shouldNot] beEmpty];
 
-                for (Target* target in targets) {
+                for (XCTarget* target in targets) {
                     NSArray* members = [target members];
                     LogDebug(@"Members: %@", members);
                 }

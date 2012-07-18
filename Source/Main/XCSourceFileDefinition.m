@@ -9,26 +9,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_SourceFileDefinition.h"
+#import "XCSourceFileDefinition.h"
 
 
-@implementation xcode_SourceFileDefinition
+@implementation XCSourceFileDefinition
 
 @synthesize sourceFileName = _sourceFileName;
 @synthesize type = _type;
 @synthesize data = _data;
 
 /* ================================================= Class Methods ================================================== */
-+ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
++ (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
         type:(XcodeSourceFileType)type {
 
-    return [[SourceFileDefinition alloc] initWithName:name text:text type:type];
+    return [[XCSourceFileDefinition alloc] initWithName:name text:text type:type];
 }
 
-+ (xcode_SourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
++ (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
         type:(XcodeSourceFileType)type {
 
-    return [[SourceFileDefinition alloc] initWithName:name data:data type:type];
+    return [[XCSourceFileDefinition alloc] initWithName:name data:data type:type];
 }
 
 

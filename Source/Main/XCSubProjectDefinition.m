@@ -9,15 +9,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <XcodeEditor/xcode_Project.h>
-#import "xcode_Project+SubProject.h"
-#import "xcode_SubProjectDefinition.h"
+#import "XCProject.h"
+#import "XCProject+SubProject.h"
+#import "XCSubProjectDefinition.h"
 
-@interface xcode_SubProjectDefinition ()
+@interface XCSubProjectDefinition ()
 @property(nonatomic, strong, readwrite) NSString* relativePath;
 @end
 
-@implementation xcode_SubProjectDefinition
+@implementation XCSubProjectDefinition
 
 @synthesize name = _name;
 @synthesize path = _path;
@@ -29,24 +29,24 @@
 @synthesize fullProjectPath = _fullProjectPath;
 
 /* ================================================= Class Methods ================================================== */
-+ (SubProjectDefinition*) withName:(NSString*)name path:(NSString*)path
-        parentProject:(xcode_Project*)parentProject {
++ (XCSubProjectDefinition*) withName:(NSString*)name path:(NSString*)path
+        parentProject:(XCProject*)parentProject {
 
-    return [[SubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject];
+    return [[XCSubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject];
 }
 
 /* ================================================== Initializers ================================================== */
 
 // Note - _path is most often going to be an absolute path.  The method pathRelativeToProjectRoot below should be
 // used to get the form that's stored in the main project file.
-- (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(Project*)parentProject {
+- (id) initWithName:(NSString*)name path:(NSString*)path parentProject:(XCProject*)parentProject {
     self = [super init];
     if (self) {
         _name = [name copy];
         _path = [path copy];
         _type = XcodeProject;
         _parentProject = parentProject;
-        _subProject = [[Project alloc] initWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
+        _subProject = [[XCProject alloc] initWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
     }
     return self;
 }

@@ -9,15 +9,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <XcodeEditor/xcode_Project.h>
-#import "xcode_Group.h"
-#import "xcode_SubProjectDefinition.h"
-#import "xcode_ClassDefinition.h"
-#import "xcode_SourceFile.h"
-#import "xcode_XibDefinition.h"
-#import "xcode_Target.h"
-#import "xcode_FrameworkDefinition.h"
-#import "xcode_SourceFileDefinition.h"
+#import "XCProject.h"
+#import "XCGroup.h"
+#import "XCSubProjectDefinition.h"
+#import "XCClassDefinition.h"
+#import "XCSourceFile.h"
+#import "XCXibDefinition.h"
+#import "XCTarget.h"
+#import "XCFrameworkDefinition.h"
+#import "XCSourceFileDefinition.h"
 
 @interface FrameworkPathFactory
 @end
@@ -40,11 +40,11 @@ static const NSString* SDK_PATH =
 
 SPEC_BEGIN(GroupSpec)
 
-        __block Project* project;
-        __block Group* group;
+        __block XCProject* project;
+        __block XCGroup* group;
 
         beforeEach(^{
-            project = [[Project alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+            project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
             group = [project groupWithPathFromRoot:@"Source/Main"];
             [group shouldNotBeNil];
         });
@@ -53,8 +53,8 @@ SPEC_BEGIN(GroupSpec)
         describe(@"Object creation", ^{
 
             it(@"should allow initialization with ", ^{
-                Group* group =
-                        [Group groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+                XCGroup* group =
+                        [XCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
                 [group shouldNotBeNil];
                 [[[group key] should] equal:@"abcd1234"];
@@ -86,7 +86,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow adding a source file.", ^{
 
-                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"MyViewController"];
+                XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"MyViewController"];
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
@@ -96,11 +96,11 @@ SPEC_BEGIN(GroupSpec)
                 [group addClass:classDefinition];
                 [project save];
 
-                SourceFile* fileResource = [project fileWithName:@"MyViewController.m"];
+                XCSourceFile* fileResource = [project fileWithName:@"MyViewController.m"];
                 [fileResource shouldNotBeNil];
                 [[[fileResource pathRelativeToProjectRoot] should] equal:@"Source/Main/MyViewController.m"];
 
-                Target* examples = [project targetWithName:@"Examples"];
+                XCTarget* examples = [project targetWithName:@"Examples"];
                 [examples shouldNotBeNil];
                 [examples addMember:fileResource];
 
@@ -113,7 +113,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should provide a convenience method to add a source file, and specify targets", ^{
 
-                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"AnotherClassAdded"];
+                XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"AnotherClassAdded"];
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
@@ -125,13 +125,13 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should return a warning if an existing class is overwritten", ^{
 
-                ClassDefinition* classDefinition = [ClassDefinition classDefinitionWithName:@"AddedTwice"];
+                XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"AddedTwice"];
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
                 [group addClass:classDefinition toTargets:[project targets]];
                 [project save];
 
-                classDefinition = [ClassDefinition classDefinitionWithName:@"AddedTwice"];
+                classDefinition = [XCClassDefinition classDefinitionWithName:@"AddedTwice"];
                 [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
                 [group addClass:classDefinition toTargets:[project targets]];
@@ -141,8 +141,8 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow creating a reference only, without writing to disk", ^{
 
-                ClassDefinition
-                        * classDefinition = [ClassDefinition classDefinitionWithName:@"ClassWithoutSourceFileYet"];
+                XCClassDefinition
+                        * classDefinition = [XCClassDefinition classDefinitionWithName:@"ClassWithoutSourceFileYet"];
                 [classDefinition setFileOperationStyle:FileOperationStyleReferenceOnly];
                 [group addClass:classDefinition toTargets:[project targets]];
                 [project save];
@@ -158,11 +158,11 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow adding files of type obc-c++", ^{
 
-                Project* anotherProject = [Project projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
-                Group* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
+                XCProject* anotherProject = [XCProject projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+                XCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
-                ClassDefinition* classDefinition =
-                        [ClassDefinition classDefinitionWithName:@"HelloWorldLayer" language:ObjectiveCPlusPlus];
+                XCClassDefinition* classDefinition =
+                        [XCClassDefinition classDefinitionWithName:@"HelloWorldLayer" language:ObjectiveCPlusPlus];
 
                 [classDefinition setHeader:[NSString stringWithTestResource:@"HelloWorldLayer.header"]];
                 [classDefinition setSource:[NSString stringWithTestResource:@"HelloWorldLayer.impl"]];
@@ -180,10 +180,10 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow using a class definition to add cpp files", ^{
 
-                Project* anotherProject = [Project projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
-                Group* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
+                XCProject* anotherProject = [XCProject projectWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+                XCGroup* anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
-                ClassDefinition* definition = [ClassDefinition classDefinitionWithName:@"Person" language:CPlusPlus];
+                XCClassDefinition* definition = [XCClassDefinition classDefinitionWithName:@"Person" language:CPlusPlus];
                 [definition setSource:[NSString stringWithTestResource:@"Person.impl"]];
 
                 [anotherGroup addClass:definition toTargets:[anotherProject targets]];
@@ -199,15 +199,15 @@ SPEC_BEGIN(GroupSpec)
             it(@"should allow adding a xib file.", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
-                XibDefinition* xibDefinition = [XibDefinition xibDefinitionWithName:@"AddedXibFile" content:xibText];
+                XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:xibText];
 
                 [group addXib:xibDefinition];
                 [project save];
 
-                SourceFile* xibFile = [project fileWithName:@"AddedXibFile.xib"];
+                XCSourceFile* xibFile = [project fileWithName:@"AddedXibFile.xib"];
                 [xibFile shouldNotBeNil];
 
-                Target* examples = [project targetWithName:@"Examples"];
+                XCTarget* examples = [project targetWithName:@"Examples"];
                 [examples shouldNotBeNil];
                 [examples addMember:xibFile];
 
@@ -222,8 +222,8 @@ SPEC_BEGIN(GroupSpec)
             it(@"should provide a convenience method to add a xib file, and specify targets", ^{
 
                 NSString* xibText = [NSString stringWithTestResource:@"ESA.Sales.Foobar.xib"];
-                XibDefinition
-                        * xibDefinition = [XibDefinition xibDefinitionWithName:@"AnotherAddedXibFile" content:xibText];
+                XCXibDefinition
+                        * xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AnotherAddedXibFile" content:xibText];
 
                 [group addXib:xibDefinition toTargets:[project targets]];
                 [project save];
@@ -233,7 +233,7 @@ SPEC_BEGIN(GroupSpec)
             it(@"should provide an option to accept the existing file, if it exists.", ^{
 
                 NSString* newXibText = @"Don't blow away my contents if I already exists";
-                XibDefinition* xibDefinition = [XibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
+                XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
                 [xibDefinition setFileOperationStyle:FileOperationStyleAcceptExisting];
 
                 [group addXib:xibDefinition toTargets:[project targets]];
@@ -251,8 +251,8 @@ SPEC_BEGIN(GroupSpec)
         describe(@"adding frameworks", ^{
             it(@"should allow adding a framework on the system volume", ^{
 
-                FrameworkDefinition* frameworkDefinition =
-                        [FrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath]
+                XCFrameworkDefinition* frameworkDefinition =
+                        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath]
                                 copyToDestination:NO];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
@@ -260,8 +260,8 @@ SPEC_BEGIN(GroupSpec)
             });
 
             it(@"should allow adding a framework, copying it to the destination folder", ^{
-                FrameworkDefinition* frameworkDefinition =
-                        [FrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath]
+                XCFrameworkDefinition* frameworkDefinition =
+                        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath]
                                 copyToDestination:YES];
                 [group addFramework:frameworkDefinition toTargets:[project targets]];
                 [project save];
@@ -273,8 +273,8 @@ SPEC_BEGIN(GroupSpec)
         describe(@"adding xcodeproj files", ^{
             it(@"should allow adding a xcodeproj file", ^{
 
-                SubProjectDefinition* projectDefinition =
-                        [SubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
+                XCSubProjectDefinition* projectDefinition =
+                        [XCSubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
                                 parentProject:project];
 
                 [group addSubProject:projectDefinition];
@@ -284,8 +284,8 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should provide a convenience method to add a xcodeproj file, and specify targets", ^{
 
-                SubProjectDefinition* xcodeprojDefinition =
-                        [SubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
+                XCSubProjectDefinition* xcodeprojDefinition =
+                        [XCSubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
                                 parentProject:project];
 
                 [group addSubProject:xcodeprojDefinition toTargets:[project targets]];
@@ -299,8 +299,8 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow removing a xcodeproj file", ^{
 
-                SubProjectDefinition* xcodeprojDefinition =
-                        [SubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
+                XCSubProjectDefinition* xcodeprojDefinition =
+                        [XCSubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy"
                                 parentProject:project];
 
                 [group removeSubProject:xcodeprojDefinition];
@@ -311,8 +311,8 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow removing a xcodeproj file, and specify targets", ^{
 
-                SubProjectDefinition* xcodeprojDefinition =
-                        [SubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
+                XCSubProjectDefinition* xcodeprojDefinition =
+                        [XCSubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj"
                                 parentProject:project];
 
                 [group removeSubProject:xcodeprojDefinition fromTargets:[project targets]];
@@ -336,7 +336,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow adding a header", ^{
 
-                SourceFileDefinition* header = [[SourceFileDefinition alloc]
+                XCSourceFileDefinition* header = [[XCSourceFileDefinition alloc]
                         initWithName:@"SomeHeader.h" text:@"@protocol Foobar<NSObject> @end" type:SourceCodeHeader];
                 [group addSourceFile:header];
                 [project save];
@@ -345,7 +345,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow adding an image file", ^{
 
-                SourceFileDefinition* sourceFileDefinition = [[SourceFileDefinition alloc]
+                XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
                         initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:@"/tmp/goat-funny.png"]
                         type:ImageResourcePNG];
                 [group addSourceFile:sourceFileDefinition];
@@ -371,7 +371,7 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should be able to return a member by its name", ^{
 
-                SourceFile* member = [group memberWithDisplayName:@"AnotherClassAdded.m"];
+                XCSourceFile* member = [group memberWithDisplayName:@"AnotherClassAdded.m"];
                 [member shouldNotBeNil];
 
             });
@@ -392,13 +392,13 @@ SPEC_BEGIN(GroupSpec)
 
             it(@"should allow deleting a group, optionally removing also the contents.", ^{
 
-                Group* group = [project groupWithPathFromRoot:@"Tests"];
+                XCGroup* group = [project groupWithPathFromRoot:@"Tests"];
                 [group shouldNotBeNil];
 
                 [group removeFromParentGroup:YES];
                 [project save];
 
-                Group* deleted = [project groupWithPathFromRoot:@"Tests"];
+                XCGroup* deleted = [project groupWithPathFromRoot:@"Tests"];
                 [deleted shouldBeNil];
 
             });

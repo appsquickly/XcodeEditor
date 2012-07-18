@@ -9,14 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <XcodeEditor/xcode_SourceFile.h>
-#import <XcodeEditor/xcode_Target.h>
+#import "XCSourceFile.h"
+#import "XCTarget.h"
 #import <XcodeEditor/xcode_utils_KeyBuilder.h>
-#import "xcode_Project+SubProject.h"
-#import "xcode_SubProjectDefinition.h"
+#import "XCProject+SubProject.h"
+#import "XCSubProjectDefinition.h"
 
 
-@implementation xcode_Project (SubProject)
+@implementation XCProject (SubProject)
 
 
 #pragma mark sub-project related public methods
@@ -51,7 +51,7 @@
                 XcodeSourceFileType type = [(NSString*) [obj valueForKey:@"fileType"] asSourceFileType];
                 NSString* path = (NSString*) [obj valueForKey:@"path"];
                 if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"]) {
-                    [results addObject:[SourceFile sourceFileWithProject:self key:key type:type name:path
+                    [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:type name:path
                                                sourceTree:nil]];
                 }
             }
@@ -62,8 +62,8 @@
 
 // makes PBXContainerItemProxy and PBXTargetDependency objects for the xcodeproj, and adds the dependency key
 // to all the specified targets
-- (void) addAsTargetDependency:(SubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
-    for (Target* target in targets) {
+- (void) addAsTargetDependency:(XCSubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets {
+    for (XCTarget* target in targets) {
         // make a new PBXContainerItemProxy
         NSString* key = [[self fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
         NSString* containerItemProxyKey =
@@ -260,7 +260,7 @@
 }
 
 // make a PBXContainerItemProxy and PBXReferenceProxy for each target in the subProject
-- (void) addProxies:(SubProjectDefinition*)xcodeproj {
+- (void) addProxies:(XCSubProjectDefinition*)xcodeproj {
     NSString* fileRef = [[self fileWithName:[xcodeproj pathRelativeToProjectRoot]] key];
     for (NSDictionary* target in [xcodeproj.subProject targets]) {
         NSString* containerItemProxyKey =

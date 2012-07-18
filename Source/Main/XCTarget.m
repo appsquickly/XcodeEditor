@@ -9,22 +9,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "xcode_Target.h"
-#import "xcode_SourceFile.h"
-#import "xcode_Project.h"
+#import "XCTarget.h"
+#import "XCSourceFile.h"
+#import "XCProject.h"
 #import "OCLogTemplate.h"
-#import "OCLogTemplate.h"
-/* ================================================================================================================== */
-@interface xcode_Target ()
 
-- (SourceFile*) buildFileWithKey:(NSString*)key;
+/* ================================================================================================================== */
+@interface XCTarget ()
+
+- (XCSourceFile*) buildFileWithKey:(NSString*)key;
 
 - (void) flagMembersAsDirty;
 
 @end
 
 
-@implementation xcode_Target
+@implementation XCTarget
 
 @synthesize key = _key;
 @synthesize name = _name;
@@ -32,13 +32,16 @@
 @synthesize productReference = _productReference;
 
 /* ================================================= Class Methods ================================================== */
-+ (Target*) targetWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference {
-    return [[Target alloc] initWithProject:project key:key name:name productName:productName productReference:productReference];
++ (XCTarget*) targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name
+        productName:(NSString*)productName productReference:(NSString*)productReference {
+    return [[XCTarget alloc]
+            initWithProject:project key:key name:name productName:productName productReference:productReference];
 }
 
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithProject:(xcode_Project*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference {
+- (id) initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
+        productReference:(NSString*)productReference {
     self = [super init];
     if (self) {
         _project = project;
@@ -59,7 +62,7 @@
             if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase ||
                     [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhase) {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                    SourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
                         [_members addObject:[self buildFileWithKey:buildFileKey]];
                     }
@@ -71,7 +74,7 @@
     return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
 }
 
-- (void) addMember:(xcode_SourceFile*)member {
+- (void) addMember:(XCSourceFile*)member {
     LogDebug(@"$$$$$$$$$$$$$$$$$$$$$$$$ start adding member: %@", member);
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
@@ -153,8 +156,9 @@
             break;
         }
     }
-    if (!found)
+    if (!found) {
         [dependencies addObject:key];
+    }
 }
 
 
@@ -164,7 +168,7 @@
 }
 
 /* ================================================== Private Methods =============================================== */
-- (SourceFile*) buildFileWithKey:(NSString*)theKey {
+- (XCSourceFile*) buildFileWithKey:(NSString*)theKey {
     NSDictionary* obj = [[_project objects] valueForKey:theKey];
     if (obj) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {

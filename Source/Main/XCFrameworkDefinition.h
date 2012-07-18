@@ -10,10 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "xcode_AbstractDefinition.h"
+#import "XCAbstractDefinition.h"
 
 
-@interface xcode_FrameworkDefinition : xcode_AbstractDefinition {
+@interface XCFrameworkDefinition : XCAbstractDefinition {
     NSString* _filePath;
     BOOL _copyToDestination;
 }
@@ -21,7 +21,7 @@
 @property(nonatomic, strong, readonly) NSString* filePath;
 @property(nonatomic, readonly) BOOL copyToDestination;
 
-+ (xcode_FrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
++ (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
         copyToDestination:(BOOL)copyToDestination;
 
 - (id) initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;
@@ -30,5 +30,3 @@
 
 
 @end
-/* ================================================================================================================== */
-@compatibility_alias FrameworkDefinition xcode_FrameworkDefinition;
