@@ -24,9 +24,9 @@
 		6B3AD03914F8A3AC00BCFE81 /* XCGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD01F14F8A3AC00BCFE81 /* XCGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD03A14F8A3AC00BCFE81 /* XCGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02014F8A3AC00BCFE81 /* XCGroup.m */; };
 		6B3AD03B14F8A3AC00BCFE81 /* XCGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02014F8A3AC00BCFE81 /* XCGroup.m */; };
-		6B3AD03C14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02114F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B3AD03D14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02214F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m */; };
-		6B3AD03E14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02214F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m */; };
+		6B3AD03C14F8A3AC00BCFE81 /* XCKeyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02114F8A3AC00BCFE81 /* XCKeyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B3AD03D14F8A3AC00BCFE81 /* XCKeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02214F8A3AC00BCFE81 /* XCKeyBuilder.m */; };
+		6B3AD03E14F8A3AC00BCFE81 /* XCKeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02214F8A3AC00BCFE81 /* XCKeyBuilder.m */; };
 		6B3AD03F14F8A3AC00BCFE81 /* XCProject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3AD02314F8A3AC00BCFE81 /* XCProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3AD04014F8A3AC00BCFE81 /* XCProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02414F8A3AC00BCFE81 /* XCProject.m */; };
 		6B3AD04114F8A3AC00BCFE81 /* XCProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3AD02414F8A3AC00BCFE81 /* XCProject.m */; };
@@ -127,8 +127,8 @@
 		6B3AD01E14F8A3AC00BCFE81 /* XCFileOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFileOperationQueue.m; sourceTree = "<group>"; };
 		6B3AD01F14F8A3AC00BCFE81 /* XCGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCGroup.h; sourceTree = "<group>"; };
 		6B3AD02014F8A3AC00BCFE81 /* XCGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCGroup.m; sourceTree = "<group>"; };
-		6B3AD02114F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcode_utils_KeyBuilder.h; sourceTree = "<group>"; };
-		6B3AD02214F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcode_utils_KeyBuilder.m; sourceTree = "<group>"; };
+		6B3AD02114F8A3AC00BCFE81 /* XCKeyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCKeyBuilder.h; sourceTree = "<group>"; };
+		6B3AD02214F8A3AC00BCFE81 /* XCKeyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCKeyBuilder.m; sourceTree = "<group>"; };
 		6B3AD02314F8A3AC00BCFE81 /* XCProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCProject.h; sourceTree = "<group>"; };
 		6B3AD02414F8A3AC00BCFE81 /* XCProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProject.m; sourceTree = "<group>"; };
 		6B3AD02514F8A3AC00BCFE81 /* XCTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTarget.h; sourceTree = "<group>"; };
@@ -380,8 +380,8 @@
 		E94DE11415443AC100C51258 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6B3AD02214F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m */,
-				6B3AD02114F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h */,
+				6B3AD02214F8A3AC00BCFE81 /* XCKeyBuilder.m */,
+				6B3AD02114F8A3AC00BCFE81 /* XCKeyBuilder.h */,
 				6BE4B285147E6B610059E455 /* XCEnumUtils.h */,
 			);
 			path = Utils;
@@ -399,7 +399,7 @@
 				6B3AD03614F8A3AC00BCFE81 /* XCFileOperationQueue.h in Headers */,
 				6B01A05B154A206600122D48 /* XCAbstractDefinition.h in Headers */,
 				6B3AD03914F8A3AC00BCFE81 /* XCGroup.h in Headers */,
-				6B3AD03C14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.h in Headers */,
+				6B3AD03C14F8A3AC00BCFE81 /* XCKeyBuilder.h in Headers */,
 				6B3AD03F14F8A3AC00BCFE81 /* XCProject.h in Headers */,
 				6B3AD04214F8A3AC00BCFE81 /* XCTarget.h in Headers */,
 				E94DE11415443AC100C5125D /* XCSourceFileDefinition.h in Headers */,
@@ -553,7 +553,7 @@
 				6B3AD03514F8A3AC00BCFE81 /* XCSourceFile.m in Sources */,
 				6B3AD03814F8A3AC00BCFE81 /* XCFileOperationQueue.m in Sources */,
 				6B3AD03B14F8A3AC00BCFE81 /* XCGroup.m in Sources */,
-				6B3AD03E14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m in Sources */,
+				6B3AD03E14F8A3AC00BCFE81 /* XCKeyBuilder.m in Sources */,
 				6B3AD04114F8A3AC00BCFE81 /* XCProject.m in Sources */,
 				6B3AD04414F8A3AC00BCFE81 /* XCTarget.m in Sources */,
 				6B3AD04714F8A3AC00BCFE81 /* XcodeSourceFileType.m in Sources */,
@@ -577,7 +577,7 @@
 				6B3AD03414F8A3AC00BCFE81 /* XCSourceFile.m in Sources */,
 				6B3AD03714F8A3AC00BCFE81 /* XCFileOperationQueue.m in Sources */,
 				6B3AD03A14F8A3AC00BCFE81 /* XCGroup.m in Sources */,
-				6B3AD03D14F8A3AC00BCFE81 /* xcode_utils_KeyBuilder.m in Sources */,
+				6B3AD03D14F8A3AC00BCFE81 /* XCKeyBuilder.m in Sources */,
 				6B3AD04014F8A3AC00BCFE81 /* XCProject.m in Sources */,
 				6B3AD04314F8A3AC00BCFE81 /* XCTarget.m in Sources */,
 				6B3AD04614F8A3AC00BCFE81 /* XcodeSourceFileType.m in Sources */,

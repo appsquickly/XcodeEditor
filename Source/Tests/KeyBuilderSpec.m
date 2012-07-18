@@ -11,7 +11,7 @@
 
 
 
-#import <XcodeEditor/xcode_utils_KeyBuilder.h>
+#import "XCKeyBuilder.h"
 
 SPEC_BEGIN(KeyBuilderSpec)
 
@@ -22,7 +22,7 @@ SPEC_BEGIN(KeyBuilderSpec)
 
             NSString* requiresKey = @"ESA_Sales_Customer_Browse_ViewController.h";
 
-            KeyBuilder* builtKey = [KeyBuilder forItemNamed:requiresKey];
+            XCKeyBuilder* builtKey = [XCKeyBuilder forItemNamed:requiresKey];
             NSString* key = [builtKey build];
             LogDebug(@"Key: %@", key);
             [key shouldNotBeNil];

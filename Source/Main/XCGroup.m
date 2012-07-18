@@ -17,7 +17,7 @@
 #import "XCGroup.h"
 #import "XCProject.h"
 #import "XCClassDefinition.h"
-#import "xcode_utils_KeyBuilder.h"
+#import "XCKeyBuilder.h"
 #import "XCSourceFileDefinition.h"
 #import "XCSubProjectDefinition.h"
 #import "XCProject+SubProject.h"
@@ -188,7 +188,7 @@
             fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
         }
         LogDebug(@"Make framework key");
-        NSString* frameworkKey = [[KeyBuilder forItemNamed:[frameworkDefinition name]] build];
+        NSString* frameworkKey = [[XCKeyBuilder forItemNamed:[frameworkDefinition name]] build];
         [[_project objects] setObject:fileReference forKey:frameworkKey];
         [self addMemberWithKey:frameworkKey];
     }
@@ -203,7 +203,7 @@
 }
 
 - (XCGroup*) addGroupWithPath:(NSString*)path {
-    NSString* groupKey = [[KeyBuilder forItemNamed:path] build];
+    NSString* groupKey = [[XCKeyBuilder forItemNamed:path] build];
 
     NSArray* members = [self members];
     for (id<XcodeGroupMember> groupMember in members) {
@@ -481,7 +481,7 @@
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil) {
         NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
-        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+        NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
         [[_project objects] setObject:reference forKey:fileKey];
         [self addMemberWithKey:fileKey];
         filePath = [self pathRelativeToProjectRoot];
@@ -522,7 +522,7 @@
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil) {
         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
-        NSString* fileKey = [[KeyBuilder forItemNamed:name] build];
+        NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
         [[_project objects] setObject:reference forKey:fileKey];
         [self addMemberWithKey:fileKey];
     }
@@ -536,7 +536,7 @@
         [children addObject:[_project referenceProxyKeyForName:productName]];
         uniquer = [uniquer stringByAppendingString:productName];
     }
-    NSString* productKey = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
+    NSString* productKey = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
     XCGroup* productsGroup =
             [XCGroup groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
     [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];

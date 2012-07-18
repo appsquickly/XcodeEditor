@@ -8,9 +8,9 @@ An API for manipulating Xcode project files.
 
 
 ```objective-c
-Project* project = [[Project alloc] initWithFilePath:@"MyProject.xcodeproj"];
-Group* group = [project groupWithPathFromRoot:@"Main"];
-ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNewClass"];
+XCProject* project = [[XCProject alloc] initWithFilePath:@"MyProject.xcodeproj"];
+XCGroup* group = [project groupWithPathFromRoot:@"Main"];
+XCClassDefinition* classDefinition = [[XCClassDefinition alloc] initWithName:@"MyNewClass"];
 [classDefinition setHeader:@"<some-header-text>"];
 [classDefinition setSource:@"<some-impl-text>"];
 
@@ -22,8 +22,8 @@ ClassDefinition* classDefinition = [[ClassDefinition alloc] initWithName:@"MyNew
 ### Specifying Source File Belongs to Target
 
 ```objective-c
-File* sourceFile = [project fileWithName:@"MyNewClass.m"];
-Target* examples = [project targetWithName:@"Examples"];
+XCSourceFile* sourceFile = [project fileWithName:@"MyNewClass.m"];
+XCTarget* examples = [project targetWithName:@"Examples"];
 [examples addMember:sourceFile];
 [project save];
 ```
@@ -34,7 +34,7 @@ Target* examples = [project targetWithName:@"Examples"];
 This time, we'll use a convenience method on xcode_Group to specify the targets at the same time:
 
 ```objective-c
-XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile" content:@"<xibXml>"];
+XCXibDefinition* xibDefinition = [[XCXibDefinition alloc] initWithName:@"MyXibFile" content:@"<xibXml>"];
 [group addXib:xibDefinition toTargets:[project targets]];
 [project save];
 ```
@@ -43,8 +43,8 @@ XibDefinition* xibDefinition = [[XibDefinition alloc] initWithName:@"MyXibFile" 
 ### Adding a Framework
 
 ```objective-c
-FrameworkDefinition* frameworkDefinition = 
-    [[FrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
+XCFrameworkDefinition* frameworkDefinition =
+    [[XCFrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
 [group addFramework:frameworkDefinition toTargets:[project targets]];
 [project save];
 ```
@@ -55,7 +55,7 @@ project, and subsequently linked from there.
 
 ```objective-c
 
-SourceFileDefinition* sourceFileDefinition = [[SourceFileDefinition alloc]
+XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
     initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:<your image file name>]
     type:ImageResourcePNG];
 
@@ -66,7 +66,7 @@ SourceFileDefinition* sourceFileDefinition = [[SourceFileDefinition alloc]
 ### Adding a Header
 
 ```objective-c
-SourceFileDefinition* header = [[SourceFileDefinition alloc]
+XCSourceFileDefinition* header = [[XCSourceFileDefinition alloc]
     initWithName:@"SomeHeader.h" text:<your header text> type:SourceCodeHeader];
 
 [group addSourceFile:header];
@@ -76,7 +76,7 @@ SourceFileDefinition* header = [[SourceFileDefinition alloc]
 ### Adding a sub-project
 
 ```objective-c
-subProjectDefinition = [SubProjectDefinition withName:@"mySubproject" projPath=@"/Path/To/Subproject" type:XcodeProject];
+subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath=@"/Path/To/Subproject" type:XcodeProject];
 [group addSubProject:subProjectDefinition toTargets:[project targets]];
 ```
 

@@ -11,7 +11,7 @@
 
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "xcode_utils_KeyBuilder.h"
+#import "XCKeyBuilder.h"
 #import "XCGroup.h"
 #import "OCLogTemplate.h"
 
@@ -109,7 +109,7 @@
             NSMutableDictionary* sourceBuildFile = [NSMutableDictionary dictionary];
             [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFile] forKey:@"isa"];
             [sourceBuildFile setObject:_key forKey:@"fileRef"];
-            NSString* buildFileKey = [[KeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
+            NSString* buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];
         }
         else if (_type == Framework) {

@@ -11,7 +11,7 @@
 
 #import "XCSourceFile.h"
 #import "XCTarget.h"
-#import <XcodeEditor/xcode_utils_KeyBuilder.h>
+#import "XCKeyBuilder.h"
 #import "XCProject+SubProject.h"
 #import "XCSubProjectDefinition.h"
 
@@ -196,11 +196,11 @@
     [proxy setObject:fileRef forKey:@"containerPortal"];
     [proxy setObject:proxyType forKey:@"proxyType"];
     // give it a random key - the keys xcode puts here are not in the project file anywhere else
-    NSString* key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-junk", keyName]] build];
+    NSString* key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-junk", keyName]] build];
     [proxy setObject:key forKey:@"remoteGlobalIDString"];
     [proxy setObject:name forKey:@"remoteInfo"];
     // add to project. use proxyType to generate key, so that multiple keys for the same name don't overwrite each other
-    key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-containerProxy-%@", keyName, proxyType]] build];
+    key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-containerProxy-%@", keyName, proxyType]] build];
     [[self objects] setObject:proxy forKey:key];
 
     return key;
@@ -226,7 +226,7 @@
     [proxy setObject:containerItemProxyKey forKey:@"remoteRef"];
     [proxy setObject:[buildProductReference valueForKey:@"sourceTree"] forKey:@"sourceTree"];
     // add to project
-    NSString* key = [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-referenceProxy", path]] build];
+    NSString* key = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-referenceProxy", path]] build];
     [[self objects] setObject:proxy forKey:key];
 }
 
@@ -254,7 +254,7 @@
     [targetDependency setObject:name forKey:@"name"];
     [targetDependency setObject:containerItemProxyKey forKey:@"targetProxy"];
     NSString* targetDependencyKey =
-            [[KeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", keyName]] build];
+            [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", keyName]] build];
     [[self objects] setObject:targetDependency forKey:targetDependencyKey];
     return targetDependencyKey;
 }

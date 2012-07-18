@@ -19,11 +19,11 @@ typedef struct {
 } HashValueMD5Hash;
 
 
-@interface xcode_utils_KeyBuilder : NSObject {
+@interface XCKeyBuilder : NSObject {
     unsigned char _value[HASH_VALUE_STORAGE_SIZE];
 }
 
-+ (xcode_utils_KeyBuilder*) forItemNamed:(NSString*)name;
++ (XCKeyBuilder*) forItemNamed:(NSString*)name;
 
 - (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length;
 
@@ -31,5 +31,3 @@ typedef struct {
 
 @end
 
-/* ================================================================================================================== */
-@compatibility_alias KeyBuilder xcode_utils_KeyBuilder;
