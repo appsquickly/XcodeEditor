@@ -162,7 +162,7 @@ JetBrains is not yet supported.
 
 # Authors
 
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper.blues@expanz.com?Subject=xcode-editor">jasper.blues@expanz.com</a>
+* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper.blues@me.com?Subject=xcode-editor">jasper.blues@me.com</a>
          
 ### With contributions from: 
 
