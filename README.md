@@ -31,7 +31,7 @@ XCTarget* examples = [project targetWithName:@"Examples"];
 
 ### Adding a Xib File
 
-This time, we'll use a convenience method on xcode_Group to specify the targets at the same time:
+This time, we'll use a convenience method on XCGroup to specify the targets at the same time:
 
 ```objective-c
 XCXibDefinition* xibDefinition = [[XCXibDefinition alloc] initWithName:@"MyXibFile" content:@"<xibXml>"];
