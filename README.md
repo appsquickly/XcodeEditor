@@ -88,16 +88,21 @@ subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath
 ### File write behavior
 
 ```objective-c
-[definition setFileOperationStyle:FileOperationStyleOverwrite]; //Creates the reference in the project and writes the contents to disk. If a file already exists at the specified location, its contents will be updated.
+//Creates the reference in the project and writes the contents to disk. If a file already exists at the specified location, 
+//its contents will be updated.
+[definition setFileOperationStyle:FileOperationStyleOverwrite]; 
 ```
 
 ```objective-c
-[definition setFileOperationStyle:FileOperationStyleAcceptExisting]; //Creates the reference in the project. If a file already exists at the specified location, the contents will not be updated.
+//Creates the reference in the project. If a file already exists at the specified location, the contents will not be updated.
+[definition setFileOperationStyle:FileOperationStyleAcceptExisting]; 
 ```
 
     
 ```objective-c
-[definition setFileOperationStyle:FileOperationStyleReferenceOnly]; //Creates the reference in the project, but does not write to disk. The filesystem is expected to be updated through some other means.
+//Creates the reference in the project, but does not write to disk. The filesystem is expected to be updated through some 
+//other means.
+[definition setFileOperationStyle:FileOperationStyleReferenceOnly]; 
 ```
 
 # Docs
