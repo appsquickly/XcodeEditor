@@ -1,0 +1,5 @@
+SOURCES      = Source/Main/Utils/*.m
+SOURCES     += Source/Main/*.m
+EXPORT       = Source/Main/Utils/*.h
+EXPORT      += Source/Main/*.h
+FRAMEWORKS   = Cocoa
