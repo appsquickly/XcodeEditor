@@ -99,6 +99,11 @@
 - (XCGroup*) rootGroup;
 
 /**
+ * Returns the root (top-level) groups, if there are multiple. An array of rootGroup if there is only one.
+ */
+- (NSArray*) rootGroups;
+
+/**
 * Returns the group with the given key, or nil.
 */
 - (XCGroup*) groupWithKey:(NSString*)key;

@@ -156,6 +156,21 @@
     return nil;
 }
 
+- (NSArray*) rootGroups {
+	XCGroup *group = [self rootGroup];
+	if (group) {
+		return [NSArray arrayWithObject:group];
+	}
+
+	NSMutableArray *results = [NSMutableArray array];
+    for (XCGroup* group in [self groups]) {
+        if ([group parentGroup] == nil) {
+            [results addObject:group];
+        }
+    }
+
+	return [results copy];
+}
 
 - (XCGroup*) groupWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
