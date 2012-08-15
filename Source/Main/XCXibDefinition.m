@@ -18,11 +18,11 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XCXibDefinition*) xibDefinitionWithName:(NSString*)name {
-    return [[XCXibDefinition alloc] initWithName:name];
+    return [[[XCXibDefinition alloc] initWithName:name] autorelease];
 }
 
 + (XCXibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content {
-    return [[XCXibDefinition alloc] initWithName:name content:content];
+    return [[[XCXibDefinition alloc] initWithName:name content:content] autorelease];
 }
 
 

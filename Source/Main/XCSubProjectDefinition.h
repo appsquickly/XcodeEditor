@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XCAbstractDefinition.h"
-#import <XcodeEditor/XcodeSourceFileType.h>
+#import "XcodeSourceFileType.h"
 
 @class XCProject;
 
@@ -22,8 +22,10 @@
     NSString* _path;
     XcodeSourceFileType _type;
     XCProject* _subProject;
+	XCProject* _parentProject;
     NSString* _key;
     NSString* _fullProjectPath;
+	NSString* _relativePath;
 }
 
 

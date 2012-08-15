@@ -22,13 +22,13 @@
 + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
         type:(XcodeSourceFileType)type {
 
-    return [[XCSourceFileDefinition alloc] initWithName:name text:text type:type];
+    return [[[XCSourceFileDefinition alloc] initWithName:name text:text type:type] autorelease];
 }
 
 + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
         type:(XcodeSourceFileType)type {
 
-    return [[XCSourceFileDefinition alloc] initWithName:name data:data type:type];
+    return [[[XCSourceFileDefinition alloc] initWithName:name data:data type:type] autorelease];
 }
 
 

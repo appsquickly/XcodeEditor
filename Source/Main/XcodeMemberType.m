@@ -11,7 +11,7 @@
 
 
 #import "XcodeMemberType.h"
-#import "XCEnumUtils.h"
+#import "Utils/XCEnumUtils.h"
 
 @implementation NSDictionary (XcodeMemberType)
 
@@ -21,7 +21,7 @@ static NSDictionary * _projectNodeTypesAsStrings;
    // This is the most vital operation on adding 500+ files
    // So, we caching this dictionary
    if (!_projectNodeTypesAsStrings) {
-      _projectNodeTypesAsStrings =  [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(PBXNilType), @"PBXNilType",
+      _projectNodeTypesAsStrings =  [[NSDictionary dictionaryWithObjectsAndKeys:boxEnum(PBXNilType), @"PBXNilType",
                                                                                boxEnum(PBXBuildFile), @"PBXBuildFile",
                                                                                boxEnum(PBXContainerItemProxy), @"PBXContainerItemProxy",
                                                                                boxEnum(PBXCopyFilesBuildPhase), @"PBXCopyFilesBuildPhase",
@@ -36,7 +36,7 @@ static NSDictionary * _projectNodeTypesAsStrings;
                                                                                boxEnum(PBXTargetDependency), @"PBXTargetDependency",
                                                                                boxEnum(PBXVariantGroup), @"PBXVariantGroup",
                                                                                boxEnum(XCBuildConfiguration), @"XCBuildConfiguration",
-                                                                               boxEnum(XCConfigurationList), @"XCConfigurationList", nil];
+                                                                               boxEnum(XCConfigurationList), @"XCConfigurationList", nil] retain];
    }
    return _projectNodeTypesAsStrings;
 }

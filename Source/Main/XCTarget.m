@@ -12,7 +12,6 @@
 #import "XCTarget.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "OCLogTemplate.h"
 
 /* ================================================================================================================== */
 @interface XCTarget ()
@@ -34,8 +33,8 @@
 /* ================================================= Class Methods ================================================== */
 + (XCTarget*) targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name
         productName:(NSString*)productName productReference:(NSString*)productReference {
-    return [[XCTarget alloc]
-            initWithProject:project key:key name:name productName:productName productReference:productReference];
+    return [[[XCTarget alloc]
+            initWithProject:project key:key name:name productName:productName productReference:productReference] autorelease];
 }
 
 
@@ -75,7 +74,6 @@
 }
 
 - (void) addMember:(XCSourceFile*)member {
-    LogDebug(@"$$$$$$$$$$$$$$$$$$$$$$$$ start adding member: %@", member);
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
 
@@ -86,9 +84,6 @@
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
             if (![files containsObject:[member buildFileKey]]) {
                 [files addObject:[member buildFileKey]];
-            }
-            else {
-                LogInfo(@"***WARNING*** Target %@ already includes %@", [self name], [member name]);
             }
 
             [buildPhase setObject:files forKey:@"files"];

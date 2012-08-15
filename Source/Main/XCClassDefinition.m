@@ -20,11 +20,11 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XCClassDefinition*) classDefinitionWithName:(NSString*)fileName {
-    return [[XCClassDefinition alloc] initWithName:fileName];
+    return [[[XCClassDefinition alloc] initWithName:fileName] autorelease];
 }
 
 + (XCClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
-    return [[XCClassDefinition alloc] initWithName:className language:language];
+    return [[[XCClassDefinition alloc] initWithName:className language:language] autorelease];
 }
 
 

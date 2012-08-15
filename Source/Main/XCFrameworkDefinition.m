@@ -20,7 +20,7 @@
 + (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
         copyToDestination:(BOOL)copyToDestination {
 
-    return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
+    return [[[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination] autorelease];
 }
 
 

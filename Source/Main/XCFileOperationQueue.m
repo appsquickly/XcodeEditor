@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCFileOperationQueue.h"
-#import "OCLogTemplate.h"
 
 @interface XCFileOperationQueue ()
 
@@ -69,7 +68,6 @@
 }
 
 - (void) queueDeletion:(NSString*)filePath {
-    LogDebug(@"Queing deletion for path: %@", filePath);
     [_filesToDelete addObject:filePath];
 }
 
@@ -111,7 +109,6 @@
         }
         NSError* error = nil;
         if (![fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error]) {
-            LogDebug(@"User info: %@", [error userInfo]);
             [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@",
                                                                        [frameworkPath absoluteString]];
         }
@@ -120,8 +117,6 @@
 }
 
 - (void) performFileDeletions {
-    LogDebug(@"Files to delete: %@", _filesToDelete);
-
     for (NSString* filePath in [_filesToDelete reverseObjectEnumerator]) {
         NSString* fullPath = [_baseDirectory stringByAppendingPathComponent:filePath];
         NSError* error = nil;

@@ -16,7 +16,7 @@
 /* ================================================= Class Methods ================================================== */
 + (XCKeyBuilder*) forItemNamed:(NSString*)name {
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
-    return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];
+    return [[[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]] autorelease];
 
 }
 

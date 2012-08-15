@@ -14,7 +14,6 @@
 #import "XCSourceFile.h"
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
-#import "OCLogTemplate.h"
 
 
 /* ================================================================================================================== */
@@ -38,13 +37,13 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XCProject*) projectWithFilePath:(NSString*)filePath {
-    return [[XCProject alloc] initWithFilePath:filePath];
+    return [[[XCProject alloc] initWithFilePath:filePath] autorelease];
 }
 
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithFilePath:(NSString*)filePath {
-    if (self) {
+    if ((self = [super init])) {
         _filePath = [filePath copy];
         _dataStore = [[NSMutableDictionary alloc]
                 initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
@@ -52,6 +51,7 @@
         if (!_dataStore) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
+		
         _fileOperationQueue =
                 [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
     }
@@ -137,13 +137,13 @@
 - (NSArray*) groups {
 
     NSMutableArray* results = [[NSMutableArray alloc] init];
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
+    [[_dataStore objectForKey:@"objects"] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
 
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
             [results addObject:[self groupWithKey:key]];
         }
     }];
-    return results;
+    return [results autorelease];
 }
 
 //TODO: Optimize this implementation.
@@ -227,9 +227,7 @@
 
 - (void) save {
     [_fileOperationQueue commitFileOperations];
-    LogDebug(@"Done committing file operations");
     [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
-    LogDebug(@"Done writing project file.");
 }
 
 - (NSMutableDictionary*) objects {

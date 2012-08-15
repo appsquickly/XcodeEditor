@@ -11,9 +11,8 @@
 
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "XCKeyBuilder.h"
+#import "Utils/XCKeyBuilder.h"
 #import "XCGroup.h"
-#import "OCLogTemplate.h"
 
 @implementation XCSourceFile
 
@@ -25,7 +24,7 @@
 /* ================================================= Class Methods ================================================== */
 + (XCSourceFile*) sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
         name:(NSString*)name sourceTree:(NSString*)_tree {
-    return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];
+    return [[[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree] autorelease];
 }
 
 
@@ -139,7 +138,6 @@
     else {
         NSString* parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
         NSString* result = [parentPath stringByAppendingPathComponent:_name];
-        LogDebug(@"%@ -> %@ -> %@", _name, parentPath, result);
         return result;
     }
 }

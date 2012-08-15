@@ -32,7 +32,7 @@
 + (XCSubProjectDefinition*) withName:(NSString*)name path:(NSString*)path
         parentProject:(XCProject*)parentProject {
 
-    return [[XCSubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject];
+    return [[[XCSubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject] autorelease];
 }
 
 /* ================================================== Initializers ================================================== */
@@ -90,7 +90,7 @@
 
 - (void) initFullProjectPath:(NSString*)fullProjectPath groupPath:(NSString*)groupPath {
     if (groupPath != nil) {
-        NSMutableArray* fullPathComponents = [[fullProjectPath pathComponents] mutableCopy];
+        NSMutableArray* fullPathComponents = [[[fullProjectPath pathComponents] mutableCopy] autorelease];
         [fullPathComponents removeLastObject];
         fullProjectPath = [[NSString pathWithComponents:fullPathComponents] stringByAppendingFormat:@"/%@", groupPath];
     }
@@ -105,9 +105,9 @@
         if (_fullProjectPath == nil) {
             [NSException raise:NSInvalidArgumentException format:@"fullProjectPath has not been set"];
         }
-        NSMutableArray* projectPathComponents = [[_fullProjectPath pathComponents] mutableCopy];
+        NSMutableArray* projectPathComponents = [[[_fullProjectPath pathComponents] mutableCopy] autorelease];
         NSArray* objectPathComponents = [[self fullPathName] pathComponents];
-        NSString* convertedPath = [[NSString alloc] init];
+        NSString* convertedPath = @"";
 
         // skip over path components from root that are equal
         int limit = ([projectPathComponents count] < [objectPathComponents count]) ? [projectPathComponents count] :
@@ -138,7 +138,7 @@
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
-    return [NSString stringWithFormat:@"XcodeprojDefinition: sourceFileName = %@, path=%@, type=%@", _name, _path, _type];
+    return [NSString stringWithFormat:@"XcodeprojDefinition: sourceFileName = %@, path=%@, type=%d", _name, _path, _type];
 }
 
 @end
