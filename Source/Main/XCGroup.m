@@ -81,9 +81,7 @@
         _key = [key copy];
         _alias = [alias copy];
         _pathRelativeToParent = [path copy];
-
-        _children = [[NSMutableArray alloc] init];
-        [_children addObjectsFromArray:children];
+        _children = [children mutableCopy];
     }
     return self;
 }
