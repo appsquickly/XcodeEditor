@@ -29,6 +29,8 @@
     NSString* _filePath;
     NSMutableDictionary* _dataStore;
     NSMutableArray* _targets;
+
+    NSMutableDictionary* _groups;
 }
 
 @property(nonatomic, strong, readonly) XCFileOperationQueue* fileOperationQueue;

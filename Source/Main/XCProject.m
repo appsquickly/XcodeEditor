@@ -54,6 +54,8 @@
 		
         _fileOperationQueue =
                 [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
+
+        _groups = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -173,14 +175,21 @@
 }
 
 - (XCGroup*) groupWithKey:(NSString*)key {
+	XCGroup *group = [_groups objectForKey:key];
+	if (group)
+		return [[group retain] autorelease];
+
     NSDictionary* obj = [[self objects] valueForKey:key];
     if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* path = [obj valueForKey:@"path"];
         NSArray* children = [obj valueForKey:@"children"];
+        XCGroup *group = [XCGroup groupWithProject:self key:key alias:name path:path children:children];
 
-        return [XCGroup groupWithProject:self key:key alias:name path:path children:children];
+		[_groups setObject:group forKey:key];
+
+        return group;
     }
     return nil;
 }
