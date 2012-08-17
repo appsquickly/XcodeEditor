@@ -441,7 +441,7 @@
         }
 
         NSMutableString* fullPath = [[NSMutableString alloc] init];
-        for (int i = [pathComponents count] - 1; i >= 0; i--) {
+        for (NSInteger i = (NSInteger)[pathComponents count] - 1; i >= 0; i--) {
             [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
         }
         _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];

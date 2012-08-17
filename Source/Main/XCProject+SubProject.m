@@ -131,7 +131,7 @@
     }];
     if (singleton && [returnValue count] > 1) {
         [NSException raise:NSGenericException
-                format:@"Searched for one instance of member type %@ with value %@, but found %d", [NSString stringFromMemberType:memberType], identifier, [returnValue count]];
+                format:@"Searched for one instance of member type %@ with value %@, but found %ld", [NSString stringFromMemberType:memberType], identifier, [returnValue count]];
     }
     if (required && [returnValue count] == 0) {
         [NSException raise:NSGenericException
@@ -164,7 +164,7 @@
     }];
     if ([results count] > 1) {
         [NSException raise:NSGenericException
-                format:@"Searched for one instance of member type %@ with value %@, but found %d", @"PBXContainerItemProxy", [NSString stringWithFormat:@"%@ and proxyType of %@", name, proxyType], [results count]];
+                format:@"Searched for one instance of member type %@ with value %@, but found %ld", @"PBXContainerItemProxy", [NSString stringWithFormat:@"%@ and proxyType of %@", name, proxyType], [results count]];
     }
     if ([results count] == 0) {
         return nil;
