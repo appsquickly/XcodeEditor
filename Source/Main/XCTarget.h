@@ -27,6 +27,7 @@
 
 @private
     NSMutableArray* _members;
+    NSMutableArray* _resources;
 }
 
 @property(nonatomic, strong, readonly) NSString* key;
@@ -38,6 +39,7 @@
 
 - (id) initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
 
+- (NSArray*) resources;
 - (NSArray*) members;
 
 - (void) addMember:(XCSourceFile*)member;
