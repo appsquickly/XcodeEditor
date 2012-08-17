@@ -23,8 +23,8 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XCSourceFile*) sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
-        name:(NSString*)name sourceTree:(NSString*)_tree {
-    return [[[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree] autorelease];
+        name:(NSString*)name sourceTree:(NSString*)_tree path:(NSString*)path {
+    return [[[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path] autorelease];
 }
 
 
@@ -33,7 +33,8 @@
         key:(NSString*)key
         type:(XcodeSourceFileType)type
         name:(NSString*)name
-        sourceTree:(NSString*)tree {
+        sourceTree:(NSString*)tree
+        path:(NSString*)path {
 
     self = [super init];
     if (self) {
@@ -42,6 +43,7 @@
         _type = type;
         _name = [name copy];
         _sourceTree = [tree copy];
+		_path = [path copy];
     }
     return self;
 }
@@ -132,14 +134,15 @@
 }
 
 - (NSString*) pathRelativeToProjectRoot {
+	if (_path) {
+		return _path;
+	}
     if ([self.sourceTree isEqualToString:@"SOURCE_ROOT"]) {
         return _name;
     }
-    else {
-        NSString* parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
-        NSString* result = [parentPath stringByAppendingPathComponent:_name];
-        return result;
-    }
+    NSString* parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
+    NSString* result = [parentPath stringByAppendingPathComponent:_name];
+    return result;
 }
 
 /* ================================================== Utility Methods =============================================== */

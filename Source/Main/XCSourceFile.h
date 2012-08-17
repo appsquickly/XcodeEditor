@@ -27,6 +27,7 @@
     NSString* _name;
     NSString* _sourceTree;
     NSString* _key;
+	 NSString* _path;
     XcodeSourceFileType _type;
 }
 
@@ -39,13 +40,13 @@
         key:(NSString*)key
         type:(XcodeSourceFileType)type
         name:(NSString*)name
-        sourceTree:(NSString*)tree;
+        sourceTree:(NSString*)tree path:(NSString*)path;
 
 - (id) initWithProject:(XCProject*)project
         key:(NSString*)key
         type:(XcodeSourceFileType)type
         name:(NSString*)name
-        sourceTree:(NSString*)tree;
+        sourceTree:(NSString*)tree path:(NSString*)path;
 
 /**
 * If yes, indicates the file is able to be included for compilation in an `XCTarget`.

@@ -73,7 +73,7 @@
             NSString* path = [obj valueForKey:@"path"];
             NSString* sourceTree = [obj valueForKey:@"sourceTree"];
             [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:fileType name:path
-                                       sourceTree:(sourceTree ? sourceTree : @"<group>")]];
+                                       sourceTree:(sourceTree ? sourceTree : @"<group>") path:nil]];
         }
     }];
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
@@ -92,7 +92,7 @@
             name = [obj valueForKey:@"path"];
         }
         return [XCSourceFile sourceFileWithProject:self key:key type:fileType name:name
-                sourceTree:(sourceTree ? sourceTree : @"<group>")];
+                sourceTree:(sourceTree ? sourceTree : @"<group>") path:[obj valueForKey:@"path"]];
     }
     return nil;
 }
