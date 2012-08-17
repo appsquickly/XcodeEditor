@@ -44,6 +44,9 @@
 
 /* ================================================== Initializers ================================================== */
 - (id) initWithFilePath:(NSString*)filePath {
+    
+    self = [super init];
+    
     if (self) {
         _filePath = [filePath copy];
         _dataStore = [[NSMutableDictionary alloc]
