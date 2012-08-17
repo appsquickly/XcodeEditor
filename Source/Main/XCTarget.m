@@ -53,6 +53,25 @@
     return self;
 }
 
+- (NSArray*) resources {
+    if (_resources == nil) {
+        _resources = [[NSMutableArray alloc] init];
+        for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"]) {
+            NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXResourcesBuildPhase) {
+                for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
+                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    if (targetMember) {
+                        [_resources addObject:[self buildFileWithKey:buildFileKey]];
+                    }
+                }
+            }
+        }
+    }
+    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    return [_resources sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+}
+
 /* ================================================ Interface Methods =============================================== */
 - (NSArray*) members {
     if (_members == nil) {
