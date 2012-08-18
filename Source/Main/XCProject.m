@@ -171,7 +171,7 @@
         }
     }
 
-	return [results copy];
+	return [[results copy] autorelease];
 }
 
 - (XCGroup*) groupWithKey:(NSString*)key {
