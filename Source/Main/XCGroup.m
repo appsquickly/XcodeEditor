@@ -76,7 +76,7 @@
         children:(NSArray*)children {
     self = [super init];
     if (self) {
-        _project = project;
+        _project = [project retain];
         _fileOperationQueue = [_project fileOperationQueue];
         _key = [key copy];
         _alias = [alias copy];
@@ -88,6 +88,7 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
+	[_project release];
 	[_pathRelativeToParent release];
     [_key release];
     [_alias release];

@@ -20,14 +20,14 @@
 @interface XCSourceFile : NSObject<XcodeGroupMember> {
 
 @private
-    __weak XCProject* _project;
+    XCProject* _project;
 
     NSNumber* _isBuildFile;
     NSString* _buildFileKey;
     NSString* _name;
     NSString* _sourceTree;
     NSString* _key;
-	 NSString* _path;
+	NSString* _path;
     XcodeSourceFileType _type;
 }
 

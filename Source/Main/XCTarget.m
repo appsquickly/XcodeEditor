@@ -43,7 +43,7 @@
         productReference:(NSString*)productReference {
     self = [super init];
     if (self) {
-        _project = project;
+        _project = [project retain];
         _key = [key copy];
         _name = [name copy];
         _productName = [productName copy];
@@ -73,6 +73,7 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
+	[_project release];
 	[_key release];
 	[_name release];
 	[_productName release];

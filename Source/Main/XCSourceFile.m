@@ -38,7 +38,7 @@
 
     self = [super init];
     if (self) {
-        _project = project;
+        _project = [project retain];
         _key = [key copy];
         _type = type;
         _name = [name copy];
@@ -50,6 +50,7 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
+	[_project release];
 	[_key release];
 	[_name release];
 	[_sourceTree release];

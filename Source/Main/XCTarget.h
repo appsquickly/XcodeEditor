@@ -19,7 +19,7 @@
 */
 @interface XCTarget : NSObject {
 
-    __weak XCProject* _project;
+    XCProject* _project;
     NSString* _key;
     NSString* _name;
     NSString* _productName;
