@@ -52,7 +52,7 @@
                 NSString* path = (NSString*) [obj valueForKey:@"path"];
                 if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"]) {
                     [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:type name:path
-                                               sourceTree:nil]];
+                                               sourceTree:nil path:nil]];
                 }
             }
         }
