@@ -152,8 +152,6 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 
 * Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode. 
 * The AppCode IDE from JetBrains is now supported too! 
-* Uses ARC and weak references so requires OSX 64 bit, and iOS 5. (Non ARC version coming soon.)
-
 
 # Who's using it? 
 
