@@ -60,6 +60,16 @@
     return self;
 }
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	[_filePath release];
+	[_fileOperationQueue release];
+	[_dataStore release];
+	[_targets release];
+	[_groups release];
+
+	[super dealloc];
+}
 
 /* ================================================ Interface Methods =============================================== */
 

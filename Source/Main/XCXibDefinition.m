@@ -41,6 +41,14 @@
     return self;
 }
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	[_name release];
+	[_content release];
+
+	[super dealloc];
+}
+
 /* ================================================ Interface Methods =============================================== */
 - (NSString*) xibFileName {
     return [_name stringByAppendingString:@".xib"];

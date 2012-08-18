@@ -41,6 +41,16 @@
     return self;
 }
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	[_baseDirectory release];
+    [_filesToWrite release];
+    [_frameworksToCopy release];
+    [_filesToDelete release];
+    [_directoriesToCreate release];
+
+	[super dealloc];
+}
 /* ================================================ Interface Methods =============================================== */
 - (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory {
     NSString* filePath = [self destinationPathFor:name inProjectDirectory:directory];

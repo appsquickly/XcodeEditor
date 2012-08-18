@@ -46,6 +46,14 @@
     return self;
 }
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+    [_className release];
+    [_header release];
+    [_source release];
+
+	[super dealloc];
+}
 
 /* ================================================ Interface Methods =============================================== */
 - (BOOL) isObjectiveC {

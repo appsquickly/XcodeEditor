@@ -44,7 +44,7 @@
     self = [super init];
     if (self) {
         _project = project;
-        _key = key;
+        _key = [key copy];
         _name = [name copy];
         _productName = [productName copy];
         _productReference = [productReference copy];
@@ -69,6 +69,18 @@
     }
     NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     return [_resources sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+}
+
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	[_key release];
+	[_name release];
+	[_productName release];
+	[_productReference release];
+	[_members release];
+	[_resources release];
+
+	[super dealloc];
 }
 
 /* ================================================ Interface Methods =============================================== */

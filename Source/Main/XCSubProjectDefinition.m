@@ -45,10 +45,22 @@
         _name = [name copy];
         _path = [path copy];
         _type = XcodeProject;
-        _parentProject = parentProject;
+        _parentProject = [parentProject retain];
         _subProject = [[XCProject alloc] initWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
     }
     return self;
+}
+
+- (void) dealloc {
+	[_name release];
+	[_path release];
+	[_parentProject release];
+	[_subProject release];
+	[_relativePath release];
+	[_key release];
+	[_fullProjectPath release];
+
+	[super dealloc];
 }
 
 /* ================================================ Interface Methods =============================================== */

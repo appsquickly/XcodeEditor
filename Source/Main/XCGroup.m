@@ -86,6 +86,18 @@
     return self;
 }
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	[_pathRelativeToParent release];
+    [_key release];
+    [_alias release];
+    [_pathRelativeToProjectRoot release];
+    [_children release];
+    [_members release];
+
+	[super dealloc];
+}
+
 /* ================================================ Interface Methods =============================================== */
 #pragma mark Parent group
 

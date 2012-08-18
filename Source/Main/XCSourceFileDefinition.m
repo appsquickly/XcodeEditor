@@ -37,7 +37,7 @@
     self = [super init];
     if (self) {
         _sourceFileName = [name copy];
-        _data = [text dataUsingEncoding:NSUTF8StringEncoding];
+        _data = [[text dataUsingEncoding:NSUTF8StringEncoding] retain];
         _type = type;
     }
     return self;
@@ -54,4 +54,12 @@
 
 }
 
+
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	[_sourceFileName release];
+	[_data release];
+
+	[super dealloc];
+}
 @end

@@ -48,6 +48,18 @@
     return self;
 }
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	[_key release];
+	[_name release];
+	[_sourceTree release];
+	[_path release];
+	[_buildFileKey release];
+	[_isBuildFile release];
+
+	[super dealloc];
+}
+
 /* ================================================ Interface Methods =============================================== */
 
 - (BOOL) isBuildFile {
