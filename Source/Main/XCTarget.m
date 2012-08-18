@@ -67,8 +67,7 @@
             }
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [_resources sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+    return _resources;
 }
 
 /* ================================================== Deallocation ================================================== */
@@ -101,8 +100,7 @@
             }
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+    return _members;
 }
 
 - (void) addMember:(XCSourceFile*)member {

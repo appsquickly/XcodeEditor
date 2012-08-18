@@ -86,8 +86,7 @@
                                        sourceTree:(sourceTree ? sourceTree : @"<group>") path:nil]];
         }
     }];
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+    return results;
 }
 
 - (XCSourceFile*) fileWithKey:(NSString*)key {
@@ -246,8 +245,7 @@
             }
         }];
     }
-    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [_targets sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    return _targets;
 }
 
 - (XCTarget*) targetWithName:(NSString*)name {
@@ -279,8 +277,7 @@
             [results addObject:file];
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+    return results;
 }
 
 @end
