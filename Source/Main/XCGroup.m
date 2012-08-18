@@ -345,8 +345,7 @@
             }
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
-    return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+	return _members;
 }
 
 - (NSArray*) recursiveMembers {
