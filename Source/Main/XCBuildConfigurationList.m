@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCBuildConfigurationList.h"
+#import "XCGroup.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
 
