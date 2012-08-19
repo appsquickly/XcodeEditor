@@ -88,15 +88,15 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
-	[_project release];
-	[_pathRelativeToParent release];
+    [_project release];
+    [_pathRelativeToParent release];
     [_key release];
     [_alias release];
     [_pathRelativeToProjectRoot release];
     [_children release];
     [_members release];
 
-	[super dealloc];
+    [super dealloc];
 }
 
 /* ================================================ Interface Methods =============================================== */
@@ -358,7 +358,7 @@
             }
         }
     }
-	return _members;
+    return _members;
 }
 
 - (NSArray*) recursiveMembers {
@@ -423,12 +423,9 @@
 }
 
 - (NSString*) displayName {
-    if (_pathRelativeToParent == nil) {
+    if (_alias)
         return _alias;
-    }
-    else {
-        return [_pathRelativeToParent lastPathComponent];
-    }
+    return [_pathRelativeToParent lastPathComponent];
 }
 
 - (NSString*) pathRelativeToProjectRoot {
