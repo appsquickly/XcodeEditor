@@ -12,6 +12,7 @@
 #import "XCTarget.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
+#import "XCBuildConfigurationList.h"
 
 /* ================================================================================================================== */
 @interface XCTarget ()
@@ -79,11 +80,27 @@
 	[_productReference release];
 	[_members release];
 	[_resources release];
+	[_defaultConfigurationName release];
 
 	[super dealloc];
 }
 
 /* ================================================ Interface Methods =============================================== */
+- (NSArray *) configurations {
+	if (_configurations == nil) {
+		NSString *buildConfigurationRootSectionKey = [[[_project objects] objectForKey:_key] objectForKey:@"buildConfigurationList"];
+		NSDictionary *buildConfigurationDictionary = [[_project objects] objectForKey:buildConfigurationRootSectionKey];
+		_configurations = [[XCBuildConfigurationList buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"] inProject:_project] mutableCopy];
+		_defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
+	}
+
+	return [[_configurations copy] autorelease];
+}
+
+- (XCBuildConfigurationList*)defaultConfiguration {
+	return [[self configurations] objectForKey:_defaultConfigurationName];
+}
+
 - (NSArray*) members {
     if (_members == nil) {
         _members = [[NSMutableArray alloc] init];
@@ -92,7 +109,7 @@
             if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase ||
                     [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhase) {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    XCSourceFile* targetMember = [_project fileWithKey:buildFileKey];
                     if (targetMember) {
                         [_members addObject:[self buildFileWithKey:buildFileKey]];
                     }

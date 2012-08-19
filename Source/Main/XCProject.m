@@ -14,6 +14,7 @@
 #import "XCSourceFile.h"
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
+#import "XCBuildConfigurationList.h"
 
 
 /* ================================================================================================================== */
@@ -67,6 +68,8 @@
 	[_dataStore release];
 	[_targets release];
 	[_groups release];
+	[_rootObjectKey release];
+	[_defaultConfigurationName release];
 
 	[super dealloc];
 }
@@ -212,6 +215,16 @@
     return nil;
 }
 
+- (XCGroup*) groupWithSourceFile:(XCSourceFile*)sourceFile {
+	for (XCGroup *group in [self groups]) {
+		for (id<XcodeGroupMember> member in [group members]) {
+			if ([member isKindOfClass:[XCSourceFile class]] && [[sourceFile key] isEqualToString:[member key]]) {
+				return group;
+			}
+		}
+	}
+	return nil;
+}
 //TODO: This could fail if the path attribute on a given group is more than one directory. Start with candidates and
 //TODO: search backwards.
 - (XCGroup*) groupWithPathFromRoot:(NSString*)path {
@@ -231,7 +244,7 @@
 
 
 /* ================================================================================================================== */
-#pragma mark Targets
+#pragma mark targets
 
 - (NSArray*) targets {
     if (_targets == nil) {
@@ -267,8 +280,35 @@
 }
 
 
+- (NSDictionary*) configurations {
+	if (_configurations == nil) {
+		NSString *buildConfigurationRootSectionKey = [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
+		NSDictionary *buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
+		_configurations = [[XCBuildConfigurationList buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"] inProject:self] mutableCopy];
+		_defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
+	}
+
+	return [[_configurations copy] autorelease];
+}
+
+- (NSDictionary*) configurationWithName:(NSString*)name {
+	return [[self configurations] objectForKey:name];
+}
+
+- (XCBuildConfigurationList*)defaultConfiguration {
+	return [[self configurations] objectForKey:_defaultConfigurationName];
+}
+
 /* ================================================== Private Methods =============================================== */
 #pragma mark Private
+
+- (NSString*) rootObjectKey {
+	if (_rootObjectKey == nil) {
+		_rootObjectKey = [[_dataStore objectForKey:@"rootObject"] copy];;
+	}
+
+	return _rootObjectKey;
+}
 
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)projectFileType {
     NSMutableArray* results = [NSMutableArray array];

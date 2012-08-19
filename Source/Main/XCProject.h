@@ -19,6 +19,7 @@
 @class XCSourceFile;
 @class XCTarget;
 @class XCSubProjectDefinition;
+@class XCBuildConfigurationList;
 
 
 @interface XCProject : NSObject {
@@ -31,6 +32,10 @@
     NSMutableArray* _targets;
 
     NSMutableDictionary* _groups;
+    NSMutableDictionary* _configurations;
+
+	 NSString* _defaultConfigurationName;
+	 NSString *_rootObjectKey;
 }
 
 @property(nonatomic, strong, readonly) XCFileOperationQueue* fileOperationQueue;
@@ -120,6 +125,11 @@
 */
 - (XCGroup*) groupForGroupMemberWithKey:(NSString*)key;
 
+/**
+ * Returns the parent group for the group or file with the source file
+ */
+- (XCGroup*) groupWithSourceFile:(XCSourceFile*)sourceFile;
+
 /* ================================================================================================================== */
 #pragma mark Targets
 /**
@@ -131,6 +141,15 @@
 * Returns the target with the specified name, or nil. 
 */
 - (XCTarget*) targetWithName:(NSString*)name;
+
+#pragma mark Configurations
+
+/**
+* Returns the target with the specified name, or nil. 
+*/
+- (NSDictionary*) configurations;
+- (NSDictionary*) configurationWithName:(NSString*)name;
+- (XCBuildConfigurationList*)defaultConfiguration;
 
 /* ================================================================================================================== */
 #pragma mark Saving

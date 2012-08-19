@@ -13,6 +13,7 @@
 
 @class XCProject;
 @class XCSourceFile;
+@class XCBuildConfigurationList;
 
 /**
 * Represents a target in an xcode project.
@@ -24,10 +25,12 @@
     NSString* _name;
     NSString* _productName;
     NSString* _productReference;
+	 NSString* _defaultConfigurationName;
 
 @private
     NSMutableArray* _members;
     NSMutableArray* _resources;
+    NSMutableDictionary* _configurations;
 }
 
 @property(nonatomic, strong, readonly) NSString* key;
@@ -41,6 +44,9 @@
 
 - (NSArray*) resources;
 - (NSArray*) members;
+
+- (NSDictionary*) configurations;
+- (XCBuildConfigurationList*)defaultConfiguration;	
 
 - (void) addMember:(XCSourceFile*)member;
 

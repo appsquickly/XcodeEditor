@@ -20,6 +20,7 @@
 @synthesize key = _key;
 @synthesize name = _name;
 @synthesize sourceTree = _sourceTree;
+@synthesize path = _path;
 
 /* ================================================= Class Methods ================================================== */
 + (XCSourceFile*) sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
