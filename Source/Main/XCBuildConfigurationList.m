@@ -44,6 +44,10 @@
 				}
 
 				if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+					path = [[[project filePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:configurationFile.path];
+				}
+
+				if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
 					[NSException raise:@"XCConfig not found" format:@"Unable to find XCConfig file at %@", path];
 				}
 
