@@ -35,8 +35,8 @@
 - (id) initWithName:(NSString*)name content:(NSString*)content {
     self = [super init];
     if (self) {
-        _name = name;
-        _content = content;
+        _name = [name copy];
+        _content = [content copy];
     }
     return self;
 }

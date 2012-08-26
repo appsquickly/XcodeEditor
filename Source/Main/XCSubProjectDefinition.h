@@ -22,10 +22,10 @@
     NSString* _path;
     XcodeSourceFileType _type;
     XCProject* _subProject;
-	XCProject* _parentProject;
+    XCProject* _parentProject;
     NSString* _key;
     NSString* _fullProjectPath;
-	NSString* _relativePath;
+    NSString* _relativePath;
 }
 
 

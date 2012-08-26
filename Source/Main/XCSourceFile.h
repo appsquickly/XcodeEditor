@@ -27,7 +27,7 @@
     NSString* _name;
     NSString* _sourceTree;
     NSString* _key;
-	NSString* _path;
+    NSString* _path;
     XcodeSourceFileType _type;
 }
 

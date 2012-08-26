@@ -37,7 +37,7 @@
     self = [super init];
     if (self) {
         _sourceFileName = [name copy];
-        _data = [[text dataUsingEncoding:NSUTF8StringEncoding] retain];
+        _data = [[text dataUsingEncoding:NSUTF8StringEncoding] copy];
         _type = type;
     }
     return self;

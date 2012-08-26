@@ -221,6 +221,7 @@
 }
 
 - (void) flagMembersAsDirty {
+	[_members release];
     _members = nil;
 }
 

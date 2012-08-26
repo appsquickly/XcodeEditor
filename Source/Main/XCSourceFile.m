@@ -66,12 +66,15 @@
 
 - (BOOL) isBuildFile {
     if ([self canBecomeBuildFile] && _isBuildFile == nil) {
-        _isBuildFile = [NSNumber numberWithBool:NO];
+		id old = _isBuildFile;
+        _isBuildFile = [[NSNumber numberWithBool:NO] copy];
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
-                    _isBuildFile = nil;
-                    _isBuildFile = [NSNumber numberWithBool:YES];
+                    [_isBuildFile release];
+					_isBuildFile = nil;
+
+                    _isBuildFile = [[NSNumber numberWithBool:YES] copy];
                 }
             }
         }];
@@ -108,12 +111,12 @@
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
-                    _buildFileKey = key;
+                    _buildFileKey = [key copy];
                 }
             }
         }];
     }
-    return _buildFileKey;
+    return [[_buildFileKey copy] autorelease];
 
 }
 

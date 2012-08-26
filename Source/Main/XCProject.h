@@ -35,7 +35,7 @@
     NSMutableDictionary* _configurations;
 
 	 NSString* _defaultConfigurationName;
-	 NSString *_rootObjectKey;
+	 NSString* _rootObjectKey;
 }
 
 @property(nonatomic, strong, readonly) XCFileOperationQueue* fileOperationQueue;

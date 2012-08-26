@@ -95,9 +95,9 @@
     if (_key == nil) {
         NSArray* xcodeprojKeys = [_parentProject keysForProjectObjectsOfType:PBXFileReference
                 withIdentifier:[self pathRelativeToProjectRoot] singleton:YES required:YES];
-        _key = [xcodeprojKeys objectAtIndex:0];
+        _key = [[xcodeprojKeys objectAtIndex:0] copy];
     }
-    return _key;
+    return [[_key copy] autorelease];
 }
 
 - (void) initFullProjectPath:(NSString*)fullProjectPath groupPath:(NSString*)groupPath {
@@ -106,7 +106,7 @@
         [fullPathComponents removeLastObject];
         fullProjectPath = [[NSString pathWithComponents:fullPathComponents] stringByAppendingFormat:@"/%@", groupPath];
     }
-    _fullProjectPath = fullProjectPath;
+    _fullProjectPath = [fullProjectPath copy];
 
 }
 
@@ -144,7 +144,7 @@
         }
         _relativePath = [[convertedPath stringByAppendingString:[objectPathComponents lastObject]] copy];
     }
-    return _relativePath;
+    return [[_relativePath copy] autorelease];
 }
 
 
