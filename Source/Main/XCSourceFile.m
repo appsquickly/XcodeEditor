@@ -78,6 +78,7 @@
                 }
             }
         }];
+        [old release];
     }
     return [_isBuildFile boolValue];
 }
