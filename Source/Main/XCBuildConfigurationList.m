@@ -107,12 +107,12 @@
 
         for (NSString *setting in [contents componentsSeparatedByString:@"\n"]) {
 			// rudimentary #include support
-			NSString *setting = [setting stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+			NSString *workingSetting = [setting stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
-            NSRange range = [setting rangeOfString:@"#include" options:NSAnchoredSearch range:NSMakeRange(0, setting.length)];
+            NSRange range = [workingSetting rangeOfString:@"#include" options:NSAnchoredSearch range:NSMakeRange(0, setting.length)];
 
             if (range.location != NSNotFound) {
-                setting = [setting substringFromIndex:@"#include \"".length];
+                workingSetting = [workingSetting substringFromIndex:@"#include \"".length];
 
                 [self addXCConfigAtPath:[setting substringToIndex:(setting.length - 1)]];
             } else {
