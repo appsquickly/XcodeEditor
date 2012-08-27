@@ -52,7 +52,7 @@
         if (!_dataStore) {
             [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
         }
-		
+        
         _fileOperationQueue =
                 [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
 
@@ -63,15 +63,15 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
-	[_filePath release];
-	[_fileOperationQueue release];
-	[_dataStore release];
-	[_targets release];
-	[_groups release];
-	[_rootObjectKey release];
-	[_defaultConfigurationName release];
+    [_filePath release];
+    [_fileOperationQueue release];
+    [_dataStore release];
+    [_targets release];
+    [_groups release];
+    [_rootObjectKey release];
+    [_defaultConfigurationName release];
 
-	[super dealloc];
+    [super dealloc];
 }
 
 /* ================================================ Interface Methods =============================================== */
@@ -171,27 +171,27 @@
 }
 
 - (NSArray*) rootGroups {
-	XCGroup *group = [self rootGroup];
-	if (group) {
-		return [NSArray arrayWithObject:group];
-	}
+    XCGroup *group = [self rootGroup];
+    if (group) {
+        return [NSArray arrayWithObject:group];
+    }
 
-	NSMutableArray *results = [NSMutableArray array];
+    NSMutableArray *results = [NSMutableArray array];
     for (XCGroup* group in [self groups]) {
         if ([group parentGroup] == nil) {
             [results addObject:group];
         }
     }
 
-	return [[results copy] autorelease];
+    return [[results copy] autorelease];
 }
 
 - (XCGroup*) groupWithKey:(NSString*)key {
-	XCGroup *group = [_groups objectForKey:key];
-	if (group)
-		return [[group retain] autorelease];
+    XCGroup *group = [_groups objectForKey:key];
+    if (group)
+        return [[group retain] autorelease];
 
-    NSDictionary* obj = [[self objects] valueForKey:key];
+    NSDictionary* obj = [[self objects] objectForKey:key];
     if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
 
         NSString* name = [obj valueForKey:@"name"];
@@ -199,7 +199,7 @@
         NSArray* children = [obj valueForKey:@"children"];
         XCGroup *group = [XCGroup groupWithProject:self key:key alias:name path:path children:children];
 
-		[_groups setObject:group forKey:key];
+        [_groups setObject:group forKey:key];
 
         return group;
     }
@@ -209,21 +209,21 @@
 - (XCGroup*) groupForGroupMemberWithKey:(NSString*)key {
     for (XCGroup* group in [self groups]) {
         if ([group memberWithKey:key]) {
-            return group;
+            return [[group retain] autorelease];
         }
     }
     return nil;
 }
 
 - (XCGroup*) groupWithSourceFile:(XCSourceFile*)sourceFile {
-	for (XCGroup *group in [self groups]) {
-		for (id<XcodeGroupMember> member in [group members]) {
-			if ([member isKindOfClass:[XCSourceFile class]] && [[sourceFile key] isEqualToString:[member key]]) {
-				return group;
-			}
-		}
-	}
-	return nil;
+    for (XCGroup *group in [self groups]) {
+        for (id<XcodeGroupMember> member in [group members]) {
+            if ([member isKindOfClass:[XCSourceFile class]] && [[sourceFile key] isEqualToString:[member key]]) {
+                return group;
+            }
+        }
+    }
+    return nil;
 }
 //TODO: This could fail if the path attribute on a given group is more than one directory. Start with candidates and
 //TODO: search backwards.
@@ -281,33 +281,33 @@
 
 
 - (NSDictionary*) configurations {
-	if (_configurations == nil) {
-		NSString *buildConfigurationRootSectionKey = [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
-		NSDictionary *buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
-		_configurations = [[XCBuildConfigurationList buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"] inProject:self] mutableCopy];
-		_defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
-	}
+    if (_configurations == nil) {
+        NSString *buildConfigurationRootSectionKey = [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
+        NSDictionary *buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
+        _configurations = [[XCBuildConfigurationList buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"] inProject:self] mutableCopy];
+        _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
+    }
 
-	return [[_configurations copy] autorelease];
+    return [[_configurations copy] autorelease];
 }
 
 - (NSDictionary*) configurationWithName:(NSString*)name {
-	return [[self configurations] objectForKey:name];
+    return [[self configurations] objectForKey:name];
 }
 
 - (XCBuildConfigurationList*)defaultConfiguration {
-	return [[self configurations] objectForKey:_defaultConfigurationName];
+    return [[self configurations] objectForKey:_defaultConfigurationName];
 }
 
 /* ================================================== Private Methods =============================================== */
 #pragma mark Private
 
 - (NSString*) rootObjectKey {
-	if (_rootObjectKey == nil) {
-		_rootObjectKey = [[_dataStore objectForKey:@"rootObject"] copy];;
-	}
+    if (_rootObjectKey == nil) {
+        _rootObjectKey = [[_dataStore objectForKey:@"rootObject"] copy];;
+    }
 
-	return _rootObjectKey;
+    return _rootObjectKey;
 }
 
 - (NSArray*) projectFilesOfType:(XcodeSourceFileType)projectFileType {

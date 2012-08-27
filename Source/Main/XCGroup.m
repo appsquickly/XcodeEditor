@@ -431,12 +431,14 @@
 - (NSString*) pathRelativeToProjectRoot {
     if (_pathRelativeToProjectRoot == nil) {
         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-        XCGroup* group;
+        XCGroup* group = nil;
         NSString* key = [_key copy];
 
         while ((group = [_project groupForGroupMemberWithKey:key]) != nil && !([group pathRelativeToParent] == nil)) {
             [pathComponents addObject:[group pathRelativeToParent]];
-            key = [group key];
+            id old = key;
+            key = [[group key] copy];
+            [old release];
         }
 
         NSMutableString* fullPath = [[NSMutableString alloc] init];
@@ -445,9 +447,9 @@
         }
         _pathRelativeToProjectRoot = [[fullPath stringByAppendingPathComponent:_pathRelativeToParent] copy];
 
-		[fullPath release];
-		[pathComponents release];
-		[key release];
+        [fullPath release];
+        [pathComponents release];
+        [key release];
     }
     return _pathRelativeToProjectRoot;
 }
@@ -472,7 +474,7 @@
 }
 
 - (void) flagMembersAsDirty {
-	[_members release];
+    [_members release];
     _members = nil;
 }
 
