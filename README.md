@@ -152,6 +152,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 
 * Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode. 
 * The AppCode IDE from JetBrains is now supported too! 
+* Supports both ARC and MRR modes of memory management.
 
 # Who's using it? 
 
