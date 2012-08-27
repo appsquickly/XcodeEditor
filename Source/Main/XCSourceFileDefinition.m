@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCSourceFileDefinition.h"
-
+#import "Utils/XCMemoryUtils.h"
 
 @implementation XCSourceFileDefinition
 
@@ -22,13 +22,13 @@
 + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
         type:(XcodeSourceFileType)type {
 
-    return [[[XCSourceFileDefinition alloc] initWithName:name text:text type:type] autorelease];
+    return XCAutorelease([[XCSourceFileDefinition alloc] initWithName:name text:text type:type])
 }
 
 + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
         type:(XcodeSourceFileType)type {
 
-    return [[[XCSourceFileDefinition alloc] initWithName:name data:data type:type] autorelease];
+    return XCAutorelease([[XCSourceFileDefinition alloc] initWithName:name data:data type:type])
 }
 
 
@@ -57,9 +57,9 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
-	[_sourceFileName release];
-	[_data release];
+	XCRelease(_sourceFileName)
+	XCRelease(_data)
 
-	[super dealloc];
+	XCSuperDealloc
 }
 @end

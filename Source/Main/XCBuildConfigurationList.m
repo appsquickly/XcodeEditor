@@ -13,6 +13,7 @@
 #import "XCGroup.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
+#import "Utils/XCMemoryUtils.h"
 
 @implementation XCBuildConfigurationList
 + (NSDictionary *) buildConfigurationsFromDictionary:(NSDictionary *) dictionary inProject:(XCProject *) project {
@@ -74,10 +75,10 @@
 }
 
 - (void) dealloc {
-    [_buildSettings release];
-	[_xcconfigSettings release];
+    XCRelease(_buildSettings)
+	XCRelease(_xcconfigSettings)
 
-    [super dealloc];
+	XCSuperDealloc
 }
 
 #pragma mark -
@@ -87,13 +88,13 @@
 
 	[description appendFormat:@"build settings: %@, inherited: %@", _buildSettings, _xcconfigSettings];
 
-	return [description autorelease];
+	return XCAutorelease(description);
 }
 
 #pragma mark -
 
 - (NSDictionary *) specifiedBuildSettings {
-	return [[_buildSettings copy] autorelease];
+	return XCAutorelease([_buildSettings copy])
 }
 
 #pragma mark -
@@ -106,7 +107,7 @@
 
         for (NSString *setting in [contents componentsSeparatedByString:@"\n"]) {
 			// rudimentary #include support
-            setting = [setting stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+			NSString *setting = [setting stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
             NSRange range = [setting rangeOfString:@"#include" options:NSAnchoredSearch range:NSMakeRange(0, setting.length)];
 

@@ -15,6 +15,7 @@
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
 #import "XCBuildConfigurationList.h"
+#import "Utils/XCMemoryUtils.h"
 
 
 /* ================================================================================================================== */
@@ -38,7 +39,7 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XCProject*) projectWithFilePath:(NSString*)filePath {
-    return [[[XCProject alloc] initWithFilePath:filePath] autorelease];
+    return XCAutorelease([[XCProject alloc] initWithFilePath:filePath])
 }
 
 
@@ -63,15 +64,15 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
-    [_filePath release];
-    [_fileOperationQueue release];
-    [_dataStore release];
-    [_targets release];
-    [_groups release];
-    [_rootObjectKey release];
-    [_defaultConfigurationName release];
+    XCRelease(_filePath)
+    XCRelease(_fileOperationQueue)
+    XCRelease(_dataStore)
+    XCRelease(_targets)
+    XCRelease(_groups)
+    XCRelease(_rootObjectKey)
+    XCRelease(_defaultConfigurationName)
 
-    [super dealloc];
+	XCSuperDealloc
 }
 
 /* ================================================ Interface Methods =============================================== */
@@ -157,7 +158,7 @@
             [results addObject:[self groupWithKey:key]];
         }
     }];
-    return [results autorelease];
+    return XCAutorelease(results)
 }
 
 //TODO: Optimize this implementation.
@@ -183,13 +184,13 @@
         }
     }
 
-    return [[results copy] autorelease];
+    return XCAutorelease([results copy])
 }
 
 - (XCGroup*) groupWithKey:(NSString*)key {
     XCGroup *group = [_groups objectForKey:key];
     if (group)
-        return [[group retain] autorelease];
+        return XCRetainAutorelease(group)
 
     NSDictionary* obj = [[self objects] objectForKey:key];
     if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXGroup) {
@@ -209,7 +210,7 @@
 - (XCGroup*) groupForGroupMemberWithKey:(NSString*)key {
     for (XCGroup* group in [self groups]) {
         if ([group memberWithKey:key]) {
-            return [[group retain] autorelease];
+            return XCRetainAutorelease(group)
         }
     }
     return nil;
@@ -288,7 +289,7 @@
         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
     }
 
-    return [[_configurations copy] autorelease];
+    return XCAutorelease([_configurations copy])
 }
 
 - (NSDictionary*) configurationWithName:(NSString*)name {

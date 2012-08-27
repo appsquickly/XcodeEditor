@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCFileOperationQueue.h"
+#import "Utils/XCMemoryUtils.h"
 
 @interface XCFileOperationQueue ()
 
@@ -43,13 +44,13 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
-	[_baseDirectory release];
-    [_filesToWrite release];
-    [_frameworksToCopy release];
-    [_filesToDelete release];
-    [_directoriesToCreate release];
+	XCRelease(_baseDirectory)
+    XCRelease(_filesToWrite)
+    XCRelease(_frameworksToCopy)
+    XCRelease(_filesToDelete)
+    XCRelease(_directoriesToCreate)
 
-	[super dealloc];
+	XCSuperDealloc
 }
 /* ================================================ Interface Methods =============================================== */
 - (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory {

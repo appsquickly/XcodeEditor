@@ -13,6 +13,7 @@
 #import "XCSourceFile.h"
 #import "XCProject.h"
 #import "XCBuildConfigurationList.h"
+#import "Utils/XCMemoryUtils.h"
 
 /* ================================================================================================================== */
 @interface XCTarget ()
@@ -34,8 +35,8 @@
 /* ================================================= Class Methods ================================================== */
 + (XCTarget*) targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name
         productName:(NSString*)productName productReference:(NSString*)productReference {
-    return [[[XCTarget alloc]
-            initWithProject:project key:key name:name productName:productName productReference:productReference] autorelease];
+    return XCAutorelease([[XCTarget alloc]
+            initWithProject:project key:key name:name productName:productName productReference:productReference])
 }
 
 
@@ -44,7 +45,7 @@
         productReference:(NSString*)productReference {
     self = [super init];
     if (self) {
-        _project = [project retain];
+        _project = XCRetain(project)
         _key = [key copy];
         _name = [name copy];
         _productName = [productName copy];
@@ -73,16 +74,16 @@
 
 /* ================================================== Deallocation ================================================== */
 - (void) dealloc {
-	[_project release];
-	[_key release];
-	[_name release];
-	[_productName release];
-	[_productReference release];
-	[_members release];
-	[_resources release];
-	[_defaultConfigurationName release];
+	XCRelease(_project)
+	XCRelease(_key)
+	XCRelease(_name)
+	XCRelease(_productName)
+	XCRelease(_productReference)
+	XCRelease(_members)
+	XCRelease(_resources)
+	XCRelease(_defaultConfigurationName)
 
-	[super dealloc];
+	XCSuperDealloc
 }
 
 /* ================================================ Interface Methods =============================================== */
@@ -94,7 +95,7 @@
 		_defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
 	}
 
-	return [[_configurations copy] autorelease];
+	return XCAutorelease([_configurations copy])
 }
 
 - (XCBuildConfigurationList*)defaultConfiguration {
@@ -221,7 +222,7 @@
 }
 
 - (void) flagMembersAsDirty {
-	[_members release];
+	XCRelease(_members)
     _members = nil;
 }
 
