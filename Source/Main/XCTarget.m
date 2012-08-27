@@ -69,6 +69,7 @@
             }
         }
     }
+
     return _resources;
 }
 

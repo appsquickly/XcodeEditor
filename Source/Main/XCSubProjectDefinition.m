@@ -124,9 +124,9 @@
         NSString* convertedPath = @"";
 
         // skip over path components from root that are equal
-        int limit = ([projectPathComponents count] < [objectPathComponents count]) ? [projectPathComponents count] :
+        NSInteger limit = ([projectPathComponents count] < [objectPathComponents count]) ? [projectPathComponents count] :
                     [objectPathComponents count];
-        int index1 = 0;
+        NSInteger index1 = 0;
         for (; index1 < limit; index1++) {
             if ([[projectPathComponents objectAtIndex:index1]
                     isEqualToString:[objectPathComponents objectAtIndex:index1]]) {
@@ -137,11 +137,11 @@
             }
         }
         // insert "../" for each remaining path component in project's xcodeproj path
-        for (int index2 = 0; index2 < ([projectPathComponents count] - index1); index2++) {
+        for (NSInteger index2 = 0; index2 < ([projectPathComponents count] - index1); index2++) {
             convertedPath = [convertedPath stringByAppendingString:@"../"];
         }
         // tack on the unique part of the object's path
-        for (int index3 = index1; index3 < [objectPathComponents count] - 1; index3++) {
+        for (NSInteger index3 = index1; index3 < [objectPathComponents count] - 1; index3++) {
             convertedPath = [convertedPath stringByAppendingFormat:@"%@/", [objectPathComponents objectAtIndex:index3]];
         }
         _relativePath = [[convertedPath stringByAppendingString:[objectPathComponents lastObject]] copy];
