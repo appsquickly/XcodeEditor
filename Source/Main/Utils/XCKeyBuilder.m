@@ -10,13 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCKeyBuilder.h"
+#import "XCMemoryUtils.h"
 
 @implementation XCKeyBuilder
 
 /* ================================================= Class Methods ================================================== */
 + (XCKeyBuilder*) forItemNamed:(NSString*)name {
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
-    return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];
+    return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]);
 
 }
 

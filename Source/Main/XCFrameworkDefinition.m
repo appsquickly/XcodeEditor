@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 #import "XCFrameworkDefinition.h"
-
+#import "Utils/XCMemoryUtils.h"
 
 @implementation XCFrameworkDefinition
 
@@ -20,7 +20,7 @@
 + (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
         copyToDestination:(BOOL)copyToDestination {
 
-    return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
+    return XCAutorelease([[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination])
 }
 
 
@@ -40,5 +40,10 @@
 }
 
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	XCRelease(_filePath)
 
+	XCSuperDealloc
+}
 @end

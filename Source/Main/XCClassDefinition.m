@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCClassDefinition.h"
+#import "Utils/XCMemoryUtils.h"
 
 @implementation XCClassDefinition
 
@@ -20,11 +21,11 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XCClassDefinition*) classDefinitionWithName:(NSString*)fileName {
-    return [[XCClassDefinition alloc] initWithName:fileName];
+    return XCAutorelease([[XCClassDefinition alloc] initWithName:fileName])
 }
 
 + (XCClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language {
-    return [[XCClassDefinition alloc] initWithName:className language:language];
+    return XCAutorelease([[XCClassDefinition alloc] initWithName:className language:language])
 }
 
 
@@ -46,6 +47,14 @@
     return self;
 }
 
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+    XCRelease(_className)
+    XCRelease(_header)
+    XCRelease(_source)
+
+	XCSuperDealloc
+}
 
 /* ================================================ Interface Methods =============================================== */
 - (BOOL) isObjectiveC {

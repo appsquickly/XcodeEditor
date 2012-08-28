@@ -11,7 +11,7 @@
 
 #import "XCSourceFile.h"
 #import "XCTarget.h"
-#import "XCKeyBuilder.h"
+#import "Utils/XCKeyBuilder.h"
 #import "XCProject+SubProject.h"
 #import "XCSubProjectDefinition.h"
 
@@ -52,7 +52,7 @@
                 NSString* path = (NSString*) [obj valueForKey:@"path"];
                 if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"]) {
                     [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:type name:path
-                                               sourceTree:nil]];
+                                               sourceTree:nil path:nil]];
                 }
             }
         }
@@ -152,7 +152,7 @@
 
 // returns the key of the PBXContainerItemProxy for the given name and proxy type. nil if not found.
 - (NSString*) containerItemProxyKeyForName:(NSString*)name proxyType:(NSString*)proxyType {
-    NSMutableArray* results;
+    NSMutableArray* results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXContainerItemProxy) {
             NSString* remoteInfo = [obj valueForKey:@"remoteInfo"];
@@ -275,7 +275,7 @@
 // remove the PBXContainerItemProxy and PBXReferenceProxy objects for the given object key (which is the PBXFilereference
 // for the xcodeproj file)
 - (void) removeProxies:(NSString*)xcodeprojKey {
-    NSMutableArray* keysToDelete = [[NSMutableArray alloc] init];
+    NSMutableArray* keysToDelete = [NSMutableArray array];
     // use the xcodeproj's PBXFileReference key to get the PBXContainerItemProxy keys
     NSArray* containerItemProxyKeys =
             [self keysForProjectObjectsOfType:PBXContainerItemProxy withIdentifier:xcodeprojKey singleton:NO
@@ -313,7 +313,7 @@
 - (void) removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey {
     NSMutableArray* projectReferences = [[self PBXProjectDict] valueForKey:@"projectReferences"];
     // remove entry from PBXProject's projectReferences
-    NSMutableArray* referencesToRemove = [[NSMutableArray alloc] init];
+    NSMutableArray* referencesToRemove = [NSMutableArray array];
     for (NSDictionary* projectRef in projectReferences) {
         if ([[projectRef valueForKey:@"ProjectRef"] isEqualToString:key]) {
             [referencesToRemove addObject:projectRef];

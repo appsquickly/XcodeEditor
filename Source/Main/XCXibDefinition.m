@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 #import "XCXibDefinition.h"
-
+#import "Utils/XCMemoryUtils.h"
 
 @implementation XCXibDefinition
 
@@ -18,11 +18,11 @@
 
 /* ================================================= Class Methods ================================================== */
 + (XCXibDefinition*) xibDefinitionWithName:(NSString*)name {
-    return [[XCXibDefinition alloc] initWithName:name];
+    return XCAutorelease([[XCXibDefinition alloc] initWithName:name])
 }
 
 + (XCXibDefinition*) xibDefinitionWithName:(NSString*)name content:(NSString*)content {
-    return [[XCXibDefinition alloc] initWithName:name content:content];
+    return XCAutorelease([[XCXibDefinition alloc] initWithName:name content:content])
 }
 
 
@@ -35,10 +35,18 @@
 - (id) initWithName:(NSString*)name content:(NSString*)content {
     self = [super init];
     if (self) {
-        _name = name;
-        _content = content;
+        _name = [name copy];
+        _content = [content copy];
     }
     return self;
+}
+
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	XCRelease(_name)
+	XCRelease(_content)
+
+	XCSuperDealloc
 }
 
 /* ================================================ Interface Methods =============================================== */

@@ -38,8 +38,8 @@
     NSMutableArray* _children;
     NSMutableArray* _members;
 
-    __weak XCFileOperationQueue* _fileOperationQueue;
-    __weak XCProject* _project;
+    XCFileOperationQueue* _fileOperationQueue; // weak
+    XCProject* _project;
 
 }
 

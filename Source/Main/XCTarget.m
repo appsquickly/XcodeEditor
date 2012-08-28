@@ -12,7 +12,8 @@
 #import "XCTarget.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "OCLogTemplate.h"
+#import "XCBuildConfigurationList.h"
+#import "Utils/XCMemoryUtils.h"
 
 /* ================================================================================================================== */
 @interface XCTarget ()
@@ -34,8 +35,8 @@
 /* ================================================= Class Methods ================================================== */
 + (XCTarget*) targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name
         productName:(NSString*)productName productReference:(NSString*)productReference {
-    return [[XCTarget alloc]
-            initWithProject:project key:key name:name productName:productName productReference:productReference];
+    return XCAutorelease([[XCTarget alloc]
+            initWithProject:project key:key name:name productName:productName productReference:productReference])
 }
 
 
@@ -44,8 +45,8 @@
         productReference:(NSString*)productReference {
     self = [super init];
     if (self) {
-        _project = project;
-        _key = key;
+        _project = XCRetain(project)
+        _key = [key copy];
         _name = [name copy];
         _productName = [productName copy];
         _productReference = [productReference copy];
@@ -68,11 +69,40 @@
             }
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [_resources sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+
+    return _resources;
+}
+
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	XCRelease(_project)
+	XCRelease(_key)
+	XCRelease(_name)
+	XCRelease(_productName)
+	XCRelease(_productReference)
+	XCRelease(_members)
+	XCRelease(_resources)
+	XCRelease(_defaultConfigurationName)
+
+	XCSuperDealloc
 }
 
 /* ================================================ Interface Methods =============================================== */
+- (NSArray *) configurations {
+	if (_configurations == nil) {
+		NSString *buildConfigurationRootSectionKey = [[[_project objects] objectForKey:_key] objectForKey:@"buildConfigurationList"];
+		NSDictionary *buildConfigurationDictionary = [[_project objects] objectForKey:buildConfigurationRootSectionKey];
+		_configurations = [[XCBuildConfigurationList buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"] inProject:_project] mutableCopy];
+		_defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
+	}
+
+	return XCAutorelease([_configurations copy])
+}
+
+- (XCBuildConfigurationList*)defaultConfiguration {
+	return [[self configurations] objectForKey:_defaultConfigurationName];
+}
+
 - (NSArray*) members {
     if (_members == nil) {
         _members = [[NSMutableArray alloc] init];
@@ -81,7 +111,7 @@
             if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase ||
                     [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhase) {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    XCSourceFile* targetMember = [_project fileWithKey:buildFileKey];
                     if (targetMember) {
                         [_members addObject:[self buildFileWithKey:buildFileKey]];
                     }
@@ -89,12 +119,10 @@
             }
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+    return _members;
 }
 
 - (void) addMember:(XCSourceFile*)member {
-    LogDebug(@"$$$$$$$$$$$$$$$$$$$$$$$$ start adding member: %@", member);
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
 
@@ -105,9 +133,6 @@
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
             if (![files containsObject:[member buildFileKey]]) {
                 [files addObject:[member buildFileKey]];
-            }
-            else {
-                LogInfo(@"***WARNING*** Target %@ already includes %@", [self name], [member name]);
             }
 
             [buildPhase setObject:files forKey:@"files"];
@@ -198,6 +223,7 @@
 }
 
 - (void) flagMembersAsDirty {
+	XCRelease(_members)
     _members = nil;
 }
 

@@ -11,9 +11,9 @@
 
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "XCKeyBuilder.h"
+#import "Utils/XCKeyBuilder.h"
+#import "Utils/XCMemoryUtils.h"
 #import "XCGroup.h"
-#import "OCLogTemplate.h"
 
 @implementation XCSourceFile
 
@@ -21,11 +21,12 @@
 @synthesize key = _key;
 @synthesize name = _name;
 @synthesize sourceTree = _sourceTree;
+@synthesize path = _path;
 
 /* ================================================= Class Methods ================================================== */
 + (XCSourceFile*) sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
-        name:(NSString*)name sourceTree:(NSString*)_tree {
-    return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];
+        name:(NSString*)name sourceTree:(NSString*)_tree path:(NSString*)path {
+    return XCAutorelease([[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path])
 }
 
 
@@ -34,32 +35,51 @@
         key:(NSString*)key
         type:(XcodeSourceFileType)type
         name:(NSString*)name
-        sourceTree:(NSString*)tree {
+        sourceTree:(NSString*)tree
+        path:(NSString*)path {
 
     self = [super init];
     if (self) {
-        _project = project;
+        _project = XCRetain(project)
         _key = [key copy];
         _type = type;
         _name = [name copy];
         _sourceTree = [tree copy];
+		_path = [path copy];
     }
     return self;
+}
+
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+	XCRelease(_project)
+	XCRelease(_key)
+	XCRelease(_name)
+	XCRelease(_sourceTree)
+	XCRelease(_path)
+	XCRelease(_buildFileKey)
+	XCRelease(_isBuildFile)
+
+	XCSuperDealloc
 }
 
 /* ================================================ Interface Methods =============================================== */
 
 - (BOOL) isBuildFile {
     if ([self canBecomeBuildFile] && _isBuildFile == nil) {
-        _isBuildFile = [NSNumber numberWithBool:NO];
+		id old = _isBuildFile;
+        _isBuildFile = [[NSNumber numberWithBool:NO] copy];
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
-                    _isBuildFile = nil;
-                    _isBuildFile = [NSNumber numberWithBool:YES];
+                    XCRelease(_isBuildFile)
+					_isBuildFile = nil;
+
+                    _isBuildFile = [[NSNumber numberWithBool:YES] copy];
                 }
             }
         }];
+        XCRelease(old)
     }
     return [_isBuildFile boolValue];
 }
@@ -93,12 +113,12 @@
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
-                    _buildFileKey = key;
+                    _buildFileKey = [key copy];
                 }
             }
         }];
     }
-    return _buildFileKey;
+    return XCAutorelease([_buildFileKey copy])
 
 }
 
@@ -133,15 +153,15 @@
 }
 
 - (NSString*) pathRelativeToProjectRoot {
+	if (_path) {
+		return _path;
+	}
     if ([self.sourceTree isEqualToString:@"SOURCE_ROOT"]) {
         return _name;
     }
-    else {
-        NSString* parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
-        NSString* result = [parentPath stringByAppendingPathComponent:_name];
-        LogDebug(@"%@ -> %@ -> %@", _name, parentPath, result);
-        return result;
-    }
+    NSString* parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
+    NSString* result = [parentPath stringByAppendingPathComponent:_name];
+    return result;
 }
 
 /* ================================================== Utility Methods =============================================== */

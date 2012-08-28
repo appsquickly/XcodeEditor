@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XcodeSourceFileType.h"
-#import "XCEnumUtils.h"
+#import "Utils/XCEnumUtils.h"
 
 
 @implementation NSDictionary (XcodeFileType)

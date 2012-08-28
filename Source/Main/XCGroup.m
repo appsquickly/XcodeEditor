@@ -17,11 +17,11 @@
 #import "XCGroup.h"
 #import "XCProject.h"
 #import "XCClassDefinition.h"
-#import "XCKeyBuilder.h"
+#import "Utils/XCKeyBuilder.h"
+#import "Utils/XCMemoryUtils.h"
 #import "XCSourceFileDefinition.h"
 #import "XCSubProjectDefinition.h"
 #import "XCProject+SubProject.h"
-#import "OCLogTemplate.h"
 
 
 /* ================================================================================================================== */
@@ -69,7 +69,7 @@
 + (XCGroup*) groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
         children:(NSArray*)children {
 
-    return [[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children];
+    return XCAutorelease([[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children])
 }
 
 /* ================================================== Initializers ================================================== */
@@ -77,16 +77,27 @@
         children:(NSArray*)children {
     self = [super init];
     if (self) {
-        _project = project;
+        _project = XCRetain(project)
         _fileOperationQueue = [_project fileOperationQueue];
         _key = [key copy];
         _alias = [alias copy];
         _pathRelativeToParent = [path copy];
-
-        _children = [[NSMutableArray alloc] init];
-        [_children addObjectsFromArray:children];
+        _children = [children mutableCopy];
     }
     return self;
+}
+
+/* ================================================== Deallocation ================================================== */
+- (void) dealloc {
+    XCRelease(_project)
+    XCRelease(_pathRelativeToParent)
+    XCRelease(_key)
+    XCRelease(_alias)
+    XCRelease(_pathRelativeToProjectRoot)
+    XCRelease(_children)
+    XCRelease(_members)
+
+	XCSuperDealloc
 }
 
 /* ================================================ Interface Methods =============================================== */
@@ -98,15 +109,11 @@
 
 
 - (void) removeFromParentGroup:(BOOL)deleteChildren {
-    LogDebug(@"Removing group %@", [self pathRelativeToProjectRoot]);
     if (deleteChildren) {
-        LogDebug(@"Deleting children");
         for (id<XcodeGroupMember> groupMember in [self members]) {
             if ([groupMember groupMemberType] == PBXGroup) {
                 XCGroup* group = (XCGroup*) groupMember;
                 [group removeFromParentGroup:YES];
-                LogDebug(@"My full path is : %@", [group pathRelativeToProjectRoot]);
-
             }
             else {
                 [_fileOperationQueue queueDeletion:[groupMember pathRelativeToProjectRoot]];
@@ -160,10 +167,8 @@
 
 - (void) addFramework:(XCFrameworkDefinition*)frameworkDefinition {
     if (([self memberWithDisplayName:[frameworkDefinition name]]) == nil) {
-        LogDebug(@"Here we go!!!!");
         NSDictionary* fileReference;
         if ([frameworkDefinition copyToDestination]) {
-            LogDebug(@"Making file reference");
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
             BOOL copyFramework = NO;
             if ([frameworkDefinition fileOperationStyle] == FileOperationStyleOverwrite) {
@@ -187,7 +192,6 @@
             NSString* name = [frameworkDefinition name];
             fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
         }
-        LogDebug(@"Make framework key");
         NSString* frameworkKey = [[XCKeyBuilder forItemNamed:[frameworkDefinition name]] build];
         [[_project objects] setObject:fileReference forKey:frameworkKey];
         [self addMemberWithKey:frameworkKey];
@@ -226,7 +230,7 @@
     NSDictionary* dict = [self asDictionary];
     [[_project objects] setObject:dict forKey:_key];
 
-    return group;
+    return XCAutorelease(group)
 }
 
 - (void) addSourceFile:(XCSourceFileDefinition*)sourceFileDefinition {
@@ -355,8 +359,7 @@
             }
         }
     }
-    NSSortDescriptor* sorter = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
-    return [_members sortedArrayUsingDescriptors:[NSArray arrayWithObject:sorter]];
+    return _members;
 }
 
 - (NSArray*) recursiveMembers {
@@ -421,30 +424,33 @@
 }
 
 - (NSString*) displayName {
-    if (_pathRelativeToParent == nil) {
+    if (_alias)
         return _alias;
-    }
-    else {
-        return [_pathRelativeToParent lastPathComponent];
-    }
+    return [_pathRelativeToParent lastPathComponent];
 }
 
 - (NSString*) pathRelativeToProjectRoot {
     if (_pathRelativeToProjectRoot == nil) {
         NSMutableArray* pathComponents = [[NSMutableArray alloc] init];
-        XCGroup* group;
-        NSString* key = _key;
+        XCGroup* group = nil;
+        NSString* key = [_key copy];
 
         while ((group = [_project groupForGroupMemberWithKey:key]) != nil && !([group pathRelativeToParent] == nil)) {
             [pathComponents addObject:[group pathRelativeToParent]];
-            key = [group key];
+            id old = key;
+            key = [[group key] copy];
+            XCRelease(old)
         }
 
         NSMutableString* fullPath = [[NSMutableString alloc] init];
         for (NSInteger i = (NSInteger)[pathComponents count] - 1; i >= 0; i--) {
             [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
         }
-        _pathRelativeToProjectRoot = [fullPath stringByAppendingPathComponent:_pathRelativeToParent];
+        _pathRelativeToProjectRoot = [[fullPath stringByAppendingPathComponent:_pathRelativeToParent] copy];
+
+        XCRelease(fullPath)
+        XCRelease(pathComponents)
+        XCRelease(key)
     }
     return _pathRelativeToProjectRoot;
 }
@@ -469,6 +475,7 @@
 }
 
 - (void) flagMembersAsDirty {
+    XCRelease(_members)
     _members = nil;
 }
 
@@ -493,9 +500,7 @@
     BOOL writeFile = NO;
     if (fileOperationStyle == FileOperationStyleOverwrite) {
         writeFile = YES;
-        if ([_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {
-            LogInfo(@"*** WARNING *** Group %@ already contains member with name %@. Contents will be updated", [self displayName], name);
-        }
+        [_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath];
     }
     else if (fileOperationStyle == FileOperationStyleAcceptExisting &&
             ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath]) {
@@ -530,8 +535,8 @@
 
 // makes a new group called Products and returns its key
 - (NSString*) makeProductsGroup:(XCSubProjectDefinition*)xcodeprojDefinition {
-    NSMutableArray* children = [[NSMutableArray alloc] init];
-    NSString* uniquer = [[NSString alloc] init];
+    NSMutableArray* children = [NSMutableArray array];
+    NSString* uniquer = @"";
     for (NSString* productName in [xcodeprojDefinition buildProductNames]) {
         [children addObject:[_project referenceProxyKeyForName:productName]];
         uniquer = [uniquer stringByAppendingString:productName];
@@ -551,13 +556,13 @@
     NSMutableDictionary* PBXProjectDict = [_project PBXProjectDict];
     NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
 
-    NSMutableDictionary* newProjectReference = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* newProjectReference = [NSMutableDictionary dictionary];
     [newProjectReference setObject:productKey forKey:@"ProductGroup"];
     NSString* projectFileKey = [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
     [newProjectReference setObject:projectFileKey forKey:@"ProjectRef"];
 
     if (projectReferences == nil) {
-        projectReferences = [[NSMutableArray alloc] init];
+        projectReferences = [NSMutableArray array];
     }
     [projectReferences addObject:newProjectReference];
     [PBXProjectDict setObject:projectReferences forKey:@"projectReferences"];
@@ -629,7 +634,7 @@
 
 
 - (NSDictionary*) asDictionary {
-    NSMutableDictionary* groupData = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* groupData = [NSMutableDictionary dictionary];
     [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@"isa"];
     [groupData setObject:@"<group>" forKey:@"sourceTree"];
 
@@ -651,7 +656,6 @@
 }
 
 - (void) addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets {
-    LogDebug(@"Adding source file %@ to targets %@", sourceFile, targets);
     for (XCTarget* target in targets) {
         [target addMember:sourceFile];
     }

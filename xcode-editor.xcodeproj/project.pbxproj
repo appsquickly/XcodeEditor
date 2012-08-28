@@ -77,6 +77,9 @@
 		6BE4B285147E6B610059E460 /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* XCFrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* XCFrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */; };
+		923C35D715DFA9AF001AEE44 /* XCBuildConfigurationList.h in Headers */ = {isa = PBXBuildFile; fileRef = 923C35D515DFA9AF001AEE44 /* XCBuildConfigurationList.h */; };
+		923C35D815DFA9AF001AEE44 /* XCBuildConfigurationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 923C35D615DFA9AF001AEE44 /* XCBuildConfigurationList.m */; };
+		923C35D915DFA9AF001AEE44 /* XCBuildConfigurationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 923C35D615DFA9AF001AEE44 /* XCBuildConfigurationList.m */; };
 		BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
@@ -86,10 +89,10 @@
 		E94DE11415443AC100C5125D /* XCSourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125C /* XCSourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51260 /* XCSubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* XCSubProjectDefinition.m */; };
 		E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51261 /* SubProjectDefinitionSpec.m */; };
-		E94DE11415443AC100C51264 /* PBXBuildFile */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51265 /* PBXBuildFile */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51269 /* PBXBuildFile */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C5126A /* PBXBuildFile */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51264 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51265 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C51269 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		E94DE11415443AC100C5126A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E94DE11415443AC100C5126E /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* XCProject+SubProject.m */; };
 		E94DE11415443AC100C5126F /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* XCProject+SubProject.m */; };
 		E94DE11415443AC100C51271 /* XCProject+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51270 /* XCProject+SubProject.h */; };
@@ -177,6 +180,9 @@
 		6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* XCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFrameworkDefinition.h; sourceTree = "<group>"; };
 		6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
+		923C35D515DFA9AF001AEE44 /* XCBuildConfigurationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildConfigurationList.h; sourceTree = "<group>"; };
+		923C35D615DFA9AF001AEE44 /* XCBuildConfigurationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildConfigurationList.m; sourceTree = "<group>"; };
+		92E640F015EB65500077FD86 /* XCMemoryUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCMemoryUtils.h; sourceTree = "<group>"; };
 		BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
@@ -246,6 +252,8 @@
 				6B3AD01D14F8A3AC00BCFE81 /* XCFileOperationQueue.h */,
 				6B3AD01A14F8A3AC00BCFE81 /* XCClassDefinition.m */,
 				6B3AD01914F8A3AC00BCFE81 /* XCClassDefinition.h */,
+				923C35D615DFA9AF001AEE44 /* XCBuildConfigurationList.m */,
+				923C35D515DFA9AF001AEE44 /* XCBuildConfigurationList.h */,
 				6B65941914F8A56C00F65AEC /* Resources */,
 				E94DE11415443AC100C51258 /* Utils */,
 			);
@@ -383,6 +391,7 @@
 				6B3AD02214F8A3AC00BCFE81 /* XCKeyBuilder.m */,
 				6B3AD02114F8A3AC00BCFE81 /* XCKeyBuilder.h */,
 				6BE4B285147E6B610059E455 /* XCEnumUtils.h */,
+				92E640F015EB65500077FD86 /* XCMemoryUtils.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -412,6 +421,7 @@
 				E94DE11415443AC100C51271 /* XCProject+SubProject.h in Headers */,
 				6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */,
 				BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */,
+				923C35D715DFA9AF001AEE44 /* XCBuildConfigurationList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,9 +573,10 @@
 				6B019F6F154832C400122D48 /* XCAbstractDefinition.m in Sources */,
 				E94DE11415443AC100C5125B /* XCSourceFileDefinition.m in Sources */,
 				6B4B61221588A070003639E8 /* XCSubProjectDefinition.m in Sources */,
-				E94DE11415443AC100C51265 /* PBXBuildFile */,
-				E94DE11415443AC100C5126A /* PBXBuildFile */,
+				E94DE11415443AC100C51265 /* (null) in Sources */,
+				E94DE11415443AC100C5126A /* (null) in Sources */,
 				E94DE11415443AC100C5126F /* XCProject+SubProject.m in Sources */,
+				923C35D915DFA9AF001AEE44 /* XCBuildConfigurationList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,9 +605,10 @@
 				E94DE11415443AC100C5125A /* XCSourceFileDefinition.m in Sources */,
 				E94DE11415443AC100C51260 /* XCSubProjectDefinition.m in Sources */,
 				E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */,
-				E94DE11415443AC100C51264 /* PBXBuildFile */,
-				E94DE11415443AC100C51269 /* PBXBuildFile */,
+				E94DE11415443AC100C51264 /* (null) in Sources */,
+				E94DE11415443AC100C51269 /* (null) in Sources */,
 				E94DE11415443AC100C5126E /* XCProject+SubProject.m in Sources */,
+				923C35D815DFA9AF001AEE44 /* XCBuildConfigurationList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,8 +679,6 @@
 		6B55224414EA723700494CF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -699,8 +709,6 @@
 		6B55224514EA723700494CF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -732,7 +740,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -750,7 +758,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -758,7 +765,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -769,7 +776,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
