@@ -109,7 +109,7 @@
 			// rudimentary #include support
 			NSString *workingSetting = [setting stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
-            NSRange range = [workingSetting rangeOfString:@"#include" options:NSAnchoredSearch range:NSMakeRange(0, setting.length)];
+            NSRange range = [workingSetting rangeOfString:@"#include" options:NSAnchoredSearch range:NSMakeRange(0, workingSetting.length)];
 
             if (range.location != NSNotFound) {
                 workingSetting = [workingSetting substringFromIndex:@"#include \"".length];
