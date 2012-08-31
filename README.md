@@ -159,7 +159,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 * <a href="http://www.expanz.com">expanz</a>: A RAD framework that enables .NET developers in producing cross-platform and cloud apps. 
 * <a href="http://www.lesspainful.com">Less Painful</a>: Automated functional testing for mobile applications. 
 * <a href="http://www.levelhelper.org">Level Helper</a>: A RAD framework for developing 2D games on iOS & Android. 
-* <a href="http://macromates.com/</a>: Text Mate - the missing Text Editor for OSX
+* <a href="http://macromates.com/"</a>: Text Mate - the missing Text Editor for OSX.
 
 # Authors
 
