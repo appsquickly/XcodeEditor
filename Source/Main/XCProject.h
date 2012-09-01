@@ -22,6 +22,7 @@
 @class XCBuildConfigurationList;
 
 
+__attribute__((__visibility__("default")))
 @interface XCProject : NSObject {
 
 @private
