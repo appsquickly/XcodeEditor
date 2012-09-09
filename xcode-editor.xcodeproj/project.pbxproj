@@ -89,10 +89,6 @@
 		E94DE11415443AC100C5125D /* XCSourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125C /* XCSourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E94DE11415443AC100C51260 /* XCSubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5125F /* XCSubProjectDefinition.m */; };
 		E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51261 /* SubProjectDefinitionSpec.m */; };
-		E94DE11415443AC100C51264 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51265 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C51269 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		E94DE11415443AC100C5126A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E94DE11415443AC100C5126E /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* XCProject+SubProject.m */; };
 		E94DE11415443AC100C5126F /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* XCProject+SubProject.m */; };
 		E94DE11415443AC100C51271 /* XCProject+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51270 /* XCProject+SubProject.h */; };
@@ -573,8 +569,6 @@
 				6B019F6F154832C400122D48 /* XCAbstractDefinition.m in Sources */,
 				E94DE11415443AC100C5125B /* XCSourceFileDefinition.m in Sources */,
 				6B4B61221588A070003639E8 /* XCSubProjectDefinition.m in Sources */,
-				E94DE11415443AC100C51265 /* (null) in Sources */,
-				E94DE11415443AC100C5126A /* (null) in Sources */,
 				E94DE11415443AC100C5126F /* XCProject+SubProject.m in Sources */,
 				923C35D915DFA9AF001AEE44 /* XCBuildConfigurationList.m in Sources */,
 			);
@@ -605,8 +599,6 @@
 				E94DE11415443AC100C5125A /* XCSourceFileDefinition.m in Sources */,
 				E94DE11415443AC100C51260 /* XCSubProjectDefinition.m in Sources */,
 				E94DE11415443AC100C51262 /* SubProjectDefinitionSpec.m in Sources */,
-				E94DE11415443AC100C51264 /* (null) in Sources */,
-				E94DE11415443AC100C51269 /* (null) in Sources */,
 				E94DE11415443AC100C5126E /* XCProject+SubProject.m in Sources */,
 				923C35D815DFA9AF001AEE44 /* XCBuildConfigurationList.m in Sources */,
 			);
