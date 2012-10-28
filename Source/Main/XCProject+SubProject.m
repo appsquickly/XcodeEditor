@@ -97,7 +97,7 @@
                     [returnValue addObject:key];
                 }
             }
-            else if (memberType == PBXTargetDependency || memberType == PBXGroup) {
+            else if (memberType == PBXTargetDependency || memberType == PBXGroup || memberType == PBXVariantGroup) {
                 if ([[obj valueForKey:@"name"] isEqualToString:identifier]) {
                     [returnValue addObject:key];
                 }

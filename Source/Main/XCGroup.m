@@ -113,7 +113,7 @@
 - (void) removeFromParentGroup:(BOOL)deleteChildren {
     if (deleteChildren) {
         for (id<XcodeGroupMember> groupMember in [self members]) {
-            if ([groupMember groupMemberType] == PBXGroup) {
+            if ([groupMember groupMemberType] == PBXGroup || [groupMember groupMemberType] == PBXVariantGroup) {
                 XCGroup* group = (XCGroup*) groupMember;
                 [group removeFromParentGroup:YES];
             }
@@ -213,7 +213,7 @@
 
     NSArray* members = [self members];
     for (id<XcodeGroupMember> groupMember in members) {
-        if ([groupMember groupMemberType] == PBXGroup) {
+        if ([groupMember groupMemberType] == PBXGroup || [groupMember groupMemberType] == PBXVariantGroup) {
 
             if ([[[groupMember pathRelativeToProjectRoot] lastPathComponent] isEqualToString:path] ||
                     [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey]) {
@@ -353,7 +353,7 @@
         _members = [[NSMutableArray alloc] init];
         for (NSString* childKey in _children) {
             XcodeMemberType type = [self typeForKey:childKey];
-            if (type == PBXGroup) {
+            if (type == PBXGroup || type == PBXVariantGroup) {
                 [_members addObject:[_project groupWithKey:childKey]];
             }
             else if (type == PBXFileReference) {
@@ -368,7 +368,7 @@
     NSMutableArray* recursiveMembers = [NSMutableArray array];
     for (NSString* childKey in _children) {
         XcodeMemberType type = [self typeForKey:childKey];
-        if (type == PBXGroup) {
+        if (type == PBXGroup || type == PBXVariantGroup) {
             XCGroup* group = [_project groupWithKey:childKey];
             NSArray* groupChildren = [group recursiveMembers];
             [recursiveMembers addObjectsFromArray:groupChildren];
@@ -385,7 +385,7 @@
     NSMutableArray* arrayOfBuildFileKeys = [NSMutableArray array];
     for (id<XcodeGroupMember> groupMember in [self members]) {
 
-        if ([groupMember groupMemberType] == PBXGroup) {
+        if ([groupMember groupMemberType] == PBXGroup || [groupMember groupMemberType] == PBXVariantGroup) {
             XCGroup* group = (XCGroup*) groupMember;
             [arrayOfBuildFileKeys addObjectsFromArray:[group buildFileKeys]];
         }
@@ -401,7 +401,7 @@
 
     if ([_children containsObject:key]) {
         XcodeMemberType type = [self typeForKey:key];
-        if (type == PBXGroup) {
+        if (type == PBXGroup || type == PBXVariantGroup) {
             groupMember = [_project groupWithKey:key];
         }
         else if (type == PBXFileReference) {
@@ -422,7 +422,7 @@
 
 /* ================================================= Protocol Methods =============================================== */
 - (XcodeMemberType) groupMemberType {
-    return PBXGroup;
+    return [self typeForKey:self.key];
 }
 
 - (NSString*) displayName {
