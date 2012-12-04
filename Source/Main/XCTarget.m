@@ -113,9 +113,9 @@
             if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase ||
                     [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhase) {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
-                    XCSourceFile* targetMember = [_project fileWithKey:buildFileKey];
+                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
-                        [_members addObject:[self buildFileWithKey:buildFileKey]];
+                        [_members addObject:[_project fileWithKey:targetMember.key]];
                     }
                 }
             }

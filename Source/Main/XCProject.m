@@ -97,7 +97,7 @@
 
 - (XCSourceFile*) fileWithKey:(NSString*)key {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj && [[obj valueForKey:@"isa"] asMemberType] == PBXFileReference) {
+    if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReference || [[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy)) {
         XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
 
         NSString* name = [obj valueForKey:@"name"];
