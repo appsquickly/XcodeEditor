@@ -173,6 +173,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 * Chris Ross of Hidden Memory (http://www.hiddenmemory.co.uk/)
 * Paul Taykalo
 * Vladislav Alekseev 
+* Felix Schneider - bug fixes. 
 
 Thanks! 
 
