@@ -27,7 +27,7 @@ SPEC_BEGIN(TargetSpec)
 
         beforeEach(^
         {
-            project = [[XCProject alloc] initWithFilePath:@"/Users/jblues/MacProjects/Spring-OC/Spring-OC.xcodeproj"];
+            project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
             LogDebug(@"Targets: %@", [project targets]);
             target = [project targetWithName:@"Spring-OC"];
             LogDebug(@"Target: %@", target);
