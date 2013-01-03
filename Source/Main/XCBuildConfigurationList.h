@@ -13,18 +13,21 @@
 
 @class XCProject;
 
-@interface XCBuildConfigurationList : NSObject {
-	@private
-	NSMutableDictionary *_buildSettings;
-	NSMutableDictionary *_xcconfigSettings;
+@interface XCBuildConfigurationList : NSObject
+{
+@private
+    NSMutableDictionary* _buildSettings;
+    NSMutableDictionary* _xcconfigSettings;
 }
 
-+ (NSDictionary *) buildConfigurationsFromDictionary:(NSDictionary *) dictionary inProject:(XCProject *) project;
++ (NSDictionary*)buildConfigurationsFromDictionary:(NSDictionary*)dictionary inProject:(XCProject*)project;
 
-@property (nonatomic, readonly) NSDictionary *specifiedBuildSettings;
+@property(nonatomic, readonly) NSDictionary* specifiedBuildSettings;
 
-- (void) addXCConfigAtPath:(NSString *) path;
-- (void) addBuildSettings:(NSDictionary *) buildSettings;
+- (void)addXCConfigAtPath:(NSString*)path;
 
-- (NSString *) valueForKey:(NSString *) key;
+- (void)addBuildSettings:(NSDictionary*)buildSettings;
+
+- (NSString*)valueForKey:(NSString*)key;
+
 @end
