@@ -364,9 +364,7 @@ SPEC_BEGIN(GroupSpec)
 
                 NSArray* children = [group members];
                 LogDebug(@"Group children: %@", children);
-                [[children should] haveCountOf:17];
-//                [[[[children objectAtIndex:0] displayName] should] equal:@"AddedTwice.h"];
-//                [[[[children objectAtIndex:17] displayName] should] equal:@"UserInterface"];
+                [[children should] haveCountOf:18];
 
             });
 
