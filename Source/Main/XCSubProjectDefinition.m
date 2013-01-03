@@ -81,7 +81,7 @@
     NSMutableArray* results = [NSMutableArray array];
     NSDictionary* objects = [_subProject objects];
     [objects enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProject) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXProjectType) {
             NSString* productRefGroupKey = [obj valueForKey:@"productRefGroup"];
             NSDictionary* products = [objects valueForKey:productRefGroupKey];
             NSArray* children = [products valueForKey:@"children"];
@@ -97,7 +97,7 @@
 // returns the key of the PBXFileReference of the xcodeproj file
 - (NSString*) projectKey {
     if (_key == nil) {
-        NSArray* xcodeprojKeys = [_parentProject keysForProjectObjectsOfType:PBXFileReference
+        NSArray* xcodeprojKeys = [_parentProject keysForProjectObjectsOfType:PBXFileReferenceType
                 withIdentifier:[self pathRelativeToProjectRoot] singleton:YES required:YES];
         _key = [[xcodeprojKeys objectAtIndex:0] copy];
     }

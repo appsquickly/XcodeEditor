@@ -113,7 +113,7 @@
 - (void) removeFromParentGroup:(BOOL)deleteChildren {
     if (deleteChildren) {
         for (id<XcodeGroupMember> groupMember in [self members]) {
-            if ([groupMember groupMemberType] == PBXGroup || [groupMember groupMemberType] == PBXVariantGroup) {
+            if ([groupMember groupMemberType] == PBXGroupType || [groupMember groupMemberType] == PBXVariantGroupType) {
                 XCGroup* group = (XCGroup*) groupMember;
                 [group removeFromParentGroup:YES];
             }
@@ -213,7 +213,7 @@
 
     NSArray* members = [self members];
     for (id<XcodeGroupMember> groupMember in members) {
-        if ([groupMember groupMemberType] == PBXGroup || [groupMember groupMemberType] == PBXVariantGroup) {
+        if ([groupMember groupMemberType] == PBXGroupType || [groupMember groupMemberType] == PBXVariantGroupType) {
 
             if ([[[groupMember pathRelativeToProjectRoot] lastPathComponent] isEqualToString:path] ||
                     [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey]) {
@@ -353,10 +353,10 @@
         _members = [[NSMutableArray alloc] init];
         for (NSString* childKey in _children) {
             XcodeMemberType type = [self typeForKey:childKey];
-            if (type == PBXGroup || type == PBXVariantGroup) {
+            if (type == PBXGroupType || type == PBXVariantGroupType) {
                 [_members addObject:[_project groupWithKey:childKey]];
             }
-            else if (type == PBXFileReference) {
+            else if (type == PBXFileReferenceType) {
                 [_members addObject:[_project fileWithKey:childKey]];
             }
         }
@@ -368,12 +368,12 @@
     NSMutableArray* recursiveMembers = [NSMutableArray array];
     for (NSString* childKey in _children) {
         XcodeMemberType type = [self typeForKey:childKey];
-        if (type == PBXGroup || type == PBXVariantGroup) {
+        if (type == PBXGroupType || type == PBXVariantGroupType) {
             XCGroup* group = [_project groupWithKey:childKey];
             NSArray* groupChildren = [group recursiveMembers];
             [recursiveMembers addObjectsFromArray:groupChildren];
         }
-        else if (type == PBXFileReference) {
+        else if (type == PBXFileReferenceType) {
             [recursiveMembers addObject:childKey];
         }
     }
@@ -385,11 +385,11 @@
     NSMutableArray* arrayOfBuildFileKeys = [NSMutableArray array];
     for (id<XcodeGroupMember> groupMember in [self members]) {
 
-        if ([groupMember groupMemberType] == PBXGroup || [groupMember groupMemberType] == PBXVariantGroup) {
+        if ([groupMember groupMemberType] == PBXGroupType || [groupMember groupMemberType] == PBXVariantGroupType) {
             XCGroup* group = (XCGroup*) groupMember;
             [arrayOfBuildFileKeys addObjectsFromArray:[group buildFileKeys]];
         }
-        else if ([groupMember groupMemberType] == PBXFileReference) {
+        else if ([groupMember groupMemberType] == PBXFileReferenceType) {
             [arrayOfBuildFileKeys addObject:[groupMember key]];
         }
     }
@@ -401,10 +401,10 @@
 
     if ([_children containsObject:key]) {
         XcodeMemberType type = [self typeForKey:key];
-        if (type == PBXGroup || type == PBXVariantGroup) {
+        if (type == PBXGroupType || type == PBXVariantGroupType) {
             groupMember = [_project groupWithKey:key];
         }
-        else if (type == PBXFileReference) {
+        else if (type == PBXFileReferenceType) {
             groupMember = [_project fileWithKey:key];
         }
     }
@@ -603,14 +603,13 @@
     // remove product group's build products from PDXBuildFiles
     NSDictionary* productsGroup = [[_project objects] objectForKey:key];
     for (NSString* childKey in [productsGroup valueForKey:@"children"]) {
-        NSArray* buildFileKeys =
-                [_project keysForProjectObjectsOfType:PBXBuildFile withIdentifier:childKey singleton:NO required:NO];
+        NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFileType withIdentifier:childKey singleton:NO required:NO];
         // could be zero - we didn't add the test bundle as a build product
         if ([buildFileKeys count] == 1) {
             NSString* buildFileKey = [buildFileKeys objectAtIndex:0];
             [[_project objects] removeObjectForKey:buildFileKey];
-            [self removeBuildPhaseFileKey:buildFileKey forType:PBXFrameworksBuildPhase];
-            [self removeBuildPhaseFileKey:buildFileKey forType:PBXResourcesBuildPhase];
+            [self removeBuildPhaseFileKey:buildFileKey forType:PBXFrameworksBuildPhaseType];
+            [self removeBuildPhaseFileKey:buildFileKey forType:PBXResourcesBuildPhaseType];
         }
     }
 }
@@ -621,7 +620,7 @@
 
 - (NSDictionary*) makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type {
     NSMutableDictionary* reference = [NSMutableDictionary dictionary];
-    [reference setObject:[NSString stringFromMemberType:PBXFileReference] forKey:@"isa"];
+    [reference setObject:[NSString stringFromMemberType:PBXFileReferenceType] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"FileEncoding"];
     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
     if (name != nil) {
@@ -637,7 +636,7 @@
 
 - (NSDictionary*) asDictionary {
     NSMutableDictionary* groupData = [NSMutableDictionary dictionary];
-    [groupData setObject:[NSString stringFromMemberType:PBXGroup] forKey:@"isa"];
+    [groupData setObject:[NSString stringFromMemberType:PBXGroupType] forKey:@"isa"];
     [groupData setObject:@"<group>" forKey:@"sourceTree"];
 
     if (_alias != nil) {

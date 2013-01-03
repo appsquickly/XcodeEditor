@@ -14,19 +14,20 @@
 
 @class XCProject;
 @class XCSourceFile;
-@class XCBuildConfigurationList;
+@class XCBuildConfiguration;
 
 /**
 * Represents a target in an xcode project.
 */
-@interface XCTarget : NSObject {
+@interface XCTarget : NSObject
+{
 
     XCProject* _project;
     NSString* _key;
     NSString* _name;
     NSString* _productName;
     NSString* _productReference;
-	 NSString* _defaultConfigurationName;
+    NSString* _defaultConfigurationName;
 
 @private
     NSMutableArray* _members;
@@ -39,23 +40,29 @@
 @property(nonatomic, strong, readonly) NSString* productName;
 @property(nonatomic, strong, readonly) NSString* productReference;
 
-+ (XCTarget*) targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
++ (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
+              productReference:(NSString*)productReference;
 
-- (id) initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName productReference:(NSString*)productReference;
+- (id)initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
+     productReference:(NSString*)productReference;
 
-- (NSArray*) resources;
-- (NSArray*) members;
+- (NSArray*)resources;
 
-- (NSDictionary*) configurations;
-- (XCBuildConfigurationList*)defaultConfiguration;	
+- (NSArray*)members;
 
-- (void) addMember:(XCSourceFile*)member;
+- (NSDictionary*)configurations;
 
-- (void) removeMemberWithKey:(NSString*)key;
+- (XCBuildConfiguration*)configurationWithName:(NSString*)name;
 
-- (void) removeMembersWithKeys:(NSArray*)keys;
+- (XCBuildConfiguration*)defaultConfiguration;
 
-- (void) addDependency:(NSString*)key;
+- (void)addMember:(XCSourceFile*)member;
+
+- (void)removeMemberWithKey:(NSString*)key;
+
+- (void)removeMembersWithKeys:(NSArray*)keys;
+
+- (void)addDependency:(NSString*)key;
 
 @end
 

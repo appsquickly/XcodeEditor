@@ -24,28 +24,28 @@ static NSDictionary * _projectNodeTypesAsStrings;
    // So, we caching this dictionary
    if (!_projectNodeTypesAsStrings) {
       _projectNodeTypesAsStrings =  [[NSDictionary alloc] initWithObjectsAndKeys:boxEnum(PBXNilType), @"PBXNilType",
-                                                                               boxEnum(PBXBuildFile), @"PBXBuildFile",
-                                                                               boxEnum(PBXContainerItemProxy), @"PBXContainerItemProxy",
-                                                                               boxEnum(PBXCopyFilesBuildPhase), @"PBXCopyFilesBuildPhase",
-                                                                               boxEnum(PBXFileReference), @"PBXFileReference",
-                                                                               boxEnum(PBXFrameworksBuildPhase), @"PBXFrameworksBuildPhase",
-                                                                               boxEnum(PBXGroup), @"PBXGroup",
-                                                                               boxEnum(PBXNativeTarget), @"PBXNativeTarget",
-                                                                               boxEnum(PBXProject), @"PBXProject",
-                                                                               boxEnum(PBXReferenceProxy), @"PBXReferenceProxy",
-                                                                               boxEnum(PBXResourcesBuildPhase), @"PBXResourcesBuildPhase",
-                                                                               boxEnum(PBXSourcesBuildPhase), @"PBXSourcesBuildPhase",
-                                                                               boxEnum(PBXTargetDependency), @"PBXTargetDependency",
-                                                                               boxEnum(PBXVariantGroup), @"PBXVariantGroup",
-                                                                               boxEnum(XCBuildConfiguration), @"XCBuildConfiguration",
-                                                                               boxEnum(XCConfigurationList), @"XCConfigurationList", nil];
+                                                                               boxEnum(PBXBuildFileType), @"PBXBuildFile",
+                                                                               boxEnum(PBXContainerItemProxyType), @"PBXContainerItemProxy",
+                                                                               boxEnum(PBXCopyFilesBuildPhaseType), @"PBXCopyFilesBuildPhase",
+                                                                               boxEnum(PBXFileReferenceType), @"PBXFileReference",
+                                                                               boxEnum(PBXFrameworksBuildPhaseType), @"PBXFrameworksBuildPhase",
+                                                                               boxEnum(PBXGroupType), @"PBXGroup",
+                                                                               boxEnum(PBXNativeTargetType), @"PBXNativeTarget",
+                                                                               boxEnum(PBXProjectType), @"PBXProject",
+                                                                               boxEnum(PBXReferenceProxyType), @"PBXReferenceProxy",
+                                                                               boxEnum(PBXResourcesBuildPhaseType), @"PBXResourcesBuildPhase",
+                                                                               boxEnum(PBXSourcesBuildPhaseType), @"PBXSourcesBuildPhase",
+                                                                               boxEnum(PBXTargetDependencyType), @"PBXTargetDependency",
+                                                                               boxEnum(PBXVariantGroupType), @"PBXVariantGroup",
+                                                                               boxEnum(XCBuildConfigurationType), @"XCBuildConfiguration",
+                                                                               boxEnum(XCConfigurationListType), @"XCConfigurationList", nil];
    }
    return _projectNodeTypesAsStrings;
 }
 
 @end
 
-@implementation NSString (ProjectNodeType)
+@implementation NSString (XcodeMemberTypeExtensions)
 
 + (NSString*) stringFromMemberType:(XcodeMemberType)nodeType {
     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];

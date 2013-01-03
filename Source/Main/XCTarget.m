@@ -14,7 +14,7 @@
 #import "XCTarget.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "XCBuildConfigurationList.h"
+#import "XCBuildConfiguration.h"
 #import "Utils/XCMemoryUtils.h"
 
 /* ================================================================================================================== */
@@ -61,7 +61,7 @@
         _resources = [[NSMutableArray alloc] init];
         for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"]) {
             NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXResourcesBuildPhase) {
+            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXResourcesBuildPhaseType) {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
                     XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
@@ -94,15 +94,21 @@
 	if (_configurations == nil) {
 		NSString *buildConfigurationRootSectionKey = [[[_project objects] objectForKey:_key] objectForKey:@"buildConfigurationList"];
 		NSDictionary *buildConfigurationDictionary = [[_project objects] objectForKey:buildConfigurationRootSectionKey];
-		_configurations = [[XCBuildConfigurationList buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"] inProject:_project] mutableCopy];
+		_configurations = [[XCBuildConfiguration buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+                                                                         inProject:_project] mutableCopy];
 		_defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
 	}
 
-	return XCAutorelease([_configurations copy])
+	return _configurations;
 }
 
-- (XCBuildConfigurationList*)defaultConfiguration {
+- (XCBuildConfiguration*)defaultConfiguration {
 	return [[self configurations] objectForKey:_defaultConfigurationName];
+}
+
+- (XCBuildConfiguration*)configurationWithName:(NSString*)name
+{
+    return [[self configurations] objectForKey:name];
 }
 
 - (NSArray*) members {
@@ -110,8 +116,8 @@
         _members = [[NSMutableArray alloc] init];
         for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"]) {
             NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhase ||
-                    [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhase) {
+            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhaseType ||
+                    [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhaseType) {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"]) {
                     XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember) {
@@ -217,7 +223,7 @@
 - (XCSourceFile*) buildFileWithKey:(NSString*)theKey {
     NSDictionary* obj = [[_project objects] valueForKey:theKey];
     if (obj) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFileType) {
             return [_project fileWithKey:[obj valueForKey:@"fileRef"]];
         }
     }

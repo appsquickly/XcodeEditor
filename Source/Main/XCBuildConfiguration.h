@@ -13,7 +13,7 @@
 
 @class XCProject;
 
-@interface XCBuildConfigurationList : NSObject
+@interface XCBuildConfiguration : NSObject
 {
 @private
     NSMutableDictionary* _buildSettings;
@@ -28,6 +28,8 @@
 
 - (void)addBuildSettings:(NSDictionary*)buildSettings;
 
-- (NSString*)valueForKey:(NSString*)key;
+- (void)addOrReplaceBuildSetting:(id <NSCopying>)setting forKey:(NSString*)key;
+
+- (id<NSCopying>)valueForKey:(NSString*)key;
 
 @end

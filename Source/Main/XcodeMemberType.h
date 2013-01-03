@@ -13,24 +13,24 @@
 
 typedef enum {
     PBXNilType,
-    PBXBuildFile,
-    PBXContainerItemProxy,
-    PBXCopyFilesBuildPhase,
-    PBXFileReference,
-    PBXFrameworksBuildPhase,
-    PBXGroup,
-    PBXNativeTarget,
-    PBXProject,
-    PBXReferenceProxy,
-    PBXResourcesBuildPhase,
-    PBXSourcesBuildPhase,
-    PBXTargetDependency,
-    PBXVariantGroup,
-    XCBuildConfiguration,
-    XCConfigurationList
+    PBXBuildFileType,
+    PBXContainerItemProxyType,
+    PBXCopyFilesBuildPhaseType,
+    PBXFileReferenceType,
+    PBXFrameworksBuildPhaseType,
+    PBXGroupType,
+    PBXNativeTargetType,
+    PBXProjectType,
+    PBXReferenceProxyType,
+    PBXResourcesBuildPhaseType,
+    PBXSourcesBuildPhaseType,
+    PBXTargetDependencyType,
+    PBXVariantGroupType,
+    XCBuildConfigurationType,
+    XCConfigurationListType
 } XcodeMemberType;
 
-@interface NSString (XcodeMemberType)
+@interface NSString (XcodeMemberTypeExtensions)
 
 + (NSString*) stringFromMemberType:(XcodeMemberType)nodeType;
 

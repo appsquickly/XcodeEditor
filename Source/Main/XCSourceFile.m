@@ -72,7 +72,7 @@
 		id old = _isBuildFile;
         _isBuildFile = [[NSNumber numberWithBool:NO] copy];
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-            if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
+            if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFileType) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
                     XCRelease(_isBuildFile)
 					_isBuildFile = nil;
@@ -96,16 +96,16 @@
 - (XcodeMemberType) buildPhase {
     if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type ==
             XibFile) {
-        return PBXSourcesBuildPhase;
+        return PBXSourcesBuildPhaseType;
     }
     else if (_type == Framework) {
-        return PBXFrameworksBuildPhase;
+        return PBXFrameworksBuildPhaseType;
     }
     else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle) {
-        return PBXResourcesBuildPhase;
+        return PBXResourcesBuildPhaseType;
     }
     else if (_type == Archive) {
-        return PBXFrameworksBuildPhase;
+        return PBXFrameworksBuildPhaseType;
     }
     return PBXNilType;
 }
@@ -113,7 +113,7 @@
 - (NSString*) buildFileKey {
     if (_buildFileKey == nil) {
         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {
-            if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFile) {
+            if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFileType) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
                     _buildFileKey = [key copy];
                 }
@@ -129,7 +129,7 @@
     if (![self isBuildFile]) {
         if ([self canBecomeBuildFile]) {
             NSMutableDictionary* sourceBuildFile = [NSMutableDictionary dictionary];
-            [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFile] forKey:@"isa"];
+            [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFileType] forKey:@"isa"];
             [sourceBuildFile setObject:_key forKey:@"fileRef"];
             NSString* buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];
@@ -147,7 +147,7 @@
 
 /* ================================================= Protocol Methods =============================================== */
 - (XcodeMemberType) groupMemberType {
-    return PBXFileReference;
+    return PBXFileReferenceType;
 }
 
 - (NSString*) displayName {

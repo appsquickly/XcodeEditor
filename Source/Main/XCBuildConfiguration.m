@@ -11,13 +11,13 @@
 
 
 
-#import "XCBuildConfigurationList.h"
+#import "XCBuildConfiguration.h"
 #import "XCGroup.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
 #import "Utils/XCMemoryUtils.h"
 
-@implementation XCBuildConfigurationList
+@implementation XCBuildConfiguration
 + (NSDictionary*)buildConfigurationsFromDictionary:(NSDictionary*)dictionary inProject:(XCProject*)project
 {
     NSMutableDictionary* configurations = [NSMutableDictionary dictionary];
@@ -26,12 +26,12 @@
     {
         NSDictionary* buildConfiguration = [[project objects] objectForKey:buildConfigurationKey];
 
-        if ([[buildConfiguration valueForKey:@"isa"] asMemberType] == XCBuildConfiguration)
+        if ([[buildConfiguration valueForKey:@"isa"] asMemberType] == XCBuildConfigurationType)
         {
-            XCBuildConfigurationList* configuration = [configurations objectForKey:[buildConfiguration objectForKey:@"name"]];
+            XCBuildConfiguration* configuration = [configurations objectForKey:[buildConfiguration objectForKey:@"name"]];
             if (!configuration)
             {
-                configuration = [[XCBuildConfigurationList alloc] init];
+                configuration = [[XCBuildConfiguration alloc] init];
 
                 [configurations setObject:configuration forKey:[buildConfiguration objectForKey:@"name"]];
             }
@@ -115,55 +115,21 @@
 
 #pragma mark -
 
-- (void)addXCConfigAtPath:(NSString*)path
-{
-    path = [[path stringByResolvingSymlinksInPath] stringByExpandingTildeInPath];
-
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path])
-    {
-        NSString* contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-
-        for (NSString* setting in [contents componentsSeparatedByString:@"\n"])
-        {
-            // rudimentary #include support
-            NSString* workingSetting = [setting stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
-            NSRange range = [workingSetting rangeOfString:@"#include" options:NSAnchoredSearch range:NSMakeRange(0, workingSetting.length)];
-
-            if (range.location != NSNotFound)
-            {
-                workingSetting = [workingSetting substringFromIndex:@"#include \"".length];
-
-                [self addXCConfigAtPath:[setting substringToIndex:(setting.length - 1)]];
-            }
-            else
-            {
-                NSArray* parts = [setting componentsSeparatedByString:@"="];
-                if (parts.count == 2)
-                {
-                    // XCConfig files can be used to unset properties, a la `FOO=`
-                    // so, we have to be able to insert blank (but non-nil) values into the dictionary
-                    NSString* key = [[parts objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-                    NSString* value = [[parts objectAtIndex:1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
-                    [_xcconfigSettings setObject:value forKey:key];
-                }
-            }
-        }
-    }
-}
-
-#pragma mark -
-
 - (void)addBuildSettings:(NSDictionary*)buildSettings
 {
     [_xcconfigSettings removeObjectsForKeys:[buildSettings allKeys]];
     [_buildSettings addEntriesFromDictionary:buildSettings];
 }
 
-- (NSString*)valueForKey:(NSString*)key
+- (void)addOrReplaceBuildSetting:(id <NSCopying>)setting forKey:(NSString*)key
 {
-    NSString* value = [_buildSettings objectForKey:key];
+    [self addBuildSettings:[NSDictionary dictionaryWithObject:setting forKey:key]];
+}
+
+
+- (id<NSCopying>)valueForKey:(NSString*)key
+{
+    id<NSCopying> value = [_buildSettings objectForKey:key];
     if (!value)
     {
             value = [_xcconfigSettings objectForKey:key];

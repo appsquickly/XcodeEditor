@@ -17,22 +17,8 @@
 #import "XCSourceFile.h"
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
-#import "XCBuildConfigurationList.h"
+#import "XCBuildConfiguration.h"
 #import "Utils/XCMemoryUtils.h"
-
-
-/* ====================================================================================================================================== */
-@interface XCProject ()
-
-- (NSArray*)projectFilesOfType:(XcodeSourceFileType)fileReferenceType;
-
-- (NSString*)makeContainerItemProxyForName:(NSString*)name fileRef:(NSString*)fileRef proxyType:(NSString*)proxyType
-                                uniqueName:(NSString*)uniqueName;
-
-- (NSString*)makeTargetDependency:(NSString*)name forContainerItemProxyKey:(NSString*)containerItemProxyKey
-                       uniqueName:(NSString*)uniqueName;
-
-@end
 
 
 @implementation XCProject
@@ -89,7 +75,7 @@
     NSMutableArray* results = [NSMutableArray array];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
     {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReference)
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType)
         {
             XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
             NSString* path = [obj valueForKey:@"path"];
@@ -105,7 +91,8 @@
 {
     NSDictionary* obj = [[self objects] valueForKey:key];
     if (obj &&
-            ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReference || [[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxy))
+            ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType || [[obj valueForKey:@"isa"] asMemberType] ==
+                    PBXReferenceProxyType))
     {
         XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
 
@@ -177,7 +164,7 @@
     [[_dataStore objectForKey:@"objects"] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
     {
 
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXGroup || [[obj valueForKeyPath:@"isa"] asMemberType] == PBXVariantGroup)
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXGroupType || [[obj valueForKeyPath:@"isa"] asMemberType] == PBXVariantGroupType)
         {
             [results addObject:[self groupWithKey:key]];
         }
@@ -224,7 +211,7 @@
             return XCRetainAutorelease(group)}
 
     NSDictionary* obj = [[self objects] objectForKey:key];
-    if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXGroup || [[obj valueForKey:@"isa"] asMemberType] == PBXVariantGroup))
+    if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXGroupType || [[obj valueForKey:@"isa"] asMemberType] == PBXVariantGroupType))
     {
 
         NSString* name = [obj valueForKey:@"name"];
@@ -297,7 +284,7 @@
         _targets = [[NSMutableArray alloc] init];
         [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
         {
-            if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTarget)
+            if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTargetType)
             {
                 XCTarget* target =
                         [XCTarget targetWithProject:self key:key name:[obj valueForKey:@"name"] productName:[obj valueForKey:@"productName"]
@@ -341,8 +328,8 @@
                 [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
         NSDictionary* buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
         _configurations =
-                [[XCBuildConfigurationList buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
-                                                                   inProject:self] mutableCopy];
+                [[XCBuildConfiguration buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+                                                               inProject:self] mutableCopy];
         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
     }
 
@@ -353,7 +340,7 @@
     return [[self configurations] objectForKey:name];
 }
 
-- (XCBuildConfigurationList*)defaultConfiguration
+- (XCBuildConfiguration*)defaultConfiguration
 {
     return [[self configurations] objectForKey:_defaultConfigurationName];
 }
