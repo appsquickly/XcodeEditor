@@ -88,7 +88,7 @@
 
 - (void) removeFromParentGroup;
 
-- (void) removeFromParentGroup:(BOOL)deleteFiles;
+- (void)removeFromParentDeletingChildren:(BOOL)deleteChildren;
 
 - (XCGroup*) parentGroup;
 

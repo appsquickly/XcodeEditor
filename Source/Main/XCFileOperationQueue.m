@@ -16,15 +16,15 @@
 
 @interface XCFileOperationQueue ()
 
-- (NSString*) destinationPathFor:(NSString*)fileName inProjectDirectory:(NSString*)directory;
+- (NSString*)destinationPathFor:(NSString*)fileName inProjectDirectory:(NSString*)directory;
 
-- (void) performFileWrites;
+- (void)performFileWrites;
 
-- (void) performCopyFrameworks;
+- (void)performCopyFrameworks;
 
-- (void) performFileDeletions;
+- (void)performFileDeletions;
 
-- (void) performCreateDirectories;
+- (void)performCreateDirectories;
 
 @end
 
@@ -32,9 +32,11 @@
 @implementation XCFileOperationQueue
 
 /* ================================================== Initializers ================================================== */
-- (id) initWithBaseDirectory:(NSString*)baseDirectory {
+- (id)initWithBaseDirectory:(NSString*)baseDirectory
+{
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _baseDirectory = [baseDirectory copy];
         _filesToWrite = [[NSMutableDictionary alloc] init];
         _frameworksToCopy = [[NSMutableDictionary alloc] init];
@@ -45,50 +47,60 @@
 }
 
 /* ================================================== Deallocation ================================================== */
-- (void) dealloc {
-	XCRelease(_baseDirectory)
+- (void)dealloc
+{
+    XCRelease(_baseDirectory)
     XCRelease(_filesToWrite)
     XCRelease(_frameworksToCopy)
     XCRelease(_filesToDelete)
     XCRelease(_directoriesToCreate)
 
-	XCSuperDealloc
+    XCSuperDealloc
 }
+
 /* ================================================ Interface Methods =============================================== */
-- (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory {
+- (BOOL)fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory
+{
     NSString* filePath = [self destinationPathFor:name inProjectDirectory:directory];
     return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
 }
 
 
-- (void) queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents {
+- (void)queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents
+{
     [_filesToWrite setObject:[contents dataUsingEncoding:NSUTF8StringEncoding]
-            forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
+                      forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
 }
 
-- (void) queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents {
+- (void)queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents
+{
     [_filesToWrite setObject:contents forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
 }
 
 
-- (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory {
+- (void)queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory
+{
 
     NSURL* sourceUrl = [NSURL fileURLWithPath:filePath isDirectory:YES];
-    NSString* destinationPath = [[_baseDirectory stringByAppendingPathComponent:directory]
-            stringByAppendingPathComponent:[filePath lastPathComponent]];
+    NSString* destinationPath =
+            [[_baseDirectory stringByAppendingPathComponent:directory] stringByAppendingPathComponent:[filePath lastPathComponent]];
     NSURL* destinationUrl = [NSURL fileURLWithPath:destinationPath isDirectory:YES];
     [_frameworksToCopy setObject:sourceUrl forKey:destinationUrl];
 }
 
-- (void) queueDeletion:(NSString*)filePath {
+- (void)queueDeletion:(NSString*)filePath
+{
+    LogDebug(@"Queue deletion at: %@", filePath);
     [_filesToDelete addObject:filePath];
 }
 
-- (void) queueDirectory:(NSString*)withName inDirectory:(NSString*)parentDirectory {
+- (void)queueDirectory:(NSString*)withName inDirectory:(NSString*)parentDirectory
+{
     [_directoriesToCreate addObject:[self destinationPathFor:withName inProjectDirectory:parentDirectory]];
 }
 
-- (void) commitFileOperations {
+- (void)commitFileOperations
+{
     [self performFileWrites];
     [self performCopyFrameworks];
     [self performFileDeletions];
@@ -97,31 +109,38 @@
 
 
 /* ================================================== Private Methods =============================================== */
-- (NSString*) destinationPathFor:(NSString*)fileName inProjectDirectory:(NSString*)directory {
+- (NSString*)destinationPathFor:(NSString*)fileName inProjectDirectory:(NSString*)directory
+{
     return [[_baseDirectory stringByAppendingPathComponent:directory] stringByAppendingPathComponent:fileName];
 }
 
-- (void) performFileWrites {
-    [_filesToWrite enumerateKeysAndObjectsUsingBlock:^(NSString* filePath, NSData* data, BOOL* stop) {
+- (void)performFileWrites
+{
+    [_filesToWrite enumerateKeysAndObjectsUsingBlock:^(NSString* filePath, NSData* data, BOOL* stop)
+    {
         NSError* error = nil;
-        if (![data writeToFile:filePath options:NSDataWritingAtomic error:&error]) {
-            [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@, error: %@",
-                                                                       filePath, error];
+        if (![data writeToFile:filePath options:NSDataWritingAtomic error:&error])
+        {
+            [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@, error: %@", filePath, error];
         }
     }];
     [_filesToWrite removeAllObjects];
 }
 
-- (void) performCopyFrameworks {
-    [_frameworksToCopy enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationUrl, NSURL* frameworkPath, BOOL* stop) {
+- (void)performCopyFrameworks
+{
+    [_frameworksToCopy enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationUrl, NSURL* frameworkPath, BOOL* stop)
+    {
 
         NSFileManager* fileManager = [NSFileManager defaultManager];
 
-        if ([fileManager fileExistsAtPath:[destinationUrl path]]) {
+        if ([fileManager fileExistsAtPath:[destinationUrl path]])
+        {
             [fileManager removeItemAtURL:destinationUrl error:nil];
         }
         NSError* error = nil;
-        if (![fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error]) {
+        if (![fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error])
+        {
             [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@",
                                                                        [frameworkPath absoluteString]];
         }
@@ -129,26 +148,35 @@
     [_frameworksToCopy removeAllObjects];
 }
 
-- (void) performFileDeletions {
-    for (NSString* filePath in [_filesToDelete reverseObjectEnumerator]) {
+- (void)performFileDeletions
+{
+    for (NSString* filePath in [_filesToDelete reverseObjectEnumerator])
+    {
         NSString* fullPath = [_baseDirectory stringByAppendingPathComponent:filePath];
         NSError* error = nil;
 
-        if (![[NSFileManager defaultManager] removeItemAtPath:fullPath error:&error]) {
+        if (![[NSFileManager defaultManager] removeItemAtPath:fullPath error:&error])
+        {
             NSLog(@"failed to remove item at path; error == %@", error);
-            [NSException raise:NSInternalInconsistencyException format:@"Error deleting file at filePath: %@",
-                                                                       filePath];
+            [NSException raise:NSInternalInconsistencyException format:@"Error deleting file at filePath: %@", filePath];
+        }
+        else
+        {
+            LogDebug(@"Deleted: %@", fullPath);
         }
     }
     [_filesToDelete removeAllObjects];
 }
 
-- (void) performCreateDirectories {
-    for (NSString* filePath in _directoriesToCreate) {
+- (void)performCreateDirectories
+{
+    for (NSString* filePath in _directoriesToCreate)
+    {
         NSFileManager* fileManager = [NSFileManager defaultManager];
-        if (![fileManager fileExistsAtPath:filePath]) {
-            if (![fileManager
-                    createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil]) {
+        if (![fileManager fileExistsAtPath:filePath])
+        {
+            if (![fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil])
+            {
                 [NSException raise:NSInvalidArgumentException format:@"Error: Create folder failed %@", filePath];
             }
         }

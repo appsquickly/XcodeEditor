@@ -395,8 +395,14 @@ SPEC_BEGIN(GroupSpec)
                 XCGroup* group = [project groupWithPathFromRoot:@"Tests"];
                 [group shouldNotBeNil];
 
-                [group removeFromParentGroup:YES];
+                NSArray* groups = [project groups];
+                LogDebug(@"Groups now: %@", groups);
+
+                [group removeFromParentDeletingChildren:YES];
                 [project save];
+
+                groups = [project groups];
+                LogDebug(@"Groups now: %@", groups);
 
                 XCGroup* deleted = [project groupWithPathFromRoot:@"Tests"];
                 [deleted shouldBeNil];

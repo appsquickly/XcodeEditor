@@ -47,7 +47,6 @@
 
         _fileOperationQueue = [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
 
-        _groups = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -90,9 +89,8 @@
 - (XCSourceFile*)fileWithKey:(NSString*)key
 {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj &&
-            ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType || [[obj valueForKey:@"isa"] asMemberType] ==
-                    PBXReferenceProxyType))
+    if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType || [[obj valueForKey:@"isa"] asMemberType] ==
+            PBXReferenceProxyType))
     {
         XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
 
@@ -208,7 +206,7 @@
     XCGroup* group = [_groups objectForKey:key];
     if (group)
     {
-            return XCRetainAutorelease(group)}
+        return XCRetainAutorelease(group)}
 
     NSDictionary* obj = [[self objects] objectForKey:key];
     if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXGroupType || [[obj valueForKey:@"isa"] asMemberType] == PBXVariantGroupType))
@@ -311,7 +309,11 @@
 - (void)save
 {
     [_fileOperationQueue commitFileOperations];
-    [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:NO];
+    [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:YES];
+
+
+
+    LogDebug(@"Saved project");
 }
 
 - (NSMutableDictionary*)objects

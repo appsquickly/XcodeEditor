@@ -26,7 +26,7 @@
 #import "XCProject+SubProject.h"
 
 
-/* ================================================================================================================== */
+/* ====================================================================================================================================== */
 @interface XCGroup ()
 
 - (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
@@ -57,7 +57,7 @@
 
 @end
 
-/* ================================================================================================================== */
+/* ====================================================================================================================================== */
 
 @implementation XCGroup
 
@@ -67,14 +67,14 @@
 @synthesize alias = _alias;
 
 
-/* ================================================= Class Methods ================================================== */
+/* =========================================================== Class Methods ============================================================ */
 + (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
                     children:(NSArray*)children
 {
 
     return XCAutorelease([[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children])}
 
-/* ================================================== Initializers ================================================== */
+/* ============================================================ Initializers ============================================================ */
 - (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
              children:(NSArray*)children
 {
@@ -90,7 +90,7 @@
     return self;
 }
 
-/* ================================================== Deallocation ================================================== */
+/* ====================================================================================================================================== */
 - (void)dealloc
 {
     XCRelease(_project)
@@ -104,37 +104,34 @@
     XCSuperDealloc
 }
 
-/* ================================================ Interface Methods =============================================== */
+/* ========================================================== Interface Methods ========================================================= */
 #pragma mark Parent group
 
 - (void)removeFromParentGroup
 {
-    [self removeFromParentGroup:NO];
+    [self removeFromParentDeletingChildren:NO];
 }
 
 
-- (void)removeFromParentGroup:(BOOL)deleteChildren
+- (void)removeFromParentDeletingChildren:(BOOL)deleteChildren
 {
     if (deleteChildren)
     {
-        for (id <XcodeGroupMember> groupMember in [self members])
-        {
-            if ([groupMember groupMemberType] == PBXGroupType || [groupMember groupMemberType] == PBXVariantGroupType)
-            {
-                XCGroup* group = (XCGroup*) groupMember;
-                [group removeFromParentGroup:YES];
-            }
-            else
-            {
-                [_fileOperationQueue queueDeletion:[groupMember pathRelativeToProjectRoot]];
-            }
-        }
+        [_fileOperationQueue queueDeletion:[self pathRelativeToProjectRoot]];
     }
+    NSDictionary* dictionary = [[_project objects] objectForKey:_key];
+    LogDebug(@"Here's the dictionary: %@", dictionary);
+    
     [[_project objects] removeObjectForKey:_key];
+
+    dictionary = [[_project objects] objectForKey:_key];
+    LogDebug(@"Here's the dictionary: %@", dictionary);
+
     for (XCTarget* target in [_project targets])
     {
         [target removeMembersWithKeys:[self recursiveMembers]];
     }
+    LogDebug(@"Done!!!");
 }
 
 - (XCGroup*)parentGroup
@@ -422,6 +419,7 @@
             [recursiveMembers addObject:childKey];
         }
     }
+    [recursiveMembers addObject:_key];
     return [recursiveMembers arrayByAddingObjectsFromArray:recursiveMembers];
 }
 
