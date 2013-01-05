@@ -2,22 +2,22 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>NSString(XcodeMemberType) Category Reference</title>
+		<title>XCBuildConfiguration Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">expanz-xcode-editor </a></h1>
-				<a id="developerHome" href="../index.html">expanz</a>
+				<h1><a id="libraryTitle" href="../index.html">xcode-editor </a></h1>
+				<a id="developerHome" href="../index.html">jasperblues</a>
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">NSString(XcodeMemberType) Category Reference</h1>
+				<h1 class="hideInXcode">XCBuildConfiguration Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -36,18 +36,29 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/specifiedBuildSettings">&nbsp;&nbsp;&nbsp;&nbsp;specifiedBuildSettings</option>
+	
+	
 	
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/stringFromMemberType:">&nbsp;&nbsp;&nbsp;&nbsp;+ stringFromMemberType:</option>
+	<option value="//api/name/buildConfigurationsFromDictionary:inProject:">&nbsp;&nbsp;&nbsp;&nbsp;+ buildConfigurationsFromDictionary:inProject:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/asMemberType">&nbsp;&nbsp;&nbsp;&nbsp;- asMemberType</option>
+	<option value="//api/name/addBuildSettings:">&nbsp;&nbsp;&nbsp;&nbsp;- addBuildSettings:</option>
+	
+	<option value="//api/name/addOrReplaceBuildSetting:forKey:">&nbsp;&nbsp;&nbsp;&nbsp;- addOrReplaceBuildSetting:forKey:</option>
+	
+	<option value="//api/name/addXCConfigAtPath:">&nbsp;&nbsp;&nbsp;&nbsp;- addXCConfigAtPath:</option>
+	
+	<option value="//api/name/valueForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- valueForKey:</option>
 	
 	
 	
@@ -69,11 +80,17 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/specifiedBuildSettings">specifiedBuildSettings</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringFromMemberType:">stringFromMemberType:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildConfigurationsFromDictionary:inProject:">buildConfigurationsFromDictionary:inProject:</a></span></li>
 	
 </ul></li>
 
@@ -81,7 +98,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/asMemberType">asMemberType</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addBuildSettings:">addBuildSettings:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addOrReplaceBuildSetting:forKey:">addOrReplaceBuildSetting:forKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addXCConfigAtPath:">addXCConfigAtPath:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/valueForKey:">valueForKey:</a></span></li>
 	
 </ul></li>
 
@@ -90,7 +113,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="NSString(XcodeMemberType) Category Reference" name="top"></a>
+				<a title="XCBuildConfiguration Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -99,15 +122,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">NSString(XcodeMemberType) Category Reference</h1>
+						<h1 class="title title-header">XCBuildConfiguration Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">XcodeMemberType.h</td>
+	<td class="specification-value">XCBuildConfiguration.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -127,14 +153,42 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/stringFromMemberType:">+&nbsp;stringFromMemberType:</a></code>
+		<code><a href="#//api/name/buildConfigurationsFromDictionary:inProject:">+&nbsp;buildConfigurationsFromDictionary:inProject:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/asMemberType">&ndash;&nbsp;asMemberType</a></code>
+		<code><a href="#//api/name/specifiedBuildSettings">&nbsp;&nbsp;specifiedBuildSettings</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addXCConfigAtPath:">&ndash;&nbsp;addXCConfigAtPath:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addBuildSettings:">&ndash;&nbsp;addBuildSettings:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addOrReplaceBuildSetting:forKey:">&ndash;&nbsp;addOrReplaceBuildSetting:forKey:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/valueForKey:">&ndash;&nbsp;valueForKey:</a></code>
 		
 	</span>
 	
@@ -148,6 +202,23 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/specifiedBuildSettings" title="specifiedBuildSettings"></a>
+	<h3 class="subsubtitle method-title">specifiedBuildSettings</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSDictionary *specifiedBuildSettings</code></div>
+
+    
+</div>
+						
+					</div>
+					
 					
 					
 					<div class="section section-methods">
@@ -155,12 +226,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/stringFromMemberType:" title="stringFromMemberType:"></a>
-	<h3 class="subsubtitle method-title">stringFromMemberType:</h3>
+	<a name="//api/name/buildConfigurationsFromDictionary:inProject:" title="buildConfigurationsFromDictionary:inProject:"></a>
+	<h3 class="subsubtitle method-title">buildConfigurationsFromDictionary:inProject:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (NSString *)stringFromMemberType:(XcodeMemberType)<em>nodeType</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSDictionary *)buildConfigurationsFromDictionary:(NSDictionary *)<em>dictionary</em> inProject:(XCProject *)<em>project</em></code></div>
 
     
 </div>
@@ -174,12 +245,45 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/asMemberType" title="asMemberType"></a>
-	<h3 class="subsubtitle method-title">asMemberType</h3>
+	<a name="//api/name/addBuildSettings:" title="addBuildSettings:"></a>
+	<h3 class="subsubtitle method-title">addBuildSettings:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (XcodeMemberType)asMemberType</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)addBuildSettings:(NSDictionary *)<em>buildSettings</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addOrReplaceBuildSetting:forKey:" title="addOrReplaceBuildSetting:forKey:"></a>
+	<h3 class="subsubtitle method-title">addOrReplaceBuildSetting:forKey:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)addOrReplaceBuildSetting:(id&lt;NSCopying&gt;)<em>setting</em> forKey:(NSString *)<em>key</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addXCConfigAtPath:" title="addXCConfigAtPath:"></a>
+	<h3 class="subsubtitle method-title">addXCConfigAtPath:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)addXCConfigAtPath:(NSString *)<em>path</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/valueForKey:" title="valueForKey:"></a>
+	<h3 class="subsubtitle method-title">valueForKey:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;NSCopying&gt;)valueForKey:(NSString *)<em>key</em></code></div>
 
     
 </div>
@@ -197,9 +301,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-07-20)</span><br />
+						<p><span class="copyright">&copy; 2013 jasperblues. All rights reserved. (Last updated: 2013-01-05)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

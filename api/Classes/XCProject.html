@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">expanz-xcode-editor </a></h1>
-				<a id="developerHome" href="../index.html">expanz</a>
+				<h1><a id="libraryTitle" href="../index.html">xcode-editor </a></h1>
+				<a id="developerHome" href="../index.html">jasperblues</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -60,7 +60,13 @@
 	
 	<option value="//api/name/buildProductsForTargets:">&nbsp;&nbsp;&nbsp;&nbsp;- buildProductsForTargets:</option>
 	
+	<option value="//api/name/configurationWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- configurationWithName:</option>
+	
+	<option value="//api/name/configurations">&nbsp;&nbsp;&nbsp;&nbsp;- configurations</option>
+	
 	<option value="//api/name/containerItemProxyKeyForName:proxyType:">&nbsp;&nbsp;&nbsp;&nbsp;- containerItemProxyKeyForName:proxyType:</option>
+	
+	<option value="//api/name/defaultConfiguration">&nbsp;&nbsp;&nbsp;&nbsp;- defaultConfiguration</option>
 	
 	<option value="//api/name/filePath">&nbsp;&nbsp;&nbsp;&nbsp;- filePath</option>
 	
@@ -75,6 +81,8 @@
 	<option value="//api/name/groupWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithKey:</option>
 	
 	<option value="//api/name/groupWithPathFromRoot:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithPathFromRoot:</option>
+	
+	<option value="//api/name/groupWithSourceFile:">&nbsp;&nbsp;&nbsp;&nbsp;- groupWithSourceFile:</option>
 	
 	<option value="//api/name/groups">&nbsp;&nbsp;&nbsp;&nbsp;- groups</option>
 	
@@ -103,6 +111,8 @@
 	<option value="//api/name/removeTargetDependencies:">&nbsp;&nbsp;&nbsp;&nbsp;- removeTargetDependencies:</option>
 	
 	<option value="//api/name/rootGroup">&nbsp;&nbsp;&nbsp;&nbsp;- rootGroup</option>
+	
+	<option value="//api/name/rootGroups">&nbsp;&nbsp;&nbsp;&nbsp;- rootGroups</option>
 	
 	<option value="//api/name/save">&nbsp;&nbsp;&nbsp;&nbsp;- save</option>
 	
@@ -160,7 +170,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildProductsForTargets:">buildProductsForTargets:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configurationWithName:">configurationWithName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configurations">configurations</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/containerItemProxyKeyForName:proxyType:">containerItemProxyKeyForName:proxyType:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultConfiguration">defaultConfiguration</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/filePath">filePath</a></span></li>
 	
@@ -175,6 +191,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithKey:">groupWithKey:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithPathFromRoot:">groupWithPathFromRoot:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithSourceFile:">groupWithSourceFile:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groups">groups</a></span></li>
 	
@@ -203,6 +221,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeTargetDependencies:">removeTargetDependencies:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rootGroup">rootGroup</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rootGroups">rootGroups</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/save">save</a></span></li>
 	
@@ -358,6 +378,13 @@ which one is returned is undefined.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/rootGroups">&ndash;&nbsp;rootGroups</a></code>
+		<span class="tooltip"><p>Returns the root (top-level) <a href="#//api/name/groups">groups</a>, if there are multiple. An array of <a href="#//api/name/rootGroup">rootGroup</a> if there is only one.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/groupWithKey:">&ndash;&nbsp;groupWithKey:</a></code>
 		<span class="tooltip"><p>Returns the group with the given key, or nil.</p></span>
 	</span>
@@ -379,6 +406,13 @@ which one is returned is undefined.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/groupWithSourceFile:">&ndash;&nbsp;groupWithSourceFile:</a></code>
+		<span class="tooltip"><p>Returns the parent group for the group or file with the source file</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/targets">&ndash;&nbsp;targets</a></code>
 		<span class="tooltip"><p>Lists the targets in an xcode project, returning an array of <a href="../Classes/XCTarget.html"><code>XCTarget</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
@@ -388,6 +422,27 @@ which one is returned is undefined.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/targetWithName:">&ndash;&nbsp;targetWithName:</a></code>
 		<span class="tooltip"><p>Returns the target with the specified name, or nil.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/configurations">&ndash;&nbsp;configurations</a></code>
+		<span class="tooltip"><p>Returns the target with the specified name, or nil.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/configurationWithName:">&ndash;&nbsp;configurationWithName:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/defaultConfiguration">&ndash;&nbsp;defaultConfiguration</a></code>
+		
 	</span>
 	
 	
@@ -586,12 +641,75 @@ which one is returned is undefined.</p></span>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/configurationWithName:" title="configurationWithName:"></a>
+	<h3 class="subsubtitle method-title">configurationWithName:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)configurationWithName:(NSString *)<em>name</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/configurations" title="configurations"></a>
+	<h3 class="subsubtitle method-title">configurations</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the target with the specified name, or nil.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)configurations</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the target with the specified name, or nil.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">XCProject.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/containerItemProxyKeyForName:proxyType:" title="containerItemProxyKeyForName:proxyType:"></a>
 	<h3 class="subsubtitle method-title">containerItemProxyKeyForName:proxyType:</h3>
 	
 	
 
 	<div class="method-subsection method-declaration"><code>- (NSString *)containerItemProxyKeyForName:(NSString *)<em>name</em> proxyType:(NSString *)<em>proxyType</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/defaultConfiguration" title="defaultConfiguration"></a>
+	<h3 class="subsubtitle method-title">defaultConfiguration</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (XCBuildConfiguration *)defaultConfiguration</code></div>
 
     
 </div>
@@ -839,6 +957,47 @@ which one is returned is undefined.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns the group with the specified display name path &ndash; the directory relative to the root group. Eg Source/Main</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">XCProject.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/groupWithSourceFile:" title="groupWithSourceFile:"></a>
+	<h3 class="subsubtitle method-title">groupWithSourceFile:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the parent group for the group or file with the source file</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (XCGroup *)groupWithSourceFile:(XCSourceFile *)<em>sourceFile</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the parent group for the group or file with the source file</p>
 	</div>
 	
 	
@@ -1220,6 +1379,47 @@ which one is returned is undefined.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/rootGroups" title="rootGroups"></a>
+	<h3 class="subsubtitle method-title">rootGroups</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the root (top-level) <a href="#//api/name/groups">groups</a>, if there are multiple. An array of <a href="#//api/name/rootGroup">rootGroup</a> if there is only one.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)rootGroups</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the root (top-level) <a href="#//api/name/groups">groups</a>, if there are multiple. An array of <a href="#//api/name/rootGroup">rootGroup</a> if there is only one.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">XCProject.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/save" title="save"></a>
 	<h3 class="subsubtitle method-title">save</h3>
 	
@@ -1396,9 +1596,9 @@ which one is returned is undefined.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-07-20)</span><br />
+						<p><span class="copyright">&copy; 2013 jasperblues. All rights reserved. (Last updated: 2013-01-05)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

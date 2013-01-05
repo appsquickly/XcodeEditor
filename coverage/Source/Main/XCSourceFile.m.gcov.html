@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">82</td>
-            <td class="headerCovTableEntry">88</td>
-            <td class="headerCovTableEntryHi">93.2 %</td>
+            <td class="headerCovTableEntry">87</td>
+            <td class="headerCovTableEntry">92</td>
+            <td class="headerCovTableEntryHi">94.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-07-20</td>
+            <td class="headerValue">2013-01-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -58,157 +58,198 @@
 <pre class="source">
 <span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">       2 </span>            : //
-<span class="lineNum">       3 </span>            : //  EXPANZ
-<span class="lineNum">       4 </span>            : //  Copyright 2008-2011 EXPANZ
+<span class="lineNum">       3 </span>            : //  JASPER BLUES
+<span class="lineNum">       4 </span>            : //  Copyright 2012 Jasper Blues
 <span class="lineNum">       5 </span>            : //  All Rights Reserved.
 <span class="lineNum">       6 </span>            : //
-<span class="lineNum">       7 </span>            : //  NOTICE: Expanz permits you to use, modify, and distribute this file
+<span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 <span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &quot;XCSourceFile.h&quot;
-<span class="lineNum">      13 </span>            : #import &quot;XCProject.h&quot;
-<span class="lineNum">      14 </span>            : #import &quot;XCKeyBuilder.h&quot;
-<span class="lineNum">      15 </span>            : #import &quot;XCGroup.h&quot;
-<span class="lineNum">      16 </span>            : #import &quot;OCLogTemplate.h&quot;
-<span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">       7618 : @implementation XCSourceFile</span>
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : #import &quot;XCSourceFile.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;XCProject.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;Utils/XCKeyBuilder.h&quot;
+<span class="lineNum">      17 </span>            : #import &quot;Utils/XCMemoryUtils.h&quot;
+<span class="lineNum">      18 </span>            : #import &quot;XCGroup.h&quot;
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">        236 : @synthesize type = _type;</span>
-<span class="lineNum">      21 </span><span class="lineCov">          8 : @synthesize key = _key;</span>
-<span class="lineNum">      22 </span><span class="lineCov">       8257 : @synthesize name = _name;</span>
-<span class="lineNum">      23 </span><span class="lineCov">        244 : @synthesize sourceTree = _sourceTree;</span>
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      26 </span>            : + (XCSourceFile*) sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
-<span class="lineNum">      27 </span><span class="lineCov">       7853 :         name:(NSString*)name sourceTree:(NSString*)_tree {</span>
-<span class="lineNum">      28 </span><span class="lineCov">       7853 :     return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree];</span>
-<span class="lineNum">      29 </span><span class="lineCov">       7853 : }</span>
-<span class="lineNum">      30 </span><span class="lineCov">       7853 : </span>
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      33 </span>            : - (id) initWithProject:(XCProject*)project
-<span class="lineNum">      34 </span>            :         key:(NSString*)key
-<span class="lineNum">      35 </span><span class="lineCov">       7853 :         type:(XcodeSourceFileType)type</span>
-<span class="lineNum">      36 </span><span class="lineCov">       7853 :         name:(NSString*)name</span>
-<span class="lineNum">      37 </span><span class="lineCov">       7853 :         sourceTree:(NSString*)tree {</span>
-<span class="lineNum">      38 </span><span class="lineCov">       7853 : </span>
-<span class="lineNum">      39 </span><span class="lineCov">       7853 :     self = [super init];</span>
-<span class="lineNum">      40 </span>            :     if (self) {
-<span class="lineNum">      41 </span><span class="lineCov">       7853 :         _project = project;</span>
-<span class="lineNum">      42 </span><span class="lineCov">       7853 :         _key = [key copy];</span>
-<span class="lineNum">      43 </span><span class="lineCov">       7853 :         _type = type;</span>
-<span class="lineNum">      44 </span><span class="lineCov">       7853 :         _name = [name copy];</span>
-<span class="lineNum">      45 </span><span class="lineCov">       7853 :         _sourceTree = [tree copy];</span>
-<span class="lineNum">      46 </span><span class="lineCov">       7853 :     }</span>
-<span class="lineNum">      47 </span><span class="lineCov">       7853 :     return self;</span>
-<span class="lineNum">      48 </span><span class="lineCov">       7853 : }</span>
-<span class="lineNum">      49 </span><span class="lineCov">       7853 : </span>
-<span class="lineNum">      50 </span><span class="lineCov">       7853 : /* ================================================ Interface Methods =============================================== */</span>
-<span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            : - (BOOL) isBuildFile {
-<span class="lineNum">      53 </span>            :     if ([self canBecomeBuildFile] &amp;&amp; _isBuildFile == nil) {
-<span class="lineNum">      54 </span><span class="lineCov">         46 :         _isBuildFile = [NSNumber numberWithBool:NO];</span>
-<span class="lineNum">      55 </span><span class="lineCov">         46 :         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
-<span class="lineNum">      56 </span><span class="lineCov">         15 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
-<span class="lineNum">      57 </span><span class="lineCov">      16312 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key]) {</span>
-<span class="lineNum">      58 </span><span class="lineCov">      16297 :                     _isBuildFile = nil;</span>
-<span class="lineNum">      59 </span><span class="lineCov">       9606 :                     _isBuildFile = [NSNumber numberWithBool:YES];</span>
-<span class="lineNum">      60 </span><span class="lineCov">          4 :                 }</span>
-<span class="lineNum">      61 </span><span class="lineCov">          4 :             }</span>
-<span class="lineNum">      62 </span><span class="lineCov">          4 :         }];</span>
-<span class="lineNum">      63 </span>            :     }
-<span class="lineNum">      64 </span><span class="lineCov">      16297 :     return [_isBuildFile boolValue];</span>
-<span class="lineNum">      65 </span><span class="lineCov">         15 : }</span>
-<span class="lineNum">      66 </span><span class="lineCov">         46 : </span>
-<span class="lineNum">      67 </span>            : - (BOOL) canBecomeBuildFile {
-<span class="lineNum">      68 </span>            :     return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type ==
-<span class="lineNum">      69 </span><span class="lineCov">         82 :             XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type ==</span>
-<span class="lineNum">      70 </span><span class="lineCov">         82 :             Archive;</span>
-<span class="lineNum">      71 </span>            : }
-<span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span>            : - (XcodeMemberType) buildPhase {
-<span class="lineNum">      75 </span>            :     if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type ==
-<span class="lineNum">      76 </span><span class="lineCov">        152 :             XibFile) {</span>
-<span class="lineNum">      77 </span><span class="lineCov">         93 :         return PBXSourcesBuildPhase;</span>
-<span class="lineNum">      78 </span>            :     }
-<span class="lineNum">      79 </span><span class="lineCov">         96 :     else if (_type == Framework) {</span>
-<span class="lineNum">      80 </span>            :         return PBXFrameworksBuildPhase;
-<span class="lineNum">      81 </span><span class="lineCov">         56 :     }</span>
-<span class="lineNum">      82 </span><span class="lineCov">         28 :     else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle) {</span>
-<span class="lineNum">      83 </span>            :         return PBXResourcesBuildPhase;
-<span class="lineNum">      84 </span><span class="lineCov">         28 :     }</span>
-<span class="lineNum">      85 </span><span class="lineCov">         14 :     else if (_type == Archive) {</span>
-<span class="lineNum">      86 </span>            :         return PBXFrameworksBuildPhase;
-<span class="lineNum">      87 </span><span class="lineCov">         14 :     }</span>
-<span class="lineNum">      88 </span><span class="lineCov">         14 :     return PBXNilType;</span>
-<span class="lineNum">      89 </span>            : }
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      91 </span><span class="lineCov">        152 : - (NSString*) buildFileKey {</span>
-<span class="lineNum">      92 </span>            :     if (_buildFileKey == nil) {
-<span class="lineNum">      93 </span><span class="lineCov">         81 :         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop) {</span>
-<span class="lineNum">      94 </span><span class="lineCov">         81 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFile) {</span>
-<span class="lineNum">      95 </span><span class="lineCov">      14103 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key]) {</span>
-<span class="lineNum">      96 </span><span class="lineCov">      14090 :                     _buildFileKey = key;</span>
-<span class="lineNum">      97 </span><span class="lineCov">       8293 :                 }</span>
-<span class="lineNum">      98 </span><span class="lineCov">         13 :             }</span>
-<span class="lineNum">      99 </span><span class="lineCov">         13 :         }];</span>
-<span class="lineNum">     100 </span>            :     }
-<span class="lineNum">     101 </span><span class="lineCov">      14090 :     return _buildFileKey;</span>
-<span class="lineNum">     102 </span><span class="lineCov">         13 : </span>
-<span class="lineNum">     103 </span><span class="lineCov">         81 : }</span>
-<span class="lineNum">     104 </span>            : 
-<span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span>            : - (void) becomeBuildFile {
-<span class="lineNum">     107 </span>            :     if (![self isBuildFile]) {
-<span class="lineNum">     108 </span><span class="lineCov">         44 :         if ([self canBecomeBuildFile]) {</span>
-<span class="lineNum">     109 </span><span class="lineCov">         44 :             NSMutableDictionary* sourceBuildFile = [NSMutableDictionary dictionary];</span>
-<span class="lineNum">     110 </span><span class="lineCov">         36 :             [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFile] forKey:@&quot;isa&quot;];</span>
-<span class="lineNum">     111 </span><span class="lineCov">         36 :             [sourceBuildFile setObject:_key forKey:@&quot;fileRef&quot;];</span>
-<span class="lineNum">     112 </span><span class="lineCov">         36 :             NSString* buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@&quot;.buildFile&quot;]] build];</span>
-<span class="lineNum">     113 </span><span class="lineCov">         36 :             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];</span>
-<span class="lineNum">     114 </span><span class="lineCov">         36 :         }</span>
-<span class="lineNum">     115 </span><span class="lineCov">         36 :         else if (_type == Framework) {</span>
-<span class="lineNum">     116 </span><span class="lineCov">         36 :             [NSException raise:NSInvalidArgumentException format:@&quot;Add framework to target not implemented yet.&quot;];</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         else {</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException</span>
-<span class="lineNum">     120 </span>            :                     format:@&quot;Project file of type %@ can't become a build file.&quot;, [NSString stringFromSourceFileType:_type]];
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     122 </span>            : 
-<span class="lineNum">     123 </span>            :     }
-<span class="lineNum">     124 </span>            : }
-<span class="lineNum">     125 </span>            : 
-<span class="lineNum">     126 </span><span class="lineCov">         44 : /* ================================================= Protocol Methods =============================================== */</span>
-<span class="lineNum">     127 </span>            : - (XcodeMemberType) groupMemberType {
-<span class="lineNum">     128 </span>            :     return PBXFileReference;
-<span class="lineNum">     129 </span><span class="lineCov">         88 : }</span>
-<span class="lineNum">     130 </span><span class="lineCov">         88 : </span>
-<span class="lineNum">     131 </span>            : - (NSString*) displayName {
-<span class="lineNum">     132 </span>            :     return _name;
-<span class="lineNum">     133 </span><span class="lineCov">        617 : }</span>
-<span class="lineNum">     134 </span><span class="lineCov">        617 : </span>
-<span class="lineNum">     135 </span>            : - (NSString*) pathRelativeToProjectRoot {
-<span class="lineNum">     136 </span>            :     if ([self.sourceTree isEqualToString:@&quot;SOURCE_ROOT&quot;]) {
-<span class="lineNum">     137 </span><span class="lineCov">        244 :         return _name;</span>
-<span class="lineNum">     138 </span><span class="lineCov">        244 :     }</span>
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :     else {</span>
-<span class="lineNum">     140 </span>            :         NSString* parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
-<span class="lineNum">     141 </span>            :         NSString* result = [parentPath stringByAppendingPathComponent:_name];
-<span class="lineNum">     142 </span><span class="lineCov">        244 :         LogDebug(@&quot;%@ -&gt; %@ -&gt; %@&quot;, _name, parentPath, result);</span>
-<span class="lineNum">     143 </span><span class="lineCov">        244 :         return result;</span>
-<span class="lineNum">     144 </span><span class="lineCov">        244 :     }</span>
-<span class="lineNum">     145 </span><span class="lineCov">        244 : }</span>
-<span class="lineNum">     146 </span><span class="lineCov">        244 : </span>
-<span class="lineNum">     147 </span><span class="lineCov">        244 : /* ================================================== Utility Methods =============================================== */</span>
-<span class="lineNum">     148 </span>            : - (NSString*) description {
-<span class="lineNum">     149 </span>            :     return [NSString stringWithFormat:@&quot;Project file: key=%@, name=%@, fullPath=%@&quot;, _key, _name, [self pathRelativeToProjectRoot]];
-<span class="lineNum">     150 </span><span class="lineCov">        164 : }</span>
-<span class="lineNum">     151 </span><span class="lineCov">        164 : </span>
-<span class="lineNum">     152 </span>            : 
-<span class="lineNum">     153 </span>            : @end
+<span class="lineNum">      20 </span>            : @implementation XCSourceFile
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : @synthesize type = _type;
+<span class="lineNum">      23 </span>            : @synthesize key = _key;
+<span class="lineNum">      24 </span>            : @synthesize name = _name;
+<span class="lineNum">      25 </span>            : @synthesize sourceTree = _sourceTree;
+<span class="lineNum">      26 </span>            : @synthesize path = _path;
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : /* =========================================================== Class Methods ============================================================ */
+<span class="lineNum">      29 </span>            : + (XCSourceFile*)sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
+<span class="lineNum">      30 </span><span class="lineCov">       7724 :                                   name:(NSString*)name sourceTree:(NSString*)_tree path:(NSString*)path</span>
+<span class="lineNum">      31 </span><span class="lineCov">       7724 : {</span>
+<span class="lineNum">      32 </span>            :     return XCAutorelease([[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path])}
+<span class="lineNum">      33 </span><span class="lineCov">       7724 : </span>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : /* ============================================================ Initializers ============================================================ */
+<span class="lineNum">      36 </span>            : - (id)initWithProject:(XCProject*)project
+<span class="lineNum">      37 </span>            :                   key:(NSString*)key
+<span class="lineNum">      38 </span><span class="lineCov">       7724 :                  type:(XcodeSourceFileType)type</span>
+<span class="lineNum">      39 </span><span class="lineCov">       7724 :                  name:(NSString*)name</span>
+<span class="lineNum">      40 </span><span class="lineCov">       7724 :            sourceTree:(NSString*)tree</span>
+<span class="lineNum">      41 </span><span class="lineCov">       7724 :                  path:(NSString*)path</span>
+<span class="lineNum">      42 </span><span class="lineCov">       7724 : {</span>
+<span class="lineNum">      43 </span><span class="lineCov">       7724 : </span>
+<span class="lineNum">      44 </span>            :     self = [super init];
+<span class="lineNum">      45 </span>            :     if (self)
+<span class="lineNum">      46 </span><span class="lineCov">       7724 :     {</span>
+<span class="lineNum">      47 </span><span class="lineCov">       7724 :         _project = XCRetain(project)_key = [key copy];</span>
+<span class="lineNum">      48 </span>            :         _type = type;
+<span class="lineNum">      49 </span><span class="lineCov">       7724 :         _name = [name copy];</span>
+<span class="lineNum">      50 </span><span class="lineCov">       7724 :         _sourceTree = [tree copy];</span>
+<span class="lineNum">      51 </span><span class="lineCov">       7724 :         _path = [path copy];</span>
+<span class="lineNum">      52 </span><span class="lineCov">       7724 :     }</span>
+<span class="lineNum">      53 </span><span class="lineCov">       7724 :     return self;</span>
+<span class="lineNum">      54 </span><span class="lineCov">       7724 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">       7724 : </span>
+<span class="lineNum">      56 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      57 </span>            : - (void)dealloc
+<span class="lineNum">      58 </span>            : {
+<span class="lineNum">      59 </span><span class="lineCov">       7686 :     XCRelease(_project)</span>
+<span class="lineNum">      60 </span>            :     XCRelease(_key)
+<span class="lineNum">      61 </span><span class="lineCov">       7686 :     XCRelease(_name)</span>
+<span class="lineNum">      62 </span><span class="lineCov">       7686 :     XCRelease(_sourceTree)</span>
+<span class="lineNum">      63 </span><span class="lineCov">       7686 :     XCRelease(_path)</span>
+<span class="lineNum">      64 </span><span class="lineCov">       7686 :     XCRelease(_buildFileKey)</span>
+<span class="lineNum">      65 </span><span class="lineCov">       7686 :     XCRelease(_isBuildFile)</span>
+<span class="lineNum">      66 </span><span class="lineCov">       7686 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">       7686 :     XCSuperDealloc</span>
+<span class="lineNum">      68 </span>            : }
+<span class="lineNum">      69 </span><span class="lineCov">       7686 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">       7686 : /* ========================================================== Interface Methods ========================================================= */</span>
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : - (BOOL)isBuildFile
+<span class="lineNum">      73 </span>            : {
+<span class="lineNum">      74 </span><span class="lineCov">         46 :     if ([self canBecomeBuildFile] &amp;&amp; _isBuildFile == nil)</span>
+<span class="lineNum">      75 </span>            :     {
+<span class="lineNum">      76 </span><span class="lineCov">         46 :         id old = _isBuildFile;</span>
+<span class="lineNum">      77 </span>            :         _isBuildFile = [[NSNumber numberWithBool:NO] copy];
+<span class="lineNum">      78 </span><span class="lineCov">         15 :         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)</span>
+<span class="lineNum">      79 </span><span class="lineCov">         15 :         {</span>
+<span class="lineNum">      80 </span><span class="lineCov">      16481 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFileType)</span>
+<span class="lineNum">      81 </span><span class="lineCov">      16466 :             {</span>
+<span class="lineNum">      82 </span><span class="lineCov">      16466 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key])</span>
+<span class="lineNum">      83 </span>            :                 {
+<span class="lineNum">      84 </span><span class="lineCov">       9624 :                     XCRelease(_isBuildFile)</span>
+<span class="lineNum">      85 </span>            :                     _isBuildFile = nil;
+<span class="lineNum">      86 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">          4 :                     _isBuildFile = [[NSNumber numberWithBool:YES] copy];</span>
+<span class="lineNum">      88 </span>            :                 }
+<span class="lineNum">      89 </span><span class="lineCov">          4 :             }</span>
+<span class="lineNum">      90 </span><span class="lineCov">          4 :         }];</span>
+<span class="lineNum">      91 </span>            :         XCRelease(old)
+<span class="lineNum">      92 </span><span class="lineCov">      16466 :     }</span>
+<span class="lineNum">      93 </span><span class="lineCov">         15 :     return [_isBuildFile boolValue];</span>
+<span class="lineNum">      94 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      95 </span><span class="lineCov">         46 : </span>
+<span class="lineNum">      96 </span>            : - (BOOL)canBecomeBuildFile
+<span class="lineNum">      97 </span>            : {
+<span class="lineNum">      98 </span><span class="lineCov">         85 :     return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type ==</span>
+<span class="lineNum">      99 </span>            :             Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive;
+<span class="lineNum">     100 </span><span class="lineCov">         85 : }</span>
+<span class="lineNum">     101 </span>            : 
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span>            : - (XcodeMemberType)buildPhase
+<span class="lineNum">     104 </span>            : {
+<span class="lineNum">     105 </span><span class="lineCov">        152 :     if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile)</span>
+<span class="lineNum">     106 </span>            :     {
+<span class="lineNum">     107 </span><span class="lineCov">         93 :         return PBXSourcesBuildPhaseType;</span>
+<span class="lineNum">     108 </span>            :     }
+<span class="lineNum">     109 </span><span class="lineCov">         96 :     else if (_type == Framework)</span>
+<span class="lineNum">     110 </span>            :     {
+<span class="lineNum">     111 </span><span class="lineCov">         56 :         return PBXFrameworksBuildPhaseType;</span>
+<span class="lineNum">     112 </span>            :     }
+<span class="lineNum">     113 </span><span class="lineCov">         28 :     else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle)</span>
+<span class="lineNum">     114 </span>            :     {
+<span class="lineNum">     115 </span><span class="lineCov">         28 :         return PBXResourcesBuildPhaseType;</span>
+<span class="lineNum">     116 </span>            :     }
+<span class="lineNum">     117 </span><span class="lineCov">         14 :     else if (_type == Archive)</span>
+<span class="lineNum">     118 </span>            :     {
+<span class="lineNum">     119 </span><span class="lineCov">         14 :         return PBXFrameworksBuildPhaseType;</span>
+<span class="lineNum">     120 </span>            :     }
+<span class="lineNum">     121 </span><span class="lineCov">         14 :     return PBXNilType;</span>
+<span class="lineNum">     122 </span>            : }
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">        152 : - (NSString*)buildFileKey</span>
+<span class="lineNum">     125 </span>            : {
+<span class="lineNum">     126 </span><span class="lineCov">         81 :     if (_buildFileKey == nil)</span>
+<span class="lineNum">     127 </span>            :     {
+<span class="lineNum">     128 </span><span class="lineCov">         81 :         [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)</span>
+<span class="lineNum">     129 </span>            :         {
+<span class="lineNum">     130 </span><span class="lineCov">      14236 :             if ([[obj valueForKey:@&quot;isa&quot;] asMemberType] == PBXBuildFileType)</span>
+<span class="lineNum">     131 </span><span class="lineCov">      14223 :             {</span>
+<span class="lineNum">     132 </span><span class="lineCov">      14223 :                 if ([[obj valueForKey:@&quot;fileRef&quot;] isEqualToString:_key])</span>
+<span class="lineNum">     133 </span>            :                 {
+<span class="lineNum">     134 </span><span class="lineCov">       8304 :                     _buildFileKey = [key copy];</span>
+<span class="lineNum">     135 </span>            :                 }
+<span class="lineNum">     136 </span><span class="lineCov">         13 :             }</span>
+<span class="lineNum">     137 </span><span class="lineCov">         13 :         }];</span>
+<span class="lineNum">     138 </span>            :     }
+<span class="lineNum">     139 </span><span class="lineCov">      14223 :     return XCAutorelease([_buildFileKey copy])</span>
+<span class="lineNum">     140 </span><span class="lineCov">         13 : </span>
+<span class="lineNum">     141 </span><span class="lineCov">         81 : }</span>
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            : - (void)becomeBuildFile
+<span class="lineNum">     145 </span>            : {
+<span class="lineNum">     146 </span><span class="lineCov">         44 :     if (![self isBuildFile])</span>
+<span class="lineNum">     147 </span>            :     {
+<span class="lineNum">     148 </span><span class="lineCov">         44 :         if ([self canBecomeBuildFile])</span>
+<span class="lineNum">     149 </span>            :         {
+<span class="lineNum">     150 </span><span class="lineCov">         39 :             NSMutableDictionary* sourceBuildFile = [NSMutableDictionary dictionary];</span>
+<span class="lineNum">     151 </span>            :             [sourceBuildFile setObject:[NSString stringFromMemberType:PBXBuildFileType] forKey:@&quot;isa&quot;];
+<span class="lineNum">     152 </span><span class="lineCov">         39 :             [sourceBuildFile setObject:_key forKey:@&quot;fileRef&quot;];</span>
+<span class="lineNum">     153 </span><span class="lineCov">         39 :             NSString* buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@&quot;.buildFile&quot;]] build];</span>
+<span class="lineNum">     154 </span><span class="lineCov">         39 :             [[_project objects] setObject:sourceBuildFile forKey:buildFileKey];</span>
+<span class="lineNum">     155 </span><span class="lineCov">         39 :         }</span>
+<span class="lineNum">     156 </span><span class="lineCov">         39 :         else if (_type == Framework)</span>
+<span class="lineNum">     157 </span><span class="lineCov">         39 :         {</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;Add framework to target not implemented yet.&quot;];</span>
+<span class="lineNum">     159 </span>            :         }
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :         else</span>
+<span class="lineNum">     161 </span><span class="lineNoCov">          0 :         {</span>
+<span class="lineNum">     162 </span>            :             [NSException raise:NSInvalidArgumentException format:@&quot;Project file of type %@ can't become a build file.&quot;,
+<span class="lineNum">     163 </span>            :                                                                  [NSString stringFromSourceFileType:_type]];
+<span class="lineNum">     164 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span>            :     }
+<span class="lineNum">     167 </span>            : }
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span><span class="lineCov">         44 : /* =========================================================== Protocol Methods ========================================================= */</span>
+<span class="lineNum">     170 </span>            : - (XcodeMemberType)groupMemberType
+<span class="lineNum">     171 </span>            : {
+<span class="lineNum">     172 </span><span class="lineCov">          4 :     return PBXFileReferenceType;</span>
+<span class="lineNum">     173 </span>            : }
+<span class="lineNum">     174 </span><span class="lineCov">          4 : </span>
+<span class="lineNum">     175 </span>            : - (NSString*)displayName
+<span class="lineNum">     176 </span>            : {
+<span class="lineNum">     177 </span><span class="lineCov">        316 :     return _name;</span>
+<span class="lineNum">     178 </span>            : }
+<span class="lineNum">     179 </span><span class="lineCov">        316 : </span>
+<span class="lineNum">     180 </span>            : - (NSString*)pathRelativeToProjectRoot
+<span class="lineNum">     181 </span>            : {
+<span class="lineNum">     182 </span><span class="lineCov">         99 :     NSString* parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];</span>
+<span class="lineNum">     183 </span>            :     NSString* result = [parentPath stringByAppendingPathComponent:_name];
+<span class="lineNum">     184 </span><span class="lineCov">         99 :     return result;</span>
+<span class="lineNum">     185 </span><span class="lineCov">         99 : }</span>
+<span class="lineNum">     186 </span><span class="lineCov">         99 : </span>
+<span class="lineNum">     187 </span>            : /* ============================================================ Utility Methods ========================================================= */
+<span class="lineNum">     188 </span>            : - (NSString*)description
+<span class="lineNum">     189 </span>            : {
+<span class="lineNum">     190 </span><span class="lineCov">         95 :     return [NSString stringWithFormat:@&quot;Project file: key=%@, name=%@, fullPath=%@&quot;, _key, _name, [self pathRelativeToProjectRoot]];</span>
+<span class="lineNum">     191 </span>            : }
+<span class="lineNum">     192 </span><span class="lineCov">         95 : </span>
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span>            : @end
 </pre>
       </td>
     </tr>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Main/XCAbstractDefinition.m</title>
+  <title>LCOV - coverage.info - Source/Main/XCSourceFileDefinition.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - XCAbstractDefinition.m</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Main</a> - XCSourceFileDefinition.h</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -31,8 +31,8 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
@@ -59,7 +59,7 @@
 <span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">       2 </span>            : //
 <span class="lineNum">       3 </span>            : //  JASPER BLUES
-<span class="lineNum">       4 </span>            : //  Copyright 2012 - 2013 Jasper Blues
+<span class="lineNum">       4 </span>            : //  Copyright 2012 Jasper Blues
 <span class="lineNum">       5 </span>            : //  All Rights Reserved.
 <span class="lineNum">       6 </span>            : //
 <span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -68,27 +68,35 @@
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : #import &quot;XCAbstractDefinition.h&quot;
-<span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : @implementation XCAbstractDefinition
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      15 </span>            : #import &quot;XCAbstractDefinition.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;XcodeSourceFileType.h&quot;
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span>            : @synthesize fileOperationStyle = _fileOperationStyle;
+<span class="lineNum">      18 </span>            : @interface XCSourceFileDefinition : XCAbstractDefinition {
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      22 </span><span class="lineCov">         22 : - (id)init</span>
-<span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">         22 :     self = [super init];</span>
-<span class="lineNum">      25 </span><span class="lineCov">         22 :     if (self)</span>
-<span class="lineNum">      26 </span>            :     {
-<span class="lineNum">      27 </span><span class="lineCov">         22 :         _fileOperationStyle = FileOperationStyleOverwrite;</span>
-<span class="lineNum">      28 </span><span class="lineCov">         22 :     }</span>
-<span class="lineNum">      29 </span><span class="lineCov">         22 :     return self;</span>
-<span class="lineNum">      30 </span>            : }
-<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      20 </span>            :     NSString* _sourceFileName;
+<span class="lineNum">      21 </span>            :     XcodeSourceFileType _type;
+<span class="lineNum">      22 </span>            :     NSData* _data;
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : }
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span><span class="lineCov">          2 : @property(nonatomic, strong, readonly) NSString* sourceFileName;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 : @property(nonatomic, strong, readonly) NSData* data;</span>
+<span class="lineNum">      28 </span><span class="lineCov">          2 : @property(nonatomic, readonly) XcodeSourceFileType type;</span>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
+<span class="lineNum">      31 </span>            :         type:(XcodeSourceFileType)type;
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span>            : @end
+<span class="lineNum">      33 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
+<span class="lineNum">      34 </span>            :         type:(XcodeSourceFileType)type;
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : - (id) initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type;
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : - (id) initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : @end
 </pre>
       </td>
     </tr>

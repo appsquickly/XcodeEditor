@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">17</td>
-            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">16</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-07-20</td>
+            <td class="headerValue">2013-01-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -58,48 +58,56 @@
 <pre class="source">
 <span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">       2 </span>            : //
-<span class="lineNum">       3 </span>            : //  EXPANZ
-<span class="lineNum">       4 </span>            : //  Copyright 2008-2011 EXPANZ
+<span class="lineNum">       3 </span>            : //  JASPER BLUES
+<span class="lineNum">       4 </span>            : //  Copyright 2012 Jasper Blues
 <span class="lineNum">       5 </span>            : //  All Rights Reserved.
 <span class="lineNum">       6 </span>            : //
-<span class="lineNum">       7 </span>            : //  NOTICE: Expanz permits you to use, modify, and distribute this file
+<span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 <span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
-<span class="lineNum">      11 </span>            : #import &quot;XCFrameworkDefinition.h&quot;
+<span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">          2 : @implementation XCFrameworkDefinition</span>
-<span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span><span class="lineCov">          2 : @synthesize filePath = _filePath;</span>
-<span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize copyToDestination = _copyToDestination;</span>
+<span class="lineNum">      14 </span>            : #import &quot;XCFrameworkDefinition.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;Utils/XCMemoryUtils.h&quot;
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : @implementation XCFrameworkDefinition
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      20 </span>            : + (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
-<span class="lineNum">      21 </span><span class="lineCov">          2 :         copyToDestination:(BOOL)copyToDestination {</span>
-<span class="lineNum">      22 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      23 </span>            :     return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
-<span class="lineNum">      24 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      19 </span>            : @synthesize filePath = _filePath;
+<span class="lineNum">      20 </span>            : @synthesize copyToDestination = _copyToDestination;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /* ================================================= Class Methods ================================================== */
+<span class="lineNum">      23 </span>            : + (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
+<span class="lineNum">      24 </span><span class="lineCov">          2 :         copyToDestination:(BOOL)copyToDestination {</span>
 <span class="lineNum">      25 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      28 </span>            : - (id) initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination {
-<span class="lineNum">      29 </span>            :     self = [super init];
-<span class="lineNum">      30 </span><span class="lineCov">          2 :     if (self) {</span>
-<span class="lineNum">      31 </span><span class="lineCov">          2 :         _filePath = [filePath copy];</span>
-<span class="lineNum">      32 </span><span class="lineCov">          2 :         _copyToDestination = copyToDestination;</span>
-<span class="lineNum">      33 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 :     return self;</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 : /* ================================================ Interface Methods =============================================== */</span>
-<span class="lineNum">      38 </span>            : - (NSString*) name {
-<span class="lineNum">      39 </span>            :     return [_filePath lastPathComponent];
-<span class="lineNum">      40 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">      41 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : @end
+<span class="lineNum">      26 </span>            :     return XCAutorelease([[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination])
+<span class="lineNum">      27 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      31 </span>            : - (id) initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination {
+<span class="lineNum">      32 </span>            :     self = [super init];
+<span class="lineNum">      33 </span><span class="lineCov">          2 :     if (self) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :         _filePath = [filePath copy];</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :         _copyToDestination = copyToDestination;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      37 </span><span class="lineCov">          2 :     return self;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      39 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      40 </span>            : /* ================================================ Interface Methods =============================================== */
+<span class="lineNum">      41 </span>            : - (NSString*) name {
+<span class="lineNum">      42 </span>            :     return [_filePath lastPathComponent];
+<span class="lineNum">      43 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      44 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : /* ================================================== Deallocation ================================================== */
+<span class="lineNum">      47 </span>            : - (void) dealloc {
+<span class="lineNum">      48 </span>            :         XCRelease(_filePath)
+<span class="lineNum">      49 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 :         XCSuperDealloc</span>
+<span class="lineNum">      51 </span>            : }
+<span class="lineNum">      52 </span><span class="lineCov">          2 : @end</span>
 </pre>
       </td>
     </tr>

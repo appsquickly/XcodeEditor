@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
 			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">expanz-xcode-editor </a></h1>
-				<a id="developerHome" href="../index.html">expanz</a>
+				<h1><a id="libraryTitle" href="../index.html">xcode-editor </a></h1>
+				<a id="developerHome" href="../index.html">jasperblues</a>
 			</div>
 			
 			<div id="title" role="banner">
@@ -64,6 +64,12 @@
 	
 	<option value="//api/name/addMember:">&nbsp;&nbsp;&nbsp;&nbsp;- addMember:</option>
 	
+	<option value="//api/name/configurationWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- configurationWithName:</option>
+	
+	<option value="//api/name/configurations">&nbsp;&nbsp;&nbsp;&nbsp;- configurations</option>
+	
+	<option value="//api/name/defaultConfiguration">&nbsp;&nbsp;&nbsp;&nbsp;- defaultConfiguration</option>
+	
 	<option value="//api/name/initWithProject:key:name:productName:productReference:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProject:key:name:productName:productReference:</option>
 	
 	<option value="//api/name/members">&nbsp;&nbsp;&nbsp;&nbsp;- members</option>
@@ -71,6 +77,8 @@
 	<option value="//api/name/removeMemberWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- removeMemberWithKey:</option>
 	
 	<option value="//api/name/removeMembersWithKeys:">&nbsp;&nbsp;&nbsp;&nbsp;- removeMembersWithKeys:</option>
+	
+	<option value="//api/name/resources">&nbsp;&nbsp;&nbsp;&nbsp;- resources</option>
 	
 	
 	
@@ -122,6 +130,12 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addMember:">addMember:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configurationWithName:">configurationWithName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/configurations">configurations</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultConfiguration">defaultConfiguration</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProject:key:name:productName:productReference:">initWithProject:key:name:productName:productReference:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/members">members</a></span></li>
@@ -129,6 +143,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeMemberWithKey:">removeMemberWithKey:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeMembersWithKeys:">removeMembersWithKeys:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resources">resources</a></span></li>
 	
 </ul></li>
 
@@ -227,7 +243,35 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/resources">&ndash;&nbsp;resources</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/members">&ndash;&nbsp;members</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/configurations">&ndash;&nbsp;configurations</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/configurationWithName:">&ndash;&nbsp;configurationWithName:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/defaultConfiguration">&ndash;&nbsp;defaultConfiguration</a></code>
 		
 	</span>
 	
@@ -367,6 +411,39 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/configurationWithName:" title="configurationWithName:"></a>
+	<h3 class="subsubtitle method-title">configurationWithName:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (XCBuildConfiguration *)configurationWithName:(NSString *)<em>name</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/configurations" title="configurations"></a>
+	<h3 class="subsubtitle method-title">configurations</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)configurations</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/defaultConfiguration" title="defaultConfiguration"></a>
+	<h3 class="subsubtitle method-title">defaultConfiguration</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (XCBuildConfiguration *)defaultConfiguration</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithProject:key:name:productName:productReference:" title="initWithProject:key:name:productName:productReference:"></a>
 	<h3 class="subsubtitle method-title">initWithProject:key:name:productName:productReference:</h3>
 	
@@ -410,6 +487,17 @@
     
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/resources" title="resources"></a>
+	<h3 class="subsubtitle method-title">resources</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)resources</code></div>
+
+    
+</div>
+						
 					</div>
 					
 					
@@ -423,9 +511,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 expanz. All rights reserved. (Last updated: 2012-07-20)</span><br />
+						<p><span class="copyright">&copy; 2013 jasperblues. All rights reserved. (Last updated: 2013-01-05)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>

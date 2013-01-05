@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntryLo">73.3 %</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntryLo">59.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-07-20</td>
+            <td class="headerValue">2013-01-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -58,61 +58,71 @@
 <pre class="source">
 <span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">       2 </span>            : //
-<span class="lineNum">       3 </span>            : //  EXPANZ
-<span class="lineNum">       4 </span>            : //  Copyright 2008-2011 EXPANZ
+<span class="lineNum">       3 </span>            : //  JASPER BLUES
+<span class="lineNum">       4 </span>            : //  Copyright 2012 Jasper Blues
 <span class="lineNum">       5 </span>            : //  All Rights Reserved.
 <span class="lineNum">       6 </span>            : //
-<span class="lineNum">       7 </span>            : //  NOTICE: Expanz permits you to use, modify, and distribute this file
+<span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 <span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &quot;XCSourceFileDefinition.h&quot;
+<span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">          2 : @implementation XCSourceFileDefinition</span>
+<span class="lineNum">      14 </span>            : #import &quot;XCSourceFileDefinition.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;Utils/XCMemoryUtils.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">          2 : @synthesize sourceFileName = _sourceFileName;</span>
-<span class="lineNum">      18 </span><span class="lineCov">          2 : @synthesize type = _type;</span>
-<span class="lineNum">      19 </span><span class="lineCov">          2 : @synthesize data = _data;</span>
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      22 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 :         type:(XcodeSourceFileType)type {</span>
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      25 </span>            :     return [[XCSourceFileDefinition alloc] initWithName:name text:text type:type];
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      28 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
-<span class="lineNum">      29 </span>            :         type:(XcodeSourceFileType)type {
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     return [[XCSourceFileDefinition alloc] initWithName:name data:data type:type];</span>
-<span class="lineNum">      32 </span>            : }
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      35 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      36 </span>            : - (id) initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type {
-<span class="lineNum">      37 </span>            :     self = [super init];
-<span class="lineNum">      38 </span>            :     if (self) {
-<span class="lineNum">      39 </span><span class="lineCov">          1 :         _sourceFileName = [name copy];</span>
-<span class="lineNum">      40 </span><span class="lineCov">          1 :         _data = [text dataUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      41 </span><span class="lineCov">          1 :         _type = type;</span>
-<span class="lineNum">      42 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 :     return self;</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 : - (id) initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type {</span>
-<span class="lineNum">      47 </span><span class="lineCov">          1 :     self = [super init];</span>
-<span class="lineNum">      48 </span>            :     if (self) {
-<span class="lineNum">      49 </span>            :         _sourceFileName = [name copy];
-<span class="lineNum">      50 </span><span class="lineCov">          1 :         _data = [data copy];</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :         _type = type;</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :     return self;</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      17 </span>            : @implementation XCSourceFileDefinition
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : @synthesize sourceFileName = _sourceFileName;
+<span class="lineNum">      20 </span>            : @synthesize type = _type;
+<span class="lineNum">      21 </span>            : @synthesize data = _data;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : /* ================================================= Class Methods ================================================== */
+<span class="lineNum">      24 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name text:(NSString*)text
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :         type:(XcodeSourceFileType)type {</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      27 </span>            :     return XCAutorelease([[XCSourceFileDefinition alloc] initWithName:name text:text type:type])
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : + (XCSourceFileDefinition*) sourceDefinitionWithName:(NSString*)name data:(NSData*)data
+<span class="lineNum">      31 </span>            :         type:(XcodeSourceFileType)type {
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     return XCAutorelease([[XCSourceFileDefinition alloc] initWithName:name data:data type:type])</span>
+<span class="lineNum">      34 </span>            : }
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      38 </span>            : - (id) initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type {
+<span class="lineNum">      39 </span>            :     self = [super init];
+<span class="lineNum">      40 </span>            :     if (self) {
+<span class="lineNum">      41 </span><span class="lineCov">          1 :         _sourceFileName = [name copy];</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 :         _data = [[text dataUsingEncoding:NSUTF8StringEncoding] copy];</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 :         _type = type;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     return self;</span>
+<span class="lineNum">      46 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 : - (id) initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type {</span>
+<span class="lineNum">      49 </span>            :     self = [super init];
+<span class="lineNum">      50 </span>            :     if (self) {
+<span class="lineNum">      51 </span>            :         _sourceFileName = [name copy];
+<span class="lineNum">      52 </span><span class="lineCov">          1 :         _data = [data copy];</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :         _type = type;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     return self;</span>
 <span class="lineNum">      56 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      57 </span><span class="lineCov">          1 : @end</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span>            : /* ================================================== Deallocation ================================================== */
+<span class="lineNum">      61 </span>            : - (void) dealloc {
+<span class="lineNum">      62 </span>            :         XCRelease(_sourceFileName)
+<span class="lineNum">      63 </span>            :         XCRelease(_data)
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :         XCSuperDealloc</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : @end</span>
 </pre>
       </td>
     </tr>

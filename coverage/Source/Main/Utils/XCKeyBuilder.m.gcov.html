@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">15</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-07-20</td>
+            <td class="headerValue">2013-01-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -58,48 +58,50 @@
 <pre class="source">
 <span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">       2 </span>            : //
-<span class="lineNum">       3 </span>            : //  EXPANZ
-<span class="lineNum">       4 </span>            : //  Copyright 2008-2011 EXPANZ
+<span class="lineNum">       3 </span>            : //  JASPER BLUES
+<span class="lineNum">       4 </span>            : //  Copyright 2012 - 2013 Jasper Blues
 <span class="lineNum">       5 </span>            : //  All Rights Reserved.
 <span class="lineNum">       6 </span>            : //
-<span class="lineNum">       7 </span>            : //  NOTICE: Expanz permits you to use, modify, and distribute this file
+<span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 <span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : #import &quot;XCKeyBuilder.h&quot;
-<span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span>            : @implementation XCKeyBuilder
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : #import &quot;XCKeyBuilder.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;XCMemoryUtils.h&quot;
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      17 </span><span class="lineCov">         84 : + (XCKeyBuilder*) forItemNamed:(NSString*)name {</span>
-<span class="lineNum">      18 </span><span class="lineCov">         84 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         84 :     return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];</span>
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">         84 : }</span>
+<span class="lineNum">      16 </span>            : @implementation XCKeyBuilder
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : /* ================================================= Class Methods ================================================== */
+<span class="lineNum">      19 </span><span class="lineCov">         87 : + (XCKeyBuilder*) forItemNamed:(NSString*)name {</span>
+<span class="lineNum">      20 </span><span class="lineCov">         87 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      21 </span><span class="lineCov">         87 :     return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]);</span>
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      24 </span>            : - (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length {
-<span class="lineNum">      25 </span><span class="lineCov">         84 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">         84 :     if (self != nil) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">         84 :         CC_MD5(bytes, (int) length, _value);</span>
-<span class="lineNum">      28 </span><span class="lineCov">         84 :     }</span>
-<span class="lineNum">      29 </span><span class="lineCov">         84 :     return self;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         84 : }</span>
-<span class="lineNum">      31 </span><span class="lineCov">         84 : </span>
-<span class="lineNum">      32 </span>            : /* ================================================ Interface Methods =============================================== */
-<span class="lineNum">      33 </span>            : - (NSString*) build {
-<span class="lineNum">      34 </span><span class="lineCov">         84 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
-<span class="lineNum">      35 </span><span class="lineCov">         84 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
-<span class="lineNum">      36 </span><span class="lineCov">         84 :     NSInteger i;</span>
-<span class="lineNum">      37 </span>            :     for (i = 0; i &lt; byteLength; i++) {
-<span class="lineNum">      38 </span><span class="lineCov">       1428 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
-<span class="lineNum">      39 </span><span class="lineCov">       1344 :     }</span>
-<span class="lineNum">      40 </span>            :     return [stringValue substringToIndex:24];
-<span class="lineNum">      41 </span><span class="lineCov">         84 : }</span>
-<span class="lineNum">      42 </span><span class="lineCov">         84 : </span>
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : @end
+<span class="lineNum">      23 </span>            : }
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : /* ================================================== Initializers ================================================== */
+<span class="lineNum">      26 </span>            : - (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length {
+<span class="lineNum">      27 </span><span class="lineCov">         87 :     self = [super init];</span>
+<span class="lineNum">      28 </span><span class="lineCov">         87 :     if (self != nil) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">         87 :         CC_MD5(bytes, (int) length, _value);</span>
+<span class="lineNum">      30 </span><span class="lineCov">         87 :     }</span>
+<span class="lineNum">      31 </span><span class="lineCov">         87 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         87 : }</span>
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : /* ================================================ Interface Methods =============================================== */
+<span class="lineNum">      35 </span>            : - (NSString*) build {
+<span class="lineNum">      36 </span><span class="lineCov">         87 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
+<span class="lineNum">      37 </span><span class="lineCov">         87 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         87 :     NSInteger i;</span>
+<span class="lineNum">      39 </span>            :     for (i = 0; i &lt; byteLength; i++) {
+<span class="lineNum">      40 </span><span class="lineCov">       1479 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
+<span class="lineNum">      41 </span><span class="lineCov">       1392 :     }</span>
+<span class="lineNum">      42 </span>            :     return [stringValue substringToIndex:24];
+<span class="lineNum">      43 </span><span class="lineCov">         87 : }</span>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : @end
 </pre>
       </td>
     </tr>

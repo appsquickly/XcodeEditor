@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>XCKeyBuilder Class Reference</title>
+		<title>NSString(XcodeMemberTypeExtensions) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">XCKeyBuilder Class Reference</h1>
+				<h1 class="hideInXcode">NSString(XcodeMemberTypeExtensions) Category Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -40,16 +40,14 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/forItemNamed:">&nbsp;&nbsp;&nbsp;&nbsp;+ forItemNamed:</option>
+	<option value="//api/name/stringFromMemberType:">&nbsp;&nbsp;&nbsp;&nbsp;+ stringFromMemberType:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/build">&nbsp;&nbsp;&nbsp;&nbsp;- build</option>
-	
-	<option value="//api/name/initHashValueMD5HashWithBytes:length:">&nbsp;&nbsp;&nbsp;&nbsp;- initHashValueMD5HashWithBytes:length:</option>
+	<option value="//api/name/asMemberType">&nbsp;&nbsp;&nbsp;&nbsp;- asMemberType</option>
 	
 	
 	
@@ -75,7 +73,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/forItemNamed:">forItemNamed:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stringFromMemberType:">stringFromMemberType:</a></span></li>
 	
 </ul></li>
 
@@ -83,9 +81,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/build">build</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initHashValueMD5HashWithBytes:length:">initHashValueMD5HashWithBytes:length:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/asMemberType">asMemberType</a></span></li>
 	
 </ul></li>
 
@@ -94,7 +90,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="XCKeyBuilder Class Reference" name="top"></a>
+				<a title="NSString(XcodeMemberTypeExtensions) Category Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -103,18 +99,15 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">XCKeyBuilder Class Reference</h1>
+						<h1 class="title title-header">NSString(XcodeMemberTypeExtensions) Category Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">XCKeyBuilder.h</td>
+	<td class="specification-value">XcodeMemberType.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -134,21 +127,14 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/forItemNamed:">+&nbsp;forItemNamed:</a></code>
+		<code><a href="#//api/name/stringFromMemberType:">+&nbsp;stringFromMemberType:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initHashValueMD5HashWithBytes:length:">&ndash;&nbsp;initHashValueMD5HashWithBytes:length:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/build">&ndash;&nbsp;build</a></code>
+		<code><a href="#//api/name/asMemberType">&ndash;&nbsp;asMemberType</a></code>
 		
 	</span>
 	
@@ -169,12 +155,12 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/forItemNamed:" title="forItemNamed:"></a>
-	<h3 class="subsubtitle method-title">forItemNamed:</h3>
+	<a name="//api/name/stringFromMemberType:" title="stringFromMemberType:"></a>
+	<h3 class="subsubtitle method-title">stringFromMemberType:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (XCKeyBuilder *)forItemNamed:(NSString *)<em>name</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)stringFromMemberType:(XcodeMemberType)<em>nodeType</em></code></div>
 
     
 </div>
@@ -188,23 +174,12 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/build" title="build"></a>
-	<h3 class="subsubtitle method-title">build</h3>
+	<a name="//api/name/asMemberType" title="asMemberType"></a>
+	<h3 class="subsubtitle method-title">asMemberType</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)build</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initHashValueMD5HashWithBytes:length:" title="initHashValueMD5HashWithBytes:length:"></a>
-	<h3 class="subsubtitle method-title">initHashValueMD5HashWithBytes:length:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (id)initHashValueMD5HashWithBytes:(const void *)<em>bytes</em> length:(NSUInteger)<em>length</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (XcodeMemberType)asMemberType</code></div>
 
     
 </div>
