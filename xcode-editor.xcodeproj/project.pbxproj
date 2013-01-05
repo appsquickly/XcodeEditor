@@ -700,6 +700,7 @@
 		6B55224414EA723700494CF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -719,7 +720,6 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
-					"-lstdc++",
 					"-ObjC",
 					"-all_load",
 				);
@@ -734,6 +734,7 @@
 		6B55224514EA723700494CF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -753,7 +754,6 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
-					"-lstdc++",
 					"-ObjC",
 					"-all_load",
 				);
