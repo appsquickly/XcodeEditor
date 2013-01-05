@@ -5,6 +5,9 @@
 #ifdef __OBJC__
 #import <Cocoa/Cocoa.h>
 
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
 #import "Kiwi.h"
 #import "NSString+TestResource.h"
 #import "OCLogTemplate.h"
