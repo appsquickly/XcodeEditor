@@ -709,7 +709,7 @@
 {
     NSMutableDictionary* reference = [NSMutableDictionary dictionary];
     [reference setObject:[NSString stringFromMemberType:PBXFileReferenceType] forKey:@"isa"];
-    [reference setObject:@"4" forKey:@"FileEncoding"];
+    [reference setObject:@"4" forKey:@"fileEncoding"];
     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
     if (name != nil)
     {
