@@ -181,6 +181,6 @@ Thanks!
 
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
-* © 2011 - 2012 jasper blues
+* © 2011 - 2012 Jasper Blues and contributors.
 
 
