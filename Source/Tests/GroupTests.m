@@ -27,7 +27,7 @@
 
 @implementation FrameworkPathFactory
 
-static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk";
+static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk";
 
 + (NSString*)eventKitUIPath
 {
@@ -84,7 +84,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
 - (void)test_able_to_return_its_full_path_relative_to_the_project_base_directory
 {
-    LogDebug(@"############Path: %@", [group pathRelativeToProjectRoot]);
+    NSLog(@"############Path: %@", [group pathRelativeToProjectRoot]);
 }
 
 /* ================================================================================================================== */
@@ -98,7 +98,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     [classDefinition setHeader:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.header"]];
     [classDefinition setSource:[NSString stringWithTestResource:@"ESA_Sales_Foobar_ViewController.impl"]];
 
-    LogDebug(@"Class definition: %@", classDefinition);
+    NSLog(@"Class definition: %@", classDefinition);
 
     [group addClass:classDefinition];
     [project save];
@@ -115,7 +115,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     assertThatBool([fileResource isBuildFile], equalToBool(YES));
 
     [project save];
-    LogDebug(@"Done adding source file.");
+    NSLog(@"Done adding source file.");
 }
 
 - (void)test_provides_a_convenience_method_to_add_a_source_file_and_specify_targets
@@ -226,7 +226,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     assertThatBool([xibFile isBuildFile], equalToBool(YES));
 
     [project save];
-    LogDebug(@"Done adding xib file.");
+    NSLog(@"Done adding xib file.");
 
 }
 
@@ -252,7 +252,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     [project save];
 
     NSString* xibContent = [NSString stringWithTestResource:@"expanz-iOS-SDK/Source/Main/AddedXibFile.xib"];
-    LogDebug(@"Xib content: %@", xibContent);
+    NSLog(@"Xib content: %@", xibContent);
     assertThat(xibContent, isNot(equalTo(newXibText)));
 
 }
@@ -375,7 +375,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     NSArray* children = [group members];
-    LogDebug(@"Group children: %@", children);
+    NSLog(@"Group children: %@", children);
     assertThat(children, isNot(empty()));
 
 }
@@ -392,9 +392,9 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 - (void)test_able_to_list_all_of_its_members_recursively
 {
 
-    LogDebug(@"Let's get recursive members!!!!");
+    NSLog(@"Let's get recursive members!!!!");
     NSArray* recursiveMembers = [group recursiveMembers];
-    LogDebug(@"$$$$$$$$$$$$$$$**********$*$*$*$*$*$* recursive members: %@", recursiveMembers);
+    NSLog(@"$$$$$$$$$$$$$$$**********$*$*$*$*$*$* recursive members: %@", recursiveMembers);
 
 }
 
@@ -410,13 +410,13 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
 
     NSArray* groups = [project groups];
-    LogDebug(@"Groups now: %@", groups);
+    NSLog(@"Groups now: %@", groups);
 
     [group removeFromParentDeletingChildren:YES];
     [project save];
 
     groups = [project groups];
-    LogDebug(@"Groups now: %@", groups);
+    NSLog(@"Groups now: %@", groups);
 
     XCGroup* deleted = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
     assertThat(deleted, nilValue());

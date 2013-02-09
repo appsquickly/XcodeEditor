@@ -177,7 +177,7 @@ enum {
 /* ================================================= Protocol Methods =============================================== */
 - (BOOL) ccTouchBegan:(UITouch*)touch withEvent:(UIEvent*)event {
 
-    LogDebug(@"Start touchin' !!!!!!!!!!!");
+    NSLog(@"Start touchin' !!!!!!!!!!!");
 
     CGPoint touchLocation = [touch locationInView:[touch view]];
     touchLocation = [[CCDirector sharedDirector] convertToGL:touchLocation];
@@ -239,7 +239,7 @@ enum {
 
 - (void) ccTouchEnded:(UITouch*)touch withEvent:(UIEvent*)event {
     CCLOG(@"Stop touching!!!!!");
-    LogDebug(@"Stop touchin' !!!!!!!!!!!");
+    NSLog(@"Stop touchin' !!!!!!!!!!!");
     if (_mouseJoint) {
         _world->DestroyJoint(_mouseJoint);
         _mouseJoint = NULL;

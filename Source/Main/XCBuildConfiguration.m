@@ -63,7 +63,6 @@
                     [NSException raise:@"XCConfig not found" format:@"Unable to find XCConfig file at %@", path];
                 }
 
-                [configuration addXCConfigAtPath:path];
             }
 
             [configuration addBuildSettings:[buildConfiguration objectForKey:@"buildSettings"]];

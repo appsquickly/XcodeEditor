@@ -75,7 +75,6 @@
 		6BE4B285147E6B610059E45F /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */; };
 		6BE4B285147E6B610059E460 /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* XCFrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* XCFrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */; };
 		BA7980A661B2FF20A86F3FD0 /* ClassDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984143FEC00A651B12D88 /* ClassDefinitionTests.m */; };
 		BA7982BD513A2B1FDD22E03B /* XCBuildConfiguration.h in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */; };
 		BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */; };
@@ -187,7 +186,6 @@
 		6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* XCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFrameworkDefinition.h; sourceTree = "<group>"; };
-		6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
 		92E640F015EB65500077FD86 /* XCMemoryUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCMemoryUtils.h; sourceTree = "<group>"; };
 		BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubProjectDefinitionTests.m; sourceTree = "<group>"; };
 		BA7984143FEC00A651B12D88 /* ClassDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDefinitionTests.m; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 		6BE9748C15AF0B31004472E2 /* OCLogTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				6BE9748D15AF0B31004472E2 /* OCLogTemplate.h */,
 			);
 			path = OCLogTemplate;
 			sourceTree = "<group>";
@@ -434,7 +431,6 @@
 				6BE4B285147E6B610059E45B /* XCXibDefinition.h in Headers */,
 				6BE4B285147E6B610059E462 /* XCFrameworkDefinition.h in Headers */,
 				E94DE11415443AC100C51271 /* XCProject+SubProject.h in Headers */,
-				6BE9748E15AF0B31004472E2 /* OCLogTemplate.h in Headers */,
 				BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */,
 				BA798EED43772945E9BD1284 /* XCBuildConfiguration.h in Headers */,
 			);

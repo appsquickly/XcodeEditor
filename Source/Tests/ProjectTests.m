@@ -41,12 +41,12 @@
 {
 
     NSArray* headerFiles = [project headerFiles];
-    LogDebug(@"Headers: %@", headerFiles);
+    NSLog(@"Headers: %@", headerFiles);
 
     assertThat(headerFiles, hasCountOf(18));
     for (XCSourceFile* file in headerFiles)
     {
-        LogDebug(@"File: %@", [file description]);
+        NSLog(@"File: %@", [file description]);
     }
 
 }
@@ -55,7 +55,7 @@
 {
 
     NSArray* objcFiles = [project objectiveCFiles];
-    LogDebug(@"Implementation Files: %@", objcFiles);
+    NSLog(@"Implementation Files: %@", objcFiles);
 
     assertThat(objcFiles, hasCountOf(21));
 }
@@ -63,7 +63,7 @@
 - (void)test_able_to_list_all_the_obj_cPlusPlus_files_in_a_project
 {
     NSArray* objcPlusPlusFiles = [project objectiveCPlusPlusFiles];
-    LogDebug(@"Implementation Files: %@", objcPlusPlusFiles);
+    NSLog(@"Implementation Files: %@", objcPlusPlusFiles);
 
     //TODO: Put an obj-c++ file in the test project.
     assertThat(objcPlusPlusFiles, hasCountOf(0));
@@ -73,7 +73,7 @@
 {
 
     NSArray* xibFiles = [project xibFiles];
-    LogDebug(@"Xib Files: %@", xibFiles);
+    NSLog(@"Xib Files: %@", xibFiles);
     assertThat(xibFiles, hasCountOf(2));
 }
 
@@ -87,10 +87,10 @@
 
     for (XCGroup* group in groups)
     {
-        LogDebug(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
+        NSLog(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
         for (id <XcodeGroupMember> member  in [group members])
         {
-            LogDebug(@"\t%@", [member displayName]);
+            NSLog(@"\t%@", [member displayName]);
         }
     }
 
@@ -102,7 +102,7 @@
 {
 
     XCGroup* rootGroup = [project rootGroup];
-    LogDebug(@"Here the group: %@", rootGroup);
+    NSLog(@"Here the group: %@", rootGroup);
     assertThat(rootGroup.members, isNot(empty()));
 
 
@@ -114,7 +114,7 @@
 
     XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
     assertThat(group, notNilValue());
-    LogDebug(@"Group: %@", group);
+    NSLog(@"Group: %@", group);
 
 }
 
@@ -130,7 +130,7 @@
     NSArray* targets = [project targets];
     for (XCTarget* target in [project targets])
     {
-        LogDebug(@"%@", target);
+        NSLog(@"%@", target);
     }
     assertThat(targets, notNilValue());
     assertThat(targets, isNot(empty()));
@@ -138,7 +138,7 @@
     for (XCTarget* target in targets)
     {
         NSArray* members = [target members];
-        LogDebug(@"Members: %@", members);
+        NSLog(@"Members: %@", members);
     }
 
 }

@@ -24,8 +24,6 @@
 
 @property(nonatomic, readonly) NSDictionary* specifiedBuildSettings;
 
-- (void)addXCConfigAtPath:(NSString*)path;
-
 - (void)addBuildSettings:(NSDictionary*)buildSettings;
 
 - (void)addOrReplaceBuildSetting:(id <NSCopying>)setting forKey:(NSString*)key;

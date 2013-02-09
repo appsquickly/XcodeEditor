@@ -90,7 +90,7 @@
 
 - (void)queueDeletion:(NSString*)filePath
 {
-    LogDebug(@"Queue deletion at: %@", filePath);
+    NSLog(@"Queue deletion at: %@", filePath);
     [_filesToDelete addObject:filePath];
 }
 
@@ -162,7 +162,7 @@
         }
         else
         {
-            LogDebug(@"Deleted: %@", fullPath);
+            NSLog(@"Deleted: %@", fullPath);
         }
     }
     [_filesToDelete removeAllObjects];

@@ -9,6 +9,5 @@
 #import <OCHamcrest/OCHamcrest.h>
 
 #import "NSString+TestResource.h"
-#import "OCLogTemplate.h"
 
 #endif

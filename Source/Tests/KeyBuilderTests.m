@@ -29,9 +29,9 @@
 
     XCKeyBuilder* builtKey = [XCKeyBuilder forItemNamed:requiresKey];
     NSString* key = [builtKey build];
-    LogDebug(@"Key: %@", key);
+    NSLog(@"Key: %@", key);
     assertThat(key, notNilValue());
-    assertThatInt(key.length, equalToInt(24));
+    assertThatUnsignedLongLong(key.length, equalToUnsignedLongLong(24));
 }
 
 

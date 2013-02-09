@@ -120,18 +120,18 @@
         [_fileOperationQueue queueDeletion:[self pathRelativeToProjectRoot]];
     }
     NSDictionary* dictionary = [[_project objects] objectForKey:_key];
-    LogDebug(@"Here's the dictionary: %@", dictionary);
+    NSLog(@"Here's the dictionary: %@", dictionary);
     
     [[_project objects] removeObjectForKey:_key];
 
     dictionary = [[_project objects] objectForKey:_key];
-    LogDebug(@"Here's the dictionary: %@", dictionary);
+    NSLog(@"Here's the dictionary: %@", dictionary);
 
     for (XCTarget* target in [_project targets])
     {
         [target removeMembersWithKeys:[self recursiveMembers]];
     }
-    LogDebug(@"Done!!!");
+    NSLog(@"Done!!!");
 }
 
 - (XCGroup*)parentGroup

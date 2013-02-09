@@ -311,9 +311,7 @@
     [_fileOperationQueue commitFileOperations];
     [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:YES];
 
-
-
-    LogDebug(@"Saved project");
+    NSLog(@"Saved project");
 }
 
 - (NSMutableDictionary*)objects

@@ -28,9 +28,9 @@
 - (void)setUp
 {
     _project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
-    LogDebug(@"Targets: %@", [_project targets]);
+    NSLog(@"Targets: %@", [_project targets]);
     _target = [_project targetWithName:@"Spring-OC"];
-    LogDebug(@"Target: %@", _target);
+    NSLog(@"Target: %@", _target);
 }
 
 /* ====================================================================================================================================== */
@@ -40,15 +40,15 @@
 - (void)test_allows_listing_the_build_configuration
 {
 //    XCBuildConfiguration* configuration = [_target configurationWithName:@"Debug"];
-//    LogDebug(@"Here's the configuration: %@", configuration);
+//    NSLog(@"Here's the configuration: %@", configuration);
 //    id <NSCopying> ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
-//    LogDebug(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
+//    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
 //    [configuration addOrReplaceBuildSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
 //
 //    configuration = [_target configurationWithName:@"Release"];
-//    LogDebug(@"Here's the configuration: %@", configuration);
+//    NSLog(@"Here's the configuration: %@", configuration);
 //    ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
-//    LogDebug(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
+//    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
 //    [configuration addOrReplaceBuildSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
 //
 //    [_project save];
