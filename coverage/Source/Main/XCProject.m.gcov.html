@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-05</td>
+            <td class="headerValue">2013-02-11</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -369,69 +369,67 @@
 <span class="lineNum">     311 </span><span class="lineCov">         20 :     [_fileOperationQueue commitFileOperations];</span>
 <span class="lineNum">     312 </span><span class="lineCov">         20 :     [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@&quot;project.pbxproj&quot;] atomically:YES];</span>
 <span class="lineNum">     313 </span>            : 
-<span class="lineNum">     314 </span>            : 
-<span class="lineNum">     315 </span>            : 
-<span class="lineNum">     316 </span><span class="lineCov">         20 :     LogDebug(@&quot;Saved project&quot;);</span>
-<span class="lineNum">     317 </span><span class="lineCov">         20 : }</span>
-<span class="lineNum">     318 </span>            : 
-<span class="lineNum">     319 </span><span class="lineCov">      15341 : - (NSMutableDictionary*)objects</span>
-<span class="lineNum">     320 </span>            : {
-<span class="lineNum">     321 </span><span class="lineCov">      15341 :     return [_dataStore objectForKey:@&quot;objects&quot;];</span>
-<span class="lineNum">     322 </span>            : }
-<span class="lineNum">     323 </span>            : 
-<span class="lineNum">     324 </span>            : 
-<span class="lineNum">     325 </span><span class="lineNoCov">          0 : - (NSDictionary*)configurations</span>
-<span class="lineNum">     326 </span>            : {
-<span class="lineNum">     327 </span><span class="lineNoCov">          0 :     if (_configurations == nil)</span>
-<span class="lineNum">     328 </span>            :     {
-<span class="lineNum">     329 </span>            :         NSString* buildConfigurationRootSectionKey =
-<span class="lineNum">     330 </span><span class="lineNoCov">          0 :                 [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@&quot;buildConfigurationList&quot;];</span>
-<span class="lineNum">     331 </span><span class="lineNoCov">          0 :         NSDictionary* buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];</span>
-<span class="lineNum">     332 </span><span class="lineNoCov">          0 :         _configurations =</span>
-<span class="lineNum">     333 </span>            :                 [[XCBuildConfiguration buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@&quot;buildConfigurations&quot;]
-<span class="lineNum">     334 </span>            :                                                                inProject:self] mutableCopy];
-<span class="lineNum">     335 </span><span class="lineNoCov">          0 :         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@&quot;defaultConfigurationName&quot;] copy];</span>
-<span class="lineNum">     336 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     314 </span><span class="lineCov">         20 :     NSLog(@&quot;Saved project&quot;);</span>
+<span class="lineNum">     315 </span><span class="lineCov">         20 : }</span>
+<span class="lineNum">     316 </span>            : 
+<span class="lineNum">     317 </span><span class="lineCov">      15341 : - (NSMutableDictionary*)objects</span>
+<span class="lineNum">     318 </span>            : {
+<span class="lineNum">     319 </span><span class="lineCov">      15341 :     return [_dataStore objectForKey:@&quot;objects&quot;];</span>
+<span class="lineNum">     320 </span>            : }
+<span class="lineNum">     321 </span>            : 
+<span class="lineNum">     322 </span>            : 
+<span class="lineNum">     323 </span><span class="lineNoCov">          0 : - (NSDictionary*)configurations</span>
+<span class="lineNum">     324 </span>            : {
+<span class="lineNum">     325 </span><span class="lineNoCov">          0 :     if (_configurations == nil)</span>
+<span class="lineNum">     326 </span>            :     {
+<span class="lineNum">     327 </span>            :         NSString* buildConfigurationRootSectionKey =
+<span class="lineNum">     328 </span><span class="lineNoCov">          0 :                 [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@&quot;buildConfigurationList&quot;];</span>
+<span class="lineNum">     329 </span><span class="lineNoCov">          0 :         NSDictionary* buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];</span>
+<span class="lineNum">     330 </span><span class="lineNoCov">          0 :         _configurations =</span>
+<span class="lineNum">     331 </span>            :                 [[XCBuildConfiguration buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@&quot;buildConfigurations&quot;]
+<span class="lineNum">     332 </span>            :                                                                inProject:self] mutableCopy];
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 :         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@&quot;defaultConfigurationName&quot;] copy];</span>
+<span class="lineNum">     334 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     335 </span>            : 
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :     return XCAutorelease([_configurations copy])}</span>
 <span class="lineNum">     337 </span>            : 
-<span class="lineNum">     338 </span><span class="lineNoCov">          0 :     return XCAutorelease([_configurations copy])}</span>
-<span class="lineNum">     339 </span>            : 
-<span class="lineNum">     340 </span><span class="lineNoCov">          0 : - (NSDictionary*)configurationWithName:(NSString*)name</span>
-<span class="lineNum">     341 </span>            : {
-<span class="lineNum">     342 </span><span class="lineNoCov">          0 :     return [[self configurations] objectForKey:name];</span>
-<span class="lineNum">     343 </span>            : }
-<span class="lineNum">     344 </span>            : 
-<span class="lineNum">     345 </span><span class="lineNoCov">          0 : - (XCBuildConfiguration*)defaultConfiguration</span>
-<span class="lineNum">     346 </span>            : {
-<span class="lineNum">     347 </span><span class="lineNoCov">          0 :     return [[self configurations] objectForKey:_defaultConfigurationName];</span>
-<span class="lineNum">     348 </span>            : }
-<span class="lineNum">     349 </span>            : 
-<span class="lineNum">     350 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     351 </span>            : #pragma mark Private
-<span class="lineNum">     352 </span>            : 
-<span class="lineNum">     353 </span><span class="lineNoCov">          0 : - (NSString*)rootObjectKey</span>
-<span class="lineNum">     354 </span>            : {
-<span class="lineNum">     355 </span><span class="lineNoCov">          0 :     if (_rootObjectKey == nil)</span>
-<span class="lineNum">     356 </span>            :     {
-<span class="lineNum">     357 </span><span class="lineNoCov">          0 :         _rootObjectKey = [[_dataStore objectForKey:@&quot;rootObject&quot;] copy];;</span>
-<span class="lineNum">     358 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     359 </span>            : 
-<span class="lineNum">     360 </span><span class="lineNoCov">          0 :     return _rootObjectKey;</span>
-<span class="lineNum">     361 </span>            : }
-<span class="lineNum">     362 </span>            : 
-<span class="lineNum">     363 </span><span class="lineCov">          4 : - (NSArray*)projectFilesOfType:(XcodeSourceFileType)projectFileType</span>
-<span class="lineNum">     364 </span>            : {
-<span class="lineNum">     365 </span><span class="lineCov">          4 :     NSMutableArray* results = [NSMutableArray array];</span>
-<span class="lineNum">     366 </span><span class="lineCov">        236 :     for (XCSourceFile* file in [self files])</span>
-<span class="lineNum">     367 </span>            :     {
-<span class="lineNum">     368 </span><span class="lineCov">        236 :         if ([file type] == projectFileType)</span>
-<span class="lineNum">     369 </span>            :         {
-<span class="lineNum">     370 </span><span class="lineCov">         41 :             [results addObject:file];</span>
-<span class="lineNum">     371 </span><span class="lineCov">         41 :         }</span>
-<span class="lineNum">     372 </span><span class="lineCov">        236 :     }</span>
-<span class="lineNum">     373 </span><span class="lineCov">          4 :     return results;</span>
-<span class="lineNum">     374 </span>            : }
-<span class="lineNum">     375 </span>            : 
-<span class="lineNum">     376 </span>            : @end
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 : - (NSDictionary*)configurationWithName:(NSString*)name</span>
+<span class="lineNum">     339 </span>            : {
+<span class="lineNum">     340 </span><span class="lineNoCov">          0 :     return [[self configurations] objectForKey:name];</span>
+<span class="lineNum">     341 </span>            : }
+<span class="lineNum">     342 </span>            : 
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 : - (XCBuildConfiguration*)defaultConfiguration</span>
+<span class="lineNum">     344 </span>            : {
+<span class="lineNum">     345 </span><span class="lineNoCov">          0 :     return [[self configurations] objectForKey:_defaultConfigurationName];</span>
+<span class="lineNum">     346 </span>            : }
+<span class="lineNum">     347 </span>            : 
+<span class="lineNum">     348 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     349 </span>            : #pragma mark Private
+<span class="lineNum">     350 </span>            : 
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 : - (NSString*)rootObjectKey</span>
+<span class="lineNum">     352 </span>            : {
+<span class="lineNum">     353 </span><span class="lineNoCov">          0 :     if (_rootObjectKey == nil)</span>
+<span class="lineNum">     354 </span>            :     {
+<span class="lineNum">     355 </span><span class="lineNoCov">          0 :         _rootObjectKey = [[_dataStore objectForKey:@&quot;rootObject&quot;] copy];;</span>
+<span class="lineNum">     356 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     357 </span>            : 
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 :     return _rootObjectKey;</span>
+<span class="lineNum">     359 </span>            : }
+<span class="lineNum">     360 </span>            : 
+<span class="lineNum">     361 </span><span class="lineCov">          4 : - (NSArray*)projectFilesOfType:(XcodeSourceFileType)projectFileType</span>
+<span class="lineNum">     362 </span>            : {
+<span class="lineNum">     363 </span><span class="lineCov">          4 :     NSMutableArray* results = [NSMutableArray array];</span>
+<span class="lineNum">     364 </span><span class="lineCov">        236 :     for (XCSourceFile* file in [self files])</span>
+<span class="lineNum">     365 </span>            :     {
+<span class="lineNum">     366 </span><span class="lineCov">        236 :         if ([file type] == projectFileType)</span>
+<span class="lineNum">     367 </span>            :         {
+<span class="lineNum">     368 </span><span class="lineCov">         41 :             [results addObject:file];</span>
+<span class="lineNum">     369 </span><span class="lineCov">         41 :         }</span>
+<span class="lineNum">     370 </span><span class="lineCov">        236 :     }</span>
+<span class="lineNum">     371 </span><span class="lineCov">          4 :     return results;</span>
+<span class="lineNum">     372 </span>            : }
+<span class="lineNum">     373 </span>            : 
+<span class="lineNum">     374 </span>            : @end
 </pre>
       </td>
     </tr>

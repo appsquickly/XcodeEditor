@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-05</td>
+            <td class="headerValue">2013-02-11</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -148,7 +148,7 @@
 <span class="lineNum">      90 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      91 </span><span class="lineCov">          1 : - (void)queueDeletion:(NSString*)filePath</span>
 <span class="lineNum">      92 </span><span class="lineCov">          1 : {</span>
-<span class="lineNum">      93 </span><span class="lineCov">          1 :     LogDebug(@&quot;Queue deletion at: %@&quot;, filePath);</span>
+<span class="lineNum">      93 </span><span class="lineCov">          1 :     NSLog(@&quot;Queue deletion at: %@&quot;, filePath);</span>
 <span class="lineNum">      94 </span>            :     [_filesToDelete addObject:filePath];
 <span class="lineNum">      95 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      96 </span>            : 
@@ -220,7 +220,7 @@
 <span class="lineNum">     162 </span><span class="lineCov">          1 :         }</span>
 <span class="lineNum">     163 </span>            :         else
 <span class="lineNum">     164 </span><span class="lineCov">          1 :         {</span>
-<span class="lineNum">     165 </span>            :             LogDebug(@&quot;Deleted: %@&quot;, fullPath);
+<span class="lineNum">     165 </span>            :             NSLog(@&quot;Deleted: %@&quot;, fullPath);
 <span class="lineNum">     166 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">     167 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     168 </span><span class="lineNoCov">          0 :     [_filesToDelete removeAllObjects];</span>

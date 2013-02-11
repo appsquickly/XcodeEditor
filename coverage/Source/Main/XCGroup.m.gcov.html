@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-05</td>
+            <td class="headerValue">2013-02-11</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -178,18 +178,18 @@
 <span class="lineNum">     120 </span><span class="lineCov">          1 :         [_fileOperationQueue queueDeletion:[self pathRelativeToProjectRoot]];</span>
 <span class="lineNum">     121 </span>            :     }
 <span class="lineNum">     122 </span><span class="lineCov">          1 :     NSDictionary* dictionary = [[_project objects] objectForKey:_key];</span>
-<span class="lineNum">     123 </span><span class="lineCov">          1 :     LogDebug(@&quot;Here's the dictionary: %@&quot;, dictionary);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :     NSLog(@&quot;Here's the dictionary: %@&quot;, dictionary);</span>
 <span class="lineNum">     124 </span><span class="lineCov">          1 :     </span>
 <span class="lineNum">     125 </span><span class="lineCov">          1 :     [[_project objects] removeObjectForKey:_key];</span>
 <span class="lineNum">     126 </span>            : 
 <span class="lineNum">     127 </span><span class="lineCov">          1 :     dictionary = [[_project objects] objectForKey:_key];</span>
-<span class="lineNum">     128 </span>            :     LogDebug(@&quot;Here's the dictionary: %@&quot;, dictionary);
+<span class="lineNum">     128 </span>            :     NSLog(@&quot;Here's the dictionary: %@&quot;, dictionary);
 <span class="lineNum">     129 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     130 </span><span class="lineCov">          1 :     for (XCTarget* target in [_project targets])</span>
 <span class="lineNum">     131 </span>            :     {
 <span class="lineNum">     132 </span><span class="lineCov">          4 :         [target removeMembersWithKeys:[self recursiveMembers]];</span>
 <span class="lineNum">     133 </span>            :     }
-<span class="lineNum">     134 </span><span class="lineCov">          4 :     LogDebug(@&quot;Done!!!&quot;);</span>
+<span class="lineNum">     134 </span><span class="lineCov">          4 :     NSLog(@&quot;Done!!!&quot;);</span>
 <span class="lineNum">     135 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">     136 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">     137 </span><span class="lineCov">          1 : - (XCGroup*)parentGroup</span>
@@ -767,7 +767,7 @@
 <span class="lineNum">     709 </span><span class="lineNoCov">          0 : {</span>
 <span class="lineNum">     710 </span><span class="lineNoCov">          0 :     NSMutableDictionary* reference = [NSMutableDictionary dictionary];</span>
 <span class="lineNum">     711 </span><span class="lineNoCov">          0 :     [reference setObject:[NSString stringFromMemberType:PBXFileReferenceType] forKey:@&quot;isa&quot;];</span>
-<span class="lineNum">     712 </span><span class="lineNoCov">          0 :     [reference setObject:@&quot;4&quot; forKey:@&quot;FileEncoding&quot;];</span>
+<span class="lineNum">     712 </span><span class="lineNoCov">          0 :     [reference setObject:@&quot;4&quot; forKey:@&quot;fileEncoding&quot;];</span>
 <span class="lineNum">     713 </span>            :     [reference setObject:[NSString stringFromSourceFileType:type] forKey:@&quot;lastKnownFileType&quot;];
 <span class="lineNum">     714 </span>            :     if (name != nil)
 <span class="lineNum">     715 </span>            :     {
