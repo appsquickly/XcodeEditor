@@ -111,9 +111,9 @@ subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath
 You've just read them! The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
 This will extract a test project to the /tmp directory, where you'll be able to see the outcome for yourself. 
 
-* <a href="https://github.com/jasperblues/xcode-editor/wiki">Wiki</a>
-* <a href="http://jasperblues.github.com/xcode-editor/api/index.html">API</a>
-* <a href="http://jasperblues.github.com/xcode-editor/coverage/index.html">Coverage Reports</a>
+* <a href="https://github.com/jasperblues/XcodeEditor/wiki">Wiki</a>
+* <a href="http://jasperblues.github.com/XcodeEditor/api/index.html">API</a>
+* <a href="http://jasperblues.github.com/XcodeEditor/coverage/index.html">Coverage Reports</a>
 
 # Building 
 
