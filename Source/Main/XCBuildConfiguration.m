@@ -18,11 +18,11 @@
 #import "Utils/XCMemoryUtils.h"
 
 @implementation XCBuildConfiguration
-+ (NSDictionary*)buildConfigurationsFromDictionary:(NSDictionary*)dictionary inProject:(XCProject*)project
++ (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project
 {
     NSMutableDictionary* configurations = [NSMutableDictionary dictionary];
 
-    for (NSString* buildConfigurationKey in dictionary)
+    for (NSString* buildConfigurationKey in array)
     {
         NSDictionary* buildConfiguration = [[project objects] objectForKey:buildConfigurationKey];
 

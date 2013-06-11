@@ -328,7 +328,7 @@
                 [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
         NSDictionary* buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
         _configurations =
-                [[XCBuildConfiguration buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+                [[XCBuildConfiguration buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
                                                                inProject:self] mutableCopy];
         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
     }

@@ -90,11 +90,11 @@
 }
 
 /* ================================================ Interface Methods =============================================== */
-- (NSArray *) configurations {
+- (NSDictionary*) configurations {
 	if (_configurations == nil) {
 		NSString *buildConfigurationRootSectionKey = [[[_project objects] objectForKey:_key] objectForKey:@"buildConfigurationList"];
 		NSDictionary *buildConfigurationDictionary = [[_project objects] objectForKey:buildConfigurationRootSectionKey];
-		_configurations = [[XCBuildConfiguration buildConfigurationsFromDictionary:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+		_configurations = [[XCBuildConfiguration buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
                                                                          inProject:_project] mutableCopy];
 		_defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
 	}
