@@ -167,6 +167,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
          
 ### With contributions from: 
 
+* Connor Duggan - bug fixes and maintenance. 
 * Zach Drayer - lots of fixes and features to support TextMate. 
 * Janine Ohmer - support adding and removing sub-projects (http://www.synapticats.com).
 * Bogdan Vladu - support adding and removing groups (www.levelhelper.org).
