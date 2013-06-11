@@ -236,8 +236,10 @@
 
 - (XCGroup*)addGroupWithPath:(NSString*)path
 {
-    NSString* groupKey = [[XCKeyBuilder forItemNamed:path] build];
-
+    NSString * groupKeyPath = self.pathRelativeToProjectRoot? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path] : path;
+    
+    NSString* groupKey = [[XCKeyBuilder forItemNamed:groupKeyPath] build];
+    
     NSArray* members = [self members];
     for (id <XcodeGroupMember> groupMember in members)
     {
