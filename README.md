@@ -175,6 +175,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 * Paul Taykalo
 * Vladislav Alekseev 
 * Felix Schneider - bug fixes. 
+* Isak Sky - mutable XCSourceFiles. 
 
 Thanks! 
 
