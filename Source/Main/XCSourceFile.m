@@ -68,7 +68,8 @@
 /* ========================================================== Properties ========================================================= */
 
 // Goes to the entry for this object in the project and sets a value for one of the keys, such as name, path, etc.
-- (void)setValue:(id)val forProjectItemPropertyWithKey:(NSString *)key{
+- (void)setValue:(id)val forProjectItemPropertyWithKey:(NSString *)key
+{
     NSMutableDictionary *obj = [[[_project objects] objectForKey:_key] mutableCopy];
     if(nil == obj) {
         [NSException raise:@"Project item not found" format:@"Project item with key %@ not found.", _key];
@@ -78,11 +79,13 @@
 }
 
 
-- (NSString *)name{
+- (NSString *)name
+{
     return _name;
 }
 
-- (void)setName:(NSString *)name{
+- (void)setName:(NSString *)name
+{
     id old = _name;
     _name = [name copy];
     XCRelease(old);
@@ -91,17 +94,18 @@
 }
 
 
-- (NSString *)path{
+- (NSString *)path
+{
     return _path;
 }
 
-- (void)setPath:(NSString *)path {
+- (void)setPath:(NSString *)path
+{
     id old = _path;
     _path = [path copy];
     XCRelease(old);
 
     [self setValue:path forProjectItemPropertyWithKey:@"path"];
-
 }
 
 /* ========================================================== Interface Methods ========================================================= */
@@ -229,3 +233,4 @@
 
 
 @end
+
