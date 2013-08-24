@@ -36,9 +36,9 @@
 
 @property(nonatomic, readonly) XcodeSourceFileType type;
 @property(nonatomic, strong, readonly) NSString* key;
-@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong) NSString* name;
 @property(nonatomic, strong, readonly) NSString* sourceTree;
-@property(nonatomic, strong, readonly) NSString* path;
+@property(nonatomic, strong) NSString* path;
 
 + (XCSourceFile*) sourceFileWithProject:(XCProject*)project
         key:(NSString*)key
