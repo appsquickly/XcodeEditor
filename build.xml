@@ -57,7 +57,7 @@
 
     <target name="--unit.tests.build">
         <exec executable="xcodebuild" failonerror="true">
-            <arg line="-target ${tests.target.name}"/>
+            <arg line="test -scheme Tests -destination OS=10.8,name=OSX"/>
         </exec>
 
         <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>
