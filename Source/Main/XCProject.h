@@ -170,5 +170,7 @@ __attribute__((__visibility__("default"))) @interface XCProject : NSObject
 * Raw project data.
 */
 - (NSMutableDictionary*)objects;
+- (NSMutableDictionary*)dataStore;
+- (void)dropCache;
 
 @end

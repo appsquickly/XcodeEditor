@@ -64,5 +64,8 @@
 
 - (void)addDependency:(NSString*)key;
 
+- (instancetype) duplicateWithTargetName:(NSString*)targetName
+                             productName:(NSString*)productName;
+
 @end
 

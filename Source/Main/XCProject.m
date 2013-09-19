@@ -319,6 +319,20 @@
     return [_dataStore objectForKey:@"objects"];
 }
 
+- (NSMutableDictionary*)dataStore {
+    return _dataStore;
+}
+
+- (void)dropCache {
+    XCRelease(_targets);
+    XCRelease(_configurations);
+    XCRelease(_rootObjectKey);
+    
+    _targets        = nil;
+    _configurations = nil;
+    _rootObjectKey  = nil;
+}
+
 
 - (NSDictionary*)configurations
 {
