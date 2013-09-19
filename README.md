@@ -18,6 +18,15 @@ XCClassDefinition* classDefinition = [[XCClassDefinition alloc] initWithName:@"M
 [project save];
 ```
 
+### Duplicating Targets
+
+It will be added to project as well.
+
+```objective-c
+XCTarget* target = [project targetWithName:@"SomeTarget"];
+XCTarget* duplicated = [target duplicateWithTargetName:@"DuplicatedTarget" productName:@"NewProduct"];
+```
+
 
 ### Specifying Source File Belongs to Target
 
