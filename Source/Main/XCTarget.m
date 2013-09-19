@@ -9,8 +9,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
+#import "XCGroup.h"
+#import "XCKeyBuilder.h"
 #import "XCTarget.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
@@ -213,6 +213,42 @@
     }
 }
 
+- (instancetype) duplicateWithTargetName:(NSString*)targetName
+                             productName:(NSString*)productName {
+    
+    NSDictionary* targetObj           = _project.objects[_key];
+    NSMutableDictionary* dupTargetObj = XCAutorelease([targetObj mutableCopy]);
+    
+    dupTargetObj[@"name"]        = targetName;
+    dupTargetObj[@"productName"] = productName;
+
+    NSString *buildConfigurationListKey = dupTargetObj[@"buildConfigurationList"];
+
+    void(^visitor)(NSMutableDictionary*) =  ^(NSMutableDictionary* buildConfiguration) {
+        buildConfiguration[@"buildSettings"][@"PRODUCT_NAME"] = productName;
+    };
+    
+    dupTargetObj[@"buildConfigurationList"] = [XCBuildConfiguration duplicatedBuildConfigurationListWithKey: buildConfigurationListKey
+                                                                                                  inProject: _project
+                                                                              withBuildConfigurationVisitor: visitor];
+    
+    [self duplicateProductReferenceForTargetObject: dupTargetObj
+                                          withProductName: productName];
+    
+    [self duplicateBuildPhasesForTargetObject: dupTargetObj];
+ 
+    [self addReferenceToProductsGroupForTargetObject: dupTargetObj];
+ 
+    NSString *dupTargetObjKey = [self addTargetToRootObjectTargets:dupTargetObj];
+    
+    [_project dropCache];
+
+    return XCAutorelease([[XCTarget alloc] initWithProject: _project
+                                                       key: dupTargetObjKey
+                                                      name: targetName
+                                               productName: productName
+                                          productReference: dupTargetObj[@"productReference"]]);
+}
 
 /* ================================================== Utility Methods =============================================== */
 - (NSString*) description {
@@ -235,5 +271,81 @@
     _members = nil;
 }
 
+- (void) duplicateProductReferenceForTargetObject:(NSMutableDictionary *)dupTargetObj
+                                  withProductName:(NSString *)productName {
+    
+    NSString* productReferenceKey = dupTargetObj[@"productReference"];
+    NSMutableDictionary* dupProductReference = XCAutorelease([_project.objects[productReferenceKey] mutableCopy]);
+    
+    NSString* path = dupProductReference[@"path"];
+    NSString* dupPath = [path stringByDeletingLastPathComponent];
+    dupPath = [dupPath stringByAppendingPathComponent: productName];
+    dupPath = [dupPath stringByAppendingPathExtension: @"app"];
+    dupProductReference[@"path"] = dupPath;
+    
+    NSString* dupProductReferenceKey = [[XCKeyBuilder createUnique] build];
+    
+    _project.objects[dupProductReferenceKey] = dupProductReference;
+    dupTargetObj[@"productReference"]        = dupProductReferenceKey;
+}
+
+- (void) duplicateBuildPhasesForTargetObject:(NSMutableDictionary*)dupTargetObj {
+    
+    NSMutableArray* buildPhases = [NSMutableArray array];
+    
+    for(NSString* buildPhaseKey in dupTargetObj[@"buildPhases"]) {
+        
+        NSMutableDictionary* dupBuildPhase = XCAutorelease([_project.objects[buildPhaseKey] mutableCopy]);
+        NSMutableArray* dupFiles           = [NSMutableArray array];
+        
+        for(NSString* fileKey in dupBuildPhase[@"files"]) {
+            
+            NSMutableDictionary* dupFile = XCAutorelease([_project.objects[fileKey] mutableCopy]);
+            NSString* dupFileKey = [[XCKeyBuilder createUnique] build];
+            
+            _project.objects[dupFileKey] = dupFile;
+            [dupFiles addObject: dupFileKey];
+        }
+        
+        dupBuildPhase[@"files"] = dupFiles;
+        
+        NSString* dupBuildPhaseKey = [[XCKeyBuilder createUnique] build];
+        _project.objects[dupBuildPhaseKey] = dupBuildPhase;
+        [buildPhases addObject: dupBuildPhaseKey];
+    }
+    
+    dupTargetObj[@"buildPhases"] = buildPhases;
+}
+
+- (void)addReferenceToProductsGroupForTargetObject:(NSMutableDictionary *)dupTargetObj {
+
+    XCGroup* mainGroup = nil;
+    NSPredicate* productsPredicate = [NSPredicate predicateWithFormat:@"displayName == 'Products'"];
+    NSArray* filteredGroups = [_project.groups filteredArrayUsingPredicate: productsPredicate];
+    
+    if(filteredGroups.count > 0) {
+        mainGroup = filteredGroups[0];
+        NSMutableArray* children = XCAutorelease([_project.objects[mainGroup.key][@"children"] mutableCopy]);
+        [children addObject: dupTargetObj[@"productReference"]];
+        _project.objects[mainGroup.key][@"children"] = children;
+    }
+}
+
+- (NSString *) addTargetToRootObjectTargets:(NSMutableDictionary *)dupTargetObj
+{
+    NSString* dupTargetObjKey = [[XCKeyBuilder createUnique] build];
+    
+    _project.objects[dupTargetObjKey] = dupTargetObj;
+    
+    NSString* rootObjKey = _project.dataStore[@"rootObject"];
+    NSMutableDictionary* rootObj   = XCAutorelease([_project.objects[rootObjKey] mutableCopy]);
+    NSMutableArray* rootObjTargets = XCAutorelease([rootObj[@"targets"] mutableCopy]);
+    [rootObjTargets addObject: dupTargetObjKey];
+    
+    rootObj[@"targets"] = rootObjTargets;
+    _project.objects[rootObjKey] = rootObj;
+    
+    return dupTargetObjKey;
+}
 
 @end
