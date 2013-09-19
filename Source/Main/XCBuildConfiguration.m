@@ -13,6 +13,7 @@
 
 #import "XCBuildConfiguration.h"
 #import "XCGroup.h"
+#import "XCKeyBuilder.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
 #import "Utils/XCMemoryUtils.h"
@@ -135,4 +136,47 @@
     }
     return value;
 }
+
++ (NSString*) duplicatedBuildConfigurationListWithKey:(NSString*) buildConfigurationListKey
+                                            inProject:(XCProject*) project
+                        withBuildConfigurationVisitor:(void(^)(NSMutableDictionary*)) buildConfigurationVisitor
+{
+    
+    NSDictionary* buildConfigurationList = project.objects[buildConfigurationListKey];
+    NSMutableDictionary* dupBuildConfigurationList = XCAutorelease([buildConfigurationList mutableCopy]);
+    
+    NSMutableArray* dupBuildConfigurations = [NSMutableArray array];
+    
+    for(NSString* buildConfigurationKey in buildConfigurationList[@"buildConfigurations"])
+        [dupBuildConfigurations addObject: [self duplicatedBuildConfigurationWithKey: buildConfigurationKey
+                                                                           inProject: project
+                                                       withBuildConfigurationVisitor: buildConfigurationVisitor]];
+    
+    dupBuildConfigurationList[@"buildConfigurations"] = dupBuildConfigurations;
+    
+    NSString* dupBuildConfigurationListKey = [[XCKeyBuilder createUnique] build];
+    
+    project.objects[dupBuildConfigurationListKey] = dupBuildConfigurationList;
+    
+    return dupBuildConfigurationListKey;
+}
+
+#pragma - Private
+
++ (NSString*) duplicatedBuildConfigurationWithKey:(NSString*) buildConfigurationKey
+                                        inProject:(XCProject*) project
+                    withBuildConfigurationVisitor:(void(^)(NSMutableDictionary*)) buildConfigurationVisitor
+{
+    NSDictionary *buildConfiguration = project.objects[buildConfigurationKey];
+    NSMutableDictionary *dupBuildConfiguration = XCAutorelease([buildConfiguration mutableCopy]);
+    
+    buildConfigurationVisitor(dupBuildConfiguration);
+    
+    NSString* dupBuildConfigurationKey = [[XCKeyBuilder createUnique] build];
+    
+    project.objects[dupBuildConfigurationKey] = dupBuildConfiguration;
+    
+    return dupBuildConfigurationKey;
+}
+
 @end

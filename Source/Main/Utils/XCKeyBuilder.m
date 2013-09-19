@@ -9,7 +9,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
 #import "XCKeyBuilder.h"
 #import "XCMemoryUtils.h"
 
@@ -20,6 +19,14 @@
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
     return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]);
 
+}
+
++ (XCKeyBuilder*) createUnique {
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFUUIDBytes bytes = CFUUIDGetUUIDBytes(theUUID);
+    CFRelease(theUUID);
+    
+    return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes: &bytes length: sizeof(bytes)]);
 }
 
 /* ================================================== Initializers ================================================== */
@@ -39,7 +46,7 @@
     for (i = 0; i < byteLength; i++) {
         [stringValue appendFormat:@"%02x", _value[i]];
     }
-    return [stringValue substringToIndex:24];
+    return [[stringValue substringToIndex:24] uppercaseString];
 }
 
 
