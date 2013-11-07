@@ -176,8 +176,8 @@ If you're using the API shoot me an email and tell me what you're doing with it.
          
 ### With contributions from: 
 
+* <a href="https://github.com/cncool">Connor Duggan</a> - lots of bug fixes, maintenance and enhancements. 
 * <a href="https://github.com/smirn0v">Alexander Smirnov</a> - Cleaned up, generalized and contributed back the changes from the Calabash fork. 
-* Connor Duggan - bug fixes and maintenance. 
 * Zach Drayer - lots of fixes and features to support TextMate. 
 * Janine Ohmer - support adding and removing sub-projects (http://www.synapticats.com).
 * Bogdan Vladu - support adding and removing groups (www.levelhelper.org).
