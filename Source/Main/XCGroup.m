@@ -396,13 +396,17 @@
         for (NSString* childKey in _children)
         {
             XcodeMemberType type = [self typeForKey:childKey];
-            if (type == PBXGroupType || type == PBXVariantGroupType)
+            
+            @autoreleasepool
             {
-                [_members addObject:[_project groupWithKey:childKey]];
-            }
-            else if (type == PBXFileReferenceType)
-            {
-                [_members addObject:[_project fileWithKey:childKey]];
+                if (type == PBXGroupType || type == PBXVariantGroupType)
+                {
+                    [_members addObject:[_project groupWithKey:childKey]];
+                }
+                else if (type == PBXFileReferenceType)
+                {
+                    [_members addObject:[_project fileWithKey:childKey]];
+                }
             }
         }
     }
