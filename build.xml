@@ -79,6 +79,7 @@
             #!/bin/sh
             xcodebuild -workspace ${module.name}.xcworkspace test -scheme Tests -configuration Debug > ${reports.dir}/tests/test-results.txt
             xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+            ${scripts.dir}/utf8-bom.sh ${reports.dir}/tests/test-results-pretty.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
         <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
