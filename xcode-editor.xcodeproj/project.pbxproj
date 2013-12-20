@@ -81,9 +81,9 @@
 		BA7985429DE30BAC636DBE08 /* GroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988A76A232B877E5CDDEB /* GroupTests.m */; };
 		BA7985B8636EDA34C738B527 /* TargetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EE31696E3108277FA54 /* TargetTests.m */; };
 		BA79870CE0CE7D18D3EAE42E /* ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B5E16A7C0A6B792CBB9 /* ProjectTests.m */; };
+		BA798A3E8F2934F2F307920C /* CoverageFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C438E8A142F22E20C7C /* CoverageFixer.m */; };
 		BA798A427D45F5EB9928579C /* SubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */; };
 		BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */; };
-		BA798EB7F7C2B6E800608937 /* ZzzzzCoverageFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C23DD267580F036DAD7 /* ZzzzzCoverageFixer.m */; };
 		BA798EED43772945E9BD1284 /* XCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
@@ -197,7 +197,7 @@
 		BA798967B6C5975BA265EBDD /* XCBuildConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildConfiguration.m; sourceTree = "<group>"; };
 		BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildConfiguration.h; sourceTree = "<group>"; };
 		BA798B5E16A7C0A6B792CBB9 /* ProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTests.m; sourceTree = "<group>"; };
-		BA798C23DD267580F036DAD7 /* ZzzzzCoverageFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZzzzzCoverageFixer.m; sourceTree = "<group>"; };
+		BA798C438E8A142F22E20C7C /* CoverageFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverageFixer.m; sourceTree = "<group>"; };
 		BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeFileReferenceTypeTests.m; sourceTree = "<group>"; };
 		BA798EE31696E3108277FA54 /* TargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetTests.m; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 				BA7984143FEC00A651B12D88 /* ClassDefinitionTests.m */,
 				BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */,
 				BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */,
-				BA798C23DD267580F036DAD7 /* ZzzzzCoverageFixer.m */,
+				BA798C438E8A142F22E20C7C /* CoverageFixer.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -626,7 +626,7 @@
 				BA798A427D45F5EB9928579C /* SubProjectDefinitionTests.m in Sources */,
 				BA7985B8636EDA34C738B527 /* TargetTests.m in Sources */,
 				BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */,
-				BA798EB7F7C2B6E800608937 /* ZzzzzCoverageFixer.m in Sources */,
+				BA798A3E8F2934F2F307920C /* CoverageFixer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

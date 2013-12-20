@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -9,24 +9,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface ZzzzzCoverageFixer : SenTestCase
+@interface VATestObserver : SenTestLog
 @end
+
+@implementation VATestObserver
 
 extern void __gcov_flush(void);
 
-@implementation ZzzzzCoverageFixer
 
-- (void)test_will_run_last_to_flush_coverage
++ (void)testSuiteDidStop:(NSNotification*)aNotification
 {
+    [super testSuiteDidStop:aNotification];
     __gcov_flush();
 }
 
 
 
 @end
-
-
-
-
