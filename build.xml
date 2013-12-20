@@ -218,7 +218,7 @@
         <pathconvert pathsep=" " property="doc.files.list" refid="headers">
 	    <map from='${source.main.dir}' to='"${source.main.dir}"' />
 	</pathconvert>
-        <echo message="Documenting: ${doc.files.list}"/>
+        <!--<echo message="Documenting: ${doc.files.list}"/>-->
 
         <exec executable="${appledoc}" outputproperty="appledoc.out" errorproperty="appledoc.error">
             <arg line="--project-name=${module.name}"/>
@@ -246,8 +246,6 @@
             set -e # fail script if any commands fail
 
             cd ${basedir}
-            find Tests/ -type f -exec git update-index --assume-unchanged '{}' \; &> ${temp.dir}/index.out
-            cp -fr ${basedir}/schema ${reports.dir}
             git remote add origin ${github.uri} || true # allow `remote add` to fail without failing script
             git remote set-url origin ${github.uri}
             git fetch origin gh-pages:gh-pages
