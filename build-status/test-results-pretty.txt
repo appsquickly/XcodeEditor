@@ -8,8 +8,8 @@
 ▸ Compiling XCGroup.m
 ▸ Compiling XCKeyBuilder.m
 ▸ Compiling XCProject.m
-▸ Compiling XcodeSourceFileType.m
 ▸ Compiling XCTarget.m
+▸ Compiling XcodeSourceFileType.m
 ▸ Compiling XcodeMemberType.m
 ▸ Compiling NSString+TestResource.m
 ▸ Compiling XCXibDefinition.m
@@ -50,41 +50,41 @@ ClassDefinitionTests
 ✓ test_it_throws_an_exception_if_one_of_the_above_languages_is_not_specified (0.000 seconds)
 GroupTests
 ✓ test__allows_using_a_class_definition_to_add_cpp_files (0.032 seconds)
-✓ test_able_to_describe_itself (0.009 seconds)
-✓ test_able_to_list_all_of_its_members_recursively (0.070 seconds)
-✓ test_able_to_provide_a_sorted_list_of_its_children (0.018 seconds)
-✓ test_able_to_return_a_member_by_its_name (0.019 seconds)
-✓ test_able_to_return_its_full_path_relative_to_the_project_base_directory (0.015 seconds)
+✓ test_able_to_describe_itself (0.011 seconds)
+✓ test_able_to_list_all_of_its_members_recursively (0.147 seconds)
+✓ test_able_to_provide_a_sorted_list_of_its_children (0.013 seconds)
+✓ test_able_to_return_a_member_by_its_name (0.014 seconds)
+✓ test_able_to_return_its_full_path_relative_to_the_project_base_directory (0.011 seconds)
 ✗ test_allows_adding_a_framework_copying_it_to_the_destination_folder, Error writing file at filePath: file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreMIDI.framework/
-✓ test_allows_adding_a_framework_on_the_system_volume (0.030 seconds)
-✓ test_allows_adding_a_group (0.038 seconds)
-✓ test_allows_adding_a_source_file (0.053 seconds)
+✓ test_allows_adding_a_framework_on_the_system_volume (0.051 seconds)
+✓ test_allows_adding_a_group (0.032 seconds)
+✓ test_allows_adding_a_source_file (0.051 seconds)
 ✓ test_allows_adding_a_xcodeproj_file (0.039 seconds)
-✓ test_allows_adding_an_image_file (0.028 seconds)
-✓ test_allows_adding_files_of_type_obc_cPlusPlus (0.034 seconds)
-✓ test_allows_creating_a_reference_only_without_writing_to_disk (0.030 seconds)
-✓ test_allows_deleting_a_group_optionally_removing_also_the_contents (0.069 seconds)
-✓ test_allows_initialization_with (0.013 seconds)
+✓ test_allows_adding_an_image_file (0.027 seconds)
+✓ test_allows_adding_files_of_type_obc_cPlusPlus (0.033 seconds)
+✓ test_allows_creating_a_reference_only_without_writing_to_disk (0.034 seconds)
+✓ test_allows_deleting_a_group_optionally_removing_also_the_contents (0.074 seconds)
+✓ test_allows_initialization_with (0.012 seconds)
 ✓ test_allows_removing_an_xcodeproj_file (0.012 seconds)
-✓ test_allows_removing_an_xcodeproj_file_and_specify_targets (0.012 seconds)
-✓ test_provides_a_convenience_method_to_add_a_source_file_and_specify_targets (0.044 seconds)
-✓ test_provides_a_convenience_method_to_add_a_xcodeproj_file_and_specify_targets (0.047 seconds)
-✓ test_provides_a_convenience_method_to_add_a_xib_file_and_specify_targets (0.034 seconds)
-✓ test_provides_an_option_to_accept_the_existing_file_if_it_exists (0.034 seconds)
-✓ test_returns_a_warning_if_an_existing_class_is_overwritten (0.063 seconds)
-✓ test_should_allow_adding_a_xib_file (0.053 seconds)
+✓ test_allows_removing_an_xcodeproj_file_and_specify_targets (0.013 seconds)
+✓ test_provides_a_convenience_method_to_add_a_source_file_and_specify_targets (0.032 seconds)
+✓ test_provides_a_convenience_method_to_add_a_xcodeproj_file_and_specify_targets (0.048 seconds)
+✓ test_provides_a_convenience_method_to_add_a_xib_file_and_specify_targets (0.040 seconds)
+✓ test_provides_an_option_to_accept_the_existing_file_if_it_exists (0.042 seconds)
+✓ test_returns_a_warning_if_an_existing_class_is_overwritten (0.067 seconds)
+✓ test_should_allow_adding_a_xib_file (0.054 seconds)
 ✓ test_should_allows_adding_a_header (0.028 seconds)
 KeyBuilderTests
 ✓ test_returns_an_md5_hash_for_an_NSData_instance (0.000 seconds)
 ProjectTests
-✓ test_able_to_list_all_of_the_groups_in_a_project (0.038 seconds)
-✓ test_able_to_list_all_the_header_files_in_a_project (0.034 seconds)
+✓ test_able_to_list_all_of_the_groups_in_a_project (0.037 seconds)
+✓ test_able_to_list_all_the_header_files_in_a_project (0.033 seconds)
 ✓ test_able_to_list_all_the_obj_cPlusPlus_files_in_a_project (0.003 seconds)
-✓ test_able_to_list_all_the_obj_c_files_in_a_project (0.019 seconds)
-✓ test_able_to_list_the_targets_in_an_xcode_project (0.032 seconds)
-✓ test_be_able_to_list_all_the_xib_files_in_a_project (0.004 seconds)
-✓ test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group (0.002 seconds)
-✓ test_provides_access_to_the_root_top_level_group (0.003 seconds)
+✓ test_able_to_list_all_the_obj_c_files_in_a_project (0.017 seconds)
+✓ test_able_to_list_the_targets_in_an_xcode_project (0.031 seconds)
+✓ test_be_able_to_list_all_the_xib_files_in_a_project (0.006 seconds)
+✓ test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group (0.003 seconds)
+✓ test_provides_access_to_the_root_top_level_group (0.002 seconds)
 TargetTests
 ✓ test_allows_listing_the_build_configuration (0.012 seconds)
 XCSubProjectDefinitionTests
@@ -101,4 +101,4 @@ GroupTests
   Unknown.m:0
 
 
-Executed 44 tests, with 1 failure (1 unexpected) in 1.008 (1.040) seconds
+Executed 44 tests, with 1 failure (1 unexpected) in 1.096 (1.127) seconds
