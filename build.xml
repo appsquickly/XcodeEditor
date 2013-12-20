@@ -259,7 +259,8 @@
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
             mkdir -p ./build-status
-            rm -fr ${reports.dir}/build-status/build-log.txt
+            iconv  -t utf-8 < build-log.txt > build-log.txt
+            rm -fr build-log.txt
             cp -fr build-log.txt ./build-status/
             cp -fr ${reports.dir}/build-status/build-status.png ./build-status/
             git add --all --ignore-removal ./build-status
