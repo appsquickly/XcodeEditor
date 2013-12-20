@@ -248,8 +248,6 @@
             cd ${basedir}
             git remote add origin ${github.uri} || true # allow `remote add` to fail without failing script
             git remote set-url origin ${github.uri}
-            git fetch origin gh-pages:gh-pages
-            git fetch origin gh-pages
             git checkout gh-pages
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
