@@ -1,1 +1,2 @@
 ExpiresByType image/png "access plus 2 minutes"
+AddDefaultCharset utf-8
