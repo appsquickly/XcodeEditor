@@ -251,7 +251,7 @@
             git checkout gh-pages
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
-            mkdir ./build-status
+            mkdir -p ./build-status
             cp -fr ${reports.dir}/tests/test-results-pretty.txt ./build-status/
             cp -fr ${reports.dir}/build-status/build-status.png ./build-status/
             git add --all --ignore-removal ./build-status
