@@ -77,13 +77,13 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : static NSDictionary* _projectNodeTypesAsStrings;
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">     724542 : + (NSDictionary*)dictionaryWithProjectNodeTypesAsStrings</span>
+<span class="lineNum">      22 </span><span class="lineCov">    1086813 : + (NSDictionary*)dictionaryWithProjectNodeTypesAsStrings</span>
 <span class="lineNum">      23 </span>            : {
 <span class="lineNum">      24 </span>            :     // This is the most vital operation on adding 500+ files
 <span class="lineNum">      25 </span>            :     // So, we caching this dictionary
-<span class="lineNum">      26 </span><span class="lineCov">     724542 :     if (!_projectNodeTypesAsStrings)</span>
+<span class="lineNum">      26 </span><span class="lineCov">    1086813 :     if (!_projectNodeTypesAsStrings)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineCov">          2 :         _projectNodeTypesAsStrings =</span>
+<span class="lineNum">      28 </span><span class="lineCov">          3 :         _projectNodeTypesAsStrings =</span>
 <span class="lineNum">      29 </span>            :             [[NSDictionary alloc] initWithObjectsAndKeys:boxEnum(PBXNilType),                  @&quot;PBXNilType&quot;,
 <span class="lineNum">      30 </span>            :                                                          boxEnum(PBXBuildFileType),            @&quot;PBXBuildFile&quot;,
 <span class="lineNum">      31 </span>            :                                                          boxEnum(PBXContainerItemProxyType),   @&quot;PBXContainerItemProxy&quot;,
@@ -100,25 +100,25 @@
 <span class="lineNum">      42 </span>            :                                                          boxEnum(PBXVariantGroupType),         @&quot;PBXVariantGroup&quot;,
 <span class="lineNum">      43 </span>            :                                                          boxEnum(XCBuildConfigurationType),    @&quot;XCBuildConfiguration&quot;,
 <span class="lineNum">      44 </span>            :                                                          boxEnum(XCConfigurationListType),     @&quot;XCConfigurationList&quot;, nil];
-<span class="lineNum">      45 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      46 </span><span class="lineCov">     724542 :     return _projectNodeTypesAsStrings;</span>
+<span class="lineNum">      45 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      46 </span><span class="lineCov">    1086813 :     return _projectNodeTypesAsStrings;</span>
 <span class="lineNum">      47 </span>            : }
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : @end
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : @implementation NSString (XcodeMemberTypeExtensions)
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">        188 : + (NSString*)stringFromMemberType:(XcodeMemberType)nodeType</span>
+<span class="lineNum">      53 </span><span class="lineCov">        282 : + (NSString*)stringFromMemberType:(XcodeMemberType)nodeType</span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">        188 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
-<span class="lineNum">      56 </span><span class="lineCov">        188 :     return [[nodeTypesToString allKeysForObject:boxEnum(nodeType)] objectAtIndex:0];</span>
+<span class="lineNum">      55 </span><span class="lineCov">        282 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
+<span class="lineNum">      56 </span><span class="lineCov">        282 :     return [[nodeTypesToString allKeysForObject:boxEnum(nodeType)] objectAtIndex:0];</span>
 <span class="lineNum">      57 </span>            : }
 <span class="lineNum">      58 </span>            : 
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">     724354 : - (XcodeMemberType)asMemberType</span>
+<span class="lineNum">      60 </span><span class="lineCov">    1086531 : - (XcodeMemberType)asMemberType</span>
 <span class="lineNum">      61 </span>            : {
-<span class="lineNum">      62 </span><span class="lineCov">     724354 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
-<span class="lineNum">      63 </span><span class="lineCov">     724354 :     return (XcodeMemberType) [[nodeTypesToString objectForKey:self] intValue];</span>
+<span class="lineNum">      62 </span><span class="lineCov">    1086531 :     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];</span>
+<span class="lineNum">      63 </span><span class="lineCov">    1086531 :     return (XcodeMemberType) [[nodeTypesToString objectForKey:self] intValue];</span>
 <span class="lineNum">      64 </span>            : }
 <span class="lineNum">      65 </span>            : 
 <span class="lineNum">      66 </span>            : 
