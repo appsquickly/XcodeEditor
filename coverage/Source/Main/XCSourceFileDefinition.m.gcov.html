@@ -97,28 +97,28 @@
 <span class="lineNum">      39 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      40 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">         14 : - (id)initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type</span>
+<span class="lineNum">      42 </span><span class="lineCov">          1 : - (id)initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">         14 :     self = [super init];</span>
-<span class="lineNum">      45 </span><span class="lineCov">         14 :     if (self)</span>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :     self = [super init];</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     if (self)</span>
 <span class="lineNum">      46 </span>            :     {
-<span class="lineNum">      47 </span><span class="lineCov">         14 :         _sourceFileName = [name copy];</span>
-<span class="lineNum">      48 </span><span class="lineCov">         14 :         _data = [[text dataUsingEncoding:NSUTF8StringEncoding] copy];</span>
-<span class="lineNum">      49 </span><span class="lineCov">         14 :         _type = type;</span>
-<span class="lineNum">      50 </span><span class="lineCov">         14 :     }</span>
-<span class="lineNum">      51 </span><span class="lineCov">         14 :     return self;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :         _sourceFileName = [name copy];</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :         _data = [[text dataUsingEncoding:NSUTF8StringEncoding] copy];</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :         _type = type;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 :     return self;</span>
 <span class="lineNum">      52 </span>            : }
 <span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineCov">         14 : - (id)initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type</span>
+<span class="lineNum">      54 </span><span class="lineCov">          1 : - (id)initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type</span>
 <span class="lineNum">      55 </span>            : {
-<span class="lineNum">      56 </span><span class="lineCov">         14 :     self = [super init];</span>
-<span class="lineNum">      57 </span><span class="lineCov">         14 :     if (self)</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :     self = [super init];</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :     if (self)</span>
 <span class="lineNum">      58 </span>            :     {
-<span class="lineNum">      59 </span><span class="lineCov">         14 :         _sourceFileName = [name copy];</span>
-<span class="lineNum">      60 </span><span class="lineCov">         14 :         _data = [data copy];</span>
-<span class="lineNum">      61 </span><span class="lineCov">         14 :         _type = type;</span>
-<span class="lineNum">      62 </span><span class="lineCov">         14 :     }</span>
-<span class="lineNum">      63 </span><span class="lineCov">         14 :     return self;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 :         _sourceFileName = [name copy];</span>
+<span class="lineNum">      60 </span><span class="lineCov">          1 :         _data = [data copy];</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :         _type = type;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :     return self;</span>
 <span class="lineNum">      64 </span>            : 
 <span class="lineNum">      65 </span>            : }
 <span class="lineNum">      66 </span>            : 
