@@ -122,6 +122,7 @@ This will extract a test project to the /tmp directory, where you'll be able to 
 
 ![Build Status](http://jasperblues.github.com/XcodeEditor/build-status/build-status.png?q=zz)
 
+* <a href="http://jasperblues.github.com/XcodeEditor/build-status/test-results-pretty.txt">Build Log</a>
 * <a href="http://jasperblues.github.com/XcodeEditor/api/index.html">API</a>
 * <a href="http://jasperblues.github.com/XcodeEditor/test-results/index.html">Test Results</a>
 * <a href="http://jasperblues.github.com/XcodeEditor/coverage/index.html">Coverage Reports</a>
