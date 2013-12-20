@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /Users/jblues/MacProjects/XcodeEditor/Source/Main/XCBuildConfiguration.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">Users/jblues/MacProjects/XcodeEditor/Source/Main</a> - XCBuildConfiguration.m</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">82</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2013-12-20</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">       2 </span>            : //
+<span class="lineNum">       3 </span>            : //  JASPER BLUES
+<span class="lineNum">       4 </span>            : //  Copyright 2012 Jasper Blues
+<span class="lineNum">       5 </span>            : //  All Rights Reserved.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
+<span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
+<span class="lineNum">       9 </span>            : //
+<span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : #import &quot;XCBuildConfiguration.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;XCGroup.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;XCKeyBuilder.h&quot;
+<span class="lineNum">      17 </span>            : #import &quot;XCProject.h&quot;
+<span class="lineNum">      18 </span>            : #import &quot;XCSourceFile.h&quot;
+<span class="lineNum">      19 </span>            : #import &quot;Utils/XCMemoryUtils.h&quot;
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : @implementation XCBuildConfiguration
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : + (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project</span>
+<span class="lineNum">      24 </span>            : {
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     NSMutableDictionary* configurations = [NSMutableDictionary dictionary];</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     for (NSString* buildConfigurationKey in array)</span>
+<span class="lineNum">      28 </span>            :     {
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         NSDictionary* buildConfiguration = [[project objects] objectForKey:buildConfigurationKey];</span>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :         if ([[buildConfiguration valueForKey:@&quot;isa&quot;] asMemberType] == XCBuildConfigurationType)</span>
+<span class="lineNum">      32 </span>            :         {
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :             XCBuildConfiguration* configuration = [configurations objectForKey:[buildConfiguration objectForKey:@&quot;name&quot;]];</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :             if (!configuration)</span>
+<span class="lineNum">      35 </span>            :             {
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :                 configuration = [[XCBuildConfiguration alloc] init];</span>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :                 [configurations setObject:configuration forKey:[buildConfiguration objectForKey:@&quot;name&quot;]];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :             XCSourceFile* configurationFile = [project fileWithKey:[buildConfiguration objectForKey:@&quot;baseConfigurationReference&quot;]];</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :             if (configurationFile)</span>
+<span class="lineNum">      44 </span>            :             {
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :                 NSString* path = configurationFile.path;</span>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])</span>
+<span class="lineNum">      48 </span>            :                 {
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :                     XCGroup* group = [project groupWithSourceFile:configurationFile];</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :                     path = [[group pathRelativeToParent] stringByAppendingPathComponent:path];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])</span>
+<span class="lineNum">      54 </span>            :                 {
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :                     path = [[[project filePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:path];</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])</span>
+<span class="lineNum">      59 </span>            :                 {
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :                     path = [[[project filePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:configurationFile.path];</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])</span>
+<span class="lineNum">      64 </span>            :                 {
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :                     [NSException raise:@&quot;XCConfig not found&quot; format:@&quot;Unable to find XCConfig file at %@&quot;, path];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :                 }</span>
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :             [configuration addBuildSettings:[buildConfiguration objectForKey:@&quot;buildSettings&quot;]];</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     return configurations;</span>
+<span class="lineNum">      75 </span>            : }
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            : #pragma mark -
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : - (id)init</span>
+<span class="lineNum">      80 </span>            : {
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     if (!(self = [super init]))</span>
+<span class="lineNum">      82 </span>            :     {
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :         return nil;</span>
+<span class="lineNum">      84 </span>            :     }
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     _buildSettings = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     _xcconfigSettings = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 : - (void)dealloc</span>
+<span class="lineNum">      93 </span>            : {
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     XCRelease(_buildSettings)</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :     XCRelease(_xcconfigSettings)</span>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     XCSuperDealloc</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : #pragma mark -
+<span class="lineNum">     101 </span>            : 
+<span class="lineNum">     102 </span><span class="lineNoCov">          0 : - (NSString*)description</span>
+<span class="lineNum">     103 </span>            : {
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     NSMutableString* description = [[super description] mutableCopy];</span>
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     [description appendFormat:@&quot;build settings: %@, inherited: %@&quot;, _buildSettings, _xcconfigSettings];</span>
+<span class="lineNum">     107 </span>            : 
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     return XCAutorelease(description);</span>
+<span class="lineNum">     109 </span>            : }
+<span class="lineNum">     110 </span>            : 
+<span class="lineNum">     111 </span>            : #pragma mark -
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : - (NSDictionary*)specifiedBuildSettings</span>
+<span class="lineNum">     114 </span>            : {
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     return XCAutorelease([_buildSettings copy])}</span>
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span>            : #pragma mark -
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : - (void)addBuildSettings:(NSDictionary*)buildSettings</span>
+<span class="lineNum">     120 </span>            : {
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     [_xcconfigSettings removeObjectsForKeys:[buildSettings allKeys]];</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     [_buildSettings addEntriesFromDictionary:buildSettings];</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 : - (void)addOrReplaceBuildSetting:(id &lt;NSCopying&gt;)setting forKey:(NSString*)key</span>
+<span class="lineNum">     126 </span>            : {
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     [self addBuildSettings:[NSDictionary dictionaryWithObject:setting forKey:key]];</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 : - (id &lt;NSCopying&gt;)valueForKey:(NSString*)key</span>
+<span class="lineNum">     132 </span>            : {
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :     id &lt;NSCopying&gt; value = [_buildSettings objectForKey:key];</span>
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     if (!value)</span>
+<span class="lineNum">     135 </span>            :     {
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :         value = [_xcconfigSettings objectForKey:key];</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :     return value;</span>
+<span class="lineNum">     139 </span>            : }
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 : + (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey inProject:(XCProject*)project</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor</span>
+<span class="lineNum">     143 </span>            : {
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :     NSDictionary* buildConfigurationList = project.objects[buildConfigurationListKey];</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     NSMutableDictionary* dupBuildConfigurationList = XCAutorelease([buildConfigurationList mutableCopy]);</span>
+<span class="lineNum">     147 </span>            : 
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 :     NSMutableArray* dupBuildConfigurations = [NSMutableArray array];</span>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :     for (NSString* buildConfigurationKey in buildConfigurationList[@&quot;buildConfigurations&quot;])</span>
+<span class="lineNum">     151 </span>            :     {
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :             [dupBuildConfigurations addObject:[self duplicatedBuildConfigurationWithKey:buildConfigurationKey inProject:project</span>
+<span class="lineNum">     153 </span>            :                 withBuildConfigurationVisitor:buildConfigurationVisitor]];
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     155 </span>            : 
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     dupBuildConfigurationList[@&quot;buildConfigurations&quot;] = dupBuildConfigurations;</span>
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :     NSString* dupBuildConfigurationListKey = [[XCKeyBuilder createUnique] build];</span>
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 :     project.objects[dupBuildConfigurationListKey] = dupBuildConfigurationList;</span>
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span><span class="lineNoCov">          0 :     return dupBuildConfigurationListKey;</span>
+<span class="lineNum">     163 </span>            : }
+<span class="lineNum">     164 </span>            : 
+<span class="lineNum">     165 </span>            : #pragma - Private
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span><span class="lineNoCov">          0 : + (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey inProject:(XCProject*)project</span>
+<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor</span>
+<span class="lineNum">     169 </span>            : {
+<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     NSDictionary* buildConfiguration = project.objects[buildConfigurationKey];</span>
+<span class="lineNum">     171 </span><span class="lineNoCov">          0 :     NSMutableDictionary* dupBuildConfiguration = XCAutorelease([buildConfiguration mutableCopy]);</span>
+<span class="lineNum">     172 </span>            : 
+<span class="lineNum">     173 </span><span class="lineNoCov">          0 :     buildConfigurationVisitor(dupBuildConfiguration);</span>
+<span class="lineNum">     174 </span>            : 
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     NSString* dupBuildConfigurationKey = [[XCKeyBuilder createUnique] build];</span>
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :     project.objects[dupBuildConfigurationKey] = dupBuildConfiguration;</span>
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :     return dupBuildConfigurationKey;</span>
+<span class="lineNum">     180 </span>            : }
+<span class="lineNum">     181 </span>            : 
+<span class="lineNum">     182 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
