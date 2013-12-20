@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>LCOV - coverage.info - Source/Main/XCFrameworkDefinition.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">16</td>
-            <td class="headerCovTableEntry">16</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-02-11</td>
+            <td class="headerValue">2013-12-20</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -77,37 +77,46 @@
 <span class="lineNum">      19 </span>            : @synthesize filePath = _filePath;
 <span class="lineNum">      20 </span>            : @synthesize copyToDestination = _copyToDestination;
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      23 </span>            : + (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
-<span class="lineNum">      24 </span><span class="lineCov">          2 :         copyToDestination:(BOOL)copyToDestination {</span>
-<span class="lineNum">      25 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      26 </span>            :     return XCAutorelease([[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination])
-<span class="lineNum">      27 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      31 </span>            : - (id) initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination {
-<span class="lineNum">      32 </span>            :     self = [super init];
-<span class="lineNum">      33 </span><span class="lineCov">          2 :     if (self) {</span>
-<span class="lineNum">      34 </span><span class="lineCov">          2 :         _filePath = [filePath copy];</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :         _copyToDestination = copyToDestination;</span>
-<span class="lineNum">      36 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      37 </span><span class="lineCov">          2 :     return self;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      39 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      40 </span>            : /* ================================================ Interface Methods =============================================== */
-<span class="lineNum">      41 </span>            : - (NSString*) name {
-<span class="lineNum">      42 </span>            :     return [_filePath lastPathComponent];
-<span class="lineNum">      43 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">      44 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span>            : /* ================================================== Deallocation ================================================== */
-<span class="lineNum">      47 </span>            : - (void) dealloc {
-<span class="lineNum">      48 </span>            :         XCRelease(_filePath)
-<span class="lineNum">      49 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">      50 </span><span class="lineCov">          2 :         XCSuperDealloc</span>
-<span class="lineNum">      51 </span>            : }
-<span class="lineNum">      52 </span><span class="lineCov">          2 : @end</span>
+<span class="lineNum">      22 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      23 </span>            : #pragma mark - Class Methods
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : + (XCFrameworkDefinition*)frameworkDefinitionWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination</span>
+<span class="lineNum">      26 </span>            : {
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     return XCAutorelease([[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination])</span>
+<span class="lineNum">      29 </span>            : }
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : - (void)dealloc</span>
+<span class="lineNum">      32 </span>            : {
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     XCRelease(_filePath)</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     XCSuperDealloc</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      39 </span>            : #pragma mark - Initialization &amp; Destruction
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : - (id)initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination</span>
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     if (self)</span>
+<span class="lineNum">      45 </span>            :     {
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         _filePath = [filePath copy];</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :         _copyToDestination = copyToDestination;</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      50 </span>            : }
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      53 </span>            : #pragma mark - Interface Methods
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : - (NSString*)name</span>
+<span class="lineNum">      56 </span>            : {
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     return [_filePath lastPathComponent];</span>
+<span class="lineNum">      58 </span>            : }
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : @end
 </pre>
       </td>
     </tr>
@@ -116,7 +125,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
   </table>
   <br>
 

@@ -1,0 +1,47 @@
+▸ Building Pods/OCLogTemplate [Debug]
+▸ Precompiling Pods-OCLogTemplate-prefix.pch
+▸ Compiling Pods-OCLogTemplate-dummy.m
+▸ Building library libPods-OCLogTemplate.a
+▸ Building Pods/Pods [Debug]
+▸ Compiling Pods-dummy.m
+▸ Building library libPods.a
+▸ Building xcode-editor/Tests [Debug]
+▸ Processing Tests-Info.plist
+▸ Running script 'Check Pods Manifest.lock'
+▸ Precompiling Source/Tests/Tests-Prefix.pch
+▸ Compiling XCClassDefinition.m
+▸ Compiling XCSourceFile.m
+▸ Compiling XCFileOperationQueue.m
+▸ Compiling XCGroup.m
+▸ Compiling XCKeyBuilder.m
+▸ Compiling XCProject.m
+▸ Compiling XCTarget.m
+▸ Compiling XcodeSourceFileType.m
+▸ Compiling XcodeMemberType.m
+▸ Compiling NSString+TestResource.m
+▸ Compiling XCXibDefinition.m
+▸ Compiling XCFrameworkDefinition.m
+▸ Compiling XCAbstractDefinition.m
+▸ Compiling XCSourceFileDefinition.m
+▸ Compiling XCSubProjectDefinition.m
+▸ Compiling XCBuildConfiguration.m
+▸ Compiling XCProject+SubProject.m
+▸ Compiling KeyBuilderTests.m
+▸ Compiling ClassDefinitionTests.m
+▸ Compiling GroupTests.m
+▸ Compiling ProjectTests.m
+▸ Compiling SubProjectDefinitionTests.m
+▸ Compiling TargetTests.m
+▸ Compiling XcodeFileReferenceTypeTests.m
+▸ Linking Tests
+▸ Copying InfoPlist.strings
+▸ Copying InfoPlist.strings
+▸ Copying Source/Tests/Resources/ESA_Sales_Foobar_ViewController.header
+▸ Copying Source/Tests/Resources/ESA_Sales_Foobar_ViewController.impl
+▸ Copying Source/Tests/Resources/project.pbxproj
+▸ Copying Source/Tests/Resources/expanz-iOS-SDK.zip
+▸ Copying Source/Tests/Resources/HelloWorldLayer.header
+▸ Copying Source/Tests/Resources/HelloWorldLayer.impl
+▸ Copying Source/Tests/Resources/HelloBoxy.zip
+▸ Copying Source/Tests/Resources/goat-funny.png
+▸ Copying Source/Tests/Resources/Person.impl
