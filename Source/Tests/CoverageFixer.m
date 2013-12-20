@@ -22,8 +22,8 @@ extern void __gcov_flush(void);
 
 + (void)testSuiteDidStop:(NSNotification*)aNotification
 {
-    [super testSuiteDidStop:aNotification];
     __gcov_flush();
+    [super testSuiteDidStop:aNotification];
 }
 
 
