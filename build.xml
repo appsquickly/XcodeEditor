@@ -66,7 +66,6 @@
     </target>
 
     <target name="--clean" unless="fast">
-        <record name="build-log.txt"/>
         <delete dir="${target.dir}" quiet="yes"/>
         <delete failonerror="no" quiet="yes">
             <fileset dir="/tmp" includes="**/*.pbxproj,**/*.m,**/*.h"/>
@@ -253,7 +252,6 @@
             set -e # fail script if any commands fail
 
             cd ${basedir}
-            iconv  -t utf-8 < build-log.txt > build-log2.txt
             git remote add origin ${github.uri} || true # allow `remote add` to fail without failing script
             git remote set-url origin ${github.uri}
             git checkout gh-pages
