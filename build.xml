@@ -66,8 +66,8 @@
     </target>
 
     <target name="--clean" unless="fast">
-        <delete dir="${target.dir}"/>
-        <delete verbose="yes" failonerror="no">
+        <delete dir="${target.dir}" quiet="yes"/>
+        <delete verbose="yes" failonerror="no" quiet="yes">
             <fileset dir="/tmp" includes="**/*.pbxproj,**/*.m,**/*.h"/>
         </delete>
     </target>
