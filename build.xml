@@ -56,12 +56,61 @@
     </target>
 
     <target name="--unit.tests.build">
-        <exec executable="xcodebuild" failonerror="true">
-            <arg line="test -scheme Tests -destination OS=10.8,name=OSX"/>
-        </exec>
+        <mkdir dir="${reports.dir}/tests"/>
 
+        <echo file="${temp.dir}/runTests.sh">
+            #!/bin/sh
+            xcodebuild -workspace ${module.name}.xcworkspace test -scheme Tests -configuration Debug > ${reports.dir}/tests/test-results.txt
+            xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+
+        <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
+        <echo>${pretty-test-output}</echo>
+
+        <echo message="Convert test output"/>
+        <echo file="${temp.dir}/convert-test-output.sh">
+            #!/bin/bash
+            set -e # fail script if any commands fail
+
+            cd ${temp.dir}
+            ${scripts.dir}/ocunit2junit ${reports.dir}/tests/test-results.txt > ${temp.dir}/junit-parser.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
+        <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>
+
+
+        <junitreport todir="${temp.dir}">
+            <fileset dir="${reports.dir}" includes="*xml"/>
+            <report format="frames" styledir="${scripts.dir}" todir="${reports.dir}/test-results">
+                <param name="TITLE" expression="Test Results"/>
+            </report>
+        </junitreport>
+        <copy todir="${reports.dir}/test-results">
+            <fileset dir="${scripts.dir}" includes="**/*.png"/>
+        </copy>
+
+        <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.error">
+            <filterchain>
+                <filterreader classname="org.apache.tools.ant.filters.LineContains">
+                    <param type="contains" value="BUILD FAILED"/>
+                </filterreader>
+            </filterchain>
+        </loadfile>
+
+
+        <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.failed">
+            <filterchain>
+                <filterreader classname="org.apache.tools.ant.filters.LineContains">
+                    <param type="contains" value="** TEST FAILED **"/>
+                </filterreader>
+            </filterchain>
+        </loadfile>
+
+        <fail if="tests.error" message="Tests had errors."/>
         <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>
-        <fail if="tests.exception" message="Tests failed. Report is at ${tests.report}"/>
+
     </target>
 
     <target name="--framework.build">
@@ -72,6 +121,7 @@
 
 
     <target name="--assemble.coverage.data">
+
         <mkdir dir="${temp.dir}/coverage-data"/>
         <pathconvert pathsep=", " property="gcno.list" refid="classes">
             <mapper>
@@ -81,9 +131,9 @@
                 </chainedmapper>
             </mapper>
         </pathconvert>
-        <echo message="Coverage info files: ${gcno.list}"/>
+
         <copy todir="${temp.dir}/coverage-data" flatten="true">
-            <fileset dir="${target.dir}" includes="${gcno.list}"/>
+            <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcno.list}"/>
         </copy>
         <pathconvert pathsep=", " property="gcda.list" refid="classes">
             <mapper>
@@ -93,10 +143,14 @@
                 </chainedmapper>
             </mapper>
         </pathconvert>
-        <echo message="Coverage data files: ${gcda.list}"/>
+
+        <!--<echo message="Coverage info files: ${gcno.list}"/>-->
+        <!--<echo message="Coverage data files: ${gcda.list}"/>-->
+
         <copy todir="${temp.dir}/coverage-data" flatten="true">
-            <fileset dir="${target.dir}" includes="${gcda.list}"/>
+            <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcda.list}"/>
         </copy>
+
     </target>
 
     <target name="--coverage.report">
@@ -134,7 +188,7 @@
 	</pathconvert>
         <echo message="Documenting: ${doc.files.list}"/>
 
-        <exec executable="${appledoc}">
+        <exec executable="${appledoc}" outputproperty="appledoc.out" errorproperty="appledoc.error">
             <arg line="--project-name=${module.name}"/>
             <arg line="--project-company=${module.company}"/>
             <arg line="--company-id=${module.company}"/>

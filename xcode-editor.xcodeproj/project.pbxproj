@@ -84,6 +84,7 @@
 		BA798A427D45F5EB9928579C /* SubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */; };
 		BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */; };
 		BA798EED43772945E9BD1284 /* XCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */; };
+		E691CC0ABDE044ABABC3E23C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6156FCE3C2574F3B96555CAB /* libPods.a */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
 		E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51256 /* HelloBoxy.zip */; };
@@ -130,6 +131,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D59559C68474478B54FFFCD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6156FCE3C2574F3B96555CAB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B01A079154A337A00122D48 /* goat-funny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goat-funny.png"; sourceTree = "<group>"; };
 		6B3ACFE014F8A2FE00BCFE81 /* XcodeEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XcodeEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3AD01914F8A3AC00BCFE81 /* XCClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCClassDefinition.h; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 				6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */,
 				6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */,
 				6BB429BB16971E5E0076F486 /* OCHamcrest.framework in Frameworks */,
+				E691CC0ABDE044ABABC3E23C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +336,7 @@
 				6BE4B285147E6B610059E44D /* Source */,
 				6BC10163147775A40055CF03 /* Frameworks */,
 				6BC10161147775A40055CF03 /* Products */,
+				0D59559C68474478B54FFFCD /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -357,6 +362,7 @@
 				6BC1018B1477A42F0055CF03 /* Foundation.framework */,
 				6BD8982D14EA2441007875F4 /* SenTestingKit.framework */,
 				6BC10166147775A40055CF03 /* Other Frameworks */,
+				6156FCE3C2574F3B96555CAB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -444,12 +450,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B55224314EA723700494CF3 /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
+				1437D645C17C42D4BC1E2EF7 /* Check Pods Manifest.lock */,
 				6B55223114EA723700494CF3 /* Sources */,
 				6BB429C21697C4EB0076F486 /* Install OCHamcrest */,
 				6B55223214EA723700494CF3 /* Frameworks */,
 				6B55223314EA723700494CF3 /* Resources */,
 				6BD1B46314EBAD0E00F5AD1C /* Copy Test Resources to /tmp */,
 				6B5A816C14F9FAE100D20018 /* extract test xcode projects */,
+				D5FC2322886E416C9663F89E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -479,6 +487,8 @@
 			mainGroup = 6BC10155147775A40055CF03;
 			productRefGroup = 6BC10161147775A40055CF03 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				6B55223514EA723700494CF3 /* Tests */,
@@ -519,6 +529,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1437D645C17C42D4BC1E2EF7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		6B5A816C14F9FAE100D20018 /* extract test xcode projects */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -532,6 +557,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "unzip -d /tmp/ -o ${SRCROOT}/Source/Tests/Resources/expanz-iOS-SDK.zip\nunzip -d /tmp/ -o ${SRCROOT}/Source/Tests/Resources/HelloBoxy.zip\nunzip -d /tmp/ -o ${SRCROOT}/Source/Tests/Resources/ArchiveProj.zip\n\ncp ${SRCROOT}/Source/Tests/Resources/project.pbxproj /tmp";
+		};
+		D5FC2322886E416C9663F89E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -664,6 +704,7 @@
 		};
 		6B55224414EA723700494CF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D59559C68474478B54FFFCD /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -698,6 +739,7 @@
 		};
 		6B55224514EA723700494CF3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D59559C68474478B54FFFCD /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
