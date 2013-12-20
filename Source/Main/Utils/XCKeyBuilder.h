@@ -15,21 +15,24 @@
 
 #define HASH_VALUE_STORAGE_SIZE 48
 
-typedef struct {
+typedef struct
+{
     char value[CC_MD5_DIGEST_LENGTH];
 } HashValueMD5Hash;
 
 
-@interface XCKeyBuilder : NSObject {
+@interface XCKeyBuilder : NSObject
+{
     unsigned char _value[HASH_VALUE_STORAGE_SIZE];
 }
 
-+ (XCKeyBuilder*) forItemNamed:(NSString*)name;
-+ (XCKeyBuilder*) createUnique;
++ (XCKeyBuilder*)forItemNamed:(NSString*)name;
 
-- (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length;
++ (XCKeyBuilder*)createUnique;
 
-- (NSString*) build;
+- (id)initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length;
+
+- (NSString*)build;
 
 @end
 

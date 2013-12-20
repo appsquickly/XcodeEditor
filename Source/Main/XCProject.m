@@ -26,13 +26,17 @@
 
 @synthesize fileOperationQueue = _fileOperationQueue;
 
-/* =========================================================== Class Methods ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
 + (XCProject*)projectWithFilePath:(NSString*)filePath
 {
     return XCAutorelease([[XCProject alloc] initWithFilePath:filePath])}
 
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithFilePath:(NSString*)filePath
 {
     if ((self = [super init]))
@@ -51,7 +55,7 @@
     return self;
 }
 
-/* ====================================================================================================================================== */
+
 - (void)dealloc
 {
     XCRelease(_filePath)
@@ -65,7 +69,8 @@
     XCSuperDealloc
 }
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
 
 #pragma mark Files
 
@@ -80,7 +85,7 @@
             NSString* path = [obj valueForKey:@"path"];
             NSString* sourceTree = [obj valueForKey:@"sourceTree"];
             [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:fileType name:path
-                                                        sourceTree:(sourceTree ? sourceTree : @"<group>") path:nil]];
+                sourceTree:(sourceTree ? sourceTree : @"<group>") path:nil]];
         }
     }];
     return results;
@@ -90,7 +95,7 @@
 {
     NSDictionary* obj = [[self objects] valueForKey:key];
     if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType || [[obj valueForKey:@"isa"] asMemberType] ==
-            PBXReferenceProxyType))
+        PBXReferenceProxyType))
     {
         XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
 
@@ -102,7 +107,7 @@
             name = [obj valueForKey:@"path"];
         }
         return [XCSourceFile sourceFileWithProject:self key:key type:fileType name:name sourceTree:(sourceTree ? sourceTree : @"<group>")
-                                              path:[obj valueForKey:@"path"]];
+            path:[obj valueForKey:@"path"]];
     }
     return nil;
 }
@@ -285,8 +290,8 @@
             if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTargetType)
             {
                 XCTarget* target =
-                        [XCTarget targetWithProject:self key:key name:[obj valueForKey:@"name"] productName:[obj valueForKey:@"productName"]
-                                   productReference:[obj valueForKey:@"productReference"]];
+                    [XCTarget targetWithProject:self key:key name:[obj valueForKey:@"name"] productName:[obj valueForKey:@"productName"]
+                        productReference:[obj valueForKey:@"productReference"]];
                 [_targets addObject:target];
             }
         }];
@@ -319,18 +324,20 @@
     return [_dataStore objectForKey:@"objects"];
 }
 
-- (NSMutableDictionary*)dataStore {
+- (NSMutableDictionary*)dataStore
+{
     return _dataStore;
 }
 
-- (void)dropCache {
+- (void)dropCache
+{
     XCRelease(_targets);
     XCRelease(_configurations);
     XCRelease(_rootObjectKey);
-    
-    _targets        = nil;
+
+    _targets = nil;
     _configurations = nil;
-    _rootObjectKey  = nil;
+    _rootObjectKey = nil;
 }
 
 
@@ -339,11 +346,11 @@
     if (_configurations == nil)
     {
         NSString* buildConfigurationRootSectionKey =
-                [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
+            [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
         NSDictionary* buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
         _configurations =
-                [[XCBuildConfiguration buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
-                                                               inProject:self] mutableCopy];
+            [[XCBuildConfiguration buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+                inProject:self] mutableCopy];
         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
     }
 

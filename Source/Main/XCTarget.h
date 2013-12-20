@@ -41,10 +41,10 @@
 @property(nonatomic, strong, readonly) NSString* productReference;
 
 + (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-              productReference:(NSString*)productReference;
+    productReference:(NSString*)productReference;
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-     productReference:(NSString*)productReference;
+    productReference:(NSString*)productReference;
 
 - (NSArray*)resources;
 
@@ -64,8 +64,7 @@
 
 - (void)addDependency:(NSString*)key;
 
-- (instancetype) duplicateWithTargetName:(NSString*)targetName
-                             productName:(NSString*)productName;
+- (instancetype)duplicateWithTargetName:(NSString*)targetName productName:(NSString*)productName;
 
 @end
 

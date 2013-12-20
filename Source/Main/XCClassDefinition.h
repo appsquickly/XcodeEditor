@@ -13,13 +13,15 @@
 #import <Foundation/Foundation.h>
 #import "XCAbstractDefinition.h"
 
-typedef enum {
+typedef enum
+{
     ObjectiveC,
     ObjectiveCPlusPlus,
     CPlusPlus,
 } ClassDefinitionLanguage;
 
-@interface XCClassDefinition : XCAbstractDefinition {
+@interface XCClassDefinition : XCAbstractDefinition
+{
 
     NSString* _className;
     NSString* _header;
@@ -33,28 +35,28 @@ typedef enum {
 @property(nonatomic, strong) NSString* header;
 @property(nonatomic, strong) NSString* source;
 
-+ (XCClassDefinition*) classDefinitionWithName:(NSString*)fileName;
++ (XCClassDefinition*)classDefinitionWithName:(NSString*)fileName;
 
-+ (XCClassDefinition*) classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
++ (XCClassDefinition*)classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
 
 /**
 * Initializes a new objective-c class definition.
 */
-- (id) initWithName:(NSString*)fileName;
+- (id)initWithName:(NSString*)fileName;
 
 /**
 * Initializes a new class definition with the specified language.
 */
-- (id) initWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
+- (id)initWithName:(NSString*)className language:(ClassDefinitionLanguage)language;
 
-- (BOOL) isObjectiveC;
+- (BOOL)isObjectiveC;
 
-- (BOOL) isObjectiveCPlusPlus;
+- (BOOL)isObjectiveCPlusPlus;
 
-- (BOOL) isCPlusPlus;
+- (BOOL)isCPlusPlus;
 
-- (NSString*) headerFileName;
+- (NSString*)headerFileName;
 
-- (NSString*) sourceFileName;
+- (NSString*)sourceFileName;
 
 @end

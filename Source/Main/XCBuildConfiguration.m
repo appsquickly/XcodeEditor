@@ -19,6 +19,7 @@
 #import "Utils/XCMemoryUtils.h"
 
 @implementation XCBuildConfiguration
+
 + (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project
 {
     NSMutableDictionary* configurations = [NSMutableDictionary dictionary];
@@ -79,7 +80,7 @@
 {
     if (!(self = [super init]))
     {
-            return nil;
+        return nil;
     }
 
     _buildSettings = [[NSMutableDictionary alloc] init];
@@ -127,55 +128,54 @@
 }
 
 
-- (id<NSCopying>)valueForKey:(NSString*)key
+- (id <NSCopying>)valueForKey:(NSString*)key
 {
-    id<NSCopying> value = [_buildSettings objectForKey:key];
+    id <NSCopying> value = [_buildSettings objectForKey:key];
     if (!value)
     {
-            value = [_xcconfigSettings objectForKey:key];
+        value = [_xcconfigSettings objectForKey:key];
     }
     return value;
 }
 
-+ (NSString*) duplicatedBuildConfigurationListWithKey:(NSString*) buildConfigurationListKey
-                                            inProject:(XCProject*) project
-                        withBuildConfigurationVisitor:(void(^)(NSMutableDictionary*)) buildConfigurationVisitor
++ (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey inProject:(XCProject*)project
+    withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
 {
-    
+
     NSDictionary* buildConfigurationList = project.objects[buildConfigurationListKey];
     NSMutableDictionary* dupBuildConfigurationList = XCAutorelease([buildConfigurationList mutableCopy]);
-    
+
     NSMutableArray* dupBuildConfigurations = [NSMutableArray array];
-    
-    for(NSString* buildConfigurationKey in buildConfigurationList[@"buildConfigurations"])
-        [dupBuildConfigurations addObject: [self duplicatedBuildConfigurationWithKey: buildConfigurationKey
-                                                                           inProject: project
-                                                       withBuildConfigurationVisitor: buildConfigurationVisitor]];
-    
+
+    for (NSString* buildConfigurationKey in buildConfigurationList[@"buildConfigurations"])
+    {
+            [dupBuildConfigurations addObject:[self duplicatedBuildConfigurationWithKey:buildConfigurationKey inProject:project
+                withBuildConfigurationVisitor:buildConfigurationVisitor]];
+    }
+
     dupBuildConfigurationList[@"buildConfigurations"] = dupBuildConfigurations;
-    
+
     NSString* dupBuildConfigurationListKey = [[XCKeyBuilder createUnique] build];
-    
+
     project.objects[dupBuildConfigurationListKey] = dupBuildConfigurationList;
-    
+
     return dupBuildConfigurationListKey;
 }
 
 #pragma - Private
 
-+ (NSString*) duplicatedBuildConfigurationWithKey:(NSString*) buildConfigurationKey
-                                        inProject:(XCProject*) project
-                    withBuildConfigurationVisitor:(void(^)(NSMutableDictionary*)) buildConfigurationVisitor
++ (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey inProject:(XCProject*)project
+    withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
 {
-    NSDictionary *buildConfiguration = project.objects[buildConfigurationKey];
-    NSMutableDictionary *dupBuildConfiguration = XCAutorelease([buildConfiguration mutableCopy]);
-    
+    NSDictionary* buildConfiguration = project.objects[buildConfigurationKey];
+    NSMutableDictionary* dupBuildConfiguration = XCAutorelease([buildConfiguration mutableCopy]);
+
     buildConfigurationVisitor(dupBuildConfiguration);
-    
+
     NSString* dupBuildConfigurationKey = [[XCKeyBuilder createUnique] build];
-    
+
     project.objects[dupBuildConfigurationKey] = dupBuildConfiguration;
-    
+
     return dupBuildConfigurationKey;
 }
 

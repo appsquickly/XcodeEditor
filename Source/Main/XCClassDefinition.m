@@ -23,7 +23,8 @@
 @synthesize header = _header;
 @synthesize source = _source;
 
-/* =========================================================== Class Methods ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
 + (XCClassDefinition*)classDefinitionWithName:(NSString*)fileName
 {
     return XCAutorelease([[XCClassDefinition alloc] initWithName:fileName])}
@@ -33,7 +34,9 @@
     return XCAutorelease([[XCClassDefinition alloc] initWithName:className language:language])}
 
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithName:(NSString*)className
 {
     return [self initWithName:className language:ObjectiveC];
@@ -54,7 +57,6 @@
     return self;
 }
 
-/* ====================================================================================================================================== */
 - (void)dealloc
 {
     XCRelease(_className)
@@ -64,7 +66,9 @@
     XCSuperDealloc
 }
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 - (BOOL)isObjectiveC
 {
     return _language == ObjectiveC;

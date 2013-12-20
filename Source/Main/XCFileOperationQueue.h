@@ -13,7 +13,8 @@
 #import <Foundation/Foundation.h>
 
 
-@interface XCFileOperationQueue : NSObject {
+@interface XCFileOperationQueue : NSObject
+{
 
 @private
     NSString* _baseDirectory;
@@ -24,21 +25,21 @@
 }
 
 
-- (id) initWithBaseDirectory:(NSString*)baseDirectory;
+- (id)initWithBaseDirectory:(NSString*)baseDirectory;
 
-- (BOOL) fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory;
+- (BOOL)fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory;
 
-- (void) queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
+- (void)queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;
 
-- (void) queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents;
+- (void)queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents;
 
-- (void) queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;
+- (void)queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;
 
-- (void) queueDeletion:(NSString*)filePath;
+- (void)queueDeletion:(NSString*)filePath;
 
-- (void) queueDirectory:(NSString*)withName inDirectory:(NSString*)parentDirectory;
+- (void)queueDirectory:(NSString*)withName inDirectory:(NSString*)parentDirectory;
 
-- (void) commitFileOperations;
+- (void)commitFileOperations;
 
 @end
 

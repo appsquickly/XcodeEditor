@@ -18,9 +18,9 @@
 	#define XCRelease(__var) [__var release];
 	#define XCSuperDealloc [super dealloc];
 #else
-	#define XCAutorelease(__var) (__var);
-	#define XCRetain(__var) (__var);
-	#define XCRetainAutorelease(__var) (__var);
-	#define XCRelease(__var) (void)(__var);
-	#define XCSuperDealloc
+#define XCAutorelease(__var) (__var);
+#define XCRetain(__var) (__var);
+#define XCRetainAutorelease(__var) (__var);
+#define XCRelease(__var) (void)(__var);
+#define XCSuperDealloc
 #endif

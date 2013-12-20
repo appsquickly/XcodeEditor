@@ -265,7 +265,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCFrameworkDefinition* frameworkDefinition =
-            [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath] copyToDestination:NO];
+        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath] copyToDestination:NO];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 
@@ -274,7 +274,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 - (void)test_allows_adding_a_framework_copying_it_to_the_destination_folder
 {
     XCFrameworkDefinition* frameworkDefinition =
-            [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath] copyToDestination:YES];
+        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath] copyToDestination:YES];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 }
@@ -296,7 +296,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCSubProjectDefinition
-            * xcodeprojDefinition = [XCSubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj" parentProject:project];
+        * xcodeprojDefinition = [XCSubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj" parentProject:project];
 
     [group addSubProject:xcodeprojDefinition toTargets:[project targets]];
     [project save];
@@ -352,7 +352,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCSourceFileDefinition* header =
-            [[XCSourceFileDefinition alloc] initWithName:@"SomeHeader.h" text:@"@protocol Foobar<NSObject> @end" type:SourceCodeHeader];
+        [[XCSourceFileDefinition alloc] initWithName:@"SomeHeader.h" text:@"@protocol Foobar<NSObject> @end" type:SourceCodeHeader];
     [group addSourceFile:header];
     [project save];
 
@@ -362,7 +362,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
-            initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:@"/tmp/goat-funny.png"] type:ImageResourcePNG];
+        initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:@"/tmp/goat-funny.png"] type:ImageResourcePNG];
     [group addSourceFile:sourceFileDefinition];
     [project save];
 

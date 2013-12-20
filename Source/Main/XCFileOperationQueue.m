@@ -31,7 +31,9 @@
 
 @implementation XCFileOperationQueue
 
-/* ================================================== Initializers ================================================== */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithBaseDirectory:(NSString*)baseDirectory
 {
     self = [super init];
@@ -46,7 +48,6 @@
     return self;
 }
 
-/* ================================================== Deallocation ================================================== */
 - (void)dealloc
 {
     XCRelease(_baseDirectory)
@@ -58,7 +59,9 @@
     XCSuperDealloc
 }
 
-/* ================================================ Interface Methods =============================================== */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 - (BOOL)fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory
 {
     NSString* filePath = [self destinationPathFor:name inProjectDirectory:directory];
@@ -69,7 +72,7 @@
 - (void)queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents
 {
     [_filesToWrite setObject:[contents dataUsingEncoding:NSUTF8StringEncoding]
-                      forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
+        forKey:[self destinationPathFor:fileName inProjectDirectory:directory]];
 }
 
 - (void)queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents
@@ -83,7 +86,7 @@
 
     NSURL* sourceUrl = [NSURL fileURLWithPath:filePath isDirectory:YES];
     NSString* destinationPath =
-            [[_baseDirectory stringByAppendingPathComponent:directory] stringByAppendingPathComponent:[filePath lastPathComponent]];
+        [[_baseDirectory stringByAppendingPathComponent:directory] stringByAppendingPathComponent:[filePath lastPathComponent]];
     NSURL* destinationUrl = [NSURL fileURLWithPath:destinationPath isDirectory:YES];
     [_frameworksToCopy setObject:sourceUrl forKey:destinationUrl];
 }
@@ -108,7 +111,9 @@
 }
 
 
-/* ================================================== Private Methods =============================================== */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (NSString*)destinationPathFor:(NSString*)fileName inProjectDirectory:(NSString*)directory
 {
     return [[_baseDirectory stringByAppendingPathComponent:directory] stringByAppendingPathComponent:fileName];

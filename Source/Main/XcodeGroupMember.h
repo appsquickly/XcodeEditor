@@ -13,16 +13,16 @@
 
 #import "XcodeMemberType.h"
 
-@protocol XcodeGroupMember<NSObject>
+@protocol XcodeGroupMember <NSObject>
 
-- (NSString*) key;
+- (NSString*)key;
 
-- (NSString*) displayName;
+- (NSString*)displayName;
 
-- (NSString*) pathRelativeToProjectRoot;
+- (NSString*)pathRelativeToProjectRoot;
 
 /**
 * Group members can either be other groups (PBXGroup) or source files (PBXFileReference).
 */
-- (XcodeMemberType) groupMemberType;
+- (XcodeMemberType)groupMemberType;
 @end

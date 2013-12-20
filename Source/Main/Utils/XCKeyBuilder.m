@@ -15,35 +15,41 @@
 @implementation XCKeyBuilder
 
 /* ================================================= Class Methods ================================================== */
-+ (XCKeyBuilder*) forItemNamed:(NSString*)name {
++ (XCKeyBuilder*)forItemNamed:(NSString*)name
+{
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
     return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]);
 
 }
 
-+ (XCKeyBuilder*) createUnique {
++ (XCKeyBuilder*)createUnique
+{
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFUUIDBytes bytes = CFUUIDGetUUIDBytes(theUUID);
     CFRelease(theUUID);
-    
-    return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes: &bytes length: sizeof(bytes)]);
+
+    return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:&bytes length:sizeof(bytes)]);
 }
 
 /* ================================================== Initializers ================================================== */
-- (id) initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length {
+- (id)initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length
+{
     self = [super init];
-    if (self != nil) {
+    if (self != nil)
+    {
         CC_MD5(bytes, (int) length, _value);
     }
     return self;
 }
 
 /* ================================================ Interface Methods =============================================== */
-- (NSString*) build {
+- (NSString*)build
+{
     NSInteger byteLength = sizeof(HashValueMD5Hash);
     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];
     NSInteger i;
-    for (i = 0; i < byteLength; i++) {
+    for (i = 0; i < byteLength; i++)
+    {
         [stringValue appendFormat:@"%02x", _value[i]];
     }
     return [[stringValue substringToIndex:24] uppercaseString];

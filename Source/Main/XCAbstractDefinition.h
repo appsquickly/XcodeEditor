@@ -19,19 +19,19 @@ typedef enum
     * Creates the reference in the project and writes the contents to disk. If a file already exists at the specified
     * location, its contents will be updated.
     */
-            FileOperationStyleOverwrite,
+        FileOperationStyleOverwrite,
 
     /**
     * Creates the reference in the project. If a file already exists at the specified location, the contents will not
     * be updated.
     */
-            FileOperationStyleAcceptExisting,
+        FileOperationStyleAcceptExisting,
 
     /**
     * Creates the reference in the project, but does not write to disk. The filesystem is expected to be updated
      * through some other means.
     */
-            FileOperationStyleReferenceOnly
+        FileOperationStyleReferenceOnly
 } XcodeFileOperationStyle;
 
 /**

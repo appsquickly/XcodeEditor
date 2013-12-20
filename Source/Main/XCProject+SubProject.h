@@ -17,27 +17,27 @@
 @interface XCProject (SubProject)
 
 
-- (NSString*) referenceProxyKeyForName:(NSString*)name;
+- (NSString*)referenceProxyKeyForName:(NSString*)name;
 
-- (NSArray*) buildProductsForTargets:(NSString*)xcodeprojKey;
+- (NSArray*)buildProductsForTargets:(NSString*)xcodeprojKey;
 
-- (void) addAsTargetDependency:(XCSubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
+- (void)addAsTargetDependency:(XCSubProjectDefinition*)xcodeprojDefinition toTargets:(NSArray*)targets;
 
-- (NSArray*) keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier
-        singleton:(BOOL)singleton required:(BOOL)required;
+- (NSArray*)keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString*)identifier singleton:(BOOL)singleton
+    required:(BOOL)required;
 
-- (NSMutableDictionary*) PBXProjectDict;
+- (NSMutableDictionary*)PBXProjectDict;
 
-- (void) removeProxies:(NSString*)xcodeprojKey;
+- (void)removeProxies:(NSString*)xcodeprojKey;
 
-- (void) addProxies:(XCSubProjectDefinition*)xcodeproj;
+- (void)addProxies:(XCSubProjectDefinition*)xcodeproj;
 
-- (void) removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey;
+- (void)removeFromProjectReferences:(NSString*)key forProductsGroup:(NSString*)productsGroupKey;
 
-- (void) removeTargetDependencies:(NSString*)name;
+- (void)removeTargetDependencies:(NSString*)name;
 
-- (NSString*) containerItemProxyKeyForName:(NSString*)name proxyType:(NSString*)proxyType;
+- (NSString*)containerItemProxyKeyForName:(NSString*)name proxyType:(NSString*)proxyType;
 
-- (NSString*) productsGroupKeyForKey:(NSString*)key;
+- (NSString*)productsGroupKeyForKey:(NSString*)key;
 
 @end

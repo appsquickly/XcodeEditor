@@ -15,7 +15,8 @@
 #import "XCAbstractDefinition.h"
 
 
-@interface XCFrameworkDefinition : XCAbstractDefinition {
+@interface XCFrameworkDefinition : XCAbstractDefinition
+{
     NSString* _filePath;
     BOOL _copyToDestination;
 }
@@ -23,12 +24,11 @@
 @property(nonatomic, strong, readonly) NSString* filePath;
 @property(nonatomic, readonly) BOOL copyToDestination;
 
-+ (XCFrameworkDefinition*) frameworkDefinitionWithFilePath:(NSString*)filePath
-        copyToDestination:(BOOL)copyToDestination;
++ (XCFrameworkDefinition*)frameworkDefinitionWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;
 
-- (id) initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;
+- (id)initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;
 
-- (NSString*) name;
+- (NSString*)name;
 
 
 @end

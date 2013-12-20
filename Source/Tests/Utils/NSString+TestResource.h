@@ -14,6 +14,6 @@
 
 @interface NSString (TestResource)
 
-+ (NSString*) stringWithTestResource:(NSString*)resourceName;
++ (NSString*)stringWithTestResource:(NSString*)resourceName;
 
 @end

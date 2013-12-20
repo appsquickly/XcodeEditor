@@ -30,10 +30,10 @@
 @interface XCGroup ()
 
 - (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
-             fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
 - (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
-             fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
 
 - (NSString*)makeProductsGroup:(XCSubProjectDefinition*)xcodeprojDefinition;
 
@@ -67,16 +67,18 @@
 @synthesize alias = _alias;
 
 
-/* =========================================================== Class Methods ============================================================ */
-+ (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-                    children:(NSArray*)children
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
++ (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children
 {
 
     return XCAutorelease([[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children])}
 
-/* ============================================================ Initializers ============================================================ */
-- (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path
-             children:(NSArray*)children
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
+- (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children
 {
     self = [super init];
     if (self)
@@ -87,7 +89,7 @@
         _pathRelativeToParent = [path copy];
 
         _children = [children mutableCopy];
-        if(!_children)
+        if (!_children)
         {
             _children = [[NSMutableArray alloc] init];
         }
@@ -95,7 +97,6 @@
     return self;
 }
 
-/* ====================================================================================================================================== */
 - (void)dealloc
 {
     XCRelease(_project)
@@ -109,7 +110,9 @@
     XCSuperDealloc
 }
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 #pragma mark Parent group
 
 - (void)removeFromParentGroup
@@ -126,7 +129,7 @@
     }
     NSDictionary* dictionary = [[_project objects] objectForKey:_key];
     NSLog(@"Here's the dictionary: %@", dictionary);
-    
+
     [[_project objects] removeObjectForKey:_key];
 
     dictionary = [[_project objects] objectForKey:_key];
@@ -160,18 +163,18 @@
     if ([classDefinition header])
     {
         [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header] type:SourceCodeHeader
-                   fileOperationStyle:[classDefinition fileOperationStyle]];
+            fileOperationStyle:[classDefinition fileOperationStyle]];
     }
 
     if ([classDefinition isObjectiveC])
     {
         [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjC
-                   fileOperationStyle:[classDefinition fileOperationStyle]];
+            fileOperationStyle:[classDefinition fileOperationStyle]];
     }
     else if ([classDefinition isObjectiveCPlusPlus])
     {
         [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjCPlusPlus
-                   fileOperationStyle:[classDefinition fileOperationStyle]];
+            fileOperationStyle:[classDefinition fileOperationStyle]];
     }
 
     [[_project objects] setObject:[self asDictionary] forKey:_key];
@@ -210,7 +213,7 @@
             if (copyFramework)
             {
                 [_fileOperationQueue queueFrameworkWithFilePath:[frameworkDefinition filePath]
-                                                    inDirectory:[self pathRelativeToProjectRoot]];
+                    inDirectory:[self pathRelativeToProjectRoot]];
             }
         }
         else
@@ -236,10 +239,10 @@
 
 - (XCGroup*)addGroupWithPath:(NSString*)path
 {
-    NSString * groupKeyPath = self.pathRelativeToProjectRoot? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path] : path;
-    
+    NSString* groupKeyPath = self.pathRelativeToProjectRoot ? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path] : path;
+
     NSString* groupKey = [[XCKeyBuilder forItemNamed:groupKeyPath] build];
-    
+
     NSArray* members = [self members];
     for (id <XcodeGroupMember> groupMember in members)
     {
@@ -247,7 +250,7 @@
         {
 
             if ([[[groupMember pathRelativeToProjectRoot] lastPathComponent] isEqualToString:path] ||
-                    [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey])
+                [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey])
             {
                 return nil;
             }
@@ -269,14 +272,14 @@
 - (void)addSourceFile:(XCSourceFileDefinition*)sourceFileDefinition
 {
     [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName] contents:[sourceFileDefinition data]
-                             type:[sourceFileDefinition type] fileOperationStyle:[sourceFileDefinition fileOperationStyle]];
+        type:[sourceFileDefinition type] fileOperationStyle:[sourceFileDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
 - (void)addXib:(XCXibDefinition*)xibDefinition
 {
     [self makeGroupMemberWithName:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile
-               fileOperationStyle:[xibDefinition fileOperationStyle]];
+        fileOperationStyle:[xibDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -297,7 +300,7 @@
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
     [self makeGroupMemberWithName:[projectDefinition projectFileName] path:[projectDefinition pathRelativeToProjectRoot] type:XcodeProject
-               fileOperationStyle:[projectDefinition fileOperationStyle]];
+        fileOperationStyle:[projectDefinition fileOperationStyle]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
     // create PBXContainerItemProxies and PBXReferenceProxies
@@ -385,7 +388,7 @@
     [_project removeTargetDependencies:[projectDefinition name]];
 }
 
-/* ================================================================================================================== */
+/* ====================================================================================================================================== */
 #pragma mark Members
 
 - (NSArray*)members
@@ -396,7 +399,7 @@
         for (NSString* childKey in _children)
         {
             XcodeMemberType type = [self typeForKey:childKey];
-            
+
             @autoreleasepool
             {
                 if (type == PBXGroupType || type == PBXVariantGroupType)
@@ -485,7 +488,9 @@
     return nil;
 }
 
-/* ================================================= Protocol Methods =============================================== */
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
 - (XcodeMemberType)groupMemberType
 {
     return [self typeForKey:self.key];
@@ -495,7 +500,7 @@
 {
     if (_alias)
     {
-            return _alias;
+        return _alias;
     }
     return [_pathRelativeToParent lastPathComponent];
 }
@@ -530,13 +535,17 @@
     return _pathRelativeToProjectRoot;
 }
 
-/* ================================================== Utility Methods =============================================== */
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Group: displayName = %@, key=%@", [self displayName], _key];
 }
 
-/* ================================================== Private Methods =============================================== */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 #pragma mark Private
 - (void)addMemberWithKey:(NSString*)key
 {
@@ -559,10 +568,10 @@
     _members = nil;
 }
 
-/* ================================================================================================================== */
+/* ====================================================================================================================================== */
 
 - (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
-             fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle
+    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle
 {
 
     NSString* filePath;
@@ -587,7 +596,7 @@
         [_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath];
     }
     else if (fileOperationStyle == FileOperationStyleAcceptExisting &&
-            ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath])
+        ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath])
     {
         writeFile = YES;
     }
@@ -604,14 +613,14 @@
     }
 }
 
-/* ================================================== Xcodeproj Methods ============================================= */
+/* ====================================================================================================================================== */
 
 #pragma mark Xcodeproj methods
 
 // creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
 // member via path rather than name, because that is how subprojects are stored by Xcode
 - (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
-             fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle
+    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle
 {
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil)
@@ -712,7 +721,7 @@
     }
 }
 
-/* ================================================================================================================== */
+/* ====================================================================================================================================== */
 
 #pragma mark Dictionary Representations
 

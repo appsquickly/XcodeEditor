@@ -23,20 +23,20 @@
 @synthesize key = _key;
 @synthesize sourceTree = _sourceTree;
 
-/* =========================================================== Class Methods ============================================================ */
-+ (XCSourceFile*)sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type
-                                  name:(NSString*)name sourceTree:(NSString*)_tree path:(NSString*)path
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
++ (XCSourceFile*)sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type name:(NSString*)name
+    sourceTree:(NSString*)_tree path:(NSString*)path
 {
     return XCAutorelease([[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path])}
 
 
-/* ============================================================ Initializers ============================================================ */
-- (id)initWithProject:(XCProject*)project
-                  key:(NSString*)key
-                 type:(XcodeSourceFileType)type
-                 name:(NSString*)name
-           sourceTree:(NSString*)tree
-                 path:(NSString*)path
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
+- (id)initWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type name:(NSString*)name sourceTree:(NSString*)tree
+    path:(NSString*)path
 {
 
     self = [super init];
@@ -51,7 +51,6 @@
     return self;
 }
 
-/* ====================================================================================================================================== */
 - (void)dealloc
 {
     XCRelease(_project)
@@ -65,13 +64,15 @@
     XCSuperDealloc
 }
 
-/* ========================================================== Properties ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
 
 // Goes to the entry for this object in the project and sets a value for one of the keys, such as name, path, etc.
-- (void)setValue:(id)val forProjectItemPropertyWithKey:(NSString *)key
+- (void)setValue:(id)val forProjectItemPropertyWithKey:(NSString*)key
 {
-    NSMutableDictionary *obj = [[[_project objects] objectForKey:_key] mutableCopy];
-    if(nil == obj) {
+    NSMutableDictionary* obj = [[[_project objects] objectForKey:_key] mutableCopy];
+    if (nil == obj)
+    {
         [NSException raise:@"Project item not found" format:@"Project item with key %@ not found.", _key];
     }
     [obj setValue:val forKey:key];
@@ -79,12 +80,12 @@
 }
 
 
-- (NSString *)name
+- (NSString*)name
 {
     return _name;
 }
 
-- (void)setName:(NSString *)name
+- (void)setName:(NSString*)name
 {
     id old = _name;
     _name = [name copy];
@@ -94,12 +95,12 @@
 }
 
 
-- (NSString *)path
+- (NSString*)path
 {
     return _path;
 }
 
-- (void)setPath:(NSString *)path
+- (void)setPath:(NSString*)path
 {
     id old = _path;
     _path = [path copy];
@@ -107,8 +108,6 @@
 
     [self setValue:path forProjectItemPropertyWithKey:@"path"];
 }
-
-/* ========================================================== Interface Methods ========================================================= */
 
 - (BOOL)isBuildFile
 {
@@ -137,7 +136,7 @@
 - (BOOL)canBecomeBuildFile
 {
     return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type ==
-            Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive;
+        Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive;
 }
 
 
@@ -207,7 +206,9 @@
     }
 }
 
-/* =========================================================== Protocol Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
 - (XcodeMemberType)groupMemberType
 {
     return PBXFileReferenceType;
@@ -225,7 +226,9 @@
     return result;
 }
 
-/* ============================================================ Utility Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name, [self pathRelativeToProjectRoot]];

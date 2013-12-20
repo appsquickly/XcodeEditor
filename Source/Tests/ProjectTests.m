@@ -106,7 +106,6 @@
     assertThat(rootGroup.members, isNot(empty()));
 
 
-
 }
 
 - (void)test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group

@@ -28,10 +28,9 @@
 
 - (void)addOrReplaceBuildSetting:(id <NSCopying>)setting forKey:(NSString*)key;
 
-- (id<NSCopying>)valueForKey:(NSString*)key;
+- (id <NSCopying>)valueForKey:(NSString*)key;
 
-+ (NSString*) duplicatedBuildConfigurationListWithKey:(NSString*) buildConfigurationListKey
-                                            inProject:(XCProject*) project
-                        withBuildConfigurationVisitor:(void(^)(NSMutableDictionary*)) buildConfigurationVisitor;
++ (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey inProject:(XCProject*)project
+    withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor;
 
 @end

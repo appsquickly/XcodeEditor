@@ -11,7 +11,8 @@
 
 
 
-typedef enum {
+typedef enum
+{
     PBXNilType,
     PBXBuildFileType,
     PBXContainerItemProxyType,
@@ -32,9 +33,9 @@ typedef enum {
 
 @interface NSString (XcodeMemberTypeExtensions)
 
-+ (NSString*) stringFromMemberType:(XcodeMemberType)nodeType;
++ (NSString*)stringFromMemberType:(XcodeMemberType)nodeType;
 
-- (XcodeMemberType) asMemberType;
+- (XcodeMemberType)asMemberType;
 
 @end
 

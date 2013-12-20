@@ -11,7 +11,8 @@
 
 
 
-typedef enum {
+typedef enum
+{
     FileTypeNil,             // Unknown filetype 
     Framework,               // .framework 
     PropertyList,            // .plist 
@@ -30,8 +31,8 @@ typedef enum {
 
 @interface NSString (XCodeFileType)
 
-+ (NSString*) stringFromSourceFileType:(XcodeSourceFileType)type;
++ (NSString*)stringFromSourceFileType:(XcodeSourceFileType)type;
 
-- (XcodeSourceFileType) asSourceFileType;
+- (XcodeSourceFileType)asSourceFileType;
 
 @end

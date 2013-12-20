@@ -34,8 +34,8 @@
 - (void)test_allows_initialization_with_name_and_path
 {
 
-    XCSubProjectDefinition* subProjectDefinition =
-            [[XCSubProjectDefinition alloc] initWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:_project];
+    XCSubProjectDefinition
+        * subProjectDefinition = [[XCSubProjectDefinition alloc] initWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:_project];
 
     assertThat(subProjectDefinition, notNilValue());
     assertThat(subProjectDefinition.projectFileName, equalTo(@"HelloBoxy.xcodeproj"));

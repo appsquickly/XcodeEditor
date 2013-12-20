@@ -17,46 +17,43 @@
 
 @implementation NSDictionary (XcodeFileType)
 
-+ (NSDictionary*) dictionaryWithFileReferenceTypesAsStrings {
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            boxEnum(SourceCodeHeader), @"sourcecode.c.h",
-			boxEnum(SourceCodeObjC), @"sourcecode.c.objc",
-			boxEnum(Framework), @"wrapper.framework",
-			boxEnum(PropertyList), @"text.plist.strings",
-			boxEnum(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
-            boxEnum(SourceCodeCPlusPlus), @"sourcecode.cpp.cpp",
-			boxEnum(XibFile), @"file.xib",
-			boxEnum(ImageResourcePNG), @"image.png",
-            boxEnum(Bundle), @"wrapper.cfbundle",
-            boxEnum(Archive), @"archive.ar",
-            boxEnum(HTML), @"text.html",
-            boxEnum(TEXT), @"text",
-            boxEnum(XcodeProject), @"wrapper.pb-project",
-			nil];
++ (NSDictionary*)dictionaryWithFileReferenceTypesAsStrings
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(SourceCodeHeader),       @"sourcecode.c.h",
+                                                      boxEnum(SourceCodeObjC),         @"sourcecode.c.objc",
+                                                      boxEnum(Framework),              @"wrapper.framework",
+                                                      boxEnum(PropertyList),           @"text.plist.strings",
+                                                      boxEnum(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
+                                                      boxEnum(SourceCodeCPlusPlus),    @"sourcecode.cpp.cpp", boxEnum(XibFile), @"file.xib",
+                                                      boxEnum(ImageResourcePNG),       @"image.png", boxEnum(Bundle), @"wrapper.cfbundle",
+                                                      boxEnum(Archive),                @"archive.ar", boxEnum(HTML), @"text.html",
+                                                      boxEnum(TEXT),                   @"text",
+                                                      boxEnum(XcodeProject),           @"wrapper.pb-project", nil];
 }
 
 @end
 
 @implementation NSString (XcodeFileType)
 
-+ (NSString*) stringFromSourceFileType:(XcodeSourceFileType)type {
++ (NSString*)stringFromSourceFileType:(XcodeSourceFileType)type
+{
     return [[[NSDictionary dictionaryWithFileReferenceTypesAsStrings] allKeysForObject:boxEnum(type)] objectAtIndex:0];
 }
 
 
-- (XcodeSourceFileType) asSourceFileType {
+- (XcodeSourceFileType)asSourceFileType
+{
     NSDictionary* typeStrings = [NSDictionary dictionaryWithFileReferenceTypesAsStrings];
-    
-    if ([typeStrings objectForKey:self]) {
+
+    if ([typeStrings objectForKey:self])
+    {
         return (XcodeSourceFileType) [[typeStrings objectForKey:self] intValue];
     }
-    else {
+    else
+    {
         return FileTypeNil;
     }
 }
-
-/* ================================================== Private Methods =============================================== */
-
 
 
 @end
