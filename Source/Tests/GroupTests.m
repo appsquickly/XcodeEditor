@@ -22,7 +22,7 @@
 #import "XCFrameworkDefinition.h"
 #import "XCSourceFileDefinition.h"
 
-@interface FrameworkPathFactory
+@interface FrameworkPathFactory : NSObject
 @end
 
 @implementation FrameworkPathFactory
@@ -63,13 +63,13 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
 - (void)test_allows_initialization_with
 {
-    XCGroup* group = [XCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+    XCGroup* aGroup = [XCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
-    assertThat(group, notNilValue());
-    assertThat([group key], equalTo(@"abcd1234"));
-    assertThat([group alias], equalTo(@"Main"));
-    assertThat([group pathRelativeToParent], equalTo(@"Source/Main"));
-    assertThat([group members], empty());
+    assertThat(aGroup, notNilValue());
+    assertThat([aGroup key], equalTo(@"abcd1234"));
+    assertThat([aGroup alias], equalTo(@"Main"));
+    assertThat([aGroup pathRelativeToParent], equalTo(@"Source/Main"));
+    assertThat([aGroup members], empty());
 }
 
 
@@ -407,12 +407,12 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 - (void)test_allows_deleting_a_group_optionally_removing_also_the_contents
 {
 
-    XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
+    XCGroup* aGroup = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
 
     NSArray* groups = [project groups];
     NSLog(@"Groups now: %@", groups);
 
-    [group removeFromParentDeletingChildren:YES];
+    [aGroup removeFromParentDeletingChildren:YES];
     [project save];
 
     groups = [project groups];

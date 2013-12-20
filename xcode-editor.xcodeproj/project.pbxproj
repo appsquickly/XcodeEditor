@@ -316,15 +316,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		6B65941214F8A53300F65AEC /* External */ = {
-			isa = PBXGroup;
-			children = (
-				6BE9748C15AF0B31004472E2 /* OCLogTemplate */,
-			);
-			name = External;
-			path = Dependencies/External;
-			sourceTree = "<group>";
-		};
 		6B65941914F8A56C00F65AEC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,7 +329,6 @@
 		6BC10155147775A40055CF03 = {
 			isa = PBXGroup;
 			children = (
-				6B65941214F8A53300F65AEC /* External */,
 				6BE4B285147E6B610059E44D /* Source */,
 				6BC10163147775A40055CF03 /* Frameworks */,
 				6BC10161147775A40055CF03 /* Products */,
@@ -388,13 +378,6 @@
 				6B3AD01814F8A3AC00BCFE81 /* Main */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		6BE9748C15AF0B31004472E2 /* OCLogTemplate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OCLogTemplate;
 			sourceTree = "<group>";
 		};
 		E94DE11415443AC100C51258 /* Utils */ = {
