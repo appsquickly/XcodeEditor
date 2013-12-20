@@ -467,7 +467,6 @@
 				6B55223314EA723700494CF3 /* Resources */,
 				6BD1B46314EBAD0E00F5AD1C /* Copy Test Resources to /tmp */,
 				6B5A816C14F9FAE100D20018 /* extract test xcode projects */,
-				6B55223414EA723700494CF3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -537,19 +536,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B55223414EA723700494CF3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		6B5A816C14F9FAE100D20018 /* extract test xcode projects */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
