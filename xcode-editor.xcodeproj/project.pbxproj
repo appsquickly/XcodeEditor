@@ -487,8 +487,6 @@
 			mainGroup = 6BC10155147775A40055CF03;
 			productRefGroup = 6BC10161147775A40055CF03 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				6B55223514EA723700494CF3 /* Tests */,
