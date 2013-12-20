@@ -253,13 +253,13 @@
             set -e # fail script if any commands fail
 
             cd ${basedir}
+            iconv  -t utf-8 < build-log.txt > build-log.txt
             git remote add origin ${github.uri} || true # allow `remote add` to fail without failing script
             git remote set-url origin ${github.uri}
             git checkout gh-pages
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
             mkdir -p ./build-status
-            iconv  -t utf-8 < build-log.txt > build-log.txt
             rm -fr build-log.txt
             cp -fr build-log.txt ./build-status/
             cp -fr ${reports.dir}/build-status/build-status.png ./build-status/
