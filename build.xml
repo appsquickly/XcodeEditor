@@ -66,6 +66,7 @@
     </target>
 
     <target name="--clean" unless="fast">
+        <record name="${reports.dir}/build-log.txt"/>
         <delete dir="${target.dir}" quiet="yes"/>
         <delete failonerror="no" quiet="yes">
             <fileset dir="/tmp" includes="**/*.pbxproj,**/*.m,**/*.h"/>
@@ -79,7 +80,6 @@
             #!/bin/sh
             xcodebuild -workspace ${module.name}.xcworkspace test -scheme Tests -configuration Debug > ${reports.dir}/tests/test-results.txt
             xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
-            ${scripts.dir}/utf8-bom.sh ${reports.dir}/tests/test-results-pretty.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
         <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
@@ -259,8 +259,8 @@
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
             mkdir -p ./build-status
-            rm -fr ./build-status/test-results-pretty.txt
-            cp -fr ${reports.dir}/tests/test-results-pretty.txt ./build-status/
+            rm -fr ${reports.dir}/build-status/build-log.txt
+            cp -fr ${reports.dir}/build-log.text ./build-status/
             cp -fr ${reports.dir}/build-status/build-status.png ./build-status/
             git add --all --ignore-removal ./build-status
             rm -fr ./coverage
