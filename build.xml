@@ -267,7 +267,6 @@
             rm -fr ./test-results
             cp -fr ${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
-            cp -fr ${reports.dir}/schema ./schema
             ]]>
         </echo>
         <chmod perm="+x" file="${temp.dir}/publish-site.sh"/>
