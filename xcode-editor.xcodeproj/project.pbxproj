@@ -83,8 +83,8 @@
 		BA79870CE0CE7D18D3EAE42E /* ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B5E16A7C0A6B792CBB9 /* ProjectTests.m */; };
 		BA798A427D45F5EB9928579C /* SubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */; };
 		BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */; };
+		BA798EB7F7C2B6E800608937 /* ZzzzzCoverageFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C23DD267580F036DAD7 /* ZzzzzCoverageFixer.m */; };
 		BA798EED43772945E9BD1284 /* XCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */; };
-		E691CC0ABDE044ABABC3E23C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6156FCE3C2574F3B96555CAB /* libPods.a */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
 		E94DE11415443AC100C51257 /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51256 /* HelloBoxy.zip */; };
@@ -197,6 +197,7 @@
 		BA798967B6C5975BA265EBDD /* XCBuildConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildConfiguration.m; sourceTree = "<group>"; };
 		BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildConfiguration.h; sourceTree = "<group>"; };
 		BA798B5E16A7C0A6B792CBB9 /* ProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTests.m; sourceTree = "<group>"; };
+		BA798C23DD267580F036DAD7 /* ZzzzzCoverageFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZzzzzCoverageFixer.m; sourceTree = "<group>"; };
 		BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeFileReferenceTypeTests.m; sourceTree = "<group>"; };
 		BA798EE31696E3108277FA54 /* TargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetTests.m; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
@@ -227,7 +228,6 @@
 				6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */,
 				6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */,
 				6BB429BB16971E5E0076F486 /* OCHamcrest.framework in Frameworks */,
-				E691CC0ABDE044ABABC3E23C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +290,7 @@
 				BA7984143FEC00A651B12D88 /* ClassDefinitionTests.m */,
 				BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */,
 				BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */,
+				BA798C23DD267580F036DAD7 /* ZzzzzCoverageFixer.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -625,6 +626,7 @@
 				BA798A427D45F5EB9928579C /* SubProjectDefinitionTests.m in Sources */,
 				BA7985B8636EDA34C738B527 /* TargetTests.m in Sources */,
 				BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */,
+				BA798EB7F7C2B6E800608937 /* ZzzzzCoverageFixer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
