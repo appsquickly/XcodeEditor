@@ -267,6 +267,11 @@
             rm -fr ./test-results
             cp -fr ${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
+
+            git commit -a -m "publish reports to gh-pages"
+            git push -u origin gh-pages
+            git checkout master
+
             ]]>
         </echo>
         <chmod perm="+x" file="${temp.dir}/publish-site.sh"/>
