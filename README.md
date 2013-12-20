@@ -115,12 +115,14 @@ subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath
 [definition setFileOperationStyle:FileOperationStyleReferenceOnly]; 
 ```
 
-# Docs
+# Reports
 
 You've just read them! The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
 This will extract a test project to the /tmp directory, where you'll be able to see the outcome for yourself. 
 
-* <a href="https://github.com/jasperblues/XcodeEditor/wiki">Wiki</a>
+![Build Status](http://jasperblues.github.com/XcodeEditor/build-status/build-status.png?q=zz)
+
+* <a href="http://jasperblues.github.com/XcodeEditor/build-status/test-results-pretty.txt">Build Log</a>
 * <a href="http://jasperblues.github.com/XcodeEditor/api/index.html">API</a>
 * <a href="http://jasperblues.github.com/XcodeEditor/coverage/index.html">Coverage Reports</a>
 
