@@ -19,11 +19,15 @@
     --make.dirs,
     --clean,
     --make.dirs,
-    --unit.tests.build,
+    --stamp.build.failing,
+    --test.build.run,
+    --test.generate.report,
+    --test.evaluate,
     --assemble.coverage.data,
     --coverage.report,
     --api.report,
-    --framework.build"/>
+    --framework.build,
+    --stamp.build.passing"/>
 
     <target name="clean" depends="--clean"/>
 
@@ -35,11 +39,24 @@
         <property name="fast" value="yes"/>
     </target>
 
+    <target name="no-fail-tests">
+        <property name="no-fail-tests" value="yes"/>
+    </target>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END PUBLIC TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PRIVATE TARGETS (MUST NOT depend on other targets!) ~~~~~~~~~~~~~~~~~~~ -->
+    <target name="--stamp.build.failing">
+        <mkdir dir = "${reports.dir}/build-status"/>
+        <copy tofile="${reports.dir}/build-status/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
+    </target>
+
+    <target name="--stamp.build.passing" unless="tests.failed">
+        <copy tofile="${reports.dir}/build-status/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
+    </target>
+
+
     <target name="--make.dirs">
         <mkdir dir="${target.dir}"/>
         <mkdir dir="${temp.dir}"/>
@@ -55,7 +72,7 @@
         </delete>
     </target>
 
-    <target name="--unit.tests.build">
+    <target name="--test.build.run">
         <mkdir dir="${reports.dir}/tests"/>
 
         <echo file="${temp.dir}/runTests.sh">
@@ -80,16 +97,10 @@
         <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
         <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>
 
+    </target>
 
-        <junitreport todir="${temp.dir}">
-            <fileset dir="${reports.dir}" includes="*xml"/>
-            <report format="frames" styledir="${scripts.dir}" todir="${reports.dir}/test-results">
-                <param name="TITLE" expression="Test Results"/>
-            </report>
-        </junitreport>
-        <copy todir="${reports.dir}/test-results">
-            <fileset dir="${scripts.dir}" includes="**/*.png"/>
-        </copy>
+    <target name="--test.generate.report">
+        <echo>${pretty-test-output}</echo>
 
         <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.error">
             <filterchain>
@@ -98,19 +109,40 @@
                 </filterreader>
             </filterchain>
         </loadfile>
-
+        <fail if="tests.error" message="Tests failed to build."/>
 
         <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.failed">
             <filterchain>
                 <filterreader classname="org.apache.tools.ant.filters.LineContains">
-                    <param type="contains" value="** TEST FAILED **"/>
+                    <param type="contains" value="' failed ("/>
                 </filterreader>
             </filterchain>
         </loadfile>
 
-        <fail if="tests.error" message="Tests had errors."/>
-        <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>
+        <echo message="Convert test output"/>
+        <echo file="${temp.dir}/convert-test-output.sh">
+            #!/bin/bash
+            set -e # fail script if any commands fail
 
+            cd ${temp.dir}
+            ${scripts.dir}/ocunit2junit ${reports.dir}/tests/test-results.txt > ${temp.dir}/junit-parser.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
+        <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>
+
+        <junitreport todir="${temp.dir}">
+            <fileset dir="${temp.dir}/test-reports" includes="*xml"/>
+            <report format="frames" styledir="${scripts.dir}" todir="${reports.dir}/test-results">
+                <param name="TITLE" expression="Test Results"/>
+            </report>
+        </junitreport>
+        <copy todir="${reports.dir}/test-results">
+            <fileset dir="${scripts.dir}" includes="**/*.png"/>
+        </copy>
+    </target>
+
+    <target name="--test.evaluate" unless="no-fail-tests">
+        <fail if="tests.failed" message="Tests failed. Report is at ${reports.dir}/test-results"/>
     </target>
 
     <target name="--framework.build">
