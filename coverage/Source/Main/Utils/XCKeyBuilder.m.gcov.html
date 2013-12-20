@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">17</td>
             <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryMed">77.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -73,10 +73,10 @@
 <span class="lineNum">      15 </span>            : @implementation XCKeyBuilder
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : /* ================================================= Class Methods ================================================== */
-<span class="lineNum">      18 </span><span class="lineNoCov">          0 : + (XCKeyBuilder*)forItemNamed:(NSString*)name</span>
+<span class="lineNum">      18 </span><span class="lineCov">        174 : + (XCKeyBuilder*)forItemNamed:(NSString*)name</span>
 <span class="lineNum">      19 </span>            : {
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]);</span>
+<span class="lineNum">      20 </span><span class="lineCov">        174 :     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      21 </span><span class="lineCov">        174 :     return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]);</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : }
 <span class="lineNum">      24 </span>            : 
@@ -90,27 +90,27 @@
 <span class="lineNum">      32 </span>            : }
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            : /* ================================================== Initializers ================================================== */
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : - (id)initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length</span>
+<span class="lineNum">      35 </span><span class="lineCov">        174 : - (id)initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length</span>
 <span class="lineNum">      36 </span>            : {
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     self = [super init];</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     if (self != nil)</span>
+<span class="lineNum">      37 </span><span class="lineCov">        174 :     self = [super init];</span>
+<span class="lineNum">      38 </span><span class="lineCov">        174 :     if (self != nil)</span>
 <span class="lineNum">      39 </span>            :     {
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :         CC_MD5(bytes, (int) length, _value);</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      40 </span><span class="lineCov">        174 :         CC_MD5(bytes, (int) length, _value);</span>
+<span class="lineNum">      41 </span><span class="lineCov">        174 :     }</span>
+<span class="lineNum">      42 </span><span class="lineCov">        174 :     return self;</span>
 <span class="lineNum">      43 </span>            : }
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : /* ================================================ Interface Methods =============================================== */
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : - (NSString*)build</span>
+<span class="lineNum">      46 </span><span class="lineCov">        174 : - (NSString*)build</span>
 <span class="lineNum">      47 </span>            : {
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     NSInteger i;</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     for (i = 0; i &lt; byteLength; i++)</span>
+<span class="lineNum">      48 </span><span class="lineCov">        174 :     NSInteger byteLength = sizeof(HashValueMD5Hash);</span>
+<span class="lineNum">      49 </span><span class="lineCov">        174 :     NSMutableString* stringValue = [NSMutableString stringWithCapacity:byteLength * 2];</span>
+<span class="lineNum">      50 </span><span class="lineCov">        174 :     NSInteger i;</span>
+<span class="lineNum">      51 </span><span class="lineCov">       5916 :     for (i = 0; i &lt; byteLength; i++)</span>
 <span class="lineNum">      52 </span>            :     {
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     return [[stringValue substringToIndex:24] uppercaseString];</span>
+<span class="lineNum">      53 </span><span class="lineCov">       2784 :         [stringValue appendFormat:@&quot;%02x&quot;, _value[i]];</span>
+<span class="lineNum">      54 </span><span class="lineCov">       2784 :     }</span>
+<span class="lineNum">      55 </span><span class="lineCov">        174 :     return [[stringValue substringToIndex:24] uppercaseString];</span>
 <span class="lineNum">      56 </span>            : }
 <span class="lineNum">      57 </span>            : 
 <span class="lineNum">      58 </span>            : 
