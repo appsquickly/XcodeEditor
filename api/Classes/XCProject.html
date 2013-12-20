@@ -4,9 +4,10 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>XCProject Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.2 (build 961)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -270,8 +271,8 @@
 </tr>
 						</tbody></table></div>
 					
-                    
-                    
+					
+					
 					
 					
 					
@@ -287,168 +288,197 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fileOperationQueue">&nbsp;&nbsp;fileOperationQueue</a></code>
+		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/projectWithFilePath:">+&nbsp;projectWithFilePath:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithFilePath:">&ndash;&nbsp;initWithFilePath:</a></code>
+		<span class="tooltip"><p>Creates a new project editor instance with the specified Project.xcodeproj file.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/files">&ndash;&nbsp;files</a></code>
+		<span class="tooltip"><p>Returns all file resources in the project, as an array of <a href="../Classes/XCSourceFile.html"><code>XCSourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fileWithKey:">&ndash;&nbsp;fileWithKey:</a></code>
+		<span class="tooltip"><p>Returns the project file with the specified key, or nil.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fileWithName:">&ndash;&nbsp;fileWithName:</a></code>
+		<span class="tooltip"><p>Returns the project file with the specified name, or nil. If more than one project file matches the specified name,
+which one is returned is undefined.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/headerFiles">&ndash;&nbsp;headerFiles</a></code>
+		<span class="tooltip"><p>Returns all header <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/XCSourceFile.html"><code>XCSourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/objectiveCFiles">&ndash;&nbsp;objectiveCFiles</a></code>
+		<span class="tooltip"><p>Returns all implementation obj-c implementation <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/XCSourceFile.html"><code>XCSourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/objectiveCPlusPlusFiles">&ndash;&nbsp;objectiveCPlusPlusFiles</a></code>
+		<span class="tooltip"><p>Returns all implementation obj-c++ implementation <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/XCSourceFile.html"><code>XCSourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/xibFiles">&ndash;&nbsp;xibFiles</a></code>
+		<span class="tooltip"><p>Returns all the xib <a href="#//api/name/files">files</a> in the project, as an array of <a href="../Classes/XCSourceFile.html"><code>XCSourceFile</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/imagePNGFiles">&ndash;&nbsp;imagePNGFiles</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/filePath">&ndash;&nbsp;filePath</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/groups">&ndash;&nbsp;groups</a></code>
+		<span class="tooltip"><p>Lists the groups in an xcode project, returning an array of <a href="../Classes/XCGroup.html"><code>XCGroup</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/rootGroup">&ndash;&nbsp;rootGroup</a></code>
+		<span class="tooltip"><p>Returns the root (top-level) group.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/rootGroups">&ndash;&nbsp;rootGroups</a></code>
+		<span class="tooltip"><p>Returns the root (top-level) <a href="#//api/name/groups">groups</a>, if there are multiple. An array of <a href="#//api/name/rootGroup">rootGroup</a> if there is only one.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/groupWithKey:">&ndash;&nbsp;groupWithKey:</a></code>
+		<span class="tooltip"><p>Returns the group with the given key, or nil.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/groupWithPathFromRoot:">&ndash;&nbsp;groupWithPathFromRoot:</a></code>
+		<span class="tooltip"><p>Returns the group with the specified display name path - the directory relative to the root group. Eg Source/Main</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/groupForGroupMemberWithKey:">&ndash;&nbsp;groupForGroupMemberWithKey:</a></code>
+		<span class="tooltip"><p>Returns the parent group for the group or file with the given key;</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/groupWithSourceFile:">&ndash;&nbsp;groupWithSourceFile:</a></code>
+		<span class="tooltip"><p>Returns the parent group for the group or file with the source file</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/targets">&ndash;&nbsp;targets</a></code>
+		<span class="tooltip"><p>Lists the targets in an xcode project, returning an array of <a href="../Classes/XCTarget.html"><code>XCTarget</code></a> <a href="#//api/name/objects">objects</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/targetWithName:">&ndash;&nbsp;targetWithName:</a></code>
+		<span class="tooltip"><p>Returns the target with the specified name, or nil.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/configurations">&ndash;&nbsp;configurations</a></code>
+		<span class="tooltip"><p>Returns the target with the specified name, or nil.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/configurationWithName:">&ndash;&nbsp;configurationWithName:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/defaultConfiguration">&ndash;&nbsp;defaultConfiguration</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/save">&ndash;&nbsp;save</a></code>
+		<span class="tooltip"><p>Saves a project after editing.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/objects">&ndash;&nbsp;objects</a></code>
+		<span class="tooltip"><p>Raw project data.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/dataStore">&ndash;&nbsp;dataStore</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/dropCache">&ndash;&nbsp;dropCache</a></code>
+		
 	</span>
 	
 	
@@ -463,66 +493,77 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/referenceProxyKeyForName:">&ndash;&nbsp;referenceProxyKeyForName:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/buildProductsForTargets:">&ndash;&nbsp;buildProductsForTargets:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addAsTargetDependency:toTargets:">&ndash;&nbsp;addAsTargetDependency:toTargets:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/keysForProjectObjectsOfType:withIdentifier:singleton:required:">&ndash;&nbsp;keysForProjectObjectsOfType:withIdentifier:singleton:required:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/PBXProjectDict">&ndash;&nbsp;PBXProjectDict</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/removeProxies:">&ndash;&nbsp;removeProxies:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addProxies:">&ndash;&nbsp;addProxies:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/removeFromProjectReferences:forProductsGroup:">&ndash;&nbsp;removeFromProjectReferences:forProductsGroup:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/removeTargetDependencies:">&ndash;&nbsp;removeTargetDependencies:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/containerItemProxyKeyForName:proxyType:">&ndash;&nbsp;containerItemProxyKeyForName:proxyType:</a></code>
+		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/productsGroupKeyForKey:">&ndash;&nbsp;productsGroupKeyForKey:</a></code>
+		
 	</span>
 	
 	
@@ -1589,8 +1630,6 @@ which one is returned is undefined.</p>
 					</div>
 					
 					
-                    
-                    
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -1603,7 +1642,7 @@ which one is returned is undefined.</p>
 					<div class="footer-copyright">
 						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-12-20)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>
