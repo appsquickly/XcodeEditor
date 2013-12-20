@@ -48,7 +48,7 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PRIVATE TARGETS (MUST NOT depend on other targets!) ~~~~~~~~~~~~~~~~~~~ -->
     <target name="--stamp.build.failing">
-        <mkdir dir = "${reports.dir}/build-status"/>
+        <mkdir dir="${reports.dir}/build-status"/>
         <copy tofile="${reports.dir}/build-status/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
     </target>
 
@@ -67,7 +67,7 @@
 
     <target name="--clean" unless="fast">
         <delete dir="${target.dir}" quiet="yes"/>
-        <delete verbose="yes" failonerror="no" quiet="yes">
+        <delete failonerror="no" quiet="yes">
             <fileset dir="/tmp" includes="**/*.pbxproj,**/*.m,**/*.h"/>
         </delete>
     </target>
@@ -196,7 +196,8 @@
             lcov -r "${temp.dir}/coverage-temp.info" _string.h > "${temp.dir}/coverage.info"
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
-        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true" outputproperty="geninfo.out"
+              errorproperty="geninfo.error"/>
 
         <echo file="${temp.dir}/genhtml.sh">
             #!/bin/sh
@@ -204,7 +205,12 @@
             --prefix "${basedir}" "${temp.dir}/coverage.info"
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
-        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true" outputproperty="genhtml.out"
+              errorproperty="genhtml.error"/>
+
+        <exec executable="lcov">
+            <arg line="--summary ./build/temp/coverage.info"/>
+        </exec>
     </target>
 
     <target name="--api.report">
@@ -216,8 +222,8 @@
         <delete file="${basedir}/docset-installed.txt"/>
 
         <pathconvert pathsep=" " property="doc.files.list" refid="headers">
-	    <map from='${source.main.dir}' to='"${source.main.dir}"' />
-	</pathconvert>
+            <map from='${source.main.dir}' to='"${source.main.dir}"'/>
+        </pathconvert>
         <!--<echo message="Documenting: ${doc.files.list}"/>-->
 
         <exec executable="appledoc" outputproperty="appledoc.out" errorproperty="appledoc.error">
@@ -274,7 +280,8 @@
             ]]>
         </echo>
         <chmod perm="+x" file="${temp.dir}/publish-site.sh"/>
-        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true" outputproperty="publish.out" errorproperty="publish.error"/>
+        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true" outputproperty="publish.out"
+              errorproperty="publish.error"/>
     </target>
 
 
