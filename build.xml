@@ -146,7 +146,7 @@
     </target>
 
     <target name="--framework.build">
-        <exec executable="xcodebuild" failonerror="true">
+        <exec executable="xcodebuild" failonerror="true" outputproperty="framework.build.out" errorproperty="framework.build.error">
             <arg line="-target ${application.target.name}"/>
         </exec>
     </target>
@@ -275,7 +275,7 @@
             ]]>
         </echo>
         <chmod perm="+x" file="${temp.dir}/publish-site.sh"/>
-        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true" outputproperty="publish.out" errorproperty="publish.error"/>
     </target>
 
 
