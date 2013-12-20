@@ -1,0 +1,252 @@
+   [delete] Deleting directory /Users/jblues/MacProjects/XcodeEditor/build
+
+--stamp.build.failing:
+    [mkdir] Created dir: /Users/jblues/MacProjects/XcodeEditor/build/reports/build-status
+     [copy] Copying 1 file to /Users/jblues/MacProjects/XcodeEditor/build/reports/build-status
+
+--test.build.run:
+    [mkdir] Created dir: /Users/jblues/MacProjects/XcodeEditor/build/reports/tests
+     [exec] ** TEST FAILED **
+     [exec] 
+     [echo] ▸ Building xcode-editor/Tests [Debug]
+     [echo] ▸ Processing Tests-Info.plist
+     [echo] ▸ Running script 'Check Pods Manifest.lock'
+     [echo] ▸ Precompiling Source/Tests/Tests-Prefix.pch
+     [echo] ▸ Compiling XCClassDefinition.m
+     [echo] ▸ Compiling XCSourceFile.m
+     [echo] ▸ Compiling XCFileOperationQueue.m
+     [echo] ▸ Compiling XCGroup.m
+     [echo] ▸ Compiling XCKeyBuilder.m
+     [echo] ▸ Compiling XCProject.m
+     [echo] ▸ Compiling XCTarget.m
+     [echo] ▸ Compiling XcodeSourceFileType.m
+     [echo] ▸ Compiling XcodeMemberType.m
+     [echo] ▸ Compiling NSString+TestResource.m
+     [echo] ▸ Compiling XCXibDefinition.m
+     [echo] ▸ Compiling XCFrameworkDefinition.m
+     [echo] ▸ Compiling XCAbstractDefinition.m
+     [echo] ▸ Compiling XCSourceFileDefinition.m
+     [echo] ▸ Compiling XCSubProjectDefinition.m
+     [echo] ▸ Compiling XCProject+SubProject.m
+     [echo] ▸ Compiling XCBuildConfiguration.m
+     [echo] ▸ Compiling KeyBuilderTests.m
+     [echo] ▸ Compiling ClassDefinitionTests.m
+     [echo] ▸ Compiling GroupTests.m
+     [echo] ▸ Compiling ProjectTests.m
+     [echo] ▸ Compiling SubProjectDefinitionTests.m
+     [echo] ▸ Compiling TargetTests.m
+     [echo] ▸ Compiling XcodeFileReferenceTypeTests.m
+     [echo] ▸ Compiling CoverageFixer.m
+     [echo] ▸ Linking Tests
+     [echo] ▸ Copying InfoPlist.strings
+     [echo] ▸ Copying InfoPlist.strings
+     [echo] ▸ Copying Source/Tests/Resources/ESA_Sales_Foobar_ViewController.header
+     [echo] ▸ Copying Source/Tests/Resources/ESA_Sales_Foobar_ViewController.impl
+     [echo] ▸ Copying Source/Tests/Resources/project.pbxproj
+     [echo] ▸ Copying Source/Tests/Resources/expanz-iOS-SDK.zip
+     [echo] ▸ Copying Source/Tests/Resources/HelloWorldLayer.header
+     [echo] ▸ Copying Source/Tests/Resources/HelloWorldLayer.impl
+     [echo] ▸ Copying Source/Tests/Resources/HelloBoxy.zip
+     [echo] ▸ Copying Source/Tests/Resources/goat-funny.png
+     [echo] ▸ Copying Source/Tests/Resources/Person.impl
+     [echo] ▸ Running script 'extract test xcode projects'
+     [echo] ▸ Running script 'Copy Pods Resources'
+     [echo] Test Suite Tests.octest(Tests) started
+     [echo] ClassDefinitionTests
+     [echo] ✓ test_allow_initialization_with_a_filename_and_language_attribute (0.000 seconds)
+     [echo] ✓ test_allows_initialization_with_a_fileName_attribute (0.000 seconds)
+     [echo] ✓ test_it_returns_the_conventional_file_names_for_objective_cPlusPlus_classes (0.000 seconds)
+     [echo] ✓ test_it_returns_the_conventional_file_names_for_objective_c_classes (0.000 seconds)
+     [echo] ✓ test_it_throws_an_exception_if_one_of_the_above_languages_is_not_specified (0.000 seconds)
+     [echo] GroupTests
+     [echo] ✓ test__allows_using_a_class_definition_to_add_cpp_files (0.025 seconds)
+     [echo] ✓ test_able_to_describe_itself (0.008 seconds)
+     [echo] ✓ test_able_to_list_all_of_its_members_recursively (0.138 seconds)
+     [echo] ✓ test_able_to_provide_a_sorted_list_of_its_children (0.009 seconds)
+     [echo] ✓ test_able_to_return_a_member_by_its_name (0.009 seconds)
+     [echo] ✓ test_able_to_return_its_full_path_relative_to_the_project_base_directory (0.009 seconds)
+     [echo] ✗ test_allows_adding_a_framework_copying_it_to_the_destination_folder, Error writing file at filePath: file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreMIDI.framework/
+     [echo] ✓ test_allows_adding_a_framework_on_the_system_volume (0.043 seconds)
+     [echo] ✓ test_allows_adding_a_group (0.028 seconds)
+     [echo] ✓ test_allows_adding_a_source_file (0.140 seconds)
+     [echo] ✓ test_allows_adding_a_xcodeproj_file (0.041 seconds)
+     [echo] ✓ test_allows_adding_an_image_file (0.025 seconds)
+     [echo] ✓ test_allows_adding_files_of_type_obc_cPlusPlus (0.031 seconds)
+     [echo] ✓ test_allows_creating_a_reference_only_without_writing_to_disk (0.026 seconds)
+     [echo] ✓ test_allows_deleting_a_group_optionally_removing_also_the_contents (0.060 seconds)
+     [echo] ✓ test_allows_initialization_with (0.011 seconds)
+     [echo] ✓ test_allows_removing_an_xcodeproj_file (0.011 seconds)
+     [echo] ✓ test_allows_removing_an_xcodeproj_file_and_specify_targets (0.011 seconds)
+     [echo] ✓ test_provides_a_convenience_method_to_add_a_source_file_and_specify_targets (0.029 seconds)
+     [echo] ✓ test_provides_a_convenience_method_to_add_a_xcodeproj_file_and_specify_targets (0.042 seconds)
+     [echo] ✓ test_provides_a_convenience_method_to_add_a_xib_file_and_specify_targets (0.029 seconds)
+     [echo] ✓ test_provides_an_option_to_accept_the_existing_file_if_it_exists (0.032 seconds)
+     [echo] ✓ test_returns_a_warning_if_an_existing_class_is_overwritten (0.056 seconds)
+     [echo] ✓ test_should_allow_adding_a_xib_file (0.046 seconds)
+     [echo] ✓ test_should_allows_adding_a_header (0.026 seconds)
+     [echo] KeyBuilderTests
+     [echo] ✓ test_returns_an_md5_hash_for_an_NSData_instance (0.000 seconds)
+     [echo] ProjectTests
+     [echo] ✓ test_able_to_list_all_of_the_groups_in_a_project (0.029 seconds)
+     [echo] ✓ test_able_to_list_all_the_header_files_in_a_project (0.028 seconds)
+     [echo] ✓ test_able_to_list_all_the_obj_cPlusPlus_files_in_a_project (0.002 seconds)
+     [echo] ✓ test_able_to_list_all_the_obj_c_files_in_a_project (0.014 seconds)
+     [echo] ✓ test_able_to_list_the_targets_in_an_xcode_project (0.023 seconds)
+     [echo] ✓ test_be_able_to_list_all_the_xib_files_in_a_project (0.004 seconds)
+     [echo] ✓ test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group (0.002 seconds)
+     [echo] ✓ test_provides_access_to_the_root_top_level_group (0.002 seconds)
+     [echo] TargetTests
+     [echo] ✓ test_allows_listing_the_build_configuration (0.010 seconds)
+     [echo] XCSubProjectDefinitionTests
+     [echo] ✓ test_allows_initialization_with_name_and_path (0.016 seconds)
+     [echo] XcodeFileReferenceTypeTests
+     [echo] ✓ test_creates_a_string_from_a_file_reference_type (0.000 seconds)
+     [echo] ✓ test_return_a_file_reference_type_from_a_string (0.000 seconds)
+     [echo] 
+     [echo] 
+     [echo] GroupTests
+     [echo]   test_allows_adding_a_framework_copying_it_to_the_destination_folder, Error writing file at filePath: file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreMIDI.framework/
+     [echo]   Unknown.m:0
+     [echo] 
+     [echo] 
+     [echo] Executed 43 tests, with 1 failure (1 unexpected) in 1.029 (1.055) seconds
+     [echo] Convert test output
+
+--test.generate.report:
+     [echo] ▸ Building xcode-editor/Tests [Debug]
+     [echo] ▸ Processing Tests-Info.plist
+     [echo] ▸ Running script 'Check Pods Manifest.lock'
+     [echo] ▸ Precompiling Source/Tests/Tests-Prefix.pch
+     [echo] ▸ Compiling XCClassDefinition.m
+     [echo] ▸ Compiling XCSourceFile.m
+     [echo] ▸ Compiling XCFileOperationQueue.m
+     [echo] ▸ Compiling XCGroup.m
+     [echo] ▸ Compiling XCKeyBuilder.m
+     [echo] ▸ Compiling XCProject.m
+     [echo] ▸ Compiling XCTarget.m
+     [echo] ▸ Compiling XcodeSourceFileType.m
+     [echo] ▸ Compiling XcodeMemberType.m
+     [echo] ▸ Compiling NSString+TestResource.m
+     [echo] ▸ Compiling XCXibDefinition.m
+     [echo] ▸ Compiling XCFrameworkDefinition.m
+     [echo] ▸ Compiling XCAbstractDefinition.m
+     [echo] ▸ Compiling XCSourceFileDefinition.m
+     [echo] ▸ Compiling XCSubProjectDefinition.m
+     [echo] ▸ Compiling XCProject+SubProject.m
+     [echo] ▸ Compiling XCBuildConfiguration.m
+     [echo] ▸ Compiling KeyBuilderTests.m
+     [echo] ▸ Compiling ClassDefinitionTests.m
+     [echo] ▸ Compiling GroupTests.m
+     [echo] ▸ Compiling ProjectTests.m
+     [echo] ▸ Compiling SubProjectDefinitionTests.m
+     [echo] ▸ Compiling TargetTests.m
+     [echo] ▸ Compiling XcodeFileReferenceTypeTests.m
+     [echo] ▸ Compiling CoverageFixer.m
+     [echo] ▸ Linking Tests
+     [echo] ▸ Copying InfoPlist.strings
+     [echo] ▸ Copying InfoPlist.strings
+     [echo] ▸ Copying Source/Tests/Resources/ESA_Sales_Foobar_ViewController.header
+     [echo] ▸ Copying Source/Tests/Resources/ESA_Sales_Foobar_ViewController.impl
+     [echo] ▸ Copying Source/Tests/Resources/project.pbxproj
+     [echo] ▸ Copying Source/Tests/Resources/expanz-iOS-SDK.zip
+     [echo] ▸ Copying Source/Tests/Resources/HelloWorldLayer.header
+     [echo] ▸ Copying Source/Tests/Resources/HelloWorldLayer.impl
+     [echo] ▸ Copying Source/Tests/Resources/HelloBoxy.zip
+     [echo] ▸ Copying Source/Tests/Resources/goat-funny.png
+     [echo] ▸ Copying Source/Tests/Resources/Person.impl
+     [echo] ▸ Running script 'extract test xcode projects'
+     [echo] ▸ Running script 'Copy Pods Resources'
+     [echo] Test Suite Tests.octest(Tests) started
+     [echo] ClassDefinitionTests
+     [echo] ✓ test_allow_initialization_with_a_filename_and_language_attribute (0.000 seconds)
+     [echo] ✓ test_allows_initialization_with_a_fileName_attribute (0.000 seconds)
+     [echo] ✓ test_it_returns_the_conventional_file_names_for_objective_cPlusPlus_classes (0.000 seconds)
+     [echo] ✓ test_it_returns_the_conventional_file_names_for_objective_c_classes (0.000 seconds)
+     [echo] ✓ test_it_throws_an_exception_if_one_of_the_above_languages_is_not_specified (0.000 seconds)
+     [echo] GroupTests
+     [echo] ✓ test__allows_using_a_class_definition_to_add_cpp_files (0.025 seconds)
+     [echo] ✓ test_able_to_describe_itself (0.008 seconds)
+     [echo] ✓ test_able_to_list_all_of_its_members_recursively (0.138 seconds)
+     [echo] ✓ test_able_to_provide_a_sorted_list_of_its_children (0.009 seconds)
+     [echo] ✓ test_able_to_return_a_member_by_its_name (0.009 seconds)
+     [echo] ✓ test_able_to_return_its_full_path_relative_to_the_project_base_directory (0.009 seconds)
+     [echo] ✗ test_allows_adding_a_framework_copying_it_to_the_destination_folder, Error writing file at filePath: file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreMIDI.framework/
+     [echo] ✓ test_allows_adding_a_framework_on_the_system_volume (0.043 seconds)
+     [echo] ✓ test_allows_adding_a_group (0.028 seconds)
+     [echo] ✓ test_allows_adding_a_source_file (0.140 seconds)
+     [echo] ✓ test_allows_adding_a_xcodeproj_file (0.041 seconds)
+     [echo] ✓ test_allows_adding_an_image_file (0.025 seconds)
+     [echo] ✓ test_allows_adding_files_of_type_obc_cPlusPlus (0.031 seconds)
+     [echo] ✓ test_allows_creating_a_reference_only_without_writing_to_disk (0.026 seconds)
+     [echo] ✓ test_allows_deleting_a_group_optionally_removing_also_the_contents (0.060 seconds)
+     [echo] ✓ test_allows_initialization_with (0.011 seconds)
+     [echo] ✓ test_allows_removing_an_xcodeproj_file (0.011 seconds)
+     [echo] ✓ test_allows_removing_an_xcodeproj_file_and_specify_targets (0.011 seconds)
+     [echo] ✓ test_provides_a_convenience_method_to_add_a_source_file_and_specify_targets (0.029 seconds)
+     [echo] ✓ test_provides_a_convenience_method_to_add_a_xcodeproj_file_and_specify_targets (0.042 seconds)
+     [echo] ✓ test_provides_a_convenience_method_to_add_a_xib_file_and_specify_targets (0.029 seconds)
+     [echo] ✓ test_provides_an_option_to_accept_the_existing_file_if_it_exists (0.032 seconds)
+     [echo] ✓ test_returns_a_warning_if_an_existing_class_is_overwritten (0.056 seconds)
+     [echo] ✓ test_should_allow_adding_a_xib_file (0.046 seconds)
+     [echo] ✓ test_should_allows_adding_a_header (0.026 seconds)
+     [echo] KeyBuilderTests
+     [echo] ✓ test_returns_an_md5_hash_for_an_NSData_instance (0.000 seconds)
+     [echo] ProjectTests
+     [echo] ✓ test_able_to_list_all_of_the_groups_in_a_project (0.029 seconds)
+     [echo] ✓ test_able_to_list_all_the_header_files_in_a_project (0.028 seconds)
+     [echo] ✓ test_able_to_list_all_the_obj_cPlusPlus_files_in_a_project (0.002 seconds)
+     [echo] ✓ test_able_to_list_all_the_obj_c_files_in_a_project (0.014 seconds)
+     [echo] ✓ test_able_to_list_the_targets_in_an_xcode_project (0.023 seconds)
+     [echo] ✓ test_be_able_to_list_all_the_xib_files_in_a_project (0.004 seconds)
+     [echo] ✓ test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group (0.002 seconds)
+     [echo] ✓ test_provides_access_to_the_root_top_level_group (0.002 seconds)
+     [echo] TargetTests
+     [echo] ✓ test_allows_listing_the_build_configuration (0.010 seconds)
+     [echo] XCSubProjectDefinitionTests
+     [echo] ✓ test_allows_initialization_with_name_and_path (0.016 seconds)
+     [echo] XcodeFileReferenceTypeTests
+     [echo] ✓ test_creates_a_string_from_a_file_reference_type (0.000 seconds)
+     [echo] ✓ test_return_a_file_reference_type_from_a_string (0.000 seconds)
+     [echo] 
+     [echo] 
+     [echo] GroupTests
+     [echo]   test_allows_adding_a_framework_copying_it_to_the_destination_folder, Error writing file at filePath: file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreMIDI.framework/
+     [echo]   Unknown.m:0
+     [echo] 
+     [echo] 
+     [echo] Executed 43 tests, with 1 failure (1 unexpected) in 1.029 (1.055) seconds
+     [echo] Convert test output
+[junitreport] Processing /Users/jblues/MacProjects/XcodeEditor/build/temp/TESTS-TestSuites.xml to /var/folders/z6/dxn08knd26b5m6697jhkg9n00000gn/T/null2107655606
+[junitreport] Loading stylesheet /Users/jblues/MacProjects/XcodeEditor/Scripts/junit-frames.xsl
+[junitreport] Transform time: 466ms
+[junitreport] Deleting: /var/folders/z6/dxn08knd26b5m6697jhkg9n00000gn/T/null2107655606
+     [copy] Copying 3 files to /Users/jblues/MacProjects/XcodeEditor/build/reports/test-results
+
+--test.evaluate:
+
+--assemble.coverage.data:
+    [mkdir] Created dir: /Users/jblues/MacProjects/XcodeEditor/build/temp/coverage-data
+     [copy] Copying 16 files to /Users/jblues/MacProjects/XcodeEditor/build/temp/coverage-data
+     [copy] Copying 16 files to /Users/jblues/MacProjects/XcodeEditor/build/temp/coverage-data
+
+--coverage.report:
+    [mkdir] Created dir: /Users/jblues/MacProjects/XcodeEditor/build/reports/coverage
+     [exec] Reading tracefile ./build/temp/coverage.info
+     [exec] Summary coverage rate:
+     [exec]   lines......: 67.6% (1091 of 1615 lines)
+     [exec]   functions..: 68.0% (174 of 256 functions)
+     [exec]   branches...: no data found
+
+--api.report:
+    [mkdir] Created dir: /Users/jblues/MacProjects/XcodeEditor/build/reports/api
+     [exec] Result: 1
+   [delete] Deleting: /Users/jblues/MacProjects/XcodeEditor/docset-installed.txt
+     [copy] Copying 25 files to /Users/jblues/MacProjects/XcodeEditor/build/reports/api
+
+--framework.build:
+
+--stamp.build.passing:
+
+build:
+
+--publish.site:
