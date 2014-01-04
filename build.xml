@@ -81,7 +81,7 @@
             xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
-        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="false" failifexecutionfails="false"/>
 
         <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
         <echo>${pretty-test-output}</echo>
@@ -176,8 +176,8 @@
             </mapper>
         </pathconvert>
 
-        <!--<echo message="Coverage info files: ${gcno.list}"/>-->
-        <!--<echo message="Coverage data files: ${gcda.list}"/>-->
+        <echo message="Coverage info files: ${gcno.list}"/>
+        <echo message="Coverage data files: ${gcda.list}"/>
 
         <copy todir="${temp.dir}/coverage-data" flatten="true">
             <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcda.list}"/>
