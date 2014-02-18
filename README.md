@@ -167,11 +167,11 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 
 # Who's using it? 
 
+* <a href="http://www.apportable.com">Apportable</a> : Develop Android applications using Xcode, Objective-C and Cocoa APIs
 * <a href="http://www.expanz.com">expanz</a>: A RAD framework that enables .NET developers in producing cross-platform and cloud apps. 
 * <a href="http://www.lesspainful.com">Less Painful</a>: The Calabash automated functional testing for mobile applications. 
 * <a href="http://www.levelhelper.org">Level Helper</a>: A RAD framework for developing 2D games on iOS & Android. 
 * <a href="http://macromates.com/">Text Mate</a>: The missing Text Editor for OSX.
-* <a href="http://www.apportable.com">Apportable</a> : Develop Android applications using Xcode, Objective-C and Cocoa APIs
 
 # Authors
 
