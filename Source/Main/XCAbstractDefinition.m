@@ -15,7 +15,7 @@
 
 @implementation XCAbstractDefinition
 
-@synthesize fileOperationStyle = _fileOperationStyle;
+@synthesize fileOperationType = _fileOperationType;
 
 
 /* ====================================================================================================================================== */
@@ -26,7 +26,7 @@
     self = [super init];
     if (self)
     {
-        _fileOperationStyle = FileOperationStyleOverwrite;
+        _fileOperationType = XCFileOperationTypeOverwrite;
     }
     return self;
 }

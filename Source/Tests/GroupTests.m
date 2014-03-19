@@ -152,7 +152,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCClassDefinition* classDefinition = [XCClassDefinition classDefinitionWithName:@"ClassWithoutSourceFileYet"];
-    [classDefinition setFileOperationStyle:FileOperationStyleReferenceOnly];
+    [classDefinition setFileOperationType:XCFileOperationTypeReferenceOnly];
     [group addClass:classDefinition toTargets:[project targets]];
     [project save];
 
@@ -246,7 +246,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
     NSString* newXibText = @"Don't blow away my contents if I already exists";
     XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
-    [xibDefinition setFileOperationStyle:FileOperationStyleAcceptExisting];
+    [xibDefinition setFileOperationType:XCFileOperationTypeAcceptExisting];
 
     [group addXib:xibDefinition toTargets:[project targets]];
     [project save];

@@ -30,10 +30,10 @@
 @interface XCGroup ()
 
 - (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
-    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+    fileOperationStyle:(XCFileOperationType)fileOperationStyle;
 
 - (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
-    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle;
+    fileOperationStyle:(XCFileOperationType)fileOperationStyle;
 
 - (NSString*)makeProductsGroup:(XCSubProjectDefinition*)xcodeprojDefinition;
 
@@ -163,18 +163,18 @@
     if ([classDefinition header])
     {
         [self makeGroupMemberWithName:[classDefinition headerFileName] contents:[classDefinition header] type:SourceCodeHeader
-            fileOperationStyle:[classDefinition fileOperationStyle]];
+            fileOperationStyle:[classDefinition fileOperationType]];
     }
 
     if ([classDefinition isObjectiveC])
     {
         [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjC
-            fileOperationStyle:[classDefinition fileOperationStyle]];
+            fileOperationStyle:[classDefinition fileOperationType]];
     }
     else if ([classDefinition isObjectiveCPlusPlus])
     {
         [self makeGroupMemberWithName:[classDefinition sourceFileName] contents:[classDefinition source] type:SourceCodeObjCPlusPlus
-            fileOperationStyle:[classDefinition fileOperationStyle]];
+            fileOperationStyle:[classDefinition fileOperationType]];
     }
 
     [[_project objects] setObject:[self asDictionary] forKey:_key];
@@ -197,11 +197,11 @@
         {
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition name] name:nil type:Framework];
             BOOL copyFramework = NO;
-            if ([frameworkDefinition fileOperationStyle] == FileOperationStyleOverwrite)
+            if ([frameworkDefinition fileOperationType] == XCFileOperationTypeOverwrite)
             {
                 copyFramework = YES;
             }
-            else if ([frameworkDefinition fileOperationStyle] == FileOperationStyleAcceptExisting)
+            else if ([frameworkDefinition fileOperationType] == XCFileOperationTypeAcceptExisting)
             {
                 NSString* frameworkName = [[frameworkDefinition filePath] lastPathComponent];
                 if (![_fileOperationQueue fileWithName:frameworkName existsInProjectDirectory:[self pathRelativeToProjectRoot]])
@@ -272,14 +272,14 @@
 - (void)addSourceFile:(XCSourceFileDefinition*)sourceFileDefinition
 {
     [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName] contents:[sourceFileDefinition data]
-        type:[sourceFileDefinition type] fileOperationStyle:[sourceFileDefinition fileOperationStyle]];
+        type:[sourceFileDefinition type] fileOperationStyle:[sourceFileDefinition fileOperationType]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
 - (void)addXib:(XCXibDefinition*)xibDefinition
 {
     [self makeGroupMemberWithName:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile
-        fileOperationStyle:[xibDefinition fileOperationStyle]];
+        fileOperationStyle:[xibDefinition fileOperationType]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 }
 
@@ -300,7 +300,7 @@
     // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
     // (will retrieve existing if already there)
     [self makeGroupMemberWithName:[projectDefinition projectFileName] path:[projectDefinition pathRelativeToProjectRoot] type:XcodeProject
-        fileOperationStyle:[projectDefinition fileOperationStyle]];
+        fileOperationStyle:[projectDefinition fileOperationType]];
     [[_project objects] setObject:[self asDictionary] forKey:_key];
 
     // create PBXContainerItemProxies and PBXReferenceProxies
@@ -571,7 +571,7 @@
 /* ====================================================================================================================================== */
 
 - (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
-    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle
+    fileOperationStyle:(XCFileOperationType)fileOperationStyle
 {
 
     NSString* filePath;
@@ -590,12 +590,12 @@
     }
 
     BOOL writeFile = NO;
-    if (fileOperationStyle == FileOperationStyleOverwrite)
+    if (fileOperationStyle == XCFileOperationTypeOverwrite)
     {
         writeFile = YES;
         [_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath];
     }
-    else if (fileOperationStyle == FileOperationStyleAcceptExisting &&
+    else if (fileOperationStyle == XCFileOperationTypeAcceptExisting &&
         ![_fileOperationQueue fileWithName:name existsInProjectDirectory:filePath])
     {
         writeFile = YES;
@@ -620,7 +620,7 @@
 // creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
 // member via path rather than name, because that is how subprojects are stored by Xcode
 - (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
-    fileOperationStyle:(XcodeFileOperationStyle)fileOperationStyle
+    fileOperationStyle:(XCFileOperationType)fileOperationStyle
 {
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil)
