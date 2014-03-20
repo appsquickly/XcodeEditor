@@ -17,13 +17,14 @@
 
 @implementation NSDictionary (XcodeMemberType)
 
-static NSDictionary* _projectNodeTypesAsStrings;
 
 + (NSDictionary*)dictionaryWithProjectNodeTypesAsStrings
 {
     // This is the most vital operation on adding 500+ files
     // So, we caching this dictionary
-    if (!_projectNodeTypesAsStrings)
+    static NSDictionary* _projectNodeTypesAsStrings;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
     {
         _projectNodeTypesAsStrings =
             [[NSDictionary alloc] initWithObjectsAndKeys:@(PBXNilType),                  @"PBXNilType",
@@ -42,7 +43,7 @@ static NSDictionary* _projectNodeTypesAsStrings;
                                                          @(PBXVariantGroupType),         @"PBXVariantGroup",
                                                          @(XCBuildConfigurationType),    @"XCBuildConfiguration",
                                                          @(XCConfigurationListType),     @"XCConfigurationList", nil];
-    }
+    });
     return _projectNodeTypesAsStrings;
 }
 
