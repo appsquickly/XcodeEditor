@@ -20,5 +20,4 @@
 #import "XCSourceFileDefinition.h"
 #import "XCSubProjectDefinition.h"
 #import "XCTarget.h"
-#import "XCEnumUtils.h"
 #import "XCXibDefinition.h"
