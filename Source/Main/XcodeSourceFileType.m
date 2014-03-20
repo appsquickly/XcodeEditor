@@ -12,23 +12,22 @@
 
 
 #import "XcodeSourceFileType.h"
-#import "Utils/XCEnumUtils.h"
 
 
 @implementation NSDictionary (XcodeFileType)
 
 + (NSDictionary*)dictionaryWithFileReferenceTypesAsStrings
 {
-    return [NSDictionary dictionaryWithObjectsAndKeys:boxEnum(SourceCodeHeader),       @"sourcecode.c.h",
-                                                      boxEnum(SourceCodeObjC),         @"sourcecode.c.objc",
-                                                      boxEnum(Framework),              @"wrapper.framework",
-                                                      boxEnum(PropertyList),           @"text.plist.strings",
-                                                      boxEnum(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
-                                                      boxEnum(SourceCodeCPlusPlus),    @"sourcecode.cpp.cpp", boxEnum(XibFile), @"file.xib",
-                                                      boxEnum(ImageResourcePNG),       @"image.png", boxEnum(Bundle), @"wrapper.cfbundle",
-                                                      boxEnum(Archive),                @"archive.ar", boxEnum(HTML), @"text.html",
-                                                      boxEnum(TEXT),                   @"text",
-                                                      boxEnum(XcodeProject),           @"wrapper.pb-project", nil];
+    return [NSDictionary dictionaryWithObjectsAndKeys:@(SourceCodeHeader),       @"sourcecode.c.h",
+                                                      @(SourceCodeObjC),         @"sourcecode.c.objc",
+                                                      @(Framework),              @"wrapper.framework",
+                                                      @(PropertyList),           @"text.plist.strings",
+                                                      @(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
+                                                      @(SourceCodeCPlusPlus),    @"sourcecode.cpp.cpp", @(XibFile), @"file.xib",
+                                                      @(ImageResourcePNG),       @"image.png", @(Bundle), @"wrapper.cfbundle",
+                                                      @(Archive),                @"archive.ar", @(HTML), @"text.html",
+                                                      @(TEXT),                   @"text",
+                                                      @(XcodeProject),           @"wrapper.pb-project", nil];
 }
 
 @end
@@ -37,7 +36,7 @@
 
 + (NSString*)stringFromSourceFileType:(XcodeSourceFileType)type
 {
-    return [[[NSDictionary dictionaryWithFileReferenceTypesAsStrings] allKeysForObject:boxEnum(type)] objectAtIndex:0];
+    return [[[NSDictionary dictionaryWithFileReferenceTypesAsStrings] allKeysForObject:@(type)] objectAtIndex:0];
 }
 
 

@@ -14,7 +14,6 @@
 #import "XCSourceFile.h"
 #import "XCProject.h"
 #import "Utils/XCKeyBuilder.h"
-#import "Utils/XCMemoryUtils.h"
 #import "XCGroup.h"
 
 @implementation XCSourceFile
@@ -29,7 +28,8 @@
 + (XCSourceFile*)sourceFileWithProject:(XCProject*)project key:(NSString*)key type:(XcodeSourceFileType)type name:(NSString*)name
     sourceTree:(NSString*)_tree path:(NSString*)path
 {
-    return XCAutorelease([[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path])}
+    return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path];
+}
 
 
 /* ====================================================================================================================================== */
@@ -42,7 +42,8 @@
     self = [super init];
     if (self)
     {
-        _project = XCRetain(project)_key = [key copy];
+        _project = project;
+        _key = [key copy];
         _type = type;
         _name = [name copy];
         _sourceTree = [tree copy];
@@ -51,18 +52,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    XCRelease(_project)
-    XCRelease(_key)
-    XCRelease(_name)
-    XCRelease(_sourceTree)
-    XCRelease(_path)
-    XCRelease(_buildFileKey)
-    XCRelease(_isBuildFile)
-
-    XCSuperDealloc
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
@@ -89,7 +78,6 @@
 {
     id old = _name;
     _name = [name copy];
-    XCRelease(old);
 
     [self setValue:name forProjectItemPropertyWithKey:@"name"];
 }
@@ -104,7 +92,6 @@
 {
     id old = _path;
     _path = [path copy];
-    XCRelease(old);
 
     [self setValue:path forProjectItemPropertyWithKey:@"path"];
 }
@@ -121,14 +108,12 @@
             {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key])
                 {
-                    XCRelease(_isBuildFile)
                     _isBuildFile = nil;
 
                     _isBuildFile = [[NSNumber numberWithBool:YES] copy];
                 }
             }
         }];
-        XCRelease(old)
     }
     return [_isBuildFile boolValue];
 }
@@ -176,7 +161,7 @@
             }
         }];
     }
-    return XCAutorelease([_buildFileKey copy])
+    return [_buildFileKey copy];
 
 }
 

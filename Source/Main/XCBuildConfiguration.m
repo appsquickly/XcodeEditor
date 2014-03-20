@@ -16,7 +16,6 @@
 #import "XCKeyBuilder.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
-#import "Utils/XCMemoryUtils.h"
 
 @implementation XCBuildConfiguration
 
@@ -89,14 +88,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    XCRelease(_buildSettings)
-    XCRelease(_xcconfigSettings)
-
-    XCSuperDealloc
-}
-
 #pragma mark -
 
 - (NSString*)description
@@ -105,14 +96,15 @@
 
     [description appendFormat:@"build settings: %@, inherited: %@", _buildSettings, _xcconfigSettings];
 
-    return XCAutorelease(description);
+    return description;
 }
 
 #pragma mark -
 
 - (NSDictionary*)specifiedBuildSettings
 {
-    return XCAutorelease([_buildSettings copy])}
+    return [_buildSettings copy];
+}
 
 #pragma mark -
 
@@ -143,14 +135,14 @@
 {
 
     NSDictionary* buildConfigurationList = project.objects[buildConfigurationListKey];
-    NSMutableDictionary* dupBuildConfigurationList = XCAutorelease([buildConfigurationList mutableCopy]);
+    NSMutableDictionary* dupBuildConfigurationList = [buildConfigurationList mutableCopy];
 
     NSMutableArray* dupBuildConfigurations = [NSMutableArray array];
 
     for (NSString* buildConfigurationKey in buildConfigurationList[@"buildConfigurations"])
     {
-            [dupBuildConfigurations addObject:[self duplicatedBuildConfigurationWithKey:buildConfigurationKey inProject:project
-                withBuildConfigurationVisitor:buildConfigurationVisitor]];
+        [dupBuildConfigurations addObject:[self duplicatedBuildConfigurationWithKey:buildConfigurationKey inProject:project
+            withBuildConfigurationVisitor:buildConfigurationVisitor]];
     }
 
     dupBuildConfigurationList[@"buildConfigurations"] = dupBuildConfigurations;
@@ -168,7 +160,7 @@
     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
 {
     NSDictionary* buildConfiguration = project.objects[buildConfigurationKey];
-    NSMutableDictionary* dupBuildConfiguration = XCAutorelease([buildConfiguration mutableCopy]);
+    NSMutableDictionary* dupBuildConfiguration = [buildConfiguration mutableCopy];
 
     buildConfigurationVisitor(dupBuildConfiguration);
 

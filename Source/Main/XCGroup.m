@@ -20,7 +20,6 @@
 #import "XCProject.h"
 #import "XCClassDefinition.h"
 #import "Utils/XCKeyBuilder.h"
-#import "Utils/XCMemoryUtils.h"
 #import "XCSourceFileDefinition.h"
 #import "XCSubProjectDefinition.h"
 #import "XCProject+SubProject.h"
@@ -73,7 +72,8 @@
 + (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children
 {
 
-    return XCAutorelease([[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children])}
+    return [[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children];
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -83,7 +83,8 @@
     self = [super init];
     if (self)
     {
-        _project = XCRetain(project)_fileOperationQueue = [_project fileOperationQueue];
+        _project = project;
+        _fileOperationQueue = [_project fileOperationQueue];
         _key = [key copy];
         _alias = [alias copy];
         _pathRelativeToParent = [path copy];
@@ -95,19 +96,6 @@
         }
     }
     return self;
-}
-
-- (void)dealloc
-{
-    XCRelease(_project)
-    XCRelease(_pathRelativeToParent)
-    XCRelease(_key)
-    XCRelease(_alias)
-    XCRelease(_pathRelativeToProjectRoot)
-    XCRelease(_children)
-    XCRelease(_members)
-
-    XCSuperDealloc
 }
 
 /* ====================================================================================================================================== */
@@ -267,7 +255,8 @@
     NSDictionary* dict = [self asDictionary];
     [[_project objects] setObject:dict forKey:_key];
 
-    return XCAutorelease(group)}
+    return group;
+}
 
 - (void)addSourceFile:(XCSourceFileDefinition*)sourceFileDefinition
 {
@@ -518,7 +507,6 @@
             [pathComponents addObject:[group pathRelativeToParent]];
             id old = key;
             key = [[group key] copy];
-            XCRelease(old)
         }
 
         NSMutableString* fullPath = [[NSMutableString alloc] init];
@@ -527,10 +515,6 @@
             [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
         }
         _pathRelativeToProjectRoot = [[fullPath stringByAppendingPathComponent:_pathRelativeToParent] copy];
-
-        XCRelease(fullPath)
-        XCRelease(pathComponents)
-        XCRelease(key)
     }
     return _pathRelativeToProjectRoot;
 }
@@ -564,7 +548,6 @@
 
 - (void)flagMembersAsDirty
 {
-    XCRelease(_members)
     _members = nil;
 }
 

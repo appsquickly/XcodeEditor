@@ -14,7 +14,6 @@
 #import "XCProject.h"
 #import "XCProject+SubProject.h"
 #import "XCSubProjectDefinition.h"
-#import "Utils/XCMemoryUtils.h"
 
 @interface XCSubProjectDefinition ()
 @property(nonatomic, strong, readwrite) NSString* relativePath;
@@ -37,7 +36,7 @@
 + (XCSubProjectDefinition*)withName:(NSString*)name path:(NSString*)path parentProject:(XCProject*)parentProject
 {
 
-    return XCAutorelease([[XCSubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject])
+    return [[XCSubProjectDefinition alloc] initWithName:name path:path parentProject:parentProject];
 }
 
 /* ====================================================================================================================================== */
@@ -53,24 +52,10 @@
         _name = [name copy];
         _path = [path copy];
         _type = XcodeProject;
-        _parentProject = XCRetain(parentProject)
+        _parentProject = parentProject;
         _subProject = [[XCProject alloc] initWithFilePath:[NSString stringWithFormat:@"%@/%@.xcodeproj", path, name]];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    XCRelease(_name)
-    XCRelease(_name)
-    XCRelease(_path)
-    XCRelease(_parentProject)
-    XCRelease(_subProject)
-    XCRelease(_relativePath)
-    XCRelease(_key)
-    XCRelease(_fullProjectPath)
-
-    XCSuperDealloc
 }
 
 /* ====================================================================================================================================== */
@@ -118,14 +103,14 @@
                 required:YES];
         _key = [[xcodeprojKeys objectAtIndex:0] copy];
     }
-    return XCAutorelease([_key copy])
+    return [_key copy];
 }
 
 - (void)initFullProjectPath:(NSString*)fullProjectPath groupPath:(NSString*)groupPath
 {
     if (groupPath != nil)
     {
-        NSMutableArray* fullPathComponents = XCAutorelease([[fullProjectPath pathComponents] mutableCopy])
+        NSMutableArray* fullPathComponents = [[fullProjectPath pathComponents] mutableCopy];
         [fullPathComponents removeLastObject];
         fullProjectPath = [[NSString pathWithComponents:fullPathComponents] stringByAppendingFormat:@"/%@", groupPath];
     }
@@ -143,7 +128,7 @@
         {
             [NSException raise:NSInvalidArgumentException format:@"fullProjectPath has not been set"];
         }
-        NSMutableArray* projectPathComponents = XCAutorelease([[_fullProjectPath pathComponents] mutableCopy]);
+        NSMutableArray* projectPathComponents = [[_fullProjectPath pathComponents] mutableCopy];
         NSArray* objectPathComponents = [[self fullPathName] pathComponents];
         NSString* convertedPath = @"";
 
@@ -174,7 +159,7 @@
         }
         _relativePath = [[convertedPath stringByAppendingString:[objectPathComponents lastObject]] copy];
     }
-    return XCAutorelease([_relativePath copy]);
+    return [_relativePath copy];
 }
 
 

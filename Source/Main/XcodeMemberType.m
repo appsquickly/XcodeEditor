@@ -13,7 +13,7 @@
 
 
 #import "XcodeMemberType.h"
-#import "Utils/XCEnumUtils.h"
+
 
 @implementation NSDictionary (XcodeMemberType)
 
@@ -26,22 +26,22 @@ static NSDictionary* _projectNodeTypesAsStrings;
     if (!_projectNodeTypesAsStrings)
     {
         _projectNodeTypesAsStrings =
-            [[NSDictionary alloc] initWithObjectsAndKeys:boxEnum(PBXNilType),                  @"PBXNilType",
-                                                         boxEnum(PBXBuildFileType),            @"PBXBuildFile",
-                                                         boxEnum(PBXContainerItemProxyType),   @"PBXContainerItemProxy",
-                                                         boxEnum(PBXCopyFilesBuildPhaseType),  @"PBXCopyFilesBuildPhase",
-                                                         boxEnum(PBXFileReferenceType),        @"PBXFileReference",
-                                                         boxEnum(PBXFrameworksBuildPhaseType), @"PBXFrameworksBuildPhase",
-                                                         boxEnum(PBXGroupType),                @"PBXGroup",
-                                                         boxEnum(PBXNativeTargetType),         @"PBXNativeTarget",
-                                                         boxEnum(PBXProjectType),              @"PBXProject",
-                                                         boxEnum(PBXReferenceProxyType),       @"PBXReferenceProxy",
-                                                         boxEnum(PBXResourcesBuildPhaseType),  @"PBXResourcesBuildPhase",
-                                                         boxEnum(PBXSourcesBuildPhaseType),    @"PBXSourcesBuildPhase",
-                                                         boxEnum(PBXTargetDependencyType),     @"PBXTargetDependency",
-                                                         boxEnum(PBXVariantGroupType),         @"PBXVariantGroup",
-                                                         boxEnum(XCBuildConfigurationType),    @"XCBuildConfiguration",
-                                                         boxEnum(XCConfigurationListType),     @"XCConfigurationList", nil];
+            [[NSDictionary alloc] initWithObjectsAndKeys:@(PBXNilType),                  @"PBXNilType",
+                                                         @(PBXBuildFileType),            @"PBXBuildFile",
+                                                         @(PBXContainerItemProxyType),   @"PBXContainerItemProxy",
+                                                         @(PBXCopyFilesBuildPhaseType),  @"PBXCopyFilesBuildPhase",
+                                                         @(PBXFileReferenceType),        @"PBXFileReference",
+                                                         @(PBXFrameworksBuildPhaseType), @"PBXFrameworksBuildPhase",
+                                                         @(PBXGroupType),                @"PBXGroup",
+                                                         @(PBXNativeTargetType),         @"PBXNativeTarget",
+                                                         @(PBXProjectType),              @"PBXProject",
+                                                         @(PBXReferenceProxyType),       @"PBXReferenceProxy",
+                                                         @(PBXResourcesBuildPhaseType),  @"PBXResourcesBuildPhase",
+                                                         @(PBXSourcesBuildPhaseType),    @"PBXSourcesBuildPhase",
+                                                         @(PBXTargetDependencyType),     @"PBXTargetDependency",
+                                                         @(PBXVariantGroupType),         @"PBXVariantGroup",
+                                                         @(XCBuildConfigurationType),    @"XCBuildConfiguration",
+                                                         @(XCConfigurationListType),     @"XCConfigurationList", nil];
     }
     return _projectNodeTypesAsStrings;
 }
@@ -53,7 +53,7 @@ static NSDictionary* _projectNodeTypesAsStrings;
 + (NSString*)stringFromMemberType:(XcodeMemberType)nodeType
 {
     NSDictionary* nodeTypesToString = [NSDictionary dictionaryWithProjectNodeTypesAsStrings];
-    return [[nodeTypesToString allKeysForObject:boxEnum(nodeType)] objectAtIndex:0];
+    return [[nodeTypesToString allKeysForObject:@(nodeType)] objectAtIndex:0];
 }
 
 

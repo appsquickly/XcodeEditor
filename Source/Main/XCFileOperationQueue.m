@@ -12,7 +12,6 @@
 
 
 #import "XCFileOperationQueue.h"
-#import "Utils/XCMemoryUtils.h"
 
 @interface XCFileOperationQueue ()
 
@@ -46,17 +45,6 @@
         _directoriesToCreate = [[NSMutableArray alloc] init];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    XCRelease(_baseDirectory)
-    XCRelease(_filesToWrite)
-    XCRelease(_frameworksToCopy)
-    XCRelease(_filesToDelete)
-    XCRelease(_directoriesToCreate)
-
-    XCSuperDealloc
 }
 
 /* ====================================================================================================================================== */

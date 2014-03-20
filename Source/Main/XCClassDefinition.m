@@ -14,7 +14,6 @@
 
 
 #import "XCClassDefinition.h"
-#import "Utils/XCMemoryUtils.h"
 
 @implementation XCClassDefinition
 
@@ -25,14 +24,16 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
+
 + (XCClassDefinition*)classDefinitionWithName:(NSString*)fileName
 {
-    return XCAutorelease([[XCClassDefinition alloc] initWithName:fileName])}
+    return [[XCClassDefinition alloc] initWithName:fileName];
+}
 
 + (XCClassDefinition*)classDefinitionWithName:(NSString*)className language:(ClassDefinitionLanguage)language
 {
-    return XCAutorelease([[XCClassDefinition alloc] initWithName:className language:language])}
-
+    return [[XCClassDefinition alloc] initWithName:className language:language];
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -57,14 +58,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    XCRelease(_className)
-    XCRelease(_header)
-    XCRelease(_source)
-
-    XCSuperDealloc
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods

@@ -15,7 +15,6 @@
 #import "XCSourceFile.h"
 #import "XCProject.h"
 #import "XCBuildConfiguration.h"
-#import "Utils/XCMemoryUtils.h"
 
 /* ====================================================================================================================================== */
 @interface XCTarget ()
@@ -40,8 +39,7 @@
 + (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
     productReference:(NSString*)productReference
 {
-    return XCAutorelease([[XCTarget alloc]
-        initWithProject:project key:key name:name productName:productName productReference:productReference])
+    return [[XCTarget alloc] initWithProject:project key:key name:name productName:productName productReference:productReference];
 }
 
 
@@ -54,28 +52,13 @@
     self = [super init];
     if (self)
     {
-        _project = XCRetain(project)
+        _project = project;
         _key = [key copy];
         _name = [name copy];
         _productName = [productName copy];
         _productReference = [productReference copy];
     }
     return self;
-}
-
-
-- (void)dealloc
-{
-    XCRelease(_project)
-    XCRelease(_key)
-    XCRelease(_name)
-    XCRelease(_productName)
-    XCRelease(_productReference)
-    XCRelease(_members)
-    XCRelease(_resources)
-    XCRelease(_defaultConfigurationName)
-
-    XCSuperDealloc
 }
 
 /* ====================================================================================================================================== */
@@ -261,7 +244,7 @@
 {
 
     NSDictionary* targetObj = _project.objects[_key];
-    NSMutableDictionary* dupTargetObj = XCAutorelease([targetObj mutableCopy]);
+    NSMutableDictionary* dupTargetObj = [targetObj mutableCopy];
 
     dupTargetObj[@"name"] = targetName;
     dupTargetObj[@"productName"] = productName;
@@ -287,8 +270,8 @@
 
     [_project dropCache];
 
-    return XCAutorelease([[XCTarget alloc] initWithProject:_project key:dupTargetObjKey name:targetName productName:productName
-        productReference:dupTargetObj[@"productReference"]]);
+    return [[XCTarget alloc] initWithProject:_project key:dupTargetObjKey name:targetName productName:productName
+        productReference:dupTargetObj[@"productReference"]];
 }
 
 /* ====================================================================================================================================== */
@@ -317,7 +300,6 @@
 
 - (void)flagMembersAsDirty
 {
-    XCRelease(_members)
     _members = nil;
 }
 
@@ -325,7 +307,7 @@
 {
 
     NSString* productReferenceKey = dupTargetObj[@"productReference"];
-    NSMutableDictionary* dupProductReference = XCAutorelease([_project.objects[productReferenceKey] mutableCopy]);
+    NSMutableDictionary* dupProductReference = [_project.objects[productReferenceKey] mutableCopy];
 
     NSString* path = dupProductReference[@"path"];
     NSString* dupPath = [path stringByDeletingLastPathComponent];
@@ -347,13 +329,13 @@
     for (NSString* buildPhaseKey in dupTargetObj[@"buildPhases"])
     {
 
-        NSMutableDictionary* dupBuildPhase = XCAutorelease([_project.objects[buildPhaseKey] mutableCopy]);
+        NSMutableDictionary* dupBuildPhase = [_project.objects[buildPhaseKey] mutableCopy];
         NSMutableArray* dupFiles = [NSMutableArray array];
 
         for (NSString* fileKey in dupBuildPhase[@"files"])
         {
 
-            NSMutableDictionary* dupFile = XCAutorelease([_project.objects[fileKey] mutableCopy]);
+            NSMutableDictionary* dupFile = [_project.objects[fileKey] mutableCopy];
             NSString* dupFileKey = [[XCKeyBuilder createUnique] build];
 
             _project.objects[dupFileKey] = dupFile;
@@ -380,7 +362,7 @@
     if (filteredGroups.count > 0)
     {
         mainGroup = filteredGroups[0];
-        NSMutableArray* children = XCAutorelease([_project.objects[mainGroup.key][@"children"] mutableCopy]);
+        NSMutableArray* children = [_project.objects[mainGroup.key][@"children"] mutableCopy];
         [children addObject:dupTargetObj[@"productReference"]];
         _project.objects[mainGroup.key][@"children"] = children;
     }
@@ -393,8 +375,8 @@
     _project.objects[dupTargetObjKey] = dupTargetObj;
 
     NSString* rootObjKey = _project.dataStore[@"rootObject"];
-    NSMutableDictionary* rootObj = XCAutorelease([_project.objects[rootObjKey] mutableCopy]);
-    NSMutableArray* rootObjTargets = XCAutorelease([rootObj[@"targets"] mutableCopy]);
+    NSMutableDictionary* rootObj = [_project.objects[rootObjKey] mutableCopy];
+    NSMutableArray* rootObjTargets = [rootObj[@"targets"] mutableCopy];
     [rootObjTargets addObject:dupTargetObjKey];
 
     rootObj[@"targets"] = rootObjTargets;

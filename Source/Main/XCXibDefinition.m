@@ -11,7 +11,6 @@
 
 
 #import "XCXibDefinition.h"
-#import "Utils/XCMemoryUtils.h"
 
 @implementation XCXibDefinition
 
@@ -23,12 +22,12 @@
 
 + (XCXibDefinition*)xibDefinitionWithName:(NSString*)name
 {
-    return XCAutorelease([[XCXibDefinition alloc] initWithName:name])
+    return [[XCXibDefinition alloc] initWithName:name];
 }
 
 + (XCXibDefinition*)xibDefinitionWithName:(NSString*)name content:(NSString*)content
 {
-    return XCAutorelease([[XCXibDefinition alloc] initWithName:name content:content])
+    return [[XCXibDefinition alloc] initWithName:name content:content];
 }
 
 
@@ -52,13 +51,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    XCRelease(_name)
-    XCRelease(_content)
-
-    XCSuperDealloc
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods

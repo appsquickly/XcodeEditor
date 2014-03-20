@@ -10,15 +10,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 #import "XCProject.h"
 #import "XCGroup.h"
 #import "XCSourceFile.h"
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
 #import "XCBuildConfiguration.h"
-#import "Utils/XCMemoryUtils.h"
 
 
 @implementation XCProject
@@ -31,7 +28,8 @@
 
 + (XCProject*)projectWithFilePath:(NSString*)filePath
 {
-    return XCAutorelease([[XCProject alloc] initWithFilePath:filePath])}
+    return [[XCProject alloc] initWithFilePath:filePath];
+}
 
 
 /* ====================================================================================================================================== */
@@ -53,20 +51,6 @@
 
     }
     return self;
-}
-
-
-- (void)dealloc
-{
-    XCRelease(_filePath)
-    XCRelease(_fileOperationQueue)
-    XCRelease(_dataStore)
-    XCRelease(_targets)
-    XCRelease(_groups)
-    XCRelease(_rootObjectKey)
-    XCRelease(_defaultConfigurationName)
-
-    XCSuperDealloc
 }
 
 /* ====================================================================================================================================== */
@@ -172,7 +156,8 @@
             [results addObject:[self groupWithKey:key]];
         }
     }];
-    return XCAutorelease(results)}
+    return results;
+}
 
 //TODO: Optimize this implementation.
 - (XCGroup*)rootGroup
@@ -204,14 +189,16 @@
         }
     }
 
-    return XCAutorelease([results copy])}
+    return [results copy];
+}
 
 - (XCGroup*)groupWithKey:(NSString*)key
 {
     XCGroup* group = [_groups objectForKey:key];
     if (group)
     {
-        return XCRetainAutorelease(group)}
+        return group;
+    }
 
     NSDictionary* obj = [[self objects] objectForKey:key];
     if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXGroupType || [[obj valueForKey:@"isa"] asMemberType] == PBXVariantGroupType))
@@ -235,7 +222,8 @@
     {
         if ([group memberWithKey:key])
         {
-            return XCRetainAutorelease(group)}
+            return group;
+        }
     }
     return nil;
 }
@@ -331,10 +319,6 @@
 
 - (void)dropCache
 {
-    XCRelease(_targets);
-    XCRelease(_configurations);
-    XCRelease(_rootObjectKey);
-
     _targets = nil;
     _configurations = nil;
     _rootObjectKey = nil;
@@ -354,7 +338,8 @@
         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
     }
 
-    return XCAutorelease([_configurations copy])}
+    return [_configurations copy];
+}
 
 - (NSDictionary*)configurationWithName:(NSString*)name
 {

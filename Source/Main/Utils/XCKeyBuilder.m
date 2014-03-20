@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCKeyBuilder.h"
-#import "XCMemoryUtils.h"
 
 @implementation XCKeyBuilder
 
@@ -18,7 +17,7 @@
 + (XCKeyBuilder*)forItemNamed:(NSString*)name
 {
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
-    return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]]);
+    return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:[data bytes] length:[data length]];
 
 }
 
@@ -28,7 +27,7 @@
     CFUUIDBytes bytes = CFUUIDGetUUIDBytes(theUUID);
     CFRelease(theUUID);
 
-    return XCAutorelease([[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:&bytes length:sizeof(bytes)]);
+    return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:&bytes length:sizeof(bytes)];
 }
 
 /* ================================================== Initializers ================================================== */
