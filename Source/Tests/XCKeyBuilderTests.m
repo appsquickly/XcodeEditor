@@ -13,11 +13,11 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "XCKeyBuilder.h"
 
-@interface KeyBuilderTests : SenTestCase
+@interface XCKeyBuilderTests : SenTestCase
 
 @end
 
-@implementation KeyBuilderTests
+@implementation XCKeyBuilderTests
 
 /* ====================================================================================================================================== */
 #pragma mark - md5sum hash

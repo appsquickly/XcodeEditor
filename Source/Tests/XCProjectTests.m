@@ -19,11 +19,11 @@
 #import "XCTarget.h"
 #import "XCGroup.h"
 
-@interface ProjectTests : SenTestCase
+@interface XCProjectTests : SenTestCase
 
 @end
 
-@implementation ProjectTests
+@implementation XCProjectTests
 {
     __block XCProject* project;
 }

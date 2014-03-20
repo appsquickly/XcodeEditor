@@ -41,10 +41,10 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
 @end
 
-@interface GroupTests : SenTestCase
+@interface XCGroupTests : SenTestCase
 @end
 
-@implementation GroupTests
+@implementation XCGroupTests
 {
     XCProject* project;
     XCGroup* group;

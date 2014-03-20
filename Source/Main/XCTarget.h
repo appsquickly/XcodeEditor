@@ -36,7 +36,7 @@
 }
 
 @property(nonatomic, strong, readonly) NSString* key;
-@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong) NSString* name;
 @property(nonatomic, strong, readonly) NSString* productName;
 @property(nonatomic, strong, readonly) NSString* productReference;
 

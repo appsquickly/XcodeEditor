@@ -15,10 +15,10 @@
 #import "XCTarget.h"
 #import "XCBuildConfiguration.h"
 
-@interface TargetTests : SenTestCase
+@interface XCTargetTests : SenTestCase
 @end
 
-@implementation TargetTests
+@implementation XCTargetTests
 {
     XCProject* _project;
     XCTarget* _target;
@@ -29,12 +29,17 @@
 {
     _project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
     NSLog(@"Targets: %@", [_project targets]);
-    _target = [_project targetWithName:@"Spring-OC"];
-    NSLog(@"Target: %@", _target);
+}
+
+- (void)test_allows_renaming_a_target
+{
+    XCTarget* target = [_project targetWithName:@"expanzCore"];
+    [target setName:@"foobar"];
+    [_project save];
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Build configuraiton. . .
+#pragma mark - Build configuration. . .
 
 
 - (void)test_allows_listing_the_build_configuration

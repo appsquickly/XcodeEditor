@@ -58,7 +58,7 @@
 		6B65942414F8AAB100F65AEC /* ESA_Sales_Foobar_ViewController.impl in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05914F8A3B400BCFE81 /* ESA_Sales_Foobar_ViewController.impl */; };
 		6B65942514F8AAB100F65AEC /* project.pbxproj in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = 6B3AD05A14F8A3B400BCFE81 /* project.pbxproj */; };
 		6BB429BB16971E5E0076F486 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB429BA16971E5E0076F486 /* OCHamcrest.framework */; };
-		6BB429C1169720620076F486 /* KeyBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB429C0169720620076F486 /* KeyBuilderTests.m */; };
+		6BB429C1169720620076F486 /* XCKeyBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB429C0169720620076F486 /* XCKeyBuilderTests.m */; };
 		6BB429C81697C5D20076F486 /* OCHamcrest.framework in Install OCHamcrest */ = {isa = PBXBuildFile; fileRef = 6BB429C71697C5D20076F486 /* OCHamcrest.framework */; };
 		6BB58018169561DC00CFD0D3 /* XCBuildConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798967B6C5975BA265EBDD /* XCBuildConfiguration.m */; };
 		6BB58019169561DC00CFD0D3 /* XCBuildConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798967B6C5975BA265EBDD /* XCBuildConfiguration.m */; };
@@ -75,14 +75,14 @@
 		6BE4B285147E6B610059E45F /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */; };
 		6BE4B285147E6B610059E460 /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */; };
 		6BE4B285147E6B610059E462 /* XCFrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BE4B285147E6B610059E461 /* XCFrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA7980A661B2FF20A86F3FD0 /* ClassDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984143FEC00A651B12D88 /* ClassDefinitionTests.m */; };
+		BA7980A661B2FF20A86F3FD0 /* XCClassDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984143FEC00A651B12D88 /* XCClassDefinitionTests.m */; };
 		BA7982BD513A2B1FDD22E03B /* XCBuildConfiguration.h in Copy Test Resources to /tmp */ = {isa = PBXBuildFile; fileRef = BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */; };
 		BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */; };
-		BA7985429DE30BAC636DBE08 /* GroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988A76A232B877E5CDDEB /* GroupTests.m */; };
-		BA7985B8636EDA34C738B527 /* TargetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EE31696E3108277FA54 /* TargetTests.m */; };
-		BA79870CE0CE7D18D3EAE42E /* ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B5E16A7C0A6B792CBB9 /* ProjectTests.m */; };
+		BA7985429DE30BAC636DBE08 /* XCGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988A76A232B877E5CDDEB /* XCGroupTests.m */; };
+		BA7985B8636EDA34C738B527 /* XCTargetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EE31696E3108277FA54 /* XCTargetTests.m */; };
+		BA79870CE0CE7D18D3EAE42E /* XCProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B5E16A7C0A6B792CBB9 /* XCProjectTests.m */; };
 		BA798A3E8F2934F2F307920C /* CoverageFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C438E8A142F22E20C7C /* CoverageFixer.m */; };
-		BA798A427D45F5EB9928579C /* SubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */; };
+		BA798A427D45F5EB9928579C /* XCSubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982B513E841FFAC2A7B2C /* XCSubProjectDefinitionTests.m */; };
 		BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */; };
 		BA798EED43772945E9BD1284 /* XCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
@@ -172,7 +172,7 @@
 		6B789B7C14E37ACB00DAA872 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		6B789B7D14E37ACB00DAA872 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6BB429BA16971E5E0076F486 /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = Dependencies/OCHamcrest.framework; sourceTree = "<group>"; };
-		6BB429C0169720620076F486 /* KeyBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyBuilderTests.m; sourceTree = "<group>"; };
+		6BB429C0169720620076F486 /* XCKeyBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCKeyBuilderTests.m; sourceTree = "<group>"; };
 		6BB429C71697C5D20076F486 /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = Dependencies/OCHamcrest.framework; sourceTree = "<group>"; };
 		6BBD6C9614ECF28200451BA2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6BC10164147775A40055CF03 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -188,16 +188,16 @@
 		6BE4B285147E6B610059E45C /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E45E /* XCFrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFrameworkDefinition.m; sourceTree = "<group>"; };
 		6BE4B285147E6B610059E461 /* XCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFrameworkDefinition.h; sourceTree = "<group>"; };
-		BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubProjectDefinitionTests.m; sourceTree = "<group>"; };
-		BA7984143FEC00A651B12D88 /* ClassDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDefinitionTests.m; sourceTree = "<group>"; };
+		BA7982B513E841FFAC2A7B2C /* XCSubProjectDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinitionTests.m; sourceTree = "<group>"; };
+		BA7984143FEC00A651B12D88 /* XCClassDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCClassDefinitionTests.m; sourceTree = "<group>"; };
 		BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
-		BA7988A76A232B877E5CDDEB /* GroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTests.m; sourceTree = "<group>"; };
+		BA7988A76A232B877E5CDDEB /* XCGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCGroupTests.m; sourceTree = "<group>"; };
 		BA798967B6C5975BA265EBDD /* XCBuildConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildConfiguration.m; sourceTree = "<group>"; };
 		BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildConfiguration.h; sourceTree = "<group>"; };
-		BA798B5E16A7C0A6B792CBB9 /* ProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTests.m; sourceTree = "<group>"; };
+		BA798B5E16A7C0A6B792CBB9 /* XCProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProjectTests.m; sourceTree = "<group>"; };
 		BA798C438E8A142F22E20C7C /* CoverageFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverageFixer.m; sourceTree = "<group>"; };
 		BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeFileReferenceTypeTests.m; sourceTree = "<group>"; };
-		BA798EE31696E3108277FA54 /* TargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetTests.m; sourceTree = "<group>"; };
+		BA798EE31696E3108277FA54 /* XCTargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTargetTests.m; sourceTree = "<group>"; };
 		E94DE11415443AC100C51252 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		E94DE11415443AC100C51254 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
 		E94DE11415443AC100C51256 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
@@ -276,17 +276,17 @@
 		6B3AD05014F8A3B400BCFE81 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6BB429C0169720620076F486 /* KeyBuilderTests.m */,
+				6BB429C0169720620076F486 /* XCKeyBuilderTests.m */,
 				6B3AD05214F8A3B400BCFE81 /* InfoPlist.strings */,
 				6B3AD05714F8A3B400BCFE81 /* Resources */,
 				6B3AD05B14F8A3B400BCFE81 /* Tests-Info.plist */,
 				6B3AD05C14F8A3B400BCFE81 /* Tests-Prefix.pch */,
 				6B3AD05D14F8A3B400BCFE81 /* Utils */,
-				BA798B5E16A7C0A6B792CBB9 /* ProjectTests.m */,
-				BA798EE31696E3108277FA54 /* TargetTests.m */,
-				BA7988A76A232B877E5CDDEB /* GroupTests.m */,
-				BA7984143FEC00A651B12D88 /* ClassDefinitionTests.m */,
-				BA7982B513E841FFAC2A7B2C /* SubProjectDefinitionTests.m */,
+				BA798B5E16A7C0A6B792CBB9 /* XCProjectTests.m */,
+				BA798EE31696E3108277FA54 /* XCTargetTests.m */,
+				BA7988A76A232B877E5CDDEB /* XCGroupTests.m */,
+				BA7984143FEC00A651B12D88 /* XCClassDefinitionTests.m */,
+				BA7982B513E841FFAC2A7B2C /* XCSubProjectDefinitionTests.m */,
 				BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */,
 				BA798C438E8A142F22E20C7C /* CoverageFixer.m */,
 			);
@@ -615,12 +615,12 @@
 				E94DE11415443AC100C51260 /* XCSubProjectDefinition.m in Sources */,
 				E94DE11415443AC100C5126E /* XCProject+SubProject.m in Sources */,
 				6BB58019169561DC00CFD0D3 /* XCBuildConfiguration.m in Sources */,
-				6BB429C1169720620076F486 /* KeyBuilderTests.m in Sources */,
-				BA7980A661B2FF20A86F3FD0 /* ClassDefinitionTests.m in Sources */,
-				BA7985429DE30BAC636DBE08 /* GroupTests.m in Sources */,
-				BA79870CE0CE7D18D3EAE42E /* ProjectTests.m in Sources */,
-				BA798A427D45F5EB9928579C /* SubProjectDefinitionTests.m in Sources */,
-				BA7985B8636EDA34C738B527 /* TargetTests.m in Sources */,
+				6BB429C1169720620076F486 /* XCKeyBuilderTests.m in Sources */,
+				BA7980A661B2FF20A86F3FD0 /* XCClassDefinitionTests.m in Sources */,
+				BA7985429DE30BAC636DBE08 /* XCGroupTests.m in Sources */,
+				BA79870CE0CE7D18D3EAE42E /* XCProjectTests.m in Sources */,
+				BA798A427D45F5EB9928579C /* XCSubProjectDefinitionTests.m in Sources */,
+				BA7985B8636EDA34C738B527 /* XCTargetTests.m in Sources */,
 				BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */,
 				BA798A3E8F2934F2F307920C /* CoverageFixer.m in Sources */,
 			);

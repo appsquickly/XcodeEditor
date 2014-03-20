@@ -12,10 +12,10 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "XCClassDefinition.h"
 
-@interface ClassDefinitionTests : SenTestCase
+@interface XCClassDefinitionTests : SenTestCase
 @end
 
-@implementation ClassDefinitionTests
+@implementation XCClassDefinitionTests
 {
     XCClassDefinition* classDefinition;
 }

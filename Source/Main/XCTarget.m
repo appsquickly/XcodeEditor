@@ -260,6 +260,18 @@
 }
 
 /* ====================================================================================================================================== */
+#pragma mark - Overridden Methods
+
+
+- (void)setName:(NSString*)name
+{
+    _name = name;
+    NSDictionary* dictionary = [_project.objects objectForKey:_key];
+    [dictionary setValue:name forKey:@"name"];
+}
+
+
+/* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
 - (NSString*)description
