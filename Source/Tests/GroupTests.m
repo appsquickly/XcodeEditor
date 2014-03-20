@@ -22,12 +22,12 @@
 #import "XCFrameworkDefinition.h"
 #import "XCSourceFileDefinition.h"
 
-@interface FrameworkPathFactory : NSObject
+@interface XCFrameworkPath : NSObject
 @end
 
-@implementation FrameworkPathFactory
+@implementation XCFrameworkPath
 
-static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk";
+static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk";
 
 + (NSString*)eventKitUIPath
 {
@@ -265,7 +265,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
 
     XCFrameworkDefinition* frameworkDefinition =
-        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory eventKitUIPath] copyToDestination:NO];
+        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath eventKitUIPath] copyToDestination:NO];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 
@@ -274,7 +274,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 - (void)test_allows_adding_a_framework_copying_it_to_the_destination_folder
 {
     XCFrameworkDefinition* frameworkDefinition =
-        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[FrameworkPathFactory coreMidiPath] copyToDestination:YES];
+        [XCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath coreMidiPath] copyToDestination:YES];
     [group addFramework:frameworkDefinition toTargets:[project targets]];
     [project save];
 }

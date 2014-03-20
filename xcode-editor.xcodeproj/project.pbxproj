@@ -728,7 +728,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TEST_AFTER_BUILD = YES;
-				USER_HEADER_SEARCH_PATHS = Dependencies/Libraries/Kiwi;
+				USER_HEADER_SEARCH_PATHS = "Dependencies/Libraries/Kiwi \"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -763,7 +763,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TEST_AFTER_BUILD = YES;
-				USER_HEADER_SEARCH_PATHS = Dependencies/Libraries/Kiwi;
+				USER_HEADER_SEARCH_PATHS = "Dependencies/Libraries/Kiwi \"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
