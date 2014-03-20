@@ -262,13 +262,20 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-
 - (void)setName:(NSString*)name
 {
     _name = name;
     NSDictionary* dictionary = [_project.objects objectForKey:_key];
-    [dictionary setValue:name forKey:@"name"];
+    [dictionary setValue:_name forKey:@"name"];
 }
+
+- (void)setProductName:(NSString*)productName
+{
+    _productName = productName;
+    NSDictionary* dictionary = [_project.objects objectForKey:_key];
+    [dictionary setValue:_productName forKey:@"productName"];
+}
+
 
 
 /* ====================================================================================================================================== */

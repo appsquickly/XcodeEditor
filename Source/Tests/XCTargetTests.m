@@ -31,12 +31,15 @@
     NSLog(@"Targets: %@", [_project targets]);
 }
 
-- (void)test_allows_renaming_a_target
+- (void)test_allows_setting_name_and_product_name_target_properties
 {
     XCTarget* target = [_project targetWithName:@"expanzCore"];
     [target setName:@"foobar"];
+    [target setProductName:@"foobar"];
+
     [_project save];
 }
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Build configuration. . .

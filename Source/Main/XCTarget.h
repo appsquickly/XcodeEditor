@@ -37,7 +37,7 @@
 
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong) NSString* name;
-@property(nonatomic, strong, readonly) NSString* productName;
+@property(nonatomic, strong) NSString* productName;
 @property(nonatomic, strong, readonly) NSString* productReference;
 
 + (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
