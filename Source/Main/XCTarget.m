@@ -16,22 +16,7 @@
 #import "XCProject.h"
 #import "XCBuildConfiguration.h"
 
-/* ====================================================================================================================================== */
-@interface XCTarget ()
-
-- (XCSourceFile*)buildFileWithKey:(NSString*)key;
-
-- (void)flagMembersAsDirty;
-
-@end
-
-
 @implementation XCTarget
-
-@synthesize key = _key;
-@synthesize name = _name;
-@synthesize productName = _productName;
-@synthesize productReference = _productReference;
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
