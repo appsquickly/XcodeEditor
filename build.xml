@@ -24,7 +24,6 @@
     --test.generate.report,
     --test.evaluate,
     --assemble.coverage.data,
-    --coverage.report,
     --api.report,
     --framework.build,
     --stamp.build.passing"/>
@@ -278,8 +277,7 @@
             ]]>
         </echo>
         <chmod perm="+x" file="${temp.dir}/publish-site.sh"/>
-        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true" outputproperty="publish.out"
-              errorproperty="publish.error"/>
+        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true" />
     </target>
 
 
