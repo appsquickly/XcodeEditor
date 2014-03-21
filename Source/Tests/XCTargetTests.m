@@ -44,7 +44,7 @@
 #pragma mark - Build configuration. . .
 
 
-- (void)test_allows_listing_the_build_configuration
+- (void)test_allows_setting_build_configurations
 {
     XCProject* project = [[XCProject alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
