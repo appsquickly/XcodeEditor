@@ -21,7 +21,6 @@
 @implementation XCTargetTests
 {
     XCProject* _project;
-    XCTarget* _target;
 }
 
 
@@ -47,19 +46,22 @@
 
 - (void)test_allows_listing_the_build_configuration
 {
-//    XCBuildConfiguration* configuration = [_target configurationWithName:@"Debug"];
-//    NSLog(@"Here's the configuration: %@", configuration);
-//    id <NSCopying> ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
-//    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
-//    [configuration addOrReplaceBuildSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
-//
-//    configuration = [_target configurationWithName:@"Release"];
-//    NSLog(@"Here's the configuration: %@", configuration);
-//    ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
-//    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
-//    [configuration addOrReplaceBuildSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
-//
-//    [_project save];
+    XCProject* project = [[XCProject alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
+    XCTarget* target = [project targetWithName:@"HelloBoxy"];
+
+    XCBuildConfiguration* configuration = [target configurationWithName:@"Debug"];
+    NSLog(@"Here's the configuration: %@", configuration);
+    id <NSCopying> ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
+    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
+    [configuration addOrReplaceConfig:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
+
+    configuration = [target configurationWithName:@"Release"];
+    NSLog(@"Here's the configuration: %@", configuration);
+    ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
+    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
+    [configuration addOrReplaceConfig:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
+
+    [_project save];
 
 }
 

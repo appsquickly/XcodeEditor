@@ -114,7 +114,7 @@
     [_buildSettings addEntriesFromDictionary:buildSettings];
 }
 
-- (void)addOrReplaceBuildSetting:(id <NSCopying>)setting forKey:(NSString*)key
+- (void)addOrReplaceConfig:(id <NSCopying>)setting forKey:(NSString*)key
 {
     [self addBuildSettings:[NSDictionary dictionaryWithObject:setting forKey:key]];
 }
