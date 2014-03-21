@@ -26,7 +26,7 @@
 
 - (void)addBuildSettings:(NSDictionary*)buildSettings;
 
-- (void)addOrReplaceConfig:(id <NSCopying>)setting forKey:(NSString*)key;
+- (void)addOrReplaceSetting:(id <NSCopying>)setting forKey:(NSString*)key;
 
 - (id <NSCopying>)valueForKey:(NSString*)key;
 

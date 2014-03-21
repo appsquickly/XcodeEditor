@@ -53,13 +53,13 @@
     NSLog(@"Here's the configuration: %@", configuration);
     id <NSCopying> ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
     NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
-    [configuration addOrReplaceConfig:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
+    [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
 
     configuration = [target configurationWithName:@"Release"];
     NSLog(@"Here's the configuration: %@", configuration);
     ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
     NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
-    [configuration addOrReplaceConfig:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
+    [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
 
     [_project save];
 

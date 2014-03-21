@@ -19,6 +19,9 @@
 
 @implementation XCBuildConfiguration
 
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
 + (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project
 {
     NSMutableDictionary* configurations = [NSMutableDictionary dictionary];
@@ -73,63 +76,6 @@
     return configurations;
 }
 
-#pragma mark -
-
-- (id)init
-{
-    if (!(self = [super init]))
-    {
-        return nil;
-    }
-
-    _buildSettings = [[NSMutableDictionary alloc] init];
-    _xcconfigSettings = [[NSMutableDictionary alloc] init];
-
-    return self;
-}
-
-#pragma mark -
-
-- (NSString*)description
-{
-    NSMutableString* description = [[super description] mutableCopy];
-
-    [description appendFormat:@"build settings: %@, inherited: %@", _buildSettings, _xcconfigSettings];
-
-    return description;
-}
-
-#pragma mark -
-
-- (NSDictionary*)specifiedBuildSettings
-{
-    return [_buildSettings copy];
-}
-
-#pragma mark -
-
-- (void)addBuildSettings:(NSDictionary*)buildSettings
-{
-    [_xcconfigSettings removeObjectsForKeys:[buildSettings allKeys]];
-    [_buildSettings addEntriesFromDictionary:buildSettings];
-}
-
-- (void)addOrReplaceConfig:(id <NSCopying>)setting forKey:(NSString*)key
-{
-    [self addBuildSettings:[NSDictionary dictionaryWithObject:setting forKey:key]];
-}
-
-
-- (id <NSCopying>)valueForKey:(NSString*)key
-{
-    id <NSCopying> value = [_buildSettings objectForKey:key];
-    if (!value)
-    {
-        value = [_xcconfigSettings objectForKey:key];
-    }
-    return value;
-}
-
 + (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey inProject:(XCProject*)project
     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
 {
@@ -154,7 +100,68 @@
     return dupBuildConfigurationListKey;
 }
 
-#pragma - Private
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
+- (id)init
+{
+    if (!(self = [super init]))
+    {
+        return nil;
+    }
+
+    _buildSettings = [[NSMutableDictionary alloc] init];
+    _xcconfigSettings = [[NSMutableDictionary alloc] init];
+
+    return self;
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
+- (NSDictionary*)specifiedBuildSettings
+{
+    return [_buildSettings copy];
+}
+
+- (void)addBuildSettings:(NSDictionary*)buildSettings
+{
+    [_xcconfigSettings removeObjectsForKeys:[buildSettings allKeys]];
+    [_buildSettings addEntriesFromDictionary:buildSettings];
+}
+
+- (void)addOrReplaceSetting:(id <NSCopying>)setting forKey:(NSString*)key
+{
+    [self addBuildSettings:[NSDictionary dictionaryWithObject:setting forKey:key]];
+}
+
+
+- (id <NSCopying>)valueForKey:(NSString*)key
+{
+    id <NSCopying> value = [_buildSettings objectForKey:key];
+    if (!value)
+    {
+        value = [_xcconfigSettings objectForKey:key];
+    }
+    return value;
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (NSString*)description
+{
+    NSMutableString* description = [[super description] mutableCopy];
+
+    [description appendFormat:@"build settings: %@, inherited: %@", _buildSettings, _xcconfigSettings];
+
+    return description;
+}
+
+
+
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
 
 + (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey inProject:(XCProject*)project
     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor
