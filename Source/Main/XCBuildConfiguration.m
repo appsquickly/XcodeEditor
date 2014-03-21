@@ -109,7 +109,7 @@
     self = [super init];
     if (self)
     {
-        _project = [project retain];
+        _project = project;
         _key = [key copy];
 
         _buildSettings = [[NSMutableDictionary alloc] init];
@@ -175,14 +175,6 @@
 
     return description;
 }
-
-- (void)dealloc
-{
-    [_project release];
-    [_key release];
-    [super dealloc];
-}
-
 
 
 /* ====================================================================================================================================== */
