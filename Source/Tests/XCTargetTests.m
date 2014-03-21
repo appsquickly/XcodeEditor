@@ -54,14 +54,18 @@
     id <NSCopying> ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
     NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
     [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
+    [configuration addOrReplaceSetting:@[@"foo", @"bar"] forKey:@"HEADER_SEARCH_PATHS"];
+
+
 
     configuration = [target configurationWithName:@"Release"];
     NSLog(@"Here's the configuration: %@", configuration);
     ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
     NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
     [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
+    [configuration addOrReplaceSetting:@[@"foo", @"bar"] forKey:@"HEADER_SEARCH_PATHS"];
 
-    [_project save];
+    [project save];
 
 }
 

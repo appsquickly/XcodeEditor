@@ -16,13 +16,18 @@
 @interface XCBuildConfiguration : NSObject
 {
 @private
+    __weak XCProject* _project;
+    NSString* _key;
+
     NSMutableDictionary* _buildSettings;
     NSMutableDictionary* _xcconfigSettings;
 }
 
+@property(nonatomic, readonly) NSDictionary* specifiedBuildSettings;
+
 + (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project;
 
-@property(nonatomic, readonly) NSDictionary* specifiedBuildSettings;
+- (instancetype)initWithProject:(XCProject*)project key:(NSString*)key;
 
 - (void)addBuildSettings:(NSDictionary*)buildSettings;
 

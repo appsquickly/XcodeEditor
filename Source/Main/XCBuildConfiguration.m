@@ -16,6 +16,7 @@
 #import "XCKeyBuilder.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
+#import "OCLogTemplate.h"
 
 @implementation XCBuildConfiguration
 
@@ -35,7 +36,7 @@
             XCBuildConfiguration* configuration = [configurations objectForKey:[buildConfiguration objectForKey:@"name"]];
             if (!configuration)
             {
-                configuration = [[XCBuildConfiguration alloc] init];
+                configuration = [[XCBuildConfiguration alloc] initWithProject:project key:buildConfigurationKey];
 
                 [configurations setObject:configuration forKey:[buildConfiguration objectForKey:@"name"]];
             }
@@ -103,18 +104,25 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)init
+- (instancetype)initWithProject:(XCProject*)project key:(NSString*)key
 {
-    if (!(self = [super init]))
+    self = [super init];
+    if (self)
     {
-        return nil;
+        _project = [project retain];
+        _key = [key copy];
+
+        _buildSettings = [[NSMutableDictionary alloc] init];
+        _xcconfigSettings = [[NSMutableDictionary alloc] init];
     }
-
-    _buildSettings = [[NSMutableDictionary alloc] init];
-    _xcconfigSettings = [[NSMutableDictionary alloc] init];
-
     return self;
 }
+
+- (id)init
+{
+    return [self initWithProject:nil key:nil];
+}
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
@@ -132,8 +140,18 @@
 
 - (void)addOrReplaceSetting:(id <NSCopying>)setting forKey:(NSString*)key
 {
-    [self addBuildSettings:[NSDictionary dictionaryWithObject:setting forKey:key]];
-}
+    NSDictionary* settings = [NSDictionary dictionaryWithObject:setting forKey:key];
+    [self addBuildSettings:settings];
+
+    LogDebug(@"$$$$$$$$$$$ before: %@", [_project.objects objectForKey:_key]);
+
+    NSMutableDictionary* dict = [[[_project objects] objectForKey:_key] mutableCopy];
+    [dict setValue:_buildSettings forKey:@"buildSettings"];
+    [_project.objects setValue:dict forKey:_key];
+
+    LogDebug(@"The settings: %@", [_project.objects objectForKey:_key]);
+
+    }
 
 
 - (id <NSCopying>)valueForKey:(NSString*)key
@@ -156,6 +174,13 @@
     [description appendFormat:@"build settings: %@, inherited: %@", _buildSettings, _xcconfigSettings];
 
     return description;
+}
+
+- (void)dealloc
+{
+    [_project release];
+    [_key release];
+    [super dealloc];
 }
 
 
