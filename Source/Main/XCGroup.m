@@ -25,45 +25,7 @@
 #import "XCProject+SubProject.h"
 
 
-/* ====================================================================================================================================== */
-@interface XCGroup ()
-
-- (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
-    fileOperationStyle:(XCFileOperationType)fileOperationStyle;
-
-- (void)makeGroupMemberWithName:(NSString*)name path:(NSString*)path type:(XcodeSourceFileType)type
-    fileOperationStyle:(XCFileOperationType)fileOperationStyle;
-
-- (NSString*)makeProductsGroup:(XCSubProjectDefinition*)xcodeprojDefinition;
-
-- (void)addProductsGroupToProject:(XCSubProjectDefinition*)xcodeprojDefinition;
-
-- (void)addMemberWithKey:(NSString*)key;
-
-- (void)flagMembersAsDirty;
-
-- (NSDictionary*)makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type;
-
-- (NSDictionary*)asDictionary;
-
-- (XcodeMemberType)typeForKey:(NSString*)key;
-
-- (void)addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets;
-
-- (void)removeGroupMemberWithKey:(NSString*)key;
-
-- (void)removeProductsGroupFromProject:(NSString*)key;
-
-@end
-
-/* ====================================================================================================================================== */
-
 @implementation XCGroup
-
-@synthesize pathRelativeToParent = _pathRelativeToParent;
-@synthesize key = _key;
-@synthesize children = _children;
-@synthesize alias = _alias;
 
 
 /* ====================================================================================================================================== */
@@ -531,6 +493,7 @@
 #pragma mark - Private Methods
 
 #pragma mark Private
+
 - (void)addMemberWithKey:(NSString*)key
 {
 
@@ -631,7 +594,7 @@
     return productKey;
 }
 
-// makes a new Products group (by calling the method above), makes a new projectReferences array for it and 
+// makes a new Products group (by calling the method above), makes a new projectReferences array for it and
 // then adds it to the PBXProject object
 - (void)addProductsGroupToProject:(XCSubProjectDefinition*)xcodeprojDefinition
 {

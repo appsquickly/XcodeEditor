@@ -124,6 +124,12 @@
 */
 - (void)addSourceFile:(XCSourceFileDefinition*)sourceFileDefinition;
 
+
+/**
+* Adds a source file, making it a member of the specified targets. 
+*/
+- (void)addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets;
+
 /**
  * Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.
 */
