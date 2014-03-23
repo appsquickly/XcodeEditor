@@ -45,7 +45,6 @@
 
 }
 
-/* =================================================== Properties =================================================== */
 
 /**
  * The alias of the group, which can be used to give the group a name other than the last path component.
@@ -72,14 +71,12 @@
 @property(nonatomic, strong, readonly) NSMutableArray* children;
 
 
-/* ================================================================================================================== */
 #pragma mark Initializers
 
 + (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children;
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children;
 
-/* ================================================================================================================== */
 #pragma mark Parent group
 
 - (void)removeFromParentGroup;
@@ -90,7 +87,6 @@
 
 - (BOOL)isRootGroup;
 
-/* ================================================================================================================== */
 #pragma mark Adding children
 /**
  * Adds a class to the group, as specified by the ClassDefinition. If the group already contains a class by the same
@@ -126,11 +122,6 @@
 
 
 /**
-* Adds a source file, making it a member of the specified targets. 
-*/
-- (void)addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets;
-
-/**
  * Adds a xib file to the group. If the group already contains a class by the same name, the contents will be updated.
 */
 - (void)addXib:(XCXibDefinition*)xibDefinition;
@@ -157,7 +148,7 @@
 
 - (void)removeSubProject:(XCSubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets;
 
-/* ================================================================================================================== */
+
 #pragma mark Locating children
 /**
  * Instances of `XCSourceFile` and `XCGroup` returned as the type `XcodeGroupMember`.
