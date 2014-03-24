@@ -16,6 +16,7 @@
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
 #import "XCBuildConfiguration.h"
+#import "XCException.h"
 
 
 @implementation XCProject
@@ -44,7 +45,7 @@
 
         if (!_dataStore)
         {
-            [NSException raise:NSInvalidArgumentException format:@"Project file not found at file path %@", _filePath];
+            [NSException raise:XCProjectNotFoundException format:@"Project file not found at file path %@", _filePath];
         }
 
         _fileOperationQueue = [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];

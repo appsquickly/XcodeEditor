@@ -84,6 +84,7 @@
 		BA798A3E8F2934F2F307920C /* CoverageFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C438E8A142F22E20C7C /* CoverageFixer.m */; };
 		BA798A427D45F5EB9928579C /* XCSubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982B513E841FFAC2A7B2C /* XCSubProjectDefinitionTests.m */; };
 		BA798B0394D0BCC02CD07FCE /* XcodeFileReferenceTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D94AFBD5BEE67578459 /* XcodeFileReferenceTypeTests.m */; };
+		BA798B68D0034D855A8D71B0 /* XCException.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7985320FC7EE75AEB13689 /* XCException.h */; };
 		BA798EED43772945E9BD1284 /* XCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */; };
 		E94DE11415443AC100C51253 /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51252 /* HelloWorldLayer.header */; };
 		E94DE11415443AC100C51255 /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51254 /* HelloWorldLayer.impl */; };
@@ -191,6 +192,7 @@
 		BA7982B513E841FFAC2A7B2C /* XCSubProjectDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinitionTests.m; sourceTree = "<group>"; };
 		BA7984143FEC00A651B12D88 /* XCClassDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCClassDefinitionTests.m; sourceTree = "<group>"; };
 		BA79848F199FA8B3F3DFA16E /* XcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
+		BA7985320FC7EE75AEB13689 /* XCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCException.h; sourceTree = "<group>"; };
 		BA7988A76A232B877E5CDDEB /* XCGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCGroupTests.m; sourceTree = "<group>"; };
 		BA798967B6C5975BA265EBDD /* XCBuildConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildConfiguration.m; sourceTree = "<group>"; };
 		BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildConfiguration.h; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				E94DE11415443AC100C51258 /* Utils */,
 				BA7989BBB424E01D41346F4F /* XCBuildConfiguration.h */,
 				BA798967B6C5975BA265EBDD /* XCBuildConfiguration.m */,
+				BA7985320FC7EE75AEB13689 /* XCException.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				E94DE11415443AC100C51271 /* XCProject+SubProject.h in Headers */,
 				BA79845028C69EFC6F98AFF5 /* XcodeEditor.h in Headers */,
 				BA798EED43772945E9BD1284 /* XCBuildConfiguration.h in Headers */,
+				BA798B68D0034D855A8D71B0 /* XCException.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
