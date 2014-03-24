@@ -20,8 +20,8 @@
 - (void)test_return_a_file_reference_type_from_a_string
 {
 
-    assertThatInt(XCSourceFileTypeFromNSString(@"sourcecode.c.h"), equalTo(@(SourceCodeHeader)));
-    assertThatInt(XCSourceFileTypeFromNSString(@"sourcecode.c.objc"), equalTo(@(SourceCodeObjC)));
+    assertThatInt(XCSourceFileTypeFromStringRepresentation(@"sourcecode.c.h"), equalTo(@(SourceCodeHeader)));
+    assertThatInt(XCSourceFileTypeFromStringRepresentation(@"sourcecode.c.objc"), equalTo(@(SourceCodeObjC)));
 }
 
 - (void)test_creates_a_string_from_a_file_reference_type
@@ -30,5 +30,12 @@
     assertThat(NSStringFromXCSourceFileType(SourceCodeObjC), equalTo(@"sourcecode.c.objc"));
 }
 
+- (void)test_returns_file_type_from_file_name
+{
+    assertThatInt(XCSourceFileTypeFromFileName(@"foobar.c"), equalToInt(SourceCodeObjC));
+    assertThatInt(XCSourceFileTypeFromFileName(@"foobar.m"), equalToInt(SourceCodeObjC));
+    assertThatInt(XCSourceFileTypeFromFileName(@"foobar.mm"), equalToInt(SourceCodeObjCPlusPlus));
+    assertThatInt(XCSourceFileTypeFromFileName(@"foobar.cpp"), equalToInt(SourceCodeCPlusPlus));
+}
 
 @end

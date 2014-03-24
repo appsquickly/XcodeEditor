@@ -31,4 +31,7 @@ typedef enum
 
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);
 
-XcodeSourceFileType XCSourceFileTypeFromNSString(NSString* string);
+XcodeSourceFileType XCSourceFileTypeFromStringRepresentation(NSString* string);
+
+XcodeSourceFileType XCSourceFileTypeFromFileName(NSString* fileName);
+

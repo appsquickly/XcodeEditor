@@ -44,7 +44,7 @@ NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type)
     return [[NSDictionaryWithXCFileReferenceTypes() allKeysForObject:@(type)] objectAtIndex:0];
 }
 
-XcodeSourceFileType XCSourceFileTypeFromNSString(NSString* string)
+XcodeSourceFileType XCSourceFileTypeFromStringRepresentation(NSString* string)
 {
     NSDictionary* typeStrings = NSDictionaryWithXCFileReferenceTypes();
 
@@ -59,5 +59,24 @@ XcodeSourceFileType XCSourceFileTypeFromNSString(NSString* string)
 }
 
 
-
+XcodeSourceFileType XCSourceFileTypeFromFileName(NSString* fileName)
+{
+    if ([fileName hasSuffix:@".h"] || [fileName hasSuffix:@".hh"] || [fileName hasSuffix:@".hpp"] || [fileName hasSuffix:@".hxx"])
+    {
+        return SourceCodeHeader;
+    }
+    if ([fileName hasSuffix:@".c"] || [fileName hasSuffix:@".m"])
+    {
+        return SourceCodeObjC;
+    }
+    if ([fileName hasSuffix:@".mm"])
+    {
+        return SourceCodeObjCPlusPlus;
+    }
+    if ([fileName hasSuffix:@".cpp"])
+    {
+        return SourceCodeCPlusPlus;
+    }
+    return FileTypeNil;
+}
 
