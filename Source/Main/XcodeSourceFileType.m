@@ -13,36 +13,44 @@
 
 #import "XcodeSourceFileType.h"
 
-
-@implementation NSDictionary (XcodeFileType)
-
-+ (NSDictionary*)dictionaryWithFileReferenceTypesAsStrings
+NSDictionary* NSDictionaryWithXCFileReferenceTypes()
 {
-    return [NSDictionary dictionaryWithObjectsAndKeys:@(SourceCodeHeader),       @"sourcecode.c.h",
-                                                      @(SourceCodeObjC),         @"sourcecode.c.objc",
-                                                      @(Framework),              @"wrapper.framework",
-                                                      @(PropertyList),           @"text.plist.strings",
-                                                      @(SourceCodeObjCPlusPlus), @"sourcecode.cpp.objcpp",
-                                                      @(SourceCodeCPlusPlus),    @"sourcecode.cpp.cpp", @(XibFile), @"file.xib",
-                                                      @(ImageResourcePNG),       @"image.png", @(Bundle), @"wrapper.cfbundle",
-                                                      @(Archive),                @"archive.ar", @(HTML), @"text.html",
-                                                      @(TEXT),                   @"text",
-                                                      @(XcodeProject),           @"wrapper.pb-project", nil];
+    static NSDictionary* dictionary;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        dictionary = @{
+            @"sourcecode.c.h"        : @(SourceCodeHeader),
+            @"sourcecode.c.objc"     : @(SourceCodeObjC),
+            @"wrapper.framework"     : @(Framework),
+            @"text.plist.strings"    : @(PropertyList),
+            @"sourcecode.cpp.objcpp" : @(SourceCodeObjCPlusPlus),
+            @"sourcecode.cpp.cpp"    : @(SourceCodeCPlusPlus),
+            @"file.xib"              : @(XibFile),
+            @"image.png"             : @(ImageResourcePNG),
+            @"wrapper.cfbundle"      : @(Bundle),
+            @"archive.ar"            : @(Archive),
+            @"text.html"             : @(HTML),
+            @"text"                  : @(TEXT),
+            @"wrapper.pb-project"    : @(XcodeProject)
+        };
+    });
+
+    return dictionary;
 }
 
-@end
 
 @implementation NSString (XcodeFileType)
 
 + (NSString*)stringFromSourceFileType:(XcodeSourceFileType)type
 {
-    return [[[NSDictionary dictionaryWithFileReferenceTypesAsStrings] allKeysForObject:@(type)] objectAtIndex:0];
+    return [[NSDictionaryWithXCFileReferenceTypes() allKeysForObject:@(type)] objectAtIndex:0];
 }
 
 
 - (XcodeSourceFileType)asSourceFileType
 {
-    NSDictionary* typeStrings = [NSDictionary dictionaryWithFileReferenceTypesAsStrings];
+    NSDictionary* typeStrings = NSDictionaryWithXCFileReferenceTypes();
 
     if ([typeStrings objectForKey:self])
     {
