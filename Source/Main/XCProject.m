@@ -16,7 +16,6 @@
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
 #import "XCBuildConfiguration.h"
-#import "XCException.h"
 
 
 @implementation XCProject

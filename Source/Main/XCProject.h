@@ -21,11 +21,11 @@
 @class XCSubProjectDefinition;
 @class XCBuildConfiguration;
 
+NSString* const XCProjectNotFoundException;
 
 @interface XCProject : NSObject
 {
-
-@private
+@protected
     XCFileOperationQueue* _fileOperationQueue;
 
     NSString* _filePath;
