@@ -20,14 +20,14 @@
 - (void)test_return_a_file_reference_type_from_a_string
 {
 
-    assertThatInt([@"sourcecode.c.h" asSourceFileType], equalTo(@(SourceCodeHeader)));
-    assertThatInt([@"sourcecode.c.objc" asSourceFileType], equalTo(@(SourceCodeObjC)));
+    assertThatInt(XCSourceFileTypeFromNSString(@"sourcecode.c.h"), equalTo(@(SourceCodeHeader)));
+    assertThatInt(XCSourceFileTypeFromNSString(@"sourcecode.c.objc"), equalTo(@(SourceCodeObjC)));
 }
 
 - (void)test_creates_a_string_from_a_file_reference_type
 {
-    assertThat([NSString stringFromSourceFileType:SourceCodeHeader], equalTo(@"sourcecode.c.h"));
-    assertThat([NSString stringFromSourceFileType:SourceCodeObjC], equalTo(@"sourcecode.c.objc"));
+    assertThat(NSStringFromXCSourceFileType(SourceCodeHeader), equalTo(@"sourcecode.c.h"));
+    assertThat(NSStringFromXCSourceFileType(SourceCodeObjC), equalTo(@"sourcecode.c.objc"));
 }
 
 

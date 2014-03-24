@@ -65,7 +65,7 @@
     {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType)
         {
-            XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
+            XcodeSourceFileType fileType = XCSourceFileTypeFromNSString([obj valueForKey:@"lastKnownFileType"]);
             NSString* path = [obj valueForKey:@"path"];
             NSString* sourceTree = [obj valueForKey:@"sourceTree"];
             [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:fileType name:path
@@ -81,7 +81,7 @@
     if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType || [[obj valueForKey:@"isa"] asMemberType] ==
         PBXReferenceProxyType))
     {
-        XcodeSourceFileType fileType = [[obj valueForKey:@"lastKnownFileType"] asSourceFileType];
+        XcodeSourceFileType fileType = XCSourceFileTypeFromNSString([obj valueForKey:@"lastKnownFileType"]);
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* sourceTree = [obj valueForKey:@"sourceTree"];

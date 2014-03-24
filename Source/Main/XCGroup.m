@@ -676,7 +676,7 @@
     NSMutableDictionary* reference = [NSMutableDictionary dictionary];
     [reference setObject:[NSString stringFromMemberType:PBXFileReferenceType] forKey:@"isa"];
     [reference setObject:@"4" forKey:@"fileEncoding"];
-    [reference setObject:[NSString stringFromSourceFileType:type] forKey:@"lastKnownFileType"];
+    [reference setObject:NSStringFromXCSourceFileType(type) forKey:@"lastKnownFileType"];
     if (name != nil)
     {
         [reference setObject:[name lastPathComponent] forKey:@"name"];

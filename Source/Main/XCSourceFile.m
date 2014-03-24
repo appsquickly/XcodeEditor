@@ -185,7 +185,7 @@
         else
         {
             [NSException raise:NSInvalidArgumentException format:@"Project file of type %@ can't become a build file.",
-                                                                 [NSString stringFromSourceFileType:_type]];
+                                                                 NSStringFromXCSourceFileType(_type)];
         }
 
     }

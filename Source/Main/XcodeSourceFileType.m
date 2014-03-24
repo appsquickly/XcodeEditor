@@ -39,22 +39,18 @@ NSDictionary* NSDictionaryWithXCFileReferenceTypes()
     return dictionary;
 }
 
-
-@implementation NSString (XcodeFileType)
-
-+ (NSString*)stringFromSourceFileType:(XcodeSourceFileType)type
+NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type)
 {
     return [[NSDictionaryWithXCFileReferenceTypes() allKeysForObject:@(type)] objectAtIndex:0];
 }
 
-
-- (XcodeSourceFileType)asSourceFileType
+XcodeSourceFileType XCSourceFileTypeFromNSString(NSString* string)
 {
     NSDictionary* typeStrings = NSDictionaryWithXCFileReferenceTypes();
 
-    if ([typeStrings objectForKey:self])
+    if ([typeStrings objectForKey:string])
     {
-        return (XcodeSourceFileType) [[typeStrings objectForKey:self] intValue];
+        return (XcodeSourceFileType) [[typeStrings objectForKey:string] intValue];
     }
     else
     {
@@ -63,4 +59,5 @@ NSDictionary* NSDictionaryWithXCFileReferenceTypes()
 }
 
 
-@end
+
+

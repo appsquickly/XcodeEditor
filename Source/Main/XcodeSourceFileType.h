@@ -29,10 +29,6 @@ typedef enum
     XcodeProject             // .xcodeproj
 } XcodeSourceFileType;
 
-@interface NSString (XCodeFileType)
+NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);
 
-+ (NSString*)stringFromSourceFileType:(XcodeSourceFileType)type;
-
-- (XcodeSourceFileType)asSourceFileType;
-
-@end
+XcodeSourceFileType XCSourceFileTypeFromNSString(NSString* string);

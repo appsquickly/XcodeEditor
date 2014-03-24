@@ -58,7 +58,7 @@
             NSString* containerPortal = [containerProxy valueForKey:@"containerPortal"];
             if ([containerPortal isEqualToString:xcodeprojKey])
             {
-                XcodeSourceFileType type = [(NSString*) [obj valueForKey:@"fileType"] asSourceFileType];
+                XcodeSourceFileType type = XCSourceFileTypeFromNSString([obj valueForKey:@"fileType"]);
                 NSString* path = (NSString*) [obj valueForKey:@"path"];
                 if (type != Bundle || [[path pathExtension] isEqualToString:@"bundle"])
                 {
