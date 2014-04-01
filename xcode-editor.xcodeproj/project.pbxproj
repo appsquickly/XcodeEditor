@@ -95,6 +95,7 @@
 		E94DE11415443AC100C5126E /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* XCProject+SubProject.m */; };
 		E94DE11415443AC100C5126F /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C5126D /* XCProject+SubProject.m */; };
 		E94DE11415443AC100C51271 /* XCProject+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = E94DE11415443AC100C51270 /* XCProject+SubProject.h */; };
+		EB0D0D06A529426AB9AEE89B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6156FCE3C2574F3B96555CAB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -226,6 +227,7 @@
 				6B55223714EA723700494CF3 /* SenTestingKit.framework in Frameworks */,
 				6B55223814EA723700494CF3 /* Cocoa.framework in Frameworks */,
 				6BB429BB16971E5E0076F486 /* OCHamcrest.framework in Frameworks */,
+				EB0D0D06A529426AB9AEE89B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +486,8 @@
 			mainGroup = 6BC10155147775A40055CF03;
 			productRefGroup = 6BC10161147775A40055CF03 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				6B55223514EA723700494CF3 /* Tests */,
