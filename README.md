@@ -95,6 +95,9 @@ subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath
 ```
 
 ### Configuring targets
+
+We can add/update linker flags, header search paths, C-flags, etc to a target.  Here we'll add header search paths: 
+
 ```objective-c
 XCTarget* target = [_project targetWithName:_projectName];
 for (NSString* configName in [target configurations])
@@ -106,6 +109,18 @@ for (NSString* configName in [target configurations])
     [configuration addOrReplaceSetting:headerPaths forKey:@"HEADER_SEARCH_PATHS"];
 }
 ```
+
+. . . these settings are added by key, as they would appear in a make file. (Xcode provides more human friendly descriptions). To find the key for a given build setting, consult the compiler docs. Common settings are: 
+
+* HEADER_SEARCH_PATHS
+* OTHER_LD_FLAGS
+* CLANG_CXX_LANGUAGE_STANDARD
+* CODE_SIGN_IDENTITY
+* GCC_C_LANGUAGE_STANDARD
+* INFOPLIST_FILE 
+* LIBRARY_SEARCH_PATHS
+* PRODUCT_NAME
+* PROVISIONING_PROFILE
 
 ### File write behavior
 
