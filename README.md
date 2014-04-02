@@ -94,6 +94,19 @@ subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath
 [group removeSubProject:subProjectDefinition];  //TODO: project should be able to remove itself from parent.
 ```
 
+### Configuring targets
+```objective-c
+XCTarget* target = [_project targetWithName:_projectName];
+for (NSString* configName in [target configurations])
+{
+    XCBuildConfiguration* configuration = [target configurationWithName:configName];
+    NSMutableArray* headerPaths = [[NSMutableArray alloc] init];
+    [headerPaths addObject:@"$(inherited)"];
+    [headerPaths addObject:@"$(SRCROOT)/include"];        
+    [configuration addOrReplaceSetting:headerPaths forKey:@"HEADER_SEARCH_PATHS"];
+}
+```
+
 ### File write behavior
 
 ```objective-c
