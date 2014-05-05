@@ -229,5 +229,3 @@ Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jasperblues/xcodeeditor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
