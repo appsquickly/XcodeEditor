@@ -191,6 +191,32 @@
     }
 }
 
+- (void)setCompilerFlags:(NSString*)value
+{
+    NSMutableDictionary *objectArrayCopy = [[_project objects] mutableCopy];
+    [objectArrayCopy enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
+    {
+        if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFileType)
+        {
+            if ([[obj objectForKey:@"fileRef"] isEqualToString:self.key])
+            {
+                NSMutableDictionary *replaceBuildFile = [NSMutableDictionary dictionaryWithDictionary:obj];
+                NSDictionary *compilerFlagsDict = [[NSDictionary alloc] initWithObjectsAndKeys:value, @"COMPILER_FLAGS", nil];
+                if ([[replaceBuildFile objectForKey:@"settings"] objectForKey:@"COMPILER_FLAGS"]!=nil)
+                {
+                    NSMutableDictionary *newSettings = [NSMutableDictionary dictionaryWithDictionary:[replaceBuildFile objectForKey:@"settings"]];
+                    [newSettings removeObjectForKey:@"COMPILER_FLAGS"];
+                    [replaceBuildFile setObject:compilerFlagsDict forKey:@"settings"];
+                } else {
+                    [replaceBuildFile setObject:compilerFlagsDict forKey:@"settings"];
+                }
+                [[_project objects] removeObjectForKey:key];
+                [[_project objects] setObject:replaceBuildFile forKey:key];
+            }
+        }
+    }];
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
