@@ -26,7 +26,8 @@ typedef enum
     Archive,                 // .a files
     HTML,                    // HTML file 
     TEXT,                    // Some text file 
-    XcodeProject             // .xcodeproj
+    XcodeProject,            // .xcodeproj
+    Folder                   // a Folder reference
 } XcodeSourceFileType;
 
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);

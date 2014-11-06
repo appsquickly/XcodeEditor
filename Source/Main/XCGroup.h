@@ -111,6 +111,11 @@
 - (XCGroup*)addGroupWithPath:(NSString*)path;
 
 /**
+* Adds a reference to a folder
+*/
+- (void)addFolderReference:(NSString*)sourceFolder;
+
+/**
 * Adds a framework to the group, making it a member of the specified targets.
 */
 - (void)addFramework:(XCFrameworkDefinition*)framework toTargets:(NSArray*)targets;
