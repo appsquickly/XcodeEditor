@@ -32,7 +32,8 @@ NSDictionary* NSDictionaryWithXCFileReferenceTypes()
             @"archive.ar"            : @(Archive),
             @"text.html"             : @(HTML),
             @"text"                  : @(TEXT),
-            @"wrapper.pb-project"    : @(XcodeProject)
+            @"wrapper.pb-project"    : @(XcodeProject),
+            @"folder"                : @(Folder)
         };
     });
 

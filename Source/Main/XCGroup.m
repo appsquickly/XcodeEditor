@@ -187,6 +187,16 @@
     [self addSourceFile:frameworkSourceRef toTargets:targets];
 }
 
+
+- (void)addFolderReference:(NSString*)sourceFolder {
+    NSDictionary *folderReferenceDictionary = [self makeFileReferenceWithPath:sourceFolder name:[sourceFolder lastPathComponent] type:Folder];
+    NSString* folderReferenceKey = [[XCKeyBuilder forItemNamed:[sourceFolder lastPathComponent]] build];
+    [self addMemberWithKey:folderReferenceKey];
+    [[_project objects] setObject:folderReferenceDictionary forKey:folderReferenceKey];
+    [[_project objects] setObject:[self asDictionary] forKey:_key];
+}
+
+
 - (XCGroup*)addGroupWithPath:(NSString*)path
 {
     NSString* groupKeyPath = self.pathRelativeToProjectRoot ? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path] : path;
