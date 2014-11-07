@@ -63,4 +63,11 @@
 */
 - (void)becomeBuildFile;
 
+/**
+* Method for setting Compiler Flags for individual build files
+*
+* @param value String value to set in Compiler Flags
+*/
+- (void)setCompilerFlags:(NSString*)value;
+
 @end
