@@ -219,6 +219,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 * Vladislav Alekseev 
 * Felix Schneider - bug fixes. 
 * Isak Sky - mutable XCSourceFiles. 
+* <a href="https://github.com/hartman">Derk-Jan Hartman</a> : Adding folder references, by-file compiler flags. 
 
 Thanks! 
 
