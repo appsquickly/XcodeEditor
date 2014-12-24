@@ -146,9 +146,7 @@ for (NSString* configName in [target configurations])
 
 # Building 
 
-## Just the Framework
-
-Open the project in XCode and choose Product/Build. 
+Open the project in XCode and choose Product/Build. Alternatively install with CocoaPods. 
 
 # Feature Requests and Contributions
 
