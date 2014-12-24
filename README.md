@@ -143,16 +143,6 @@ for (NSString* configName in [target configurations])
 [definition setFileOperationStyle:FileOperationStyleReferenceOnly]; 
 ```
 
-# Reports
-
-You've just read them! The Source/Tests folder contains further usasge examples. A good starting point is to run the test target in Xcode.
-This will extract a test project to the /tmp directory, where you'll be able to see the outcome for yourself. 
-
-![Build Status](http://jasperblues.github.com/XcodeEditor/build-status/build-status.png?q=zz)
-
-* <a href="http://jasperblues.github.com/XcodeEditor/api/index.html">API</a>
-* <a href="http://jasperblues.github.com/XcodeEditor/test-results/index.html">Test Results</a>
-* <a href="http://jasperblues.github.com/XcodeEditor/coverage/index.html">Coverage Reports</a>
 
 # Building 
 
@@ -160,27 +150,6 @@ This will extract a test project to the /tmp directory, where you'll be able to 
 
 Open the project in XCode and choose Product/Build. 
 
-## Command-line Build
-
-Includes Unit Tests, Integration Tests, Code Coverge and API reports installed to Xcode. 
-
-### Requirements (one time only)
-
-In addition to Xcode, requires the Appledoc and lcov packages. A nice way to install these is with <a href="http://www.macports.org/install.php">MacPorts</a>.
-
-```sh
-git clone https://github.com/tomaz/appledoc.git
-sudo install-appledoc.sh
-sudo port install lcov
-```
-
-NB: Xcode 4.3+ requires command-line tools to be installed separately. 
-
-### Running the build (every other time)
-
-```sh
-ant 
-```
 # Feature Requests and Contributions
 
 . . . are very welcome. 
