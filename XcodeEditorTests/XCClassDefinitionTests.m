@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "XCClassDefinition.h"
 
-@interface XCClassDefinitionTests : SenTestCase
+@interface XCClassDefinitionTests : XCTestCase
 @end
 
 @implementation XCClassDefinitionTests
@@ -29,15 +29,15 @@
 {
     classDefinition = [[XCClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController"];
 
-    assertThat(classDefinition.className, notNilValue());
-    assertThat(classDefinition.className, equalTo(@"ESA_Sales_Browse_ViewController"));
-    assertThatBool([classDefinition isObjectiveC], equalToBool(YES));
+    XCTAssertNotNil(classDefinition.className);
+    XCTAssertEqualObjects(classDefinition.className, @"ESA_Sales_Browse_ViewController");
+    XCTAssertTrue([classDefinition isObjectiveC]);
 }
 
 - (void)test_allow_initialization_with_a_filename_and_language_attribute
 {
     classDefinition = [[XCClassDefinition alloc] initWithName:@"ESA_Sales_Browse_ViewController" language:ObjectiveCPlusPlus];
-    assertThatBool([classDefinition isObjectiveCPlusPlus], equalToBool(YES));
+    XCTAssertTrue([classDefinition isObjectiveCPlusPlus]);
 }
 
 - (void)test_it_throws_an_exception_if_one_of_the_above_languages_is_not_specified
@@ -49,7 +49,7 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e reason], equalTo(@"Language must be one of ObjectiveC, ObjectiveCPlusPlus"));
+        XCTAssertEqualObjects([e reason], @"Language must be one of ObjectiveC, ObjectiveCPlusPlus");
     }
 }
 
@@ -61,15 +61,15 @@
 - (void)test_it_returns_the_conventional_file_names_for_objective_c_classes
 {
     classDefinition = [[XCClassDefinition alloc] initWithName:@"MyClass" language:ObjectiveC];
-    assertThat([classDefinition headerFileName], equalTo(@"MyClass.h"));
-    assertThat([classDefinition sourceFileName], equalTo(@"MyClass.m"));
+    XCTAssertEqualObjects([classDefinition headerFileName], @"MyClass.h");
+    XCTAssertEqualObjects([classDefinition sourceFileName], @"MyClass.m");
 }
 
 - (void)test_it_returns_the_conventional_file_names_for_objective_cPlusPlus_classes
 {
     classDefinition = [[XCClassDefinition alloc] initWithName:@"MyClass" language:ObjectiveCPlusPlus];
-    assertThat([classDefinition headerFileName], equalTo(@"MyClass.h"));
-    assertThat([classDefinition sourceFileName], equalTo(@"MyClass.mm"));
+    XCTAssertEqualObjects([classDefinition headerFileName], @"MyClass.h");
+    XCTAssertEqualObjects([classDefinition sourceFileName], @"MyClass.mm");
 }
 
 

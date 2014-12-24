@@ -11,7 +11,7 @@
 
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "XCProject.h"
 #import "XCGroup.h"
 #import "XCSubProjectDefinition.h"
@@ -21,13 +21,14 @@
 #import "XCTarget.h"
 #import "XCFrameworkDefinition.h"
 #import "XCSourceFileDefinition.h"
+#import "NSString+TestResource.h"
 
 @interface XCFrameworkPath : NSObject
 @end
 
 @implementation XCFrameworkPath
 
-static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk";
+static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk";
 
 + (NSString*)eventKitUIPath
 {
@@ -41,7 +42,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
 @end
 
-@interface XCGroupTests : SenTestCase
+@interface XCGroupTests : XCTestCase
 @end
 
 @implementation XCGroupTests
@@ -55,7 +56,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
     project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
     group = [project groupWithPathFromRoot:@"Source/Main"];
-    assertThat(group, notNilValue());
+    XCTAssertNotNil(group);
 }
 
 /* ================================================================================================================== */
@@ -65,11 +66,11 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
     XCGroup* aGroup = [XCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
-    assertThat(aGroup, notNilValue());
-    assertThat([aGroup key], equalTo(@"abcd1234"));
-    assertThat([aGroup alias], equalTo(@"Main"));
-    assertThat([aGroup pathRelativeToParent], equalTo(@"Source/Main"));
-    assertThat([aGroup members], empty());
+    XCTAssertNotNil(aGroup);
+    XCTAssertEqualObjects([aGroup key], @"abcd1234");
+    XCTAssertEqualObjects([aGroup alias], @"Main");
+    XCTAssertEqualObjects([aGroup pathRelativeToParent], @"Source/Main");
+    XCTAssertTrue([[aGroup members] count] == 0);
 }
 
 
@@ -79,7 +80,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
 - (void)test_able_to_describe_itself
 {
-    assertThat([group description], equalTo(@"Group: displayName = Main, key=6B469FE914EF875900ED659C"));
+    XCTAssertEqualObjects([group description], @"Group: displayName = Main, key=6B469FE914EF875900ED659C");
 }
 
 - (void)test_able_to_return_its_full_path_relative_to_the_project_base_directory
@@ -104,15 +105,15 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     [project save];
 
     XCSourceFile* fileResource = [project fileWithName:@"MyViewController.m"];
-    assertThat(fileResource, notNilValue());
-    assertThat([fileResource pathRelativeToProjectRoot], equalTo(@"Source/Main/MyViewController.m"));
+    XCTAssertNotNil(fileResource);
+    XCTAssertEqualObjects([fileResource pathRelativeToProjectRoot], @"Source/Main/MyViewController.m");
 
     XCTarget* examples = [project targetWithName:@"Examples"];
-    assertThat(examples, notNilValue());
+    XCTAssertNotNil(examples);
     [examples addMember:fileResource];
 
     fileResource = [project fileWithName:@"MyViewController.m"];
-    assertThatBool([fileResource isBuildFile], equalToBool(YES));
+    XCTAssertTrue([fileResource isBuildFile]);
 
     [project save];
     NSLog(@"Done adding source file.");
@@ -216,14 +217,14 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     [project save];
 
     XCSourceFile* xibFile = [project fileWithName:@"AddedXibFile.xib"];
-    assertThat(xibFile, notNilValue());
+    XCTAssertNotNil(xibFile);
 
     XCTarget* examples = [project targetWithName:@"Examples"];
-    assertThat(examples, notNilValue());
+    XCTAssertNotNil(examples);
     [examples addMember:xibFile];
 
     xibFile = [project fileWithName:@"AddedXibFile.xib"];
-    assertThatBool([xibFile isBuildFile], equalToBool(YES));
+    XCTAssertTrue([xibFile isBuildFile]);
 
     [project save];
     NSLog(@"Done adding xib file.");
@@ -253,7 +254,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
     NSString* xibContent = [NSString stringWithTestResource:@"expanz-iOS-SDK/Source/Main/AddedXibFile.xib"];
     NSLog(@"Xib content: %@", xibContent);
-    assertThat(xibContent, isNot(equalTo(newXibText)));
+    XCTAssertNotEqualObjects(xibContent, newXibText);
 
 }
 
@@ -376,7 +377,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 
     NSArray* children = [group members];
     NSLog(@"Group children: %@", children);
-    assertThat(children, isNot(empty()));
+    XCTAssertFalse([children count] == 0);
 
 }
 
@@ -385,7 +386,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
 {
     XCGroup* anotherGroup = [project groupWithPathFromRoot:@"Source/Main/Core/Model"];
     XCSourceFile* member = [anotherGroup memberWithDisplayName:@"expanz_model_AppSite.m"];
-    assertThat(member, notNilValue());
+    XCTAssertNotNil(member);
 
 }
 
@@ -419,7 +420,7 @@ static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/P
     NSLog(@"Groups now: %@", groups);
 
     XCGroup* deleted = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
-    assertThat(deleted, nilValue());
+    XCTAssertNil(deleted);
 
 }
 

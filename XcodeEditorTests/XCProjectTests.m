@@ -13,13 +13,13 @@
 
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "XCProject.h"
 #import "XCSourceFile.h"
 #import "XCTarget.h"
 #import "XCGroup.h"
 
-@interface XCProjectTests : SenTestCase
+@interface XCProjectTests : XCTestCase
 
 @end
 
@@ -43,7 +43,7 @@
     NSArray* headerFiles = [project headerFiles];
     NSLog(@"Headers: %@", headerFiles);
 
-    assertThat(headerFiles, hasCountOf(18));
+    XCTAssertTrue([headerFiles count] == 18);
     for (XCSourceFile* file in headerFiles)
     {
         NSLog(@"File: %@", [file description]);
@@ -57,7 +57,7 @@
     NSArray* objcFiles = [project objectiveCFiles];
     NSLog(@"Implementation Files: %@", objcFiles);
 
-    assertThat(objcFiles, hasCountOf(21));
+    XCTAssertTrue([objcFiles count] == 21);
 }
 
 - (void)test_able_to_list_all_the_obj_cPlusPlus_files_in_a_project
@@ -66,7 +66,7 @@
     NSLog(@"Implementation Files: %@", objcPlusPlusFiles);
 
     //TODO: Put an obj-c++ file in the test project.
-    assertThat(objcPlusPlusFiles, hasCountOf(0));
+    XCTAssertTrue([objcPlusPlusFiles count] == 0);
 }
 
 - (void)test_be_able_to_list_all_the_xib_files_in_a_project
@@ -74,7 +74,7 @@
 
     NSArray* xibFiles = [project xibFiles];
     NSLog(@"Xib Files: %@", xibFiles);
-    assertThat(xibFiles, hasCountOf(2));
+    XCTAssertTrue([xibFiles count] == 2);
 }
 
 
@@ -94,8 +94,8 @@
         }
     }
 
-    assertThat(groups, notNilValue());
-    assertThat(groups, isNot(empty()));
+    XCTAssertNotNil(groups);
+    XCTAssertFalse([groups count] == 0);
 }
 
 - (void)test_provides_access_to_the_root_top_level_group
@@ -103,7 +103,7 @@
 
     XCGroup* rootGroup = [project rootGroup];
     NSLog(@"Here the group: %@", rootGroup);
-    assertThat(rootGroup.members, isNot(empty()));
+    XCTAssertFalse([rootGroup.members count] == 0);
 
 
 }
@@ -112,7 +112,7 @@
 {
 
     XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
-    assertThat(group, notNilValue());
+    XCTAssertNotNil(group);
     NSLog(@"Group: %@", group);
 
 }
@@ -131,8 +131,8 @@
     {
         NSLog(@"%@", target);
     }
-    assertThat(targets, notNilValue());
-    assertThat(targets, isNot(empty()));
+    XCTAssertNotNil(targets);
+    XCTAssertFalse([targets count] == 0);
 
     for (XCTarget* target in targets)
     {

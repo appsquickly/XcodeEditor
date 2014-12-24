@@ -49,9 +49,9 @@ XcodeSourceFileType XCSourceFileTypeFromStringRepresentation(NSString* string)
 {
     NSDictionary* typeStrings = NSDictionaryWithXCFileReferenceTypes();
 
-    if ([typeStrings objectForKey:string])
+    if (typeStrings[string])
     {
-        return (XcodeSourceFileType) [[typeStrings objectForKey:string] intValue];
+        return (XcodeSourceFileType) [typeStrings[string] intValue];
     }
     else
     {

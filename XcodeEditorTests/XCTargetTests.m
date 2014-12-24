@@ -10,12 +10,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "XCProject.h"
 #import "XCTarget.h"
 #import "XCBuildConfiguration.h"
 
-@interface XCTargetTests : SenTestCase
+@interface XCTargetTests : XCTestCase
 @end
 
 @implementation XCTargetTests
@@ -40,7 +40,7 @@
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Build configuration. . .
 
 
@@ -69,7 +69,7 @@
 
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Duplication
 
 - (void)test_allows_duplicating_a_target

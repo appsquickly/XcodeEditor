@@ -10,29 +10,29 @@
 	<string>xcode-editor</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B5F24F00-F1BA-4B3B-98D9-0FF799A5EBF9</key>
+		<key>E5485595BC9B5E4164B3342838D169783ED40D72</key>
 		<string>ssh://github.com/jasperblues/XcodeEditor.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>xcode-editor.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B5F24F00-F1BA-4B3B-98D9-0FF799A5EBF9</key>
+		<key>E5485595BC9B5E4164B3342838D169783ED40D72</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/jasperblues/XcodeEditor.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B5F24F00-F1BA-4B3B-98D9-0FF799A5EBF9</string>
+	<string>E5485595BC9B5E4164B3342838D169783ED40D72</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B5F24F00-F1BA-4B3B-98D9-0FF799A5EBF9</string>
+			<string>E5485595BC9B5E4164B3342838D169783ED40D72</string>
 			<key>IDESourceControlWCCName</key>
 			<string>XcodeEditor</string>
 		</dict>

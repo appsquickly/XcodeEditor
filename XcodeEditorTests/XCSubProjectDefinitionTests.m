@@ -10,11 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "XCProject.h"
 #import "XCSubProjectDefinition.h"
 
-@interface XCSubProjectDefinitionTests : SenTestCase
+@interface XCSubProjectDefinitionTests : XCTestCase
 @end
 
 @implementation XCSubProjectDefinitionTests
@@ -28,7 +28,6 @@
     _project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
 }
 
-/* ================================================================================================================== */
 #pragma mark - object creation
 
 - (void)test_allows_initialization_with_name_and_path
@@ -37,8 +36,8 @@
     XCSubProjectDefinition
         * subProjectDefinition = [[XCSubProjectDefinition alloc] initWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:_project];
 
-    assertThat(subProjectDefinition, notNilValue());
-    assertThat(subProjectDefinition.projectFileName, equalTo(@"HelloBoxy.xcodeproj"));
+    XCTAssertNotNil(subProjectDefinition);
+    XCTAssertEqualObjects(subProjectDefinition.projectFileName, @"HelloBoxy.xcodeproj");
 
 
 }

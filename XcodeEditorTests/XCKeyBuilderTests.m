@@ -10,10 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "XCKeyBuilder.h"
 
-@interface XCKeyBuilderTests : SenTestCase
+@interface XCKeyBuilderTests : XCTestCase
 
 @end
 
@@ -30,8 +30,8 @@
     XCKeyBuilder* builtKey = [XCKeyBuilder forItemNamed:requiresKey];
     NSString* key = [builtKey build];
     NSLog(@"Key: %@", key);
-    assertThat(key, notNilValue());
-    assertThatUnsignedLongLong(key.length, equalToUnsignedLongLong(24));
+    XCTAssertNotNil(key);
+    XCTAssertEqual(key.length, 24);
 }
 
 
