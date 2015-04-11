@@ -13,7 +13,7 @@
 #import <XCTest/XCTest.h>
 #import "XCProject.h"
 #import "XCTarget.h"
-#import "XCBuildConfiguration.h"
+#import "XCProjectBuildConfig.h"
 
 @interface XCTargetTests : XCTestCase
 @end
@@ -49,7 +49,7 @@
     XCProject* project = [[XCProject alloc] initWithFilePath:@"/tmp/HelloBoxy/HelloBoxy.xcodeproj"];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
-    XCBuildConfiguration* configuration = [target configurationWithName:@"Debug"];
+    XCProjectBuildConfig * configuration = [target configurationWithName:@"Debug"];
     NSLog(@"Here's the configuration: %@", configuration);
     id <NSObject, NSCopying> ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
     NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);

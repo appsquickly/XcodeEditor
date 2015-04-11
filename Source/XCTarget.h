@@ -14,7 +14,7 @@
 
 @class XCProject;
 @class XCSourceFile;
-@class XCBuildConfiguration;
+@class XCProjectBuildConfig;
 
 /**
 * Represents a target in an xcode project.
@@ -52,9 +52,9 @@
 
 - (NSDictionary*)configurations;
 
-- (XCBuildConfiguration*)configurationWithName:(NSString*)name;
+- (XCProjectBuildConfig *)configurationWithName:(NSString*)name;
 
-- (XCBuildConfiguration*)defaultConfiguration;
+- (XCProjectBuildConfig *)defaultConfiguration;
 
 - (void)addMember:(XCSourceFile*)member;
 

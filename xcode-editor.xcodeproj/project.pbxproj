@@ -40,9 +40,9 @@
 		BA7984F6EE4FA90717414543 /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C57D9B8610BFECB9528 /* XCProject+SubProject.m */; };
 		BA79857B12A10B9BFBF3C929 /* XCAbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798287F70884A45C9F3721 /* XCAbstractDefinition.m */; };
 		BA7985C5136218B0D782F7F1 /* XCProject+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */; };
-		BA7985C665CCF83437B2231E /* XCBuildConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DCCBF81FADC37488A36 /* XCBuildConfiguration.h */; };
+		BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */; };
 		BA79861FCDBD84679CA89D9E /* XCKeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */; };
-		BA79862308DF0F7F984AF86E /* XCBuildConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79868C3DE682529FB4B76E /* XCBuildConfiguration.m */; };
+		BA79862308DF0F7F984AF86E /* XCProjectBuildConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */; };
 		BA798641126C8C9498C21843 /* XCSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B392E07F43F5E0E77FC /* XCSourceFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA79866BA1ACA2933B98F48C /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */; };
 		BA7986719FB605B7F7698E81 /* XcodeMemberType.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C3E8F2CD550594E7231 /* XcodeMemberType.m */; };
@@ -112,7 +112,7 @@
 		BA79858C0B5035B3EB71E67C /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		BA7985E1B4262B71CC38472A /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = Source/Tests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCProject+SubProject.h"; sourceTree = "<group>"; };
-		BA79868C3DE682529FB4B76E /* XCBuildConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildConfiguration.m; sourceTree = "<group>"; };
+		BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProjectBuildConfig.m; sourceTree = "<group>"; };
 		BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFrameworkDefinition.h; sourceTree = "<group>"; };
 		BA7987AE440FBAAC032785B1 /* XCSubProjectDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinition.m; sourceTree = "<group>"; };
 		BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFrameworkDefinition.m; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		BA798D221F1008AE859B76B8 /* XCXibDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCXibDefinition.h; sourceTree = "<group>"; };
 		BA798D6F34B9A560E3D689B3 /* XcodeFileReferenceTypeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeFileReferenceTypeTests.m; sourceTree = "<group>"; };
 		BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCKeyBuilder.m; sourceTree = "<group>"; };
-		BA798DCCBF81FADC37488A36 /* XCBuildConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildConfiguration.h; sourceTree = "<group>"; };
+		BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCProjectBuildConfig.h; sourceTree = "<group>"; };
 		BA798E32B62ACEF1B995F0D3 /* XCFileOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFileOperationQueue.m; sourceTree = "<group>"; };
 		BA798E7947765A032AB118BA /* ESA_Sales_Foobar_ViewController.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = ESA_Sales_Foobar_ViewController.header; sourceTree = "<group>"; };
 		BA798EC5D7AFB1BC79B1934E /* ESA_Sales_Foobar_ViewController.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = ESA_Sales_Foobar_ViewController.impl; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 				BA79885862A8419969A4CC7A /* XCFrameworkDefinition.m */,
 				BA7987AE440FBAAC032785B1 /* XCSubProjectDefinition.m */,
 				BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */,
-				BA79868C3DE682529FB4B76E /* XCBuildConfiguration.m */,
+				BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */,
 				BA79840E5B88656BAAE1D8B5 /* XcodeGroupMember.h */,
 				BA798A9F12459363332BFD04 /* XCClassDefinition.m */,
 				BA79837129D1D730443959A2 /* XCAbstractDefinition.h */,
@@ -282,7 +282,7 @@
 				BA7982BE32BDDBBC9DA2FDC8 /* XCTarget.h */,
 				BA798C2F90A12BFEE77EFA5D /* XCSourceFileDefinition.h */,
 				BA798C3E8F2CD550594E7231 /* XcodeMemberType.m */,
-				BA798DCCBF81FADC37488A36 /* XCBuildConfiguration.h */,
+				BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */,
 				BA7989AC9710D456572783C7 /* XCProject.m */,
 				BA798D221F1008AE859B76B8 /* XCXibDefinition.h */,
 				BA798FDE9BAA7D87499853ED /* XCFileOperationQueue.h */,
@@ -357,7 +357,7 @@
 				BA79825A7D7CB5AD4EE31A6C /* XCGroup.h in Headers */,
 				BA79845EF211493263B4D0FC /* XCTarget.h in Headers */,
 				BA798BE4876F847D0F1BA266 /* XCSourceFileDefinition.h in Headers */,
-				BA7985C665CCF83437B2231E /* XCBuildConfiguration.h in Headers */,
+				BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */,
 				BA7988ABB09415FEE5070B38 /* XCXibDefinition.h in Headers */,
 				BA7987C8FAAD4E3225D7DDC3 /* XCFileOperationQueue.h in Headers */,
 			);
@@ -391,6 +391,7 @@
 				6BCED6DE1A4A61DC0005596F /* Sources */,
 				6BCED6DF1A4A61DC0005596F /* Frameworks */,
 				6BCED6E01A4A61DC0005596F /* Resources */,
+				6BB3305F1AD8D47C00EBDE37 /* Extract test resources */,
 			);
 			buildRules = (
 			);
@@ -462,6 +463,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6BB3305F1AD8D47C00EBDE37 /* Extract test resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Extract test resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr /tmp/*\n\nunzip ${SRCROOT}/XcodeEditorTests/Resources/expanz-iOS-SDK.zip -d /tmp\nunzip ${SRCROOT}/XcodeEditorTests/Resources/ArchiveProj.zip -d /tmp\nunzip ${SRCROOT}/XcodeEditorTests/Resources/HelloBoxy.zip -d /tmp\ncp ${SRCROOT}/XcodeEditorTests/Resources/* /tmp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6B3ACFDB14F8A2FE00BCFE81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -477,7 +495,7 @@
 				BA798BD3214388015EAFDDFB /* XCTarget.m in Sources */,
 				BA79866BA1ACA2933B98F48C /* XCFrameworkDefinition.m in Sources */,
 				BA7981FC099C3D8C4BA8E511 /* XCSubProjectDefinition.m in Sources */,
-				BA79862308DF0F7F984AF86E /* XCBuildConfiguration.m in Sources */,
+				BA79862308DF0F7F984AF86E /* XCProjectBuildConfig.m in Sources */,
 				BA7981A76C28C0D8FE7392E0 /* XCClassDefinition.m in Sources */,
 				BA79876598EF30F3EE513484 /* XCFileOperationQueue.m in Sources */,
 				BA7984F6EE4FA90717414543 /* XCProject+SubProject.m in Sources */,

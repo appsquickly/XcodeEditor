@@ -13,7 +13,7 @@
 
 @class XCProject;
 
-@interface XCBuildConfiguration : NSObject
+@interface XCProjectBuildConfig : NSObject
 {
 @private
     __weak XCProject* _project;

@@ -11,13 +11,13 @@
 
 
 
-#import "XCBuildConfiguration.h"
+#import "XCProjectBuildConfig.h"
 #import "XCGroup.h"
 #import "XCKeyBuilder.h"
 #import "XCProject.h"
 #import "XCSourceFile.h"
 
-@implementation XCBuildConfiguration
+@implementation XCProjectBuildConfig
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
@@ -32,10 +32,10 @@
 
         if ([[buildConfiguration valueForKey:@"isa"] asMemberType] == XCBuildConfigurationType)
         {
-            XCBuildConfiguration* configuration = [configurations objectForKey:[buildConfiguration objectForKey:@"name"]];
+            XCProjectBuildConfig * configuration = [configurations objectForKey:[buildConfiguration objectForKey:@"name"]];
             if (!configuration)
             {
-                configuration = [[XCBuildConfiguration alloc] initWithProject:project key:buildConfigurationKey];
+                configuration = [[XCProjectBuildConfig alloc] initWithProject:project key:buildConfigurationKey];
 
                 [configurations setObject:configuration forKey:[buildConfiguration objectForKey:@"name"]];
             }
