@@ -16,6 +16,7 @@
 #import "Utils/XCKeyBuilder.h"
 #import "XCProject+SubProject.h"
 #import "XCSubProjectDefinition.h"
+#import <Foundation/Foundation.h>
 
 
 @implementation XCProject (SubProject)
@@ -34,7 +35,7 @@
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxyType)
         {
             NSString *candidate = [obj valueForKey:@"path"];
-            if ([candidate isEqualTo:name])
+            if ([candidate isEqualToString:name])
             {
                 result = key;
                 *stop = YES;
