@@ -51,7 +51,7 @@
 
     XCProjectBuildConfig * configuration = [target configurationWithName:@"Debug"];
     NSLog(@"Here's the configuration: %@", configuration);
-    id <NSObject, NSCopying> ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
+    id ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
     NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
     [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
     [configuration addOrReplaceSetting:@[@"foo", @"bar"] forKey:@"HEADER_SEARCH_PATHS"];

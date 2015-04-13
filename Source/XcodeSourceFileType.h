@@ -30,8 +30,6 @@ typedef NS_OPTIONS(NSInteger, XcodeSourceFileType)
     Folder = 14                   // a Folder reference
 };
 
-static NSDictionary* NSDictionaryWithXCFileReferenceTypes();
-
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);
 
 XcodeSourceFileType XCSourceFileTypeFromStringRepresentation(NSString* string);
