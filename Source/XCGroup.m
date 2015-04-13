@@ -28,8 +28,9 @@
 @implementation XCGroup
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
+//-------------------------------------------------------------------------------------------
 
 + (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children
 {
@@ -37,8 +38,9 @@
     return [[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children
 {
@@ -60,8 +62,9 @@
     return self;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
 
 #pragma mark Parent group
 
@@ -77,12 +80,12 @@
     {
         [_fileOperationQueue queueDeletion:[self pathRelativeToProjectRoot]];
     }
-    NSDictionary* dictionary = [[_project objects] objectForKey:_key];
+    NSDictionary* dictionary = [_project objects][_key];
     NSLog(@"Here's the dictionary: %@", dictionary);
 
     [[_project objects] removeObjectForKey:_key];
 
-    dictionary = [[_project objects] objectForKey:_key];
+    dictionary = [_project objects][_key];
     NSLog(@"Here's the dictionary: %@", dictionary);
 
     for (XCTarget* target in [_project targets])
@@ -103,7 +106,7 @@
 }
 
 
-/* ================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Adding children
 
 
@@ -127,7 +130,7 @@
             fileOperationStyle:[classDefinition fileOperationType]];
     }
 
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    [_project objects][_key] = [self asDictionary];
 }
 
 
@@ -173,10 +176,10 @@
             fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
         }
         NSString* frameworkKey = [[XCKeyBuilder forItemNamed:[frameworkDefinition name]] build];
-        [[_project objects] setObject:fileReference forKey:frameworkKey];
+        [_project objects][frameworkKey] = fileReference;
         [self addMemberWithKey:frameworkKey];
     }
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    [_project objects][_key] = [self asDictionary];
 }
 
 
@@ -192,8 +195,8 @@
     NSDictionary *folderReferenceDictionary = [self makeFileReferenceWithPath:sourceFolder name:[sourceFolder lastPathComponent] type:Folder];
     NSString* folderReferenceKey = [[XCKeyBuilder forItemNamed:[sourceFolder lastPathComponent]] build];
     [self addMemberWithKey:folderReferenceKey];
-    [[_project objects] setObject:folderReferenceDictionary forKey:folderReferenceKey];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    [_project objects][folderReferenceKey] = folderReferenceDictionary;
+    [_project objects][_key] = [self asDictionary];
 }
 
 
@@ -220,12 +223,12 @@
     XCGroup* group = [[XCGroup alloc] initWithProject:_project key:groupKey alias:nil path:path children:nil];
     NSDictionary* groupDict = [group asDictionary];
 
-    [[_project objects] setObject:groupDict forKey:groupKey];
+    [_project objects][groupKey] = groupDict;
     [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
     [self addMemberWithKey:groupKey];
 
     NSDictionary* dict = [self asDictionary];
-    [[_project objects] setObject:dict forKey:_key];
+    [_project objects][_key] = dict;
 
     return group;
 }
@@ -234,14 +237,14 @@
 {
     [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName] contents:[sourceFileDefinition data]
         type:[sourceFileDefinition type] fileOperationStyle:[sourceFileDefinition fileOperationType]];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    [_project objects][_key] = [self asDictionary];
 }
 
 - (void)addXib:(XCXibDefinition*)xibDefinition
 {
     [self makeGroupMemberWithName:[xibDefinition xibFileName] contents:[xibDefinition content] type:XibFile
         fileOperationStyle:[xibDefinition fileOperationType]];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    [_project objects][_key] = [self asDictionary];
 }
 
 - (void)addXib:(XCXibDefinition*)xibDefinition toTargets:(NSArray*)targets
@@ -262,7 +265,7 @@
     // (will retrieve existing if already there)
     [self makeGroupMemberWithName:[projectDefinition projectFileName] path:[projectDefinition pathRelativeToProjectRoot] type:XcodeProject
         fileOperationStyle:[projectDefinition fileOperationType]];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    [_project objects][_key] = [self asDictionary];
 
     // create PBXContainerItemProxies and PBXReferenceProxies
     [_project addProxies:projectDefinition];
@@ -349,7 +352,7 @@
     [_project removeTargetDependencies:[projectDefinition name]];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Members
 
 - (NSArray*)members
@@ -449,7 +452,7 @@
     return nil;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
 - (XcodeMemberType)groupMemberType
@@ -474,24 +477,23 @@
         XCGroup* group = nil;
         NSString* key = [_key copy];
 
-        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && !([group pathRelativeToParent] == nil))
+        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil)
         {
             [pathComponents addObject:[group pathRelativeToParent]];
-            id old = key;
             key = [[group key] copy];
         }
 
         NSMutableString* fullPath = [[NSMutableString alloc] init];
         for (NSInteger i = (NSInteger) [pathComponents count] - 1; i >= 0; i--)
         {
-            [fullPath appendFormat:@"%@/", [pathComponents objectAtIndex:i]];
+            [fullPath appendFormat:@"%@/", pathComponents[i]];
         }
         _pathRelativeToProjectRoot = [[fullPath stringByAppendingPathComponent:_pathRelativeToParent] copy];
     }
     return _pathRelativeToProjectRoot;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Utility Methods
 
 - (NSString*)description
@@ -499,10 +501,9 @@
     return [NSString stringWithFormat:@"Group: displayName = %@, key=%@", [self displayName], _key];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
-
-#pragma mark Private
+//-------------------------------------------------------------------------------------------
 
 - (void)addMemberWithKey:(NSString*)key
 {
@@ -524,7 +525,7 @@
     _members = nil;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 
 - (void)makeGroupMemberWithName:(NSString*)name contents:(id)contents type:(XcodeSourceFileType)type
     fileOperationStyle:(XCFileOperationType)fileOperationStyle
@@ -536,7 +537,7 @@
     {
         NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
         NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
-        [[_project objects] setObject:reference forKey:fileKey];
+        [_project objects][fileKey] = reference;
         [self addMemberWithKey:fileKey];
         filePath = [self pathRelativeToProjectRoot];
     }
@@ -569,7 +570,7 @@
     }
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 
 #pragma mark Xcodeproj methods
 
@@ -583,7 +584,7 @@
     {
         NSDictionary* reference = [self makeFileReferenceWithPath:path name:name type:type];
         NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
-        [[_project objects] setObject:reference forKey:fileKey];
+        [_project objects][fileKey] = reference;
         [self addMemberWithKey:fileKey];
     }
 }
@@ -600,7 +601,7 @@
     }
     NSString* productKey = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-Products", uniquer]] build];
     XCGroup* productsGroup = [XCGroup groupWithProject:_project key:productKey alias:@"Products" path:nil children:children];
-    [[_project objects] setObject:[productsGroup asDictionary] forKey:productKey];
+    [_project objects][productKey] = [productsGroup asDictionary];
     return productKey;
 }
 
@@ -614,16 +615,16 @@
     NSMutableArray* projectReferences = [PBXProjectDict valueForKey:@"projectReferences"];
 
     NSMutableDictionary* newProjectReference = [NSMutableDictionary dictionary];
-    [newProjectReference setObject:productKey forKey:@"ProductGroup"];
+    newProjectReference[@"ProductGroup"] = productKey;
     NSString* projectFileKey = [[_project fileWithName:[xcodeprojDefinition pathRelativeToProjectRoot]] key];
-    [newProjectReference setObject:projectFileKey forKey:@"ProjectRef"];
+    newProjectReference[@"ProjectRef"] = projectFileKey;
 
     if (projectReferences == nil)
     {
         projectReferences = [NSMutableArray array];
     }
     [projectReferences addObject:newProjectReference];
-    [PBXProjectDict setObject:projectReferences forKey:@"projectReferences"];
+    PBXProjectDict[@"projectReferences"] = projectReferences;
 }
 
 // removes PBXFileReference from group and project
@@ -631,9 +632,9 @@
 {
     NSMutableArray* children = [self valueForKey:@"children"];
     [children removeObject:key];
-    [[_project objects] setObject:[self asDictionary] forKey:_key];
+    _project.objects[_key] = [self asDictionary];
     // remove PBXFileReference
-    [[_project objects] removeObjectForKey:key];
+    [_project.objects removeObjectForKey:key];
 }
 
 // removes the given key from the files arrays of the given section, if found (intended to be used with
@@ -662,14 +663,14 @@
 - (void)removeProductsGroupFromProject:(NSString*)key
 {
     // remove product group's build products from PDXBuildFiles
-    NSDictionary* productsGroup = [[_project objects] objectForKey:key];
+    NSDictionary* productsGroup = _project.objects[key];
     for (NSString* childKey in [productsGroup valueForKey:@"children"])
     {
         NSArray* buildFileKeys = [_project keysForProjectObjectsOfType:PBXBuildFileType withIdentifier:childKey singleton:NO required:NO];
         // could be zero - we didn't add the test bundle as a build product
         if ([buildFileKeys count] == 1)
         {
-            NSString* buildFileKey = [buildFileKeys objectAtIndex:0];
+            NSString* buildFileKey = buildFileKeys[0];
             [[_project objects] removeObjectForKey:buildFileKey];
             [self removeBuildPhaseFileKey:buildFileKey forType:PBXFrameworksBuildPhaseType];
             [self removeBuildPhaseFileKey:buildFileKey forType:PBXResourcesBuildPhaseType];
@@ -677,25 +678,25 @@
     }
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 
 #pragma mark Dictionary Representations
 
 - (NSDictionary*)makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type
 {
     NSMutableDictionary* reference = [NSMutableDictionary dictionary];
-    [reference setObject:[NSString stringFromMemberType:PBXFileReferenceType] forKey:@"isa"];
-    [reference setObject:@"4" forKey:@"fileEncoding"];
-    [reference setObject:NSStringFromXCSourceFileType(type) forKey:@"lastKnownFileType"];
+    reference[@"isa"] = [NSString stringFromMemberType:PBXFileReferenceType];
+    reference[@"fileEncoding"] = @"4";
+    reference[@"lastKnownFileType"] = NSStringFromXCSourceFileType(type);
     if (name != nil)
     {
-        [reference setObject:[name lastPathComponent] forKey:@"name"];
+        reference[@"name"] = [name lastPathComponent];
     }
     if (path != nil)
     {
-        [reference setObject:path forKey:@"path"];
+        reference[@"path"] = path;
     }
-    [reference setObject:@"<group>" forKey:@"sourceTree"];
+    reference[@"sourceTree"] = @"<group>";
     return reference;
 }
 
@@ -703,22 +704,22 @@
 - (NSDictionary*)asDictionary
 {
     NSMutableDictionary* groupData = [NSMutableDictionary dictionary];
-    [groupData setObject:[NSString stringFromMemberType:PBXGroupType] forKey:@"isa"];
-    [groupData setObject:@"<group>" forKey:@"sourceTree"];
+    groupData[@"isa"] = [NSString stringFromMemberType:PBXGroupType];
+    groupData[@"sourceTree"] = @"<group>";
 
     if (_alias != nil)
     {
-        [groupData setObject:_alias forKey:@"name"];
+        groupData[@"name"] = _alias;
     }
 
     if (_pathRelativeToParent)
     {
-        [groupData setObject:_pathRelativeToParent forKey:@"path"];
+        groupData[@"path"] = _pathRelativeToParent;
     }
 
     if (_children)
     {
-        [groupData setObject:_children forKey:@"children"];
+        groupData[@"children"] = _children;
     }
 
     return groupData;
