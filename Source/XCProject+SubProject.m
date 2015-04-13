@@ -33,7 +33,8 @@
     {
         if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxyType)
         {
-            if ([[obj valueForKey:@"path"] isEqualTo:name])
+            NSString *candidate = [obj valueForKey:@"path"];
+            if ([candidate isEqualTo:name])
             {
                 result = key;
                 *stop = YES;
