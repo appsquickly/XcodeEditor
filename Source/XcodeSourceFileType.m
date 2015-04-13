@@ -13,7 +13,7 @@
 
 #import "XcodeSourceFileType.h"
 
-NSDictionary* NSDictionaryWithXCFileReferenceTypes()
+static NSDictionary* NSDictionaryWithXCFileReferenceTypes()
 {
     static NSDictionary* dictionary;
     static dispatch_once_t onceToken;

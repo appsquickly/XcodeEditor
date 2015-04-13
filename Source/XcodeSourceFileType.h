@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_OPTIONS(NSUInteger, XcodeSourceFileType)
+typedef NS_OPTIONS(NSInteger, XcodeSourceFileType)
 {
     FileTypeNil = 0,             // Unknown filetype
     Framework = 1,               // .framework
@@ -30,6 +30,7 @@ typedef NS_OPTIONS(NSUInteger, XcodeSourceFileType)
     Folder = 14                   // a Folder reference
 };
 
+static NSDictionary* NSDictionaryWithXCFileReferenceTypes();
 
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);
 
