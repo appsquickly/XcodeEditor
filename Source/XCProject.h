@@ -41,7 +41,10 @@ NSString* const XCProjectNotFoundException;
 
 @property(nonatomic, strong, readonly) XCFileOperationQueue* fileOperationQueue;
 
-/* ============================================================ Initializers ============================================================ */
+//-------------------------------------------------------------------------------------------
+#pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
+
 
 + (XCProject*)projectWithFilePath:(NSString*)filePath;
 
@@ -50,8 +53,7 @@ NSString* const XCProjectNotFoundException;
 */
 - (id)initWithFilePath:(NSString*)filePath;
 
-/* ====================================================================================================================================== */
-
+//-------------------------------------------------------------------------------------------
 #pragma mark Files
 /**
 * Returns all file resources in the project, as an array of `XCSourceFile` objects.
@@ -94,7 +96,7 @@ NSString* const XCProjectNotFoundException;
 - (NSString*)filePath;
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Groups
 /**
 * Lists the groups in an xcode project, returning an array of `XCGroup` objects.
@@ -131,7 +133,7 @@ NSString* const XCProjectNotFoundException;
  */
 - (XCGroup*)groupWithSourceFile:(XCSourceFile*)sourceFile;
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Targets
 /**
 * Lists the targets in an xcode project, returning an array of `XCTarget` objects.
@@ -154,7 +156,7 @@ NSString* const XCProjectNotFoundException;
 
 - (XCProjectBuildConfig *)defaultConfiguration;
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Saving
 /**
 * Saves a project after editing.
@@ -162,7 +164,7 @@ NSString* const XCProjectNotFoundException;
 - (void)save;
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 /**
 * Raw project data.
 */
