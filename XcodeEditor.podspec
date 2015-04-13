@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.author   = { 'Jasper Blues' => 'jasper@appsquick.ly' }
   s.source   = { :git => 'https://github.com/jasperblues/XcodeEditor.git', :tag => 'v1.6.1' }
   s.platform = :osx
-  s.source_files = 'Source/Main/*.{h,m}', 'Source/Main/Utils/*.{h,m}'
+  s.source_files = 'Source/*.{h,m}', 'Source/Utils/*.{h,m}'
   s.requires_arc = true
 end
