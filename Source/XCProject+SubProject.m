@@ -31,7 +31,7 @@
 {
     __block NSString *result = nil;
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxyType) {
+        if ([[obj valueForKey:@"isa"] xce_hasReferenceProxyType]) {
             NSString *candidate = [obj valueForKey:@"path"];
             if ([candidate isEqualToString:name]) {
                 result = key;
@@ -48,7 +48,7 @@
 {
     NSMutableArray *results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXReferenceProxyType) {
+        if ([[obj valueForKey:@"isa"] xce_hasReferenceProxyType]) {
             // make sure it belongs to the xcodeproj we're adding
             NSString *remoteRef = [obj valueForKey:@"remoteRef"];
             NSDictionary *containerProxy = [[self objects] valueForKey:remoteRef];
@@ -91,7 +91,7 @@
 {
     __block NSMutableArray *returnValue = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == memberType) {
+        if ([[obj valueForKey:@"isa"] xce_asMemberType] == memberType) {
             if (memberType == PBXContainerItemProxyType) {
                 if ([[obj valueForKey:@"containerPortal"] isEqualToString:identifier]) {
                     [returnValue addObject:key];
@@ -131,20 +131,21 @@
                 [returnValue addObject:key];
             }
             else {
-                [NSException raise:NSInvalidArgumentException format:@"Unrecognized member type %@",
-                                                                     [NSString stringFromMemberType:memberType]];
+                [NSException raise:NSInvalidArgumentException
+                            format:@"Unrecognized member type %@", [NSString xce_stringFromMemberType:memberType]];
             }
         }
     }];
     if (singleton && [returnValue count] > 1) {
         [NSException raise:NSGenericException
-            format:@"Searched for one instance of member type %@ with value %@, but found %ld",
-                   [NSString stringFromMemberType:memberType], identifier, (unsigned long) [returnValue count]];
+                    format:@"Searched for one instance of member type %@ with value %@, but found %ld",
+                           [NSString xce_stringFromMemberType:memberType], identifier,
+                           (unsigned long) [returnValue count]];
     }
     if (required && [returnValue count] == 0) {
         [NSException raise:NSGenericException
-            format:@"Searched for instances of member type %@ with value %@, but did not find any",
-                   [NSString stringFromMemberType:memberType], identifier];
+                    format:@"Searched for instances of member type %@ with value %@, but did not find any",
+                           [NSString xce_stringFromMemberType:memberType], identifier];
     }
     return returnValue;
 }
@@ -165,7 +166,7 @@
 {
     NSMutableArray *results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXContainerItemProxyType) {
+        if ([[obj valueForKey:@"isa"] xce_hasContainerItemProxyType]) {
             NSString *remoteInfo = [obj valueForKey:@"remoteInfo"];
             NSString *proxy = [obj valueForKey:@"proxyType"];
             if ([remoteInfo isEqualToString:name] && [proxy isEqualToString:proxyType]) {
@@ -208,7 +209,7 @@
     }
     // make new one
     NSMutableDictionary *proxy = [NSMutableDictionary dictionary];
-    proxy[@"isa"] = [NSString stringFromMemberType:PBXContainerItemProxyType];
+    proxy[@"isa"] = [NSString xce_stringFromMemberType:PBXContainerItemProxyType];
     proxy[@"containerPortal"] = fileRef;
     proxy[@"proxyType"] = proxyType;
     // give it a random key - the keys xcode puts here are not in the project file anywhere else
@@ -237,7 +238,7 @@
     }
     // make new one
     NSMutableDictionary *proxy = [NSMutableDictionary dictionary];
-    proxy[@"isa"] = [NSString stringFromMemberType:PBXReferenceProxyType];
+    proxy[@"isa"] = [NSString xce_stringFromMemberType:PBXReferenceProxyType];
     proxy[@"fileType"] = [buildProductReference valueForKey:@"explicitFileType"];
     proxy[@"path"] = path;
     proxy[@"remoteRef"] = containerItemProxyKey;
@@ -268,7 +269,7 @@
     }
     // make new one
     NSMutableDictionary *targetDependency = [NSMutableDictionary dictionary];
-    targetDependency[@"isa"] = [NSString stringFromMemberType:PBXTargetDependencyType];
+    targetDependency[@"isa"] = [NSString xce_stringFromMemberType:PBXTargetDependencyType];
     targetDependency[@"name"] = name;
     targetDependency[@"targetProxy"] = containerItemProxyKey;
     NSString *targetDependencyKey = [[XCKeyBuilder forItemNamed:[NSString stringWithFormat:@"%@-targetProxy", keyName]]

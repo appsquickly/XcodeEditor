@@ -685,7 +685,7 @@
 - (NSDictionary*)makeFileReferenceWithPath:(NSString*)path name:(NSString*)name type:(XcodeSourceFileType)type
 {
     NSMutableDictionary* reference = [NSMutableDictionary dictionary];
-    reference[@"isa"] = [NSString stringFromMemberType:PBXFileReferenceType];
+    reference[@"isa"] = [NSString xce_stringFromMemberType:PBXFileReferenceType];
     reference[@"fileEncoding"] = @"4";
     reference[@"lastKnownFileType"] = NSStringFromXCSourceFileType(type);
     if (name != nil)
@@ -704,7 +704,7 @@
 - (NSDictionary*)asDictionary
 {
     NSMutableDictionary* groupData = [NSMutableDictionary dictionary];
-    groupData[@"isa"] = [NSString stringFromMemberType:PBXGroupType];
+    groupData[@"isa"] = [NSString xce_stringFromMemberType:PBXGroupType];
     groupData[@"sourceTree"] = @"<group>";
 
     if (_alias != nil)
@@ -728,7 +728,7 @@
 - (XcodeMemberType)typeForKey:(NSString*)key
 {
     NSDictionary* obj = [[_project objects] valueForKey:key];
-    return [[obj valueForKey:@"isa"] asMemberType];
+    return [[obj valueForKey:@"isa"] xce_asMemberType];
 }
 
 - (void)addSourceFile:(XCSourceFile*)sourceFile toTargets:(NSArray*)targets
