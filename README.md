@@ -187,6 +187,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 * Felix Schneider - bug fixes. 
 * Isak Sky - mutable XCSourceFiles. 
 * <a href="https://github.com/hartman">Derk-Jan Hartman</a> : Adding folder references, by-file compiler flags. 
+* <a href="https://github.com/StoneSpb">StoneSpb</a> : Speed improvements
 
 Thanks! 
 
