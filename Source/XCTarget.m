@@ -57,7 +57,7 @@
         for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"])
         {
             NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXResourcesBuildPhaseType)
+            if ([[buildPhase valueForKey:@"isa"] xce_hasResourcesBuildPhaseType])
             {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"])
                 {
@@ -107,8 +107,7 @@
         for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"])
         {
             NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-            if ([[buildPhase valueForKey:@"isa"] asMemberType] == PBXSourcesBuildPhaseType ||
-                [[buildPhase valueForKey:@"isa"] asMemberType] == PBXFrameworksBuildPhaseType)
+            if ([[buildPhase valueForKey:@"isa"] xce_hasSourcesOrFrameworksBuildPhaseType])
             {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"])
                 {
@@ -132,7 +131,7 @@
     for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"])
     {
         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-        if ([[buildPhase valueForKey:@"isa"] asMemberType] == [member buildPhase])
+        if ([[buildPhase valueForKey:@"isa"] xce_asMemberType] == [member buildPhase])
         {
 
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
@@ -294,7 +293,7 @@
     NSDictionary* obj = [[_project objects] valueForKey:theKey];
     if (obj)
     {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXBuildFileType)
+        if ([[obj valueForKey:@"isa"] xce_hasBuildFileType])
         {
             return [_project fileWithKey:[obj valueForKey:@"fileRef"]];
         }

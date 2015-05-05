@@ -30,7 +30,7 @@
     {
         NSDictionary* buildConfiguration = [[project objects] objectForKey:buildConfigurationKey];
 
-        if ([[buildConfiguration valueForKey:@"isa"] asMemberType] == XCBuildConfigurationType)
+        if ([[buildConfiguration valueForKey:@"isa"] xce_hasBuildConfigurationType])
         {
             XCProjectBuildConfig * configuration = [configurations objectForKey:[buildConfiguration objectForKey:@"name"]];
             if (!configuration)

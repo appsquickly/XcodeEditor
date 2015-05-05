@@ -33,9 +33,21 @@ typedef enum
 
 @interface NSString (XcodeMemberTypeExtensions)
 
-+ (NSString*)stringFromMemberType:(XcodeMemberType)nodeType;
++ (NSString*)xce_stringFromMemberType:(XcodeMemberType)nodeType;
 
-- (XcodeMemberType)asMemberType;
+- (XcodeMemberType)xce_asMemberType;
+
+- (BOOL)xce_hasFileReferenceType;
+- (BOOL)xce_hasFileReferenceOrReferenceProxyType;
+- (BOOL)xce_hasReferenceProxyType;
+- (BOOL)xce_hasGroupType;
+- (BOOL)xce_hasProjectType;
+- (BOOL)xce_hasNativeTargetType;
+- (BOOL)xce_hasBuildFileType;
+- (BOOL)xce_hasBuildConfigurationType;
+- (BOOL)xce_hasContainerItemProxyType;
+- (BOOL)xce_hasResourcesBuildPhaseType;
+- (BOOL)xce_hasSourcesOrFrameworksBuildPhaseType;
 
 @end
 

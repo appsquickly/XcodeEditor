@@ -66,13 +66,18 @@
     NSMutableArray* results = [NSMutableArray array];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
     {
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType)
+        if ([[obj valueForKey:@"isa"] xce_hasFileReferenceType])
         {
             XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"]);
             NSString* path = [obj valueForKey:@"path"];
             NSString* sourceTree = [obj valueForKey:@"sourceTree"];
-            [results addObject:[XCSourceFile sourceFileWithProject:self key:key type:fileType name:path
-                sourceTree:(sourceTree ? sourceTree : @"<group>") path:nil]];
+            XCSourceFile* sourceFile = [XCSourceFile sourceFileWithProject:self
+                                                                       key:key
+                                                                      type:fileType
+                                                                      name:path
+                                                                sourceTree:(sourceTree ?: @"<group>")
+                                                                      path:nil];
+            [results addObject:sourceFile];
         }
     }];
     return results;
@@ -81,20 +86,24 @@
 - (XCSourceFile*)fileWithKey:(NSString*)key
 {
     NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXFileReferenceType || [[obj valueForKey:@"isa"] asMemberType] ==
-        PBXReferenceProxyType))
+    if (obj && [[obj valueForKey:@"isa"] xce_hasFileReferenceOrReferenceProxyType])
     {
         XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"]);
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* sourceTree = [obj valueForKey:@"sourceTree"];
+        NSString* path = [obj valueForKey:@"path"];
 
         if (name == nil)
         {
-            name = [obj valueForKey:@"path"];
+            name = path;
         }
-        return [XCSourceFile sourceFileWithProject:self key:key type:fileType name:name sourceTree:(sourceTree ? sourceTree : @"<group>")
-            path:[obj valueForKey:@"path"]];
+        return [XCSourceFile sourceFileWithProject:self
+                                               key:key
+                                              type:fileType
+                                              name:name
+                                        sourceTree:(sourceTree ?: @"<group>")
+                                              path:path];
     }
     return nil;
 }
@@ -150,14 +159,18 @@
 
 - (NSArray*)groups
 {
-
     NSMutableArray* results = [[NSMutableArray alloc] init];
-    [[_dataStore objectForKey:@"objects"] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
     {
-
-        if ([[obj valueForKey:@"isa"] asMemberType] == PBXGroupType || [[obj valueForKeyPath:@"isa"] asMemberType] == PBXVariantGroupType)
+        if ([[obj valueForKey:@"isa"] xce_hasGroupType])
         {
-            [results addObject:[self groupWithKey:key]];
+            XCGroup* group = _groups[key];
+            if (group == nil)
+            {
+                group = [self createGroupWithDictionary:obj forKey:key];
+                _groups[key] = group;
+            }
+            [results addObject:group];
         }
     }];
     return results;
@@ -205,15 +218,10 @@
     }
 
     NSDictionary* obj = [[self objects] objectForKey:key];
-    if (obj && ([[obj valueForKey:@"isa"] asMemberType] == PBXGroupType || [[obj valueForKey:@"isa"] asMemberType] == PBXVariantGroupType))
+    if (obj && [[obj valueForKey:@"isa"] xce_hasGroupType])
     {
-
-        NSString* name = [obj valueForKey:@"name"];
-        NSString* path = [obj valueForKey:@"path"];
-        NSArray* children = [obj valueForKey:@"children"];
-        XCGroup* group = [XCGroup groupWithProject:self key:key alias:name path:path children:children];
-
-        [_groups setObject:group forKey:key];
+        XCGroup* group = [self createGroupWithDictionary:obj forKey:key];
+        _groups[key] = group;
 
         return group;
     }
@@ -251,7 +259,7 @@
 //TODO: search backwards.
 - (XCGroup*)groupWithPathFromRoot:(NSString*)path
 {
-    NSArray* pathItems = [path componentsSeparatedByString:@"/"];
+    NSArray* pathItems = [path pathComponents];
     XCGroup* currentGroup = [self rootGroup];
     for (NSString* pathItem in pathItems)
     {
@@ -268,6 +276,15 @@
     return currentGroup;
 }
 
+- (XCGroup*)createGroupWithDictionary:(NSDictionary*)dictionary forKey:(NSString*)key
+{
+    return [XCGroup groupWithProject:self
+                                 key:key
+                               alias:[dictionary valueForKey:@"name"]
+                                path:[dictionary valueForKey:@"path"]
+                            children:[dictionary valueForKey:@"children"]];
+}
+
 
 //-------------------------------------------------------------------------------------------
 #pragma mark targets
@@ -280,11 +297,13 @@
         _targets = [[NSMutableArray alloc] init];
         [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
         {
-            if ([[obj valueForKey:@"isa"] asMemberType] == PBXNativeTargetType)
+            if ([[obj valueForKey:@"isa"] xce_hasNativeTargetType])
             {
-                XCTarget* target =
-                    [XCTarget targetWithProject:self key:key name:[obj valueForKey:@"name"] productName:[obj valueForKey:@"productName"]
-                        productReference:[obj valueForKey:@"productReference"]];
+                XCTarget* target = [XCTarget targetWithProject:self
+                                                           key:key
+                                                          name:[obj valueForKey:@"name"]
+                                                   productName:[obj valueForKey:@"productName"]
+                                              productReference:[obj valueForKey:@"productReference"]];
                 [_targets addObject:target];
             }
         }];
