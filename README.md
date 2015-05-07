@@ -122,6 +122,23 @@ for (NSString* configName in [target configurations])
 * PRODUCT_NAME
 * PROVISIONING_PROFILE
 
+###Adding a Library
+
+```objc
+XCSourceFile * libSourceFile = [project fileWithName:@"libAmazing.a"];
+
+XCTarget* target = [project targetWithName:self.mProject.projectName];
+[target addMember:libSourceFile];
+
+for (NSString* configName in [target configurations]) {
+    XCProjectBuildConfig* configuration = [target configurationWithName:configName];
+    NSMutableArray* headerPaths = [[NSMutableArray alloc] init];
+    [headerPaths addObject:@"$(inherited)"];
+    [headerPaths addObject:@"$(PROJECT_DIR)/Amazing"];
+    [configuration addOrReplaceSetting:headerPaths forKey:@"LIBRARY_SEARCH_PATHS"];
+}
+```
+
 ### File write behavior
 
 ```objective-c
