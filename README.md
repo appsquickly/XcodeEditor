@@ -172,7 +172,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 
 # Authors
 
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper.blues@me.com?Subject=xcode-editor">jasper.blues@me.com</a>
+* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=xcode-editor">jasper@appsquick.ly</a>
          
 ### With contributions from: 
 
