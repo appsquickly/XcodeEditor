@@ -535,7 +535,11 @@
     XCSourceFile* currentSourceFile = (XCSourceFile*) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil)
     {
-        NSDictionary* reference = [self makeFileReferenceWithPath:name name:nil type:type];
+        NSString *refName = nil;
+        if (type == AssetCatalog) {
+            refName = [name lastPathComponent];
+        }
+        NSDictionary* reference = [self makeFileReferenceWithPath:name name:refName type:type];
         NSString* fileKey = [[XCKeyBuilder forItemNamed:name] build];
         [_project objects][fileKey] = reference;
         [self addMemberWithKey:fileKey];

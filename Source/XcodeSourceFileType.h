@@ -27,7 +27,8 @@ typedef NS_OPTIONS(NSInteger, XcodeSourceFileType)
     HTML = 11,                    // HTML file
     TEXT = 12,                    // Some text file
     XcodeProject = 13,            // .xcodeproj
-    Folder = 14                   // a Folder reference
+    Folder = 14,                  // a Folder reference
+    AssetCatalog = 15             // Assets
 };
 
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);
