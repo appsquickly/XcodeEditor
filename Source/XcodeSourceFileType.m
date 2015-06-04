@@ -33,7 +33,8 @@ static NSDictionary* NSDictionaryWithXCFileReferenceTypes()
             @"text.html"             : @(HTML),
             @"text"                  : @(TEXT),
             @"wrapper.pb-project"    : @(XcodeProject),
-            @"folder"                : @(Folder)
+            @"folder"                : @(Folder),
+            @"folder.assetcatalog"   : @(AssetCatalog)
         };
     });
 

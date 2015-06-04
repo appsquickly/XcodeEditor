@@ -114,7 +114,7 @@
 
 - (BOOL)canBecomeBuildFile
 {
-    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive;
+    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive || _type == AssetCatalog;
 }
 
 
@@ -126,7 +126,7 @@
     else if (_type == Framework) {
         return PBXFrameworksBuildPhaseType;
     }
-    else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle) {
+    else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == AssetCatalog) {
         return PBXResourcesBuildPhaseType;
     }
     else if (_type == Archive) {
