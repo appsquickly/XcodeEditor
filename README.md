@@ -72,6 +72,16 @@ XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
 [project save];
 ```
 
+### Adding Asset Catalog (ImageSet)
+
+```objective-c
+
+XCSourceFileDefinition* sourceFileDefinition = [XCSourceFileDefinition sourceDefinitionWithAssetCatalogName:<path to asset catalog>];
+
+[group addSourceFile:sourceFileDefinition];
+[project save];
+```
+
 ### Adding a Header
 
 ```objective-c
