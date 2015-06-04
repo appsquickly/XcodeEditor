@@ -32,6 +32,9 @@
 
 + (XCSourceFileDefinition*)sourceDefinitionWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type;
 
+// For now you can add Asset Catalog only as reference
++ (XCSourceFileDefinition*)sourceDefinitionWithAssetCatalogName:(NSString*)name;
+
 - (id)initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type;
 
 - (id)initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type;

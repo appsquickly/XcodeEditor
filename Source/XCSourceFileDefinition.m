@@ -34,6 +34,13 @@
     return [[XCSourceFileDefinition alloc] initWithName:name data:data type:type];
 }
 
++ (XCSourceFileDefinition*)sourceDefinitionWithAssetCatalogName:(NSString*)name
+{
+    XCSourceFileDefinition *definition = [[XCSourceFileDefinition alloc] initWithName:name type:AssetCatalog];
+    definition.fileOperationType = XCFileOperationTypeReferenceOnly;
+    return definition;
+}
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -62,5 +69,17 @@
     return self;
 
 }
+
+- (id)initWithName:(NSString*)name type:(XcodeSourceFileType)type
+{
+    self = [super init];
+    if (self)
+    {
+        _sourceFileName = [name copy];
+        _type = type;
+    }
+    return self;
+}
+
 
 @end
