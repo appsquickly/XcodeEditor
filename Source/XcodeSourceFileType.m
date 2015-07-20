@@ -34,7 +34,8 @@ static NSDictionary* NSDictionaryWithXCFileReferenceTypes()
             @"text"                  : @(TEXT),
             @"wrapper.pb-project"    : @(XcodeProject),
             @"folder"                : @(Folder),
-            @"folder.assetcatalog"   : @(AssetCatalog)
+            @"folder.assetcatalog"   : @(AssetCatalog),
+            @"sourcecode.swift"     : @(SourceCodeSwift)
         };
     });
 
@@ -78,6 +79,10 @@ XcodeSourceFileType XCSourceFileTypeFromFileName(NSString* fileName)
     if ([fileName hasSuffix:@".cpp"])
     {
         return SourceCodeCPlusPlus;
+    }
+    if ([fileName hasSuffix:@".swift"])
+    {
+        return SourceCodeSwift;
     }
     return FileTypeNil;
 }

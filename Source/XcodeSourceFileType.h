@@ -28,7 +28,8 @@ typedef NS_OPTIONS(NSInteger, XcodeSourceFileType)
     TEXT = 12,                    // Some text file
     XcodeProject = 13,            // .xcodeproj
     Folder = 14,                  // a Folder reference
-    AssetCatalog = 15             // Assets
+    AssetCatalog = 15,            // Assets
+    SourceCodeSwift = 16          // .swift
 };
 
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);
