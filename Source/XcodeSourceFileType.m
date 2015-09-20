@@ -35,7 +35,14 @@ static NSDictionary* NSDictionaryWithXCFileReferenceTypes()
             @"wrapper.pb-project"    : @(XcodeProject),
             @"folder"                : @(Folder),
             @"folder.assetcatalog"   : @(AssetCatalog),
-            @"sourcecode.swift"     : @(SourceCodeSwift)
+            @"sourcecode.swift"      : @(SourceCodeSwift),
+            @"wrapper.application"   : @(Application),
+            @"file.playground"       : @(Playground),
+            @"text.script.sh"        : @(ShellScript),
+            @"net.daringfireball.markdown" : @(Markdown),
+            @"text.plist.xml"        : @(XMLPropertyList),
+            @"file.storyboard"       : @(Storyboard)
+            
         };
     });
 

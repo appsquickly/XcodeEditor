@@ -10,6 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "XCKeyBuilder.h"
+#import <CommonCrypto/CommonDigest.h>
+
+#if MD5_DIGEST_LENGTH != CC_MD5_DIGEST_LENGTH
+#error Digest length in XCKeyBuilder.h (MD5_DIGEST_LENGTH) disagress with CommonCrypto value (CC_MD5_DIGEST_LENGTH)
+#endif
 
 @implementation XCKeyBuilder
 

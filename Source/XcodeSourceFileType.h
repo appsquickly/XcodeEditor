@@ -23,13 +23,19 @@ typedef NS_OPTIONS(NSInteger, XcodeSourceFileType)
     XibFile = 7,                 // .xib
     ImageResourcePNG = 8,        // .png
     Bundle = 9,                  // .bundle  .octet
-    Archive = 10,                 // .a files
-    HTML = 11,                    // HTML file
-    TEXT = 12,                    // Some text file
-    XcodeProject = 13,            // .xcodeproj
-    Folder = 14,                  // a Folder reference
-    AssetCatalog = 15,            // Assets
-    SourceCodeSwift = 16          // .swift
+    Archive = 10,                // .a files
+    HTML = 11,                   // HTML file
+    TEXT = 12,                   // Some text file
+    XcodeProject = 13,           // .xcodeproj
+    Folder = 14,                 // a Folder reference
+    AssetCatalog = 15,           // Assets
+    SourceCodeSwift = 16,        // .swift
+    Application = 17,            // .app (wrapper.application)
+    Playground = 18,             // .playground (file.playground)
+    ShellScript = 19,            // no suffix Xcode seems to detect (text.script.sh)
+    Markdown = 20,               // .md (net.daringfileball.markdown)
+    XMLPropertyList = 21,        // .plist (text.plist.xml)
+    Storyboard = 22              // .storyboard (file.storyboard)
 };
 
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);

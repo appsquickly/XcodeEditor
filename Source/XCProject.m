@@ -68,7 +68,7 @@
     {
         if ([[obj valueForKey:@"isa"] xce_hasFileReferenceType])
         {
-            XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"]);
+            XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"] ?: [obj valueForKey:@"explicitFileType"]);
             NSString* path = [obj valueForKey:@"path"];
             NSString* sourceTree = [obj valueForKey:@"sourceTree"];
             XCSourceFile* sourceFile = [XCSourceFile sourceFileWithProject:self
@@ -88,7 +88,7 @@
     NSDictionary* obj = [[self objects] valueForKey:key];
     if (obj && [[obj valueForKey:@"isa"] xce_hasFileReferenceOrReferenceProxyType])
     {
-        XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"]);
+        XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"]?: [obj valueForKey:@"explicitFileType"]);
 
         NSString* name = [obj valueForKey:@"name"];
         NSString* sourceTree = [obj valueForKey:@"sourceTree"];
