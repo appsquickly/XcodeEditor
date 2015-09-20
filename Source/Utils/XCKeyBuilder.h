@@ -11,13 +11,14 @@
 
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonDigest.h>
+
 
 #define HASH_VALUE_STORAGE_SIZE 48
+#define MD5_DIGEST_LENGTH 16
 
 typedef struct
 {
-    char value[CC_MD5_DIGEST_LENGTH];
+    char value[MD5_DIGEST_LENGTH];
 } HashValueMD5Hash;
 
 
