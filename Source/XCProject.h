@@ -58,7 +58,7 @@ NSString* const XCProjectNotFoundException;
 /**
 * Returns all file resources in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray*)files;
+- (NSArray<XCSourceFile*>*)files;
 
 /**
 * Returns the project file with the specified key, or nil.
@@ -74,24 +74,24 @@ NSString* const XCProjectNotFoundException;
 /**
 * Returns all header files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray*)headerFiles;
+- (NSArray<XCSourceFile*>*)headerFiles;
 
 /**
 * Returns all implementation obj-c implementation files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray*)objectiveCFiles;
+- (NSArray<XCSourceFile*>*)objectiveCFiles;
 
 /**
 * Returns all implementation obj-c++ implementation files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray*)objectiveCPlusPlusFiles;
+- (NSArray<XCSourceFile*>*)objectiveCPlusPlusFiles;
 
 /**
 * Returns all the xib files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray*)xibFiles;
+- (NSArray<XCSourceFile*>*)xibFiles;
 
-- (NSArray*)imagePNGFiles;
+- (NSArray<XCSourceFile*>*)imagePNGFiles;
 
 - (NSString*)filePath;
 
@@ -101,7 +101,7 @@ NSString* const XCProjectNotFoundException;
 /**
 * Lists the groups in an xcode project, returning an array of `XCGroup` objects.
 */
-- (NSArray*)groups;
+- (NSArray<XCGroup*>*)groups;
 
 /**
  * Returns the root (top-level) group.
@@ -111,7 +111,7 @@ NSString* const XCProjectNotFoundException;
 /**
  * Returns the root (top-level) groups, if there are multiple. An array of rootGroup if there is only one.
  */
-- (NSArray*)rootGroups;
+- (NSArray<XCGroup*>*)rootGroups;
 
 /**
 * Returns the group with the given key, or nil.
@@ -138,7 +138,7 @@ NSString* const XCProjectNotFoundException;
 /**
 * Lists the targets in an xcode project, returning an array of `XCTarget` objects.
 */
-- (NSArray*)targets;
+- (NSArray<XCTarget*>*)targets;
 
 /**
 * Returns the target with the specified name, or nil. 
@@ -146,13 +146,14 @@ NSString* const XCProjectNotFoundException;
 - (XCTarget*)targetWithName:(NSString*)name;
 
 #pragma mark Configurations
-
 /**
-* Returns the target with the specified name, or nil. 
-*/
-- (NSDictionary*)configurations;
-
-- (NSDictionary*)configurationWithName:(NSString*)name;
+ * Lists the configurations in an xcode project.
+ */
+- (NSDictionary<NSString*,XCProjectBuildConfig*>*)configurations;
+/**
+ * Returns the configuration with the specified name, or nil.
+ */
+- (XCProjectBuildConfig*)configurationWithName:(NSString*)name;
 
 - (XCProjectBuildConfig *)defaultConfiguration;
 
