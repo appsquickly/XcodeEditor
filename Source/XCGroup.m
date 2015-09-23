@@ -355,7 +355,7 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark Members
 
-- (NSArray*)members
+- (NSArray<id<XcodeGroupMember>>*)members
 {
     if (_members == nil)
     {

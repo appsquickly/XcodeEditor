@@ -46,11 +46,11 @@
 - (id)initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
     productReference:(NSString*)productReference;
 
-- (NSArray*)resources;
+- (NSArray<XCSourceFile*>*)resources;
 
-- (NSArray*)members;
+- (NSArray<XCSourceFile*>*)members;
 
-- (NSDictionary*)configurations;
+- (NSDictionary<NSString*,XCProjectBuildConfig*>*)configurations;
 
 - (XCProjectBuildConfig *)configurationWithName:(NSString*)name;
 
@@ -60,7 +60,7 @@
 
 - (void)removeMemberWithKey:(NSString*)key;
 
-- (void)removeMembersWithKeys:(NSArray*)keys;
+- (void)removeMembersWithKeys:(NSArray<NSString*>*)keys;
 
 - (void)addDependency:(NSString*)key;
 

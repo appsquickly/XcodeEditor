@@ -19,11 +19,11 @@
 
 - (NSString *)referenceProxyKeyForName:(NSString *)name;
 
-- (NSArray *)buildProductsForTargets:(NSString *)xcodeprojKey;
+- (NSArray<XCSourceFile*> *)buildProductsForTargets:(NSString *)xcodeprojKey;
 
-- (void)addAsTargetDependency:(XCSubProjectDefinition *)xcodeprojDefinition toTargets:(NSArray *)targets;
+- (void)addAsTargetDependency:(XCSubProjectDefinition *)xcodeprojDefinition toTargets:(NSArray<XCTarget*>*)targets;
 
-- (NSArray *)keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString *)identifier
+- (NSArray<NSString*> *)keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString *)identifier
     singleton:(BOOL)singleton required:(BOOL)required;
 
 - (NSMutableDictionary *)PBXProjectDict;

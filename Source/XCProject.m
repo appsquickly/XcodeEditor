@@ -365,7 +365,7 @@
     return [_configurations copy];
 }
 
-- (NSDictionary*)configurationWithName:(NSString*)name
+- (XCProjectBuildConfig*)configurationWithName:(NSString*)name
 {
     return [[self configurations] objectForKey:name];
 }
