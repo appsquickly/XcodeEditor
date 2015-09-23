@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'XcodeEditor'
-  s.version  = '1.6.2'
+  s.version  = '1.6.3'
   s.license  = 'Apache2.0'
   s.summary  = 'An API for manipulating Xcode Projects using objective-C.'
   s.homepage = 'https://github.com/jasperblues/XcodeEditor'

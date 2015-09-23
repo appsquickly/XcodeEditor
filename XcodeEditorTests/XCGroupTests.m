@@ -28,7 +28,7 @@
 
 @implementation XCFrameworkPath
 
-static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk";
+static const NSString* SDK_PATH = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk";
 
 + (NSString*)eventKitUIPath
 {

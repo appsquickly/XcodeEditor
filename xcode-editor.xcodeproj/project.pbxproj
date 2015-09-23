@@ -391,7 +391,7 @@
 				6BCED6DE1A4A61DC0005596F /* Sources */,
 				6BCED6DF1A4A61DC0005596F /* Frameworks */,
 				6BCED6E01A4A61DC0005596F /* Resources */,
-				6BB3305F1AD8D47C00EBDE37 /* Extract test resources */,
+				6BB3305F1AD8D47C00EBDE37 /* I */,
 			);
 			buildRules = (
 			);
@@ -464,19 +464,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6BB3305F1AD8D47C00EBDE37 /* Extract test resources */ = {
+		6BB3305F1AD8D47C00EBDE37 /* I */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Extract test resources";
+			name = I;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr /tmp/*\n\nunzip ${SRCROOT}/XcodeEditorTests/Resources/expanz-iOS-SDK.zip -d /tmp\nunzip ${SRCROOT}/XcodeEditorTests/Resources/ArchiveProj.zip -d /tmp\nunzip ${SRCROOT}/XcodeEditorTests/Resources/HelloBoxy.zip -d /tmp\ncp ${SRCROOT}/XcodeEditorTests/Resources/* /tmp";
+			shellScript = "echo \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr /tmp/*\n\nunzip ${SRCROOT}/XcodeEditorTests/Resources/expanz-iOS-SDK.zip -d /tmpunzip ${SRCROOT}/XcodeEditorTests/Resources/ArchiveProj.zip -d /tmp\nunzip ${SRCROOT}/XcodeEditorTests/Resources/HelloBoxy.zip -d /tmp\ncp ${SRCROOT}/XcodeEditorTests/Resources/* /tmp";
 		};
 /* End PBXShellScriptBuildPhase section */
 
