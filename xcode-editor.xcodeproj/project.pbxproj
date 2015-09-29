@@ -9,16 +9,6 @@
 /* Begin PBXBuildFile section */
 		6B3ACFE114F8A2FE00BCFE81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC10164147775A40055CF03 /* Cocoa.framework */; };
 		6BCED6E81A4A61DC0005596F /* XcodeEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3ACFE014F8A2FE00BCFE81 /* XcodeEditor.framework */; };
-		6BCED6EE1A4A62760005596F /* Person.impl in Resources */ = {isa = PBXBuildFile; fileRef = BA79848C44BAD3669D8B787E /* Person.impl */; };
-		6BCED6EF1A4A62760005596F /* goat-funny.png in Resources */ = {isa = PBXBuildFile; fileRef = BA798924D39B66695026C637 /* goat-funny.png */; };
-		6BCED6F01A4A62760005596F /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = BA798943BA7D1C740F0A098F /* HelloBoxy.zip */; };
-		6BCED6F11A4A62760005596F /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = BA7982C1A359AA930F934231 /* HelloWorldLayer.impl */; };
-		6BCED6F21A4A62760005596F /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = BA798C8AB338121AFFE692F8 /* HelloWorldLayer.header */; };
-		6BCED6F31A4A62760005596F /* ESA.Sales.Foobar.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA798903FC8864C4CB08B7FF /* ESA.Sales.Foobar.xib */; };
-		6BCED6F41A4A62760005596F /* expanz-iOS-SDK.zip in Resources */ = {isa = PBXBuildFile; fileRef = BA798257DC8C1D51244A87F2 /* expanz-iOS-SDK.zip */; };
-		6BCED6F51A4A62760005596F /* ESA_Sales_Foobar_ViewController.header in Resources */ = {isa = PBXBuildFile; fileRef = BA798E7947765A032AB118BA /* ESA_Sales_Foobar_ViewController.header */; };
-		6BCED6F61A4A62760005596F /* ESA_Sales_Foobar_ViewController.impl in Resources */ = {isa = PBXBuildFile; fileRef = BA798EC5D7AFB1BC79B1934E /* ESA_Sales_Foobar_ViewController.impl */; };
-		6BCED6F71A4A62760005596F /* project.pbxproj in Resources */ = {isa = PBXBuildFile; fileRef = BA79897F0241177A8F8C932B /* project.pbxproj */; };
 		6BCED6FC1A4A628D0005596F /* XCGroupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989499B6F59EEC2E1AA41 /* XCGroupTests.m */; };
 		6BCED6FD1A4A62910005596F /* XCTargetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798974A01772350D7C81BD /* XCTargetTests.m */; };
 		6BCED6FE1A4A62950005596F /* XcodeFileReferenceTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D6F34B9A560E3D689B3 /* XcodeFileReferenceTypeTests.m */; };
@@ -26,6 +16,15 @@
 		6BCED7001A4A629D0005596F /* XCProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798CFD524E5A3CF155C816 /* XCProjectTests.m */; };
 		6BCED7011A4A62A00005596F /* XCClassDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984685319A7BB1B37DBE9 /* XCClassDefinitionTests.m */; };
 		6BCED7031A4A62B00005596F /* XCKeyBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798BD3F30B4E39066F8108 /* XCKeyBuilderTests.m */; };
+		797A005A1BBA8D40002C904B /* Person.impl in Resources */ = {isa = PBXBuildFile; fileRef = BA79848C44BAD3669D8B787E /* Person.impl */; settings = {ASSET_TAGS = (); }; };
+		797A005B1BBA8D40002C904B /* goat-funny.png in Resources */ = {isa = PBXBuildFile; fileRef = BA798924D39B66695026C637 /* goat-funny.png */; settings = {ASSET_TAGS = (); }; };
+		797A005C1BBA8D40002C904B /* HelloBoxy.zip in Resources */ = {isa = PBXBuildFile; fileRef = BA798943BA7D1C740F0A098F /* HelloBoxy.zip */; settings = {ASSET_TAGS = (); }; };
+		797A005D1BBA8D40002C904B /* HelloWorldLayer.impl in Resources */ = {isa = PBXBuildFile; fileRef = BA7982C1A359AA930F934231 /* HelloWorldLayer.impl */; settings = {ASSET_TAGS = (); }; };
+		797A005E1BBA8D40002C904B /* HelloWorldLayer.header in Resources */ = {isa = PBXBuildFile; fileRef = BA798C8AB338121AFFE692F8 /* HelloWorldLayer.header */; settings = {ASSET_TAGS = (); }; };
+		797A00601BBA8D40002C904B /* expanz-iOS-SDK.zip in Resources */ = {isa = PBXBuildFile; fileRef = BA798257DC8C1D51244A87F2 /* expanz-iOS-SDK.zip */; settings = {ASSET_TAGS = (); }; };
+		797A00611BBA8D40002C904B /* ESA_Sales_Foobar_ViewController.header in Resources */ = {isa = PBXBuildFile; fileRef = BA798E7947765A032AB118BA /* ESA_Sales_Foobar_ViewController.header */; settings = {ASSET_TAGS = (); }; };
+		797A00621BBA8D40002C904B /* ESA_Sales_Foobar_ViewController.impl in Resources */ = {isa = PBXBuildFile; fileRef = BA798EC5D7AFB1BC79B1934E /* ESA_Sales_Foobar_ViewController.impl */; settings = {ASSET_TAGS = (); }; };
+		797A00631BBA8D40002C904B /* project.pbxproj in Resources */ = {isa = PBXBuildFile; fileRef = BA79897F0241177A8F8C932B /* project.pbxproj */; settings = {ASSET_TAGS = (); }; };
 		BA79809B196A253223139967 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA798378F006ADD44A37C678 /* InfoPlist.strings */; };
 		BA7980D47618535CEEE56C07 /* XcodeSourceFileType.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798CF27DA49D73EBE0FCB7 /* XcodeSourceFileType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7981663E00E804C25FDA0D /* XCProject.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989AC9710D456572783C7 /* XCProject.m */; };
@@ -39,8 +38,8 @@
 		BA7984763E39F64955CFE6F5 /* XcodeMemberType.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798C11E473C251F07B0DAA /* XcodeMemberType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7984F6EE4FA90717414543 /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C57D9B8610BFECB9528 /* XCProject+SubProject.m */; };
 		BA79857B12A10B9BFBF3C929 /* XCAbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798287F70884A45C9F3721 /* XCAbstractDefinition.m */; };
-		BA7985C5136218B0D782F7F1 /* XCProject+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */; };
-		BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */; };
+		BA7985C5136218B0D782F7F1 /* XCProject+SubProject.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7986459784ADE55A4B7CAC /* XCProject+SubProject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DCCBF81FADC37488A36 /* XCProjectBuildConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA79861FCDBD84679CA89D9E /* XCKeyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798DB7EBF603A22E7334BF /* XCKeyBuilder.m */; };
 		BA79862308DF0F7F984AF86E /* XCProjectBuildConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79868C3DE682529FB4B76E /* XCProjectBuildConfig.m */; };
 		BA798641126C8C9498C21843 /* XCSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B392E07F43F5E0E77FC /* XCSourceFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,7 +59,7 @@
 		BA798BE4876F847D0F1BA266 /* XCSourceFileDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798C2F90A12BFEE77EFA5D /* XCSourceFileDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA798DC320D5F6F188C112B3 /* XCKeyBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798909AC4D1FCE033E64C5 /* XCKeyBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA798EFC5F24AC9FD857373C /* XCFrameworkDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7986BC9EE998925B797690 /* XCFrameworkDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA798F131E3B0412BEE23CA3 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79888A08A5739C728633D2 /* XcodeEditor.h */; };
+		BA798F131E3B0412BEE23CA3 /* XcodeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79888A08A5739C728633D2 /* XcodeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA798F6617C56888653CE018 /* XcodeEditor-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = BA798CECA2420D48B499842E /* XcodeEditor-Prefix.pch */; };
 /* End PBXBuildFile section */
 
@@ -352,12 +351,12 @@
 				BA798EFC5F24AC9FD857373C /* XCFrameworkDefinition.h in Headers */,
 				BA798A3F4DCBD5DD024B1147 /* XcodeGroupMember.h in Headers */,
 				BA798AD506D19B5D3FB6DE4E /* XCAbstractDefinition.h in Headers */,
-				BA798F131E3B0412BEE23CA3 /* XcodeEditor.h in Headers */,
-				BA7985C5136218B0D782F7F1 /* XCProject+SubProject.h in Headers */,
 				BA79825A7D7CB5AD4EE31A6C /* XCGroup.h in Headers */,
 				BA79845EF211493263B4D0FC /* XCTarget.h in Headers */,
-				BA798BE4876F847D0F1BA266 /* XCSourceFileDefinition.h in Headers */,
+				BA798F131E3B0412BEE23CA3 /* XcodeEditor.h in Headers */,
+				BA7985C5136218B0D782F7F1 /* XCProject+SubProject.h in Headers */,
 				BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */,
+				BA798BE4876F847D0F1BA266 /* XCSourceFileDefinition.h in Headers */,
 				BA7988ABB09415FEE5070B38 /* XCXibDefinition.h in Headers */,
 				BA7987C8FAAD4E3225D7DDC3 /* XCFileOperationQueue.h in Headers */,
 			);
@@ -440,16 +439,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BCED6F41A4A62760005596F /* expanz-iOS-SDK.zip in Resources */,
-				6BCED6F11A4A62760005596F /* HelloWorldLayer.impl in Resources */,
-				6BCED6F51A4A62760005596F /* ESA_Sales_Foobar_ViewController.header in Resources */,
-				6BCED6F01A4A62760005596F /* HelloBoxy.zip in Resources */,
-				6BCED6EF1A4A62760005596F /* goat-funny.png in Resources */,
-				6BCED6EE1A4A62760005596F /* Person.impl in Resources */,
-				6BCED6F61A4A62760005596F /* ESA_Sales_Foobar_ViewController.impl in Resources */,
-				6BCED6F71A4A62760005596F /* project.pbxproj in Resources */,
-				6BCED6F21A4A62760005596F /* HelloWorldLayer.header in Resources */,
-				6BCED6F31A4A62760005596F /* ESA.Sales.Foobar.xib in Resources */,
 				BA79809B196A253223139967 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +447,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				797A005C1BBA8D40002C904B /* HelloBoxy.zip in Resources */,
+				797A005D1BBA8D40002C904B /* HelloWorldLayer.impl in Resources */,
+				797A005E1BBA8D40002C904B /* HelloWorldLayer.header in Resources */,
+				797A00631BBA8D40002C904B /* project.pbxproj in Resources */,
+				797A00611BBA8D40002C904B /* ESA_Sales_Foobar_ViewController.header in Resources */,
+				797A005A1BBA8D40002C904B /* Person.impl in Resources */,
+				797A00621BBA8D40002C904B /* ESA_Sales_Foobar_ViewController.impl in Resources */,
+				797A00601BBA8D40002C904B /* expanz-iOS-SDK.zip in Resources */,
+				797A005B1BBA8D40002C904B /* goat-funny.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
