@@ -25,6 +25,7 @@
 		797A00611BBA8D40002C904B /* ESA_Sales_Foobar_ViewController.header in Resources */ = {isa = PBXBuildFile; fileRef = BA798E7947765A032AB118BA /* ESA_Sales_Foobar_ViewController.header */; settings = {ASSET_TAGS = (); }; };
 		797A00621BBA8D40002C904B /* ESA_Sales_Foobar_ViewController.impl in Resources */ = {isa = PBXBuildFile; fileRef = BA798EC5D7AFB1BC79B1934E /* ESA_Sales_Foobar_ViewController.impl */; settings = {ASSET_TAGS = (); }; };
 		797A00631BBA8D40002C904B /* project.pbxproj in Resources */ = {isa = PBXBuildFile; fileRef = BA79897F0241177A8F8C932B /* project.pbxproj */; settings = {ASSET_TAGS = (); }; };
+		797A00651BBA901A002C904B /* XCSubProjectDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798516EBADF7760937A8D6 /* XCSubProjectDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA79809B196A253223139967 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA798378F006ADD44A37C678 /* InfoPlist.strings */; };
 		BA7980D47618535CEEE56C07 /* XcodeSourceFileType.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798CF27DA49D73EBE0FCB7 /* XcodeSourceFileType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7981663E00E804C25FDA0D /* XCProject.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989AC9710D456572783C7 /* XCProject.m */; };
@@ -358,6 +359,7 @@
 				BA7985C665CCF83437B2231E /* XCProjectBuildConfig.h in Headers */,
 				BA798BE4876F847D0F1BA266 /* XCSourceFileDefinition.h in Headers */,
 				BA7988ABB09415FEE5070B38 /* XCXibDefinition.h in Headers */,
+				797A00651BBA901A002C904B /* XCSubProjectDefinition.h in Headers */,
 				BA7987C8FAAD4E3225D7DDC3 /* XCFileOperationQueue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
