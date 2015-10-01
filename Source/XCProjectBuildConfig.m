@@ -49,7 +49,10 @@
                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])
                 {
                     XCGroup* group = [project groupWithSourceFile:configurationFile];
-                    path = [[group pathRelativeToParent] stringByAppendingPathComponent:path];
+                    do {
+                        path = [[group pathRelativeToParent] stringByAppendingPathComponent:path] ? :path;
+                        group = [group parentGroup];
+                    } while (group);
                 }
 
                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])
