@@ -21,8 +21,6 @@
 @class XCSubProjectDefinition;
 @class XCProjectBuildConfig;
 
-NSString* const XCProjectNotFoundException;
-
 @interface XCProject : NSObject
 {
 @protected
