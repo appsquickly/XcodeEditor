@@ -41,8 +41,8 @@ static NSDictionary* NSDictionaryWithXCFileReferenceTypes()
             @"text.script.sh"        : @(ShellScript),
             @"net.daringfireball.markdown" : @(Markdown),
             @"text.plist.xml"        : @(XMLPropertyList),
-            @"file.storyboard"       : @(Storyboard)
-            
+            @"file.storyboard"       : @(Storyboard),
+            @"text.xcconfig"         : @(XCConfig)
         };
     });
 

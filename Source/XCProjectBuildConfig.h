@@ -22,7 +22,7 @@
     NSMutableDictionary* _buildSettings;
     NSMutableDictionary* _xcconfigSettings;
 }
-
+@property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, readonly) NSDictionary* specifiedBuildSettings;
 
 + (NSDictionary<NSString*,NSString*>*)buildConfigurationsFromArray:(NSArray<XCProjectBuildConfig*>*)array inProject:(XCProject*)project;

@@ -21,3 +21,6 @@
 #import "XCSubProjectDefinition.h"
 #import "XCTarget.h"
 #import "XCXibDefinition.h"
+#import "XCKeyBuilder.h"
+#import "XCProject+SubProject.h"
+#import "XCProjectBuildConfig.h"

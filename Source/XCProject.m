@@ -17,6 +17,7 @@
 #import "XCFileOperationQueue.h"
 #import "XCProjectBuildConfig.h"
 
+NSString* const XCProjectNotFoundException;
 
 @implementation XCProject
 

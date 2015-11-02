@@ -8,4 +8,6 @@
 
 #endif
 
-
+#if !DEBUG
+#define NSLog(...)
+#endif
