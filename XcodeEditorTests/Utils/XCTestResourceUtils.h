@@ -12,15 +12,22 @@
 
 #import <Foundation/Foundation.h>
 
+//TODO: Just use one sample project
+
 NSString *XCTestResourcePath(void);
 
 NSString *XCSample1FolderPath(void);
 
 NSString *XCSample1XcodeProjectPath(void);
 
-NSString *XCSample2FolderPath(void);
+NSString *XCBox2dSampleContainingFolderPath(void);
 
-NSString *XCSample2XcodeProjectPath(void);
+NSString *XCBox2dSampleProjectPath(void);
+
+NSString *XCMasterDetailContainerFolderPath(void);
+
+NSString *XCMasterDetailProjectPath(void);
+
 
 NSString *NSStringWithXCTestResource(NSString *resourceName);
 

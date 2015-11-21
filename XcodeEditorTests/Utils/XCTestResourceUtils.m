@@ -28,16 +28,26 @@ NSString *XCSample1XcodeProjectPath(void)
     return [XCSample1FolderPath() stringByAppendingString:@"/expanz-iOS-SDK.xcodeproj"];
 }
 
-NSString *XCSample2FolderPath(void)
+NSString *XCBox2dSampleContainingFolderPath(void)
 {
     return [XCTestResourcePath() stringByAppendingString:@"/HelloBoxy"];
 }
 
-NSString *XCSample2XcodeProjectPath(void)
+NSString *XCBox2dSampleProjectPath(void)
 {
-    return [XCSample2FolderPath() stringByAppendingString:@"/HelloBoxy.xcodeproj"];
+    return [XCBox2dSampleContainingFolderPath() stringByAppendingString:@"/HelloBoxy.xcodeproj"];
 }
 
+
+NSString *XCMasterDetailContainerFolderPath(void)
+{
+    return [XCTestResourcePath() stringByAppendingString:@"/ProjectToEdit"];
+}
+
+NSString *XCMasterDetailProjectPath(void)
+{
+    return [XCMasterDetailContainerFolderPath() stringByAppendingString:@"/ProjectToEdit.xcodeproj"];
+}
 
 NSString *NSStringWithXCTestResource(NSString *resourceName)
 {

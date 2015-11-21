@@ -358,7 +358,7 @@
 				6B2C232C1BFFFAFC009F4BA7 /* Sources */,
 				6B2C232D1BFFFAFC009F4BA7 /* Frameworks */,
 				6B2C232E1BFFFAFC009F4BA7 /* Resources */,
-				6B2C233F1C000174009F4BA7 /* ShellScript */,
+				6B2C233F1C000174009F4BA7 /* Unpack Test Resources */,
 			);
 			buildRules = (
 			);
@@ -430,18 +430,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B2C233F1C000174009F4BA7 /* ShellScript */ = {
+		6B2C233F1C000174009F4BA7 /* Unpack Test Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Unpack Test Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\necho \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr ~/xcode-editor-test-results\nmkdir -p ~/xcode-editor-test-results\n\nunzip XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip -d ~/xcode-editor-test-results\n\nfor f in XcodeEditorTests/Resources/Files/*; do cp $f ~/xcode-editor-test-results; done";
+			shellScript = "#!/bin/bash\necho \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr ~/xcode-editor-test-results\nmkdir -p ~/xcode-editor-test-results\n\nunzip XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ProjectToEdit.zip -d ~/xcode-editor-test-results\n\nfor f in XcodeEditorTests/Resources/Files/*; do cp $f ~/xcode-editor-test-results; done\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

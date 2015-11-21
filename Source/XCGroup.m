@@ -66,7 +66,7 @@
 #pragma mark - Interface Methods
 //-------------------------------------------------------------------------------------------
 
-#pragma mark Parent group
+#pragma mark Parent _group
 
 - (void)removeFromParentGroup
 {
@@ -246,10 +246,10 @@
 // adds an xcodeproj as a subproject of the current project.
 - (void)addSubProject:(XCSubProjectDefinition *)projectDefinition
 {
-    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + _group path if any
     [projectDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
-    // create PBXFileReference for xcodeproj file and add to PBXGroup for the current group
+    // create PBXFileReference for xcodeproj file and add to PBXGroup for the current _group
     // (will retrieve existing if already there)
     [self makeGroupMemberWithName:[projectDefinition projectFileName] path:[projectDefinition pathRelativeToProjectRoot]
                              type:XcodeProject fileOperationStyle:[projectDefinition fileOperationType]];
@@ -284,18 +284,18 @@
         return;
     }
 
-    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + _group path if any
     [projectDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
     NSString *xcodeprojKey = [projectDefinition projectKey];
 
-    // Remove from group and remove PBXFileReference
+    // Remove from _group and remove PBXFileReference
     [self removeGroupMemberWithKey:xcodeprojKey];
 
     // remove PBXContainerItemProxies and PBXReferenceProxies
     [_project removeProxies:xcodeprojKey];
 
-    // get the key for the Products group
+    // get the key for the Products _group
     NSString *productsGroupKey = [_project productsGroupKeyForKey:xcodeprojKey];
 
     // remove from the ProjectReferences array of PBXProject
@@ -304,7 +304,7 @@
     // remove PDXBuildFile entries
     [self removeProductsGroupFromProject:productsGroupKey];
 
-    // remove Products group
+    // remove Products _group
     [[_project objects] removeObjectForKey:productsGroupKey];
 
     // remove from all targets
@@ -317,7 +317,7 @@
         return;
     }
 
-    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + group path if any
+    // set up path to the xcodeproj file as Xcode sees it - path to top level of project + _group path if any
     [projectDefinition initFullProjectPath:_project.filePath groupPath:[self pathRelativeToParent]];
 
     NSString *xcodeprojKey = [projectDefinition projectKey];
@@ -527,7 +527,7 @@
 
 #pragma mark Xcodeproj methods
 
-// creates PBXFileReference and adds to group if not already there;  returns key for file reference.  Locates
+// creates PBXFileReference and adds to _group if not already there;  returns key for file reference.  Locates
 // member via path rather than name, because that is how subprojects are stored by Xcode
 - (void)makeGroupMemberWithName:(NSString *)name path:(NSString *)path type:(XcodeSourceFileType)type
              fileOperationStyle:(XCFileOperationType)fileOperationStyle
@@ -541,7 +541,7 @@
     }
 }
 
-// makes a new group called Products and returns its key
+// makes a new _group called Products and returns its key
 - (NSString *)makeProductsGroup:(XCSubProjectDefinition *)xcodeprojDefinition
 {
     NSMutableArray *children = [NSMutableArray array];
@@ -557,7 +557,7 @@
     return productKey;
 }
 
-// makes a new Products group (by calling the method above), makes a new projectReferences array for it and
+// makes a new Products _group (by calling the method above), makes a new projectReferences array for it and
 // then adds it to the PBXProject object
 - (void)addProductsGroupToProject:(XCSubProjectDefinition *)xcodeprojDefinition
 {
@@ -578,7 +578,7 @@
     PBXProjectDict[@"projectReferences"] = projectReferences;
 }
 
-// removes PBXFileReference from group and project
+// removes PBXFileReference from _group and project
 - (void)removeGroupMemberWithKey:(NSString *)key
 {
     NSMutableArray *children = [self valueForKey:@"children"];
@@ -611,7 +611,7 @@
 // removes entries from PBXBuildFiles, PBXFrameworksBuildPhase and PBXResourcesBuildPhase
 - (void)removeProductsGroupFromProject:(NSString *)key
 {
-    // remove product group's build products from PDXBuildFiles
+    // remove product _group's build products from PDXBuildFiles
     NSDictionary *productsGroup = _project.objects[key];
     for (NSString *childKey in [productsGroup valueForKey:@"children"]) {
         NSArray *buildFileKeys =
@@ -643,7 +643,7 @@
     if (path != nil) {
         reference[@"path"] = path;
     }
-    reference[@"sourceTree"] = @"<group>";
+    reference[@"sourceTree"] = @"<_group>";
     return reference;
 }
 
@@ -652,7 +652,7 @@
 {
     NSMutableDictionary *groupData = [NSMutableDictionary dictionary];
     groupData[@"isa"] = [NSString xce_stringFromMemberType:PBXGroupType];
-    groupData[@"sourceTree"] = @"<group>";
+    groupData[@"sourceTree"] = @"<_group>";
 
     if (_alias != nil) {
         groupData[@"name"] = _alias;

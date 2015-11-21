@@ -103,7 +103,7 @@
 {
 
     XCGroup* rootGroup = [project rootGroup];
-    NSLog(@"Here the group: %@", rootGroup);
+    NSLog(@"Here the _group: %@", rootGroup);
     XCTAssertFalse([rootGroup.members count] == 0);
 
 

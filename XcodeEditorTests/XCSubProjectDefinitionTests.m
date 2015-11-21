@@ -36,7 +36,7 @@
 
     XCSubProjectDefinition
             *subProjectDefinition = [[XCSubProjectDefinition alloc]
-            initWithName:@"HelloBoxy" path:XCSample2FolderPath() parentProject:_project];
+            initWithName:@"HelloBoxy" path:XCBox2dSampleContainingFolderPath() parentProject:_project];
 
     XCTAssertNotNil(subProjectDefinition);
     XCTAssertEqualObjects(subProjectDefinition.projectFileName, @"HelloBoxy.xcodeproj");

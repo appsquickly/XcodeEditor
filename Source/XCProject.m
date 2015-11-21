@@ -76,7 +76,7 @@ NSString* const XCProjectNotFoundException;
                                                                        key:key
                                                                       type:fileType
                                                                       name:path
-                                                                sourceTree:(sourceTree ?: @"<group>")
+                                                                sourceTree:(sourceTree ?: @"<_group>")
                                                                       path:nil];
             [results addObject:sourceFile];
         }
@@ -103,7 +103,7 @@ NSString* const XCProjectNotFoundException;
                                                key:key
                                               type:fileType
                                               name:name
-                                        sourceTree:(sourceTree ?: @"<group>")
+                                        sourceTree:(sourceTree ?: @"<_group>")
                                               path:path];
     }
     return nil;
@@ -262,7 +262,7 @@ NSString* const XCProjectNotFoundException;
     return nil;
 }
 
-//TODO: This could fail if the path attribute on a given group is more than one directory. Start with candidates and
+//TODO: This could fail if the path attribute on a given _group is more than one directory. Start with candidates and
 //TODO: search backwards.
 - (XCGroup*)groupWithPathFromRoot:(NSString*)path
 {

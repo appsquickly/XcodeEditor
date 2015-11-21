@@ -311,7 +311,7 @@
     }];
 }
 
-// returns the Products group key for the given PBXFileReference key, nil if not found.
+// returns the Products _group key for the given PBXFileReference key, nil if not found.
 - (NSString *)productsGroupKeyForKey:(NSString *)key
 {
     NSMutableArray *projectReferences = [[self PBXProjectDict] valueForKey:@"projectReferences"];

@@ -47,7 +47,7 @@
 
 - (void)test_allows_setting_build_configurations
 {
-    XCProject* project = [[XCProject alloc] initWithFilePath:XCSample2XcodeProjectPath()];
+    XCProject* project = [[XCProject alloc] initWithFilePath:XCBox2dSampleProjectPath()];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCProjectBuildConfig * configuration = [target configurationWithName:@"Debug"];
@@ -75,7 +75,7 @@
 
 - (void)test_allows_duplicating_a_target
 {
-    XCProject* project = [[XCProject alloc] initWithFilePath:XCSample2XcodeProjectPath()];
+    XCProject* project = [[XCProject alloc] initWithFilePath:XCBox2dSampleProjectPath()];
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCTarget* duplicated = [target duplicateWithTargetName:@"DuplicatedTarget" productName:@"NewProduct"];

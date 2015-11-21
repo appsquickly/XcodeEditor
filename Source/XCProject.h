@@ -104,7 +104,7 @@
 - (NSArray<XCGroup*>*)groups;
 
 /**
- * Returns the root (top-level) group.
+ * Returns the root (top-level) _group.
  */
 - (XCGroup*)rootGroup;
 
@@ -114,22 +114,22 @@
 - (NSArray<XCGroup*>*)rootGroups;
 
 /**
-* Returns the group with the given key, or nil.
+* Returns the _group with the given key, or nil.
 */
 - (XCGroup*)groupWithKey:(NSString*)key;
 
 /**
- * Returns the group with the specified display name path - the directory relative to the root group. Eg Source/Main
+ * Returns the _group with the specified display name path - the directory relative to the root _group. Eg Source/Main
  */
 - (XCGroup*)groupWithPathFromRoot:(NSString*)path;
 
 /**
-* Returns the parent group for the group or file with the given key;
+* Returns the parent _group for the _group or file with the given key;
 */
 - (XCGroup*)groupForGroupMemberWithKey:(NSString*)key;
 
 /**
- * Returns the parent group for the group or file with the source file
+ * Returns the parent _group for the _group or file with the source file
  */
 - (XCGroup*)groupWithSourceFile:(XCSourceFile*)sourceFile;
 

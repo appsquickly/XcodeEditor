@@ -70,6 +70,7 @@
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCProjectTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCSubProjectDefinitionTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCTargetTests.m" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -48,16 +48,16 @@ static const NSString *SDK_PATH =
 
 @implementation XCGroupTests
 {
-    XCProject *project;
-    XCGroup *group;
+    XCProject *_project;
+    XCGroup *_group;
 }
 
 
 - (void)setUp
 {
-    project = [[XCProject alloc] initWithFilePath:XCSample1XcodeProjectPath()];
-    group = [project groupWithPathFromRoot:@"Source/Main"];
-    XCTAssertNotNil(group);
+    _project = [[XCProject alloc] initWithFilePath:XCSample1XcodeProjectPath()];
+    _group = [_project groupWithPathFromRoot:@"Source/Main"];
+    XCTAssertNotNil(_group);
 }
 
 //-------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ static const NSString *SDK_PATH =
 
 - (void)test_allows_initialization_with
 {
-    XCGroup *aGroup = [XCGroup groupWithProject:project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+    XCGroup *aGroup = [XCGroup groupWithProject:_project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
     XCTAssertNotNil(aGroup);
     XCTAssertEqualObjects([aGroup key], @"abcd1234");
@@ -85,12 +85,12 @@ static const NSString *SDK_PATH =
 
 - (void)test_able_to_describe_itself
 {
-    XCTAssertEqualObjects([group description], @"Group: displayName = Main, key=6B469FE914EF875900ED659C");
+    XCTAssertEqualObjects([_group description], @"Group: displayName = Main, key=6B469FE914EF875900ED659C");
 }
 
 - (void)test_able_to_return_its_full_path_relative_to_the_project_base_directory
 {
-    NSLog(@"############Path: %@", [group pathRelativeToProjectRoot]);
+    NSLog(@"############Path: %@", [_group pathRelativeToProjectRoot]);
 }
 
 //-------------------------------------------------------------------------------------------
@@ -107,21 +107,21 @@ static const NSString *SDK_PATH =
 
     NSLog(@"Class definition: %@", classDefinition);
 
-    [group addClass:classDefinition];
-    [project save];
+    [_group addClass:classDefinition];
+    [_project save];
 
-    XCSourceFile *fileResource = [project fileWithName:@"MyViewController.m"];
+    XCSourceFile *fileResource = [_project fileWithName:@"MyViewController.m"];
     XCTAssertNotNil(fileResource);
     XCTAssertEqualObjects([fileResource pathRelativeToProjectRoot], @"Source/Main/MyViewController.m");
 
-    XCTarget *examples = [project targetWithName:@"Examples"];
+    XCTarget *examples = [_project targetWithName:@"Examples"];
     XCTAssertNotNil(examples);
     [examples addMember:fileResource];
 
-    fileResource = [project fileWithName:@"MyViewController.m"];
+    fileResource = [_project fileWithName:@"MyViewController.m"];
     XCTAssertTrue([fileResource isBuildFile]);
 
-    [project save];
+    [_project save];
     NSLog(@"Done adding source file.");
 }
 
@@ -133,8 +133,8 @@ static const NSString *SDK_PATH =
     [classDefinition setHeader:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.header")];
     [classDefinition setSource:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.impl")];
 
-    [group addClass:classDefinition toTargets:[project targets]];
-    [project save];
+    [_group addClass:classDefinition toTargets:[_project targets]];
+    [_project save];
 
 }
 
@@ -144,14 +144,14 @@ static const NSString *SDK_PATH =
     XCClassDefinition *classDefinition = [XCClassDefinition classDefinitionWithName:@"AddedTwice"];
     [classDefinition setHeader:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.header")];
     [classDefinition setSource:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.impl")];
-    [group addClass:classDefinition toTargets:[project targets]];
-    [project save];
+    [_group addClass:classDefinition toTargets:[_project targets]];
+    [_project save];
 
     classDefinition = [XCClassDefinition classDefinitionWithName:@"AddedTwice"];
     [classDefinition setHeader:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.header")];
     [classDefinition setSource:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.impl")];
-    [group addClass:classDefinition toTargets:[project targets]];
-    [project save];
+    [_group addClass:classDefinition toTargets:[_project targets]];
+    [_project save];
 
 }
 
@@ -160,8 +160,8 @@ static const NSString *SDK_PATH =
 
     XCClassDefinition *classDefinition = [XCClassDefinition classDefinitionWithName:@"ClassWithoutSourceFileYet"];
     [classDefinition setFileOperationType:XCFileOperationTypeReferenceOnly];
-    [group addClass:classDefinition toTargets:[project targets]];
-    [project save];
+    [_group addClass:classDefinition toTargets:[_project targets]];
+    [_project save];
 
 }
 
@@ -175,7 +175,7 @@ static const NSString *SDK_PATH =
 - (void)test_allows_adding_files_of_type_obc_cPlusPlus
 {
 
-    XCProject *anotherProject = [XCProject projectWithFilePath:XCSample2XcodeProjectPath()];
+    XCProject *anotherProject = [XCProject projectWithFilePath:XCBox2dSampleProjectPath()];
     XCGroup *anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
     XCClassDefinition *classDefinition =
@@ -199,7 +199,7 @@ static const NSString *SDK_PATH =
 - (void)test__allows_using_a_class_definition_to_add_cpp_files
 {
 
-    XCProject *anotherProject = [XCProject projectWithFilePath:XCSample2XcodeProjectPath()];
+    XCProject *anotherProject = [XCProject projectWithFilePath:XCBox2dSampleProjectPath()];
     XCGroup *anotherGroup = [anotherProject groupWithPathFromRoot:@"Source"];
 
     XCClassDefinition *definition = [XCClassDefinition classDefinitionWithName:@"Person" language:CPlusPlus];
@@ -223,20 +223,20 @@ static const NSString *SDK_PATH =
     NSString *xibText = NSStringWithXCTestResource(@"ESA.Sales.Foobar.xib");
     XCXibDefinition *xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:xibText];
 
-    [group addXib:xibDefinition];
-    [project save];
+    [_group addXib:xibDefinition];
+    [_project save];
 
-    XCSourceFile *xibFile = [project fileWithName:@"AddedXibFile.xib"];
+    XCSourceFile *xibFile = [_project fileWithName:@"AddedXibFile.xib"];
     XCTAssertNotNil(xibFile);
 
-    XCTarget *examples = [project targetWithName:@"Examples"];
+    XCTarget *examples = [_project targetWithName:@"Examples"];
     XCTAssertNotNil(examples);
     [examples addMember:xibFile];
 
-    xibFile = [project fileWithName:@"AddedXibFile.xib"];
+    xibFile = [_project fileWithName:@"AddedXibFile.xib"];
     XCTAssertTrue([xibFile isBuildFile]);
 
-    [project save];
+    [_project save];
     NSLog(@"Done adding xib file.");
 
 }
@@ -247,8 +247,8 @@ static const NSString *SDK_PATH =
     NSString *xibText = NSStringWithXCTestResource(@"ESA.Sales.Foobar.xib");
     XCXibDefinition *xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AnotherAddedXibFile" content:xibText];
 
-    [group addXib:xibDefinition toTargets:[project targets]];
-    [project save];
+    [_group addXib:xibDefinition toTargets:[_project targets]];
+    [_project save];
 
 }
 
@@ -262,7 +262,7 @@ static const NSString *SDK_PATH =
     //    XCXibDefinition* xibDefinition = [XCXibDefinition xibDefinitionWithName:@"AddedXibFile" content:newXibText];
     //    [xibDefinition setFileOperationType:XCFileOperationTypeAcceptExisting];
     //
-    //    [group addXib:xibDefinition toTargets:[project targets]];
+    //    [_group addXib:xibDefinition toTargets:[project targets]];
     //    [project save];
     //
     //    NSString* xibContent = NSStringWithXCTestResource(@"expanz-iOS-SDK/Source/Main/AddedXibFile.xib"];
@@ -282,8 +282,8 @@ static const NSString *SDK_PATH =
     XCFrameworkDefinition *frameworkDefinition =
             [XCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath eventKitUIPath]
                                                  copyToDestination:NO];
-    [group addFramework:frameworkDefinition toTargets:[project targets]];
-    [project save];
+    [_group addFramework:frameworkDefinition toTargets:[_project targets]];
+    [_project save];
 
 }
 
@@ -292,8 +292,8 @@ static const NSString *SDK_PATH =
     XCFrameworkDefinition *frameworkDefinition =
             [XCFrameworkDefinition frameworkDefinitionWithFilePath:[XCFrameworkPath coreMidiPath]
                                                  copyToDestination:YES];
-    [group addFramework:frameworkDefinition toTargets:[project targets]];
-    [project save];
+    [_group addFramework:frameworkDefinition toTargets:[_project targets]];
+    [_project save];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -304,10 +304,11 @@ static const NSString *SDK_PATH =
 {
 
     XCSubProjectDefinition *projectDefinition =
-            [XCSubProjectDefinition withName:@"HelloBoxy" path:XCSample2FolderPath() parentProject:project];
+            [XCSubProjectDefinition withName:@"HelloBoxy" path:XCBox2dSampleContainingFolderPath()
+                               parentProject:_project];
 
-    [group addSubProject:projectDefinition];
-    [project save];
+    [_group addSubProject:projectDefinition];
+    [_project save];
 
 }
 
@@ -316,10 +317,10 @@ static const NSString *SDK_PATH =
 
     NSString *subProjectPath = [XCTestResourcePath() stringByAppendingString:@"/ArchiveProj"];
     XCSubProjectDefinition *xcodeprojDefinition =
-            [XCSubProjectDefinition withName:@"ArchiveProj" path:subProjectPath parentProject:project];
+            [XCSubProjectDefinition withName:@"ArchiveProj" path:subProjectPath parentProject:_project];
 
-    [group addSubProject:xcodeprojDefinition toTargets:[project targets]];
-    [project save];
+    [_group addSubProject:xcodeprojDefinition toTargets:[_project targets]];
+    [_project save];
 
 }
 
@@ -333,7 +334,7 @@ static const NSString *SDK_PATH =
     //    XCSubProjectDefinition
     //            * xcodeprojDefinition = [XCSubProjectDefinition withName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:project];
     //
-    //    [group removeSubProject:xcodeprojDefinition];
+    //    [_group removeSubProject:xcodeprojDefinition];
     //    [project save];
 
 }
@@ -344,13 +345,13 @@ static const NSString *SDK_PATH =
     //    XCSubProjectDefinition
     //            * xcodeprojDefinition = [XCSubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj" parentProject:project];
     //
-    //    [group addSubProject:xcodeprojDefinition toTargets:[project targets]];
+    //    [_group addSubProject:xcodeprojDefinition toTargets:[project targets]];
     //    [project save];
     //
     //
     //    xcodeprojDefinition = [XCSubProjectDefinition withName:@"ArchiveProj" path:@"/tmp/ArchiveProj" parentProject:project];
     //
-    //    [group removeSubProject:xcodeprojDefinition fromTargets:[project targets]];
+    //    [_group removeSubProject:xcodeprojDefinition fromTargets:[project targets]];
     //
     //    [project save];
 
@@ -365,8 +366,8 @@ static const NSString *SDK_PATH =
 - (void)test_allows_adding_a_group
 {
 
-    [group addGroupWithPath:@"TestGroup"];
-    [project save];
+    [_group addGroupWithPath:@"TestGroup"];
+    [_project save];
 }
 
 - (void)test_should_allows_adding_a_header
@@ -374,8 +375,8 @@ static const NSString *SDK_PATH =
 
     XCSourceFileDefinition *header = [[XCSourceFileDefinition alloc]
             initWithName:@"SomeHeader.h" text:@"@protocol Foobar<NSObject> @end" type:SourceCodeHeader];
-    [group addSourceFile:header];
-    [project save];
+    [_group addSourceFile:header];
+    [_project save];
 
 }
 
@@ -385,8 +386,8 @@ static const NSString *SDK_PATH =
     NSData *resourceData = NSDataWithXCTestResource(@"goat-funny.png");
     XCSourceFileDefinition *sourceFileDefinition =
             [[XCSourceFileDefinition alloc] initWithName:@"MyImageFile.png" data:resourceData type:ImageResourcePNG];
-    [group addSourceFile:sourceFileDefinition];
-    [project save];
+    [_group addSourceFile:sourceFileDefinition];
+    [_project save];
 
 }
 
@@ -399,7 +400,7 @@ static const NSString *SDK_PATH =
 - (void)test_able_to_provide_a_sorted_list_of_its_children
 {
 
-    NSArray *children = [group members];
+    NSArray *children = [_group members];
     NSLog(@"Group children: %@", children);
     XCTAssertFalse([children count] == 0);
 
@@ -408,7 +409,7 @@ static const NSString *SDK_PATH =
 
 - (void)test_able_to_return_a_member_by_its_name
 {
-    XCGroup *anotherGroup = [project groupWithPathFromRoot:@"Source/Main/Core/Model"];
+    XCGroup *anotherGroup = [_project groupWithPathFromRoot:@"Source/Main/Core/Model"];
     XCSourceFile *member = [anotherGroup memberWithDisplayName:@"expanz_model_AppSite.m"];
     XCTAssertNotNil(member);
 
@@ -418,7 +419,7 @@ static const NSString *SDK_PATH =
 {
 
     NSLog(@"Let's get recursive members!!!!");
-    NSArray *recursiveMembers = [group recursiveMembers];
+    NSArray *recursiveMembers = [_group recursiveMembers];
     NSLog(@"$$$$$$$$$$$$$$$**********$*$*$*$*$*$* recursive members: %@", recursiveMembers);
 
 }
@@ -433,20 +434,33 @@ static const NSString *SDK_PATH =
 - (void)test_allows_deleting_a_group_optionally_removing_also_the_contents
 {
 
-    XCGroup *aGroup = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
+    XCGroup *aGroup = [_project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
 
-    NSArray *groups = [project groups];
+    NSArray *groups = [_project groups];
     NSLog(@"Groups now: %@", groups);
 
     [aGroup removeFromParentDeletingChildren:YES];
-    [project save];
+    [_project save];
 
-    groups = [project groups];
+    groups = [_project groups];
     NSLog(@"Groups now: %@", groups);
 
-    XCGroup *deleted = [project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
+    XCGroup *deleted = [_project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
     XCTAssertNil(deleted);
 
+}
+
+- (void)test_allows_deleting_a_group
+{
+    XCProject *project = [[XCProject alloc] initWithFilePath:XCMasterDetailProjectPath()];
+    for (XCGroup *group in project.groups) {
+        NSLog(@"Group: %@", group.pathRelativeToProjectRoot);
+    }
+//    XCGroup *group = [project groupWithPathFromRoot:@"ProjectToEdit/GroupToDelete"];
+//    XCTAssertNotNil(group);
+//
+//    [group removeFromParentDeletingChildren:YES];
+//    [project save];
 }
 
 
