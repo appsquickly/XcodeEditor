@@ -67,7 +67,8 @@ static const NSString *SDK_PATH =
 
 - (void)test_allows_initialization_with
 {
-    XCGroup *aGroup = [XCGroup groupWithProject:_project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
+    XCGroup *aGroup =
+            [XCGroup groupWithProject:_project key:@"abcd1234" alias:@"Main" path:@"Source/Main" children:nil];
 
     XCTAssertNotNil(aGroup);
     XCTAssertEqualObjects([aGroup key], @"abcd1234");
@@ -456,11 +457,34 @@ static const NSString *SDK_PATH =
     for (XCGroup *group in project.groups) {
         NSLog(@"Group: %@", group.pathRelativeToProjectRoot);
     }
-//    XCGroup *group = [project groupWithPathFromRoot:@"ProjectToEdit/GroupToDelete"];
-//    XCTAssertNotNil(group);
-//
-//    [group removeFromParentDeletingChildren:YES];
-//    [project save];
+    XCGroup *group = [project groupWithPathFromRoot:@"ProjectToEdit/GroupToDelete"];
+
+    XCClassDefinition *classDefinition = [XCClassDefinition classDefinitionWithName:@"ClassCalledJanine"];
+
+    [classDefinition setHeader:NSStringWithXCTestResource(@"ClassCalledJanine.h")];
+    [classDefinition setSource:NSStringWithXCTestResource(@"ClassCalledJanine.m")];
+
+    NSLog(@"Class definition: %@", classDefinition);
+
+    [group addClass:classDefinition];
+    [project save];
+
+    XCSourceFile *fileResource = [project fileWithName:@"ClassCalledJanine.m"];
+    XCTAssertNotNil(fileResource);
+
+    XCTarget *target = [project targetWithName:@"ProjectToEdit"];
+    XCTAssertNotNil(target);
+    [target addMember:fileResource];
+
+    fileResource = [project fileWithName:@"ClassCalledJanine.m"];
+    XCTAssertTrue([fileResource isBuildFile]);
+
+    [project save];
+    NSLog(@"Done adding source file.");
+
+
+    //    [group removeFromParentDeletingChildren:YES];
+    [project save];
 }
 
 

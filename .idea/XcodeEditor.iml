@@ -49,6 +49,8 @@
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/ViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/ViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ClassCalledJanine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ClassCalledJanine.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ESA.Sales.Foobar.xib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ESA_Sales_Foobar_ViewController.header" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ESA_Sales_Foobar_ViewController.impl" isTestSource="false" />

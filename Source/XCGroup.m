@@ -643,7 +643,7 @@
     if (path != nil) {
         reference[@"path"] = path;
     }
-    reference[@"sourceTree"] = @"<_group>";
+    reference[@"sourceTree"] = @"<group>";
     return reference;
 }
 
@@ -652,7 +652,7 @@
 {
     NSMutableDictionary *groupData = [NSMutableDictionary dictionary];
     groupData[@"isa"] = [NSString xce_stringFromMemberType:PBXGroupType];
-    groupData[@"sourceTree"] = @"<_group>";
+    groupData[@"sourceTree"] = @"<group>";
 
     if (_alias != nil) {
         groupData[@"name"] = _alias;

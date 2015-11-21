@@ -65,6 +65,7 @@
 		6B2C23301BFFFAFC009F4BA7 /* XcodeEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2C23341BFFFAFC009F4BA7 /* XcodeEditorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XcodeEditorTests.m; sourceTree = "<group>"; };
 		6B2C23361BFFFAFC009F4BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA798001D353245614B3C335 /* ClassCalledJanine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCalledJanine.h; sourceTree = "<group>"; };
 		BA79800F190C0CA230C477CF /* XCSubProjectDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinition.m; sourceTree = "<group>"; };
 		BA798057DB461DE7AABC582A /* XCFileOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFileOperationQueue.m; sourceTree = "<group>"; };
 		BA7980A38110FB4C766C093E /* XCProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCProject.h; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		BA79854A64EF566049A284BD /* XCKeyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCKeyBuilder.h; sourceTree = "<group>"; };
 		BA7985D7F0551F6C47143FF4 /* XcodeGroupMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeGroupMember.h; sourceTree = "<group>"; };
 		BA79861E7B26FAE7C1CC88C2 /* XCXibDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCXibDefinition.h; sourceTree = "<group>"; };
+		BA79863006603FE6EB1FA6F1 /* ClassCalledJanine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCalledJanine.m; sourceTree = "<group>"; };
 		BA79869C1E09F1947AF90301 /* XcodeSourceFileType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeSourceFileType.h; sourceTree = "<group>"; };
 		BA7986C4CA851EEFC8C6BE18 /* XCTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTarget.m; sourceTree = "<group>"; };
 		BA79870FA7C8A49D306D8A38 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -309,6 +311,8 @@
 				BA798C28A6E87447B6F15C85 /* project.pbxproj */,
 				BA79836D36F9335915620E13 /* HelloWorldLayer.header */,
 				BA79813BA8C71435D517BD58 /* ESA_Sales_Foobar_ViewController.impl */,
+				BA79863006603FE6EB1FA6F1 /* ClassCalledJanine.m */,
+				BA798001D353245614B3C335 /* ClassCalledJanine.h */,
 			);
 			path = Files;
 			sourceTree = "<group>";

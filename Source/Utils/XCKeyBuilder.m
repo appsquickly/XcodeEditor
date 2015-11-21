@@ -18,7 +18,10 @@
 
 @implementation XCKeyBuilder
 
-/* ================================================= Class Methods ================================================== */
+//-------------------------------------------------------------------------------------------
+#pragma mark - Class Methods
+//-------------------------------------------------------------------------------------------
+
 + (XCKeyBuilder*)forItemNamed:(NSString*)name
 {
     NSData* data = [name dataUsingEncoding:NSUTF8StringEncoding];
@@ -35,7 +38,10 @@
     return [[XCKeyBuilder alloc] initHashValueMD5HashWithBytes:&bytes length:sizeof(bytes)];
 }
 
-/* ================================================== Initializers ================================================== */
+//-------------------------------------------------------------------------------------------
+#pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
+
 - (id)initHashValueMD5HashWithBytes:(const void*)bytes length:(NSUInteger)length
 {
     self = [super init];
@@ -46,7 +52,10 @@
     return self;
 }
 
-/* ================================================ Interface Methods =============================================== */
+//-------------------------------------------------------------------------------------------
+#pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
+
 - (NSString*)build
 {
     NSInteger byteLength = sizeof(HashValueMD5Hash);
