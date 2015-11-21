@@ -441,7 +441,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\necho \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr ./test-results\nmkdir -p ./test-results\n\nunzip XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip -d ./test-results\nunzip XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip -d ./test-results\nunzip XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip -d ./test-results\n\nfor f in XcodeEditorTests/Resources/Files/*; do cp $f ./test-results; done";
+			shellScript = "#!/bin/bash\necho \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr ~/xcode-editor-test-results\nmkdir -p ~/xcode-editor-test-results\n\nunzip XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip -d ~/xcode-editor-test-results\n\nfor f in XcodeEditorTests/Resources/Files/*; do cp $f ~/xcode-editor-test-results; done";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -616,6 +616,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.xcode.XcodeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
@@ -628,6 +629,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.xcode.XcodeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = build;
 			};
 			name = Release;
 		};

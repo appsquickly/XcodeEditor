@@ -14,7 +14,7 @@
 NSString *XCTestResourcePath(void)
 {
     NSString *home = NSHomeDirectory();
-    NSString *path = [home stringByAppendingString:@"/xcode-editor-tests"];
+    NSString *path = [home stringByAppendingString:@"/xcode-editor-test-results"];
     return path;
 }
 
