@@ -135,7 +135,7 @@
         NSError* error = nil;
         if (![fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error])
         {
-            [NSException raise:NSInternalInconsistencyException format:error.localizedDescription];
+            [NSException raise:NSInternalInconsistencyException format:@"%@", error.localizedDescription];
         }
     }];
     [_frameworksToCopy removeAllObjects];
