@@ -49,17 +49,17 @@
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/ViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/ViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/ArchiveProj.zip" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/ESA.Sales.Foobar.xib" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/ESA_Sales_Foobar_ViewController.header" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/ESA_Sales_Foobar_ViewController.impl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/expanz-iOS-SDK.zip" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/goat-funny.png" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/HelloBoxy.zip" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/HelloWorldLayer.header" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/HelloWorldLayer.impl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Person.impl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/project.pbxproj" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ESA.Sales.Foobar.xib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ESA_Sales_Foobar_ViewController.header" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ESA_Sales_Foobar_ViewController.impl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/goat-funny.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/HelloWorldLayer.header" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/HelloWorldLayer.impl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/Person.impl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/project.pbxproj" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Utils/XCTestResourceUtils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Utils/XCTestResourceUtils.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCClassDefinitionTests.m" isTestSource="false" />

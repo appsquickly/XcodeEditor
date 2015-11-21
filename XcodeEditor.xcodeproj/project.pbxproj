@@ -68,22 +68,23 @@
 		BA79800F190C0CA230C477CF /* XCSubProjectDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinition.m; sourceTree = "<group>"; };
 		BA798057DB461DE7AABC582A /* XCFileOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFileOperationQueue.m; sourceTree = "<group>"; };
 		BA7980A38110FB4C766C093E /* XCProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCProject.h; sourceTree = "<group>"; };
-		BA79811C9A8AF0CAC8759E8C /* ArchiveProj.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ArchiveProj.zip; sourceTree = "<group>"; };
+		BA79813BA8C71435D517BD58 /* ESA_Sales_Foobar_ViewController.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = ESA_Sales_Foobar_ViewController.impl; sourceTree = "<group>"; };
+		BA7981A806A83685834E5E52 /* ESA_Sales_Foobar_ViewController.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = ESA_Sales_Foobar_ViewController.header; sourceTree = "<group>"; };
 		BA7981ACD8AD35CDF1FB75BA /* XCClassDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCClassDefinitionTests.m; sourceTree = "<group>"; };
-		BA7981E1D36694BBFF0EA97E /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		BA7981FB67FCA63A5B502E81 /* XCProjectBuildConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCProjectBuildConfig.h; sourceTree = "<group>"; };
 		BA798248396413DBACDA3EF9 /* XCTestResourceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestResourceUtils.h; sourceTree = "<group>"; };
 		BA79826A11B1F690B4CC8C3B /* XCGroupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCGroupTests.m; sourceTree = "<group>"; };
+		BA79829584D71018F1F7D952 /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
 		BA7982B4CB04AA7622E40D1E /* XCGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCGroup.m; sourceTree = "<group>"; };
 		BA7982E32C2330604808492B /* XCProject+SubProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCProject+SubProject.h"; sourceTree = "<group>"; };
 		BA79831B4F57075435B54BE8 /* XCTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTarget.h; sourceTree = "<group>"; };
+		BA79834E13F60B6C8BCB705F /* expanz-iOS-SDK.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "expanz-iOS-SDK.zip"; sourceTree = "<group>"; };
 		BA79834E48483260F3196FBC /* XCTargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTargetTests.m; sourceTree = "<group>"; };
 		BA79836A6D8D8BA9C331DA91 /* XCSubProjectDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCSubProjectDefinition.h; sourceTree = "<group>"; };
-		BA7983A22E61A2605CD41CDA /* HelloWorldLayer.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = HelloWorldLayer.impl; sourceTree = "<group>"; };
+		BA79836D36F9335915620E13 /* HelloWorldLayer.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = HelloWorldLayer.header; sourceTree = "<group>"; };
 		BA798431780144B1B4BCC102 /* XCProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProjectTests.m; sourceTree = "<group>"; };
 		BA798484D65E979F15E05E7B /* XCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFrameworkDefinition.h; sourceTree = "<group>"; };
 		BA798496C21AB790A8F567DD /* XCClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCClassDefinition.h; sourceTree = "<group>"; };
-		BA7984BCD87A7425CACB33C8 /* expanz-iOS-SDK.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "expanz-iOS-SDK.zip"; sourceTree = "<group>"; };
 		BA7984CA40228007C9545EFC /* XCProjectBuildConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProjectBuildConfig.m; sourceTree = "<group>"; };
 		BA7984CF66CD14DFBE7F9DF9 /* XcodeEditor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XcodeEditor-Prefix.pch"; sourceTree = "<group>"; };
 		BA798515F450D9A157000935 /* XCGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCGroup.h; sourceTree = "<group>"; };
@@ -93,36 +94,35 @@
 		BA79869C1E09F1947AF90301 /* XcodeSourceFileType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeSourceFileType.h; sourceTree = "<group>"; };
 		BA7986C4CA851EEFC8C6BE18 /* XCTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTarget.m; sourceTree = "<group>"; };
 		BA79870FA7C8A49D306D8A38 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		BA798745E09DFBB16CD5B2D0 /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		BA798747F98B181CB5AAE2A3 /* XCAbstractDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCAbstractDefinition.h; sourceTree = "<group>"; };
 		BA79874CB35DF68A0B2BC32C /* XcodeFileReferenceTypeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeFileReferenceTypeTests.m; sourceTree = "<group>"; };
 		BA79879C9147B130C67BC9F1 /* XCProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProject.m; sourceTree = "<group>"; };
 		BA7987A76B2227496F0ADE86 /* XCSourceFileDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSourceFileDefinition.m; sourceTree = "<group>"; };
+		BA7987BC4F63D87C1C28A95F /* goat-funny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goat-funny.png"; sourceTree = "<group>"; };
 		BA7987DD75DAD73E14AA98B3 /* XCAbstractDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCAbstractDefinition.m; sourceTree = "<group>"; };
 		BA79881C0F77E0671B7C8DAE /* XCProject+SubProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCProject+SubProject.m"; sourceTree = "<group>"; };
-		BA7988331C189601CBC56DFB /* ESA.Sales.Foobar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESA.Sales.Foobar.xib; sourceTree = "<group>"; };
 		BA798900E78F2B2876405FB0 /* XCTestResourceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTestResourceUtils.m; sourceTree = "<group>"; };
-		BA798986275E0EB46CFB1393 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
 		BA798990DE54F7F2BB74D35B /* XCKeyBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCKeyBuilderTests.m; sourceTree = "<group>"; };
 		BA79899D0B430E416DDF66E9 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		BA7989AAF619D6197321B906 /* HelloBoxy.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = HelloBoxy.zip; sourceTree = "<group>"; };
 		BA7989D23F5B9AAB6B37B465 /* XcodeEditor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "XcodeEditor-Info.plist"; sourceTree = "<group>"; };
-		BA798A3828A47213CF666E2E /* goat-funny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goat-funny.png"; sourceTree = "<group>"; };
-		BA798AC511BD4842FDF648F2 /* ESA_Sales_Foobar_ViewController.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = ESA_Sales_Foobar_ViewController.impl; sourceTree = "<group>"; };
-		BA798B29B76DC9E49509CD8C /* ESA_Sales_Foobar_ViewController.header */ = {isa = PBXFileReference; lastKnownFileType = file.header; path = ESA_Sales_Foobar_ViewController.header; sourceTree = "<group>"; };
 		BA798B30E06C44A368664A29 /* XCFileOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFileOperationQueue.h; sourceTree = "<group>"; };
 		BA798BB5DD9538EAC061E3F4 /* XcodeMemberType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeMemberType.h; sourceTree = "<group>"; };
 		BA798BCFC704BB77F73DF932 /* XCSourceFileDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCSourceFileDefinition.h; sourceTree = "<group>"; };
 		BA798BEC1AEF2010577CC245 /* XcodeMemberType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeMemberType.m; sourceTree = "<group>"; };
-		BA798C0233CC1E5E977B2F30 /* Person.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = Person.impl; sourceTree = "<group>"; };
 		BA798C03F69990C19832D370 /* XcodeSourceFileType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeSourceFileType.m; sourceTree = "<group>"; };
 		BA798C24C3CED939378D72C0 /* XCSubProjectDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSubProjectDefinitionTests.m; sourceTree = "<group>"; };
+		BA798C28A6E87447B6F15C85 /* project.pbxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.pbxproject; path = project.pbxproj; sourceTree = "<group>"; };
 		BA798C791179B0AE74F89AAE /* XcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		BA798CE4ABEBF5C585D6DBCE /* XCXibDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCXibDefinition.m; sourceTree = "<group>"; };
 		BA798D0C7ADFEF398BCF125C /* XCSourceFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSourceFile.m; sourceTree = "<group>"; };
 		BA798D12C9E8E27158880641 /* XCKeyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCKeyBuilder.m; sourceTree = "<group>"; };
 		BA798D8E2D709A3AFA509EA7 /* XCClassDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCClassDefinition.m; sourceTree = "<group>"; };
 		BA798E01902917C3C07E0725 /* XCFrameworkDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCFrameworkDefinition.m; sourceTree = "<group>"; };
-		BA798E456B707B4221421E73 /* project.pbxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.pbxproject; path = project.pbxproj; sourceTree = "<group>"; };
 		BA798F5FE551647110DE9966 /* XCSourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCSourceFile.h; sourceTree = "<group>"; };
+		BA798F66F2BDBF52322C2515 /* Person.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = Person.impl; sourceTree = "<group>"; };
+		BA798F76D048CD30829B68E9 /* ArchiveProj.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ArchiveProj.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,20 +263,21 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		BA7983F8CAB1B6580E52C1EB /* TestProjects */ = {
+			isa = PBXGroup;
+			children = (
+				BA79834E13F60B6C8BCB705F /* expanz-iOS-SDK.zip */,
+				BA798F76D048CD30829B68E9 /* ArchiveProj.zip */,
+				BA7989AAF619D6197321B906 /* HelloBoxy.zip */,
+			);
+			path = TestProjects;
+			sourceTree = "<group>";
+		};
 		BA798500A2E6D7D79944A46E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BA798C0233CC1E5E977B2F30 /* Person.impl */,
-				BA798986275E0EB46CFB1393 /* HelloBoxy.zip */,
-				BA798A3828A47213CF666E2E /* goat-funny.png */,
-				BA79811C9A8AF0CAC8759E8C /* ArchiveProj.zip */,
-				BA798E456B707B4221421E73 /* project.pbxproj */,
-				BA7984BCD87A7425CACB33C8 /* expanz-iOS-SDK.zip */,
-				BA7988331C189601CBC56DFB /* ESA.Sales.Foobar.xib */,
-				BA7983A22E61A2605CD41CDA /* HelloWorldLayer.impl */,
-				BA7981E1D36694BBFF0EA97E /* HelloWorldLayer.header */,
-				BA798AC511BD4842FDF648F2 /* ESA_Sales_Foobar_ViewController.impl */,
-				BA798B29B76DC9E49509CD8C /* ESA_Sales_Foobar_ViewController.header */,
+				BA7983F8CAB1B6580E52C1EB /* TestProjects */,
+				BA798931C3C11305C639205E /* Files */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -295,6 +296,21 @@
 				BA79874ACAC6C38BB798EC16 /* InfoPlist.strings */,
 			);
 			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		BA798931C3C11305C639205E /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA798745E09DFBB16CD5B2D0 /* ESA.Sales.Foobar.xib */,
+				BA798F66F2BDBF52322C2515 /* Person.impl */,
+				BA7987BC4F63D87C1C28A95F /* goat-funny.png */,
+				BA7981A806A83685834E5E52 /* ESA_Sales_Foobar_ViewController.header */,
+				BA79829584D71018F1F7D952 /* HelloWorldLayer.impl */,
+				BA798C28A6E87447B6F15C85 /* project.pbxproj */,
+				BA79836D36F9335915620E13 /* HelloWorldLayer.header */,
+				BA79813BA8C71435D517BD58 /* ESA_Sales_Foobar_ViewController.impl */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		BA798B214EF7FCBBF5957388 /* Utils */ = {
@@ -425,7 +441,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nmkdir -p ~/xcode-editor-tests\nrm -fr ~/xcode-editor-tests/*\n                            \n                            unzip ${SRCROOT}/XcodeEditorTests/Resources/expanz-iOS-SDK.zip -d ~/xcode-editor-tests\n                            unzip ${SRCROOT}/XcodeEditorTests/Resources/ArchiveProj.zip -d ~/xcode-editor-tests\n                            unzip ${SRCROOT}/XcodeEditorTests/Resources/HelloBoxy.zip -d ~/xcode-editor-tests\n                            cp ${SRCROOT}/XcodeEditorTests/Resources/* ~/xcode-editor-tests";
+			shellScript = "#!/bin/bash\necho \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr ./test-results\nmkdir -p ./test-results\n\nunzip ${SRCROOT}/XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip -d ./test-results\nunzip ${SRCROOT}/XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip -d ./test-results\nunzip ${SRCROOT}/XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip -d ./test-results\n\nfor f in ${SRCROOT}/XcodeEditorTests/Resources/Files/*; do cp $f ./test-results; done";
 		};
 /* End PBXShellScriptBuildPhase section */
 
