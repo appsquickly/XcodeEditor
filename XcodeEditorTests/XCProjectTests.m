@@ -18,6 +18,7 @@
 #import "XCSourceFile.h"
 #import "XCTarget.h"
 #import "XCGroup.h"
+#import "XCTestResourceUtils.h"
 
 @interface XCProjectTests : XCTestCase
 
@@ -31,7 +32,7 @@
 /* ====================================================================================================================================== */
 - (void)setUp
 {
-    project = [[XCProject alloc] initWithFilePath:@"/tmp"];
+    project = [[XCProject alloc] initWithFilePath:XCTestResourcePath()];
 }
 
 /* ====================================================================================================================================== */

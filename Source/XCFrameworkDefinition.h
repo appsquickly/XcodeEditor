@@ -28,7 +28,8 @@
 
 - (id)initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;
 
-- (NSString*)name;
+- (NSString*)fileName;
+
 
 
 @end

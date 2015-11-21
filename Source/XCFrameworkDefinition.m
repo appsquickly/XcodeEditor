@@ -12,42 +12,47 @@
 
 
 #import "XCFrameworkDefinition.h"
+#import "XCProject.h"
 
 @implementation XCFrameworkDefinition
 
 @synthesize filePath = _filePath;
 @synthesize copyToDestination = _copyToDestination;
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
+//-------------------------------------------------------------------------------------------
 
-+ (XCFrameworkDefinition*)frameworkDefinitionWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination
++ (XCFrameworkDefinition *)frameworkDefinitionWithFilePath:(NSString *)filePath
+                                         copyToDestination:(BOOL)copyToDestination
 {
 
     return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
 
-- (id)initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination
+- (id)initWithFilePath:(NSString *)filePath copyToDestination:(BOOL)copyToDestination
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _filePath = [filePath copy];
         _copyToDestination = copyToDestination;
     }
     return self;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
 
-- (NSString*)name
+- (NSString *)fileName
 {
-    return [_filePath lastPathComponent];
+    return [[_filePath lastPathComponent] stringByReplacingOccurrencesOfString:@"/" withString:@""];
 }
+
 
 
 @end

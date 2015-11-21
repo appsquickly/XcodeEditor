@@ -1,3 +1,0 @@
-SOURCES      = Source/Main/**/*.m
-EXPORT       = Source/Main/**/*.h
-FRAMEWORKS   = Cocoa

@@ -13,19 +13,20 @@
 #import <XCTest/XCTest.h>
 #import "XCProject.h"
 #import "XCSubProjectDefinition.h"
+#import "XCTestResourceUtils.h"
 
 @interface XCSubProjectDefinitionTests : XCTestCase
 @end
 
 @implementation XCSubProjectDefinitionTests
 {
-    XCProject* _project;
+    XCProject *_project;
 }
 
 
 - (void)setUp
 {
-    _project = [[XCProject alloc] initWithFilePath:@"/tmp/expanz-iOS-SDK/expanz-iOS-SDK.xcodeproj"];
+    _project = [[XCProject alloc] initWithFilePath:XCSample1XcodeProjectPath()];
 }
 
 #pragma mark - object creation
@@ -34,7 +35,8 @@
 {
 
     XCSubProjectDefinition
-        * subProjectDefinition = [[XCSubProjectDefinition alloc] initWithName:@"HelloBoxy" path:@"/tmp/HelloBoxy" parentProject:_project];
+            *subProjectDefinition = [[XCSubProjectDefinition alloc]
+            initWithName:@"HelloBoxy" path:XCSample2FolderPath() parentProject:_project];
 
     XCTAssertNotNil(subProjectDefinition);
     XCTAssertEqualObjects(subProjectDefinition.projectFileName, @"HelloBoxy.xcodeproj");

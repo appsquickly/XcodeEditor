@@ -125,6 +125,7 @@
     [_frameworksToCopy enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationUrl, NSURL* frameworkPath, BOOL* stop)
     {
 
+        NSLog(@"$$$$$$$$$$$$$$ destination url: %@", destinationUrl);
         NSFileManager* fileManager = [NSFileManager defaultManager];
 
         if ([fileManager fileExistsAtPath:[destinationUrl path]])
@@ -134,8 +135,7 @@
         NSError* error = nil;
         if (![fileManager copyItemAtURL:frameworkPath toURL:destinationUrl error:&error])
         {
-            [NSException raise:NSInternalInconsistencyException format:@"Error writing file at filePath: %@",
-                                                                       [frameworkPath absoluteString]];
+            [NSException raise:NSInternalInconsistencyException format:error.localizedDescription];
         }
     }];
     [_frameworksToCopy removeAllObjects];

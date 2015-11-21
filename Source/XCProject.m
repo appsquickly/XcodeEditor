@@ -148,6 +148,12 @@ NSString* const XCProjectNotFoundException;
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
+- (NSString *)containingFolderPath
+{
+    return [_filePath stringByDeletingLastPathComponent];
+}
+
+
 // need this value to construct relative path in XcodeprojDefinition
 - (NSString*)filePath
 {

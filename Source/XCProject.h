@@ -91,6 +91,8 @@
 
 - (NSArray<XCSourceFile*>*)imagePNGFiles;
 
+- (NSString*)containingFolderPath;
+
 - (NSString*)filePath;
 
 
