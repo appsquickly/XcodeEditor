@@ -40,14 +40,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Source/XCTarget.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/XCXibDefinition.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/XCXibDefinition.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/AppDelegate.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/AppDelegate.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/Assets.xcassets" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/Base.lproj/Main.storyboard" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/main.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/ViewController.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditor/ViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ClassCalledJanine.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/Files/ClassCalledJanine.m" isTestSource="false" />
@@ -62,12 +55,45 @@
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit.zip" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/.idea/.name" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/.idea/encodings.xml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/.idea/misc.xml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/.idea/modules.xml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/.idea/ProjectToEdit.iml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/.idea/workspace.xml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/.idea/xcode.xml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit.xcodeproj/project.pbxproj" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit.xcodeproj/project.xcworkspace/contents.xcworkspacedata" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit.xcodeproj/project.xcworkspace/xcuserdata/jblues.xcuserdatad/UserInterfaceState.xcuserstate" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit.xcodeproj/xcuserdata/jblues.xcuserdatad/xcschemes/ProjectToEdit.xcscheme" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit.xcodeproj/xcuserdata/jblues.xcuserdatad/xcschemes/xcschememanagement.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/AClassCalledLalen.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/AClassCalledLalen.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/AnotherGroupWithChildren/AClassCalledMichelle.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/AnotherGroupWithChildren/AClassCalledMichelle.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/AppDelegate.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/AppDelegate.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/Assets.xcassets/AppIcon.appiconset/Contents.json" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/Base.lproj/LaunchScreen.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/Base.lproj/Main.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/DetailViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/DetailViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/GroupToDelete/ClassCalledGavin.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/GroupToDelete/ClassCalledGavin.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/GroupToDelete/ClassCalledMichael.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/GroupToDelete/ClassCalledMichael.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/main.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/MasterViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEdit/MasterViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEditTests/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Resources/TestProjects/ProjectToEdit/ProjectToEditTests/ProjectToEditTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Utils/XCTestResourceUtils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/Utils/XCTestResourceUtils.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCClassDefinitionTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCGroupTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCKeyBuilderTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XcodeEditorTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XcodeFileReferenceTypeTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCProjectTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/XcodeEditorTests/XCSubProjectDefinitionTests.m" isTestSource="false" />
