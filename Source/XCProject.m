@@ -17,7 +17,7 @@
 #import "XCFileOperationQueue.h"
 #import "XCProjectBuildConfig.h"
 
-NSString* const XCProjectNotFoundException;
+NSString *const XCProjectNotFoundException;
 
 @implementation XCProject
 
@@ -28,7 +28,7 @@ NSString* const XCProjectNotFoundException;
 #pragma mark - Class Methods
 //-------------------------------------------------------------------------------------------
 
-+ (XCProject*)projectWithFilePath:(NSString*)filePath
++ (XCProject *)projectWithFilePath:(NSString *)filePath
 {
     return [[XCProject alloc] initWithFilePath:filePath];
 }
@@ -38,19 +38,19 @@ NSString* const XCProjectNotFoundException;
 #pragma mark - Initialization & Destruction
 //-------------------------------------------------------------------------------------------
 
-- (id)initWithFilePath:(NSString*)filePath
+- (id)initWithFilePath:(NSString *)filePath
 {
-    if ((self = [super init]))
-    {
+    if ((self = [super init])) {
         _filePath = [filePath copy];
-        _dataStore = [[NSMutableDictionary alloc] initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
+        _dataStore = [[NSMutableDictionary alloc]
+                initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
 
-        if (!_dataStore)
-        {
+        if (!_dataStore) {
             [NSException raise:XCProjectNotFoundException format:@"Project file not found at file path %@", _filePath];
         }
 
-        _fileOperationQueue = [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
+        _fileOperationQueue =
+                [[XCFileOperationQueue alloc] initWithBaseDirectory:[_filePath stringByDeletingLastPathComponent]];
 
     }
     return self;
@@ -62,59 +62,47 @@ NSString* const XCProjectNotFoundException;
 
 #pragma mark Files
 
-- (NSArray*)files
+- (NSArray *)files
 {
-    NSMutableArray* results = [NSMutableArray array];
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
-    {
-        if ([[obj valueForKey:@"isa"] xce_hasFileReferenceType])
-        {
-            XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"] ?: [obj valueForKey:@"explicitFileType"]);
-            NSString* path = [obj valueForKey:@"path"];
-            NSString* sourceTree = [obj valueForKey:@"sourceTree"];
-            XCSourceFile* sourceFile = [XCSourceFile sourceFileWithProject:self
-                                                                       key:key
-                                                                      type:fileType
-                                                                      name:path
-                                                                sourceTree:(sourceTree ?: @"<_group>")
-                                                                      path:nil];
+    NSMutableArray *results = [NSMutableArray array];
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
+        if ([[obj valueForKey:@"isa"] xce_hasFileReferenceType]) {
+            XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation(
+                    [obj valueForKey:@"lastKnownFileType"] ?: [obj valueForKey:@"explicitFileType"]);
+            NSString *path = [obj valueForKey:@"path"];
+            NSString *sourceTree = [obj valueForKey:@"sourceTree"];
+            XCSourceFile *sourceFile = [XCSourceFile sourceFileWithProject:self key:key type:fileType name:path
+                                                                sourceTree:(sourceTree ?: @"<_group>") path:nil];
             [results addObject:sourceFile];
         }
     }];
     return results;
 }
 
-- (XCSourceFile*)fileWithKey:(NSString*)key
+- (XCSourceFile *)fileWithKey:(NSString *)key
 {
-    NSDictionary* obj = [[self objects] valueForKey:key];
-    if (obj && [[obj valueForKey:@"isa"] xce_hasFileReferenceOrReferenceProxyType])
-    {
-        XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation([obj valueForKey:@"lastKnownFileType"]?: [obj valueForKey:@"explicitFileType"]);
+    NSDictionary *obj = [[self objects] valueForKey:key];
+    if (obj && [[obj valueForKey:@"isa"] xce_hasFileReferenceOrReferenceProxyType]) {
+        XcodeSourceFileType fileType = XCSourceFileTypeFromStringRepresentation(
+                [obj valueForKey:@"lastKnownFileType"] ?: [obj valueForKey:@"explicitFileType"]);
 
-        NSString* name = [obj valueForKey:@"name"];
-        NSString* sourceTree = [obj valueForKey:@"sourceTree"];
-        NSString* path = [obj valueForKey:@"path"];
+        NSString *name = [obj valueForKey:@"name"];
+        NSString *sourceTree = [obj valueForKey:@"sourceTree"];
+        NSString *path = [obj valueForKey:@"path"];
 
-        if (name == nil)
-        {
+        if (name == nil) {
             name = path;
         }
-        return [XCSourceFile sourceFileWithProject:self
-                                               key:key
-                                              type:fileType
-                                              name:name
-                                        sourceTree:(sourceTree ?: @"<_group>")
-                                              path:path];
+        return [XCSourceFile sourceFileWithProject:self key:key type:fileType name:name
+                                        sourceTree:(sourceTree ?: @"<_group>") path:path];
     }
     return nil;
 }
 
-- (XCSourceFile*)fileWithName:(NSString*)name
+- (XCSourceFile *)fileWithName:(NSString *)name
 {
-    for (XCSourceFile* projectFile in [self files])
-    {
-        if ([[projectFile name] isEqualToString:name])
-        {
+    for (XCSourceFile *projectFile in [self files]) {
+        if ([[projectFile name] isEqualToString:name]) {
             return projectFile;
         }
     }
@@ -122,35 +110,35 @@ NSString* const XCProjectNotFoundException;
 }
 
 
-- (NSArray*)headerFiles
+- (NSArray *)headerFiles
 {
     return [self projectFilesOfType:SourceCodeHeader];
 }
 
-- (NSArray*)objectiveCFiles
+- (NSArray *)objectiveCFiles
 {
     return [self projectFilesOfType:SourceCodeObjC];
 }
 
-- (NSArray*)objectiveCPlusPlusFiles
+- (NSArray *)objectiveCPlusPlusFiles
 {
     return [self projectFilesOfType:SourceCodeObjCPlusPlus];
 }
 
 
-- (NSArray*)xibFiles
+- (NSArray *)xibFiles
 {
     return [self projectFilesOfType:XibFile];
 }
 
-- (NSArray*)imagePNGFiles
+- (NSArray *)imagePNGFiles
 {
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
 
 // need this value to construct relative path in XcodeprojDefinition
-- (NSString*)filePath
+- (NSString *)filePath
 {
     return _filePath;
 }
@@ -159,16 +147,13 @@ NSString* const XCProjectNotFoundException;
 #pragma mark Groups
 //-------------------------------------------------------------------------------------------
 
-- (NSArray*)groups
+- (NSArray *)groups
 {
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
-    {
-        if ([[obj valueForKey:@"isa"] xce_hasGroupType])
-        {
-            XCGroup* group = _groups[key];
-            if (group == nil)
-            {
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
+        if ([[obj valueForKey:@"isa"] xce_hasGroupType]) {
+            XCGroup *group = _groups[key];
+            if (group == nil) {
                 group = [self createGroupWithDictionary:obj forKey:key];
                 _groups[key] = group;
             }
@@ -179,31 +164,26 @@ NSString* const XCProjectNotFoundException;
 }
 
 //TODO: Optimize this implementation.
-- (XCGroup*)rootGroup
+- (XCGroup *)rootGroup
 {
-    for (XCGroup* group in [self groups])
-    {
-        if ([group isRootGroup])
-        {
+    for (XCGroup *group in [self groups]) {
+        if ([group isRootGroup]) {
             return group;
         }
     }
     return nil;
 }
 
-- (NSArray*)rootGroups
+- (NSArray *)rootGroups
 {
-    XCGroup* group = [self rootGroup];
-    if (group)
-    {
+    XCGroup *group = [self rootGroup];
+    if (group) {
         return [NSArray arrayWithObject:group];
     }
 
-    NSMutableArray* results = [NSMutableArray array];
-    for (XCGroup* group in [self groups])
-    {
-        if ([group parentGroup] == nil)
-        {
+    NSMutableArray *results = [NSMutableArray array];
+    for (XCGroup *group in [self groups]) {
+        if ([group parentGroup] == nil) {
             [results addObject:group];
         }
     }
@@ -211,18 +191,16 @@ NSString* const XCProjectNotFoundException;
     return [results copy];
 }
 
-- (XCGroup*)groupWithKey:(NSString*)key
+- (XCGroup *)groupWithKey:(NSString *)key
 {
-    XCGroup* group = [_groups objectForKey:key];
-    if (group)
-    {
+    XCGroup *group = [_groups objectForKey:key];
+    if (group) {
         return group;
     }
 
-    NSDictionary* obj = [[self objects] objectForKey:key];
-    if (obj && [[obj valueForKey:@"isa"] xce_hasGroupType])
-    {
-        XCGroup* group = [self createGroupWithDictionary:obj forKey:key];
+    NSDictionary *obj = [[self objects] objectForKey:key];
+    if (obj && [[obj valueForKey:@"isa"] xce_hasGroupType]) {
+        XCGroup *group = [self createGroupWithDictionary:obj forKey:key];
         _groups[key] = group;
 
         return group;
@@ -241,26 +219,21 @@ NSString* const XCProjectNotFoundException;
 }
 
 
-- (XCGroup*)groupForGroupMemberWithKey:(NSString*)key
+- (XCGroup *)groupForGroupMemberWithKey:(NSString *)key
 {
-    for (XCGroup* group in [self groups])
-    {
-        if ([group memberWithKey:key])
-        {
+    for (XCGroup *group in [self groups]) {
+        if ([group memberWithKey:key]) {
             return group;
         }
     }
     return nil;
 }
 
-- (XCGroup*)groupWithSourceFile:(XCSourceFile*)sourceFile
+- (XCGroup *)groupWithSourceFile:(XCSourceFile *)sourceFile
 {
-    for (XCGroup* group in [self groups])
-    {
-        for (id <XcodeGroupMember> member in [group members])
-        {
-            if ([member isKindOfClass:[XCSourceFile class]] && [[sourceFile key] isEqualToString:[member key]])
-            {
+    for (XCGroup *group in [self groups]) {
+        for (id <XcodeGroupMember> member in [group members]) {
+            if ([member isKindOfClass:[XCSourceFile class]] && [[sourceFile key] isEqualToString:[member key]]) {
                 return group;
             }
         }
@@ -270,42 +243,31 @@ NSString* const XCProjectNotFoundException;
 
 - (void)pruneEmptyGroups
 {
-    for (XCGroup *group in [self groups]) {
-        if ([group isEmpty]) {
-            [group removeFromParentGroup];
-        }
-    }
+    [self doPruneEmptyGroups];
 }
 
 
 //TODO: This could fail if the path attribute on a given group is more than one directory. Start with candidates and
 //TODO: search backwards.
-- (XCGroup*)groupWithPathFromRoot:(NSString*)path
+- (XCGroup *)groupWithPathFromRoot:(NSString *)path
 {
-    NSArray* pathItems = [path pathComponents];
-    XCGroup* currentGroup = [self rootGroup];
-    for (NSString* pathItem in pathItems)
-    {
+    NSArray *pathItems = [path pathComponents];
+    XCGroup *currentGroup = [self rootGroup];
+    for (NSString *pathItem in pathItems) {
         id <XcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
-        if ([group isKindOfClass:[XCGroup class]])
-        {
+        if ([group isKindOfClass:[XCGroup class]]) {
             currentGroup = group;
-        }
-        else
-        {
+        } else {
             return nil;
         }
     }
     return currentGroup;
 }
 
-- (XCGroup*)createGroupWithDictionary:(NSDictionary*)dictionary forKey:(NSString*)key
+- (XCGroup *)createGroupWithDictionary:(NSDictionary *)dictionary forKey:(NSString *)key
 {
-    return [XCGroup groupWithProject:self
-                                 key:key
-                               alias:[dictionary valueForKey:@"name"]
-                                path:[dictionary valueForKey:@"path"]
-                            children:[dictionary valueForKey:@"children"]];
+    return [XCGroup groupWithProject:self key:key alias:[dictionary valueForKey:@"name"]
+                                path:[dictionary valueForKey:@"path"] children:[dictionary valueForKey:@"children"]];
 }
 
 
@@ -313,18 +275,13 @@ NSString* const XCProjectNotFoundException;
 #pragma mark targets
 //-------------------------------------------------------------------------------------------
 
-- (NSArray*)targets
+- (NSArray *)targets
 {
-    if (_targets == nil)
-    {
+    if (_targets == nil) {
         _targets = [[NSMutableArray alloc] init];
-        [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
-        {
-            if ([[obj valueForKey:@"isa"] xce_hasNativeTargetType])
-            {
-                XCTarget* target = [XCTarget targetWithProject:self
-                                                           key:key
-                                                          name:[obj valueForKey:@"name"]
+        [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
+            if ([[obj valueForKey:@"isa"] xce_hasNativeTargetType]) {
+                XCTarget *target = [XCTarget targetWithProject:self key:key name:[obj valueForKey:@"name"]
                                                    productName:[obj valueForKey:@"productName"]
                                               productReference:[obj valueForKey:@"productReference"]];
                 [_targets addObject:target];
@@ -334,12 +291,10 @@ NSString* const XCProjectNotFoundException;
     return _targets;
 }
 
-- (XCTarget*)targetWithName:(NSString*)name
+- (XCTarget *)targetWithName:(NSString *)name
 {
-    for (XCTarget* target in [self targets])
-    {
-        if ([[target name] isEqualToString:name])
-        {
+    for (XCTarget *target in [self targets]) {
+        if ([[target name] isEqualToString:name]) {
             return target;
         }
     }
@@ -354,12 +309,12 @@ NSString* const XCProjectNotFoundException;
     NSLog(@"Saved project");
 }
 
-- (NSMutableDictionary*)objects
+- (NSMutableDictionary *)objects
 {
     return [_dataStore objectForKey:@"objects"];
 }
 
-- (NSMutableDictionary*)dataStore
+- (NSMutableDictionary *)dataStore
 {
     return _dataStore;
 }
@@ -372,23 +327,22 @@ NSString* const XCProjectNotFoundException;
 }
 
 
-- (NSDictionary*)configurations
+- (NSDictionary *)configurations
 {
-    if (_configurations == nil)
-    {
-        NSString* buildConfigurationRootSectionKey =
-            [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
-        NSDictionary* buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
+    if (_configurations == nil) {
+        NSString *buildConfigurationRootSectionKey =
+                [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
+        NSDictionary *buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
         _configurations =
-            [[XCProjectBuildConfig buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
-                                                      inProject:self] mutableCopy];
+                [[XCProjectBuildConfig buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+                                                          inProject:self] mutableCopy];
         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
     }
 
     return [_configurations copy];
 }
 
-- (XCProjectBuildConfig*)configurationWithName:(NSString*)name
+- (XCProjectBuildConfig *)configurationWithName:(NSString *)name
 {
     return [[self configurations] objectForKey:name];
 }
@@ -402,27 +356,40 @@ NSString* const XCProjectNotFoundException;
 #pragma mark Private
 //-------------------------------------------------------------------------------------------
 
-- (NSString*)rootObjectKey
+- (NSString *)rootObjectKey
 {
-    if (_rootObjectKey == nil)
-    {
+    if (_rootObjectKey == nil) {
         _rootObjectKey = [[_dataStore objectForKey:@"rootObject"] copy];;
     }
 
     return _rootObjectKey;
 }
 
-- (NSArray*)projectFilesOfType:(XcodeSourceFileType)projectFileType
+- (NSArray *)projectFilesOfType:(XcodeSourceFileType)projectFileType
 {
-    NSMutableArray* results = [NSMutableArray array];
-    for (XCSourceFile* file in [self files])
-    {
-        if ([file type] == projectFileType)
-        {
+    NSMutableArray *results = [NSMutableArray array];
+    for (XCSourceFile *file in [self files]) {
+        if ([file type] == projectFileType) {
             [results addObject:file];
         }
     }
     return results;
+}
+
+- (BOOL)doPruneEmptyGroups
+{
+    BOOL hadEmptyGroups = NO;
+    for (XCGroup *group in [self groups]) {
+        if ([group isEmpty]) {
+            hadEmptyGroups = YES;
+            [group removeFromParentGroup];
+        }
+    }
+    //Prune any groups made empty as a result of pruning a child group. 
+    if (hadEmptyGroups) {
+        [self doPruneEmptyGroups];
+    }
+    return hadEmptyGroups;
 }
 
 @end

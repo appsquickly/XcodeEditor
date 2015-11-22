@@ -432,7 +432,7 @@ static const NSString *SDK_PATH =
 #pragma mark - Deleting
 //-------------------------------------------------------------------------------------------
 
-- (void)test_allows_deleting_a_group_optionally_removing_also_the_contents
+- (void)test_allows_deleting_a_filesystem_group_optionally_deleting_also_the_contents
 {
 
     XCGroup *aGroup = [_project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
