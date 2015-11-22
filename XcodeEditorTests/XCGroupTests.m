@@ -451,7 +451,10 @@ static const NSString *SDK_PATH =
 
 }
 
-- (void)test_allows_deleting_a_group
+/**
+ * It should not leave stale build phase files, etc.
+ */
+- (void)test_allows_deleting_a_group_after_adding_contents
 {
     XCProject *project = [[XCProject alloc] initWithFilePath:XCMasterDetailProjectPath()];
     for (XCGroup *group in project.groups) {
@@ -482,8 +485,7 @@ static const NSString *SDK_PATH =
     [project save];
     NSLog(@"Done adding source file.");
 
-
-    //    [group removeFromParentDeletingChildren:YES];
+    [group removeFromParentDeletingChildren:YES];
     [project save];
 }
 

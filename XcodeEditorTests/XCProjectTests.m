@@ -26,27 +26,26 @@
 
 @implementation XCProjectTests
 {
-    __block XCProject* project;
+    __block XCProject *_project;
 }
 
-/* ====================================================================================================================================== */
 - (void)setUp
 {
-    project = [[XCProject alloc] initWithFilePath:XCTestResourcePath()];
+    _project = [[XCProject alloc] initWithFilePath:XCTestResourcePath()];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Listing files
+//-------------------------------------------------------------------------------------------
 
 - (void)test_able_to_list_all_the_header_files_in_a_project
 {
 
-    NSArray* headerFiles = [project headerFiles];
+    NSArray *headerFiles = [_project headerFiles];
     NSLog(@"Headers: %@", headerFiles);
 
     XCTAssertTrue([headerFiles count] == 18);
-    for (XCSourceFile* file in headerFiles)
-    {
+    for (XCSourceFile *file in headerFiles) {
         NSLog(@"File: %@", [file description]);
     }
 
@@ -55,7 +54,7 @@
 - (void)test_able_to_list_all_the_obj_c_files_in_a_project
 {
 
-    NSArray* objcFiles = [project objectiveCFiles];
+    NSArray *objcFiles = [_project objectiveCFiles];
     NSLog(@"Implementation Files: %@", objcFiles);
 
     XCTAssertTrue([objcFiles count] == 21);
@@ -63,7 +62,7 @@
 
 - (void)test_able_to_list_all_the_obj_cPlusPlus_files_in_a_project
 {
-    NSArray* objcPlusPlusFiles = [project objectiveCPlusPlusFiles];
+    NSArray *objcPlusPlusFiles = [_project objectiveCPlusPlusFiles];
     NSLog(@"Implementation Files: %@", objcPlusPlusFiles);
 
     //TODO: Put an obj-c++ file in the test project.
@@ -73,24 +72,23 @@
 - (void)test_be_able_to_list_all_the_xib_files_in_a_project
 {
 
-    NSArray* xibFiles = [project xibFiles];
+    NSArray *xibFiles = [_project xibFiles];
     NSLog(@"Xib Files: %@", xibFiles);
     XCTAssertTrue([xibFiles count] == 2);
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Groups
+//-------------------------------------------------------------------------------------------
 
 - (void)test_able_to_list_all_of_the_groups_in_a_project
 {
-    NSArray* groups = [project groups];
+    NSArray *groups = [_project groups];
 
-    for (XCGroup* group in groups)
-    {
+    for (XCGroup *group in groups) {
         NSLog(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
-        for (id <XcodeGroupMember> member  in [group members])
-        {
+        for (id <XcodeGroupMember> member  in [group members]) {
             NSLog(@"\t%@", [member displayName]);
         }
     }
@@ -102,42 +100,52 @@
 - (void)test_provides_access_to_the_root_top_level_group
 {
 
-    XCGroup* rootGroup = [project rootGroup];
+    XCGroup *rootGroup = [_project rootGroup];
     NSLog(@"Here the _group: %@", rootGroup);
     XCTAssertFalse([rootGroup.members count] == 0);
-
-
 }
 
 - (void)test_provides_a_way_to_locate_a_group_from_its_path_to_the_root_group
 {
 
-    XCGroup* group = [project groupWithPathFromRoot:@"Source/Main/Assembly"];
+    XCGroup *group = [_project groupWithPathFromRoot:@"Source/Main/Assembly"];
     XCTAssertNotNil(group);
     NSLog(@"Group: %@", group);
 
 }
 
+- (void)test_allows_pruning_empty_groups
+{
+    XCProject *project = [XCProject projectWithFilePath:XCMasterDetailProjectPath()];
+    XCTAssertNotNil([project groupWithDisplayName:@"AnEmptyGroup"]);
+    XCTAssertNotNil([project groupWithDisplayName:@"AnEmptyGroupChild"]);
+    XCTAssertNotNil([project groupWithDisplayName:@"AnEmptyGroupChildGroup"]);
+
+    [project pruneEmptyGroups];
+    [project save];
+
+    XCTAssertNil([project groupWithDisplayName:@"AnEmptyGroup"]);
+    XCTAssertNil([project groupWithDisplayName:@"AnEmptyGroupChild"]);
+    XCTAssertNil([project groupWithDisplayName:@"AnEmptyGroupChildGroup"]);
+}
 
 
-
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Targets
+//-------------------------------------------------------------------------------------------
 
 - (void)test_able_to_list_the_targets_in_an_xcode_project
 {
 
-    NSArray* targets = [project targets];
-    for (XCTarget* target in [project targets])
-    {
+    NSArray *targets = [_project targets];
+    for (XCTarget *target in [_project targets]) {
         NSLog(@"%@", target);
     }
     XCTAssertNotNil(targets);
     XCTAssertFalse([targets count] == 0);
 
-    for (XCTarget* target in targets)
-    {
-        NSArray* members = [target members];
+    for (XCTarget *target in targets) {
+        NSArray *members = [target members];
         NSLog(@"Members: %@", members);
     }
 

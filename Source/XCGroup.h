@@ -25,7 +25,7 @@
 
 
 /**
-* Represents a _group container in an Xcode project. A _group can contain members of type `XCSourceFile` or other
+* Represents a _group container in an Xcode project. A group can contain members of type `XCSourceFile` or other
 * groups.
 */
 @interface XCGroup : NSObject <XcodeGroupMember>
@@ -41,28 +41,28 @@
     NSMutableArray* _children;
     NSMutableArray* _members;
 
-    XCFileOperationQueue* _fileOperationQueue; // weak
+    XCFileOperationQueue* _fileOperationQueue;
     XCProject* _project;
 
 }
 
 
 /**
- * The alias of the _group, which can be used to give the _group a name other than the last path component.
+ * The alias of the group, which can be used to give the group a name other than the last path component.
  *
  * See: [XcodeGroupMember displayName]
  */
 @property(nonatomic, strong, readonly) NSString* alias;
 
 /**
- * The path of the _group relative to the _group's parent.
+ * The path of the group relative to the group's parent.
  *
  * See: [XcodeGroupMember displayName]
 */
 @property(nonatomic, strong, readonly) NSString* pathRelativeToParent;
 
 /**
- * The _group's unique key.
+ * The group's unique key.
 */
 @property(nonatomic, strong, readonly) NSString* key;
 
@@ -78,7 +78,7 @@
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<id<XcodeGroupMember>>*)children;
 
-#pragma mark Parent _group
+#pragma mark Parent group
 
 - (void)removeFromParentGroup;
 
@@ -87,6 +87,8 @@
 - (XCGroup*)parentGroup;
 
 - (BOOL)isRootGroup;
+
+- (BOOL)isEmpty;
 
 #pragma mark Adding children
 /**
@@ -162,12 +164,12 @@
 - (NSArray<id<XcodeGroupMember>>*)members;
 
 /**
-* Keys of members from this _group and any child groups.
+* Keys of members from this group and any child groups.
 */
 - (NSArray<NSString*>*)recursiveMembers;
 
 /**
- * Keys of members from this _group
+ * Keys of members from this group
  */
 - (NSArray<NSString*>*)buildFileKeys;
 

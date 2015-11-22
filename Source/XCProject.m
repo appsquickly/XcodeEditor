@@ -148,11 +148,6 @@ NSString* const XCProjectNotFoundException;
     return [self projectFilesOfType:ImageResourcePNG];
 }
 
-- (NSString *)containingFolderPath
-{
-    return [_filePath stringByDeletingLastPathComponent];
-}
-
 
 // need this value to construct relative path in XcodeprojDefinition
 - (NSString*)filePath
@@ -235,6 +230,17 @@ NSString* const XCProjectNotFoundException;
     return nil;
 }
 
+- (XCGroup *)groupWithDisplayName:(NSString *)name
+{
+    for (XCGroup *group in [self groups]) {
+        if ([[group displayName] isEqualToString:name]) {
+            return group;
+        }
+    }
+    return nil;
+}
+
+
 - (XCGroup*)groupForGroupMemberWithKey:(NSString*)key
 {
     for (XCGroup* group in [self groups])
@@ -262,7 +268,17 @@ NSString* const XCProjectNotFoundException;
     return nil;
 }
 
-//TODO: This could fail if the path attribute on a given _group is more than one directory. Start with candidates and
+- (void)pruneEmptyGroups
+{
+    for (XCGroup *group in [self groups]) {
+        if ([group isEmpty]) {
+            [group removeFromParentGroup];
+        }
+    }
+}
+
+
+//TODO: This could fail if the path attribute on a given group is more than one directory. Start with candidates and
 //TODO: search backwards.
 - (XCGroup*)groupWithPathFromRoot:(NSString*)path
 {

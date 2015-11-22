@@ -9,12 +9,12 @@ An API for manipulating Xcode project files.
 
 ```objective-c
 XCProject* project = [[XCProject alloc] initWithFilePath:@"MyProject.xcodeproj"];
-XCGroup* _group = [project groupWithPathFromRoot:@"Main"];
+XCGroup* group = [project groupWithPathFromRoot:@"Main"];
 XCClassDefinition* classDefinition = [[XCClassDefinition alloc] initWithName:@"MyNewClass"];
 [classDefinition setHeader:@"<some-header-text>"];
 [classDefinition setSource:@"<some-impl-text>"];
 
-[_group addClass:classDefinition];
+[group addClass:classDefinition];
 [project save];
 ```
 
@@ -44,7 +44,7 @@ This time, we'll use a convenience method on XCGroup to specify the targets at t
 
 ```objective-c
 XCXibDefinition* xibDefinition = [[XCXibDefinition alloc] initWithName:@"MyXibFile" content:@"<xibXml>"];
-[_group addXib:xibDefinition toTargets:[project targets]];
+[group addXib:xibDefinition toTargets:[project targets]];
 [project save];
 ```
 
@@ -54,10 +54,10 @@ XCXibDefinition* xibDefinition = [[XCXibDefinition alloc] initWithName:@"MyXibFi
 ```objective-c
 XCFrameworkDefinition* frameworkDefinition =
     [[XCFrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
-[_group addFramework:frameworkDefinition toTargets:[project targets]];
+[group addFramework:frameworkDefinition toTargets:[project targets]];
 [project save];
 ```
-Setting copyToDestination to YES, will cause the framework to be first copied to the _group's directory within the
+Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the
 project, and subsequently linked from there. 
 
 ### Adding an Image Resource
@@ -68,7 +68,7 @@ XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
     initWithName:@"MyImageFile.png" data:[NSData dataWithContentsOfFile:<your image file name>]
     type:ImageResourcePNG];
 
-[_group addSourceFile:sourceFileDefinition];
+[group addSourceFile:sourceFileDefinition];
 [project save];
 ```
 
@@ -78,7 +78,7 @@ XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
 
 XCSourceFileDefinition* sourceFileDefinition = [XCSourceFileDefinition sourceDefinitionWithAssetCatalogName:<path to asset catalog>];
 
-[_group addSourceFile:sourceFileDefinition];
+[group addSourceFile:sourceFileDefinition];
 [project save];
 ```
 
@@ -88,7 +88,7 @@ XCSourceFileDefinition* sourceFileDefinition = [XCSourceFileDefinition sourceDef
 XCSourceFileDefinition* header = [[XCSourceFileDefinition alloc]
     initWithName:@"SomeHeader.h" text:<your header text> type:SourceCodeHeader];
 
-[_group addSourceFile:header];
+[group addSourceFile:header];
 [project save];
 ```
 
@@ -96,12 +96,12 @@ XCSourceFileDefinition* header = [[XCSourceFileDefinition alloc]
 
 ```objective-c
 subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath=@"/Path/To/Subproject" type:XcodeProject];
-[_group addSubProject:subProjectDefinition toTargets:[project targets]];
+[group addSubProject:subProjectDefinition toTargets:[project targets]];
 ```
 
 ### Removing a sub-project
 ```objective-c
-[_group removeSubProject:subProjectDefinition];  //TODO: project should be able to remove itself from parent.
+[group removeSubProject:subProjectDefinition];  //TODO: project should be able to remove itself from parent.
 ```
 
 ### Configuring targets

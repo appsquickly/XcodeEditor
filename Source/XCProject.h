@@ -91,8 +91,6 @@
 
 - (NSArray<XCSourceFile*>*)imagePNGFiles;
 
-- (NSString*)containingFolderPath;
-
 - (NSString*)filePath;
 
 
@@ -114,9 +112,14 @@
 - (NSArray<XCGroup*>*)rootGroups;
 
 /**
-* Returns the _group with the given key, or nil.
+* Returns the group with the given key, or nil.
 */
 - (XCGroup*)groupWithKey:(NSString*)key;
+
+/**
+ * Returns the _first_ group in the project with the given name, or nil.
+ */
+- (XCGroup*)groupWithDisplayName:(NSString*)name;
 
 /**
  * Returns the _group with the specified display name path - the directory relative to the root _group. Eg Source/Main
@@ -129,9 +132,14 @@
 - (XCGroup*)groupForGroupMemberWithKey:(NSString*)key;
 
 /**
- * Returns the parent _group for the _group or file with the source file
+ * Returns the parent group for the group or file with the source file
  */
 - (XCGroup*)groupWithSourceFile:(XCSourceFile*)sourceFile;
+
+/**
+ * Removes all empty groups from the project.
+ */
+- (void)pruneEmptyGroups;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Targets

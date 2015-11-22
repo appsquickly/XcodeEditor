@@ -103,6 +103,11 @@
     return [self pathRelativeToParent] == nil && [self displayName] == nil;
 }
 
+- (BOOL)isEmpty
+{
+    return [self.members count] == 0;
+}
+
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Adding children
