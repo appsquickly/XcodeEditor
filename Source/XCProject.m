@@ -385,7 +385,7 @@ NSString *const XCProjectNotFoundException;
             [group removeFromParentGroup];
         }
     }
-    //Prune any groups made empty as a result of pruning a child group. 
+    //Prune any groups made empty as a result of pruning a child group.
     if (hadEmptyGroups) {
         [self doPruneEmptyGroups];
     }
