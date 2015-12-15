@@ -192,6 +192,15 @@
     [_project objects][_key] = [self asDictionary];
 }
 
+- (void)addFileReference:(NSString *)filePath withType:(XcodeSourceFileType)type
+{
+    NSDictionary *folderReferenceDictionary =
+    [self makeFileReferenceWithPath:filePath name:[filePath lastPathComponent] type:type];
+    NSString *folderReferenceKey = [[XCKeyBuilder forItemNamed:[filePath lastPathComponent]] build];
+    [self addMemberWithKey:folderReferenceKey];
+    [_project objects][folderReferenceKey] = folderReferenceDictionary;
+    [_project objects][_key] = [self asDictionary];
+}
 
 - (XCGroup *)addGroupWithPath:(NSString *)path
 {
