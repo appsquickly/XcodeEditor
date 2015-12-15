@@ -62,6 +62,10 @@
 
 - (void)removeMembersWithKeys:(NSArray<NSString*>*)keys;
 
+- (void)removeResourceWithKey:(NSString*)key;
+
+- (void)removeResourcesWithKeys:(NSArray<NSString*>*)keys;
+
 - (void)addDependency:(NSString*)key;
 
 - (instancetype)duplicateWithTargetName:(NSString*)targetName productName:(NSString*)productName;
