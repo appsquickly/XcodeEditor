@@ -18,8 +18,9 @@
 
 @implementation XCTarget
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
+//-------------------------------------------------------------------------------------------
 
 + (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
     productReference:(NSString*)productReference
@@ -28,8 +29,9 @@
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
     productReference:(NSString*)productReference
@@ -46,8 +48,9 @@
     return self;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
 
 - (NSArray*)resources
 {
@@ -104,12 +107,12 @@
     if (_members == nil)
     {
         _members = [[NSMutableArray alloc] init];
-        for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"])
+        for (NSString* buildPhaseKey in [[_project objects][_key] objectForKey:@"buildPhases"])
         {
-            NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+            NSDictionary* buildPhase = [_project objects][buildPhaseKey];
             if ([[buildPhase valueForKey:@"isa"] xce_hasSourcesOrFrameworksBuildPhaseType])
             {
-                for (NSString* buildFileKey in [buildPhase objectForKey:@"files"])
+                for (NSString* buildFileKey in buildPhase[@"files"])
                 {
                     XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember)
@@ -146,67 +149,41 @@
     [self flagMembersAsDirty];
 }
 
-- (NSDictionary*)buildRefWithFileRefKey
+
+
+- (void)removeSourceFile:(XCSourceFile *)sourceFile
 {
-    NSMutableDictionary* buildRefWithFileRefDict = [NSMutableDictionary dictionary];
-    NSDictionary* allObjects = [_project objects];
-    NSArray* keys = [allObjects allKeys];
+    NSString *name = sourceFile.name;
+    NSLog(@"Removing source file: %@", name);
+    NSDictionary* target = [_project objects][_key];
 
-    for (NSString* key in keys)
+
+    for (NSString* buildPhaseKey in target[@"buildPhases"])
     {
-        NSDictionary* dictionaryInfo = [allObjects objectForKey:key];
-
-        NSString* type = [dictionaryInfo objectForKey:@"isa"];
-        if (type)
-        {
-            if ([type isEqualToString:@"PBXBuildFile"])
-            {
-                NSString* fileRef = [dictionaryInfo objectForKey:@"fileRef"];
-
-                if (fileRef)
-                {
-                    [buildRefWithFileRefDict setObject:key forKey:fileRef];
-                }
-            }
+        NSMutableDictionary* buildPhase = [_project objects][buildPhaseKey];
+        NSString *phaseType = buildPhase[@"isa"];
+        NSLog(@"Removing source file from %@ phase.", phaseType);
+        if ([phaseType isEqualToString:@"PBXSourcesBuildPhase"]) {
+            NSLog(@"Sources build phase");
         }
-    }
-    return buildRefWithFileRefDict;
-}
+        NSMutableArray* files = buildPhase[@"files"];
 
-- (void)removeMemberWithKey:(NSString*)key
-{
+        NSString *buildFileKey = [sourceFile buildFileKey];
+        if ([files containsObject:buildFileKey])  {
+            NSLog(@"Got it!!!!");
+            [files removeObjectIdenticalTo:buildFileKey];
+            buildPhase[@"files"] = files;
+            _project.objects[buildPhaseKey] = buildPhase;
+//            NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Build phase now: %@", buildPhase);
+            [self flagMembersAsDirty];
+        }
 
-    NSDictionary* buildRefWithFileRef = [self buildRefWithFileRefKey];
-    NSDictionary* target = [[_project objects] objectForKey:_key];
-    NSString* buildRef = [buildRefWithFileRef objectForKey:key];
-
-    if (!buildRef)
-    {
-        return;
-    }
-
-    for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"])
-    {
-        NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
-        NSMutableArray* files = [buildPhase objectForKey:@"files"];
-
-        [files removeObjectIdenticalTo:buildRef];
-        [buildPhase setObject:files forKey:@"files"];
-    }
-    [self flagMembersAsDirty];
-}
-
-- (void)removeMembersWithKeys:(NSArray*)keys
-{
-    for (NSString* key in keys)
-    {
-        [self removeMemberWithKey:key];
     }
 }
 
 - (void)addDependency:(NSString*)key
 {
-    NSDictionary* targetObj = [[_project objects] objectForKey:_key];
+    NSDictionary* targetObj = [_project objects][_key];
     NSMutableArray* dependencies = [targetObj valueForKey:@"dependencies"];
     // add only if not already there
     BOOL found = NO;
@@ -258,35 +235,33 @@
         productReference:dupTargetObj[@"productReference"]];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Overridden Methods
+//-------------------------------------------------------------------------------------------
 
 - (void)setName:(NSString*)name
 {
     _name = name;
-    NSDictionary* dictionary = [_project.objects objectForKey:_key];
+    NSDictionary* dictionary = _project.objects[_key];
     [dictionary setValue:_name forKey:@"name"];
 }
 
 - (void)setProductName:(NSString*)productName
 {
     _productName = productName;
-    NSDictionary* dictionary = [_project.objects objectForKey:_key];
+    NSDictionary* dictionary = _project.objects[_key];
     [dictionary setValue:_productName forKey:@"productName"];
 }
 
 
-
-/* ====================================================================================================================================== */
-#pragma mark - Utility Methods
-
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"Target: name=%@, files=%@", _name, _members];
+    return [NSString stringWithFormat:@"Target: name=%@, files=%@", _name, @([self members].count)];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
 
 - (XCSourceFile*)buildFileWithKey:(NSString*)theKey
 {

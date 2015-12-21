@@ -15,7 +15,6 @@
 		BA7981FCC7DFB418DFD25C9D /* XCSourceFileDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982102090AE1FFBBA5C63 /* XCSourceFileDefinition.m */; };
 		BA79823125F335EF8C4A53CA /* XCSubProjectDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7987EBAFEB84C72B4C63D6 /* XCSubProjectDefinition.m */; };
 		BA798280BE8DA3E2AD97A04A /* XCGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79842F32FBBA0B05247673 /* XCGroup.m */; };
-		BA79828CB3855A8A3603157D /* XcodeGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798EBC41DDAD92CA79331E /* XcodeGroupMember.h */; };
 		BA7982BA9226AB0D3CCBEBF7 /* XCXibDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989B893A97F146C67C068 /* XCXibDefinition.m */; };
 		BA798301F45EAA124C5C7FB2 /* XCGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7989800D28D349580868F7 /* XCGroup.h */; };
 		BA79835B340FA3496864EBE7 /* XCClassDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798CF93F28902E660B1F5D /* XCClassDefinition.h */; };
@@ -47,6 +46,7 @@
 		BA798DC3A5E9C34F106FF37C /* XCFrameworkDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B140C9FE488C0D8E5E6 /* XCFrameworkDefinition.m */; };
 		BA798DD569ABB5D24A3F4C20 /* XCKeyBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798FA437C805530668B6D8 /* XCKeyBuilderTests.m */; };
 		BA798DF4DEEA8368A42FACA9 /* XCSubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B849BC7E9D7F2F00491 /* XCSubProjectDefinitionTests.m */; };
+		BA798E27031CAA496D5F6AD1 /* XCGroupMember.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798282F9FAF03F7A6D9C27 /* XCGroupMember.h */; };
 		BA798E2D9705A3960DC43E17 /* XCSubProjectDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798D8E10A0F0BA7BACBF5E /* XCSubProjectDefinition.h */; };
 		BA798E6D5DD525FBF4E056E2 /* XcodeSourceFileType.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988947281948FA03C266D /* XcodeSourceFileType.h */; };
 		BA798E9C1F1072EC23F5B975 /* XCFileOperationQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79804878E5FFEB3AE0E9E9 /* XCFileOperationQueue.h */; };
@@ -88,6 +88,7 @@
 		BA7981E15DA5EBAC2D785E56 /* XCTargetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTargetTests.m; sourceTree = "<group>"; };
 		BA7982102090AE1FFBBA5C63 /* XCSourceFileDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCSourceFileDefinition.m; sourceTree = "<group>"; };
 		BA79825B6294137CFC2609B9 /* XCProjectBuildConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCProjectBuildConfig.m; sourceTree = "<group>"; };
+		BA798282F9FAF03F7A6D9C27 /* XCGroupMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCGroupMember.h; sourceTree = "<group>"; };
 		BA7982B732B8C27356514366 /* ProjectToEdit.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = file.xcscheme; path = ProjectToEdit.xcscheme; sourceTree = "<group>"; };
 		BA7982F9400B7551F94733B5 /* XcodeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeEditor.h; sourceTree = "<group>"; };
 		BA79831970C7CAA6ECC9CA3D /* XCFrameworkDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCFrameworkDefinition.h; sourceTree = "<group>"; };
@@ -154,7 +155,6 @@
 		BA798E29A9F471EFF3DC43FA /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		BA798E961B73D239157C47D4 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		BA798EA5F6140CB98BC7DDD8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BA798EBC41DDAD92CA79331E /* XcodeGroupMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeGroupMember.h; sourceTree = "<group>"; };
 		BA798ED36A824097C41239C8 /* ESA_Sales_Foobar_ViewController.impl */ = {isa = PBXFileReference; lastKnownFileType = file.impl; path = ESA_Sales_Foobar_ViewController.impl; sourceTree = "<group>"; };
 		BA798ED3BBB618711FECEFAD /* XCSourceFileDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCSourceFileDefinition.h; sourceTree = "<group>"; };
 		BA798EFC68F1CEAB2B630557 /* project.pbxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.pbxproject; path = project.pbxproj; sourceTree = "<group>"; };
@@ -385,7 +385,6 @@
 				BA798BD640B0F3CE305F1514 /* XcodeMemberType.m */,
 				BA79867E67DCB07541CAE9C6 /* XCXibDefinition.h */,
 				BA7989B893A97F146C67C068 /* XCXibDefinition.m */,
-				BA798EBC41DDAD92CA79331E /* XcodeGroupMember.h */,
 				BA798CF93F28902E660B1F5D /* XCClassDefinition.h */,
 				BA798C88B19A0DF94E88D418 /* XCClassDefinition.m */,
 				BA7988947281948FA03C266D /* XcodeSourceFileType.h */,
@@ -404,6 +403,7 @@
 				BA7982102090AE1FFBBA5C63 /* XCSourceFileDefinition.m */,
 				BA798D8E10A0F0BA7BACBF5E /* XCSubProjectDefinition.h */,
 				BA7987EBAFEB84C72B4C63D6 /* XCSubProjectDefinition.m */,
+				BA798282F9FAF03F7A6D9C27 /* XCGroupMember.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -554,7 +554,6 @@
 				BA798BD185D3E573782117A1 /* XCSourceFile.h in Headers */,
 				BA7980F82F8CB28FD88FA0F7 /* XcodeMemberType.h in Headers */,
 				BA798CB6F3BDC85C8DA8FEF7 /* XCXibDefinition.h in Headers */,
-				BA79828CB3855A8A3603157D /* XcodeGroupMember.h in Headers */,
 				BA79835B340FA3496864EBE7 /* XCClassDefinition.h in Headers */,
 				BA798E6D5DD525FBF4E056E2 /* XcodeSourceFileType.h in Headers */,
 				BA79838092EB62DABC12E7EE /* XCAbstractDefinition.h in Headers */,
@@ -564,6 +563,7 @@
 				BA79898D6728C6451CC3A1E9 /* XCFrameworkDefinition.h in Headers */,
 				BA798A6059075BB7BD3F39AE /* XCSourceFileDefinition.h in Headers */,
 				BA798E2D9705A3960DC43E17 /* XCSubProjectDefinition.h in Headers */,
+				BA798E27031CAA496D5F6AD1 /* XCGroupMember.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

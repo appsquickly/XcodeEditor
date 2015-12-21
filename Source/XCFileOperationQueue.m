@@ -151,7 +151,7 @@
         if (![[NSFileManager defaultManager] removeItemAtPath:fullPath error:&error])
         {
             NSLog(@"failed to remove item at path; error == %@", error);
-            [NSException raise:NSInternalInconsistencyException format:@"Error deleting file at filePath: %@", filePath];
+//            [NSException raise:NSInternalInconsistencyException format:@"Error deleting file at filePath: %@", filePath];
         }
         else
         {

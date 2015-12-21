@@ -76,21 +76,43 @@
 
 - (void)removeFromParentDeletingChildren:(BOOL)deleteChildren
 {
+    NSLog(@"Removing group: %@, deleting children: %@", self, deleteChildren ? @"YES" : @"NO");
     if (deleteChildren) {
         [_fileOperationQueue queueDeletion:[self pathRelativeToProjectRoot]];
     }
-    NSDictionary *dictionary = [_project objects][_key];
-    NSLog(@"Here's the dictionary: %@", dictionary);
-
     [[_project objects] removeObjectForKey:_key];
 
-    dictionary = [_project objects][_key];
-    NSLog(@"Here's the dictionary: %@", dictionary);
-
-    for (XCTarget *target in [_project targets]) {
-        [target removeMembersWithKeys:[self recursiveMembers]];
+    NSMutableSet *keysToRemove = [[NSMutableSet alloc] init];
+    NSArray *members = [self members];
+    for (id <XCGroupMember> member in members) {
+        if ([member isKindOfClass:[XCSourceFile class]]) {
+            XCSourceFile *sourceFile = (XCSourceFile *) member;
+            for (XCTarget *target in [_project targets]) {
+                NSLog(@"Removing from target: %@", target);
+                [target removeSourceFile:sourceFile];
+                [keysToRemove addObject:sourceFile.key];
+                if ([sourceFile isBuildFile]) {
+                    [keysToRemove addObject:sourceFile.buildFileKey];
+                }
+            }
+        } else {
+            XCGroup *childGroup = (XCGroup *) member;
+            [childGroup removeFromParentDeletingChildren:deleteChildren];
+        }
     }
-    NSLog(@"Done!!!");
+
+    NSMutableSet *moreKeysToRemove = [[NSMutableSet alloc] init];
+    [_project.objects removeObjectsForKeys:keysToRemove.allObjects];
+    for (NSString *keyToRemove in keysToRemove) {
+        for (NSString *projectObjectKey in _project.objects.allKeys) {
+            NSDictionary *projectObject = _project.objects[projectObjectKey];
+            if ([keyToRemove isEqualToString:projectObject[@"fileRef"]]) {
+                [moreKeysToRemove addObject:projectObjectKey];
+            }
+        }
+    }
+    NSLog(@"More keys to remove: %@", moreKeysToRemove);
+    [_project.objects removeObjectsForKeys:moreKeysToRemove.allObjects];
 }
 
 - (XCGroup *)parentGroup
@@ -202,12 +224,12 @@
     NSString *groupKey = [[XCKeyBuilder forItemNamed:groupKeyPath] build];
 
     NSArray *members = [self members];
-    for (id <XcodeGroupMember> groupMember in members) {
+    for (id <XCGroupMember> groupMember in members) {
         if ([groupMember groupMemberType] == PBXGroupType || [groupMember groupMemberType] == PBXVariantGroupType) {
 
             if ([[[groupMember pathRelativeToProjectRoot] lastPathComponent] isEqualToString:path] ||
                     [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey]) {
-                return nil;
+                return (XCGroup *) groupMember;
             }
         }
     }
@@ -345,7 +367,7 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark Members
 
-- (NSArray<id <XcodeGroupMember>> *)members
+- (NSArray *)members
 {
     if (_members == nil) {
         _members = [[NSMutableArray alloc] init];
@@ -364,28 +386,11 @@
     return _members;
 }
 
-- (NSArray *)recursiveMembers
-{
-    NSMutableArray *recursiveMembers = [NSMutableArray array];
-    for (NSString *childKey in _children) {
-        XcodeMemberType type = [self typeForKey:childKey];
-        if (type == PBXGroupType || type == PBXVariantGroupType) {
-            XCGroup *group = [_project groupWithKey:childKey];
-            NSArray *groupChildren = [group recursiveMembers];
-            [recursiveMembers addObjectsFromArray:groupChildren];
-        } else if (type == PBXFileReferenceType) {
-            [recursiveMembers addObject:childKey];
-        }
-    }
-    [recursiveMembers addObject:_key];
-    return [recursiveMembers arrayByAddingObjectsFromArray:recursiveMembers];
-}
 
 - (NSArray *)buildFileKeys
 {
-
     NSMutableArray *arrayOfBuildFileKeys = [NSMutableArray array];
-    for (id <XcodeGroupMember> groupMember in [self members]) {
+    for (id <XCGroupMember> groupMember in [self members]) {
 
         if ([groupMember groupMemberType] == PBXGroupType || [groupMember groupMemberType] == PBXVariantGroupType) {
             XCGroup *group = (XCGroup *) groupMember;
@@ -397,9 +402,9 @@
     return arrayOfBuildFileKeys;
 }
 
-- (id <XcodeGroupMember>)memberWithKey:(NSString *)key
+- (id <XCGroupMember>)memberWithKey:(NSString *)key
 {
-    id <XcodeGroupMember> groupMember = nil;
+    id <XCGroupMember> groupMember = nil;
 
     if ([_children containsObject:key]) {
         XcodeMemberType type = [self typeForKey:key];
@@ -412,9 +417,9 @@
     return groupMember;
 }
 
-- (id <XcodeGroupMember>)memberWithDisplayName:(NSString *)name
+- (id <XCGroupMember>)memberWithDisplayName:(NSString *)name
 {
-    for (id <XcodeGroupMember> member in [self members]) {
+    for (id <XCGroupMember> member in [self members]) {
         if ([[member displayName] isEqualToString:name]) {
             return member;
         }
@@ -459,8 +464,6 @@
     return _pathRelativeToProjectRoot;
 }
 
-//-------------------------------------------------------------------------------------------
-#pragma mark - Utility Methods
 
 - (NSString *)description
 {
@@ -502,10 +505,17 @@
         if (type == AssetCatalog) {
             refName = [name lastPathComponent];
         }
-        NSDictionary *reference = [self makeFileReferenceWithPath:name name:refName type:type];
-        NSString *fileKey = [[XCKeyBuilder forItemNamed:name] build];
-        [_project objects][fileKey] = reference;
-        [self addMemberWithKey:fileKey];
+
+        if ([self memberWithDisplayName:name] == nil) {
+            NSDictionary *reference = [self makeFileReferenceWithPath:name name:refName type:type];
+            NSString *fileKey = [[XCKeyBuilder forItemNamed:name] build];
+            [_project objects][fileKey] = reference;
+            [self addMemberWithKey:fileKey];
+        } else {
+            NSLog(@"Member: %@ already exists! Replacing content", name);
+        }
+
+
         filePath = [self pathRelativeToProjectRoot];
     } else {
         filePath = [[currentSourceFile pathRelativeToProjectRoot] stringByDeletingLastPathComponent];
@@ -688,3 +698,21 @@
 }
 
 @end
+
+
+NSArray *XCRecursiveMemberKeysOfGroup(XCGroup *group)
+{
+    NSMutableArray *recursiveMembers = [NSMutableArray new];
+    for (NSString *childKey in [group children]) {
+        XcodeMemberType type = [group typeForKey:childKey];
+        if (type == PBXGroupType || type == PBXVariantGroupType) {
+            assert(group.project != nil);
+            XCGroup *childGroup = [group.project groupWithKey:childKey];
+            NSArray *groupChildren = XCRecursiveMemberKeysOfGroup(childGroup);
+            [recursiveMembers addObjectsFromArray:groupChildren];
+        } else if (type == PBXFileReferenceType) {
+            [recursiveMembers addObject:childKey];
+        }
+    }
+    return [recursiveMembers copy];
+}

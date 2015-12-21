@@ -25,7 +25,7 @@
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, readonly) NSDictionary* specifiedBuildSettings;
 
-+ (NSDictionary<NSString*,NSString*>*)buildConfigurationsFromArray:(NSArray<XCProjectBuildConfig*>*)array inProject:(XCProject*)project;
++ (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project;
 
 - (instancetype)initWithProject:(XCProject*)project key:(NSString*)key;
 

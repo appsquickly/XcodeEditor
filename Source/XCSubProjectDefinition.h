@@ -48,7 +48,7 @@
 
 - (NSString *)fullPathName;
 
-- (NSArray<NSString*> *)buildProductNames;
+- (NSArray*)buildProductNames;
 
 - (NSString *)projectKey;
 

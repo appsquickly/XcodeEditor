@@ -99,6 +99,12 @@ NSString *const XCProjectNotFoundException;
     return nil;
 }
 
+- (void)removeFileWithKey:(NSString *)key
+{
+    [self.objects removeObjectForKey:key];
+}
+
+
 - (XCSourceFile *)fileWithName:(NSString *)name
 {
     for (XCSourceFile *projectFile in [self files]) {
@@ -193,12 +199,12 @@ NSString *const XCProjectNotFoundException;
 
 - (XCGroup *)groupWithKey:(NSString *)key
 {
-    XCGroup *group = [_groups objectForKey:key];
+    XCGroup *group = _groups[key];
     if (group) {
         return group;
     }
 
-    NSDictionary *obj = [[self objects] objectForKey:key];
+    NSDictionary *obj = [self objects][key];
     if (obj && [[obj valueForKey:@"isa"] xce_hasGroupType]) {
         XCGroup *group = [self createGroupWithDictionary:obj forKey:key];
         _groups[key] = group;
@@ -232,7 +238,7 @@ NSString *const XCProjectNotFoundException;
 - (XCGroup *)groupWithSourceFile:(XCSourceFile *)sourceFile
 {
     for (XCGroup *group in [self groups]) {
-        for (id <XcodeGroupMember> member in [group members]) {
+        for (id <XCGroupMember> member in [group members]) {
             if ([member isKindOfClass:[XCSourceFile class]] && [[sourceFile key] isEqualToString:[member key]]) {
                 return group;
             }
@@ -254,7 +260,7 @@ NSString *const XCProjectNotFoundException;
     NSArray *pathItems = [path pathComponents];
     XCGroup *currentGroup = [self rootGroup];
     for (NSString *pathItem in pathItems) {
-        id <XcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
+        id <XCGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
         if ([group isKindOfClass:[XCGroup class]]) {
             currentGroup = group;
         } else {
@@ -301,17 +307,22 @@ NSString *const XCProjectNotFoundException;
     return nil;
 }
 
+
+
 - (void)save
 {
     [_fileOperationQueue commitFileOperations];
     [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:YES];
-
+    _dataStore = [[NSMutableDictionary alloc]
+            initWithContentsOfFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"]];
     NSLog(@"Saved project");
 }
 
 - (NSMutableDictionary *)objects
 {
-    return [_dataStore objectForKey:@"objects"];
+    @synchronized (self) {
+        return _dataStore[@"objects"];
+    }
 }
 
 - (NSMutableDictionary *)dataStore
@@ -331,12 +342,12 @@ NSString *const XCProjectNotFoundException;
 {
     if (_configurations == nil) {
         NSString *buildConfigurationRootSectionKey =
-                [[[self objects] objectForKey:[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
-        NSDictionary *buildConfigurationDictionary = [[self objects] objectForKey:buildConfigurationRootSectionKey];
+                [[self objects][[self rootObjectKey]] objectForKey:@"buildConfigurationList"];
+        NSDictionary *buildConfigurationDictionary = [self objects][buildConfigurationRootSectionKey];
         _configurations =
-                [[XCProjectBuildConfig buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+                [[XCProjectBuildConfig buildConfigurationsFromArray:buildConfigurationDictionary[@"buildConfigurations"]
                                                           inProject:self] mutableCopy];
-        _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
+        _defaultConfigurationName = [buildConfigurationDictionary[@"defaultConfigurationName"] copy];
     }
 
     return [_configurations copy];
@@ -344,12 +355,12 @@ NSString *const XCProjectNotFoundException;
 
 - (XCProjectBuildConfig *)configurationWithName:(NSString *)name
 {
-    return [[self configurations] objectForKey:name];
+    return [self configurations][name];
 }
 
 - (XCProjectBuildConfig *)defaultConfiguration
 {
-    return [[self configurations] objectForKey:_defaultConfigurationName];
+    return [self configurations][_defaultConfigurationName];
 }
 
 //-------------------------------------------------------------------------------------------

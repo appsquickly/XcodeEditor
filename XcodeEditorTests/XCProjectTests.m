@@ -82,20 +82,7 @@
 #pragma mark - Groups
 //-------------------------------------------------------------------------------------------
 
-- (void)test_able_to_list_all_of_the_groups_in_a_project
-{
-    NSArray *groups = [_project groups];
 
-    for (XCGroup *group in groups) {
-        NSLog(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
-        for (id <XcodeGroupMember> member  in [group members]) {
-            NSLog(@"\t%@", [member displayName]);
-        }
-    }
-
-    XCTAssertNotNil(groups);
-    XCTAssertFalse([groups count] == 0);
-}
 
 - (void)test_provides_access_to_the_root_top_level_group
 {

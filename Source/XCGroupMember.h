@@ -13,7 +13,7 @@
 
 #import "XcodeMemberType.h"
 
-@protocol XcodeGroupMember <NSObject>
+@protocol XCGroupMember <NSObject>
 
 - (NSString*)key;
 

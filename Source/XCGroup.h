@@ -11,7 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "XcodeGroupMember.h"
+#import "XCGroupMember.h"
 
 @class XCProject;
 @class XCClassDefinition;
@@ -28,7 +28,7 @@
 * Represents a _group container in an Xcode project. A group can contain members of type `XCSourceFile` or other
 * groups.
 */
-@interface XCGroup : NSObject <XcodeGroupMember>
+@interface XCGroup : NSObject <XCGroupMember>
 {
 
     NSString* _pathRelativeToParent;
@@ -45,6 +45,8 @@
     XCProject* _project;
 
 }
+
+@property (nonatomic, strong, readonly) XCProject *project;
 
 
 /**
@@ -69,14 +71,14 @@
 /**
  * An array containing the groups members as `XcodeGroupMember` types.
 */
-@property(nonatomic, strong, readonly) NSMutableArray<id<XcodeGroupMember>>* children;
+@property(nonatomic, strong, readonly) NSMutableArray* children;
 
 
 #pragma mark Initializers
 
-+ (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<id<XcodeGroupMember>>*)children;
++ (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children;
 
-- (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<id<XcodeGroupMember>>*)children;
+- (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray*)children;
 
 #pragma mark Parent group
 
@@ -100,7 +102,7 @@
 /**
  * Adds a class to the _group, making it a member of the specified [targets](XCTarget).
 */
-- (void)addClass:(XCClassDefinition*)classDefinition toTargets:(NSArray<XCTarget*>*)targets;
+- (void)addClass:(XCClassDefinition*)classDefinition toTargets:(NSArray*)targets;
 
 /**
 * Adds a framework to the _group. If the _group already contains the framework, the contents will be updated if the
@@ -121,7 +123,7 @@
 /**
 * Adds a framework to the _group, making it a member of the specified targets.
 */
-- (void)addFramework:(XCFrameworkDefinition*)framework toTargets:(NSArray<XCTarget*>*)targets;
+- (void)addFramework:(XCFrameworkDefinition*)framework toTargets:(NSArray*)targets;
 
 /**
 * Adds a source file of arbitrary type - image resource, header, etc.
@@ -137,7 +139,7 @@
 /**
  * Adds a xib to the _group, making it a member of the specified [targets](XCTarget).
 */
-- (void)addXib:(XCXibDefinition*)xibDefinition toTargets:(NSArray<XCTarget*>*)targets;
+- (void)addXib:(XCXibDefinition*)xibDefinition toTargets:(NSArray*)targets;
 
 /**
  * Adds a sub-project to the _group. If the _group already contains a sub-project by the same name, the contents will be
@@ -150,38 +152,37 @@
 /**
 * Adds a sub-project to the _group, making it a member of the specified [targets](XCTarget).
 */
-- (void)addSubProject:(XCSubProjectDefinition*)projectDefinition toTargets:(NSArray<XCTarget*>*)targets;
+- (void)addSubProject:(XCSubProjectDefinition*)projectDefinition toTargets:(NSArray*)targets;
 
 - (void)removeSubProject:(XCSubProjectDefinition*)projectDefinition;
 
-- (void)removeSubProject:(XCSubProjectDefinition*)projectDefinition fromTargets:(NSArray<XCTarget*>*)targets;
+- (void)removeSubProject:(XCSubProjectDefinition*)projectDefinition fromTargets:(NSArray*)targets;
 
 
 #pragma mark Locating children
 /**
  * Instances of `XCSourceFile` and `XCGroup` returned as the type `XcodeGroupMember`.
 */
-- (NSArray<id<XcodeGroupMember>>*)members;
+- (NSArray*)members;
 
-/**
-* Keys of members from this group and any child groups.
-*/
-- (NSArray<NSString*>*)recursiveMembers;
 
 /**
  * Keys of members from this group
  */
-- (NSArray<NSString*>*)buildFileKeys;
+- (NSArray*)buildFileKeys;
 
 /**
  * Returns the child with the specified key, or nil.
 */
-- (id <XcodeGroupMember>)memberWithKey:(NSString*)key;
+- (id <XCGroupMember>)memberWithKey:(NSString*)key;
 
 /**
 * Returns the child with the specified name, or nil.
 */
-- (id <XcodeGroupMember>)memberWithDisplayName:(NSString*)name;
+- (id <XCGroupMember>)memberWithDisplayName:(NSString*)name;
 
 
 @end
+
+
+NSArray *XCRecursiveMemberKeysOfGroup(XCGroup* group);

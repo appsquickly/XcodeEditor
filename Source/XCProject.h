@@ -56,12 +56,14 @@
 /**
 * Returns all file resources in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray<XCSourceFile*>*)files;
+- (NSArray*)files;
 
 /**
 * Returns the project file with the specified key, or nil.
 */
 - (XCSourceFile*)fileWithKey:(NSString*)key;
+
+- (void)removeFileWithKey:(NSString*)key;
 
 /**
 * Returns the project file with the specified name, or nil. If more than one project file matches the specified name,
@@ -72,24 +74,24 @@
 /**
 * Returns all header files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray<XCSourceFile*>*)headerFiles;
+- (NSArray*)headerFiles;
 
 /**
 * Returns all implementation obj-c implementation files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray<XCSourceFile*>*)objectiveCFiles;
+- (NSArray*)objectiveCFiles;
 
 /**
 * Returns all implementation obj-c++ implementation files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray<XCSourceFile*>*)objectiveCPlusPlusFiles;
+- (NSArray*)objectiveCPlusPlusFiles;
 
 /**
 * Returns all the xib files in the project, as an array of `XCSourceFile` objects.
 */
-- (NSArray<XCSourceFile*>*)xibFiles;
+- (NSArray*)xibFiles;
 
-- (NSArray<XCSourceFile*>*)imagePNGFiles;
+- (NSArray*)imagePNGFiles;
 
 - (NSString*)filePath;
 
@@ -99,7 +101,7 @@
 /**
 * Lists the groups in an xcode project, returning an array of `XCGroup` objects.
 */
-- (NSArray<XCGroup*>*)groups;
+- (NSArray*)groups;
 
 /**
  * Returns the root (top-level) _group.
@@ -109,7 +111,7 @@
 /**
  * Returns the root (top-level) groups, if there are multiple. An array of rootGroup if there is only one.
  */
-- (NSArray<XCGroup*>*)rootGroups;
+- (NSArray*)rootGroups;
 
 /**
 * Returns the group with the given key, or nil.
@@ -146,7 +148,7 @@
 /**
 * Lists the targets in an xcode project, returning an array of `XCTarget` objects.
 */
-- (NSArray<XCTarget*>*)targets;
+- (NSArray*)targets;
 
 /**
 * Returns the target with the specified name, or nil. 
@@ -157,7 +159,7 @@
 /**
  * Lists the configurations in an xcode project.
  */
-- (NSDictionary<NSString*,XCProjectBuildConfig*>*)configurations;
+- (NSDictionary*)configurations;
 /**
  * Returns the configuration with the specified name, or nil.
  */
@@ -166,7 +168,8 @@
 - (XCProjectBuildConfig *)defaultConfiguration;
 
 //-------------------------------------------------------------------------------------------
-#pragma mark Saving
+#pragma mark State Management
+
 /**
 * Saves a project after editing.
 */

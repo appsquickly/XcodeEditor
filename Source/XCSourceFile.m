@@ -27,7 +27,7 @@
 //-------------------------------------------------------------------------------------------
 
 + (XCSourceFile *)sourceFileWithProject:(XCProject *)project key:(NSString *)key type:(XcodeSourceFileType)type
-    name:(NSString *)name sourceTree:(NSString *)_tree path:(NSString *)path
+                                   name:(NSString *)name sourceTree:(NSString *)_tree path:(NSString *)path
 {
     return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path];
 }
@@ -38,7 +38,7 @@
 //-------------------------------------------------------------------------------------------
 
 - (id)initWithProject:(XCProject *)project key:(NSString *)key type:(XcodeSourceFileType)type name:(NSString *)name
-    sourceTree:(NSString *)tree path:(NSString *)path
+           sourceTree:(NSString *)tree path:(NSString *)path
 {
 
     self = [super init];
@@ -61,7 +61,7 @@
 // Goes to the entry for this object in the project and sets a value for one of the keys, such as name, path, etc.
 - (void)setValue:(id)val forProjectItemPropertyWithKey:(NSString *)key
 {
-    NSMutableDictionary *obj = [[[_project objects] objectForKey:_key] mutableCopy];
+    NSMutableDictionary *obj = [[_project objects][_key] mutableCopy];
     if (nil == obj) {
         [NSException raise:@"Project item not found" format:@"Project item with key %@ not found.", _key];
     }
@@ -114,22 +114,22 @@
 
 - (BOOL)canBecomeBuildFile
 {
-    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive || _type == AssetCatalog || _type == SourceCodeSwift;
+    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus ||
+            _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle ||
+            _type == Archive || _type == AssetCatalog || _type == SourceCodeSwift;
 }
 
 
 - (XcodeMemberType)buildPhase
 {
-    if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == SourceCodeSwift) {
+    if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus ||
+            _type == XibFile || _type == SourceCodeSwift) {
         return PBXSourcesBuildPhaseType;
-    }
-    else if (_type == Framework) {
+    } else if (_type == Framework) {
         return PBXFrameworksBuildPhaseType;
-    }
-    else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == AssetCatalog) {
+    } else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == AssetCatalog) {
         return PBXResourcesBuildPhaseType;
-    }
-    else if (_type == Archive) {
+    } else if (_type == Archive) {
         return PBXFrameworksBuildPhaseType;
     }
     return PBXNilType;
@@ -160,11 +160,9 @@
             sourceBuildFile[@"fileRef"] = _key;
             NSString *buildFileKey = [[XCKeyBuilder forItemNamed:[_name stringByAppendingString:@".buildFile"]] build];
             [_project objects][buildFileKey] = sourceBuildFile;
-        }
-        else if (_type == Framework) {
+        } else if (_type == Framework) {
             [NSException raise:NSInvalidArgumentException format:@"Add framework to target not implemented yet."];
-        }
-        else {
+        } else {
             [NSException raise:NSInvalidArgumentException format:@"Project file of type %@ can't become a build file.",
                                                                  NSStringFromXCSourceFileType(_type)];
         }
@@ -181,11 +179,11 @@
                 NSMutableDictionary *replaceBuildFile = [NSMutableDictionary dictionaryWithDictionary:obj];
                 NSDictionary *compilerFlagsDict = @{@"COMPILER_FLAGS" : value};
                 if ([replaceBuildFile[@"settings"] objectForKey:@"COMPILER_FLAGS"] != nil) {
-                    NSMutableDictionary *newSettings = [NSMutableDictionary dictionaryWithDictionary:replaceBuildFile[@"settings"]];
+                    NSMutableDictionary
+                            *newSettings = [NSMutableDictionary dictionaryWithDictionary:replaceBuildFile[@"settings"]];
                     [newSettings removeObjectForKey:@"COMPILER_FLAGS"];
                     replaceBuildFile[@"settings"] = compilerFlagsDict;
-                }
-                else {
+                } else {
                     replaceBuildFile[@"settings"] = compilerFlagsDict;
                 }
                 [[_project objects] removeObjectForKey:key];

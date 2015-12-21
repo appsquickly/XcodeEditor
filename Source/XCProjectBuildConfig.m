@@ -19,8 +19,9 @@
 
 @implementation XCProjectBuildConfig
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
+//-------------------------------------------------------------------------------------------
 
 + (NSDictionary*)buildConfigurationsFromArray:(NSArray*)array inProject:(XCProject*)project
 {
@@ -28,20 +29,20 @@
 
     for (NSString* buildConfigurationKey in array)
     {
-        NSDictionary* buildConfiguration = [[project objects] objectForKey:buildConfigurationKey];
+        NSDictionary* buildConfiguration = [project objects][buildConfigurationKey];
 
         if ([[buildConfiguration valueForKey:@"isa"] xce_hasBuildConfigurationType])
         {
-            XCProjectBuildConfig * configuration = [configurations objectForKey:[buildConfiguration objectForKey:@"name"]];
+            XCProjectBuildConfig * configuration = configurations[buildConfiguration[@"name"]];
             if (!configuration)
             {
                 configuration = [[XCProjectBuildConfig alloc] initWithProject:project key:buildConfigurationKey];
 
-                [configurations setObject:configuration forKey:[buildConfiguration objectForKey:@"name"]];
+                configurations[buildConfiguration[@"name"]] = configuration;
             }
 
 
-            XCSourceFile* configurationFile = [project fileWithKey:[buildConfiguration objectForKey:@"baseConfigurationReference"]];
+            XCSourceFile* configurationFile = [project fileWithKey:buildConfiguration[@"baseConfigurationReference"]];
             if (configurationFile)
             {
                 NSString* path = configurationFile.path;
@@ -72,7 +73,7 @@
 
             }
 
-            [configuration addBuildSettings:[buildConfiguration objectForKey:@"buildSettings"]];
+            [configuration addBuildSettings:buildConfiguration[@"buildSettings"]];
         }
     }
 
@@ -103,8 +104,9 @@
     return dupBuildConfigurationListKey;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
 
 - (instancetype)initWithProject:(XCProject*)project key:(NSString*)key
 {
@@ -126,8 +128,9 @@
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
 
 - (NSDictionary*)specifiedBuildSettings
 {
@@ -142,32 +145,30 @@
 
 - (void)addOrReplaceSetting:(id <NSCopying>)setting forKey:(NSString*)key
 {
-    NSDictionary* settings = [NSDictionary dictionaryWithObject:setting forKey:key];
+    NSDictionary* settings = @{key : setting};
     [self addBuildSettings:settings];
 
-    NSLog(@"$$$$$$$$$$$ before: %@", [_project.objects objectForKey:_key]);
+    NSLog(@"$$$$$$$$$$$ before: %@", _project.objects[_key]);
 
-    NSMutableDictionary* dict = [[[_project objects] objectForKey:_key] mutableCopy];
+    NSMutableDictionary* dict = [[_project objects][_key] mutableCopy];
     [dict setValue:_buildSettings forKey:@"buildSettings"];
     [_project.objects setValue:dict forKey:_key];
 
-    NSLog(@"The settings: %@", [_project.objects objectForKey:_key]);
+    NSLog(@"The settings: %@", _project.objects[_key]);
 
     }
 
 
 - (id <NSCopying>)valueForKey:(NSString*)key
 {
-    id <NSCopying> value = [_buildSettings objectForKey:key];
+    id <NSCopying> value = _buildSettings[key];
     if (!value)
     {
-        value = [_xcconfigSettings objectForKey:key];
+        value = _xcconfigSettings[key];
     }
     return value;
 }
 
-/* ====================================================================================================================================== */
-#pragma mark - Utility Methods
 
 - (NSString*)description
 {
@@ -179,8 +180,9 @@
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
 
 + (NSString*)duplicatedBuildConfigurationWithKey:(NSString*)buildConfigurationKey inProject:(XCProject*)project
     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor

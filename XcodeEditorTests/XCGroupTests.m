@@ -29,7 +29,7 @@
 @implementation XCFrameworkPath
 
 static const NSString *SDK_PATH =
-        @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk";
+        @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk";
 
 + (NSString *)eventKitUIPath
 {
@@ -415,16 +415,6 @@ static const NSString *SDK_PATH =
     XCTAssertNotNil(member);
 
 }
-
-- (void)test_able_to_list_all_of_its_members_recursively
-{
-
-    NSLog(@"Let's get recursive members!!!!");
-    NSArray *recursiveMembers = [_group recursiveMembers];
-    NSLog(@"$$$$$$$$$$$$$$$**********$*$*$*$*$*$* recursive members: %@", recursiveMembers);
-
-}
-
 
 
 
