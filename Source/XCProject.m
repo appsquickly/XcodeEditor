@@ -305,6 +305,9 @@ NSString *const XCProjectNotFoundException;
 {
     [_fileOperationQueue commitFileOperations];
     [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:YES];
+    
+    // Don't forget to reset the cache so that we'll always get the latest data.
+    [self dropCache];
 
     NSLog(@"Saved project");
 }
