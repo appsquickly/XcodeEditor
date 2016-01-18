@@ -22,7 +22,7 @@
 #pragma mark - Class Methods
 
 + (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-    productReference:(NSString*)productReference
+              productReference:(NSString*)productReference
 {
     return [[XCTarget alloc] initWithProject:project key:key name:name productName:productName productReference:productReference];
 }
@@ -32,7 +32,7 @@
 #pragma mark - Initialization & Destruction
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-    productReference:(NSString*)productReference
+     productReference:(NSString*)productReference
 {
     self = [super init];
     if (self)
@@ -70,7 +70,7 @@
             }
         }
     }
-
+    
     return _resources;
 }
 
@@ -81,11 +81,11 @@
         NSString* buildConfigurationRootSectionKey = [[[_project objects] objectForKey:_key] objectForKey:@"buildConfigurationList"];
         NSDictionary* buildConfigurationDictionary = [[_project objects] objectForKey:buildConfigurationRootSectionKey];
         _configurations =
-            [[XCProjectBuildConfig buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
-                                                      inProject:_project] mutableCopy];
+        [[XCProjectBuildConfig buildConfigurationsFromArray:[buildConfigurationDictionary objectForKey:@"buildConfigurations"]
+                                                  inProject:_project] mutableCopy];
         _defaultConfigurationName = [[buildConfigurationDictionary objectForKey:@"defaultConfigurationName"] copy];
     }
-
+    
     return _configurations;
 }
 
@@ -127,19 +127,19 @@
 {
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
-
+    
     for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"])
     {
         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
         if ([[buildPhase valueForKey:@"isa"] xce_asMemberType] == [member buildPhase])
         {
-
+            
             NSMutableArray* files = [buildPhase objectForKey:@"files"];
             if (![files containsObject:[member buildFileKey]])
             {
                 [files addObject:[member buildFileKey]];
             }
-
+            
             [buildPhase setObject:files forKey:@"files"];
         }
     }
@@ -151,18 +151,18 @@
     NSMutableDictionary* buildRefWithFileRefDict = [NSMutableDictionary dictionary];
     NSDictionary* allObjects = [_project objects];
     NSArray* keys = [allObjects allKeys];
-
+    
     for (NSString* key in keys)
     {
         NSDictionary* dictionaryInfo = [allObjects objectForKey:key];
-
+        
         NSString* type = [dictionaryInfo objectForKey:@"isa"];
         if (type)
         {
             if ([type isEqualToString:@"PBXBuildFile"])
             {
                 NSString* fileRef = [dictionaryInfo objectForKey:@"fileRef"];
-
+                
                 if (fileRef)
                 {
                     [buildRefWithFileRefDict setObject:key forKey:fileRef];
@@ -173,23 +173,52 @@
     return buildRefWithFileRefDict;
 }
 
-- (void)removeMemberWithKey:(NSString*)key
+- (void)removeResourceWithKey:(NSString*)key
 {
+    [self removeResourcesWithKeys:[NSArray arrayWithObject:key]];
+}
 
-    NSDictionary* buildRefWithFileRef = [self buildRefWithFileRefKey];
+- (void)removeResourcesWithKeys:(NSArray*)keys
+{
     NSDictionary* target = [[_project objects] objectForKey:_key];
-    NSString* buildRef = [buildRefWithFileRef objectForKey:key];
-
-    if (!buildRef)
-    {
-        return;
-    }
-
     for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"])
     {
         NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
         NSMutableArray* files = [buildPhase objectForKey:@"files"];
+        NSMutableIndexSet* toRemoveIndexes = [NSMutableIndexSet indexSet];
+        
+        for (int i = 0; i < files.count; i ++)
+        {
+            XCSourceFile* resource = [self buildFileWithKey:files[i]];
+            if ([keys containsObject:resource.key]) {
+                [toRemoveIndexes addIndex:i];
+            }
+        }
+        
+        [files removeObjectsAtIndexes:toRemoveIndexes];
+        [buildPhase setObject:files forKey:@"files"];
+    }
+    [self flagMembersAsDirty];
+}
 
+
+- (void)removeMemberWithKey:(NSString*)key
+{
+    
+    NSDictionary* buildRefWithFileRef = [self buildRefWithFileRefKey];
+    NSDictionary* target = [[_project objects] objectForKey:_key];
+    NSString* buildRef = [buildRefWithFileRef objectForKey:key];
+    
+    if (!buildRef)
+    {
+        return;
+    }
+    
+    for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"])
+    {
+        NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+        NSMutableArray* files = [buildPhase objectForKey:@"files"];
+        
         [files removeObjectIdenticalTo:buildRef];
         [buildPhase setObject:files forKey:@"files"];
     }
@@ -226,36 +255,36 @@
 
 - (instancetype)duplicateWithTargetName:(NSString*)targetName productName:(NSString*)productName
 {
-
+    
     NSDictionary* targetObj = _project.objects[_key];
     NSMutableDictionary* dupTargetObj = [targetObj mutableCopy];
-
+    
     dupTargetObj[@"name"] = targetName;
     dupTargetObj[@"productName"] = productName;
-
+    
     NSString* buildConfigurationListKey = dupTargetObj[@"buildConfigurationList"];
-
+    
     void(^visitor)(NSMutableDictionary*) = ^(NSMutableDictionary* buildConfiguration)
     {
         buildConfiguration[@"buildSettings"][@"PRODUCT_NAME"] = productName;
     };
-
+    
     dupTargetObj[@"buildConfigurationList"] =
-        [XCProjectBuildConfig duplicatedBuildConfigurationListWithKey:buildConfigurationListKey inProject:_project
-                                        withBuildConfigurationVisitor:visitor];
-
+    [XCProjectBuildConfig duplicatedBuildConfigurationListWithKey:buildConfigurationListKey inProject:_project
+                                    withBuildConfigurationVisitor:visitor];
+    
     [self duplicateProductReferenceForTargetObject:dupTargetObj withProductName:productName];
-
+    
     [self duplicateBuildPhasesForTargetObject:dupTargetObj];
-
+    
     [self addReferenceToProductsGroupForTargetObject:dupTargetObj];
-
+    
     NSString* dupTargetObjKey = [self addTargetToRootObjectTargets:dupTargetObj];
-
+    
     [_project dropCache];
-
+    
     return [[XCTarget alloc] initWithProject:_project key:dupTargetObjKey name:targetName productName:productName
-        productReference:dupTargetObj[@"productReference"]];
+                            productReference:dupTargetObj[@"productReference"]];
 }
 
 /* ====================================================================================================================================== */
@@ -304,64 +333,65 @@
 - (void)flagMembersAsDirty
 {
     _members = nil;
+    _resources = nil;
 }
 
 - (void)duplicateProductReferenceForTargetObject:(NSMutableDictionary*)dupTargetObj withProductName:(NSString*)productName
 {
-
+    
     NSString* productReferenceKey = dupTargetObj[@"productReference"];
     NSMutableDictionary* dupProductReference = [_project.objects[productReferenceKey] mutableCopy];
-
+    
     NSString* path = dupProductReference[@"path"];
     NSString* dupPath = [path stringByDeletingLastPathComponent];
     dupPath = [dupPath stringByAppendingPathComponent:productName];
     dupPath = [dupPath stringByAppendingPathExtension:@"app"];
     dupProductReference[@"path"] = dupPath;
-
+    
     NSString* dupProductReferenceKey = [[XCKeyBuilder createUnique] build];
-
+    
     _project.objects[dupProductReferenceKey] = dupProductReference;
     dupTargetObj[@"productReference"] = dupProductReferenceKey;
 }
 
 - (void)duplicateBuildPhasesForTargetObject:(NSMutableDictionary*)dupTargetObj
 {
-
+    
     NSMutableArray* buildPhases = [NSMutableArray array];
-
+    
     for (NSString* buildPhaseKey in dupTargetObj[@"buildPhases"])
     {
-
+        
         NSMutableDictionary* dupBuildPhase = [_project.objects[buildPhaseKey] mutableCopy];
         NSMutableArray* dupFiles = [NSMutableArray array];
-
+        
         for (NSString* fileKey in dupBuildPhase[@"files"])
         {
-
+            
             NSMutableDictionary* dupFile = [_project.objects[fileKey] mutableCopy];
             NSString* dupFileKey = [[XCKeyBuilder createUnique] build];
-
+            
             _project.objects[dupFileKey] = dupFile;
             [dupFiles addObject:dupFileKey];
         }
-
+        
         dupBuildPhase[@"files"] = dupFiles;
-
+        
         NSString* dupBuildPhaseKey = [[XCKeyBuilder createUnique] build];
         _project.objects[dupBuildPhaseKey] = dupBuildPhase;
         [buildPhases addObject:dupBuildPhaseKey];
     }
-
+    
     dupTargetObj[@"buildPhases"] = buildPhases;
 }
 
 - (void)addReferenceToProductsGroupForTargetObject:(NSMutableDictionary*)dupTargetObj
 {
-
+    
     XCGroup* mainGroup = nil;
     NSPredicate* productsPredicate = [NSPredicate predicateWithFormat:@"displayName == 'Products'"];
     NSArray* filteredGroups = [_project.groups filteredArrayUsingPredicate:productsPredicate];
-
+    
     if (filteredGroups.count > 0)
     {
         mainGroup = filteredGroups[0];
@@ -374,17 +404,17 @@
 - (NSString*)addTargetToRootObjectTargets:(NSMutableDictionary*)dupTargetObj
 {
     NSString* dupTargetObjKey = [[XCKeyBuilder createUnique] build];
-
+    
     _project.objects[dupTargetObjKey] = dupTargetObj;
-
+    
     NSString* rootObjKey = _project.dataStore[@"rootObject"];
     NSMutableDictionary* rootObj = [_project.objects[rootObjKey] mutableCopy];
     NSMutableArray* rootObjTargets = [rootObj[@"targets"] mutableCopy];
     [rootObjTargets addObject:dupTargetObjKey];
-
+    
     rootObj[@"targets"] = rootObjTargets;
     _project.objects[rootObjKey] = rootObj;
-
+    
     return dupTargetObjKey;
 }
 

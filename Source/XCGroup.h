@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XcodeGroupMember.h"
+#import "XcodeSourceFileType.h"
 
 @class XCProject;
 @class XCClassDefinition;
@@ -117,6 +118,8 @@
 * Adds a reference to a folder
 */
 - (void)addFolderReference:(NSString*)sourceFolder;
+
+- (void)addFileReference:(NSString *)filePath withType:(XcodeSourceFileType)type;
 
 /**
 * Adds a framework to the _group, making it a member of the specified targets.

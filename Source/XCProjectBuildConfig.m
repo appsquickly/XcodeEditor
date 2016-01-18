@@ -145,15 +145,10 @@
     NSDictionary* settings = [NSDictionary dictionaryWithObject:setting forKey:key];
     [self addBuildSettings:settings];
 
-    NSLog(@"$$$$$$$$$$$ before: %@", [_project.objects objectForKey:_key]);
-
     NSMutableDictionary* dict = [[[_project objects] objectForKey:_key] mutableCopy];
     [dict setValue:_buildSettings forKey:@"buildSettings"];
     [_project.objects setValue:dict forKey:_key];
-
-    NSLog(@"The settings: %@", [_project.objects objectForKey:_key]);
-
-    }
+}
 
 
 - (id <NSCopying>)valueForKey:(NSString*)key
