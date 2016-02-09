@@ -166,6 +166,11 @@
 - (XCProjectBuildConfig *)defaultConfiguration;
 
 //-------------------------------------------------------------------------------------------
+#pragma mark Deletion
+
+- (void)removeObjectWithKey:(NSString*)key;
+
+//-------------------------------------------------------------------------------------------
 #pragma mark Saving
 /**
 * Saves a project after editing.
