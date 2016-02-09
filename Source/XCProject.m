@@ -356,6 +356,22 @@ NSString *const XCProjectNotFoundException;
 }
 
 //-------------------------------------------------------------------------------------------
+#pragma mark Deletion
+
+- (void)removeObjectWithKey:(NSString*)key
+{
+    if([self.objects valueForKey:key])
+    {
+        XCGroup *group;
+        if((group = [self groupForGroupMemberWithKey:key])!=nil)
+        {
+            [group removeMemberWithKey:key];
+        }
+        [self.objects removeObjectForKey:key];
+    }
+}
+
+//-------------------------------------------------------------------------------------------
 #pragma mark Private
 //-------------------------------------------------------------------------------------------
 

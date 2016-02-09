@@ -234,6 +234,32 @@
     return group;
 }
 
+- (XCGroup*)addGroupWithAlias:(NSString *)alias
+{
+    NSString *groupKey = [[XCKeyBuilder forItemNamed:alias] build];
+    
+    NSArray *members = [self members];
+    for (id <XcodeGroupMember> groupMember in members) {
+        if ([groupMember groupMemberType] == PBXGroupType || [groupMember groupMemberType] == PBXVariantGroupType) {
+            
+            if ([[groupMember displayName] isEqualToString:alias] || [[groupMember key] isEqualToString:groupKey]) {
+                return nil;
+            }
+        }
+    }
+    
+    XCGroup *group = [[XCGroup alloc] initWithProject:_project key:groupKey alias:alias path:nil children:nil];
+    NSDictionary *groupDict = [group asDictionary];
+    
+    [_project objects][groupKey] = groupDict;
+    [self addMemberWithKey:groupKey];
+    
+    NSDictionary *dict = [self asDictionary];
+    [_project objects][_key] = dict;
+    
+    return group;
+}
+
 - (void)addSourceFile:(XCSourceFileDefinition *)sourceFileDefinition
 {
     [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName] contents:[sourceFileDefinition data]
@@ -429,6 +455,15 @@
         }
     }
     return nil;
+}
+
+- (void)removeMemberWithKey:(NSString *)key
+{
+    if ([_children containsObject:key])
+    {
+        [_children removeObject:key];
+        [self flagMembersAsDirty];
+    }
 }
 
 //-------------------------------------------------------------------------------------------
