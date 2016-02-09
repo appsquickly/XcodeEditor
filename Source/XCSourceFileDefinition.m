@@ -37,7 +37,7 @@
 + (XCSourceFileDefinition*)sourceDefinitionWithAssetCatalogName:(NSString*)name
 {
     XCSourceFileDefinition *definition = [[XCSourceFileDefinition alloc] initWithName:name type:AssetCatalog];
-    definition.fileOperationType = XCFileOperationTypeReferenceOnly;
+    definition.fileOperationType = XCFileOperationTypeAcceptExisting;
     return definition;
 }
 

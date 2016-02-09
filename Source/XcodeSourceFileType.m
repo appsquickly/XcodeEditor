@@ -42,7 +42,9 @@ static NSDictionary* NSDictionaryWithXCFileReferenceTypes()
             @"net.daringfireball.markdown" : @(Markdown),
             @"text.plist.xml"        : @(XMLPropertyList),
             @"file.storyboard"       : @(Storyboard),
-            @"text.xcconfig"         : @(XCConfig)
+            @"text.xcconfig"         : @(XCConfig),
+            @"wrapper.xcconfig"         : @(XCConfig),
+            @"wrapper.xcdatamodel": @(XCDataModel)
         };
     });
 
@@ -90,6 +92,10 @@ XcodeSourceFileType XCSourceFileTypeFromFileName(NSString* fileName)
     if ([fileName hasSuffix:@".swift"])
     {
         return SourceCodeSwift;
+    }
+    if ([fileName hasSuffix:@".xcdatamodel"])
+    {
+        return XCDataModel;
     }
     return FileTypeNil;
 }
