@@ -34,3 +34,5 @@ FOUNDATION_EXPORT const unsigned char XcodeEditorVersionString[];
 #import "XCKeyBuilder.h"
 #import "XCProject+SubProject.h"
 #import "XCProjectBuildConfig.h"
+#import "XCBuildShellScript.h"
+#import "XCBuildShellScriptDefinition.h"

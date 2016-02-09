@@ -28,7 +28,8 @@ typedef enum
     PBXTargetDependencyType,
     PBXVariantGroupType,
     XCBuildConfigurationType,
-    XCConfigurationListType
+    XCConfigurationListType,
+    PBXShellScriptBuildPhase
 } XcodeMemberType;
 
 @interface NSString (XcodeMemberTypeExtensions)
@@ -47,8 +48,8 @@ typedef enum
 - (BOOL)xce_hasBuildConfigurationType;
 - (BOOL)xce_hasContainerItemProxyType;
 - (BOOL)xce_hasResourcesBuildPhaseType;
+- (BOOL)xce_hasShellScriptBuildPhase;
 - (BOOL)xce_hasSourcesOrFrameworksBuildPhaseType;
 
 @end
-
 
