@@ -115,6 +115,11 @@
 - (XCGroup*)addGroupWithPath:(NSString*)path;
 
 /**
+ * Adds a _group with an alias to this _group.
+ */
+- (XCGroup*)addGroupWithAlias:(NSString *)alias;
+
+/**
 * Adds a reference to a folder
 */
 - (void)addFolderReference:(NSString*)sourceFolder;
@@ -186,5 +191,9 @@
 */
 - (id <XcodeGroupMember>)memberWithDisplayName:(NSString*)name;
 
+/**
+ *  Remove the member with the specified key
+ */
+- (void)removeMemberWithKey:(NSString*)key;
 
 @end
