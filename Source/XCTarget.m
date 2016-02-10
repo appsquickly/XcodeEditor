@@ -15,6 +15,9 @@
 #import "XCSourceFile.h"
 #import "XCProject.h"
 #import "XCProjectBuildConfig.h"
+#import "XcodeGroupMember.h"
+#import "XCBuildShellScript.h"
+#import "XCBuildShellScriptDefinition.h"
 
 @implementation XCTarget
 
@@ -123,6 +126,37 @@
     return _members;
 }
 
+- (NSArray*)buildShellScripts
+{
+    if (_buildShellScripts == nil)
+    {
+        _buildShellScripts = [[NSMutableArray alloc] init];
+        for (NSString* buildPhaseKey in [[[_project objects] objectForKey:_key] objectForKey:@"buildPhases"])
+        {
+            NSDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+            if ([[buildPhase valueForKey:@"isa"] xce_hasShellScriptBuildPhase])
+            {
+                
+                XCBuildShellScript* targetMember = [[XCBuildShellScript alloc]initWithProject:_project
+                                                                                          key:buildPhaseKey
+                                                                                         name:buildPhase[@"name"]
+                                                                                        files:buildPhase[@"files"]
+                                                                                   inputPaths:buildPhase[@"inputPaths"]
+                                                                                  outputPaths:buildPhase[@"outputPaths"]
+                                                           runOnlyForDeploymentPostprocessing:[buildPhase[@"runOnlyForDeploymentPostprocessing"] boolValue]
+                                                                                    shellPath:buildPhase[@"shellPath"]
+                                                                                  shellScript:buildPhase[@"shellScript"]];
+                if (targetMember)
+                {
+                    [_buildShellScripts addObject:targetMember];
+                }
+            }
+        }
+    }
+    
+    return _buildShellScripts;
+}
+
 - (void)addMember:(XCSourceFile*)member
 {
     [member becomeBuildFile];
@@ -145,6 +179,33 @@
     }
     [self flagMembersAsDirty];
 }
+
+- (void)makeAndAddShellScript:(XCBuildShellScriptDefinition *)shellScript
+{
+    NSDictionary* target = [[_project objects] objectForKey:_key];
+    
+    NSDictionary* reference = @{
+                                @"isa":[NSString xce_stringFromMemberType:PBXShellScriptBuildPhase],
+                                @"buildActionMask":@2147483647,
+                                @"files":shellScript.files,
+                                @"inputPaths":shellScript.inputPaths,
+                                @"outputPaths":shellScript.outputPaths,
+                                @"runOnlyForDeploymentPostprocessing":@(shellScript.runOnlyForDeploymentPostprocessing),
+                                @"shellPath":shellScript.shellPath,
+                                @"shellScript":shellScript.shellScript,
+                                @"name":shellScript.name
+                                
+                                };
+    NSString* fileKey = [[XCKeyBuilder forItemNamed:shellScript.name] build];
+    [_project objects][fileKey] = reference;
+    
+    NSMutableArray *buildPhases =[target objectForKey:@"buildPhases"];
+    [buildPhases addObject:fileKey];
+    [target setValue:buildPhases forKey:@"buildPhases"];
+    
+    [self flagMembersAsDirty];
+}
+
 
 - (NSDictionary*)buildRefWithFileRefKey
 {
@@ -334,6 +395,7 @@
 {
     _members = nil;
     _resources = nil;
+    _buildShellScripts = nil;
 }
 
 - (void)duplicateProductReferenceForTargetObject:(NSMutableDictionary*)dupTargetObj withProductName:(NSString*)productName

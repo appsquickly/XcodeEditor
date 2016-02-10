@@ -15,6 +15,8 @@
 @class XCProject;
 @class XCSourceFile;
 @class XCProjectBuildConfig;
+@class XCBuildShellScript;
+@class XCBuildShellScriptDefinition;
 
 /**
 * Represents a target in an xcode project.
@@ -33,6 +35,7 @@
     NSMutableArray* _members;
     NSMutableArray* _resources;
     NSMutableDictionary* _configurations;
+    NSMutableArray *_buildShellScripts;
 }
 
 @property(nonatomic, strong, readonly) NSString* key;
@@ -50,6 +53,8 @@
 
 - (NSArray<XCSourceFile*>*)members;
 
+- (NSArray<XCBuildShellScript*>*)buildShellScripts;
+
 - (NSDictionary<NSString*,XCProjectBuildConfig*>*)configurations;
 
 - (XCProjectBuildConfig *)configurationWithName:(NSString*)name;
@@ -57,6 +62,8 @@
 - (XCProjectBuildConfig *)defaultConfiguration;
 
 - (void)addMember:(XCSourceFile*)member;
+
+- (void)makeAndAddShellScript:(XCBuildShellScriptDefinition*)shellScript;
 
 - (void)removeMemberWithKey:(NSString*)key;
 

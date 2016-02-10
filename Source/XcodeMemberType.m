@@ -22,6 +22,7 @@ static NSString* const kPBXNativeTarget = @"PBXNativeTarget";
 static NSString* const kPBXProject = @"PBXProject";
 static NSString* const kPBXReferenceProxy = @"PBXReferenceProxy";
 static NSString* const kPBXResourcesBuildPhase = @"PBXResourcesBuildPhase";
+static NSString* const kPBXShellScriptBuildPhase = @"PBXShellScriptBuildPhase";
 static NSString* const kPBXSourcesBuildPhase = @"PBXSourcesBuildPhase";
 static NSString* const kPBXTargetDependency = @"PBXTargetDependency";
 static NSString* const kPBXVariantGroup = @"PBXVariantGroup";
@@ -35,27 +36,28 @@ static NSDictionary* DictionaryWithProjectNodeTypesAsStrings() {
     if (_projectNodeTypesAsStrings) {
         return _projectNodeTypesAsStrings;
     }
-
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _projectNodeTypesAsStrings = @{
-            kPBXNilType              : @(PBXNilType),
-            kPBXBuildFile            : @(PBXBuildFileType),
-            kPBXContainerItemProxy   : @(PBXContainerItemProxyType),
-            kPBXCopyFilesBuildPhase  : @(PBXCopyFilesBuildPhaseType),
-            kPBXFileReference        : @(PBXFileReferenceType),
-            kPBXFrameworksBuildPhase : @(PBXFrameworksBuildPhaseType),
-            kPBXGroup                : @(PBXGroupType),
-            kPBXNativeTarget         : @(PBXNativeTargetType),
-            kPBXProject              : @(PBXProjectType),
-            kPBXReferenceProxy       : @(PBXReferenceProxyType),
-            kPBXResourcesBuildPhase  : @(PBXResourcesBuildPhaseType),
-            kPBXSourcesBuildPhase    : @(PBXSourcesBuildPhaseType),
-            kPBXTargetDependency     : @(PBXTargetDependencyType),
-            kPBXVariantGroup         : @(PBXVariantGroupType),
-            kXCBuildConfiguration    : @(XCBuildConfigurationType),
-            kXCConfigurationList     : @(XCConfigurationListType),
-        };
+                                       kPBXNilType              : @(PBXNilType),
+                                       kPBXBuildFile            : @(PBXBuildFileType),
+                                       kPBXContainerItemProxy   : @(PBXContainerItemProxyType),
+                                       kPBXCopyFilesBuildPhase  : @(PBXCopyFilesBuildPhaseType),
+                                       kPBXFileReference        : @(PBXFileReferenceType),
+                                       kPBXFrameworksBuildPhase : @(PBXFrameworksBuildPhaseType),
+                                       kPBXGroup                : @(PBXGroupType),
+                                       kPBXNativeTarget         : @(PBXNativeTargetType),
+                                       kPBXProject              : @(PBXProjectType),
+                                       kPBXReferenceProxy       : @(PBXReferenceProxyType),
+                                       kPBXResourcesBuildPhase  : @(PBXResourcesBuildPhaseType),
+                                       kPBXSourcesBuildPhase    : @(PBXSourcesBuildPhaseType),
+                                       kPBXTargetDependency     : @(PBXTargetDependencyType),
+                                       kPBXVariantGroup         : @(PBXVariantGroupType),
+                                       kXCBuildConfiguration    : @(XCBuildConfigurationType),
+                                       kXCConfigurationList     : @(XCConfigurationListType),
+                                       kPBXShellScriptBuildPhase : @(PBXShellScriptBuildPhase)
+                                       };
     });
     return _projectNodeTypesAsStrings;
 }
@@ -103,6 +105,10 @@ static NSDictionary* DictionaryWithProjectNodeTypesAsStrings() {
 
 - (BOOL)xce_hasBuildConfigurationType {
     return [self isEqualToString:kXCBuildConfiguration];
+}
+
+- (BOOL)xce_hasShellScriptBuildPhase {
+    return [self isEqualToString:kPBXShellScriptBuildPhase];
 }
 
 - (BOOL)xce_hasContainerItemProxyType {
