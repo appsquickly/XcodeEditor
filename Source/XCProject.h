@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import "XcodeMemberType.h"
 #import "XcodeSourceFileType.h"
+#import "XcodeGroupMember.h"
 
 @class XCClassDefinition;
 @class XCGroup;
@@ -20,6 +21,7 @@
 @class XCTarget;
 @class XCSubProjectDefinition;
 @class XCProjectBuildConfig;
+@class XCVersionGroup;
 
 @interface XCProject : NSObject
 {
@@ -31,6 +33,7 @@
     NSMutableArray* _targets;
 
     NSMutableDictionary* _groups;
+    NSMutableDictionary* _versionGroups;
     NSMutableDictionary* _configurations;
 
     NSString* _defaultConfigurationName;
@@ -50,6 +53,10 @@
 * Creates a new project editor instance with the specified Project.xcodeproj file.
 */
 - (id)initWithFilePath:(NSString*)filePath;
+
+//-------------------------------------------------------------------------------------------
+#pragma mark Groupd Member
+- (id<XcodeGroupMember>)groupMemberWithKey:(NSString *)key;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Files
@@ -140,6 +147,23 @@
  * Removes all empty groups from the project.
  */
 - (void)pruneEmptyGroups;
+
+//-------------------------------------------------------------------------------------------
+#pragma mark VersionGroups
+/**
+ * Lists the version groups in an xcode project, returning an array of `XCVersionGroup` objects.
+ */
+- (NSArray*)versionGroups;
+
+/**
+ * Returns the version group with the given key, or nil.
+ */
+- (XCVersionGroup*)versionGroupWithKey:(NSString*)key;
+
+/**
+ * Returns the version group with the given file name, or nil.
+ */
+- (XCVersionGroup*)versionGroupWithName:(NSString*)name;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Targets

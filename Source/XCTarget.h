@@ -17,6 +17,7 @@
 @class XCProjectBuildConfig;
 @class XCBuildShellScript;
 @class XCBuildShellScriptDefinition;
+@protocol XCBuildFile;
 
 /**
 * Represents a target in an xcode project.
@@ -51,7 +52,7 @@
 
 - (NSArray<XCSourceFile*>*)resources;
 
-- (NSArray<XCSourceFile*>*)members;
+- (NSArray<id<XCBuildFile>>*)members;
 
 - (NSArray<XCBuildShellScript*>*)buildShellScripts;
 
@@ -61,7 +62,7 @@
 
 - (XCProjectBuildConfig *)defaultConfiguration;
 
-- (void)addMember:(XCSourceFile*)member;
+- (void)addMember:(id<XCBuildFile>)member;
 
 - (void)makeAndAddShellScript:(XCBuildShellScriptDefinition*)shellScript;
 

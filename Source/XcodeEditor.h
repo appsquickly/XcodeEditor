@@ -36,3 +36,4 @@ FOUNDATION_EXPORT const unsigned char XcodeEditorVersionString[];
 #import "XCProjectBuildConfig.h"
 #import "XCBuildShellScript.h"
 #import "XCBuildShellScriptDefinition.h"
+#import "XCVersionGroup.h"

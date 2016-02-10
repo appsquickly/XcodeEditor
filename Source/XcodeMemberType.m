@@ -28,6 +28,7 @@ static NSString* const kPBXTargetDependency = @"PBXTargetDependency";
 static NSString* const kPBXVariantGroup = @"PBXVariantGroup";
 static NSString* const kXCBuildConfiguration = @"XCBuildConfiguration";
 static NSString* const kXCConfigurationList = @"XCConfigurationList";
+static NSString* const kXCVersionGroup = @"XCVersionGroup";
 
 static NSDictionary* DictionaryWithProjectNodeTypesAsStrings() {
     // This is the most vital operation on adding 500+ files
@@ -56,7 +57,8 @@ static NSDictionary* DictionaryWithProjectNodeTypesAsStrings() {
                                        kPBXVariantGroup         : @(PBXVariantGroupType),
                                        kXCBuildConfiguration    : @(XCBuildConfigurationType),
                                        kXCConfigurationList     : @(XCConfigurationListType),
-                                       kPBXShellScriptBuildPhase : @(PBXShellScriptBuildPhase)
+                                       kPBXShellScriptBuildPhase : @(PBXShellScriptBuildPhase),
+                                       kXCVersionGroup          : @(XCVersionGroupType)
                                        };
     });
     return _projectNodeTypesAsStrings;
@@ -121,6 +123,10 @@ static NSDictionary* DictionaryWithProjectNodeTypesAsStrings() {
 
 - (BOOL)xce_hasSourcesOrFrameworksBuildPhaseType {
     return [self isEqualToString:kPBXSourcesBuildPhase] || [self isEqualToString:kPBXFrameworksBuildPhase];
+}
+
+- (BOOL)xce_hasVersionedGroupType {
+    return [self isEqualToString:kXCVersionGroup];
 }
 
 @end

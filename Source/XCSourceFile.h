@@ -14,13 +14,14 @@
 #import <Foundation/Foundation.h>
 #import "XcodeGroupMember.h"
 #import "XcodeSourceFileType.h"
+#import "XCBuildFile.h"
 
 @class XCProject;
 
 /**
 * Represents a file resource in an xcode project.
 */
-@interface XCSourceFile : NSObject<XcodeGroupMember>
+@interface XCSourceFile : NSObject<XcodeGroupMember,XCBuildFile>
 {
 
 @private

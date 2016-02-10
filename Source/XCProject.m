@@ -16,6 +16,7 @@
 #import "XCTarget.h"
 #import "XCFileOperationQueue.h"
 #import "XCProjectBuildConfig.h"
+#import "XCVersionGroup.h"
 
 NSString *const XCProjectNotFoundException;
 
@@ -59,6 +60,27 @@ NSString *const XCProjectNotFoundException;
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
 //-------------------------------------------------------------------------------------------
+
+#pragma mark General Group member
+
+- (id<XcodeGroupMember>)groupMemberWithKey:(NSString *)key
+{
+    NSDictionary *obj = [[self objects] valueForKey:key];
+    
+    if (obj) {
+        NSString *groupIsa =[obj valueForKey:@"isa"];
+        if([groupIsa xce_hasFileReferenceOrReferenceProxyType]) {
+            return [self fileWithKey:key];
+        }
+        else if([groupIsa xce_hasVersionedGroupType]) {
+            return [self versionGroupWithKey:key];
+        }
+        else if([groupIsa xce_hasGroupType]) {
+            return [self groupWithKey:key];
+        }
+    }
+    return nil;
+}
 
 #pragma mark Files
 
@@ -270,6 +292,66 @@ NSString *const XCProjectNotFoundException;
                                 path:[dictionary valueForKey:@"path"] children:[dictionary valueForKey:@"children"]];
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark version group
+//-------------------------------------------------------------------------------------------
+
+- (NSArray*)versionGroups
+{
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSDictionary* obj, BOOL* stop)
+     {
+         if ([[obj valueForKey:@"isa"] xce_hasVersionedGroupType])
+         {
+             XCVersionGroup* group = _versionGroups[key];
+             if (group == nil)
+             {
+                 group = [self createVersionGroupWithDictionary:obj forKey:key];
+                 _versionGroups[key] = group;
+             }
+             [results addObject:group];
+         }
+     }];
+    return results;
+}
+
+- (XCVersionGroup*)versionGroupWithKey:(NSString*)key
+{
+    XCVersionGroup* group = [_versionGroups objectForKey:key];
+    if (group)
+    {
+        return group;
+    }
+    
+    NSDictionary* obj = [[self objects] objectForKey:key];
+    if (obj && [[obj valueForKey:@"isa"] xce_hasVersionedGroupType])
+    {
+        XCVersionGroup* group = [self createVersionGroupWithDictionary:obj forKey:key];
+        _versionGroups[key] = group;
+        
+        return group;
+    }
+    return nil;
+}
+
+- (XCVersionGroup *)versionGroupWithName:(NSString *)name
+{
+    for (XCVersionGroup* group in [self versionGroups])
+    {
+        if([[[group pathRelativeToParent] stringByDeletingPathExtension]isEqualToString:name])
+            return group;
+    }
+    return nil;
+}
+
+- (XCVersionGroup*)createVersionGroupWithDictionary:(NSDictionary*)dictionary forKey:(NSString*)key
+{
+    return [XCVersionGroup versionGroupWithProject:self
+                                               key:key
+                                              path:[dictionary valueForKey:@"path"]
+                                          children:[dictionary valueForKey:@"children"]
+                                    currentVersion:[dictionary valueForKey:@"currentVersion"]];
+}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark targets

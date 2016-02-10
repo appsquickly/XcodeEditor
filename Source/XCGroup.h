@@ -23,7 +23,7 @@
 @class XCSourceFileDefinition;
 @class XCSubProjectDefinition;
 @class XCTarget;
-
+@class XCVersionGroup;
 
 /**
 * Represents a _group container in an Xcode project. A group can contain members of type `XCSourceFile` or other
@@ -118,6 +118,11 @@
  * Adds a _group with an alias to this _group.
  */
 - (XCGroup*)addGroupWithAlias:(NSString *)alias;
+
+/**
+ * Adds a version group with a path relative to this group.
+ */
+- (XCVersionGroup*)addVersionGroupWithPath:(NSString*)path;
 
 /**
 * Adds a reference to a folder
