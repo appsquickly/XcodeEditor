@@ -529,11 +529,50 @@
         writeFile = YES;
     }
     if (writeFile) {
-        if ([contents isKindOfClass:[NSString class]]) {
-            [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];
-        } else {
-            [_fileOperationQueue queueDataFile:name inDirectory:filePath withContents:contents];
+        if(![self fileTypeRequiresSpecialManagement:type]) {
+            if ([contents isKindOfClass:[NSString class]]) {
+                [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];
+            } else {
+                [_fileOperationQueue queueDataFile:name inDirectory:filePath withContents:contents];
+            }
         }
+        else {
+            [self writeSpecialGroupMemberWithName:name
+                                         filePath:filePath
+                                         contents:contents
+                                             type:type];
+        }
+    }
+}
+
+- (BOOL)fileTypeRequiresSpecialManagement:(XcodeSourceFileType)type
+{
+    return type == XCDataModel || type == AssetCatalog;
+}
+
+- (void)writeSpecialGroupMemberWithName:(NSString *)name
+                               filePath:(NSString*)filePath
+                               contents:(id)contents
+                                   type:(XcodeSourceFileType)type
+{
+    if(type == XCDataModel)
+    {
+        [_fileOperationQueue queueDirectory:name inDirectory:filePath];
+        [_fileOperationQueue commitFileOperations];
+        filePath  = [filePath stringByAppendingPathComponent:name];
+        name = @"contents";
+        if([contents isKindOfClass:[NSString class]])
+           [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:contents];
+        else
+            [_fileOperationQueue queueDataFile:name inDirectory:filePath withContents:contents];
+    }
+    else if(type == AssetCatalog)
+    {
+        [_fileOperationQueue queueDirectory:name inDirectory:filePath];
+        [_fileOperationQueue commitFileOperations];
+        filePath  = [filePath stringByAppendingPathComponent:name];
+        name = @"Contents.json";
+        [_fileOperationQueue queueTextFile:name inDirectory:filePath withContents:@"{\"info\" : {\"version\" : 1,\"author\" : \"xcode\"}}"];
     }
 }
 

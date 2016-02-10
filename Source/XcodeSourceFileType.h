@@ -35,8 +35,9 @@ typedef NS_OPTIONS(NSInteger, XcodeSourceFileType)
     ShellScript = 19,            // no suffix Xcode seems to detect (text.script.sh)
     Markdown = 20,               // .md (net.daringfileball.markdown)
     XMLPropertyList = 21,        // .plist (text.plist.xml)
-    Storyboard = 22,              // .storyboard (file.storyboard)
-    XCConfig = 23                // .xcconfig
+    Storyboard = 22,             // .storyboard (file.storyboard)
+    XCConfig = 23,               // .xcconfig
+    XCDataModel = 24             // .xcdatamodel
 };
 
 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);
