@@ -187,5 +187,5 @@
 - (NSMutableDictionary*)dataStore;
 
 - (void)dropCache;
-
+- (void)dropGroupsCache;
 @end
