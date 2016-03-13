@@ -49,6 +49,16 @@ NSString *XCMasterDetailProjectPath(void)
     return [XCMasterDetailContainerFolderPath() stringByAppendingString:@"/ProjectToEdit.xcodeproj"];
 }
 
+NSString *XCPathRelativeToProjectRootFolderPath(void)
+{
+    return [XCTestResourcePath() stringByAppendingString:@"/PathRelativeToProjectRoot"];
+}
+
+NSString *XCPathRelativeToProjectRootProjectPath(void)
+{
+    return [XCPathRelativeToProjectRootFolderPath() stringByAppendingString:@"/PathRelativeToProjectRoot.xcodeproj"];
+}
+
 NSString *NSStringWithXCTestResource(NSString *resourceName)
 {
     NSString *filePath = [XCTestResourcePath() stringByAppendingPathComponent:resourceName];

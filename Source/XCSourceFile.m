@@ -210,8 +210,29 @@
 
 - (NSString *)pathRelativeToProjectRoot
 {
-    NSString *parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
-    NSString *result = [parentPath stringByAppendingPathComponent:_name];
+    NSString *result = nil;
+    if ([_sourceTree isEqualToString:@"<group>"]) {
+        NSString *component = nil;
+        if (_path) {
+            component = _path;
+        } else if (_name) {
+            component = _name;
+        }
+        NSString *parentPath = [[_project groupForGroupMemberWithKey:_key] pathRelativeToProjectRoot];
+        result = [parentPath stringByAppendingPathComponent:component];
+    } else if ([_sourceTree isEqualToString:@"SOURCE_ROOT"]) {
+        if (_path) {
+            result = _path;
+        } else if (_name) {
+            result = _name;
+        }
+    } else if ([_sourceTree isEqualToString:@"SDKROOT"]) {
+        //pass
+    } else if ([_sourceTree isEqualToString:@"BUILT_PRODUCTS_DIR"]) {
+        // pass
+    } else {
+        result = _sourceTree;
+    }
     return result;
 }
 
