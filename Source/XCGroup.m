@@ -489,15 +489,18 @@
         XCGroup *group = nil;
         NSString *key = [_key copy];
 
-        while ((group = [_project groupForGroupMemberWithKey:key]) != nil && [group pathRelativeToParent] != nil) {
-            [pathComponents addObject:[group pathRelativeToParent]];
+        while ((group = [_project groupForGroupMemberWithKey:key]) != nil) {
+            if ([group pathRelativeToParent] != nil) {
+                [pathComponents addObject:[group pathRelativeToParent]];
+            }
             key = [[group key] copy];
         }
-
+        
         NSMutableString *fullPath = [[NSMutableString alloc] init];
         for (NSInteger i = (NSInteger) [pathComponents count] - 1; i >= 0; i--) {
             [fullPath appendFormat:@"%@/", pathComponents[i]];
         }
+        
         _pathRelativeToProjectRoot = [[fullPath stringByAppendingPathComponent:_pathRelativeToParent] copy];
     }
     return _pathRelativeToProjectRoot;

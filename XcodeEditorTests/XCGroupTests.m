@@ -489,5 +489,25 @@ static const NSString *SDK_PATH =
     [project save];
 }
 
-
+- (void)test_finding_path_relative_to_project_root
+{
+    XCProject *project = [[XCProject alloc] initWithFilePath:XCPathRelativeToProjectRootProjectPath()];
+    XCTarget *target = [project targetWithName:@"PathRelativeToProjectRoot"];
+    XCTAssertNotNil(target);
+    
+    NSArray<XCSourceFile *> *files = [target members];
+    for (XCSourceFile *file in files) {
+        NSString *relativePath = [file pathRelativeToProjectRoot];
+        XCTAssertNotNil(relativePath);
+        if ([[relativePath lastPathComponent] isEqualToString:@"FileRelativeToProject.m"]) {
+            XCTAssertEqualObjects(@"foo/FileRelativeToProject.m", relativePath);
+        }
+        if ([[relativePath lastPathComponent] isEqualToString:@"FileRelativeToOwnProject.m"]) {
+            XCTAssertEqualObjects(@"PathRelativeToProjectRoot/Classes/FileRelativeToOwnProject.m", relativePath);
+        }
+        if ([[relativePath lastPathComponent] isEqualToString:@"FileRelativeToGroup.m"]) {
+            XCTAssertEqualObjects(@"PathRelativeToProjectRoot/Classes/FileRelativeToGroup.m", relativePath);
+        }
+    }
+}
 @end

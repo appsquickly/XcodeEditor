@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49EE86B01C95EF8200CBF750 /* PathRelativeToProjectRoot.zip in Resources */ = {isa = PBXBuildFile; fileRef = 49EE86AF1C95EF8200CBF750 /* PathRelativeToProjectRoot.zip */; };
 		5D5AC8761C6A423C00E5B3DA /* XCBuildShellScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5AC8721C6A423C00E5B3DA /* XCBuildShellScript.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D5AC8771C6A423C00E5B3DA /* XCBuildShellScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5AC8731C6A423C00E5B3DA /* XCBuildShellScript.m */; };
 		5D5AC8781C6A423C00E5B3DA /* XCBuildShellScriptDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5AC8741C6A423C00E5B3DA /* XCBuildShellScriptDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49EE86AF1C95EF8200CBF750 /* PathRelativeToProjectRoot.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = PathRelativeToProjectRoot.zip; sourceTree = "<group>"; };
 		5D5AC8721C6A423C00E5B3DA /* XCBuildShellScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildShellScript.h; sourceTree = "<group>"; };
 		5D5AC8731C6A423C00E5B3DA /* XCBuildShellScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildShellScript.m; sourceTree = "<group>"; };
 		5D5AC8741C6A423C00E5B3DA /* XCBuildShellScriptDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildShellScriptDefinition.h; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				BA7985135EB5AF8E8386EB89 /* ArchiveProj.zip */,
 				BA798180A5D76D64336BFF65 /* ProjectToEdit.zip */,
 				BA79818F51A7B4CA0077D3AE /* expanz-iOS-SDK.zip */,
+				49EE86AF1C95EF8200CBF750 /* PathRelativeToProjectRoot.zip */,
 			);
 			path = TestProjects;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 6BE8FDA31C01C190001EF5B3;
 			productRefGroup = 6BE8FDAE1C01C190001EF5B3 /* Products */;
@@ -671,6 +675,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49EE86B01C95EF8200CBF750 /* PathRelativeToProjectRoot.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,7 +694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\necho \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr ~/xcode-editor-test-results\nmkdir -p ~/xcode-editor-test-results\n\nunzip XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ProjectToEdit.zip -d ~/xcode-editor-test-results\n\nfor f in XcodeEditorTests/Resources/Files/*; do cp $f ~/xcode-editor-test-results; done\n";
+			shellScript = "#!/bin/bash\necho \"-------------- EXTRACTING TEST RESOURCES --------------\"\n\nrm -fr ~/xcode-editor-test-results\nmkdir -p ~/xcode-editor-test-results\n\nunzip XcodeEditorTests/Resources/TestProjects/expanz-iOS-SDK.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ArchiveProj.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/HelloBoxy.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/ProjectToEdit.zip -d ~/xcode-editor-test-results\nunzip XcodeEditorTests/Resources/TestProjects/PathRelativeToProjectRoot.zip -d ~/xcode-editor-test-results\n\nfor f in XcodeEditorTests/Resources/Files/*; do cp $f ~/xcode-editor-test-results; done\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

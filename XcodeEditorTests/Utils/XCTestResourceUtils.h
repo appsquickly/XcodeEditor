@@ -28,6 +28,10 @@ NSString *XCMasterDetailContainerFolderPath(void);
 
 NSString *XCMasterDetailProjectPath(void);
 
+NSString *XCPathRelativeToProjectRootFolderPath(void);
+
+NSString *XCPathRelativeToProjectRootProjectPath(void);
+
 
 NSString *NSStringWithXCTestResource(NSString *resourceName);
 
