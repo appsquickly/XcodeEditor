@@ -18,6 +18,7 @@
 
 @synthesize filePath = _filePath;
 @synthesize copyToDestination = _copyToDestination;
+@synthesize sourceTree = _sourceTree;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -26,8 +27,15 @@
 + (XCFrameworkDefinition *)frameworkDefinitionWithFilePath:(NSString *)filePath
                                          copyToDestination:(BOOL)copyToDestination
 {
+    return [XCFrameworkDefinition frameworkDefinitionWithFilePath:filePath copyToDestination:copyToDestination sourceTree:SourceTreeGroup];
+}
 
-    return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination];
++ (XCFrameworkDefinition *)frameworkDefinitionWithFilePath:(NSString *)filePath
+                                         copyToDestination:(BOOL)copyToDestination
+                                                sourceTree:(XcodeSourceTreeType)sourceTree
+{
+    
+    return [[XCFrameworkDefinition alloc] initWithFilePath:filePath copyToDestination:copyToDestination sourceTree:sourceTree];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -36,10 +44,16 @@
 
 - (id)initWithFilePath:(NSString *)filePath copyToDestination:(BOOL)copyToDestination
 {
+    return [self initWithFilePath:filePath copyToDestination:copyToDestination sourceTree:SourceTreeGroup];
+}
+
+- (id)initWithFilePath:(NSString *)filePath copyToDestination:(BOOL)copyToDestination sourceTree:(XcodeSourceTreeType)sourceTree
+{
     self = [super init];
     if (self) {
         _filePath = [filePath copy];
         _copyToDestination = copyToDestination;
+        _sourceTree = sourceTree;
     }
     return self;
 }

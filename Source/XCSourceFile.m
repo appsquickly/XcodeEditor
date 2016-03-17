@@ -15,6 +15,7 @@
 #import "XCProject.h"
 #import "Utils/XCKeyBuilder.h"
 #import "XCGroup.h"
+#import "XCTarget.h"
 
 @implementation XCSourceFile
 
@@ -27,7 +28,7 @@
 //-------------------------------------------------------------------------------------------
 
 + (XCSourceFile *)sourceFileWithProject:(XCProject *)project key:(NSString *)key type:(XcodeSourceFileType)type
-    name:(NSString *)name sourceTree:(NSString *)_tree path:(NSString *)path
+                                   name:(NSString *)name sourceTree:(NSString *)_tree path:(NSString *)path
 {
     return [[XCSourceFile alloc] initWithProject:project key:key type:type name:name sourceTree:_tree path:path];
 }
@@ -38,9 +39,9 @@
 //-------------------------------------------------------------------------------------------
 
 - (id)initWithProject:(XCProject *)project key:(NSString *)key type:(XcodeSourceFileType)type name:(NSString *)name
-    sourceTree:(NSString *)tree path:(NSString *)path
+           sourceTree:(NSString *)tree path:(NSString *)path
 {
-
+    
     self = [super init];
     if (self) {
         _project = project;
@@ -78,7 +79,7 @@
 - (void)setName:(NSString *)name
 {
     _name = [name copy];
-
+    
     [self setValue:name forProjectItemPropertyWithKey:@"name"];
 }
 
@@ -91,7 +92,7 @@
 - (void)setPath:(NSString *)path
 {
     _path = [path copy];
-
+    
     [self setValue:path forProjectItemPropertyWithKey:@"path"];
 }
 
@@ -103,7 +104,7 @@
             if ([[obj valueForKey:@"isa"] xce_hasBuildFileType]) {
                 if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
                     _isBuildFile = nil;
-
+                    
                     _isBuildFile = @YES;
                 }
             }
@@ -114,19 +115,19 @@
 
 - (BOOL)canBecomeBuildFile
 {
-    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive || _type == AssetCatalog || _type == SourceCodeSwift || _type == PropertyList || _type == XCDataModel;
+    return _type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == Framework || _type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == Archive || _type == AssetCatalog || _type == SourceCodeSwift;
 }
 
 
 - (XcodeMemberType)buildPhase
 {
-    if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == SourceCodeSwift || _type == XCDataModel) {
+    if (_type == SourceCodeObjC || _type == SourceCodeObjCPlusPlus || _type == SourceCodeCPlusPlus || _type == XibFile || _type == SourceCodeSwift) {
         return PBXSourcesBuildPhaseType;
     }
     else if (_type == Framework) {
         return PBXFrameworksBuildPhaseType;
     }
-    else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == AssetCatalog || _type == PropertyList) {
+    else if (_type == ImageResourcePNG || _type == HTML || _type == Bundle || _type == AssetCatalog) {
         return PBXResourcesBuildPhaseType;
     }
     else if (_type == Archive) {
@@ -147,7 +148,7 @@
         }];
     }
     return [_buildFileKey copy];
-
+    
 }
 
 
@@ -166,9 +167,26 @@
         }
         else {
             [NSException raise:NSInvalidArgumentException format:@"Project file of type %@ can't become a build file.",
-                                                                 NSStringFromXCSourceFileType(_type)];
+             NSStringFromXCSourceFileType(_type)];
         }
+        
+    }
+}
 
+- (void)removeBuildFile
+{
+    if ([self isBuildFile]) {
+        XCSourceFile* file = [_project fileWithName:_path];
+        [[_project objects] enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[NSDictionary class]]) {
+                id fileRef = [obj valueForKey:@"fileRef"];
+                if (fileRef && [fileRef isKindOfClass:[NSString class]]) {
+                    if ([fileRef isEqualToString:file.key]) {
+                        [_project removeObjectWithKey:key];
+                    }
+                }
+            }
+        }];
     }
 }
 
@@ -193,6 +211,42 @@
             }
         }
     }];
+}
+- (void)setWeakReference
+{
+    [self addBuildAttribute:@"Weak"];
+}
+
+- (void)addBuildAttribute:(NSString*)attribute
+{
+    NSMutableDictionary *objectArrayCopy = [[_project objects] mutableCopy];
+    [objectArrayCopy enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
+        if ([[obj valueForKey:@"isa"] xce_hasBuildFileType]) {
+            if ([obj[@"fileRef"] isEqualToString:self.key]) {
+                NSMutableDictionary *replaceBuildFile = [NSMutableDictionary dictionaryWithDictionary:obj];
+                if (![replaceBuildFile objectForKey:@"settings"]) {
+                    replaceBuildFile[@"settings"] = @{@"ATTRIBUTES": @[attribute]};
+                }
+                else {
+                    NSMutableDictionary *settingsDict = [NSMutableDictionary dictionaryWithDictionary:replaceBuildFile[@"settings"]];
+                    if (![settingsDict objectForKey:@"ATTRIBUTES"]) {
+                        settingsDict[@"ATTRIBUTES"] = @[attribute];
+                    }
+                    else {
+                        NSMutableArray* attr = [NSMutableArray arrayWithArray:settingsDict[@"ATTRIBUTES"]];
+                        if ([attr containsObject:attribute]) {
+                            return;
+                        }
+                        [attr addObject:attribute];
+                        settingsDict[@"ATTRIBUTES"] = attr;
+                    }
+                }
+                [[_project objects] removeObjectForKey:key];
+                [_project objects][key] = replaceBuildFile;
+            }
+        }
+    }];
+    
 }
 
 //-------------------------------------------------------------------------------------------
@@ -221,7 +275,7 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"Project file: key=%@, name=%@, fullPath=%@", _key, _name,
-                                      [self pathRelativeToProjectRoot]];
+            [self pathRelativeToProjectRoot]];
 }
 
 
