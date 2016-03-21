@@ -67,7 +67,7 @@
 
                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])
                 {
-                    [NSException raise:@"XCConfig not found" format:@"Unable to find XCConfig file at %@", path];
+                    NSLog(@"XCConfig not found. Unable to find XCConfig file at %@", path);
                 }
 
             }
@@ -159,6 +159,15 @@
         value = [_xcconfigSettings objectForKey:key];
     }
     return value;
+}
+
+-(void)removeSettingByKey:(NSString*)key {
+    [_xcconfigSettings removeObjectForKey:key];
+    [_buildSettings removeObjectForKey:key];
+    
+    NSMutableDictionary* dict = [[[_project objects] objectForKey:_key] mutableCopy];
+    [dict setValue:_buildSettings forKey:@"buildSettings"];
+    [_project.objects setValue:dict forKey:_key];
 }
 
 /* ====================================================================================================================================== */

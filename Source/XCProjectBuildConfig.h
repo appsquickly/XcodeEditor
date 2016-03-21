@@ -35,6 +35,8 @@
 
 - (id <NSCopying>)valueForKey:(NSString*)key;
 
+-(void)removeSettingByKey:(NSString*)key;
+
 + (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey inProject:(XCProject*)project
     withBuildConfigurationVisitor:(void (^)(NSMutableDictionary*))buildConfigurationVisitor;
 
