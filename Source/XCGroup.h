@@ -104,10 +104,25 @@
 - (void)addClass:(XCClassDefinition*)classDefinition toTargets:(NSArray<XCTarget*>*)targets;
 
 /**
+ * Removes a class from the _group
+*/
+- (void)removeClass:(XCClassDefinition*)classDefinition fromTargets:(NSArray*)targets;
+
+/** 
+ * Removes a header from the _group
+*/
+- (void)removeHeader:(XCClassDefinition*)classDefinition;
+
+/**
 * Adds a framework to the _group. If the _group already contains the framework, the contents will be updated if the
 * framework definition's copyToDestination flag is yes, otherwise it will be ignored.
 */
 - (void)addFramework:(XCFrameworkDefinition*)frameworkDefinition;
+
+/**
+* Removes a framework from the _group
+*/
+- (void) removeFramework:(XCFrameworkDefinition *)frameworkDefinition fromTargets:(NSArray *)targets;
 
 /**
 * Adds a _group with a path relative to this _group.
@@ -129,7 +144,7 @@
 /**
 * Adds a framework to the _group, making it a member of the specified targets.
 */
-- (void)addFramework:(XCFrameworkDefinition*)framework toTargets:(NSArray<XCTarget*>*)targets;
+- (XCSourceFile*)addFramework:(XCFrameworkDefinition*)framework toTargets:(NSArray<XCTarget*>*)targets;
 
 /**
 * Adds a source file of arbitrary type - image resource, header, etc.

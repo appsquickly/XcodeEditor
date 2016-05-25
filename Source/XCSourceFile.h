@@ -18,14 +18,14 @@
 @class XCProject;
 
 /**
-* Represents a file resource in an xcode project.
-*/
+ * Represents a file resource in an xcode project.
+ */
 @interface XCSourceFile : NSObject<XcodeGroupMember>
 {
-
+    
 @private
     XCProject *_project;
-
+    
     NSNumber *_isBuildFile;
     NSString *_buildFileKey;
     NSString *_name;
@@ -42,14 +42,14 @@
 @property (nonatomic, strong) NSString *path;
 
 + (XCSourceFile *)sourceFileWithProject:(XCProject *)project key:(NSString *)key type:(XcodeSourceFileType)type
-    name:(NSString *)name sourceTree:(NSString *)tree path:(NSString *)path;
+                                   name:(NSString *)name sourceTree:(NSString *)tree path:(NSString *)path;
 
 - (id)initWithProject:(XCProject *)project key:(NSString *)key type:(XcodeSourceFileType)type name:(NSString *)name
-    sourceTree:(NSString *)tree path:(NSString *)path;
+           sourceTree:(NSString *)tree path:(NSString *)path;
 
 /**
-* If yes, indicates the file is able to be included for compilation in an `XCTarget`.
-*/
+ * If yes, indicates the file is able to be included for compilation in an `XCTarget`.
+ */
 - (BOOL)isBuildFile;
 
 - (BOOL)canBecomeBuildFile;
@@ -59,15 +59,25 @@
 - (NSString *)buildFileKey;
 
 /**
-* Adds this file to the project as an `xcode_BuildFile`, ready to be included in targets.
-*/
+ * Adds this file to the project as an `xcode_BuildFile`, ready to be included in targets.
+ */
 - (void)becomeBuildFile;
 
 /**
-* Method for setting Compiler Flags for individual build files
-*
-* @param value String value to set in Compiler Flags
-*/
+ Removes this file as an `xcode_BuildFile` from the project.
+ */
+- (void)removeBuildFile;
+
+/**
+ * Method for setting Compiler Flags for individual build files
+ *
+ * @param value String value to set in Compiler Flags
+ */
 - (void)setCompilerFlags:(NSString *)value;
+
+/**
+ * Method for setting the build file is a weak reference
+ */
+- (void)setWeakReference;
 
 @end
