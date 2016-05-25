@@ -429,6 +429,8 @@
 				BA7987EBAFEB84C72B4C63D6 /* XCSubProjectDefinition.m */,
 				5DC6E7561C6B72B9008FA743 /* XCVersionGroup.h */,
 				5DC6E7571C6B72B9008FA743 /* XCVersionGroup.m */,
+				348B64411C9ADFE3001E0B8C /* XcodeSourceTreeType.h */,
+				348B64431C9AE028001E0B8C /* XcodeSourceTreeType.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";

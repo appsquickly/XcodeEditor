@@ -23,6 +23,7 @@
 #import "XCSourceFileDefinition.h"
 #import "XCSubProjectDefinition.h"
 #import "XCProject+SubProject.h"
+#import "XcodeMemberType.h"
 #import "XCVersionGroup.h"
 
 @implementation XCGroup
