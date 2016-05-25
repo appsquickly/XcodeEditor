@@ -26,9 +26,9 @@
 #pragma mark - Class Methods
 
 + (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-              productReference:(NSString*)productReference
+              productReference:(NSString*)productReference productType:(NSString*)productType
 {
-    return [[XCTarget alloc] initWithProject:project key:key name:name productName:productName productReference:productReference];
+    return [[XCTarget alloc] initWithProject:project key:key name:name productName:productName productReference:productReference productType:productType];
 }
 
 
@@ -36,7 +36,7 @@
 #pragma mark - Initialization & Destruction
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-     productReference:(NSString*)productReference
+     productReference:(NSString*)productReference productType:(NSString*)productType
 {
     self = [super init];
     if (self)
@@ -46,6 +46,7 @@
         _name = [name copy];
         _productName = [productName copy];
         _productReference = [productReference copy];
+        _productType = [productType copy];
     }
     return self;
 }
@@ -187,7 +188,7 @@
     
     NSDictionary* reference = @{
                                 @"isa":[NSString xce_stringFromMemberType:PBXShellScriptBuildPhase],
-                                @"buildActionMask":@2147483647,
+                                @"buildActionMask":@"2147483647",
                                 @"files":shellScript.files,
                                 @"inputPaths":shellScript.inputPaths,
                                 @"outputPaths":shellScript.outputPaths,
@@ -207,6 +208,26 @@
     [self flagMembersAsDirty];
 }
 
+- (void)removeShellScriptByName:(NSString*)name {
+    NSDictionary* target = [[_project objects] objectForKey:_key];
+    NSMutableArray *removedPhases = [NSMutableArray array];
+    for (NSString* buildPhaseKey in [target objectForKey:@"buildPhases"])
+    {
+        NSMutableDictionary* buildPhase = [[_project objects] objectForKey:buildPhaseKey];
+        NSString* type = [buildPhase objectForKey:@"isa"];
+        if (type && [type xce_hasShellScriptBuildPhase]) {
+            NSString* currentName = [buildPhase objectForKey:@"name"];
+            if ([currentName isEqualToString:name]) {
+                [_project removeObjectWithKey:buildPhaseKey];
+                [removedPhases addObject:buildPhaseKey];
+            }
+        }
+    }
+    
+    NSMutableArray *buildPhases =[target objectForKey:@"buildPhases"];
+    [buildPhases removeObjectsInArray:removedPhases];
+    [target setValue:buildPhases forKey:@"buildPhases"];
+}
 
 - (NSDictionary*)buildRefWithFileRefKey
 {
@@ -346,7 +367,11 @@
     [_project dropCache];
     
     return [[XCTarget alloc] initWithProject:_project key:dupTargetObjKey name:targetName productName:productName
-                            productReference:dupTargetObj[@"productReference"]];
+                            productReference:dupTargetObj[@"productReference"] productType:dupTargetObj[@"productType"]];
+}
+
+-(BOOL)isApplicationType {
+    return [_productType isEqualToString:@"com.apple.product-type.application"];
 }
 
 /* ====================================================================================================================================== */

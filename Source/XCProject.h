@@ -119,6 +119,11 @@
 - (NSArray<XCGroup*>*)rootGroups;
 
 /**
+ * Returns the main group under root object
+ */
+- (XCGroup *)mainGroup;
+
+/**
 * Returns the group with the given key, or nil.
 */
 - (XCGroup*)groupWithKey:(NSString*)key;
@@ -176,6 +181,11 @@
 * Returns the target with the specified name, or nil. 
 */
 - (XCTarget*)targetWithName:(NSString*)name;
+
+/**
+* Lists the targets which are of application type.
+*/
+- (NSArray*)applicationTargets;
 
 #pragma mark Configurations
 /**

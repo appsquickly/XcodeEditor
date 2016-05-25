@@ -30,6 +30,7 @@
     NSString* _name;
     NSString* _productName;
     NSString* _productReference;
+    NSString* _productType;
     NSString* _defaultConfigurationName;
 
 @private
@@ -43,12 +44,13 @@
 @property(nonatomic, strong) NSString* name;
 @property(nonatomic, strong) NSString* productName;
 @property(nonatomic, strong, readonly) NSString* productReference;
+@property(nonatomic, strong, readonly) NSString* productType;
 
 + (XCTarget*)targetWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-    productReference:(NSString*)productReference;
+    productReference:(NSString*)productReference productType:(NSString*)productType;
 
 - (id)initWithProject:(XCProject*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName
-    productReference:(NSString*)productReference;
+    productReference:(NSString*)productReference productType:(NSString*)productType;
 
 - (NSArray<XCSourceFile*>*)resources;
 
@@ -66,6 +68,8 @@
 
 - (void)makeAndAddShellScript:(XCBuildShellScriptDefinition*)shellScript;
 
+- (void)removeShellScriptByName:(NSString*)name;
+
 - (void)removeMemberWithKey:(NSString*)key;
 
 - (void)removeMembersWithKeys:(NSArray<NSString*>*)keys;
@@ -77,6 +81,8 @@
 - (void)addDependency:(NSString*)key;
 
 - (instancetype)duplicateWithTargetName:(NSString*)targetName productName:(NSString*)productName;
+
+- (BOOL)isApplicationType;
 
 @end
 

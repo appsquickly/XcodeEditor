@@ -140,12 +140,36 @@
     [self addSourceFile:sourceFile toTargets:targets];
 }
 
+- (void)removeClass:(XCClassDefinition*)classDefinition fromTargets:(NSArray*)targets {
+    XCSourceFile *sourceFile = [_project fileWithName:[classDefinition className]];
+    [sourceFile removeBuildFile];
+    
+    NSString* classKey = sourceFile.key;
+    //XCSourceFile *frameworkSourceRef = (XCSourceFile *) [self memberWithDisplayName:[classDefinition sourceFileName]];
+    for (XCTarget* target in targets) {
+        [target removeMemberWithKey:classKey];
+    }
+    //[frameworkSourceRef removeBuildFile];
+    
+    [self removeMemberWithKey:classKey];
+    [_project removeObjectWithKey:classKey];
+}
+
+- (void)removeHeader:(XCClassDefinition*)classDefinition {
+    XCSourceFile *sourceFile = [_project fileWithName:[classDefinition className]];
+    [self removeMemberWithKey:[sourceFile key]];
+    [_project removeObjectWithKey:[sourceFile key]];
+}
+
 - (void)addFramework:(XCFrameworkDefinition *)frameworkDefinition
 {
     if (([self memberWithDisplayName:[frameworkDefinition fileName]]) == nil) {
+        NSLog(@"frame doesnt exists. creating %@", [frameworkDefinition fileName]);
+        NSLog(@"existing members: %@", [self members]);
         NSDictionary *fileReference;
         if ([frameworkDefinition copyToDestination]) {
-            fileReference = [self makeFileReferenceWithPath:[frameworkDefinition fileName] name:nil type:Framework];
+            fileReference = [self makeFileReferenceWithPath:[frameworkDefinition fileName] name:nil type:Framework
+                                                 sourceTree:frameworkDefinition.sourceTree];
             BOOL copyFramework = NO;
             if ([frameworkDefinition fileOperationType] == XCFileOperationTypeOverwrite) {
                 copyFramework = YES;
@@ -164,7 +188,7 @@
         } else {
             NSString *path = [frameworkDefinition filePath];
             NSString *name = [frameworkDefinition fileName];
-            fileReference = [self makeFileReferenceWithPath:path name:name type:Framework];
+            fileReference = [self makeFileReferenceWithPath:path name:name type:Framework sourceTree:frameworkDefinition.sourceTree];
         }
         NSString *frameworkKey = [[XCKeyBuilder forItemNamed:[frameworkDefinition fileName]] build];
         [_project objects][frameworkKey] = fileReference;
@@ -174,18 +198,35 @@
 }
 
 
-- (void)addFramework:(XCFrameworkDefinition *)frameworkDefinition toTargets:(NSArray *)targets
+- (XCSourceFile*)addFramework:(XCFrameworkDefinition *)frameworkDefinition toTargets:(NSArray *)targets
 {
     [self addFramework:frameworkDefinition];
     XCSourceFile *frameworkSourceRef = (XCSourceFile *) [self memberWithDisplayName:[frameworkDefinition fileName]];
     [self addSourceFile:frameworkSourceRef toTargets:targets];
+    return frameworkSourceRef;
 }
 
+- (void) removeFramework:(XCFrameworkDefinition *)frameworkDefinition fromTargets:(NSArray *)targets
+{
+    XCSourceFile* file = [_project fileWithName:[frameworkDefinition filePath]];
+    NSString* frameworkKey = file.key;
+    if (!file)
+        return;
+    
+    XCSourceFile *frameworkSourceRef = (XCSourceFile *) [self memberWithDisplayName:[frameworkDefinition fileName]];
+    for (XCTarget* target in targets) {
+        [target removeMemberWithKey:frameworkKey];
+    }
+    [frameworkSourceRef removeBuildFile];
+    
+    [self removeMemberWithKey:frameworkKey];
+    [_project removeObjectWithKey:frameworkKey];
+}
 
 - (void)addFolderReference:(NSString *)sourceFolder
 {
     NSDictionary *folderReferenceDictionary =
-            [self makeFileReferenceWithPath:sourceFolder name:[sourceFolder lastPathComponent] type:Folder];
+            [self makeFileReferenceWithPath:sourceFolder name:[sourceFolder lastPathComponent] type:Folder sourceTree:SourceTreeGroup];
     NSString *folderReferenceKey = [[XCKeyBuilder forItemNamed:[sourceFolder lastPathComponent]] build];
     [self addMemberWithKey:folderReferenceKey];
     [_project objects][folderReferenceKey] = folderReferenceDictionary;
@@ -195,7 +236,7 @@
 - (void)addFileReference:(NSString *)filePath withType:(XcodeSourceFileType)type
 {
     NSDictionary *folderReferenceDictionary =
-    [self makeFileReferenceWithPath:filePath name:[filePath lastPathComponent] type:type];
+    [self makeFileReferenceWithPath:filePath name:[filePath lastPathComponent] type:type sourceTree:SourceTreeGroup];
     NSString *folderReferenceKey = [[XCKeyBuilder forItemNamed:[filePath lastPathComponent]] build];
     [self addMemberWithKey:folderReferenceKey];
     [_project objects][folderReferenceKey] = folderReferenceDictionary;
@@ -592,7 +633,7 @@
         if (type == AssetCatalog) {
             refName = [name lastPathComponent];
         }
-        NSDictionary *reference = [self makeFileReferenceWithPath:name name:refName type:type];
+        NSDictionary *reference = [self makeFileReferenceWithPath:name name:refName type:type sourceTree:SourceTreeGroup];
         NSString *fileKey = [[XCKeyBuilder forItemNamed:name] build];
         [_project objects][fileKey] = reference;
         [self addMemberWithKey:fileKey];
@@ -668,7 +709,7 @@
 {
     XCSourceFile *currentSourceFile = (XCSourceFile *) [self memberWithDisplayName:name];
     if ((currentSourceFile) == nil) {
-        NSDictionary *reference = [self makeFileReferenceWithPath:path name:name type:type];
+        NSDictionary *reference = [self makeFileReferenceWithPath:path name:name type:type sourceTree:SourceTreeGroup];
         NSString *fileKey = [[XCKeyBuilder forItemNamed:name] build];
         [_project objects][fileKey] = reference;
         [self addMemberWithKey:fileKey];
@@ -766,6 +807,7 @@
 #pragma mark Dictionary Representations
 
 - (NSDictionary *)makeFileReferenceWithPath:(NSString *)path name:(NSString *)name type:(XcodeSourceFileType)type
+                                 sourceTree:(XcodeSourceTreeType)sourceTree
 {
     NSMutableDictionary *reference = [NSMutableDictionary dictionary];
     reference[@"isa"] = [NSString xce_stringFromMemberType:PBXFileReferenceType];
@@ -777,7 +819,7 @@
     if (path != nil) {
         reference[@"path"] = path;
     }
-    reference[@"sourceTree"] = @"<group>";
+    reference[@"sourceTree"] = [NSString xce_stringFromSourceTreeType:sourceTree];
     return reference;
 }
 

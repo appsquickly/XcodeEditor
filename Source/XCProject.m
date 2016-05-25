@@ -131,7 +131,6 @@ NSString *const XCProjectNotFoundException;
     return nil;
 }
 
-
 - (NSArray *)headerFiles
 {
     return [self projectFilesOfType:SourceCodeHeader];
@@ -211,6 +210,19 @@ NSString *const XCProjectNotFoundException;
     }
 
     return [results copy];
+}
+
+- (XCGroup *)mainGroup
+{
+    NSString* rootObjectKey = [self rootObjectKey];
+    NSDictionary* rootObject = [[self objects] objectForKey:rootObjectKey];
+    NSString* mainGroupKey = [rootObject objectForKey:@"mainGroup"];
+    for (XCGroup* group in [self groups]) {
+        if ([group.key isEqualToString:mainGroupKey])
+             return group;
+    }
+             
+    return nil;
 }
 
 - (XCGroup *)groupWithKey:(NSString *)key
@@ -365,7 +377,8 @@ NSString *const XCProjectNotFoundException;
             if ([[obj valueForKey:@"isa"] xce_hasNativeTargetType]) {
                 XCTarget *target = [XCTarget targetWithProject:self key:key name:[obj valueForKey:@"name"]
                                                    productName:[obj valueForKey:@"productName"]
-                                              productReference:[obj valueForKey:@"productReference"]];
+                                              productReference:[obj valueForKey:@"productReference"]
+                                              productType:[obj valueForKey:@"productType"]];
                 [_targets addObject:target];
             }
         }];
@@ -381,6 +394,16 @@ NSString *const XCProjectNotFoundException;
         }
     }
     return nil;
+}
+
+- (NSArray*)applicationTargets
+{
+    NSArray* targets = [self targets];
+    NSArray* filteredTargets = [targets filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return [evaluatedObject isApplicationType];
+    }]];
+    
+    return filteredTargets;
 }
 
 - (void)save
