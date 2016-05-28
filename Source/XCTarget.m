@@ -18,6 +18,7 @@
 #import "XcodeGroupMember.h"
 #import "XCBuildShellScript.h"
 #import "XCBuildShellScriptDefinition.h"
+#import "XCVersionGroup.h"
 
 @implementation XCTarget
 
@@ -65,7 +66,7 @@
             {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"])
                 {
-                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    id<XCBuildFile> targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember)
                     {
                         [_resources addObject:[self buildFileWithKey:buildFileKey]];
@@ -115,10 +116,10 @@
             {
                 for (NSString* buildFileKey in [buildPhase objectForKey:@"files"])
                 {
-                    XCSourceFile* targetMember = [self buildFileWithKey:buildFileKey];
+                    id<XCBuildFile,XcodeGroupMember> targetMember = [self buildFileWithKey:buildFileKey];
                     if (targetMember)
                     {
-                        [_members addObject:[_project fileWithKey:targetMember.key]];
+                        [_members addObject:targetMember];
                     }
                 }
             }
@@ -158,7 +159,7 @@
     return _buildShellScripts;
 }
 
-- (void)addMember:(XCSourceFile*)member
+- (void)addMember:(id<XCBuildFile>)member
 {
     [member becomeBuildFile];
     NSDictionary* target = [[_project objects] objectForKey:_key];
@@ -403,14 +404,16 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (XCSourceFile*)buildFileWithKey:(NSString*)theKey
+- (id<XCBuildFile,XcodeGroupMember>)buildFileWithKey:(NSString*)theKey
 {
     NSDictionary* obj = [[_project objects] valueForKey:theKey];
     if (obj)
     {
         if ([[obj valueForKey:@"isa"] xce_hasBuildFileType])
         {
-            return [_project fileWithKey:[obj valueForKey:@"fileRef"]];
+            id<XcodeGroupMember> targetFile = [_project groupMemberWithKey:[obj valueForKey:@"fileRef"]];
+            if([targetFile conformsToProtocol:@protocol(XCBuildFile)])
+                return (id<XcodeGroupMember,XCBuildFile>) targetFile;
         }
     }
     return nil;

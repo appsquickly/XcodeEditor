@@ -24,6 +24,7 @@
 #import "XCSubProjectDefinition.h"
 #import "XCProject+SubProject.h"
 #import "XcodeMemberType.h"
+#import "XCVersionGroup.h"
 
 @implementation XCGroup
 
@@ -301,6 +302,43 @@
     return group;
 }
 
+- (XCVersionGroup*)addVersionGroupWithPath:(NSString*)path
+{
+    NSString* groupKeyPath = self.pathRelativeToProjectRoot ? [self.pathRelativeToProjectRoot stringByAppendingPathComponent:path] : path;
+    
+    NSString* groupKey = [[XCKeyBuilder forItemNamed:groupKeyPath] build];
+    
+    NSArray* members = [self members];
+    for (id <XcodeGroupMember> groupMember in members)
+    {
+        if ([groupMember groupMemberType] == XCVersionGroupType)
+        {
+            
+            if ([[[groupMember pathRelativeToProjectRoot] lastPathComponent] isEqualToString:path] ||
+                [[groupMember displayName] isEqualToString:path] || [[groupMember key] isEqualToString:groupKey])
+            {
+                return nil;
+            }
+        }
+    }
+    
+    XCVersionGroup* group = [[XCVersionGroup alloc] initWithProject:_project
+                                                                key:groupKey
+                                                               path:path
+                                                           children:nil
+                                                     currentVersion:nil];
+    NSDictionary* groupDict = [group asDictionary];
+    
+    [_project objects][groupKey] = groupDict;
+    [_fileOperationQueue queueDirectory:path inDirectory:[self pathRelativeToProjectRoot]];
+    [self addMemberWithKey:groupKey];
+    
+    NSDictionary* dict = [self asDictionary];
+    [_project objects][_key] = dict;
+    
+    return group;
+}
+
 - (void)addSourceFile:(XCSourceFileDefinition *)sourceFileDefinition
 {
     [self makeGroupMemberWithName:[sourceFileDefinition sourceFileName] contents:[sourceFileDefinition data]
@@ -427,18 +465,23 @@
         _members = [[NSMutableArray alloc] init];
         for (NSString *childKey in _children) {
             XcodeMemberType type = [self typeForKey:childKey];
-
+            
             @autoreleasepool {
                 if (type == PBXGroupType || type == PBXVariantGroupType) {
                     [_members addObject:[_project groupWithKey:childKey]];
                 } else if (type == PBXFileReferenceType) {
                     [_members addObject:[_project fileWithKey:childKey]];
                 }
+                else if(type == XCVersionGroupType)
+                {
+                    [_members addObject:[_project versionGroupWithKey:childKey]];
+                }
             }
         }
     }
     return _members;
 }
+
 
 - (NSArray *)recursiveMembers
 {
@@ -476,7 +519,7 @@
 - (id <XcodeGroupMember>)memberWithKey:(NSString *)key
 {
     id <XcodeGroupMember> groupMember = nil;
-
+    
     if ([_children containsObject:key]) {
         XcodeMemberType type = [self typeForKey:key];
         if (type == PBXGroupType || type == PBXVariantGroupType) {
@@ -484,9 +527,13 @@
         } else if (type == PBXFileReferenceType) {
             groupMember = [_project fileWithKey:key];
         }
+        else if (type == XCVersionGroupType) {
+            groupMember = [_project versionGroupWithKey:key];
+        }
     }
     return groupMember;
 }
+
 
 - (id <XcodeGroupMember>)memberWithDisplayName:(NSString *)name
 {
