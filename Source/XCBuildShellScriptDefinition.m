@@ -8,6 +8,8 @@
 
 #import "XCBuildShellScriptDefinition.h"
 
+#import "NSString+RemoveEmoji.h"
+
 @implementation XCBuildShellScriptDefinition
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -46,7 +48,7 @@
 {
     self = [super init];
     if (self) {
-        _name = name;
+        _name = [name stringByRemovingEmoji];
         
         _files =files!=nil?files:@[];
         _inputPaths = inputPaths!=nil?inputPaths:@[];
