@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BC369091D1C4F8A004D2C7D /* NSString+RemoveEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC369071D1C4F8A004D2C7D /* NSString+RemoveEmoji.m */; };
+		2BC3690A1D1C4F8A004D2C7D /* NSString+RemoveEmoji.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC369081D1C4F8A004D2C7D /* NSString+RemoveEmoji.h */; };
 		348B64421C9ADFEA001E0B8C /* XcodeSourceTreeType.h in Headers */ = {isa = PBXBuildFile; fileRef = 348B64411C9ADFE3001E0B8C /* XcodeSourceTreeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		348B64441C9AE028001E0B8C /* XcodeSourceTreeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 348B64431C9AE028001E0B8C /* XcodeSourceTreeType.m */; };
 		5D5AC8761C6A423C00E5B3DA /* XCBuildShellScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5AC8721C6A423C00E5B3DA /* XCBuildShellScript.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D5AC8771C6A423C00E5B3DA /* XCBuildShellScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5AC8731C6A423C00E5B3DA /* XCBuildShellScript.m */; };
 		5D5AC8781C6A423C00E5B3DA /* XCBuildShellScriptDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5AC8741C6A423C00E5B3DA /* XCBuildShellScriptDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D5AC8791C6A423C00E5B3DA /* XCBuildShellScriptDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5AC8751C6A423C00E5B3DA /* XCBuildShellScriptDefinition.m */; };
-		5DC6E7581C6B72B9008FA743 /* XCVersionGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DC6E7561C6B72B9008FA743 /* XCVersionGroup.h */; };
+		5DC6E7581C6B72B9008FA743 /* XCVersionGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DC6E7561C6B72B9008FA743 /* XCVersionGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DC6E7591C6B72B9008FA743 /* XCVersionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC6E7571C6B72B9008FA743 /* XCVersionGroup.m */; };
-		5DC6E75B1C6B7457008FA743 /* XCBuildFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DC6E75A1C6B7457008FA743 /* XCBuildFile.h */; };
+		5DC6E75B1C6B7457008FA743 /* XCBuildFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DC6E75A1C6B7457008FA743 /* XCBuildFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BE8FDB81C01C190001EF5B3 /* XcodeEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE8FDAD1C01C190001EF5B3 /* XcodeEditor.framework */; };
 		BA7980BF50D23B7BEF646CEB /* XCProjectBuildConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79825B6294137CFC2609B9 /* XCProjectBuildConfig.m */; };
 		BA7980C2CFE1088A485DEF43 /* XCTestResourceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870D516A14BE1922F109 /* XCTestResourceUtils.m */; };
@@ -76,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BC369071D1C4F8A004D2C7D /* NSString+RemoveEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RemoveEmoji.m"; sourceTree = "<group>"; };
+		2BC369081D1C4F8A004D2C7D /* NSString+RemoveEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RemoveEmoji.h"; sourceTree = "<group>"; };
 		348B64411C9ADFE3001E0B8C /* XcodeSourceTreeType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeSourceTreeType.h; sourceTree = "<group>"; };
 		348B64431C9AE028001E0B8C /* XcodeSourceTreeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeSourceTreeType.m; sourceTree = "<group>"; };
 		5D5AC8721C6A423C00E5B3DA /* XCBuildShellScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCBuildShellScript.h; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 			children = (
 				BA79877ED3C6AFBE3933D12F /* XCKeyBuilder.h */,
 				BA79801D6C7758B86C21D00C /* XCKeyBuilder.m */,
+				2BC369081D1C4F8A004D2C7D /* NSString+RemoveEmoji.h */,
+				2BC369071D1C4F8A004D2C7D /* NSString+RemoveEmoji.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -574,7 +580,6 @@
 			files = (
 				BA7987F9B1A36AF373DB19E2 /* XCKeyBuilder.h in Headers */,
 				5D5AC8761C6A423C00E5B3DA /* XCBuildShellScript.h in Headers */,
-				5DC6E75B1C6B7457008FA743 /* XCBuildFile.h in Headers */,
 				BA798301F45EAA124C5C7FB2 /* XCGroup.h in Headers */,
 				BA798A4BCB6B60E2E3D74341 /* XCTarget.h in Headers */,
 				BA7985AC80AE186C0B3BB0DF /* XCProject.h in Headers */,
@@ -582,6 +587,7 @@
 				BA7986645B41CF0E421585CD /* XcodeEditor.h in Headers */,
 				BA798BD185D3E573782117A1 /* XCSourceFile.h in Headers */,
 				BA7980F82F8CB28FD88FA0F7 /* XcodeMemberType.h in Headers */,
+				2BC3690A1D1C4F8A004D2C7D /* NSString+RemoveEmoji.h in Headers */,
 				BA798CB6F3BDC85C8DA8FEF7 /* XCXibDefinition.h in Headers */,
 				BA79828CB3855A8A3603157D /* XcodeGroupMember.h in Headers */,
 				BA79835B340FA3496864EBE7 /* XCClassDefinition.h in Headers */,
@@ -589,11 +595,12 @@
 				BA79838092EB62DABC12E7EE /* XCAbstractDefinition.h in Headers */,
 				BA798E9C1F1072EC23F5B975 /* XCFileOperationQueue.h in Headers */,
 				BA798A782059CC1A0FC068D7 /* XCProject+SubProject.h in Headers */,
-				5DC6E7581C6B72B9008FA743 /* XCVersionGroup.h in Headers */,
 				5D5AC8781C6A423C00E5B3DA /* XCBuildShellScriptDefinition.h in Headers */,
 				BA7984F4FE86E886CA33FA47 /* XCProjectBuildConfig.h in Headers */,
 				BA79898D6728C6451CC3A1E9 /* XCFrameworkDefinition.h in Headers */,
+				5DC6E75B1C6B7457008FA743 /* XCBuildFile.h in Headers */,
 				BA798A6059075BB7BD3F39AE /* XCSourceFileDefinition.h in Headers */,
+				5DC6E7581C6B72B9008FA743 /* XCVersionGroup.h in Headers */,
 				BA798E2D9705A3960DC43E17 /* XCSubProjectDefinition.h in Headers */,
 				BA798F0DCBD407799127F9F2 /* XcodeEditor-Prefix.pch in Headers */,
 			);
@@ -716,6 +723,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BC369091D1C4F8A004D2C7D /* NSString+RemoveEmoji.m in Sources */,
 				BA7988B2C4C4D4294265F777 /* XCKeyBuilder.m in Sources */,
 				BA798280BE8DA3E2AD97A04A /* XCGroup.m in Sources */,
 				BA7988FF1EB524B0EC5D3CFC /* XCTarget.m in Sources */,
