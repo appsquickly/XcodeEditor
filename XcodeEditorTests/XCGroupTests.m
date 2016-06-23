@@ -9,8 +9,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
 #import <XCTest/XCTest.h>
 #import "XCProject.h"
 #import "XCGroup.h"
@@ -411,7 +409,7 @@ static const NSString *SDK_PATH =
 - (void)test_able_to_return_a_member_by_its_name
 {
     XCGroup *anotherGroup = [_project groupWithPathFromRoot:@"Source/Main/Core/Model"];
-    XCSourceFile *member = [anotherGroup memberWithDisplayName:@"expanz_model_AppSite.m"];
+    XCSourceFile *member = (XCSourceFile *)[anotherGroup memberWithDisplayName:@"expanz_model_AppSite.m"];
     XCTAssertNotNil(member);
 
 }
