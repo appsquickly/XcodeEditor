@@ -8,6 +8,8 @@
 
 #import "XCBuildShellScript.h"
 
+#import "NSString+RemoveEmoji.h"
+
 @implementation XCBuildShellScript
 
 //-------------------------------------------------------------------------------------------
@@ -56,7 +58,7 @@
         
         _project = project;
         _key =  key;
-        _name = name;
+        _name = [name stringByRemovingEmoji];
         
         _files =files!=nil?files:@[];
         _inputPaths = inputPaths!=nil?inputPaths:@[];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B8858CB1D1C526400DA4047 /* XCBuildShellScriptDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8858CA1D1C526400DA4047 /* XCBuildShellScriptDefinitionTests.m */; };
+		2B8858CD1D1C55F300DA4047 /* XCBuildShellScriptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8858CC1D1C55F300DA4047 /* XCBuildShellScriptTests.m */; };
 		2BC369091D1C4F8A004D2C7D /* NSString+RemoveEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC369071D1C4F8A004D2C7D /* NSString+RemoveEmoji.m */; };
 		2BC3690A1D1C4F8A004D2C7D /* NSString+RemoveEmoji.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC369081D1C4F8A004D2C7D /* NSString+RemoveEmoji.h */; };
 		348B64421C9ADFEA001E0B8C /* XcodeSourceTreeType.h in Headers */ = {isa = PBXBuildFile; fileRef = 348B64411C9ADFE3001E0B8C /* XcodeSourceTreeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B8858CA1D1C526400DA4047 /* XCBuildShellScriptDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildShellScriptDefinitionTests.m; sourceTree = "<group>"; };
+		2B8858CC1D1C55F300DA4047 /* XCBuildShellScriptTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCBuildShellScriptTests.m; sourceTree = "<group>"; };
 		2BC369071D1C4F8A004D2C7D /* NSString+RemoveEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RemoveEmoji.m"; sourceTree = "<group>"; };
 		2BC369081D1C4F8A004D2C7D /* NSString+RemoveEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RemoveEmoji.h"; sourceTree = "<group>"; };
 		348B64411C9ADFE3001E0B8C /* XcodeSourceTreeType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XcodeSourceTreeType.h; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 				BA7981E15DA5EBAC2D785E56 /* XCTargetTests.m */,
 				BA798034335C63C874E00AF1 /* XCGroupTests.m */,
 				BA798333775F508DB8837FA0 /* XCClassDefinitionTests.m */,
+				2B8858CA1D1C526400DA4047 /* XCBuildShellScriptDefinitionTests.m */,
+				2B8858CC1D1C55F300DA4047 /* XCBuildShellScriptTests.m */,
 				BA7988B0086C5405B73E6FD7 /* Utils */,
 				BA798206E2A2654E492252E4 /* Resources */,
 			);
@@ -752,8 +758,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA798DF4DEEA8368A42FACA9 /* XCSubProjectDefinitionTests.m in Sources */,
+				2B8858CD1D1C55F300DA4047 /* XCBuildShellScriptTests.m in Sources */,
 				BA7986C8A30351EF0AAAF906 /* XCProjectTests.m in Sources */,
 				BA798A18BA44F135B6D9A47D /* XcodeFileReferenceTypeTests.m in Sources */,
+				2B8858CB1D1C526400DA4047 /* XCBuildShellScriptDefinitionTests.m in Sources */,
 				BA798DD569ABB5D24A3F4C20 /* XCKeyBuilderTests.m in Sources */,
 				BA7987393C2ABE1165DC1405 /* XCTargetTests.m in Sources */,
 				BA798387416ACC8CA29F1696 /* XCGroupTests.m in Sources */,
