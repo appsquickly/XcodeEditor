@@ -406,10 +406,29 @@ NSString *const XCProjectNotFoundException;
     return filteredTargets;
 }
 
+- (NSData *)_fixEncodingInData:(NSData *)data
+{
+    NSString *source = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSMutableString *destination = @"".mutableCopy;
+    for(int i = 0; i < source.length; i++) {
+        unichar c = [source characterAtIndex:i];
+        if(c < 128) {
+            [destination appendFormat:@"%c", c];
+        } else {
+            [destination appendFormat:@"&#%u;", c];
+        }
+    }
+    
+    return [destination dataUsingEncoding:NSUTF8StringEncoding];
+}
+
 - (void)save
 {
     [_fileOperationQueue commitFileOperations];
-    [_dataStore writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:YES];
+
+    NSData *data = [NSPropertyListSerialization dataWithPropertyList:_dataStore format:NSPropertyListXMLFormat_v1_0 options:0 error:NULL];
+    data = [self _fixEncodingInData:data];
+    [data writeToFile:[_filePath stringByAppendingPathComponent:@"project.pbxproj"] atomically:YES];
     
     // Don't forget to reset the cache so that we'll always get the latest data.
     [self dropCache];
