@@ -44,7 +44,8 @@ static NSDictionary* NSDictionaryWithXCFileReferenceTypes()
             @"file.storyboard"       : @(Storyboard),
             @"text.xcconfig"         : @(XCConfig),
             @"wrapper.xcconfig"         : @(XCConfig),
-            @"wrapper.xcdatamodel": @(XCDataModel)
+            @"wrapper.xcdatamodel": @(XCDataModel),
+            @"file.strings": @(LocalizableStrings)
         };
     });
 
@@ -96,6 +97,14 @@ XcodeSourceFileType XCSourceFileTypeFromFileName(NSString* fileName)
     if ([fileName hasSuffix:@".xcdatamodel"])
     {
         return XCDataModel;
+    }
+    if ([fileName hasSuffix:@".strings"])
+    {
+        return LocalizableStrings;
+    }
+    if ([fileName hasSuffix:@".plist"])
+    {
+        return PropertyList;
     }
     return FileTypeNil;
 }
