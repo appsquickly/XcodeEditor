@@ -612,6 +612,68 @@
 }
 
 //-------------------------------------------------------------------------------------------
+#pragma mark - XCBuildFile Methods
+
+- (BOOL) canBecomeBuildFile
+{
+    return _memberType == PBXVariantGroupType;
+}
+
+- (XcodeMemberType)buildPhase
+{
+    if (_memberType == PBXVariantGroupType)
+        return PBXResourcesBuildPhaseType;
+
+    return PBXNilType;
+}
+
+- (NSString *)buildFileKey
+{
+    if (_buildFileKey == nil) {
+        [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
+            if ([[obj valueForKey:@"isa"] xce_hasBuildFileType]) {
+                if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
+                    _buildFileKey = [key copy];
+                }
+            }
+        }];
+    }
+    return [_buildFileKey copy];
+
+}
+
+
+- (void)becomeBuildFile
+{
+    if (![self isBuildFile]) {
+        if ([self canBecomeBuildFile]) {
+            NSMutableDictionary *sourceBuildFile = [NSMutableDictionary dictionary];
+            sourceBuildFile[@"isa"] = [NSString xce_stringFromMemberType:PBXBuildFileType];
+            sourceBuildFile[@"fileRef"] = _key;
+            NSString *buildFileKey = [[XCKeyBuilder forItemNamed:[self.displayName stringByAppendingString:@".buildFile"]] build];
+            [_project objects][buildFileKey] = sourceBuildFile;
+        }
+    }
+}
+
+- (BOOL)isBuildFile
+{
+    if ([self canBecomeBuildFile] && _isBuildFile == nil) {
+        _isBuildFile = @NO;
+        [[_project objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
+            if ([[obj valueForKey:@"isa"] xce_hasBuildFileType]) {
+                if ([[obj valueForKey:@"fileRef"] isEqualToString:_key]) {
+                    _isBuildFile = nil;
+
+                    _isBuildFile = @YES;
+                }
+            }
+        }];
+    }
+    return [_isBuildFile boolValue];
+}
+
+//-------------------------------------------------------------------------------------------
 #pragma mark - Utility Methods
 
 - (NSString *)description

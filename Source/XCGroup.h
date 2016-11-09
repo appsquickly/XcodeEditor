@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 #import "XcodeGroupMember.h"
 #import "XcodeSourceFileType.h"
+#import "XCBuildFile.h"
 
 @class XCProject;
 @class XCClassDefinition;
@@ -29,7 +30,7 @@
 * Represents a _group container in an Xcode project. A group can contain members of type `XCSourceFile` or other
 * groups.
 */
-@interface XCGroup : NSObject <XcodeGroupMember>
+@interface XCGroup : NSObject <XcodeGroupMember, XCBuildFile>
 {
 
     NSString* _pathRelativeToParent;
@@ -41,6 +42,9 @@
     NSString* _pathRelativeToProjectRoot;
     NSMutableArray* _children;
     NSMutableArray* _members;
+
+    NSNumber *_isBuildFile;
+    NSString *_buildFileKey;
 
     XCFileOperationQueue* _fileOperationQueue;
     XCProject* _project;
