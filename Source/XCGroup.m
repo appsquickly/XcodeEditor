@@ -37,17 +37,24 @@
                      children:(NSArray *)children
 {
 
-    return [[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children];
+    return [[XCGroup alloc] initWithProject:project key:key alias:alias path:path children:children memberType:PBXGroupType];
+}
+
++ (XCGroup *)groupWithProject:(XCProject *)project key:(NSString *)key alias:(NSString *)alias path:(NSString *)path children:(NSArray<id<XcodeGroupMember>> *)children memberType:(XcodeMemberType)groupType
+{
+    return [[XCGroup alloc]initWithProject:project key:key alias:alias path:path children:children memberType:groupType];
 }
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 //-------------------------------------------------------------------------------------------
 
-- (id)initWithProject:(XCProject *)project key:(NSString *)key alias:(NSString *)alias path:(NSString *)path
-             children:(NSArray *)children
+- (id)initWithProject:(XCProject *)project key:(NSString *)key alias:(NSString *)alias path:(NSString *)path children:(NSArray<id<XcodeGroupMember>> *)children memberType:(XcodeMemberType)groupType
 {
     self = [super init];
+
+    assert(groupType == PBXGroupType || groupType == PBXVariantGroupType);
+
     if (self) {
         _project = project;
         _fileOperationQueue = [_project fileOperationQueue];
@@ -59,8 +66,16 @@
         if (!_children) {
             _children = [[NSMutableArray alloc] init];
         }
+
+        _memberType = groupType;
     }
     return self;
+}
+
+- (id)initWithProject:(XCProject *)project key:(NSString *)key alias:(NSString *)alias path:(NSString *)path
+             children:(NSArray *)children
+{
+    return [self initWithProject:project key:key alias:alias path:path children:children memberType:PBXGroupType];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -276,7 +291,12 @@
     return group;
 }
 
-- (XCGroup*)addGroupWithAlias:(NSString *)alias
+- (XCGroup *)addGroupWithAlias:(NSString *)alias
+{
+    return [self addGroupWithAlias:alias groupType:PBXGroupType];
+}
+
+- (XCGroup*)addGroupWithAlias:(NSString *)alias groupType:(XcodeMemberType)type
 {
     NSString *groupKey = [[XCKeyBuilder forItemNamed:alias] build];
     
@@ -290,7 +310,7 @@
         }
     }
     
-    XCGroup *group = [[XCGroup alloc] initWithProject:_project key:groupKey alias:alias path:nil children:nil];
+    XCGroup *group = [[XCGroup alloc] initWithProject:_project key:groupKey alias:alias path:nil children:nil memberType:type];
     NSDictionary *groupDict = [group asDictionary];
     
     [_project objects][groupKey] = groupDict;
@@ -828,7 +848,7 @@
 - (NSDictionary *)asDictionary
 {
     NSMutableDictionary *groupData = [NSMutableDictionary dictionary];
-    groupData[@"isa"] = [NSString xce_stringFromMemberType:PBXGroupType];
+    groupData[@"isa"] = [NSString xce_stringFromMemberType:_memberType];
     groupData[@"sourceTree"] = @"<group>";
 
     if (_alias != nil) {
