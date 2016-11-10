@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 #import "XcodeGroupMember.h"
 #import "XcodeSourceFileType.h"
+#import "XCBuildFile.h"
 
 @class XCProject;
 @class XCClassDefinition;
@@ -29,7 +30,7 @@
 * Represents a _group container in an Xcode project. A group can contain members of type `XCSourceFile` or other
 * groups.
 */
-@interface XCGroup : NSObject <XcodeGroupMember>
+@interface XCGroup : NSObject <XcodeGroupMember, XCBuildFile>
 {
 
     NSString* _pathRelativeToParent;
@@ -42,8 +43,12 @@
     NSMutableArray* _children;
     NSMutableArray* _members;
 
+    NSNumber *_isBuildFile;
+    NSString *_buildFileKey;
+
     XCFileOperationQueue* _fileOperationQueue;
     XCProject* _project;
+    XcodeMemberType _memberType;
 
 }
 
@@ -77,7 +82,11 @@
 
 + (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<id<XcodeGroupMember>>*)children;
 
++ (XCGroup*)groupWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<id<XcodeGroupMember>>*)children memberType:(XcodeMemberType)groupType;
+
 - (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<id<XcodeGroupMember>>*)children;
+
+- (id)initWithProject:(XCProject*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<id<XcodeGroupMember>>*)children memberType:(XcodeMemberType)groupType;
 
 #pragma mark Parent group
 
@@ -133,6 +142,11 @@
  * Adds a _group with an alias to this _group.
  */
 - (XCGroup*)addGroupWithAlias:(NSString *)alias;
+
+/**
+ * Adds a _group with an alias to this _group and a particular type (only PBXGroupType and PBXVariantGroupType are valid)
+ */
+- (XCGroup*)addGroupWithAlias:(NSString *)alias groupType:(XcodeMemberType)type;
 
 /**
  * Adds a version group with a path relative to this group.

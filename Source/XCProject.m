@@ -300,8 +300,12 @@ NSString *const XCProjectNotFoundException;
 
 - (XCGroup *)createGroupWithDictionary:(NSDictionary *)dictionary forKey:(NSString *)key
 {
-    return [XCGroup groupWithProject:self key:key alias:[dictionary valueForKey:@"name"]
-                                path:[dictionary valueForKey:@"path"] children:[dictionary valueForKey:@"children"]];
+    return [XCGroup groupWithProject:self
+                                 key:key
+                               alias:[dictionary valueForKey:@"name"]
+                                path:[dictionary valueForKey:@"path"]
+                            children:[dictionary valueForKey:@"children"]
+            memberType:[[dictionary valueForKey:@"isa"] xce_asMemberType]];
 }
 
 //-------------------------------------------------------------------------------------------
