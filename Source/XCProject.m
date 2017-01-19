@@ -20,7 +20,9 @@
 
 NSString *const XCProjectNotFoundException;
 
-@implementation XCProject
+@implementation XCProject {
+    NSArray *_cachedGroups;
+}
 
 
 @synthesize fileOperationQueue = _fileOperationQueue;
@@ -170,6 +172,9 @@ NSString *const XCProjectNotFoundException;
 
 - (NSArray *)groups
 {
+    if (_cachedGroups) {
+        return _cachedGroups;
+    }
     NSMutableArray *results = [[NSMutableArray alloc] init];
     [[self objects] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
         if ([[obj valueForKey:@"isa"] xce_hasGroupType]) {
@@ -181,6 +186,7 @@ NSString *const XCProjectNotFoundException;
             [results addObject:group];
         }
     }];
+    _cachedGroups = results;
     return results;
 }
 
@@ -442,6 +448,8 @@ NSString *const XCProjectNotFoundException;
 
 - (NSMutableDictionary *)objects
 {
+    // Purge groups cache in case something is getting changed.
+    [self dropGroupsCache];
     return [_dataStore objectForKey:@"objects"];
 }
 
@@ -455,6 +463,11 @@ NSString *const XCProjectNotFoundException;
     _targets = nil;
     _configurations = nil;
     _rootObjectKey = nil;
+}
+
+- (void)dropGroupsCache
+{
+    _cachedGroups = nil;
 }
 
 
