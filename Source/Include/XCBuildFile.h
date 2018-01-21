@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XcodeMemberType.h"
 
 @protocol XCBuildFile <NSObject>
 

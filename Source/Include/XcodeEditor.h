@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for XcodeEditor.
 FOUNDATION_EXPORT double XcodeEditorVersionNumber;

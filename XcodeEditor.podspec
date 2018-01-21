@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Source/*.{h,m}', 'Source/Utils/*.{h,m}', 'Source/Include/*.{h,m}'
   s.requires_arc = true
   s.ios.deployment_target = '5.0'
-  s.osx.deployment_target = '10.7'
+  s.osx.deployment_target = '10.8'
 end

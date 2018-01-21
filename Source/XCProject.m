@@ -290,7 +290,7 @@ NSString *const XCProjectNotFoundException;
     for (NSString *pathItem in pathItems) {
         id <XcodeGroupMember> group = [currentGroup memberWithDisplayName:pathItem];
         if ([group isKindOfClass:[XCGroup class]]) {
-            currentGroup = group;
+            currentGroup = (XCGroup*)group;
         } else {
             return nil;
         }
