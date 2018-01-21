@@ -11,7 +11,7 @@
 #import "XCFileOperationQueue.h"
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "Utils/XCKeyBuilder.h"
+#import "XCKeyBuilder.h"
 #import "XCSourceFileDefinition.h"
 #import "XCProject+SubProject.h"
 
