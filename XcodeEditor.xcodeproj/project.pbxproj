@@ -167,6 +167,7 @@
 		BA798FA437C805530668B6D8 /* XCKeyBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCKeyBuilderTests.m; sourceTree = "<group>"; };
 		BA798FDC4BEACAEE1C96D00A /* XcodeEditor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "XcodeEditor-Info.plist"; sourceTree = "<group>"; };
 		BA798FDC785409B3956AE64A /* XCTestResourceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestResourceUtils.h; sourceTree = "<group>"; };
+		E892C10F20149CFA00BED02B /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		E892C1112014A10300BED02B /* NSString+RemoveEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+RemoveEmoji.h"; sourceTree = "<group>"; };
 		E892C1122014A10300BED02B /* XCAbstractDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCAbstractDefinition.h; sourceTree = "<group>"; };
 		E892C1132014A10300BED02B /* XCBuildFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCBuildFile.h; sourceTree = "<group>"; };
@@ -215,6 +216,7 @@
 		6BE8FDA31C01C190001EF5B3 = {
 			isa = PBXGroup;
 			children = (
+				E892C10F20149CFA00BED02B /* Package.swift */,
 				6BE8FDAF1C01C190001EF5B3 /* XcodeEditor */,
 				6BE8FDBB1C01C190001EF5B3 /* XcodeEditorTests */,
 				6BE8FDAE1C01C190001EF5B3 /* Products */,
