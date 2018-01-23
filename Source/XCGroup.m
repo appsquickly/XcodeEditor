@@ -19,7 +19,7 @@
 #import "XCGroup.h"
 #import "XCProject.h"
 #import "XCClassDefinition.h"
-#import "Utils/XCKeyBuilder.h"
+#import "XCKeyBuilder.h"
 #import "XCSourceFileDefinition.h"
 #import "XCSubProjectDefinition.h"
 #import "XCProject+SubProject.h"

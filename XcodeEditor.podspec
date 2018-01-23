@@ -7,8 +7,8 @@ Pod::Spec.new do |s|
   s.author   = { 'Jasper Blues' => 'jasper@appsquick.ly' }
   s.source   = { :git => 'https://github.com/jasperblues/XcodeEditor.git', :tag => 'v1.6.4' }
   s.platform = :osx
-  s.source_files = 'Source/*.{h,m}', 'Source/Utils/*.{h,m}'
+  s.source_files = 'Source/*.{h,m}', 'Source/Utils/*.{h,m}', 'Source/Include/*.{h,m}'
   s.requires_arc = true
   s.ios.deployment_target = '5.0'
-  s.osx.deployment_target = '10.7'
+  s.osx.deployment_target = '10.8'
 end

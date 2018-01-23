@@ -5,3 +5,4 @@ xcuserdata
 *.blend3
 .DS_Store
 build
+.build

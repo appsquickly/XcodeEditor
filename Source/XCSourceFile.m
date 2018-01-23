@@ -13,7 +13,7 @@
 
 #import "XCSourceFile.h"
 #import "XCProject.h"
-#import "Utils/XCKeyBuilder.h"
+#import "XCKeyBuilder.h"
 #import "XCGroup.h"
 #import "XCTarget.h"
 
