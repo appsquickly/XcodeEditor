@@ -11,9 +11,9 @@
 
 
 #import <Foundation/Foundation.h>
-#import "XcodeGroupMember.h"
-#import "XcodeSourceFileType.h"
-#import "XCBuildFile.h"
+#import <XcodeEditor/XcodeGroupMember.h>
+#import <XcodeEditor/XcodeSourceFileType.h>
+#import <XcodeEditor/XCBuildFile.h>
 
 @class XCProject;
 @class XCClassDefinition;

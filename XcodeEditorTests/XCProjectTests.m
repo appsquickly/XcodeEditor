@@ -38,11 +38,12 @@
 {
 
     NSArray *headerFiles = [_project headerFiles];
-    NSLog(@"Headers: %@", headerFiles);
+    if ( DEBUG ) printf("Headers: %s\n", headerFiles.description.UTF8String);
 
     XCTAssertTrue([headerFiles count] == 18);
-    for (XCSourceFile *file in headerFiles) {
-        NSLog(@"File: %@", [file description]);
+    for (XCSourceFile *file in headerFiles)
+    {
+        if ( DEBUG ) printf("File: %s\n", [file description].UTF8String);
     }
 
 }
@@ -51,7 +52,7 @@
 {
 
     NSArray *objcFiles = [_project objectiveCFiles];
-    NSLog(@"Implementation Files: %@", objcFiles);
+    if ( DEBUG ) printf("Implementation Files: %s\n", objcFiles.description.UTF8String);
 
     XCTAssertTrue([objcFiles count] == 21);
 }
@@ -59,7 +60,7 @@
 - (void)test_able_to_list_all_the_obj_cPlusPlus_files_in_a_project
 {
     NSArray *objcPlusPlusFiles = [_project objectiveCPlusPlusFiles];
-    NSLog(@"Implementation Files: %@", objcPlusPlusFiles);
+    if ( DEBUG ) printf("Implementation Files: %s\n", objcPlusPlusFiles.description.UTF8String);
 
     //TODO: Put an obj-c++ file in the test project.
     XCTAssertTrue([objcPlusPlusFiles count] == 0);
@@ -69,7 +70,7 @@
 {
 
     NSArray *xibFiles = [_project xibFiles];
-    NSLog(@"Xib Files: %@", xibFiles);
+    if ( DEBUG ) printf("Xib Files: %s\n", xibFiles.description.UTF8String);
     XCTAssertTrue([xibFiles count] == 2);
 }
 
@@ -82,10 +83,12 @@
 {
     NSArray *groups = [_project groups];
 
-    for (XCGroup *group in groups) {
-        NSLog(@"Name: %@, full path: %@", [group displayName], [group pathRelativeToProjectRoot]);
-        for (id <XcodeGroupMember> member  in [group members]) {
-            NSLog(@"\t%@", [member displayName]);
+    for (XCGroup *group in groups)
+    {
+        if ( DEBUG ) printf("Name: %s, full path: %s\n", [group displayName].UTF8String, [group pathRelativeToProjectRoot].UTF8String);
+        for (id <XcodeGroupMember> member  in [group members])
+        {
+            if ( DEBUG ) printf("\t%s\n", [member displayName].UTF8String);
         }
     }
 
@@ -97,7 +100,7 @@
 {
 
     XCGroup *rootGroup = [_project rootGroup];
-    NSLog(@"Here the _group: %@", rootGroup);
+    if ( DEBUG ) printf("Here the _group: %s\n", rootGroup.description.UTF8String);
     XCTAssertFalse([rootGroup.members count] == 0);
 }
 
@@ -106,7 +109,7 @@
 
     XCGroup *group = [_project groupWithPathFromRoot:@"Source/Main/Assembly"];
     XCTAssertNotNil(group);
-    NSLog(@"Group: %@", group);
+    if ( DEBUG ) printf("Group: %s\n", group.description.UTF8String);
 
 }
 
@@ -134,15 +137,16 @@
 {
 
     NSArray *targets = [_project targets];
-    for (XCTarget *target in [_project targets]) {
-        NSLog(@"%@", target);
+    for (XCTarget *target in [_project targets])
+    {
+        if ( DEBUG ) printf("%s\n", target.description.UTF8String);
     }
     XCTAssertNotNil(targets);
     XCTAssertFalse([targets count] == 0);
 
     for (XCTarget *target in targets) {
         NSArray *members = [target members];
-        NSLog(@"Members: %@", members);
+        if ( DEBUG ) printf("Members: %s\n", members.description.UTF8String);
     }
 
 }

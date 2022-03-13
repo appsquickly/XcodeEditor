@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XCAbstractDefinition.h"
+#import <XcodeEditor/XCAbstractDefinition.h>
 
 @interface XCBuildShellScriptDefinition : XCAbstractDefinition
 {

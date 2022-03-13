@@ -28,7 +28,7 @@
 
     XCKeyBuilder* builtKey = [XCKeyBuilder forItemNamed:requiresKey];
     NSString* key = [builtKey build];
-    NSLog(@"Key: %@", key);
+    if ( DEBUG ) printf("Key: %s\n", key.UTF8String);
     XCTAssertNotNil(key);
     XCTAssertEqual(key.length, 24);
 }

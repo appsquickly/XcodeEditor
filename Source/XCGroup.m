@@ -96,17 +96,16 @@
         [_fileOperationQueue queueDeletion:[self pathRelativeToProjectRoot]];
     }
     NSDictionary *dictionary = [_project objects][_key];
-    NSLog(@"Here's the dictionary: %@", dictionary);
+    if (( dictionary ) && ( DEBUG )) printf("%s Dictionary: %s\n", __func__, dictionary.description.UTF8String ); else if ( DEBUG ) printf("%s No Dictionary\n", __func__);
 
     [[_project objects] removeObjectForKey:_key];
 
     dictionary = [_project objects][_key];
-    NSLog(@"Here's the dictionary: %@", dictionary);
-
+    if (( dictionary ) && ( DEBUG )) printf("%s Dictionary: %s\n", __func__, dictionary.description.UTF8String ); else if ( DEBUG ) printf("%s No Dictionary\n", __func__ );
     for (XCTarget *target in [_project targets]) {
         [target removeMembersWithKeys:[self recursiveMembers]];
     }
-    NSLog(@"Done!!!");
+    if ( DEBUG ) puts("group removed");
 }
 
 - (XCGroup *)parentGroup
@@ -179,9 +178,10 @@
 
 - (void)addFramework:(XCFrameworkDefinition *)frameworkDefinition
 {
-    if (([self memberWithDisplayName:[frameworkDefinition fileName]]) == nil) {
-        NSLog(@"frame doesnt exists. creating %@", [frameworkDefinition fileName]);
-        NSLog(@"existing members: %@", [self members]);
+    if (([self memberWithDisplayName:[frameworkDefinition fileName]]) == nil)
+    {
+        if ( DEBUG ) printf("frame doesnt exists. creating %s\n", [frameworkDefinition fileName].UTF8String);
+        if ( DEBUG ) printf("existing members: %s\n", [self members].description.UTF8String );
         NSDictionary *fileReference;
         if ([frameworkDefinition copyToDestination]) {
             fileReference = [self makeFileReferenceWithPath:[frameworkDefinition fileName] name:nil type:Framework

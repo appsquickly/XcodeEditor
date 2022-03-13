@@ -12,8 +12,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "XCAbstractDefinition.h"
-#import "XcodeSourceFileType.h"
+#import <XcodeEditor/XCAbstractDefinition.h>
+#import <XcodeEditor/XcodeSourceFileType.h>
 
 @interface XCSourceFileDefinition : XCAbstractDefinition
 {

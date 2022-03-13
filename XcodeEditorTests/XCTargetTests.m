@@ -27,7 +27,7 @@
 - (void)setUp
 {
     _project = [[XCProject alloc] initWithFilePath:XCSample1XcodeProjectPath()];
-    NSLog(@"Targets: %@", [_project targets]);
+    if ( DEBUG ) printf("Targets: %s\n", [_project targets].description.UTF8String);
 }
 
 - (void)test_allows_setting_name_and_product_name_target_properties
@@ -50,18 +50,18 @@
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCProjectBuildConfig * configuration = [target configurationWithName:@"Debug"];
-    NSLog(@"Here's the configuration: %@", configuration);
+    if ( DEBUG ) printf("Here's the configuration: %s\n", configuration.description.UTF8String);
     id ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
-    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
+    if ( DEBUG ) printf("ldflags: %s, %s\n", ((NSObject *)ldFlags).description.UTF8String, [ldFlags className].UTF8String);
     [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
     [configuration addOrReplaceSetting:@[@"foo", @"bar"] forKey:@"HEADER_SEARCH_PATHS"];
 
 
 
     configuration = [target configurationWithName:@"Release"];
-    NSLog(@"Here's the configuration: %@", configuration);
+    if ( DEBUG ) printf("Here's the configuration: %s\n", configuration.description.UTF8String);
     ldFlags = [configuration valueForKey:@"OTHER_LDFLAGS"];
-    NSLog(@"ldflags: %@, %@", ldFlags, [ldFlags class]);
+    if ( DEBUG ) printf("ldflags: %s, %s\n", ((NSObject *)ldFlags).description.UTF8String, [ldFlags className].UTF8String);//(@"%@, %@");
     [configuration addOrReplaceSetting:@"-lz -lxml2" forKey:@"OTHER_LDFLAGS"];
     [configuration addOrReplaceSetting:@[@"foo", @"bar"] forKey:@"HEADER_SEARCH_PATHS"];
 
@@ -78,6 +78,7 @@
     XCTarget* target = [project targetWithName:@"HelloBoxy"];
 
     XCTarget* duplicated = [target duplicateWithTargetName:@"DuplicatedTarget" productName:@"NewProduct"];
+    if ( ! duplicated ) fprintf(stderr, "%s failed\n", __func__);
     [project save];
 }
 

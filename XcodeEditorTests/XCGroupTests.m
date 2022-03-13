@@ -89,7 +89,7 @@ static const NSString *SDK_PATH =
 
 - (void)test_able_to_return_its_full_path_relative_to_the_project_base_directory
 {
-    NSLog(@"############Path: %@", [_group pathRelativeToProjectRoot]);
+    if ( DEBUG ) printf("############Path: %s\n", [_group pathRelativeToProjectRoot].UTF8String);
 }
 
 //-------------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ static const NSString *SDK_PATH =
     [classDefinition setHeader:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.header")];
     [classDefinition setSource:NSStringWithXCTestResource(@"ESA_Sales_Foobar_ViewController.impl")];
 
-    NSLog(@"Class definition: %@", classDefinition);
+    if ( DEBUG ) printf("Class definition: %s\n", classDefinition.description.UTF8String);
 
     [_group addClass:classDefinition];
     [_project save];
@@ -121,7 +121,7 @@ static const NSString *SDK_PATH =
     XCTAssertTrue([fileResource isBuildFile]);
 
     [_project save];
-    NSLog(@"Done adding source file.");
+    if ( DEBUG ) puts("Done adding source file.");
 }
 
 - (void)test_provides_a_convenience_method_to_add_a_source_file_and_specify_targets
@@ -236,7 +236,7 @@ static const NSString *SDK_PATH =
     XCTAssertTrue([xibFile isBuildFile]);
 
     [_project save];
-    NSLog(@"Done adding xib file.");
+    if ( DEBUG ) puts("Done adding xib file.");
 
 }
 
@@ -400,7 +400,7 @@ static const NSString *SDK_PATH =
 {
 
     NSArray *children = [_group members];
-    NSLog(@"Group children: %@", children);
+    if ( DEBUG ) printf("Group children: %s\n", children.description.UTF8String);
     XCTAssertFalse([children count] == 0);
 
 }
@@ -417,9 +417,9 @@ static const NSString *SDK_PATH =
 - (void)test_able_to_list_all_of_its_members_recursively
 {
 
-    NSLog(@"Let's get recursive members!!!!");
+    if ( DEBUG ) puts("Let's get recursive members!!!!");
     NSArray *recursiveMembers = [_group recursiveMembers];
-    NSLog(@"$$$$$$$$$$$$$$$**********$*$*$*$*$*$* recursive members: %@", recursiveMembers);
+    if ( DEBUG ) printf("$$$$$$$$$$$$$$$**********$*$*$*$*$*$* recursive members: %s\n", recursiveMembers.description.UTF8String);
 
 }
 
@@ -436,14 +436,14 @@ static const NSString *SDK_PATH =
     XCGroup *aGroup = [_project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
 
     NSArray *groups = [_project groups];
-    NSLog(@"Groups now: %@", groups);
+    if ( DEBUG ) printf("Groups now: %s\n", groups.description.UTF8String);
 
     [aGroup removeFromParentDeletingChildren:YES];
     [_project save];
 
     groups = [_project groups];
-    NSLog(@"Groups now: %@", groups);
-
+    if ( DEBUG ) printf("Groups now: %s\n", groups.description.UTF8String);
+ 
     XCGroup *deleted = [_project groupWithPathFromRoot:@"Source/Main/UserInterface/Components"];
     XCTAssertNil(deleted);
 
@@ -465,7 +465,7 @@ static const NSString *SDK_PATH =
     [classDefinition setHeader:NSStringWithXCTestResource(@"ClassCalledJanine.h")];
     [classDefinition setSource:NSStringWithXCTestResource(@"ClassCalledJanine.m")];
 
-    NSLog(@"Class definition: %@", classDefinition);
+    if ( DEBUG ) printf("Class definition: %s\n", classDefinition.description.UTF8String);
 
     [group addClass:classDefinition];
     [project save];
@@ -481,7 +481,7 @@ static const NSString *SDK_PATH =
     XCTAssertTrue([fileResource isBuildFile]);
 
     [project save];
-    NSLog(@"Done adding source file.");
+    if ( DEBUG ) puts("Done adding source file.");
 
     [group removeFromParentDeletingChildren:YES];
     [project save];

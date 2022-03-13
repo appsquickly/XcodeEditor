@@ -12,8 +12,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "XCAbstractDefinition.h"
-#import "XcodeSourceTreeType.h"
+#import <XcodeEditor/XCAbstractDefinition.h>
+#import <XcodeEditor/XcodeSourceTreeType.h>
 
 @interface XCFrameworkDefinition : XCAbstractDefinition
 {

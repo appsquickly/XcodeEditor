@@ -81,7 +81,7 @@
 
 - (void)queueDeletion:(NSString*)filePath
 {
-    NSLog(@"Queue deletion at: %@", filePath);
+    if ( DEBUG ) printf("Queue deletion at: %s\n", filePath.UTF8String);
     [_filesToDelete addObject:filePath];
 }
 
@@ -125,7 +125,7 @@
     [_frameworksToCopy enumerateKeysAndObjectsUsingBlock:^(NSURL* destinationUrl, NSURL* frameworkPath, BOOL* stop)
     {
 
-        NSLog(@"$$$$$$$$$$$$$$ destination url: %@", destinationUrl);
+        if ( DEBUG ) printf("$$$$$$$$$$$$$$ destination url: %s\n", destinationUrl.fileSystemRepresentation);
         NSFileManager* fileManager = [NSFileManager defaultManager];
 
         if ([fileManager fileExistsAtPath:[destinationUrl path]])
@@ -150,12 +150,12 @@
 
         if (![[NSFileManager defaultManager] removeItemAtPath:fullPath error:&error])
         {
-            NSLog(@"failed to remove item at path; error == %@", error);
+            if ( DEBUG ) fprintf(stderr, "failed to remove item at path; error == %s\n", error.description.UTF8String);
             [NSException raise:NSInternalInconsistencyException format:@"Error deleting file at filePath: %@", filePath];
         }
         else
         {
-            NSLog(@"Deleted: %@", fullPath);
+            if ( DEBUG ) printf("Deleted: %s\n", fullPath.UTF8String);
         }
     }
     [_filesToDelete removeAllObjects];

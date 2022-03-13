@@ -12,7 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "XCProject.h"
+#import <XcodeEditor/XCProject.h>
 
 @interface XCProject (SubProject)
 
