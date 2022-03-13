@@ -1,0 +1,71 @@
+\hypertarget{_x_c_build_shell_script_8h_source}{}\doxysection{XCBuild\+Shell\+Script.\+h}
+\label{_x_c_build_shell_script_8h_source}\index{XCBuildShellScript.h@{XCBuildShellScript.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{//  XCBuildShellScript.h}}
+\DoxyCodeLine{3 \textcolor{comment}{//  xcode-\/editor}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{//  Created by joel on 03/02/16.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeGroupMember.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeSourceFileType.h>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_project}{XCProject}};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_build_shell_script}{XCBuildShellScript}} : NSObject}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     NSString* \_key;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{@private}}
+\DoxyCodeLine{20     \mbox{\hyperlink{interface_x_c_project}{XCProject}}*\_project;}
+\DoxyCodeLine{21     BOOL \_runOnlyForDeploymentPostprocessing;}
+\DoxyCodeLine{22     NSArray*\_files;}
+\DoxyCodeLine{23     NSArray*\_inputPaths;}
+\DoxyCodeLine{24     NSArray*\_outputPaths;}
+\DoxyCodeLine{25     NSString*\_name;}
+\DoxyCodeLine{26     NSString*\_shellPath;}
+\DoxyCodeLine{27     NSString*\_shellScript;}
+\DoxyCodeLine{28 \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{@property}(nonatomic, strong, readonly,nonnull) NSString* key;}
+\DoxyCodeLine{31 \textcolor{keyword}{@property}(nonatomic, strong, readonly,nonnull) NSString* name;}
+\DoxyCodeLine{32 \textcolor{keyword}{@property}(nonatomic,readonly) BOOL runOnlyForDeploymentPostprocessing;}
+\DoxyCodeLine{33 \textcolor{keyword}{@property}(nonatomic,nonnull,strong,readonly) NSString*shellScript;}
+\DoxyCodeLine{34 \textcolor{keyword}{@property}(nonatomic,nonnull,strong,readonly) NSString*shellPath;}
+\DoxyCodeLine{35 \textcolor{keyword}{@property}(nonatomic,nonnull,strong,readonly) NSArray<NSString*>*files;}
+\DoxyCodeLine{36 \textcolor{keyword}{@property}(nonatomic,nonnull,strong,readonly) NSArray<NSString*>*inputPaths;}
+\DoxyCodeLine{37 \textcolor{keyword}{@property}(nonatomic,nonnull,strong,readonly) NSArray<NSString*>*outputPaths;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#pragma mark -\/ Initialization \& Destruction}}
+\DoxyCodeLine{41 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 + (\mbox{\hyperlink{interface_x_c_build_shell_script}{XCBuildShellScript}}*\_Nonnull)shellScriptWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*\_Nonnull)project}
+\DoxyCodeLine{44                                                   key:(NSString *\_Nonnull)key}
+\DoxyCodeLine{45                                                  name:( NSString* \_Nullable )name}
+\DoxyCodeLine{46                          files: (NSArray<NSString*>* \_Nullable)files}
+\DoxyCodeLine{47                     inputPaths:(NSArray<NSString*>* \_Nullable)inputPaths}
+\DoxyCodeLine{48                    outputPaths:(NSArray<NSString*>* \_Nullable)outputPaths}
+\DoxyCodeLine{49 runOnlyForDeploymentPostprocessing:(BOOL)runOnlyForDeploymentPostprocessing}
+\DoxyCodeLine{50                      shellPath:(NSString*\_Nullable)shellPath}
+\DoxyCodeLine{51                    shellScript:(NSString*\_Nonnull)shellScript;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 -\/ (instancetype \_Nonnull)initWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*\_Nonnull)project}
+\DoxyCodeLine{54                                     key:(NSString *\_Nonnull)key}
+\DoxyCodeLine{55                                     name:( NSString* \_Nullable )name}
+\DoxyCodeLine{56                        files: (NSArray<NSString*>* \_Nullable)files}
+\DoxyCodeLine{57                   inputPaths:(NSArray<NSString*>* \_Nullable)inputPaths}
+\DoxyCodeLine{58                  outputPaths:(NSArray<NSString*>* \_Nullable)outputPaths}
+\DoxyCodeLine{59 runOnlyForDeploymentPostprocessing:(BOOL)runOnlyForDeploymentPostprocessing}
+\DoxyCodeLine{60                    shellPath:(NSString*\_Nullable)shellPath}
+\DoxyCodeLine{61                  shellScript:(NSString*\_Nonnull)shellScript;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

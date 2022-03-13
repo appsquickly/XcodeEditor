@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_class_definition_8h_source" xml:lang="en-US">
+<title>XCClassDefinition.h</title>
+<indexterm><primary>XCClassDefinition.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;-&#32;2013&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+14 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCAbstractDefinition.h&gt;</emphasis>
+15 
+16 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+17 {
+18 &#32;&#32;&#32;&#32;ObjectiveC,
+19 &#32;&#32;&#32;&#32;ObjectiveCPlusPlus,
+20 &#32;&#32;&#32;&#32;CPlusPlus,
+21 }&#32;ClassDefinitionLanguage;
+22 
+23 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_class_definition">XCClassDefinition</link>&#32;:&#32;<link linkend="_interface_x_c_abstract_definition">XCAbstractDefinition</link>
+24 {
+25 
+26 &#32;&#32;&#32;&#32;NSString*&#32;_className;
+27 &#32;&#32;&#32;&#32;NSString*&#32;_header;
+28 &#32;&#32;&#32;&#32;NSString*&#32;_source;
+29 
+30 <emphasis role="keyword">@private</emphasis>
+31 &#32;&#32;&#32;&#32;ClassDefinitionLanguage&#32;_language;
+32 }
+33 
+34 <emphasis role="keyword">@property</emphasis>(strong,&#32;nonatomic,&#32;readonly)&#32;NSString*&#32;className;
+35 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong)&#32;NSString*&#32;header;
+36 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong)&#32;NSString*&#32;source;
+37 
+38 +&#32;(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*)classDefinitionWithName:(NSString*)fileName;
+39 
+40 +&#32;(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*)classDefinitionWithName:(NSString*)className&#32;language:(ClassDefinitionLanguage)language;
+41 
+45 -&#32;(id)initWithName:(NSString*)fileName;
+46 
+50 -&#32;(id)initWithName:(NSString*)className&#32;language:(ClassDefinitionLanguage)language;
+51 
+52 -&#32;(BOOL)isObjectiveC;
+53 
+54 -&#32;(BOOL)isObjectiveCPlusPlus;
+55 
+56 -&#32;(BOOL)isCPlusPlus;
+57 
+58 -&#32;(NSString*)headerFileName;
+59 
+60 -&#32;(NSString*)sourceFileName;
+61 
+62 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

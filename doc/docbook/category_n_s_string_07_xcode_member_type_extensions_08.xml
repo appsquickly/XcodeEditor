@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_category_n_s_string_07_xcode_member_type_extensions_08" xml:lang="en-US">
+<title>NSString(XcodeMemberTypeExtensions) Category Reference</title>
+<indexterm><primary>NSString(XcodeMemberTypeExtensions)</primary></indexterm>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a0c30a5f2fc5ed808d39e891adac90ff9"/>(XcodeMemberType) - <emphasis role="strong">xce_asMemberType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a0b444d0eae9e7674658e29211fca06f5"/>(BOOL) - <emphasis role="strong">xce_hasFileReferenceType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a41c8558315a1d3d047c602c9652aef29"/>(BOOL) - <emphasis role="strong">xce_hasFileReferenceOrReferenceProxyType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1af3eeec7f57fdd88445b67fbf5eea8781"/>(BOOL) - <emphasis role="strong">xce_hasReferenceProxyType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a553f49f087f00e05f0024b5bb2ce07ad"/>(BOOL) - <emphasis role="strong">xce_hasGroupType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1affaa14881d029e9644e50f8fe96628ef"/>(BOOL) - <emphasis role="strong">xce_hasProjectType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a5bc59a1e064c62006a7f1bd467bbc992"/>(BOOL) - <emphasis role="strong">xce_hasNativeTargetType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1ab15ac44a708d7a74e5592f9f2d1d68b5"/>(BOOL) - <emphasis role="strong">xce_hasBuildFileType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a7096c70200be48fb242b415e1259eed5"/>(BOOL) - <emphasis role="strong">xce_hasBuildConfigurationType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a6db284b9e8daaf259b37b07f649ada65"/>(BOOL) - <emphasis role="strong">xce_hasContainerItemProxyType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a65f54f96e843f92b4a526e65830dd40c"/>(BOOL) - <emphasis role="strong">xce_hasResourcesBuildPhaseType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1aa39eee81b980302915f10668e1d7c335"/>(BOOL) - <emphasis role="strong">xce_hasShellScriptBuildPhase</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a0ac1e9fe2793c1c373250a69985389bc"/>(BOOL) - <emphasis role="strong">xce_hasSourcesOrFrameworksBuildPhaseType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a22a500d93bd9c4384231a96f5eab8f30"/>(BOOL) - <emphasis role="strong">xce_hasVersionedGroupType</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_member_type_extensions_08_1a6aa90897bd9f233574611c83969d8d78"/>(NSString *) + <emphasis role="strong">xce_stringFromMemberType:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this category was generated from the following files:</para>
+XcodeMemberType.hXcodeMemberType.m</section>

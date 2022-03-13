@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_abstract_definition_8h_source" xml:lang="en-US">
+<title>XCAbstractDefinition.h</title>
+<indexterm><primary>XCAbstractDefinition.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;-&#32;2013&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+14 
+15 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+16 {
+17 
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;XCFileOperationTypeOverwrite,
+23 
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;XCFileOperationTypeAcceptExisting,
+29 
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;XCFileOperationTypeReferenceOnly
+35 }&#32;XCFileOperationType;
+36 
+40 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_abstract_definition">XCAbstractDefinition</link>&#32;:&#32;NSObject
+41 {
+42 &#32;&#32;&#32;&#32;XCFileOperationType&#32;_fileOperationType;
+43 }
+44 
+45 <emphasis role="keyword">@property</emphasis>(nonatomic)&#32;XCFileOperationType&#32;fileOperationType;
+46 
+47 
+48 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

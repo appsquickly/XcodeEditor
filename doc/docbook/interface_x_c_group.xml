@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_group" xml:lang="en-US">
+<title>XCGroup Class Reference</title>
+<indexterm><primary>XCGroup</primary></indexterm>
+<para>
+<computeroutput>#import &lt;XCGroup.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for XCGroup:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_group.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a944113b8b5a60f8271417f1edba1887f"/>(id) - <emphasis role="strong">initWithProject:key:alias:path:children:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a97417d5f55cf08cac488121496de1e7a"/>(id) - <emphasis role="strong">initWithProject:key:alias:path:children:memberType:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a37732de928d286e0ab6260108f7e3c40"/>(void) - <emphasis role="strong">removeFromParentGroup</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a2cf68d8e18c04115a66f89230b6f9897"/>(void) - <emphasis role="strong">removeFromParentDeletingChildren:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a77e2963f8e9aebd04895c0c89ecc900f"/>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <emphasis role="strong">parentGroup</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a9ef355eeeb1f342ab13a64d0cc3b81e1"/>(BOOL) - <emphasis role="strong">isRootGroup</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a205d13347d777b1c0b9ac78bb9806ceb"/>(BOOL) - <emphasis role="strong">isEmpty</emphasis></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1a96411d3bbbc3575f8ec054e248f6ccc0">addClass:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1a122394632f69a66216a83cf4465827f5">addClass:toTargets:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1ad5359c55dbe6dec38410f04e11f23a25">removeClass:fromTargets:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1aff6d0325233590013bf94605cdd33ca1">removeHeader:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1a05d334241ef5aaebd085ee12346edf11">addFramework:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1aeb47434275327c36d755a4abc0a7086c">removeFramework:fromTargets:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_group_1a9fae9599b5eeb8790891e970c5f1dd55">addGroupWithPath:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_group_1a77fc9f047b4f38476a40314c1d1b2e88">addGroupWithAlias:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_group_1a9c7c7ad2a6a0f8d1cfa197b75b3790d4">addGroupWithAlias:groupType:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_version_group">XCVersionGroup</link> *) - <link linkend="_interface_x_c_group_1ace1128bb049a7ffe3a5ac0ff2aafa1ec">addVersionGroupWithPath:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1a014d95b76b0ee5602bfd471a54971575">addFolderReference:</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a93ec3ff78841c682e75be9c771f1e71f"/>(void) - <emphasis role="strong">addFileReference:withType:</emphasis></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) - <link linkend="_interface_x_c_group_1a6793e5b2fa198356d31caa41cb5ca5f3">addFramework:toTargets:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1aa24878ffd2dab62c58da17e65c03d686">addSourceFile:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1ae5c97eeb00aa9ba0fbfebe2b19b5c267">addXib:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1a497ac4da2c0dec3353e9880d824251bb">addXib:toTargets:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1af59bed33844ce3577749f4bcae7236e5">addSubProject:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1a52dfc0c60614fb215954921c492a8674">addSubProject:toTargets:</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a973da6798e2dfb279835131d4f51fb2a"/>(void) - <emphasis role="strong">removeSubProject:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a0b0198d7635634e59d34ea08fad82d47"/>(void) - <emphasis role="strong">removeSubProject:fromTargets:</emphasis></para>
+</listitem>
+            <listitem><para>(NSArray&lt; id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt; &gt; *) - <link linkend="_interface_x_c_group_1a5ac6b60f770672010f50003340f9631b">members</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; NSString * &gt; *) - <link linkend="_interface_x_c_group_1a138ba369f7336fc0373416529e1d2495">recursiveMembers</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; NSString * &gt; *) - <link linkend="_interface_x_c_group_1a856ec674626d75d10c61383860ef211a">buildFileKeys</link></para>
+</listitem>
+            <listitem><para>(id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt;) - <link linkend="_interface_x_c_group_1a2010863a994ab2c9ba4b080b9fd8b849">memberWithKey:</link></para>
+</listitem>
+            <listitem><para>(id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt;) - <link linkend="_interface_x_c_group_1af791799b15771786d1c1ed77a4218a70">memberWithDisplayName:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_group_1a194d2b1f72d393aa045aa96bd72ff77a">removeMemberWithKey:</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1ace4dbba41ce3b9493a9d009456049e2c"/>(<link linkend="_interface_x_c_group">XCGroup</link> *) + <emphasis role="strong">groupWithProject:key:alias:path:children:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a654ffe67ec06ba30e525c95f33dad1d0"/>(<link linkend="_interface_x_c_group">XCGroup</link> *) + <emphasis role="strong">groupWithProject:key:alias:path:children:memberType:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a341022b2ba331f01eeddc6c1e00aab23"/>NSString * <emphasis role="strong">_pathRelativeToParent</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1ab00a6117f46b3c4ffbaaa7bbfe871f76"/>NSString * <emphasis role="strong">_key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_group_1a26b3260d1cc2d6fe3e0711d48e161854"/>NSString * <emphasis role="strong">_alias</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para>NSString * <link linkend="_interface_x_c_group_1a5e85f49148d25f0a01f5149231d41cac">alias</link></para>
+</listitem>
+            <listitem><para>NSString * <link linkend="_interface_x_c_group_1a8baa1a967bff74d9fb8ef6dc6e7fb13a">pathRelativeToParent</link></para>
+</listitem>
+            <listitem><para>NSString * <link linkend="_interface_x_c_group_1afeb7627acb0907d9c3672653eca8b6eb">key</link></para>
+</listitem>
+            <listitem><para>NSMutableArray&lt; id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt; &gt; * <link linkend="_interface_x_c_group_1a3456b071207ed8d3b79e66024d53a7db">children</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Represents a _group container in an Xcode project. A group can contain members of type <computeroutput><link linkend="_interface_x_c_source_file">XCSourceFile</link></computeroutput> or other groups. </para>
+</section>
+<section>
+<title>Method Documentation</title>
+<anchor xml:id="_interface_x_c_group_1a96411d3bbbc3575f8ec054e248f6ccc0"/><section>
+    <title>addClass:</title>
+<indexterm><primary>addClass:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addClass:</secondary></indexterm>
+<para><computeroutput>- (void) addClass: (<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*) classDefinition</computeroutput></para>
+<para>Adds a class to the _group, as specified by the ClassDefinition. If the _group already contains a class by the same name, the contents will be updated. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a122394632f69a66216a83cf4465827f5"/><section>
+    <title>addClass:toTargets:</title>
+<indexterm><primary>addClass:toTargets:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addClass:toTargets:</secondary></indexterm>
+<para><computeroutput>- (void) <link linkend="_interface_x_c_group_1a96411d3bbbc3575f8ec054e248f6ccc0">addClass:</link> (<link linkend="_interface_x_c_class_definition">XCClassDefinition</link> *) classDefinition(NSArray&lt; <link linkend="_interface_x_c_target">XCTarget</link> * &gt; *) targets</computeroutput></para>
+<para>Adds a class to the _group, making it a member of the specified [targets](<link linkend="_interface_x_c_target">XCTarget</link>). </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a014d95b76b0ee5602bfd471a54971575"/><section>
+    <title>addFolderReference:</title>
+<indexterm><primary>addFolderReference:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addFolderReference:</secondary></indexterm>
+<para><computeroutput>- (void) addFolderReference: (NSString*) sourceFolder</computeroutput></para>
+<para>Adds a reference to a folder </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a05d334241ef5aaebd085ee12346edf11"/><section>
+    <title>addFramework:</title>
+<indexterm><primary>addFramework:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addFramework:</secondary></indexterm>
+<para><computeroutput>- (void) addFramework: (<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link>*) frameworkDefinition</computeroutput></para>
+<para>Adds a framework to the _group. If the _group already contains the framework, the contents will be updated if the framework definition&apos;s copyToDestination flag is yes, otherwise it will be ignored. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a6793e5b2fa198356d31caa41cb5ca5f3"/><section>
+    <title>addFramework:toTargets:</title>
+<indexterm><primary>addFramework:toTargets:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addFramework:toTargets:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) <link linkend="_interface_x_c_group_1a05d334241ef5aaebd085ee12346edf11">addFramework:</link> (<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link> *) framework(NSArray&lt; <link linkend="_interface_x_c_target">XCTarget</link> * &gt; *) targets</computeroutput></para>
+<para>Adds a framework to the _group, making it a member of the specified targets. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a77fc9f047b4f38476a40314c1d1b2e88"/><section>
+    <title>addGroupWithAlias:</title>
+<indexterm><primary>addGroupWithAlias:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addGroupWithAlias:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) addGroupWithAlias: (NSString *) alias</computeroutput></para>
+<para>Adds a _group with an alias to this _group. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a9c7c7ad2a6a0f8d1cfa197b75b3790d4"/><section>
+    <title>addGroupWithAlias:groupType:</title>
+<indexterm><primary>addGroupWithAlias:groupType:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addGroupWithAlias:groupType:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) <link linkend="_interface_x_c_group_1a77fc9f047b4f38476a40314c1d1b2e88">addGroupWithAlias:</link> (NSString *) alias(XcodeMemberType) type</computeroutput></para>
+<para>Adds a _group with an alias to this _group and a particular type (only PBXGroupType and PBXVariantGroupType are valid) </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a9fae9599b5eeb8790891e970c5f1dd55"/><section>
+    <title>addGroupWithPath:</title>
+<indexterm><primary>addGroupWithPath:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addGroupWithPath:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) addGroupWithPath: (NSString*) path</computeroutput></para>
+<para>Adds a _group with a path relative to this _group. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1aa24878ffd2dab62c58da17e65c03d686"/><section>
+    <title>addSourceFile:</title>
+<indexterm><primary>addSourceFile:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addSourceFile:</secondary></indexterm>
+<para><computeroutput>- (void) addSourceFile: (<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>*) sourceFileDefinition</computeroutput></para>
+<para>Adds a source file of arbitrary type - image resource, header, etc. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1af59bed33844ce3577749f4bcae7236e5"/><section>
+    <title>addSubProject:</title>
+<indexterm><primary>addSubProject:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addSubProject:</secondary></indexterm>
+<para><computeroutput>- (void) addSubProject: (<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>*) projectDefinition</computeroutput></para>
+<para>Adds a sub-project to the _group. If the _group already contains a sub-project by the same name, the contents will be updated. Returns boolean success/fail; if method fails, caller should assume that project file is corrupt (or file format has changed). </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a52dfc0c60614fb215954921c492a8674"/><section>
+    <title>addSubProject:toTargets:</title>
+<indexterm><primary>addSubProject:toTargets:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addSubProject:toTargets:</secondary></indexterm>
+<para><computeroutput>- (void) <link linkend="_interface_x_c_group_1af59bed33844ce3577749f4bcae7236e5">addSubProject:</link> (<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link> *) projectDefinition(NSArray&lt; <link linkend="_interface_x_c_target">XCTarget</link> * &gt; *) targets</computeroutput></para>
+<para>Adds a sub-project to the _group, making it a member of the specified [targets](<link linkend="_interface_x_c_target">XCTarget</link>). </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1ace1128bb049a7ffe3a5ac0ff2aafa1ec"/><section>
+    <title>addVersionGroupWithPath:</title>
+<indexterm><primary>addVersionGroupWithPath:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addVersionGroupWithPath:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_version_group">XCVersionGroup</link> *) addVersionGroupWithPath: (NSString*) path</computeroutput></para>
+<para>Adds a version group with a path relative to this group. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1ae5c97eeb00aa9ba0fbfebe2b19b5c267"/><section>
+    <title>addXib:</title>
+<indexterm><primary>addXib:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addXib:</secondary></indexterm>
+<para><computeroutput>- (void) addXib: (<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link>*) xibDefinition</computeroutput></para>
+<para>Adds a xib file to the _group. If the _group already contains a class by the same name, the contents will be updated. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a497ac4da2c0dec3353e9880d824251bb"/><section>
+    <title>addXib:toTargets:</title>
+<indexterm><primary>addXib:toTargets:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>addXib:toTargets:</secondary></indexterm>
+<para><computeroutput>- (void) <link linkend="_interface_x_c_group_1ae5c97eeb00aa9ba0fbfebe2b19b5c267">addXib:</link> (<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link> *) xibDefinition(NSArray&lt; <link linkend="_interface_x_c_target">XCTarget</link> * &gt; *) targets</computeroutput></para>
+<para>Adds a xib to the _group, making it a member of the specified [targets](<link linkend="_interface_x_c_target">XCTarget</link>). </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a856ec674626d75d10c61383860ef211a"/><section>
+    <title>buildFileKeys</title>
+<indexterm><primary>buildFileKeys</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>buildFileKeys</secondary></indexterm>
+<para><computeroutput>- (NSArray *) buildFileKeys  </computeroutput></para>
+<para>Keys of members from this group </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a5ac6b60f770672010f50003340f9631b"/><section>
+    <title>members</title>
+<indexterm><primary>members</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>members</secondary></indexterm>
+<para><computeroutput>- (NSArray&lt; id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt; &gt; *) members  </computeroutput></para>
+<para>Instances of <computeroutput><link linkend="_interface_x_c_source_file">XCSourceFile</link></computeroutput> and <computeroutput><link linkend="_interface_x_c_group">XCGroup</link></computeroutput> returned as the type <computeroutput><link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link></computeroutput>. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1af791799b15771786d1c1ed77a4218a70"/><section>
+    <title>memberWithDisplayName:</title>
+<indexterm><primary>memberWithDisplayName:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>memberWithDisplayName:</secondary></indexterm>
+<para><computeroutput>- (id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt;) memberWithDisplayName: (NSString*) name</computeroutput></para>
+<para>Returns the child with the specified name, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a2010863a994ab2c9ba4b080b9fd8b849"/><section>
+    <title>memberWithKey:</title>
+<indexterm><primary>memberWithKey:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>memberWithKey:</secondary></indexterm>
+<para><computeroutput>- (id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt;) memberWithKey: (NSString*) key</computeroutput></para>
+<para>Returns the child with the specified key, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a138ba369f7336fc0373416529e1d2495"/><section>
+    <title>recursiveMembers</title>
+<indexterm><primary>recursiveMembers</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>recursiveMembers</secondary></indexterm>
+<para><computeroutput>- (NSArray *) recursiveMembers  </computeroutput></para>
+<para>Keys of members from this group and any child groups. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1ad5359c55dbe6dec38410f04e11f23a25"/><section>
+    <title>removeClass:fromTargets:</title>
+<indexterm><primary>removeClass:fromTargets:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>removeClass:fromTargets:</secondary></indexterm>
+<para><computeroutput>- (void) removeClass: (<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*) classDefinition(NSArray*) targets</computeroutput></para>
+<para>Removes a class from the _group </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1aeb47434275327c36d755a4abc0a7086c"/><section>
+    <title>removeFramework:fromTargets:</title>
+<indexterm><primary>removeFramework:fromTargets:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>removeFramework:fromTargets:</secondary></indexterm>
+<para><computeroutput>- (void) removeFramework: (<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link> *) frameworkDefinition(NSArray *) targets</computeroutput></para>
+<para>Removes a framework from the _group </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1aff6d0325233590013bf94605cdd33ca1"/><section>
+    <title>removeHeader:</title>
+<indexterm><primary>removeHeader:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>removeHeader:</secondary></indexterm>
+<para><computeroutput>- (void) removeHeader: (<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*) classDefinition</computeroutput></para>
+<para>Removes a header from the _group </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a194d2b1f72d393aa045aa96bd72ff77a"/><section>
+    <title>removeMemberWithKey:</title>
+<indexterm><primary>removeMemberWithKey:</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>removeMemberWithKey:</secondary></indexterm>
+<para><computeroutput>- (void) removeMemberWithKey: (NSString*) key</computeroutput></para>
+<para>Remove the member with the specified key </para>
+</section>
+</section>
+<section>
+<title>Property Documentation</title>
+<anchor xml:id="_interface_x_c_group_1a5e85f49148d25f0a01f5149231d41cac"/><section>
+    <title>alias</title>
+<indexterm><primary>alias</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>alias</secondary></indexterm>
+<para><computeroutput>- (NSString*) alias<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>The alias of the group, which can be used to give the group a name other than the last path component.</para>
+
+<para>See: [<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> displayName] </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a3456b071207ed8d3b79e66024d53a7db"/><section>
+    <title>children</title>
+<indexterm><primary>children</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>children</secondary></indexterm>
+<para><computeroutput>- (NSMutableArray&lt;id&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt; &gt;*) children<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>An array containing the groups members as <computeroutput><link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link></computeroutput> types. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1afeb7627acb0907d9c3672653eca8b6eb"/><section>
+    <title>key</title>
+<indexterm><primary>key</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>key</secondary></indexterm>
+<para><computeroutput>- (NSString*) key<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>The group&apos;s unique key. </para>
+</section>
+<anchor xml:id="_interface_x_c_group_1a8baa1a967bff74d9fb8ef6dc6e7fb13a"/><section>
+    <title>pathRelativeToParent</title>
+<indexterm><primary>pathRelativeToParent</primary><secondary>XCGroup</secondary></indexterm>
+<indexterm><primary>XCGroup</primary><secondary>pathRelativeToParent</secondary></indexterm>
+<para><computeroutput>- (NSString*) pathRelativeToParent<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>The path of the group relative to the group&apos;s parent.</para>
+
+<para>See: [<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> displayName] </para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCGroup.hXCGroup.m</section>
+</section>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__xcode_source_file_type_8h_source" xml:lang="en-US">
+<title>XcodeSourceFileType.h</title>
+<indexterm><primary>XcodeSourceFileType.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+13 
+14 <emphasis role="keyword">typedef</emphasis>&#32;NS_OPTIONS(NSInteger,&#32;XcodeSourceFileType)
+15 {
+16 &#32;&#32;&#32;&#32;FileTypeNil&#32;=&#32;0,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Unknown&#32;filetype</emphasis>
+17 &#32;&#32;&#32;&#32;Framework&#32;=&#32;1,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.framework</emphasis>
+18 &#32;&#32;&#32;&#32;PropertyList&#32;=&#32;2,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.plist</emphasis>
+19 &#32;&#32;&#32;&#32;SourceCodeHeader&#32;=&#32;3,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.h</emphasis>
+20 &#32;&#32;&#32;&#32;SourceCodeObjC&#32;=&#32;4,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.m</emphasis>
+21 &#32;&#32;&#32;&#32;SourceCodeObjCPlusPlus&#32;=&#32;5,&#32;&#32;<emphasis role="comment">//&#32;.mm</emphasis>
+22 &#32;&#32;&#32;&#32;SourceCodeCPlusPlus&#32;=&#32;6,&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.cpp</emphasis>
+23 &#32;&#32;&#32;&#32;XibFile&#32;=&#32;7,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.xib</emphasis>
+24 &#32;&#32;&#32;&#32;ImageResourcePNG&#32;=&#32;8,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.png</emphasis>
+25 &#32;&#32;&#32;&#32;Bundle&#32;=&#32;9,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.bundle&#32;&#32;.octet</emphasis>
+26 &#32;&#32;&#32;&#32;Archive&#32;=&#32;10,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.a&#32;files</emphasis>
+27 &#32;&#32;&#32;&#32;HTML&#32;=&#32;11,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;HTML&#32;file</emphasis>
+28 &#32;&#32;&#32;&#32;TEXT&#32;=&#32;12,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Some&#32;text&#32;file</emphasis>
+29 &#32;&#32;&#32;&#32;XcodeProject&#32;=&#32;13,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.xcodeproj</emphasis>
+30 &#32;&#32;&#32;&#32;Folder&#32;=&#32;14,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;a&#32;Folder&#32;reference</emphasis>
+31 &#32;&#32;&#32;&#32;AssetCatalog&#32;=&#32;15,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assets</emphasis>
+32 &#32;&#32;&#32;&#32;SourceCodeSwift&#32;=&#32;16,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.swift</emphasis>
+33 &#32;&#32;&#32;&#32;Application&#32;=&#32;17,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.app&#32;(wrapper.application)</emphasis>
+34 &#32;&#32;&#32;&#32;Playground&#32;=&#32;18,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.playground&#32;(file.playground)</emphasis>
+35 &#32;&#32;&#32;&#32;ShellScript&#32;=&#32;19,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;no&#32;suffix&#32;Xcode&#32;seems&#32;to&#32;detect&#32;(text.script.sh)</emphasis>
+36 &#32;&#32;&#32;&#32;Markdown&#32;=&#32;20,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.md&#32;(net.daringfileball.markdown)</emphasis>
+37 &#32;&#32;&#32;&#32;XMLPropertyList&#32;=&#32;21,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.plist&#32;(text.plist.xml)</emphasis>
+38 &#32;&#32;&#32;&#32;Storyboard&#32;=&#32;22,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.storyboard&#32;(file.storyboard)</emphasis>
+39 &#32;&#32;&#32;&#32;XCConfig&#32;=&#32;23,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.xcconfig</emphasis>
+40 &#32;&#32;&#32;&#32;XCDataModel&#32;=&#32;24,&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.xcdatamodel</emphasis>
+41 &#32;&#32;&#32;&#32;LocalizableStrings&#32;=&#32;25&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;.strings</emphasis>
+42 };
+43 
+44 NSString*&#32;NSStringFromXCSourceFileType(XcodeSourceFileType&#32;type);
+45 
+46 XcodeSourceFileType&#32;XCSourceFileTypeFromStringRepresentation(NSString*&#32;<emphasis role="keywordtype">string</emphasis>);
+47 
+48 XcodeSourceFileType&#32;XCSourceFileTypeFromFileName(NSString*&#32;fileName);
+49 
+</programlisting></section>

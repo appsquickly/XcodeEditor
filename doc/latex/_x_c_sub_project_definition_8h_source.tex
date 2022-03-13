@@ -1,0 +1,64 @@
+\hypertarget{_x_c_sub_project_definition_8h_source}{}\doxysection{XCSub\+Project\+Definition.\+h}
+\label{_x_c_sub_project_definition_8h_source}\index{XCSubProjectDefinition.h@{XCSubProjectDefinition.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#import <XcodeEditor/XCAbstractDefinition.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeSourceFileType.h>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_project}{XCProject}};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}} : \mbox{\hyperlink{interface_x_c_abstract_definition}{XCAbstractDefinition}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     NSString *\_name;}
+\DoxyCodeLine{25     NSString *\_path;}
+\DoxyCodeLine{26     XcodeSourceFileType \_type;}
+\DoxyCodeLine{27     \mbox{\hyperlink{interface_x_c_project}{XCProject}} *\_subProject;}
+\DoxyCodeLine{28     \mbox{\hyperlink{interface_x_c_project}{XCProject}} *\_parentProject;}
+\DoxyCodeLine{29     NSString *\_key;}
+\DoxyCodeLine{30     NSString *\_fullProjectPath;}
+\DoxyCodeLine{31     NSString *\_relativePath;}
+\DoxyCodeLine{32 \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{keyword}{@property} (nonatomic, strong, readonly) NSString *name;}
+\DoxyCodeLine{36 \textcolor{keyword}{@property} (nonatomic, strong, readonly) NSString *path;}
+\DoxyCodeLine{37 \textcolor{keyword}{@property} (nonatomic, readonly) XcodeSourceFileType type;}
+\DoxyCodeLine{38 \textcolor{keyword}{@property} (nonatomic, strong, readonly) \mbox{\hyperlink{interface_x_c_project}{XCProject}} *subProject;}
+\DoxyCodeLine{39 \textcolor{keyword}{@property} (nonatomic, strong, readonly) \mbox{\hyperlink{interface_x_c_project}{XCProject}} *parentProject;}
+\DoxyCodeLine{40 \textcolor{keyword}{@property} (nonatomic, strong, readonly) NSString *key;}
+\DoxyCodeLine{41 \textcolor{keyword}{@property} (nonatomic, strong, readwrite) NSString *fullProjectPath;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 + (\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}} *)withName:(NSString *)name path:(NSString *)path parentProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}} *)parentProject;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 -\/ (id)initWithName:(NSString *)name path:(NSString *)path parentProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}} *)parentProject;}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 -\/ (NSString *)projectFileName;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 -\/ (NSString *)fullPathName;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 -\/ (NSArray<NSString*> *)buildProductNames;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 -\/ (NSString *)projectKey;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 -\/ (NSString *)pathRelativeToProjectRoot;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 -\/ (void)initFullProjectPath:(NSString *)fullProjectPath groupPath:(NSString *)groupPath;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

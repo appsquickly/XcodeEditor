@@ -1,0 +1,254 @@
+.TH "md__r_e_a_d_m_e" 3 "Fri Mar 4 2022" "Version 1.1" "XcodeEditor-master" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- Description 
+An API for manipulating Xcode project files\&.
+.SH "Usage"
+.PP
+.SS "Adding Source Files to a Project"
+.PP
+.nf
+XCProject* project = [[XCProject alloc] initWithFilePath:@"MyProject\&.xcodeproj"];
+XCGroup* group = [project groupWithPathFromRoot:@"Main"];
+XCClassDefinition* classDefinition = [[XCClassDefinition alloc] initWithName:@"MyNewClass"];
+[classDefinition setHeader:@"<some-header-text>"];
+[classDefinition setSource:@"<some-impl-text>"];
+
+[group addClass:classDefinition];
+[project save];
+.fi
+.PP
+.SS "Duplicating Targets"
+It will be added to project as well\&.
+.PP
+.PP
+.nf
+XCTarget* target = [project targetWithName:@"SomeTarget"];
+XCTarget* duplicated = [target duplicateWithTargetName:@"DuplicatedTarget" productName:@"NewProduct"];
+.fi
+.PP
+.SS "Specifying Source File Belongs to Target"
+.PP
+.nf
+XCSourceFile* sourceFile = [project fileWithName:@"MyNewClass\&.m"];
+XCTarget* examples = [project targetWithName:@"Examples"];
+[examples addMember:sourceFile];
+[project save];
+.fi
+.PP
+.SS "Adding a Xib File"
+This time, we'll use a convenience method on \fBXCGroup\fP to specify the targets at the same time:
+.PP
+.PP
+.nf
+XCXibDefinition* xibDefinition = [[XCXibDefinition alloc] initWithName:@"MyXibFile" content:@"<xibXml>"];
+[group addXib:xibDefinition toTargets:[project targets]];
+[project save];
+.fi
+.PP
+.SS "Adding a Framework"
+.PP
+.nf
+XCFrameworkDefinition* frameworkDefinition =
+    [[XCFrameworkDefinition alloc] initWithFilePath:@"<framework path>" copyToDestination:NO];
+[group addFramework:frameworkDefinition toTargets:[project targets]];
+[project save];
+.fi
+.PP
+ Setting copyToDestination to YES, will cause the framework to be first copied to the group's directory within the project, and subsequently linked from there\&.
+.SS "Adding an Image Resource"
+.PP
+.nf
+XCSourceFileDefinition* sourceFileDefinition = [[XCSourceFileDefinition alloc]
+    initWithName:@"MyImageFile\&.png" data:[NSData dataWithContentsOfFile:<your image file name>]
+    type:ImageResourcePNG];
+
+[group addSourceFile:sourceFileDefinition];
+[project save];
+.fi
+.PP
+.SS "Adding Asset Catalog (ImageSet)"
+.PP
+.nf
+XCSourceFileDefinition* sourceFileDefinition = [XCSourceFileDefinition sourceDefinitionWithAssetCatalogName:<path to asset catalog>];
+
+[group addSourceFile:sourceFileDefinition];
+[project save];
+.fi
+.PP
+.SS "Adding a Header"
+.PP
+.nf
+XCSourceFileDefinition* header = [[XCSourceFileDefinition alloc]
+    initWithName:@"SomeHeader\&.h" text:<your header text> type:SourceCodeHeader];
+
+[group addSourceFile:header];
+[project save];
+.fi
+.PP
+.SS "Adding a sub-project"
+.PP
+.nf
+subProjectDefinition = [XCSubProjectDefinition withName:@"mySubproject" projPath=@"/Path/To/Subproject" type:XcodeProject];
+[group addSubProject:subProjectDefinition toTargets:[project targets]];
+.fi
+.PP
+.SS "Removing a sub-project"
+.PP
+.nf
+[group removeSubProject:subProjectDefinition];  //TODO: project should be able to remove itself from parent\&.
+.fi
+.PP
+.SS "Configuring targets"
+We can add/update linker flags, header search paths, C-flags, etc to a target\&. Here we'll add header search paths:
+.PP
+.PP
+.nf
+XCTarget* target = [_project targetWithName:_projectName];
+for (NSString* configName in [target configurations])
+{
+    XCBuildConfiguration* configuration = [target configurationWithName:configName];
+    NSMutableArray* headerPaths = [[NSMutableArray alloc] init];
+    [headerPaths addObject:@"$(inherited)"];
+    [headerPaths addObject:@"$(SRCROOT)/include"];        
+    [configuration addOrReplaceSetting:headerPaths forKey:@"HEADER_SEARCH_PATHS"];
+}
+.fi
+.PP
+.PP
+\&. \&. \&. these settings are added by key, as they would appear in a make file\&. (Xcode provides more human friendly descriptions)\&. To find the key for a given build setting, consult the compiler docs\&. Common settings are:
+.PP
+.IP "\(bu" 2
+HEADER_SEARCH_PATHS
+.IP "\(bu" 2
+OTHER_LD_FLAGS
+.IP "\(bu" 2
+CLANG_CXX_LANGUAGE_STANDARD
+.IP "\(bu" 2
+CODE_SIGN_IDENTITY
+.IP "\(bu" 2
+GCC_C_LANGUAGE_STANDARD
+.IP "\(bu" 2
+INFOPLIST_FILE
+.IP "\(bu" 2
+LIBRARY_SEARCH_PATHS
+.IP "\(bu" 2
+PRODUCT_NAME
+.IP "\(bu" 2
+PROVISIONING_PROFILE
+.PP
+.SS "Adding a Library"
+.PP
+.nf
+XCSourceFile * libSourceFile = [project fileWithName:@"libAmazing\&.a"];
+
+XCTarget* target = [project targetWithName:self\&.mProject\&.projectName];
+[target addMember:libSourceFile];
+
+for (NSString* configName in [target configurations]) {
+    XCProjectBuildConfig* configuration = [target configurationWithName:configName];
+    NSMutableArray* headerPaths = [[NSMutableArray alloc] init];
+    [headerPaths addObject:@"$(inherited)"];
+    [headerPaths addObject:@"$(PROJECT_DIR)/Amazing"];
+    [configuration addOrReplaceSetting:headerPaths forKey:@"LIBRARY_SEARCH_PATHS"];
+}
+.fi
+.PP
+.SS "File write behavior"
+.PP
+.nf
+//Creates the reference in the project and writes the contents to disk\&. If a file already exists at the 
+//specified location, its contents will be updated\&.
+[definition setFileOperationStyle:FileOperationStyleOverwrite]; 
+.fi
+.PP
+.PP
+.PP
+.nf
+//Creates the reference in the project\&. If a file already exists at the specified location, the contents will 
+//not be updated\&.
+[definition setFileOperationStyle:FileOperationStyleAcceptExisting]; 
+.fi
+.PP
+.PP
+.PP
+.nf
+//Creates the reference in the project, but does not write to disk\&. The filesystem is expected to be updated 
+//through some other means\&.
+[definition setFileOperationStyle:FileOperationStyleReferenceOnly]; 
+.fi
+.PP
+.SH "Building"
+.PP
+Open the project in XCode and choose Product/Build\&. Alternatively install with CocoaPods\&.
+.SH "Feature Requests and Contributions"
+.PP
+\&. \&. \&. are very welcome\&.
+.PP
+If you're using the API shoot me an email and tell me what you're doing with it\&.
+.SH "Compatibility"
+.PP
+.IP "\(bu" 2
+Xcode-editor has been tested on Xcode 4+\&. It should also work on earlier versions of Xcode\&.
+.IP "\(bu" 2
+The AppCode IDE from JetBrains is now supported too!
+.IP "\(bu" 2
+Supports both ARC and MRR modes of memory management\&.
+.PP
+.SH "Who's using it?"
+.PP
+.IP "\(bu" 2
+\fCApportable\fP : Develop Android applications using Xcode, Objective-C and Cocoa APIs
+.IP "\(bu" 2
+\fCXamarin\fP: The Calabash automated functional testing for mobile applications\&.
+.IP "\(bu" 2
+\fCPeckham\fP : A great plugin for managing Xcode imports
+.IP "\(bu" 2
+\fCLevel Helper\fP: A RAD framework for developing 2D games on iOS & Android\&.
+.IP "\(bu" 2
+\fCText Mate\fP: The missing Text Editor for OSX\&.
+.PP
+.SH "Authors"
+.PP
+.IP "\(bu" 2
+\fCJasper Blues\fP - \fCjasper@appsquick\&.ly\fP
+.PP
+.SS "With contributions from:"
+.IP "\(bu" 2
+\fCConnor Duggan\fP - lots of bug fixes, maintenance and enhancements\&.
+.IP "\(bu" 2
+\fCAlexander Smirnov\fP - Cleaned up, generalized and contributed back the changes from the Calabash fork\&.
+.IP "\(bu" 2
+Zach Drayer - lots of fixes and features to support TextMate\&.
+.IP "\(bu" 2
+Janine Ohmer - support adding and removing sub-projects (http://www.synapticats.com)\&.
+.IP "\(bu" 2
+Bogdan Vladu - support adding and removing groups (www\&.levelhelper\&.org)\&.
+.IP "\(bu" 2
+Chris Ross of Hidden Memory (http://www.hiddenmemory.co.uk/)
+.IP "\(bu" 2
+Paul Taykalo
+.IP "\(bu" 2
+Vladislav Alekseev
+.IP "\(bu" 2
+Felix Schneider - bug fixes\&.
+.IP "\(bu" 2
+Isak Sky - mutable XCSourceFiles\&.
+.IP "\(bu" 2
+\fCDerk-Jan Hartman\fP : Adding folder references, by-file compiler flags\&.
+.IP "\(bu" 2
+\fCStoneSpb\fP : Speed improvements
+.IP "\(bu" 2
+\fCCe Zheng\fP : Fixes relating to Xcode 7, xcconfig support and others\&.
+.PP
+.PP
+Thanks!
+.SH "LICENSE"
+.PP
+Apache License, Version 2\&.0, January 2004, http://www.apache.org/licenses/
+.PP
+.IP "\(bu" 2
+© 2011 - 2012 Jasper Blues and contributors\&. 
+.PP
+

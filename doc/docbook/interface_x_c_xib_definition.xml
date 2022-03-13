@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_xib_definition" xml:lang="en-US">
+<title>XCXibDefinition Class Reference</title>
+<indexterm><primary>XCXibDefinition</primary></indexterm>
+<para>Inheritance diagram for XCXibDefinition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_xib_definition.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1a71e9133c2f6014f5154f6b41429e394f"/>(id) - <emphasis role="strong">initWithName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1a6f4cc949c68e9f1a392c81c59584af50"/>(id) - <emphasis role="strong">initWithName:content:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1a95d72d783aeb130c4a97cfe47c242d9f"/>(NSString *) - <emphasis role="strong">xibFileName</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1a0f0fed96387cac92a17a6f96cee1ae07"/>(<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link> *) + <emphasis role="strong">xibDefinitionWithName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1ad004842851fa976f83f8fadbdb15ed2a"/>(<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link> *) + <emphasis role="strong">xibDefinitionWithName:content:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1ac1fd23a99294381d23b2ae23e3844e20"/>NSString * <emphasis role="strong">_name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1ac2364849c0ed680d1f30c2c2b9b93171"/>NSString * <emphasis role="strong">_content</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1a2e3bf501465d4879ea9f64d32d10ac08"/>NSString * <emphasis role="strong">name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_xib_definition_1ac58c8587af4f2f984114c2da51abd825"/>NSString * <emphasis role="strong">content</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCXibDefinition.hXCXibDefinition.m</section>

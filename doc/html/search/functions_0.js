@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['addclass_3a_0',['addClass:',['../interface_x_c_group.html#a96411d3bbbc3575f8ec054e248f6ccc0',1,'XCGroup']]],
+  ['addclass_3atotargets_3a_1',['addClass:toTargets:',['../interface_x_c_group.html#a122394632f69a66216a83cf4465827f5',1,'XCGroup']]],
+  ['adddatamodelsource_3a_2',['addDataModelSource:',['../interface_x_c_version_group.html#a95f29cd0630223ec7273c3c98c669b37',1,'XCVersionGroup']]],
+  ['addfolderreference_3a_3',['addFolderReference:',['../interface_x_c_group.html#a014d95b76b0ee5602bfd471a54971575',1,'XCGroup']]],
+  ['addframework_3a_4',['addFramework:',['../interface_x_c_group.html#a05d334241ef5aaebd085ee12346edf11',1,'XCGroup']]],
+  ['addframework_3atotargets_3a_5',['addFramework:toTargets:',['../interface_x_c_group.html#a6793e5b2fa198356d31caa41cb5ca5f3',1,'XCGroup']]],
+  ['addgroupwithalias_3a_6',['addGroupWithAlias:',['../interface_x_c_group.html#a77fc9f047b4f38476a40314c1d1b2e88',1,'XCGroup']]],
+  ['addgroupwithalias_3agrouptype_3a_7',['addGroupWithAlias:groupType:',['../interface_x_c_group.html#a9c7c7ad2a6a0f8d1cfa197b75b3790d4',1,'XCGroup']]],
+  ['addgroupwithpath_3a_8',['addGroupWithPath:',['../interface_x_c_group.html#a9fae9599b5eeb8790891e970c5f1dd55',1,'XCGroup']]],
+  ['addsourcefile_3a_9',['addSourceFile:',['../interface_x_c_group.html#aa24878ffd2dab62c58da17e65c03d686',1,'XCGroup']]],
+  ['addsubproject_3a_10',['addSubProject:',['../interface_x_c_group.html#af59bed33844ce3577749f4bcae7236e5',1,'XCGroup']]],
+  ['addsubproject_3atotargets_3a_11',['addSubProject:toTargets:',['../interface_x_c_group.html#a52dfc0c60614fb215954921c492a8674',1,'XCGroup']]],
+  ['addversiongroupwithpath_3a_12',['addVersionGroupWithPath:',['../interface_x_c_group.html#ace1128bb049a7ffe3a5ac0ff2aafa1ec',1,'XCGroup']]],
+  ['addxib_3a_13',['addXib:',['../interface_x_c_group.html#ae5c97eeb00aa9ba0fbfebe2b19b5c267',1,'XCGroup']]],
+  ['addxib_3atotargets_3a_14',['addXib:toTargets:',['../interface_x_c_group.html#a497ac4da2c0dec3353e9880d824251bb',1,'XCGroup']]],
+  ['applicationtargets_15',['applicationTargets',['../interface_x_c_project.html#a4410361e238bd7b0c713904fec310a2a',1,'XCProject']]]
+];

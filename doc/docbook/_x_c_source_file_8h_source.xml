@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_source_file_8h_source" xml:lang="en-US">
+<title>XCSourceFile.h</title>
+<indexterm><primary>XCSourceFile.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 
+14 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+15 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeGroupMember.h&gt;</emphasis>
+16 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeSourceFileType.h&gt;</emphasis>
+17 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCBuildFile.h&gt;</emphasis>
+18 
+19 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project">XCProject</link>;
+20 
+24 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_source_file">XCSourceFile</link>&#32;:&#32;NSObject&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>,<link linkend="_protocol_x_c_build_file-p">XCBuildFile</link>&gt;
+25 {
+26 &#32;&#32;&#32;&#32;
+27 <emphasis role="keyword">@private</emphasis>
+28 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_project">XCProject</link>&#32;*_project;
+29 &#32;&#32;&#32;&#32;
+30 &#32;&#32;&#32;&#32;NSNumber&#32;*_isBuildFile;
+31 &#32;&#32;&#32;&#32;NSString&#32;*_buildFileKey;
+32 &#32;&#32;&#32;&#32;NSString&#32;*_name;
+33 &#32;&#32;&#32;&#32;NSString&#32;*_sourceTree;
+34 &#32;&#32;&#32;&#32;NSString&#32;*_key;
+35 &#32;&#32;&#32;&#32;NSString&#32;*_path;
+36 &#32;&#32;&#32;&#32;XcodeSourceFileType&#32;_type;
+37 }
+38 
+39 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;readonly)&#32;XcodeSourceFileType&#32;type;
+40 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readonly)&#32;NSString&#32;*key;
+41 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong)&#32;NSString&#32;*name;
+42 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readonly)&#32;NSString&#32;*sourceTree;
+43 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong)&#32;NSString&#32;*path;
+44 
+45 +&#32;(<link linkend="_interface_x_c_source_file">XCSourceFile</link>&#32;*)sourceFileWithProject:(<link linkend="_interface_x_c_project">XCProject</link>&#32;*)project&#32;key:(NSString&#32;*)key&#32;type:(XcodeSourceFileType)type
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name:(NSString&#32;*)name&#32;sourceTree:(NSString&#32;*)tree&#32;path:(NSString&#32;*)path;
+47 
+48 -&#32;(id)initWithProject:(<link linkend="_interface_x_c_project">XCProject</link>&#32;*)project&#32;key:(NSString&#32;*)key&#32;type:(XcodeSourceFileType)type&#32;name:(NSString&#32;*)name
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sourceTree:(NSString&#32;*)tree&#32;path:(NSString&#32;*)path;
+50 
+54 -&#32;(BOOL)isBuildFile;
+55 
+56 -&#32;(BOOL)canBecomeBuildFile;
+57 
+58 -&#32;(XcodeMemberType)buildPhase;
+59 
+60 -&#32;(NSString&#32;*)buildFileKey;
+61 
+65 -&#32;(void)becomeBuildFile;
+66 
+70 -&#32;(void)removeBuildFile;
+71 
+77 -&#32;(void)setCompilerFlags:(NSString&#32;*)value;
+78 
+82 -&#32;(void)setWeakReference;
+83 
+84 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

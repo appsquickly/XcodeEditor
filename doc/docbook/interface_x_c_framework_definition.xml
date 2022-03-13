@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_framework_definition" xml:lang="en-US">
+<title>XCFrameworkDefinition Class Reference</title>
+<indexterm><primary>XCFrameworkDefinition</primary></indexterm>
+<para>Inheritance diagram for XCFrameworkDefinition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_framework_definition.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a692f07320b6a66e6aa2619a28d483b32"/>(id) - <emphasis role="strong">initWithFilePath:copyToDestination:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1ae42e50ae4ba4243aa0d89d695a8b4636"/>(id) - <emphasis role="strong">initWithFilePath:copyToDestination:sourceTree:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a41770c4aa2b37b67210cd35070b4bc3d"/>(NSString *) - <emphasis role="strong">fileName</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a13f96181b5df04e26f308cbc0122422a"/>(<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link> *) + <emphasis role="strong">frameworkDefinitionWithFilePath:copyToDestination:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1adacb9b07bba827484466795a8d6228ce"/>(<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link> *) + <emphasis role="strong">frameworkDefinitionWithFilePath:copyToDestination:sourceTree:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a4ec0180484e50df85802881a4e890862"/>NSString * <emphasis role="strong">_filePath</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a635f330365c99e5806d51f44fc8ac10d"/>BOOL <emphasis role="strong">_copyToDestination</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1add132a619414714f9571ccf77891d19a"/>XcodeSourceTreeType <emphasis role="strong">_sourceTree</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a62cb2edda93699a7b7d2690762deb1c4"/>NSString * <emphasis role="strong">filePath</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a788efd231c23735b89e508849a708544"/>BOOL <emphasis role="strong">copyToDestination</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_framework_definition_1a1e8261e7bd47602a002aa966405054be"/>XcodeSourceTreeType <emphasis role="strong">sourceTree</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCFrameworkDefinition.hXCFrameworkDefinition.m</section>

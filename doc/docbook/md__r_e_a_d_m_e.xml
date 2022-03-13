@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md__r_e_a_d_m_e" xml:lang="en-US">
+
+<para>An API for manipulating Xcode project files.</para>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md1">
+<title>Usage</title>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md2">
+<title>Adding Source Files to a Project</title>
+
+<para><literallayout><computeroutput>XCProject*&#32;project&#32;=&#32;[[XCProject&#32;alloc]&#32;initWithFilePath:@&quot;MyProject.xcodeproj&quot;];
+XCGroup*&#32;group&#32;=&#32;[project&#32;groupWithPathFromRoot:@&quot;Main&quot;];
+XCClassDefinition*&#32;classDefinition&#32;=&#32;[[XCClassDefinition&#32;alloc]&#32;initWithName:@&quot;MyNewClass&quot;];
+[classDefinition&#32;setHeader:@&quot;&lt;some-header-text&gt;&quot;];
+[classDefinition&#32;setSource:@&quot;&lt;some-impl-text&gt;&quot;];
+
+[group&#32;addClass:classDefinition];
+[project&#32;save];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md3">
+<title>Duplicating Targets</title>
+
+<para>It will be added to project as well.</para>
+
+<para><literallayout><computeroutput>XCTarget*&#32;target&#32;=&#32;[project&#32;targetWithName:@&quot;SomeTarget&quot;];
+XCTarget*&#32;duplicated&#32;=&#32;[target&#32;duplicateWithTargetName:@&quot;DuplicatedTarget&quot;&#32;productName:@&quot;NewProduct&quot;];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md4">
+<title>Specifying Source File Belongs to Target</title>
+
+<para><literallayout><computeroutput>XCSourceFile*&#32;sourceFile&#32;=&#32;[project&#32;fileWithName:@&quot;MyNewClass.m&quot;];
+XCTarget*&#32;examples&#32;=&#32;[project&#32;targetWithName:@&quot;Examples&quot;];
+[examples&#32;addMember:sourceFile];
+[project&#32;save];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md5">
+<title>Adding a Xib File</title>
+
+<para>This time, we&apos;ll use a convenience method on <link linkend="_interface_x_c_group">XCGroup</link> to specify the targets at the same time:</para>
+
+<para><literallayout><computeroutput>XCXibDefinition*&#32;xibDefinition&#32;=&#32;[[XCXibDefinition&#32;alloc]&#32;initWithName:@&quot;MyXibFile&quot;&#32;content:@&quot;&lt;xibXml&gt;&quot;];
+[group&#32;addXib:xibDefinition&#32;toTargets:[project&#32;targets]];
+[project&#32;save];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md6">
+<title>Adding a Framework</title>
+
+<para><literallayout><computeroutput>XCFrameworkDefinition*&#32;frameworkDefinition&#32;=
+&#32;&#32;&#32;&#32;[[XCFrameworkDefinition&#32;alloc]&#32;initWithFilePath:@&quot;&lt;framework&#32;path&gt;&quot;&#32;copyToDestination:NO];
+[group&#32;addFramework:frameworkDefinition&#32;toTargets:[project&#32;targets]];
+[project&#32;save];
+</computeroutput></literallayout> Setting copyToDestination to YES, will cause the framework to be first copied to the group&apos;s directory within the project, and subsequently linked from there.</para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md7">
+<title>Adding an Image Resource</title>
+
+<para><literallayout><computeroutput>XCSourceFileDefinition*&#32;sourceFileDefinition&#32;=&#32;[[XCSourceFileDefinition&#32;alloc]
+&#32;&#32;&#32;&#32;initWithName:@&quot;MyImageFile.png&quot;&#32;data:[NSData&#32;dataWithContentsOfFile:&lt;your&#32;image&#32;file&#32;name&gt;]
+&#32;&#32;&#32;&#32;type:ImageResourcePNG];
+
+[group&#32;addSourceFile:sourceFileDefinition];
+[project&#32;save];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md8">
+<title>Adding Asset Catalog (ImageSet)</title>
+
+<para><literallayout><computeroutput>XCSourceFileDefinition*&#32;sourceFileDefinition&#32;=&#32;[XCSourceFileDefinition&#32;sourceDefinitionWithAssetCatalogName:&lt;path&#32;to&#32;asset&#32;catalog&gt;];
+
+[group&#32;addSourceFile:sourceFileDefinition];
+[project&#32;save];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md9">
+<title>Adding a Header</title>
+
+<para><literallayout><computeroutput>XCSourceFileDefinition*&#32;header&#32;=&#32;[[XCSourceFileDefinition&#32;alloc]
+&#32;&#32;&#32;&#32;initWithName:@&quot;SomeHeader.h&quot;&#32;text:&lt;your&#32;header&#32;text&gt;&#32;type:SourceCodeHeader];
+
+[group&#32;addSourceFile:header];
+[project&#32;save];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md10">
+<title>Adding a sub-project</title>
+
+<para><literallayout><computeroutput>subProjectDefinition&#32;=&#32;[XCSubProjectDefinition&#32;withName:@&quot;mySubproject&quot;&#32;projPath=@&quot;/Path/To/Subproject&quot;&#32;type:XcodeProject];
+[group&#32;addSubProject:subProjectDefinition&#32;toTargets:[project&#32;targets]];
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md11">
+<title>Removing a sub-project</title>
+
+<para><literallayout><computeroutput>[group&#32;removeSubProject:subProjectDefinition];&#32;&#32;//TODO:&#32;project&#32;should&#32;be&#32;able&#32;to&#32;remove&#32;itself&#32;from&#32;parent.
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md12">
+<title>Configuring targets</title>
+
+<para>We can add/update linker flags, header search paths, C-flags, etc to a target. Here we&apos;ll add header search paths:</para>
+
+<para><literallayout><computeroutput>XCTarget*&#32;target&#32;=&#32;[_project&#32;targetWithName:_projectName];
+for&#32;(NSString*&#32;configName&#32;in&#32;[target&#32;configurations])
+{
+&#32;&#32;&#32;&#32;XCBuildConfiguration*&#32;configuration&#32;=&#32;[target&#32;configurationWithName:configName];
+&#32;&#32;&#32;&#32;NSMutableArray*&#32;headerPaths&#32;=&#32;[[NSMutableArray&#32;alloc]&#32;init];
+&#32;&#32;&#32;&#32;[headerPaths&#32;addObject:@&quot;$(inherited)&quot;];
+&#32;&#32;&#32;&#32;[headerPaths&#32;addObject:@&quot;$(SRCROOT)/include&quot;];&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;[configuration&#32;addOrReplaceSetting:headerPaths&#32;forKey:@&quot;HEADER_SEARCH_PATHS&quot;];
+}
+</computeroutput></literallayout></para>
+
+<para>. . . these settings are added by key, as they would appear in a make file. (Xcode provides more human friendly descriptions). To find the key for a given build setting, consult the compiler docs. Common settings are:</para>
+
+<para><itemizedlist>
+<listitem>
+<para>HEADER_SEARCH_PATHS</para>
+</listitem><listitem>
+<para>OTHER_LD_FLAGS</para>
+</listitem><listitem>
+<para>CLANG_CXX_LANGUAGE_STANDARD</para>
+</listitem><listitem>
+<para>CODE_SIGN_IDENTITY</para>
+</listitem><listitem>
+<para>GCC_C_LANGUAGE_STANDARD</para>
+</listitem><listitem>
+<para>INFOPLIST_FILE</para>
+</listitem><listitem>
+<para>LIBRARY_SEARCH_PATHS</para>
+</listitem><listitem>
+<para>PRODUCT_NAME</para>
+</listitem><listitem>
+<para>PROVISIONING_PROFILE</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md13">
+<title>Adding a Library</title>
+
+<para><literallayout><computeroutput>XCSourceFile&#32;*&#32;libSourceFile&#32;=&#32;[project&#32;fileWithName:@&quot;libAmazing.a&quot;];
+
+XCTarget*&#32;target&#32;=&#32;[project&#32;targetWithName:self.mProject.projectName];
+[target&#32;addMember:libSourceFile];
+
+for&#32;(NSString*&#32;configName&#32;in&#32;[target&#32;configurations])&#32;{
+&#32;&#32;&#32;&#32;XCProjectBuildConfig*&#32;configuration&#32;=&#32;[target&#32;configurationWithName:configName];
+&#32;&#32;&#32;&#32;NSMutableArray*&#32;headerPaths&#32;=&#32;[[NSMutableArray&#32;alloc]&#32;init];
+&#32;&#32;&#32;&#32;[headerPaths&#32;addObject:@&quot;$(inherited)&quot;];
+&#32;&#32;&#32;&#32;[headerPaths&#32;addObject:@&quot;$(PROJECT_DIR)/Amazing&quot;];
+&#32;&#32;&#32;&#32;[configuration&#32;addOrReplaceSetting:headerPaths&#32;forKey:@&quot;LIBRARY_SEARCH_PATHS&quot;];
+}
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md14">
+<title>File write behavior</title>
+
+<para><literallayout><computeroutput>//Creates&#32;the&#32;reference&#32;in&#32;the&#32;project&#32;and&#32;writes&#32;the&#32;contents&#32;to&#32;disk.&#32;If&#32;a&#32;file&#32;already&#32;exists&#32;at&#32;the&#32;
+//specified&#32;location,&#32;its&#32;contents&#32;will&#32;be&#32;updated.
+[definition&#32;setFileOperationStyle:FileOperationStyleOverwrite];&#32;
+</computeroutput></literallayout></para>
+
+<para><literallayout><computeroutput>//Creates&#32;the&#32;reference&#32;in&#32;the&#32;project.&#32;If&#32;a&#32;file&#32;already&#32;exists&#32;at&#32;the&#32;specified&#32;location,&#32;the&#32;contents&#32;will&#32;
+//not&#32;be&#32;updated.
+[definition&#32;setFileOperationStyle:FileOperationStyleAcceptExisting];&#32;
+</computeroutput></literallayout></para>
+
+<para><literallayout><computeroutput>//Creates&#32;the&#32;reference&#32;in&#32;the&#32;project,&#32;but&#32;does&#32;not&#32;write&#32;to&#32;disk.&#32;The&#32;filesystem&#32;is&#32;expected&#32;to&#32;be&#32;updated&#32;
+//through&#32;some&#32;other&#32;means.
+[definition&#32;setFileOperationStyle:FileOperationStyleReferenceOnly];&#32;
+</computeroutput></literallayout></para>
+</section>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md15">
+<title>Building</title>
+
+<para>Open the project in XCode and choose Product/Build. Alternatively install with CocoaPods.</para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md16">
+<title>Feature Requests and Contributions</title>
+
+<para>. . . are very welcome.</para>
+
+<para>If you&apos;re using the API shoot me an email and tell me what you&apos;re doing with it.</para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md17">
+<title>Compatibility</title>
+
+<para><itemizedlist>
+<listitem>
+<para>Xcode-editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode.</para>
+</listitem><listitem>
+<para>The AppCode IDE from JetBrains is now supported too!</para>
+</listitem><listitem>
+<para>Supports both ARC and MRR modes of memory management.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md18">
+<title>Who&apos;s using it?</title>
+
+<para><itemizedlist>
+<listitem>
+<para><link xlink:href="http://www.apportable.com">Apportable</link> : Develop Android applications using Xcode, Objective-C and Cocoa APIs</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/calabash/calabash-ios">Xamarin</link>: The Calabash automated functional testing for mobile applications.</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/markohlebar/Peckham">Peckham</link> : A great plugin for managing Xcode imports</para>
+</listitem><listitem>
+<para><link xlink:href="http://www.levelhelper.org">Level Helper</link>: A RAD framework for developing 2D games on iOS &amp; Android.</para>
+</listitem><listitem>
+<para><link xlink:href="http://macromates.com/">Text Mate</link>: The missing Text Editor for OSX.</para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md19">
+<title>Authors</title>
+
+<para><itemizedlist>
+<listitem>
+<para><link xlink:href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</link> - <link xlink:href="mailto:jasper@appsquick.ly?Subject=xcode-editor">jasper@appsquick.ly</link></para>
+</listitem></itemizedlist>
+</para>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md20">
+<title>With contributions from:</title>
+
+<para><itemizedlist>
+<listitem>
+<para><link xlink:href="https://github.com/cncool">Connor Duggan</link> - lots of bug fixes, maintenance and enhancements.</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/smirn0v">Alexander Smirnov</link> - Cleaned up, generalized and contributed back the changes from the Calabash fork.</para>
+</listitem><listitem>
+<para>Zach Drayer - lots of fixes and features to support TextMate.</para>
+</listitem><listitem>
+<para>Janine Ohmer - support adding and removing sub-projects (<link xlink:href="http://www.synapticats.com">http://www.synapticats.com</link>).</para>
+</listitem><listitem>
+<para>Bogdan Vladu - support adding and removing groups (www.levelhelper.org).</para>
+</listitem><listitem>
+<para>Chris Ross of Hidden Memory (<link xlink:href="http://www.hiddenmemory.co.uk/">http://www.hiddenmemory.co.uk/</link>)</para>
+</listitem><listitem>
+<para>Paul Taykalo</para>
+</listitem><listitem>
+<para>Vladislav Alekseev</para>
+</listitem><listitem>
+<para>Felix Schneider - bug fixes.</para>
+</listitem><listitem>
+<para>Isak Sky - mutable XCSourceFiles.</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/hartman">Derk-Jan Hartman</link> : Adding folder references, by-file compiler flags.</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/StoneSpb">StoneSpb</link> : Speed improvements</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/cezheng">Ce Zheng</link> : Fixes relating to Xcode 7, xcconfig support and others.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Thanks!</para>
+</section>
+</section>
+<section xml:id="_md__r_e_a_d_m_e_1autotoc_md21">
+<title>LICENSE</title>
+
+<para>Apache License, Version 2.0, January 2004, <link xlink:href="http://www.apache.org/licenses/">http://www.apache.org/licenses/</link></para>
+
+<para><itemizedlist>
+<listitem>
+<para>© 2011 - 2012 Jasper Blues and contributors. </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>

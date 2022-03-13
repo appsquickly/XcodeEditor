@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_version_group_8h_source" xml:lang="en-US">
+<title>XCVersionGroup.h</title>
+<indexterm><primary>XCVersionGroup.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="comment">//</emphasis>
+2 <emphasis role="comment">//&#32;&#32;XCCoreDataModelVersioned.h</emphasis>
+3 <emphasis role="comment">//&#32;&#32;xcode-editor</emphasis>
+4 <emphasis role="comment">//</emphasis>
+5 <emphasis role="comment">//&#32;&#32;Created&#32;by&#32;joel&#32;on&#32;04/09/15.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//</emphasis>
+8 
+9 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+10 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeGroupMember.h&gt;</emphasis>
+11 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCGroup.h&gt;</emphasis>
+12 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCBuildFile.h&gt;</emphasis>
+13 
+14 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project">XCProject</link>;
+15 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>;
+16 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_source_file">XCSourceFile</link>;
+17 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link>;
+18 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_file_operation_queue">XCFileOperationQueue</link>;
+19 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link>;
+20 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>;
+21 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>;
+22 
+23 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_version_group">XCVersionGroup</link>&#32;:&#32;NSObject&#32;&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>,<link linkend="_protocol_x_c_build_file-p">XCBuildFile</link>&gt;
+24 {
+25 &#32;&#32;&#32;&#32;NSString*&#32;_pathRelativeToParent;
+26 &#32;&#32;&#32;&#32;NSString*&#32;_key;
+27 &#32;&#32;&#32;&#32;
+28 <emphasis role="keyword">@private</emphasis>
+29 &#32;&#32;&#32;&#32;NSString*&#32;_pathRelativeToProjectRoot;
+30 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_children;
+31 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_members;
+32 &#32;&#32;&#32;&#32;NSString&#32;*_currentVersion;
+33 &#32;&#32;&#32;&#32;NSString&#32;*_versionGroupType;
+34 &#32;&#32;&#32;&#32;
+35 &#32;&#32;&#32;&#32;NSNumber&#32;*_isBuildFile;
+36 &#32;&#32;&#32;&#32;NSString&#32;*_buildFileKey;
+37 &#32;&#32;&#32;&#32;
+38 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_file_operation_queue">XCFileOperationQueue</link>*&#32;_fileOperationQueue;&#32;<emphasis role="comment">//&#32;weak</emphasis>
+39 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_project">XCProject</link>*&#32;_project;
+40 &#32;&#32;&#32;&#32;
+41 }
+42 
+43 
+49 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;alias;
+50 
+56 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;pathRelativeToParent;
+57 
+61 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;key;
+62 
+66 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSMutableArray*&#32;versions;
+67 
+68 <emphasis role="keyword">@property</emphasis>(nonatomic,strong)&#32;NSString*currentVersion;
+69 
+70 
+71 <emphasis role="preprocessor">#pragma&#32;mark&#32;Initializers</emphasis>
+72 
+73 +&#32;(<link linkend="_interface_x_c_version_group">XCVersionGroup</link>*)versionGroupWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;path:(NSString*)path&#32;children:(NSArray*)children&#32;currentVersion:(NSString*)currentVersion;
+74 
+75 -&#32;(id)initWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;path:(NSString*)path&#32;children:(NSArray*)children&#32;currentVersion:(NSString*)currentVersion;
+76 
+77 <emphasis role="preprocessor">#pragma&#32;mark&#32;Parent&#32;group</emphasis>
+78 
+79 -&#32;(void)removeFromParentGroup;
+80 
+81 -&#32;(void)removeFromParentDeletingChildren:(BOOL)deleteChildren;
+82 
+83 -&#32;(<link linkend="_interface_x_c_group">XCGroup</link>*)parentGroup;
+84 
+85 <emphasis role="preprocessor">#pragma&#32;mark&#32;Adding&#32;children</emphasis>
+86 
+90 -&#32;(void)addDataModelSource:(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>*)sourceFileDefinition;
+91 
+92 <emphasis role="preprocessor">#pragma&#32;mark&#32;Locating&#32;children</emphasis>
+93 
+94 -&#32;(NSArray&lt;<link linkend="_interface_x_c_source_file">XCSourceFile</link>*&gt;*)members;
+95 
+96 -&#32;(NSArray&lt;NSString*&gt;*)buildFileKeys;
+97 
+101 -&#32;(<link linkend="_interface_x_c_source_file">XCSourceFile</link>*)memberWithKey:(NSString*)key;
+102 
+106 -&#32;(<link linkend="_interface_x_c_source_file">XCSourceFile</link>*)memberWithDisplayName:(NSString*)name;
+107 
+108 -&#32;(NSDictionary*)asDictionary;
+109 
+110 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

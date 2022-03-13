@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_target_8h_source" xml:lang="en-US">
+<title>XCTarget.h</title>
+<indexterm><primary>XCTarget.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+14 
+15 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project">XCProject</link>;
+16 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_source_file">XCSourceFile</link>;
+17 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link>;
+18 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_build_shell_script">XCBuildShellScript</link>;
+19 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_build_shell_script_definition">XCBuildShellScriptDefinition</link>;
+20 <emphasis role="keyword">@protocol&#32;</emphasis><link linkend="_protocol_x_c_build_file-p">XCBuildFile</link>;
+21 
+25 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_target">XCTarget</link>&#32;:&#32;NSObject
+26 {
+27 
+28 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_project">XCProject</link>*&#32;_project;
+29 &#32;&#32;&#32;&#32;NSString*&#32;_key;
+30 &#32;&#32;&#32;&#32;NSString*&#32;_name;
+31 &#32;&#32;&#32;&#32;NSString*&#32;_productName;
+32 &#32;&#32;&#32;&#32;NSString*&#32;_productReference;
+33 &#32;&#32;&#32;&#32;NSString*&#32;_productType;
+34 &#32;&#32;&#32;&#32;NSString*&#32;_defaultConfigurationName;
+35 
+36 <emphasis role="keyword">@private</emphasis>
+37 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_members;
+38 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_resources;
+39 &#32;&#32;&#32;&#32;NSMutableDictionary*&#32;_configurations;
+40 &#32;&#32;&#32;&#32;NSMutableArray&#32;*_buildShellScripts;
+41 }
+42 
+43 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;key;
+44 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong)&#32;NSString*&#32;name;
+45 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong)&#32;NSString*&#32;productName;
+46 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;productReference;
+47 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;productType;
+48 
+49 +&#32;(<link linkend="_interface_x_c_target">XCTarget</link>*)targetWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;name:(NSString*)name&#32;productName:(NSString*)productName
+50 &#32;&#32;&#32;&#32;productReference:(NSString*)productReference&#32;productType:(NSString*)productType;
+51 
+52 -&#32;(id)initWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;name:(NSString*)name&#32;productName:(NSString*)productName
+53 &#32;&#32;&#32;&#32;productReference:(NSString*)productReference&#32;productType:(NSString*)productType;
+54 
+55 -&#32;(NSArray&lt;<link linkend="_interface_x_c_source_file">XCSourceFile</link>*&gt;*)resources;
+56 
+57 -&#32;(NSArray&lt;id&lt;<link linkend="_protocol_x_c_build_file-p">XCBuildFile</link>&gt;&gt;*)members;
+58 
+59 -&#32;(NSArray&lt;<link linkend="_interface_x_c_build_shell_script">XCBuildShellScript</link>*&gt;*)buildShellScripts;
+60 
+61 -&#32;(NSDictionary&lt;NSString*,<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link>*&gt;*)configurations;
+62 
+63 -&#32;(<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link>&#32;*)configurationWithName:(NSString*)name;
+64 
+65 -&#32;(<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link>&#32;*)defaultConfiguration;
+66 
+67 -&#32;(void)addMember:(<emphasis role="keywordtype">id</emphasis>&lt;<link linkend="_protocol_x_c_build_file-p">XCBuildFile</link>&gt;)member;
+68 
+69 -&#32;(void)makeAndAddShellScript:(<link linkend="_interface_x_c_build_shell_script_definition">XCBuildShellScriptDefinition</link>*)shellScript;
+70 
+71 -&#32;(void)removeShellScriptByName:(NSString*)name;
+72 
+73 -&#32;(void)removeMemberWithKey:(NSString*)key;
+74 
+75 -&#32;(void)removeMembersWithKeys:(NSArray&lt;NSString*&gt;*)keys;
+76 
+77 -&#32;(void)removeResourceWithKey:(NSString*)key;
+78 
+79 -&#32;(void)removeResourcesWithKeys:(NSArray&lt;NSString*&gt;*)keys;
+80 
+81 -&#32;(void)addDependency:(NSString*)key;
+82 
+83 -&#32;(instancetype)duplicateWithTargetName:(NSString*)targetName&#32;productName:(NSString*)productName;
+84 
+85 -&#32;(BOOL)isApplicationType;
+86 
+87 <emphasis role="keyword">@end</emphasis>
+88 
+</programlisting></section>

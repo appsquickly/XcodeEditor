@@ -1,0 +1,215 @@
+An API for manipulating Xcode project files.\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Usage}\label{md__r_e_a_d_m_e_autotoc_md1}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsubsection{Adding Source Files to a Project}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_project}{XCProject}}* project = [[\mbox{\hyperlink{interface_x_c_project}{XCProject}} alloc] initWithFilePath:@"{}MyProject.xcodeproj"{}];}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_group}{XCGroup}}* group = [project \mbox{\hyperlink{interface_x_c_project_a5c29526ae6ec53f9a20b887dbaecff39}{groupWithPathFromRoot}}:@"{}Main"{}];}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}}* classDefinition = [[\mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}} alloc] initWithName:@"{}MyNewClass"{}];}
+\DoxyCodeLine{[classDefinition setHeader:@"{}<some-\/header-\/text>"{}];}
+\DoxyCodeLine{[classDefinition setSource:@"{}<some-\/impl-\/text>"{}];}
+\DoxyCodeLine{}
+\DoxyCodeLine{[group \mbox{\hyperlink{interface_x_c_group_a96411d3bbbc3575f8ec054e248f6ccc0}{addClass}}:classDefinition];}
+\DoxyCodeLine{[project \mbox{\hyperlink{interface_x_c_project_a2802de6cf0bb6e8550d713a188b35d52}{save}}];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsubsection{Duplicating Targets}\label{md__r_e_a_d_m_e_autotoc_md3}
+It will be added to project as well.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_target}{XCTarget}}* target = [project \mbox{\hyperlink{interface_x_c_project_abaa9a7968fad5ec90d41f89e63887ed7}{targetWithName}}:@"{}SomeTarget"{}];}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_target}{XCTarget}}* duplicated = [target duplicateWithTargetName:@"{}DuplicatedTarget"{} productName:@"{}NewProduct"{}];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsubsection{Specifying Source File Belongs to Target}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}}* sourceFile = [project \mbox{\hyperlink{interface_x_c_project_af0ec1bda5ecf6777521993732e5ce081}{fileWithName}}:@"{}MyNewClass.m"{}];}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_target}{XCTarget}}* examples = [project \mbox{\hyperlink{interface_x_c_project_abaa9a7968fad5ec90d41f89e63887ed7}{targetWithName}}:@"{}Examples"{}];}
+\DoxyCodeLine{[examples addMember:sourceFile];}
+\DoxyCodeLine{[project \mbox{\hyperlink{interface_x_c_project_a2802de6cf0bb6e8550d713a188b35d52}{save}}];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsubsection{Adding a Xib File}\label{md__r_e_a_d_m_e_autotoc_md5}
+This time, we\textquotesingle{}ll use a convenience method on \mbox{\hyperlink{interface_x_c_group}{XCGroup}} to specify the targets at the same time\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}}* xibDefinition = [[\mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}} alloc] initWithName:@"{}MyXibFile"{} content:@"{}<xibXml>"{}];}
+\DoxyCodeLine{[group \mbox{\hyperlink{interface_x_c_group_a497ac4da2c0dec3353e9880d824251bb}{addXib}}:xibDefinition \mbox{\hyperlink{interface_x_c_group_a497ac4da2c0dec3353e9880d824251bb}{toTargets}}:[project \mbox{\hyperlink{interface_x_c_project_a3ee5cb7c9774166ff175e527d95ae61a}{targets}}]];}
+\DoxyCodeLine{[project \mbox{\hyperlink{interface_x_c_project_a2802de6cf0bb6e8550d713a188b35d52}{save}}];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsubsection{Adding a Framework}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}}* frameworkDefinition =}
+\DoxyCodeLine{    [[\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}} alloc] initWithFilePath:@"{}<framework path>"{} copyToDestination:NO];}
+\DoxyCodeLine{[group \mbox{\hyperlink{interface_x_c_group_a6793e5b2fa198356d31caa41cb5ca5f3}{addFramework}}:frameworkDefinition \mbox{\hyperlink{interface_x_c_group_a6793e5b2fa198356d31caa41cb5ca5f3}{toTargets}}:[project \mbox{\hyperlink{interface_x_c_project_a3ee5cb7c9774166ff175e527d95ae61a}{targets}}]];}
+\DoxyCodeLine{[project \mbox{\hyperlink{interface_x_c_project_a2802de6cf0bb6e8550d713a188b35d52}{save}}];}
+
+\end{DoxyCode}
+ Setting copy\+To\+Destination to YES, will cause the framework to be first copied to the group\textquotesingle{}s directory within the project, and subsequently linked from there.\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{Adding an Image Resource}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}* sourceFileDefinition = [[\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}} alloc]}
+\DoxyCodeLine{    initWithName:@"{}MyImageFile.png"{} data:[NSData dataWithContentsOfFile:<your image file name>]}
+\DoxyCodeLine{    type:ImageResourcePNG];}
+\DoxyCodeLine{}
+\DoxyCodeLine{[group \mbox{\hyperlink{interface_x_c_group_aa24878ffd2dab62c58da17e65c03d686}{addSourceFile}}:sourceFileDefinition];}
+\DoxyCodeLine{[project \mbox{\hyperlink{interface_x_c_project_a2802de6cf0bb6e8550d713a188b35d52}{save}}];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsubsection{Adding Asset Catalog (\+Image\+Set)}\label{md__r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}* sourceFileDefinition = [\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}} sourceDefinitionWithAssetCatalogName:<path to asset catalog>];}
+\DoxyCodeLine{}
+\DoxyCodeLine{[group \mbox{\hyperlink{interface_x_c_group_aa24878ffd2dab62c58da17e65c03d686}{addSourceFile}}:sourceFileDefinition];}
+\DoxyCodeLine{[project \mbox{\hyperlink{interface_x_c_project_a2802de6cf0bb6e8550d713a188b35d52}{save}}];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{Adding a Header}\label{md__r_e_a_d_m_e_autotoc_md9}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}* header = [[\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}} alloc]}
+\DoxyCodeLine{    initWithName:@"{}SomeHeader.h"{} text:<your header text> type:SourceCodeHeader];}
+\DoxyCodeLine{}
+\DoxyCodeLine{[group \mbox{\hyperlink{interface_x_c_group_aa24878ffd2dab62c58da17e65c03d686}{addSourceFile}}:header];}
+\DoxyCodeLine{[project \mbox{\hyperlink{interface_x_c_project_a2802de6cf0bb6e8550d713a188b35d52}{save}}];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{Adding a sub-\/project}\label{md__r_e_a_d_m_e_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{subProjectDefinition = [\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}} withName:@"{}mySubproject"{} projPath=@"{}/Path/To/Subproject"{} type:XcodeProject];}
+\DoxyCodeLine{[group \mbox{\hyperlink{interface_x_c_group_a52dfc0c60614fb215954921c492a8674}{addSubProject}}:subProjectDefinition \mbox{\hyperlink{interface_x_c_group_a52dfc0c60614fb215954921c492a8674}{toTargets}}:[project \mbox{\hyperlink{interface_x_c_project_a3ee5cb7c9774166ff175e527d95ae61a}{targets}}]];}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsubsection{Removing a sub-\/project}\label{md__r_e_a_d_m_e_autotoc_md11}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[group removeSubProject:subProjectDefinition];  \textcolor{comment}{//TODO: project should be able to remove itself from parent.}}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{Configuring targets}\label{md__r_e_a_d_m_e_autotoc_md12}
+We can add/update linker flags, header search paths, C-\/flags, etc to a target. Here we\textquotesingle{}ll add header search paths\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{interface_x_c_target}{XCTarget}}* target = [\_project targetWithName:\_projectName];}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (NSString* configName in [target configurations])}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    XCBuildConfiguration* configuration = [target configurationWithName:configName];}
+\DoxyCodeLine{    NSMutableArray* headerPaths = [[NSMutableArray alloc] init];}
+\DoxyCodeLine{    [headerPaths addObject:@"{}\$(inherited)"{}];}
+\DoxyCodeLine{    [headerPaths addObject:@"{}\$(SRCROOT)/include"{}];        }
+\DoxyCodeLine{    [configuration addOrReplaceSetting:headerPaths forKey:@"{}HEADER\_SEARCH\_PATHS"{}];}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+. . . these settings are added by key, as they would appear in a make file. (Xcode provides more human friendly descriptions). To find the key for a given build setting, consult the compiler docs. Common settings are\+:
+
+
+\begin{DoxyItemize}
+\item HEADER\+\_\+\+SEARCH\+\_\+\+PATHS
+\item OTHER\+\_\+\+LD\+\_\+\+FLAGS
+\item CLANG\+\_\+\+CXX\+\_\+\+LANGUAGE\+\_\+\+STANDARD
+\item CODE\+\_\+\+SIGN\+\_\+\+IDENTITY
+\item GCC\+\_\+\+C\+\_\+\+LANGUAGE\+\_\+\+STANDARD
+\item INFOPLIST\+\_\+\+FILE
+\item LIBRARY\+\_\+\+SEARCH\+\_\+\+PATHS
+\item PRODUCT\+\_\+\+NAME
+\item PROVISIONING\+\_\+\+PROFILE
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsubsection{Adding a Library}\label{md__r_e_a_d_m_e_autotoc_md13}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{XCSourceFile * libSourceFile = [project fileWithName:@"{}libAmazing.a"{}];}
+\DoxyCodeLine{}
+\DoxyCodeLine{XCTarget* target = [project targetWithName:self.mProject.projectName];}
+\DoxyCodeLine{[target addMember:libSourceFile];}
+\DoxyCodeLine{}
+\DoxyCodeLine{for (NSString* configName in [target configurations]) \{}
+\DoxyCodeLine{    XCProjectBuildConfig* configuration = [target configurationWithName:configName];}
+\DoxyCodeLine{    NSMutableArray* headerPaths = [[NSMutableArray alloc] init];}
+\DoxyCodeLine{    [headerPaths addObject:@"{}\$(inherited)"{}];}
+\DoxyCodeLine{    [headerPaths addObject:@"{}\$(PROJECT\_DIR)/Amazing"{}];}
+\DoxyCodeLine{    [configuration addOrReplaceSetting:headerPaths forKey:@"{}LIBRARY\_SEARCH\_PATHS"{}];}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsubsection{File write behavior}\label{md__r_e_a_d_m_e_autotoc_md14}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//Creates the reference in the project and writes the contents to disk. If a file already exists at the }}
+\DoxyCodeLine{\textcolor{comment}{//specified location, its contents will be updated.}}
+\DoxyCodeLine{[definition setFileOperationStyle:FileOperationStyleOverwrite]; }
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//Creates the reference in the project. If a file already exists at the specified location, the contents will }}
+\DoxyCodeLine{\textcolor{comment}{//not be updated.}}
+\DoxyCodeLine{[definition setFileOperationStyle:FileOperationStyleAcceptExisting]; }
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//Creates the reference in the project, but does not write to disk. The filesystem is expected to be updated }}
+\DoxyCodeLine{\textcolor{comment}{//through some other means.}}
+\DoxyCodeLine{[definition setFileOperationStyle:FileOperationStyleReferenceOnly]; }
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{Building}\label{md__r_e_a_d_m_e_autotoc_md15}
+Open the project in XCode and choose Product/\+Build. Alternatively install with Cocoa\+Pods.\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysection{Feature Requests and Contributions}\label{md__r_e_a_d_m_e_autotoc_md16}
+. . . are very welcome.
+
+If you\textquotesingle{}re using the API shoot me an email and tell me what you\textquotesingle{}re doing with it.\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysection{Compatibility}\label{md__r_e_a_d_m_e_autotoc_md17}
+
+\begin{DoxyItemize}
+\item Xcode-\/editor has been tested on Xcode 4+. It should also work on earlier versions of Xcode.
+\item The App\+Code IDE from Jet\+Brains is now supported too!
+\item Supports both ARC and MRR modes of memory management.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{Who\textquotesingle{}s using it?}\label{md__r_e_a_d_m_e_autotoc_md18}
+
+\begin{DoxyItemize}
+\item \href{http://www.apportable.com}{\texttt{ Apportable}} \+: Develop Android applications using Xcode, Objective-\/C and Cocoa APIs
+\item \href{https://github.com/calabash/calabash-ios}{\texttt{ Xamarin}}\+: The Calabash automated functional testing for mobile applications.
+\item \href{https://github.com/markohlebar/Peckham}{\texttt{ Peckham}} \+: A great plugin for managing Xcode imports
+\item \href{http://www.levelhelper.org}{\texttt{ Level Helper}}\+: A RAD framework for developing 2D games on i\+OS \& Android.
+\item \href{http://macromates.com/}{\texttt{ Text Mate}}\+: The missing Text Editor for OSX.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysection{Authors}\label{md__r_e_a_d_m_e_autotoc_md19}
+
+\begin{DoxyItemize}
+\item \href{http://ph.linkedin.com/pub/jasper-blues/8/163/778}{\texttt{ Jasper Blues}} -\/ \href{mailto:jasper@appsquick.ly?Subject=xcode-editor}{\texttt{ jasper@appsquick.\+ly}}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsubsection{With contributions from\+:}\label{md__r_e_a_d_m_e_autotoc_md20}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/cncool}{\texttt{ Connor Duggan}} -\/ lots of bug fixes, maintenance and enhancements.
+\item \href{https://github.com/smirn0v}{\texttt{ Alexander Smirnov}} -\/ Cleaned up, generalized and contributed back the changes from the Calabash fork.
+\item Zach Drayer -\/ lots of fixes and features to support Text\+Mate.
+\item Janine Ohmer -\/ support adding and removing sub-\/projects (\href{http://www.synapticats.com}{\texttt{ http\+://www.\+synapticats.\+com}}).
+\item Bogdan Vladu -\/ support adding and removing groups (www.\+levelhelper.\+org).
+\item Chris Ross of Hidden Memory (\href{http://www.hiddenmemory.co.uk/}{\texttt{ http\+://www.\+hiddenmemory.\+co.\+uk/}})
+\item Paul Taykalo
+\item Vladislav Alekseev
+\item Felix Schneider -\/ bug fixes.
+\item Isak Sky -\/ mutable XCSource\+Files.
+\item \href{https://github.com/hartman}{\texttt{ Derk-\/\+Jan Hartman}} \+: Adding folder references, by-\/file compiler flags.
+\item \href{https://github.com/StoneSpb}{\texttt{ Stone\+Spb}} \+: Speed improvements
+\item \href{https://github.com/cezheng}{\texttt{ Ce Zheng}} \+: Fixes relating to Xcode 7, xcconfig support and others.
+\end{DoxyItemize}
+
+Thanks!\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysection{LICENSE}\label{md__r_e_a_d_m_e_autotoc_md21}
+Apache License, Version 2.\+0, January 2004, \href{http://www.apache.org/licenses/}{\texttt{ http\+://www.\+apache.\+org/licenses/}}
+
+
+\begin{DoxyItemize}
+\item © 2011 -\/ 2012 Jasper Blues and contributors. 
+\end{DoxyItemize}

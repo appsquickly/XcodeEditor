@@ -1,0 +1,125 @@
+.TH "XCTarget" 3 "Fri Mar 4 2022" "Version 1.1" "XcodeEditor-master" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XCTarget
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#import <XCTarget\&.h>\fP
+.PP
+Inherits NSObject\&.
+.SS "Instance Methods"
+
+.in +1c
+.ti -1c
+.RI "(id) \- \fBinitWithProject:key:name:productName:productReference:productType:\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBresources\fP"
+.br
+.ti -1c
+.RI "(NSArray< id< \fBXCBuildFile\fP > > *) \- \fBmembers\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCBuildShellScript\fP * > *) \- \fBbuildShellScripts\fP"
+.br
+.ti -1c
+.RI "(NSDictionary< NSString *, \fBXCProjectBuildConfig\fP * > *) \- \fBconfigurations\fP"
+.br
+.ti -1c
+.RI "(\fBXCProjectBuildConfig\fP *) \- \fBconfigurationWithName:\fP"
+.br
+.ti -1c
+.RI "(\fBXCProjectBuildConfig\fP *) \- \fBdefaultConfiguration\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBaddMember:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBmakeAndAddShellScript:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveShellScriptByName:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveMemberWithKey:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveMembersWithKeys:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveResourceWithKey:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveResourcesWithKeys:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBaddDependency:\fP"
+.br
+.ti -1c
+.RI "(instancetype) \- \fBduplicateWithTargetName:productName:\fP"
+.br
+.ti -1c
+.RI "(BOOL) \- \fBisApplicationType\fP"
+.br
+.in -1c
+.SS "Class Methods"
+
+.in +1c
+.ti -1c
+.RI "(\fBXCTarget\fP *) + \fBtargetWithProject:key:name:productName:productReference:productType:\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBXCProject\fP * \fB_project\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_key\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_name\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_productName\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_productReference\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_productType\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_defaultConfigurationName\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "NSString * \fBkey\fP"
+.br
+.ti -1c
+.RI "NSString * \fBname\fP"
+.br
+.ti -1c
+.RI "NSString * \fBproductName\fP"
+.br
+.ti -1c
+.RI "NSString * \fBproductReference\fP"
+.br
+.ti -1c
+.RI "NSString * \fBproductType\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a target in an xcode project\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for XcodeEditor-master from the source code\&.

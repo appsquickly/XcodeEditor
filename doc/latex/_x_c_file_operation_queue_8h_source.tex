@@ -1,0 +1,50 @@
+\hypertarget{_x_c_file_operation_queue_8h_source}{}\doxysection{XCFile\+Operation\+Queue.\+h}
+\label{_x_c_file_operation_queue_8h_source}\index{XCFileOperationQueue.h@{XCFileOperationQueue.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_file_operation_queue}{XCFileOperationQueue}} : NSObject}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{@private}}
+\DoxyCodeLine{20     NSString* \_baseDirectory;}
+\DoxyCodeLine{21     NSMutableDictionary* \_filesToWrite;}
+\DoxyCodeLine{22     NSMutableDictionary* \_frameworksToCopy;}
+\DoxyCodeLine{23     NSMutableArray* \_filesToDelete;}
+\DoxyCodeLine{24     NSMutableArray* \_directoriesToCreate;}
+\DoxyCodeLine{25 \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 -\/ (id)initWithBaseDirectory:(NSString*)baseDirectory;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 -\/ (BOOL)fileWithName:(NSString*)name existsInProjectDirectory:(NSString*)directory;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 -\/ (void)queueTextFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSString*)contents;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 -\/ (void)queueDataFile:(NSString*)fileName inDirectory:(NSString*)directory withContents:(NSData*)contents;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 -\/ (void)queueFrameworkWithFilePath:(NSString*)filePath inDirectory:(NSString*)directory;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 -\/ (void)queueDeletion:(NSString*)filePath;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 -\/ (void)queueDirectory:(NSString*)withName inDirectory:(NSString*)parentDirectory;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 -\/ (void)commitFileOperations;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keyword}{@end}}
+\DoxyCodeLine{45 }
+
+\end{DoxyCode}

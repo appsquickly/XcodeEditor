@@ -1,0 +1,41 @@
+\hypertarget{_x_c_xib_definition_8h_source}{}\doxysection{XCXib\+Definition.\+h}
+\label{_x_c_xib_definition_8h_source}\index{XCXibDefinition.h@{XCXibDefinition.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#import <XcodeEditor/XCAbstractDefinition.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}} : \mbox{\hyperlink{interface_x_c_abstract_definition}{XCAbstractDefinition}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     NSString* \_name;}
+\DoxyCodeLine{21     NSString* \_content;}
+\DoxyCodeLine{22 \}}
+\DoxyCodeLine{23 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* name;}
+\DoxyCodeLine{24 \textcolor{keyword}{@property}(nonatomic, strong) NSString* content;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 + (\mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}}*)xibDefinitionWithName:(NSString*)name;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 + (\mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}}*)xibDefinitionWithName:(NSString*)name content:(NSString*)content;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 -\/ (id)initWithName:(NSString*)name;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 -\/ (id)initWithName:(NSString*)name content:(NSString*)content;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 -\/ (NSString*)xibFileName;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

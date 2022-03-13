@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_class_definition" xml:lang="en-US">
+<title>XCClassDefinition Class Reference</title>
+<indexterm><primary>XCClassDefinition</primary></indexterm>
+<para>Inheritance diagram for XCClassDefinition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_class_definition.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para>(id) - <link linkend="_interface_x_c_class_definition_1a23690152051fe1b9faae85328a0b01e4">initWithName:</link></para>
+</listitem>
+            <listitem><para>(id) - <link linkend="_interface_x_c_class_definition_1a5ac63d73ba9eb0cc41124a86a13960c8">initWithName:language:</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1a8057794678ce18938d74712647cd768f"/>(BOOL) - <emphasis role="strong">isObjectiveC</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1ae16be8fde4a4a4220c6304a7af843e62"/>(BOOL) - <emphasis role="strong">isObjectiveCPlusPlus</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1ac55b847a41c97cebdae6129f97c04411"/>(BOOL) - <emphasis role="strong">isCPlusPlus</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1ab581631959c4a311b08cef8795db19f4"/>(NSString *) - <emphasis role="strong">headerFileName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1a2151047dda92fc08060f5db5f0870c5a"/>(NSString *) - <emphasis role="strong">sourceFileName</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1abd37214c1044249cf596305989375513"/>(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link> *) + <emphasis role="strong">classDefinitionWithName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1aa06c00d77cf6fd2e47574b0f25525b9a"/>(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link> *) + <emphasis role="strong">classDefinitionWithName:language:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1aca0cfdcf71ca0882755e48f8cf7fa2e6"/>NSString * <emphasis role="strong">_className</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1a7f8877a914b3beb805895f8d9479721f"/>NSString * <emphasis role="strong">_header</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1a049ddbd9b0c9b5db631bff86739a4563"/>NSString * <emphasis role="strong">_source</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1a2546319b3a49afb05aeff8edb307e426"/>NSString * <emphasis role="strong">className</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1a5aa654cae2860ce584f409bfcc3c34b1"/>NSString * <emphasis role="strong">header</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_class_definition_1acab09962126ebae52ec5bc9eb4e9c261"/>NSString * <emphasis role="strong">source</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Method Documentation</title>
+<anchor xml:id="_interface_x_c_class_definition_1a23690152051fe1b9faae85328a0b01e4"/><section>
+    <title>initWithName:</title>
+<indexterm><primary>initWithName:</primary><secondary>XCClassDefinition</secondary></indexterm>
+<indexterm><primary>XCClassDefinition</primary><secondary>initWithName:</secondary></indexterm>
+<para><computeroutput>- (id) initWithName: (NSString*) fileName</computeroutput></para>
+<para>Initializes a new objective-c class definition. </para>
+</section>
+<anchor xml:id="_interface_x_c_class_definition_1a5ac63d73ba9eb0cc41124a86a13960c8"/><section>
+    <title>initWithName:language:</title>
+<indexterm><primary>initWithName:language:</primary><secondary>XCClassDefinition</secondary></indexterm>
+<indexterm><primary>XCClassDefinition</primary><secondary>initWithName:language:</secondary></indexterm>
+<para><computeroutput>- (id) <link linkend="_interface_x_c_class_definition_1a23690152051fe1b9faae85328a0b01e4">initWithName:</link> (NSString*) className(ClassDefinitionLanguage) language</computeroutput></para>
+<para>Initializes a new class definition with the specified language. </para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCClassDefinition.hXCClassDefinition.m</section>
+</section>

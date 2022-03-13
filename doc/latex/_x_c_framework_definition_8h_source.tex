@@ -1,0 +1,45 @@
+\hypertarget{_x_c_framework_definition_8h_source}{}\doxysection{XCFramework\+Definition.\+h}
+\label{_x_c_framework_definition_8h_source}\index{XCFrameworkDefinition.h@{XCFrameworkDefinition.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#import <XcodeEditor/XCAbstractDefinition.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeSourceTreeType.h>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}} : \mbox{\hyperlink{interface_x_c_abstract_definition}{XCAbstractDefinition}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     NSString* \_filePath;}
+\DoxyCodeLine{21     BOOL \_copyToDestination;}
+\DoxyCodeLine{22     XcodeSourceTreeType \_sourceTree;}
+\DoxyCodeLine{23 \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* filePath;}
+\DoxyCodeLine{26 \textcolor{keyword}{@property}(nonatomic, readonly) BOOL copyToDestination;}
+\DoxyCodeLine{27 \textcolor{keyword}{@property}(nonatomic, readonly) XcodeSourceTreeType sourceTree;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 + (\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}}*)frameworkDefinitionWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;}
+\DoxyCodeLine{30 + (\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}}*)frameworkDefinitionWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination sourceTree:(XcodeSourceTreeType)sourceTree;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 -\/ (id)initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination;}
+\DoxyCodeLine{33 -\/ (id)initWithFilePath:(NSString*)filePath copyToDestination:(BOOL)copyToDestination}
+\DoxyCodeLine{34             sourceTree:(XcodeSourceTreeType)sourceTree;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 -\/ (NSString*)fileName;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

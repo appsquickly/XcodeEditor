@@ -1,0 +1,125 @@
+\hypertarget{interface_x_c_version_group}{}\doxysection{XCVersion\+Group Class Reference}
+\label{interface_x_c_version_group}\index{XCVersionGroup@{XCVersionGroup}}
+Inheritance diagram for XCVersion\+Group\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_x_c_version_group}
+\end{center}
+\end{figure}
+\doxysubsection*{Instance Methods}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_af213f9c00a675f35026b80085ad94aa0}\label{interface_x_c_version_group_af213f9c00a675f35026b80085ad94aa0}} 
+(id) -\/ {\bfseries init\+With\+Project\+:key\+:path\+:children\+:current\+Version\+:}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a13ebb5e30e489a4fa4740b2f34c8883f}\label{interface_x_c_version_group_a13ebb5e30e489a4fa4740b2f34c8883f}} 
+(void) -\/ {\bfseries remove\+From\+Parent\+Group}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a661019987c21b0b3d8d65710ab25f5ec}\label{interface_x_c_version_group_a661019987c21b0b3d8d65710ab25f5ec}} 
+(void) -\/ {\bfseries remove\+From\+Parent\+Deleting\+Children\+:}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a98addd255bf7c092b89e278d2a872dee}\label{interface_x_c_version_group_a98addd255bf7c092b89e278d2a872dee}} 
+(\mbox{\hyperlink{interface_x_c_group}{XCGroup}} $\ast$) -\/ {\bfseries parent\+Group}
+\item 
+(void) -\/ \mbox{\hyperlink{interface_x_c_version_group_a95f29cd0630223ec7273c3c98c669b37}{add\+Data\+Model\+Source\+:}}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a03df67da6147478982e1b1cf7b8f8f41}\label{interface_x_c_version_group_a03df67da6147478982e1b1cf7b8f8f41}} 
+(NSArray$<$ \mbox{\hyperlink{interface_x_c_source_file}{XCSource\+File}} $\ast$ $>$ $\ast$) -\/ {\bfseries members}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a3fb5d4fe976d45f1c31dde0f8bd635fa}\label{interface_x_c_version_group_a3fb5d4fe976d45f1c31dde0f8bd635fa}} 
+(NSArray$<$ NSString $\ast$ $>$ $\ast$) -\/ {\bfseries build\+File\+Keys}
+\item 
+(\mbox{\hyperlink{interface_x_c_source_file}{XCSource\+File}} $\ast$) -\/ \mbox{\hyperlink{interface_x_c_version_group_a80b556d4c32df75d842e15ca1e64b2cd}{member\+With\+Key\+:}}
+\item 
+(\mbox{\hyperlink{interface_x_c_source_file}{XCSource\+File}} $\ast$) -\/ \mbox{\hyperlink{interface_x_c_version_group_a162fb995f778781d25e2c94cd242a1d6}{member\+With\+Display\+Name\+:}}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a21f2d321fdfbde3a982db53bac486a25}\label{interface_x_c_version_group_a21f2d321fdfbde3a982db53bac486a25}} 
+(NSDictionary $\ast$) -\/ {\bfseries as\+Dictionary}
+\end{DoxyCompactItemize}
+\doxysubsection*{Class Methods}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a54ef892c65df40da1bdde4642d2a3dc1}\label{interface_x_c_version_group_a54ef892c65df40da1bdde4642d2a3dc1}} 
+(\mbox{\hyperlink{interface_x_c_version_group}{XCVersion\+Group}} $\ast$) + {\bfseries version\+Group\+With\+Project\+:key\+:path\+:children\+:current\+Version\+:}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a80e4bc62286f79aee7dd98295d5df963}\label{interface_x_c_version_group_a80e4bc62286f79aee7dd98295d5df963}} 
+NSString $\ast$ {\bfseries \+\_\+path\+Relative\+To\+Parent}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a17f1e0eb958b4c0501480fa138ba8aed}\label{interface_x_c_version_group_a17f1e0eb958b4c0501480fa138ba8aed}} 
+NSString $\ast$ {\bfseries \+\_\+key}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+NSString $\ast$ \mbox{\hyperlink{interface_x_c_version_group_afd3e95e73e576b608f6f5e2416898885}{alias}}
+\item 
+NSString $\ast$ \mbox{\hyperlink{interface_x_c_version_group_af93e68eb50e9c368f2f94b1e3e81ef5b}{path\+Relative\+To\+Parent}}
+\item 
+NSString $\ast$ \mbox{\hyperlink{interface_x_c_version_group_acf4f1652b83fc6cc7fc3165d65c7655c}{key}}
+\item 
+NSMutable\+Array $\ast$ \mbox{\hyperlink{interface_x_c_version_group_ac094cb0b196c580cbac574781a642d0c}{versions}}
+\item 
+\mbox{\Hypertarget{interface_x_c_version_group_a338bab4567342ddc6ff152304876a5c2}\label{interface_x_c_version_group_a338bab4567342ddc6ff152304876a5c2}} 
+NSString $\ast$ {\bfseries current\+Version}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Method Documentation}
+\mbox{\Hypertarget{interface_x_c_version_group_a95f29cd0630223ec7273c3c98c669b37}\label{interface_x_c_version_group_a95f29cd0630223ec7273c3c98c669b37}} 
+\index{XCVersionGroup@{XCVersionGroup}!addDataModelSource:@{addDataModelSource:}}
+\index{addDataModelSource:@{addDataModelSource:}!XCVersionGroup@{XCVersionGroup}}
+\doxysubsubsection{\texorpdfstring{addDataModelSource:}{addDataModelSource:}}
+{\footnotesize\ttfamily -\/ (void) add\+Data\+Model\+Source\+: \begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSource\+File\+Definition}}$\ast$)}]{source\+File\+Definition }\end{DoxyParamCaption}}
+
+Adds a source file. The only valid file type is XCData\+Model \mbox{\Hypertarget{interface_x_c_version_group_a162fb995f778781d25e2c94cd242a1d6}\label{interface_x_c_version_group_a162fb995f778781d25e2c94cd242a1d6}} 
+\index{XCVersionGroup@{XCVersionGroup}!memberWithDisplayName:@{memberWithDisplayName:}}
+\index{memberWithDisplayName:@{memberWithDisplayName:}!XCVersionGroup@{XCVersionGroup}}
+\doxysubsubsection{\texorpdfstring{memberWithDisplayName:}{memberWithDisplayName:}}
+{\footnotesize\ttfamily -\/ (id$<$ \mbox{\hyperlink{protocol_xcode_group_member-p}{Xcode\+Group\+Member}} $>$) member\+With\+Display\+Name\+: \begin{DoxyParamCaption}\item[{(NSString$\ast$)}]{name }\end{DoxyParamCaption}}
+
+Returns the child with the specified name, or nil. \mbox{\Hypertarget{interface_x_c_version_group_a80b556d4c32df75d842e15ca1e64b2cd}\label{interface_x_c_version_group_a80b556d4c32df75d842e15ca1e64b2cd}} 
+\index{XCVersionGroup@{XCVersionGroup}!memberWithKey:@{memberWithKey:}}
+\index{memberWithKey:@{memberWithKey:}!XCVersionGroup@{XCVersionGroup}}
+\doxysubsubsection{\texorpdfstring{memberWithKey:}{memberWithKey:}}
+{\footnotesize\ttfamily -\/ (\mbox{\hyperlink{interface_x_c_source_file}{XCSource\+File}} $\ast$) member\+With\+Key\+: \begin{DoxyParamCaption}\item[{(NSString$\ast$)}]{key }\end{DoxyParamCaption}}
+
+Returns the child with the specified key, or nil. 
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{interface_x_c_version_group_afd3e95e73e576b608f6f5e2416898885}\label{interface_x_c_version_group_afd3e95e73e576b608f6f5e2416898885}} 
+\index{XCVersionGroup@{XCVersionGroup}!alias@{alias}}
+\index{alias@{alias}!XCVersionGroup@{XCVersionGroup}}
+\doxysubsubsection{\texorpdfstring{alias}{alias}}
+{\footnotesize\ttfamily -\/ (NSString$\ast$) alias\hspace{0.3cm}{\ttfamily [read]}, {\ttfamily [nonatomic]}, {\ttfamily [strong]}}
+
+The alias of the group, which can be used to give the group a name other than the last path component.
+
+See\+: \mbox{[}\mbox{\hyperlink{protocol_xcode_group_member-p}{Xcode\+Group\+Member}} display\+Name\mbox{]} \mbox{\Hypertarget{interface_x_c_version_group_acf4f1652b83fc6cc7fc3165d65c7655c}\label{interface_x_c_version_group_acf4f1652b83fc6cc7fc3165d65c7655c}} 
+\index{XCVersionGroup@{XCVersionGroup}!key@{key}}
+\index{key@{key}!XCVersionGroup@{XCVersionGroup}}
+\doxysubsubsection{\texorpdfstring{key}{key}}
+{\footnotesize\ttfamily -\/ (NSString$\ast$) key\hspace{0.3cm}{\ttfamily [read]}, {\ttfamily [nonatomic]}, {\ttfamily [strong]}}
+
+The group\textquotesingle{}s unique key. \mbox{\Hypertarget{interface_x_c_version_group_af93e68eb50e9c368f2f94b1e3e81ef5b}\label{interface_x_c_version_group_af93e68eb50e9c368f2f94b1e3e81ef5b}} 
+\index{XCVersionGroup@{XCVersionGroup}!pathRelativeToParent@{pathRelativeToParent}}
+\index{pathRelativeToParent@{pathRelativeToParent}!XCVersionGroup@{XCVersionGroup}}
+\doxysubsubsection{\texorpdfstring{pathRelativeToParent}{pathRelativeToParent}}
+{\footnotesize\ttfamily -\/ (NSString$\ast$) path\+Relative\+To\+Parent\hspace{0.3cm}{\ttfamily [read]}, {\ttfamily [nonatomic]}, {\ttfamily [strong]}}
+
+The path of the group relative to the group\textquotesingle{}s parent.
+
+See\+: \mbox{[}\mbox{\hyperlink{protocol_xcode_group_member-p}{Xcode\+Group\+Member}} display\+Name\mbox{]} \mbox{\Hypertarget{interface_x_c_version_group_ac094cb0b196c580cbac574781a642d0c}\label{interface_x_c_version_group_ac094cb0b196c580cbac574781a642d0c}} 
+\index{XCVersionGroup@{XCVersionGroup}!versions@{versions}}
+\index{versions@{versions}!XCVersionGroup@{XCVersionGroup}}
+\doxysubsubsection{\texorpdfstring{versions}{versions}}
+{\footnotesize\ttfamily -\/ (NSMutable\+Array$\ast$) versions\hspace{0.3cm}{\ttfamily [read]}, {\ttfamily [nonatomic]}, {\ttfamily [strong]}}
+
+An array containing the groups members as {\ttfamily \mbox{\hyperlink{protocol_xcode_group_member-p}{Xcode\+Group\+Member}}} types. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+XCVersion\+Group.\+h\item 
+XCVersion\+Group.\+m\end{DoxyCompactItemize}

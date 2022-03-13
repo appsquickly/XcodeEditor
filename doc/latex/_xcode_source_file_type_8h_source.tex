@@ -1,0 +1,54 @@
+\hypertarget{_xcode_source_file_type_8h_source}{}\doxysection{Xcode\+Source\+File\+Type.\+h}
+\label{_xcode_source_file_type_8h_source}\index{XcodeSourceFileType.h@{XcodeSourceFileType.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} NS\_OPTIONS(NSInteger, XcodeSourceFileType)}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     FileTypeNil = 0,             \textcolor{comment}{// Unknown filetype}}
+\DoxyCodeLine{17     Framework = 1,               \textcolor{comment}{// .framework}}
+\DoxyCodeLine{18     PropertyList = 2,            \textcolor{comment}{// .plist}}
+\DoxyCodeLine{19     SourceCodeHeader = 3,        \textcolor{comment}{// .h}}
+\DoxyCodeLine{20     SourceCodeObjC = 4,          \textcolor{comment}{// .m}}
+\DoxyCodeLine{21     SourceCodeObjCPlusPlus = 5,  \textcolor{comment}{// .mm}}
+\DoxyCodeLine{22     SourceCodeCPlusPlus = 6,     \textcolor{comment}{// .cpp}}
+\DoxyCodeLine{23     XibFile = 7,                 \textcolor{comment}{// .xib}}
+\DoxyCodeLine{24     ImageResourcePNG = 8,        \textcolor{comment}{// .png}}
+\DoxyCodeLine{25     Bundle = 9,                  \textcolor{comment}{// .bundle  .octet}}
+\DoxyCodeLine{26     Archive = 10,                \textcolor{comment}{// .a files}}
+\DoxyCodeLine{27     HTML = 11,                   \textcolor{comment}{// HTML file}}
+\DoxyCodeLine{28     TEXT = 12,                   \textcolor{comment}{// Some text file}}
+\DoxyCodeLine{29     XcodeProject = 13,           \textcolor{comment}{// .xcodeproj}}
+\DoxyCodeLine{30     Folder = 14,                 \textcolor{comment}{// a Folder reference}}
+\DoxyCodeLine{31     AssetCatalog = 15,           \textcolor{comment}{// Assets}}
+\DoxyCodeLine{32     SourceCodeSwift = 16,        \textcolor{comment}{// .swift}}
+\DoxyCodeLine{33     Application = 17,            \textcolor{comment}{// .app (wrapper.application)}}
+\DoxyCodeLine{34     Playground = 18,             \textcolor{comment}{// .playground (file.playground)}}
+\DoxyCodeLine{35     ShellScript = 19,            \textcolor{comment}{// no suffix Xcode seems to detect (text.script.sh)}}
+\DoxyCodeLine{36     Markdown = 20,               \textcolor{comment}{// .md (net.daringfileball.markdown)}}
+\DoxyCodeLine{37     XMLPropertyList = 21,        \textcolor{comment}{// .plist (text.plist.xml)}}
+\DoxyCodeLine{38     Storyboard = 22,             \textcolor{comment}{// .storyboard (file.storyboard)}}
+\DoxyCodeLine{39     XCConfig = 23,               \textcolor{comment}{// .xcconfig}}
+\DoxyCodeLine{40     XCDataModel = 24,            \textcolor{comment}{// .xcdatamodel}}
+\DoxyCodeLine{41     LocalizableStrings = 25      \textcolor{comment}{// .strings}}
+\DoxyCodeLine{42 \};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 NSString* NSStringFromXCSourceFileType(XcodeSourceFileType type);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 XcodeSourceFileType XCSourceFileTypeFromStringRepresentation(NSString* \textcolor{keywordtype}{string});}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 XcodeSourceFileType XCSourceFileTypeFromFileName(NSString* fileName);}
+\DoxyCodeLine{49 }
+
+\end{DoxyCode}

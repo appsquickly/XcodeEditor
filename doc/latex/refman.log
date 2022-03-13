@@ -1,0 +1,2455 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.12.11)  5 MAR 2022 15:32
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**refman
+(./refman.tex
+LaTeX2e <2018-12-01>
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/array.sty
+Rollback for package 'array' requested -> date 2016-10-06.
+         Best approximation is the release introduced on 2016-10-06.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/array-2016-10-06.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen103
+\extrarowheight=\dimen104
+\NC@list=\toks14
+\extratabsurround=\skip43
+\backup@length=\skip44
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+) (./doxygen.sty
+Package: doxygen 
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count89
+\calc@Bcount=\count90
+\calc@Adimen=\dimen105
+\calc@Bdimen=\dimen106
+\calc@Askip=\skip45
+\calc@Bskip=\skip46
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count91
+\calc@Cskip=\skip47
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count92
+\float@exts=\toks15
+\float@box=\box27
+\@float@everytoks=\toks16
+\@floatcapt=\box28
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks17
+\verbatim@line=\toks18
+\verbatim@in@stream=\read1
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
+\everycr=\toks19
+\minrowclearance=\skip48
+)
+\rownum=\count93
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(./longtable_doxygen.sty
+Package: longtable_doxygen 2014/10/28 v4.11 Multi-page Table package (DPC) - fr
+ozen version for doxygen
+\LTleft=\skip49
+\LTright=\skip50
+\LTpre=\skip51
+\LTpost=\skip52
+\LTchunksize=\count94
+\LTcapwidth=\dimen107
+\LT@head=\box29
+\LT@firsthead=\box30
+\LT@foot=\box31
+\LT@lastfoot=\box32
+\LT@cols=\count95
+\LT@rows=\count96
+\c@LT@tables=\count97
+\c@LT@chunks=\count98
+\LT@p@ftn=\toks20
+) (./tabu_doxygen.sty
+Package: tabu_doxygen 2011/02/26 v2.8 - flexible LaTeX tabulars (FC), frozen ve
+rsion for doxygen
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box33
+\sift@deathcycles=\count99
+\@vwid@loff=\dimen108
+\@vwid@roff=\dimen109
+)
+\c@taburow=\count100
+\tabu@nbcols=\count101
+\tabu@cnt=\count102
+\tabu@Xcol=\count103
+\tabu@alloc=\count104
+\tabu@nested=\count105
+\tabu@target=\dimen110
+\tabu@spreadtarget=\dimen111
+\tabu@naturalX=\dimen112
+\tabucolX=\dimen113
+\tabu@Xsum=\dimen114
+\extrarowdepth=\dimen115
+\abovetabulinesep=\dimen116
+\belowtabulinesep=\dimen117
+\tabustrutrule=\dimen118
+\tabu@thebody=\toks21
+\tabu@footnotes=\toks22
+\tabu@box=\box34
+\tabu@arstrutbox=\box35
+\tabu@hleads=\box36
+\tabu@vleads=\box37
+\tabu@cellskip=\skip53
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2019/01/15
+
+Style option: `fancyvrb' v3.2a <2019/01/15> (tvz)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+\FV@CodeLineNo=\count106
+\FV@InFile=\read2
+\FV@TabBox=\box38
+\c@FancyVerbLine=\count107
+\FV@StepNumber=\count108
+\FV@OutFile=\write3
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+\TX@col@width=\dimen119
+\TX@old@table=\dimen120
+\TX@old@col=\dimen121
+\TX@target=\dimen122
+\TX@delta=\dimen123
+\TX@cols=\count109
+\TX@ftn=\toks24
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
+\c@tracingmulticols=\count110
+\mult@box=\box39
+\multicol@leftmargin=\dimen124
+\c@unbalance=\count111
+\c@collectmore=\count112
+\doublecol@number=\count113
+\multicoltolerance=\count114
+\multicolpretolerance=\count115
+\full@width=\dimen125
+\page@free=\dimen126
+\premulticols=\dimen127
+\postmulticols=\dimen128
+\multicolsep=\skip54
+\multicolbaselineskip=\skip55
+\partial@page=\box40
+\last@line=\box41
+\maxbalancingoverflow=\dimen129
+\mult@rightbox=\box42
+\mult@grightbox=\box43
+\mult@gfirstbox=\box44
+\mult@firstbox=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\c@columnbadness=\count116
+\c@finalcolumnbadness=\count117
+\last@try=\dimen130
+\multicolovershoot=\dimen131
+\multicolundershoot=\dimen132
+\mult@nat@firstbox=\box63
+\colbreak@box=\box64
+\mc@col@check@num=\count118
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+\multirow@colwidth=\skip56
+\multirow@cntb=\count119
+\multirow@dima=\skip57
+\bigstrutjot=\dimen133
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hanging/hanging.sty
+Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
+\h@ngcommawd=\skip58
+\h@ngfstopwd=\skip59
+\h@ngquotewd=\skip60
+\h@ngdquotewd=\skip61
+\h@ngquerywd=\skip62
+\h@ngexclwd=\skip63
+\h@ngcolonwd=\skip64
+\h@ngscolonwd=\skip65
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks25
+\XKV@tempa@toks=\toks26
+)
+\XKV@depth=\count120
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen134
+\Gin@req@width=\dimen135
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box65
+)
+\tc@llx=\dimen136
+\tc@lly=\dimen137
+\tc@urx=\dimen138
+\tc@ury=\dimen139
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen140
+\adjbox@Height=\dimen141
+\adjbox@Depth=\dimen142
+\adjbox@Totalheight=\dimen143
+\adjbox@pwidth=\dimen144
+\adjbox@pheight=\dimen145
+\adjbox@pdepth=\dimen146
+\adjbox@ptotalheight=\dimen147
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count121
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks27
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/stackengine/stackengine.sty
+Package: stackengine 2017/02/13 v4.01\ Stacking text and objects in convenient 
+ways
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count122
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/listofitems/listofitems.sty
+(/usr/local/texlive/2019/texmf-dist/tex/generic/listofitems/listofitems.tex
+\loi_cnt_foreach_nest=\count123
+\loi_nestcnt=\count124
+)
+Package: listofitems 2019/03/03 v1.61 Grab items in lists using user-specified 
+sep char (CT)
+)
+\c@@stackindex=\count125
+\@boxshift=\skip66
+\stack@tmplength=\skip67
+\temp@stkl=\skip68
+\@stackedboxwidth=\skip69
+\@addedbox=\box66
+\@anchorbox=\box67
+\stackedbox=\box68
+\@centerbox=\box69
+\c@ROWcellindex@=\count126
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/02/04 v3.8 Customized lists
+\labelindent=\skip70
+\enit@outerparindent=\dimen148
+\enit@toks=\toks28
+\enit@inbox=\box70
+\enit@count@id=\count127
+\enitdp@description=\count128
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/alphalph.sty
+Package: alphalph 2016/05/16 v2.5 Convert numbers to letters (HO)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box71
+\UL@hyphenbox=\box72
+\UL@skip=\skip71
+\UL@hook=\toks29
+\UL@height=\dimen149
+\UL@pe=\count129
+\UL@pixel=\dimen150
+\ULC@box=\box73
+Package: ulem 2012/05/18
+\ULdepth=\dimen151
+)
+\xrefbox=\box74
+\xreflength=\skip72
+\CodeWidthChar=\skip73
+\CodeHeightChar=\skip74
+\DoxyCodeWidth=\skip75
+\c@DoxyEnumeratei=\count130
+\c@DoxyEnumerateii=\count131
+\c@DoxyEnumerateiii=\count132
+\c@DoxyEnumerateiv=\count133
+\c@DoxyEnumeratev=\count134
+\c@DoxyEnumeratevi=\count135
+\c@DoxyEnumeratevii=\count136
+\c@DoxyEnumerateviii=\count137
+\c@DoxyEnumerateix=\count138
+\c@DoxyEnumeratex=\count139
+\c@DoxyEnumeratexi=\count140
+\c@DoxyEnumeratexii=\count141
+\enitdp@DoxyEnumerate=\count142
+\enitdp@DoxyItemize=\count143
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks30
+\inpenc@posthook=\toks31
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+FEFF (decimal 65279)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
+\symwasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/helvet.sty
+Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/courier.sty
+Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/sectsty/sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count144
+\Gm@cntv=\count145
+\c@Gm@tempcnt=\count146
+\Gm@bindingoffset=\dimen152
+\Gm@wd@mp=\dimen153
+\Gm@odd@mp=\dimen154
+\Gm@even@mp=\dimen155
+\Gm@layoutwidth=\dimen156
+\Gm@layoutheight=\dimen157
+\Gm@layouthoffset=\dimen158
+\Gm@layoutvoffset=\dimen159
+\Gm@dimlist=\toks32
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip76
+\f@nch@O@elh=\skip77
+\f@nch@O@erh=\skip78
+\f@nch@O@olh=\skip79
+\f@nch@O@orh=\skip80
+\f@nch@O@elf=\skip81
+\f@nch@O@erf=\skip82
+\f@nch@O@olf=\skip83
+\f@nch@O@orf=\skip84
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip85
+\bibsep=\skip86
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count147
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip87
+\cftbeforetoctitleskip=\skip88
+\cftaftertoctitleskip=\skip89
+\cftbeforepartskip=\skip90
+\cftpartnumwidth=\skip91
+\cftpartindent=\skip92
+\cftbeforechapskip=\skip93
+\cftchapindent=\skip94
+\cftchapnumwidth=\skip95
+\cftbeforesecskip=\skip96
+\cftsecindent=\skip97
+\cftsecnumwidth=\skip98
+\cftbeforesubsecskip=\skip99
+\cftsubsecindent=\skip100
+\cftsubsecnumwidth=\skip101
+\cftbeforesubsubsecskip=\skip102
+\cftsubsubsecindent=\skip103
+\cftsubsubsecnumwidth=\skip104
+\cftbeforeparaskip=\skip105
+\cftparaindent=\skip106
+\cftparanumwidth=\skip107
+\cftbeforesubparaskip=\skip108
+\cftsubparaindent=\skip109
+\cftsubparanumwidth=\skip110
+\cftbeforeloftitleskip=\skip111
+\cftafterloftitleskip=\skip112
+\cftbeforefigskip=\skip113
+\cftfigindent=\skip114
+\cftfignumwidth=\skip115
+\c@lofdepth=\count148
+\c@lotdepth=\count149
+\cftbeforelottitleskip=\skip116
+\cftafterlottitleskip=\skip117
+\cftbeforetabskip=\skip118
+\cfttabindent=\skip119
+\cfttabnumwidth=\skip120
+)
+\@indexfile=\write4
+\openout4 = `refman.idx'.
+
+
+Writing index file refman.idx
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty
+Package: newunicodechar 2018/04/08 v1.2 Defining Unicode characters
+)
+
+Package newunicodechar Warning: Redefining Unicode character on input line 116.
+
+
+
+Package newunicodechar Warning: Redefining Unicode character on input line 117.
+
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package hobsub Info: Skipping package `intcalc' (already loaded).
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen160
+\Hy@linkcounter=\count150
+\Hy@pagecounter=\count151
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count152
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing ON on input line 4537.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/backref.sty
+Package: backref 2016/05/21 v1.39 Bibliographical back referencing
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+))
+\c@Hy@tempcnt=\count153
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen161
+\Fld@menulength=\count154
+\Field@Width=\dimen162
+\Fld@charsize=\dimen163
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing ON on input line 6393.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count155
+\c@Item=\count156
+\c@Hfootnote=\count157
+)
+Package hyperref Info: Driver: hpdftex.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count158
+\c@bookmark@seq@number=\count159
+\Hy@SectionHShift=\skip121
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 136.
+Package hyperref Info: Option `unicode' set `true' on input line 136.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen164
+\captionmargin@=\dimen165
+\captionwidth=\dimen166
+\caption@tempdima=\dimen167
+\caption@indent=\dimen168
+\caption@parindent=\dimen169
+\caption@hangindent=\dimen170
+)
+\c@caption@flags=\count160
+\c@ContinuedFloat=\count161
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2018/08/26 v1.4-95 longtable captions (AR)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/etoc/etoc.sty
+Package: etoc 2019/03/09 v1.09 Completely customisable TOCs (JFB)
+\Etoc@toctoks=\toks33
+\c@etoc@tocid=\count162
+\c@etoc@tocdepth=\count163
+\etoc@framed@titlebox=\box75
+\etoc@framed@contentsbox=\box76
+)
+No file refman.aux.
+\openout1 = `refman.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 152.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 152.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 152.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 152.
+
+(/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count164
+\scratchdimen=\dimen171
+\scratchbox=\box77
+\nofMPsegments=\count165
+\nofMParguments=\count166
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count167
+\MPscratchDim=\dimen172
+\MPnumerator=\count168
+\makeMPintoPDFobject=\count169
+\everyMPtoPDFconversion=\toks35
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-31.2056pt
+* \headheight=12.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\AtBeginShipoutBox=\box78
+Package backref Info: ** backref set up for natbib ** on input line 152.
+Package hyperref Info: Link coloring ON on input line 152.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count170
+)
+LaTeX Info: Redefining \ref on input line 152.
+LaTeX Info: Redefining \pageref on input line 152.
+LaTeX Info: Redefining \nameref on input line 152.
+\@outlinefile=\write5
+\openout5 = `refman.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+No file refman.toc.
+Package hyperref Info: Option `pageanchor' set `false' on input line 160.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 160.
+
+Package hyperref Info: Option `unicode' set `true' on input line 160.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 12.9599pt on input line 165.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.29996pt on input line 165.
+LaTeX Font Info:    Try loading font information for U+msa on input line 165.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 165.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+wasy on input line 165.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 167.
+ [1
+
+
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+]
+\tf@toc=\write6
+\openout6 = `refman.toc'.
+
+Package hyperref Info: Option `pageanchor' set `true' on input line 176.
+
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 18.66588pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 18.66588pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 18.66588pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 22.39185pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 22.39185pt on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 22.39185pt on input line 178.
+(./md__r_e_a_d_m_e.tex
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 12.9599pt on input line 1.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 2.
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 2.
+
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 4.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+LaTeX Font Info:    Try loading font information for TS1+phv on input line 34.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 34.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 58.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 6.29996pt on input line 58.
+ [1
+
+
+] [2]
+LaTeX Font Info:    Font shape `TS1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `TS1/phv/b/n' tried instead on input line 179.
+LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
+(Font)              scaled to size 12.9599pt on input line 179.
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 191.
+
+[3]) [4]
+Chapter 2.
+(./hierarchy.tex
+
+LaTeX Warning: Reference `struct_hash_value_m_d5_hash' on page 5 undefined on i
+nput line 3.
+
+
+LaTeX Warning: Reference `interface_class_called_janine' on page 5 undefined on
+ input line 5.
+
+
+LaTeX Warning: Reference `interface_x_c_abstract_definition' on page 5 undefine
+d on input line 6.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script_definition' on page 
+5 undefined on input line 8.
+
+
+LaTeX Warning: Reference `interface_x_c_class_definition' on page 5 undefined o
+n input line 9.
+
+
+LaTeX Warning: Reference `interface_x_c_framework_definition' on page 5 undefin
+ed on input line 10.
+
+
+LaTeX Warning: Reference `interface_x_c_source_file_definition' on page 5 undef
+ined on input line 11.
+
+
+LaTeX Warning: Reference `interface_x_c_sub_project_definition' on page 5 undef
+ined on input line 12.
+
+
+LaTeX Warning: Reference `interface_x_c_xib_definition' on page 5 undefined on 
+input line 13.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script' on page 5 undefined
+ on input line 15.
+
+
+LaTeX Warning: Reference `interface_x_c_file_operation_queue' on page 5 undefin
+ed on input line 16.
+
+
+LaTeX Warning: Reference `interface_x_c_framework_path' on page 5 undefined on 
+input line 17.
+
+
+LaTeX Warning: Reference `interface_x_c_group' on page 5 undefined on input lin
+e 18.
+
+
+LaTeX Warning: Reference `interface_x_c_key_builder' on page 5 undefined on inp
+ut line 19.
+
+
+LaTeX Warning: Reference `interface_x_c_project' on page 5 undefined on input l
+ine 20.
+
+
+LaTeX Warning: Reference `interface_x_c_project_build_config' on page 5 undefin
+ed on input line 21.
+
+
+LaTeX Warning: Reference `interface_x_c_source_file' on page 5 undefined on inp
+ut line 22.
+
+
+LaTeX Warning: Reference `interface_x_c_target' on page 5 undefined on input li
+ne 23.
+
+
+LaTeX Warning: Reference `interface_x_c_version_group' on page 5 undefined on i
+nput line 24.
+
+
+LaTeX Warning: Reference `protocol_x_c_build_file-p' on page 5 undefined on inp
+ut line 27.
+
+
+LaTeX Warning: Reference `interface_x_c_group' on page 5 undefined on input lin
+e 29.
+
+
+LaTeX Warning: Reference `interface_x_c_source_file' on page 5 undefined on inp
+ut line 30.
+
+
+LaTeX Warning: Reference `interface_x_c_version_group' on page 5 undefined on i
+nput line 31.
+
+
+LaTeX Warning: Reference `protocol_xcode_group_member-p' on page 5 undefined on
+ input line 33.
+
+
+LaTeX Warning: Reference `interface_x_c_group' on page 5 undefined on input lin
+e 35.
+
+
+LaTeX Warning: Reference `interface_x_c_source_file' on page 5 undefined on inp
+ut line 36.
+
+
+LaTeX Warning: Reference `interface_x_c_version_group' on page 5 undefined on i
+nput line 37.
+
+
+LaTeX Warning: Reference `category_n_s_string_07_remove_emoji_08' on page 5 und
+efined on input line 40.
+
+
+LaTeX Warning: Reference `category_n_s_string_07_xcode_member_type_extensions_0
+8' on page 5 undefined on input line 41.
+
+
+LaTeX Warning: Reference `category_n_s_string_07_xcode_source_tree_type_extensi
+ons_08' on page 5 undefined on input line 42.
+
+
+LaTeX Warning: Reference `category_x_c_file_operation_queue_07_08' on page 5 un
+defined on input line 43.
+
+
+LaTeX Warning: Reference `category_x_c_project_07_sub_project_08' on page 5 und
+efined on input line 44.
+
+
+LaTeX Warning: Reference `category_x_c_sub_project_definition_07_08' on page 5 
+undefined on input line 45.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script_definition_tests' on
+ page 5 undefined on input line 47.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script_tests' on page 5 und
+efined on input line 48.
+
+
+LaTeX Warning: Reference `interface_x_c_class_definition_tests' on page 5 undef
+ined on input line 49.
+
+[5
+
+]
+
+LaTeX Warning: Reference `interface_x_c_group_tests' on page 6 undefined on inp
+ut line 50.
+
+
+LaTeX Warning: Reference `interface_x_c_key_builder_tests' on page 6 undefined 
+on input line 51.
+
+
+LaTeX Warning: Reference `interface_x_c_project_tests' on page 6 undefined on i
+nput line 52.
+
+
+LaTeX Warning: Reference `interface_x_c_sub_project_definition_tests' on page 6
+ undefined on input line 53.
+
+
+LaTeX Warning: Reference `interface_x_c_target_tests' on page 6 undefined on in
+put line 54.
+
+
+LaTeX Warning: Reference `interface_xcode_file_reference_type_tests' on page 6 
+undefined on input line 55.
+
+) [6]
+Chapter 3.
+(./annotated.tex
+
+LaTeX Warning: Reference `interface_class_called_janine' on page 7 undefined on
+ input line 3.
+
+
+LaTeX Warning: Reference `struct_hash_value_m_d5_hash' on page 7 undefined on i
+nput line 4.
+
+
+LaTeX Warning: Reference `category_n_s_string_07_remove_emoji_08' on page 7 und
+efined on input line 5.
+
+
+LaTeX Warning: Reference `category_n_s_string_07_xcode_member_type_extensions_0
+8' on page 7 undefined on input line 6.
+
+
+LaTeX Warning: Reference `category_n_s_string_07_xcode_source_tree_type_extensi
+ons_08' on page 7 undefined on input line 7.
+
+
+LaTeX Warning: Reference `interface_x_c_abstract_definition' on page 7 undefine
+d on input line 8.
+
+
+LaTeX Warning: Reference `protocol_x_c_build_file-p' on page 7 undefined on inp
+ut line 9.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script' on page 7 undefined
+ on input line 10.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script_definition' on page 
+7 undefined on input line 11.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script_definition_tests' on
+ page 7 undefined on input line 12.
+
+
+LaTeX Warning: Reference `interface_x_c_build_shell_script_tests' on page 7 und
+efined on input line 13.
+
+
+LaTeX Warning: Reference `interface_x_c_class_definition' on page 7 undefined o
+n input line 14.
+
+
+LaTeX Warning: Reference `interface_x_c_class_definition_tests' on page 7 undef
+ined on input line 15.
+
+
+LaTeX Warning: Reference `interface_x_c_file_operation_queue' on page 7 undefin
+ed on input line 16.
+
+
+LaTeX Warning: Reference `category_x_c_file_operation_queue_07_08' on page 7 un
+defined on input line 17.
+
+
+LaTeX Warning: Reference `interface_x_c_framework_definition' on page 7 undefin
+ed on input line 18.
+
+
+LaTeX Warning: Reference `interface_x_c_framework_path' on page 7 undefined on 
+input line 19.
+
+
+LaTeX Warning: Reference `interface_x_c_group' on page 7 undefined on input lin
+e 20.
+
+
+LaTeX Warning: Reference `interface_x_c_group_tests' on page 7 undefined on inp
+ut line 21.
+
+
+LaTeX Warning: Reference `interface_x_c_key_builder' on page 7 undefined on inp
+ut line 22.
+
+
+LaTeX Warning: Reference `interface_x_c_key_builder_tests' on page 7 undefined 
+on input line 23.
+
+
+LaTeX Warning: Reference `interface_xcode_file_reference_type_tests' on page 7 
+undefined on input line 24.
+
+
+LaTeX Warning: Reference `protocol_xcode_group_member-p' on page 7 undefined on
+ input line 25.
+
+
+LaTeX Warning: Reference `interface_x_c_project' on page 7 undefined on input l
+ine 26.
+
+
+LaTeX Warning: Reference `category_x_c_project_07_sub_project_08' on page 7 und
+efined on input line 27.
+
+
+LaTeX Warning: Reference `interface_x_c_project_build_config' on page 7 undefin
+ed on input line 28.
+
+
+LaTeX Warning: Reference `interface_x_c_project_tests' on page 7 undefined on i
+nput line 29.
+
+
+LaTeX Warning: Reference `interface_x_c_source_file' on page 7 undefined on inp
+ut line 30.
+
+
+LaTeX Warning: Reference `interface_x_c_source_file_definition' on page 7 undef
+ined on input line 31.
+
+
+LaTeX Warning: Reference `interface_x_c_sub_project_definition' on page 7 undef
+ined on input line 32.
+
+
+LaTeX Warning: Reference `category_x_c_sub_project_definition_07_08' on page 7 
+undefined on input line 33.
+
+
+LaTeX Warning: Reference `interface_x_c_sub_project_definition_tests' on page 7
+ undefined on input line 34.
+
+
+LaTeX Warning: Reference `interface_x_c_target' on page 7 undefined on input li
+ne 35.
+
+
+LaTeX Warning: Reference `interface_x_c_target_tests' on page 7 undefined on in
+put line 36.
+
+
+LaTeX Warning: Reference `interface_x_c_version_group' on page 7 undefined on i
+nput line 37.
+
+
+LaTeX Warning: Reference `interface_x_c_xib_definition' on page 7 undefined on 
+input line 38.
+
+) [7
+
+] [8
+
+]
+Chapter 4.
+(./files.tex
+
+LaTeX Warning: Reference `_n_s_string_09_remove_emoji_8h_source' on page 9 unde
+fined on input line 3.
+
+
+LaTeX Warning: Reference `_x_c_abstract_definition_8h_source' on page 9 undefin
+ed on input line 4.
+
+
+LaTeX Warning: Reference `_x_c_build_file_8h_source' on page 9 undefined on inp
+ut line 5.
+
+
+LaTeX Warning: Reference `_x_c_build_shell_script_8h_source' on page 9 undefine
+d on input line 6.
+
+
+LaTeX Warning: Reference `_x_c_build_shell_script_definition_8h_source' on page
+ 9 undefined on input line 7.
+
+
+LaTeX Warning: Reference `_x_c_class_definition_8h_source' on page 9 undefined 
+on input line 8.
+
+
+LaTeX Warning: Reference `_x_c_file_operation_queue_8h_source' on page 9 undefi
+ned on input line 9.
+
+
+LaTeX Warning: Reference `_x_c_framework_definition_8h_source' on page 9 undefi
+ned on input line 10.
+
+
+LaTeX Warning: Reference `_x_c_group_8h_source' on page 9 undefined on input li
+ne 11.
+
+
+LaTeX Warning: Reference `_x_c_key_builder_8h_source' on page 9 undefined on in
+put line 12.
+
+
+LaTeX Warning: Reference `_xcode_editor_8h_source' on page 9 undefined on input
+ line 13.
+
+
+LaTeX Warning: Reference `_xcode_group_member_8h_source' on page 9 undefined on
+ input line 14.
+
+
+LaTeX Warning: Reference `_xcode_member_type_8h_source' on page 9 undefined on 
+input line 15.
+
+
+LaTeX Warning: Reference `_xcode_source_file_type_8h_source' on page 9 undefine
+d on input line 16.
+
+
+LaTeX Warning: Reference `_xcode_source_tree_type_8h_source' on page 9 undefine
+d on input line 17.
+
+
+LaTeX Warning: Reference `_x_c_project_09_sub_project_8h_source' on page 9 unde
+fined on input line 18.
+
+
+LaTeX Warning: Reference `_x_c_project_8h_source' on page 9 undefined on input 
+line 19.
+
+
+LaTeX Warning: Reference `_x_c_project_build_config_8h_source' on page 9 undefi
+ned on input line 20.
+
+
+LaTeX Warning: Reference `_x_c_source_file_8h_source' on page 9 undefined on in
+put line 21.
+
+
+LaTeX Warning: Reference `_x_c_source_file_definition_8h_source' on page 9 unde
+fined on input line 22.
+
+
+LaTeX Warning: Reference `_x_c_sub_project_definition_8h_source' on page 9 unde
+fined on input line 23.
+
+
+LaTeX Warning: Reference `_x_c_target_8h_source' on page 9 undefined on input l
+ine 24.
+
+
+LaTeX Warning: Reference `_x_c_version_group_8h_source' on page 9 undefined on 
+input line 25.
+
+
+LaTeX Warning: Reference `_x_c_xib_definition_8h_source' on page 9 undefined on
+ input line 26.
+
+
+LaTeX Warning: Reference `_class_called_janine_8h_source' on page 9 undefined o
+n input line 27.
+
+
+LaTeX Warning: Reference `_x_c_test_resource_utils_8h_source' on page 9 undefin
+ed on input line 28.
+
+) [9] [10
+
+]
+Chapter 5.
+(./interface_class_called_janine.tex
+Package epstopdf Info: Source file: <interface_class_called_janine.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3792 bytes
+(epstopdf)             Output file: <interface_class_called_janine-eps-converte
+d-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_class_called_jan
+ine-eps-converted-to.pdf interface_class_called_janine.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_class_called_janine-eps-converted-to.pd
+f interface_class_called_janine.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_class_called_janine-eps-converte
+d-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_class_called_janine-eps-converted-t
+o.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...=2.000000cm]{interface_class_called_janine}
+                                                  
+? C
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? R
+OK, entering \nonstopmode...
+) (./struct_hash_value_m_d5_hash.tex
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 3.
+)
+(./category_n_s_string_07_remove_emoji_08.tex)
+(./category_n_s_string_07_xcode_member_type_extensions_08.tex [11])
+(./category_n_s_string_07_xcode_source_tree_type_extensions_08.tex)
+(./interface_x_c_abstract_definition.tex
+Package epstopdf Info: Source file: <interface_x_c_abstract_definition.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 4481 bytes
+(epstopdf)             Output file: <interface_x_c_abstract_definition-eps-conv
+erted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_abstract_def
+inition-eps-converted-to.pdf interface_x_c_abstract_definition.eps>
+(epstopdf)             \includegraphics on input line 10.
+runsystem(repstopdf --outfile=interface_x_c_abstract_definition-eps-converted-t
+o.pdf interface_x_c_abstract_definition.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_abstract_definition-eps-conv
+erted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_abstract_definition-eps-convert
+ed-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ...5556cm]{interface_x_c_abstract_definition}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[12]) (./protocol_x_c_build_file-p.tex
+Package epstopdf Info: Source file: <protocol_x_c_build_file-p.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 4105 bytes
+(epstopdf)             Output file: <protocol_x_c_build_file-p-eps-converted-to
+.pdf>
+(epstopdf)             Command: <repstopdf --outfile=protocol_x_c_build_file-p-
+eps-converted-to.pdf protocol_x_c_build_file-p.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=protocol_x_c_build_file-p-eps-converted-to.pdf pr
+otocol_x_c_build_file-p.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <protocol_x_c_build_file-p-eps-converted-to
+.pdf>.
+
+
+! Package pdftex.def Error: File `protocol_x_c_build_file-p-eps-converted-to.pd
+f' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...ight=3.000000cm]{protocol_x_c_build_file-p}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 29.
+[13]) (./interface_x_c_build_shell_script.tex
+Package epstopdf Info: Source file: <interface_x_c_build_shell_script.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3794 bytes
+(epstopdf)             Output file: <interface_x_c_build_shell_script-eps-conve
+rted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_build_shell_
+script-eps-converted-to.pdf interface_x_c_build_shell_script.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_build_shell_script-eps-converted-to
+.pdf interface_x_c_build_shell_script.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_build_shell_script-eps-conve
+rted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_build_shell_script-eps-converte
+d-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...000000cm]{interface_x_c_build_shell_script}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--14
+[][] \T1/phv/m/n/10 (in-stance-type []_[][]Nonnull) - \T1/phv/b/n/10 init[]With
+[]Project[]:key[]:name[]:files[]:input[]Paths[]:output[]Paths[]:run[]Only[]For[
+]
+ []
+
+[14]) (./interface_x_c_build_shell_script_definition.tex
+Package epstopdf Info: Source file: <interface_x_c_build_shell_script_definitio
+n.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3945 bytes
+(epstopdf)             Output file: <interface_x_c_build_shell_script_definitio
+n-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_build_shell_
+script_definition-eps-converted-to.pdf interface_x_c_build_shell_script_definit
+ion.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_build_shell_script_definition-eps-c
+onverted-to.pdf interface_x_c_build_shell_script_definition.eps)...executed saf
+ely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_build_shell_script_definitio
+n-eps-converted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_build_shell_script_definition-e
+ps-converted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...nterface_x_c_build_shell_script_definition}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--14
+[][] \T1/phv/m/n/10 (in-stance-type []_[][]Nonnull) - \T1/phv/b/n/10 init[]With
+[]Name[]:files[]:input[]Paths[]:output[]Paths[]:run[]Only[]For[]Deployment[]
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 18--20
+[][] \T1/phv/m/n/10 ([] $\OMS/cmsy/m/n/10 ^^C$[]\T1/phv/m/n/10 _[][]Nonnull) + 
+\T1/phv/b/n/10 shell[]Script[]Definition[]With[]Name[]:files[]:input[]Paths[]:o
+utput[]
+ []
+
+) (./interface_x_c_build_shell_script_definition_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_build_shell_script_definitio
+n_tests.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3828 bytes
+(epstopdf)             Output file: <interface_x_c_build_shell_script_definitio
+n_tests-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_build_shell_
+script_definition_tests-eps-converted-to.pdf interface_x_c_build_shell_script_d
+efinition_tests.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_build_shell_script_definition_tests
+-eps-converted-to.pdf interface_x_c_build_shell_script_definition_tests.eps)...
+executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_build_shell_script_definitio
+n_tests-eps-converted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_build_shell_script_definition_t
+ests-eps-converted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...ce_x_c_build_shell_script_definition_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[15]) (./interface_x_c_build_shell_script_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_build_shell_script_tests.eps
+>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3808 bytes
+(epstopdf)             Output file: <interface_x_c_build_shell_script_tests-eps
+-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_build_shell_
+script_tests-eps-converted-to.pdf interface_x_c_build_shell_script_tests.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_build_shell_script_tests-eps-conver
+ted-to.pdf interface_x_c_build_shell_script_tests.eps)...executed safely (allow
+ed).
+
+Package epstopdf Info: Result file: <interface_x_c_build_shell_script_tests-eps
+-converted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_build_shell_script_tests-eps-co
+nverted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...cm]{interface_x_c_build_shell_script_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_x_c_class_definition.tex
+Package epstopdf Info: Source file: <interface_x_c_class_definition.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3923 bytes
+(epstopdf)             Output file: <interface_x_c_class_definition-eps-convert
+ed-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_class_defini
+tion-eps-converted-to.pdf interface_x_c_class_definition.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_class_definition-eps-converted-to.p
+df interface_x_c_class_definition.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_class_definition-eps-convert
+ed-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_class_definition-eps-converted-
+to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...3.000000cm]{interface_x_c_class_definition}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[16]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 71.
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 71.
+ [17]) (./interface_x_c_class_definition_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_class_definition_tests.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3806 bytes
+(epstopdf)             Output file: <interface_x_c_class_definition_tests-eps-c
+onverted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_class_defini
+tion_tests-eps-converted-to.pdf interface_x_c_class_definition_tests.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_class_definition_tests-eps-converte
+d-to.pdf interface_x_c_class_definition_tests.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_class_definition_tests-eps-c
+onverted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_class_definition_tests-eps-conv
+erted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...00cm]{interface_x_c_class_definition_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_x_c_file_operation_queue.tex
+Package epstopdf Info: Source file: <interface_x_c_file_operation_queue.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3798 bytes
+(epstopdf)             Output file: <interface_x_c_file_operation_queue-eps-con
+verted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_file_operati
+on_queue-eps-converted-to.pdf interface_x_c_file_operation_queue.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_file_operation_queue-eps-converted-
+to.pdf interface_x_c_file_operation_queue.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_file_operation_queue-eps-con
+verted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_file_operation_queue-eps-conver
+ted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...0000cm]{interface_x_c_file_operation_queue}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./category_x_c_file_operation_queue_07_08.tex [18])
+(./interface_x_c_framework_definition.tex
+Package epstopdf Info: Source file: <interface_x_c_framework_definition.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3931 bytes
+(epstopdf)             Output file: <interface_x_c_framework_definition-eps-con
+verted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_framework_de
+finition-eps-converted-to.pdf interface_x_c_framework_definition.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_framework_definition-eps-converted-
+to.pdf interface_x_c_framework_definition.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_framework_definition-eps-con
+verted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_framework_definition-eps-conver
+ted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...0000cm]{interface_x_c_framework_definition}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_x_c_framework_path.tex
+Package epstopdf Info: Source file: <interface_x_c_framework_path.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3788 bytes
+(epstopdf)             Output file: <interface_x_c_framework_path-eps-converted
+-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_framework_pa
+th-eps-converted-to.pdf interface_x_c_framework_path.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_framework_path-eps-converted-to.pdf
+ interface_x_c_framework_path.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_framework_path-eps-converted
+-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_framework_path-eps-converted-to
+.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...t=2.000000cm]{interface_x_c_framework_path}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[19]) (./interface_x_c_group.tex
+Package epstopdf Info: Source file: <interface_x_c_group.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 4216 bytes
+(epstopdf)             Output file: <interface_x_c_group-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_group-eps-co
+nverted-to.pdf interface_x_c_group.eps>
+(epstopdf)             \includegraphics on input line 10.
+runsystem(repstopdf --outfile=interface_x_c_group-eps-converted-to.pdf interfac
+e_x_c_group.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_group-eps-converted-to.pdf>.
+
+
+
+! Package pdftex.def Error: File `interface_x_c_group-eps-converted-to.pdf' not
+ found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ...cs[height=3.000000cm]{interface_x_c_group}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[20] [21] [22] [23] [24] [25]) (./interface_x_c_group_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_group_tests.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3786 bytes
+(epstopdf)             Output file: <interface_x_c_group_tests-eps-converted-to
+.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_group_tests-
+eps-converted-to.pdf interface_x_c_group_tests.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_group_tests-eps-converted-to.pdf in
+terface_x_c_group_tests.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_group_tests-eps-converted-to
+.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_group_tests-eps-converted-to.pd
+f' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...ight=2.000000cm]{interface_x_c_group_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_x_c_key_builder.tex
+Package epstopdf Info: Source file: <interface_x_c_key_builder.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3782 bytes
+(epstopdf)             Output file: <interface_x_c_key_builder-eps-converted-to
+.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_key_builder-
+eps-converted-to.pdf interface_x_c_key_builder.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_key_builder-eps-converted-to.pdf in
+terface_x_c_key_builder.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_key_builder-eps-converted-to
+.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_key_builder-eps-converted-to.pd
+f' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...ight=2.000000cm]{interface_x_c_key_builder}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[26]) (./interface_x_c_key_builder_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_key_builder_tests.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3796 bytes
+(epstopdf)             Output file: <interface_x_c_key_builder_tests-eps-conver
+ted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_key_builder_
+tests-eps-converted-to.pdf interface_x_c_key_builder_tests.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_key_builder_tests-eps-converted-to.
+pdf interface_x_c_key_builder_tests.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_key_builder_tests-eps-conver
+ted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_key_builder_tests-eps-converted
+-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ....000000cm]{interface_x_c_key_builder_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_xcode_file_reference_type_tests.tex
+Package epstopdf Info: Source file: <interface_xcode_file_reference_type_tests.
+eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3816 bytes
+(epstopdf)             Output file: <interface_xcode_file_reference_type_tests-
+eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_xcode_file_refer
+ence_type_tests-eps-converted-to.pdf interface_xcode_file_reference_type_tests.
+eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_xcode_file_reference_type_tests-eps-con
+verted-to.pdf interface_xcode_file_reference_type_tests.eps)...executed safely 
+(allowed).
+
+Package epstopdf Info: Result file: <interface_xcode_file_reference_type_tests-
+eps-converted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_xcode_file_reference_type_tests-eps
+-converted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...{interface_xcode_file_reference_type_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./protocol_xcode_group_member-p.tex
+Package epstopdf Info: Source file: <protocol_xcode_group_member-p.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 4115 bytes
+(epstopdf)             Output file: <protocol_xcode_group_member-p-eps-converte
+d-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=protocol_xcode_group_membe
+r-p-eps-converted-to.pdf protocol_xcode_group_member-p.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=protocol_xcode_group_member-p-eps-converted-to.pd
+f protocol_xcode_group_member-p.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <protocol_xcode_group_member-p-eps-converte
+d-to.pdf>.
+
+
+! Package pdftex.def Error: File `protocol_xcode_group_member-p-eps-converted-t
+o.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...=3.000000cm]{protocol_xcode_group_member-p}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[27]) (./interface_x_c_project.tex
+Package epstopdf Info: Source file: <interface_x_c_project.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3776 bytes
+(epstopdf)             Output file: <interface_x_c_project-eps-converted-to.pdf
+>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_project-eps-
+converted-to.pdf interface_x_c_project.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_project-eps-converted-to.pdf interf
+ace_x_c_project.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_project-eps-converted-to.pdf
+>.
+
+
+! Package pdftex.def Error: File `interface_x_c_project-eps-converted-to.pdf' n
+ot found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...s[height=2.000000cm]{interface_x_c_project}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[28] [29] [30]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 221.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.99994pt on input line 221.
+ [31] [32] [33]) (./category_x_c_project_07_sub_project_08.tex)
+(./interface_x_c_project_build_config.tex
+Package epstopdf Info: Source file: <interface_x_c_project_build_config.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3798 bytes
+(epstopdf)             Output file: <interface_x_c_project_build_config-eps-con
+verted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_project_buil
+d_config-eps-converted-to.pdf interface_x_c_project_build_config.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_project_build_config-eps-converted-
+to.pdf interface_x_c_project_build_config.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_project_build_config-eps-con
+verted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_project_build_config-eps-conver
+ted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...0000cm]{interface_x_c_project_build_config}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[34]) (./interface_x_c_project_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_project_tests.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3790 bytes
+(epstopdf)             Output file: <interface_x_c_project_tests-eps-converted-
+to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_project_test
+s-eps-converted-to.pdf interface_x_c_project_tests.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_project_tests-eps-converted-to.pdf 
+interface_x_c_project_tests.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_project_tests-eps-converted-
+to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_project_tests-eps-converted-to.
+pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...ht=2.000000cm]{interface_x_c_project_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_x_c_source_file.tex
+Package epstopdf Info: Source file: <interface_x_c_source_file.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 4226 bytes
+(epstopdf)             Output file: <interface_x_c_source_file-eps-converted-to
+.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_source_file-
+eps-converted-to.pdf interface_x_c_source_file.eps>
+(epstopdf)             \includegraphics on input line 10.
+runsystem(repstopdf --outfile=interface_x_c_source_file-eps-converted-to.pdf in
+terface_x_c_source_file.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_source_file-eps-converted-to
+.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_source_file-eps-converted-to.pd
+f' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ...ght=3.000000cm]{interface_x_c_source_file}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[35] [36] [37]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 5.1 on input line 124.
+
+) (./interface_x_c_source_file_definition.tex
+Package epstopdf Info: Source file: <interface_x_c_source_file_definition.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3933 bytes
+(epstopdf)             Output file: <interface_x_c_source_file_definition-eps-c
+onverted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_source_file_
+definition-eps-converted-to.pdf interface_x_c_source_file_definition.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_source_file_definition-eps-converte
+d-to.pdf interface_x_c_source_file_definition.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_source_file_definition-eps-c
+onverted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_source_file_definition-eps-conv
+erted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...00cm]{interface_x_c_source_file_definition}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_x_c_sub_project_definition.tex
+Package epstopdf Info: Source file: <interface_x_c_sub_project_definition.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3933 bytes
+(epstopdf)             Output file: <interface_x_c_sub_project_definition-eps-c
+onverted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_sub_project_
+definition-eps-converted-to.pdf interface_x_c_sub_project_definition.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_sub_project_definition-eps-converte
+d-to.pdf interface_x_c_sub_project_definition.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_sub_project_definition-eps-c
+onverted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_sub_project_definition-eps-conv
+erted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...00cm]{interface_x_c_sub_project_definition}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[38] [39]) (./category_x_c_sub_project_definition_07_08.tex)
+(./interface_x_c_sub_project_definition_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_sub_project_definition_tests
+.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3816 bytes
+(epstopdf)             Output file: <interface_x_c_sub_project_definition_tests
+-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_sub_project_
+definition_tests-eps-converted-to.pdf interface_x_c_sub_project_definition_test
+s.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_sub_project_definition_tests-eps-co
+nverted-to.pdf interface_x_c_sub_project_definition_tests.eps)...executed safel
+y (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_sub_project_definition_tests
+-eps-converted-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_sub_project_definition_tests-ep
+s-converted-to.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...interface_x_c_sub_project_definition_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (./interface_x_c_target.tex
+Package epstopdf Info: Source file: <interface_x_c_target.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3774 bytes
+(epstopdf)             Output file: <interface_x_c_target-eps-converted-to.pdf>
+
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_target-eps-c
+onverted-to.pdf interface_x_c_target.eps>
+(epstopdf)             \includegraphics on input line 10.
+runsystem(repstopdf --outfile=interface_x_c_target-eps-converted-to.pdf interfa
+ce_x_c_target.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_target-eps-converted-to.pdf>
+.
+
+
+! Package pdftex.def Error: File `interface_x_c_target-eps-converted-to.pdf' no
+t found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 ...s[height=2.000000cm]{interface_x_c_target}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[40]) (./interface_x_c_target_tests.tex
+Package epstopdf Info: Source file: <interface_x_c_target_tests.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3788 bytes
+(epstopdf)             Output file: <interface_x_c_target_tests-eps-converted-t
+o.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_target_tests
+-eps-converted-to.pdf interface_x_c_target_tests.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_target_tests-eps-converted-to.pdf i
+nterface_x_c_target_tests.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_target_tests-eps-converted-t
+o.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_target_tests-eps-converted-to.p
+df' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...ght=2.000000cm]{interface_x_c_target_tests}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[41]) (./interface_x_c_version_group.tex
+Package epstopdf Info: Source file: <interface_x_c_version_group.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 4230 bytes
+(epstopdf)             Output file: <interface_x_c_version_group-eps-converted-
+to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_version_grou
+p-eps-converted-to.pdf interface_x_c_version_group.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_version_group-eps-converted-to.pdf 
+interface_x_c_version_group.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_version_group-eps-converted-
+to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_version_group-eps-converted-to.
+pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...ht=3.000000cm]{interface_x_c_version_group}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[42] [43]) (./interface_x_c_xib_definition.tex
+Package epstopdf Info: Source file: <interface_x_c_xib_definition.eps>
+(epstopdf)                    date: 2022-03-04 19:48:53
+(epstopdf)                    size: 3919 bytes
+(epstopdf)             Output file: <interface_x_c_xib_definition-eps-converted
+-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=interface_x_c_xib_definiti
+on-eps-converted-to.pdf interface_x_c_xib_definition.eps>
+(epstopdf)             \includegraphics on input line 6.
+runsystem(repstopdf --outfile=interface_x_c_xib_definition-eps-converted-to.pdf
+ interface_x_c_xib_definition.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <interface_x_c_xib_definition-eps-converted
+-to.pdf>.
+
+
+! Package pdftex.def Error: File `interface_x_c_xib_definition-eps-converted-to
+.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 ...t=3.000000cm]{interface_x_c_xib_definition}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[44]) [45] [46
+
+]
+Chapter 6.
+(./_n_s_string_09_remove_emoji_8h_source.tex)
+(./_x_c_abstract_definition_8h_source.tex) (./_x_c_build_file_8h_source.tex
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 10.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+) [47])
+(./_x_c_build_shell_script_8h_source.tex [48])
+(./_x_c_build_shell_script_definition_8h_source.tex)
+(./_x_c_class_definition_8h_source.tex [49])
+(./_x_c_file_operation_queue_8h_source.tex [50])
+(./_x_c_framework_definition_8h_source.tex) (./_x_c_group_8h_source.tex
+[51] [52]) (./_x_c_key_builder_8h_source.tex) (./_xcode_editor_8h_source.tex
+[53]) (./_xcode_group_member_8h_source.tex) (./_xcode_member_type_8h_source.tex
+[54]) (./_xcode_source_file_type_8h_source.tex [55])
+(./_xcode_source_tree_type_8h_source.tex)
+(./_x_c_project_09_sub_project_8h_source.tex [56])
+(./_x_c_project_8h_source.tex [57]) (./_x_c_project_build_config_8h_source.tex
+[58]) (./_x_c_source_file_8h_source.tex [59])
+(./_x_c_source_file_definition_8h_source.tex)
+(./_x_c_sub_project_definition_8h_source.tex [60]) (./_x_c_target_8h_source.tex
+[61]) (./_x_c_version_group_8h_source.tex [62])
+(./_x_c_xib_definition_8h_source.tex [63])
+(./_class_called_janine_8h_source.tex)
+(./_x_c_test_resource_utils_8h_source.tex) [64]
+No file refman.ind.
+
+Package longtable Warning: Table widths have changed. Rerun LaTeX.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 261.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 261.
+(./refman.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 261.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 261.
+
+
+Package rerunfilecheck Warning: File `refman.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `refman.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  6775AE4EACEFAFDBAEAD2346928F8F89;37290.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 18174 strings out of 492616
+ 300716 string characters out of 6129480
+ 365718 words of memory out of 5000000
+ 20920 multiletter control sequences out of 15000+600000
+ 57037 words of font info for 88 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 53i,16n,92p,891b,634s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
+live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
+1/urw/helvetic/uhvb8ac.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
+helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helveti
+c/uhvro8a.pfb>
+Output written on refman.pdf (66 pages, 252771 bytes).
+PDF statistics:
+ 1734 PDF objects out of 2073 (max. 8388607)
+ 1636 compressed objects within 17 object streams
+ 749 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

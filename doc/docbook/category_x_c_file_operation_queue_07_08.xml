@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_category_x_c_file_operation_queue_07_08" xml:lang="en-US">
+<title>XCFileOperationQueue() Category Reference</title>
+<indexterm><primary>XCFileOperationQueue()</primary></indexterm>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_x_c_file_operation_queue_07_08_1a396b8a6bac40903a81e88f18556990af"/>(NSString *) - <emphasis role="strong">destinationPathFor:inProjectDirectory:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_file_operation_queue_07_08_1ae251327e851f8d879613e4fca9945405"/>(void) - <emphasis role="strong">performFileWrites</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_file_operation_queue_07_08_1a88abc5ec02d89e5ab47d424064d2196d"/>(void) - <emphasis role="strong">performCopyFrameworks</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_file_operation_queue_07_08_1a971eb0149ad8ed21e35c493bd06296ec"/>(void) - <emphasis role="strong">performFileDeletions</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_file_operation_queue_07_08_1a93c6820e8b055ed6415773b64a6bf1d7"/>(void) - <emphasis role="strong">performCreateDirectories</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this category was generated from the following file:</para>
+XCFileOperationQueue.m</section>

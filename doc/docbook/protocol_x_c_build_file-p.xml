@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_protocol_x_c_build_file-p" xml:lang="en-US">
+<title>&lt;XCBuildFile&gt; Protocol Reference</title>
+<indexterm><primary>&lt;XCBuildFile&gt;</primary></indexterm>
+<para>Inheritance diagram for &lt;XCBuildFile&gt;:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="protocol_x_c_build_file-p.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para>(void) - <link linkend="_protocol_x_c_build_file-p_1ab4cbac9982b3dc37e3444779c88eecbe">becomeBuildFile</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_protocol_x_c_build_file-p_1afe34a94cd11ba7fcd1b3c27cb837548b"/>(XcodeMemberType) - <emphasis role="strong">buildPhase</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_protocol_x_c_build_file-p_1a8d481e73a986d781537c68e3be24bdf4"/>(NSString *) - <emphasis role="strong">buildFileKey</emphasis></para>
+</listitem>
+            <listitem><para>(BOOL) - <link linkend="_protocol_x_c_build_file-p_1ae5882d46671f3891d484f6f5d293b4b4">isBuildFile</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Method Documentation</title>
+<anchor xml:id="_protocol_x_c_build_file-p_1ab4cbac9982b3dc37e3444779c88eecbe"/><section>
+    <title>becomeBuildFile</title>
+<indexterm><primary>becomeBuildFile</primary><secondary>&lt;XCBuildFile&gt;</secondary></indexterm>
+<indexterm><primary>&lt;XCBuildFile&gt;</primary><secondary>becomeBuildFile</secondary></indexterm>
+<para><computeroutput>- (void) becomeBuildFile  </computeroutput></para><para>
+Reimplemented in <link linkend="_interface_x_c_source_file_1a69feb820711a44a5d3adf4bc25669e37">XCSourceFile</link>.</para>
+</section>
+<anchor xml:id="_protocol_x_c_build_file-p_1ae5882d46671f3891d484f6f5d293b4b4"/><section>
+    <title>isBuildFile</title>
+<indexterm><primary>isBuildFile</primary><secondary>&lt;XCBuildFile&gt;</secondary></indexterm>
+<indexterm><primary>&lt;XCBuildFile&gt;</primary><secondary>isBuildFile</secondary></indexterm>
+<para><computeroutput>- (BOOL) isBuildFile  </computeroutput></para><para>
+Reimplemented in <link linkend="_interface_x_c_source_file_1a94f914a09f7abbbf3048a86ced9f7d10">XCSourceFile</link>.</para>
+</section>
+<para>
+The documentation for this protocol was generated from the following file:</para>
+XCBuildFile.h</section>
+</section>

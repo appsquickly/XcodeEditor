@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
+    <info>
+    <title>XcodeEditor-master</title>
+    </info>
+<chapter>
+    <title>Class Documentation</title>
+    <xi:include href="interface_class_called_janine.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="struct_hash_value_m_d5_hash.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="category_n_s_string_07_remove_emoji_08.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="category_n_s_string_07_xcode_member_type_extensions_08.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="category_n_s_string_07_xcode_source_tree_type_extensions_08.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_abstract_definition.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="protocol_x_c_build_file-p.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_build_shell_script.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_build_shell_script_definition.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_build_shell_script_definition_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_build_shell_script_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_class_definition.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_class_definition_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_file_operation_queue.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="category_x_c_file_operation_queue_07_08.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_framework_definition.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_framework_path.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_group.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_group_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_key_builder.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_key_builder_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_xcode_file_reference_type_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="protocol_xcode_group_member-p.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_project.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="category_x_c_project_07_sub_project_08.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_project_build_config.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_project_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_source_file.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_source_file_definition.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_sub_project_definition.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="category_x_c_sub_project_definition_07_08.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_sub_project_definition_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_target.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_target_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_version_group.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_x_c_xib_definition.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>File Documentation</title>
+    <xi:include href="_n_s_string_09_remove_emoji_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_abstract_definition_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_build_file_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_build_shell_script_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_build_shell_script_definition_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_class_definition_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_file_operation_queue_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_framework_definition_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_group_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_key_builder_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_xcode_editor_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_xcode_group_member_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_xcode_member_type_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_xcode_source_file_type_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_xcode_source_tree_type_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_project_09_sub_project_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_project_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_project_build_config_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_source_file_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_source_file_definition_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_sub_project_definition_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_target_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_version_group_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_xib_definition_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_class_called_janine_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_x_c_test_resource_utils_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_source_file" xml:lang="en-US">
+<title>XCSourceFile Class Reference</title>
+<indexterm><primary>XCSourceFile</primary></indexterm>
+<para>
+<computeroutput>#import &lt;XCSourceFile.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for XCSourceFile:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_source_file.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1ac8615e3a5e8ef18bef470b67499356d2"/>(id) - <emphasis role="strong">initWithProject:key:type:name:sourceTree:path:</emphasis></para>
+</listitem>
+            <listitem><para>(BOOL) - <link linkend="_interface_x_c_source_file_1a94f914a09f7abbbf3048a86ced9f7d10">isBuildFile</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1a8901719779cfa15805ff292b3b242d07"/>(BOOL) - <emphasis role="strong">canBecomeBuildFile</emphasis></para>
+</listitem>
+            <listitem><para>(XcodeMemberType) - <link linkend="_interface_x_c_source_file_1a32b82cd21f7ce2e00c05c331f5ca922d">buildPhase</link></para>
+</listitem>
+            <listitem><para>(NSString *) - <link linkend="_interface_x_c_source_file_1a01b5137080ebdcbfb927e8c541f2ecfe">buildFileKey</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_source_file_1a69feb820711a44a5d3adf4bc25669e37">becomeBuildFile</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_source_file_1ab4a6d4d99379dbdb99f8e1214ffed356">removeBuildFile</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_source_file_1a9694571d4b026b428a056162f20a6dd3">setCompilerFlags:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_source_file_1a009a3627573419fb5f9cb67c5afa3f87">setWeakReference</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1a97625fb8853a21d30bf8033fc766859f"/>(<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) + <emphasis role="strong">sourceFileWithProject:key:type:name:sourceTree:path:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1a73402fcd99aa8e97837f1adc998c2304"/>XcodeSourceFileType <emphasis role="strong">type</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1a82cbd166469f86d7b92ebd970a9e148b"/>NSString * <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1a2a8feb4272e7439f072411462f82911f"/>NSString * <emphasis role="strong">name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1a135b3d0390f10bcd740055081e65524a"/>NSString * <emphasis role="strong">sourceTree</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_1a0f8c01b546123f88b839bdbb14138d4d"/>NSString * <emphasis role="strong">path</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Represents a file resource in an xcode project. </para>
+</section>
+<section>
+<title>Method Documentation</title>
+<anchor xml:id="_interface_x_c_source_file_1a69feb820711a44a5d3adf4bc25669e37"/><section>
+    <title>becomeBuildFile</title>
+<indexterm><primary>becomeBuildFile</primary><secondary>XCSourceFile</secondary></indexterm>
+<indexterm><primary>XCSourceFile</primary><secondary>becomeBuildFile</secondary></indexterm>
+<para><computeroutput>- (void) becomeBuildFile  </computeroutput></para>
+<para>Adds this file to the project as an <computeroutput>xcode_BuildFile</computeroutput>, ready to be included in targets. </para>
+<para>
+Reimplemented from <link linkend="_protocol_x_c_build_file-p">&lt;XCBuildFile&gt;</link>.</para>
+</section>
+<anchor xml:id="_interface_x_c_source_file_1a01b5137080ebdcbfb927e8c541f2ecfe"/><section>
+    <title>buildFileKey</title>
+<indexterm><primary>buildFileKey</primary><secondary>XCSourceFile</secondary></indexterm>
+<indexterm><primary>XCSourceFile</primary><secondary>buildFileKey</secondary></indexterm>
+<para><computeroutput>- (NSString *) buildFileKey  </computeroutput></para><para>
+Reimplemented from <link linkend="_protocol_x_c_build_file-p">&lt;XCBuildFile&gt;</link>.</para>
+</section>
+<anchor xml:id="_interface_x_c_source_file_1a32b82cd21f7ce2e00c05c331f5ca922d"/><section>
+    <title>buildPhase</title>
+<indexterm><primary>buildPhase</primary><secondary>XCSourceFile</secondary></indexterm>
+<indexterm><primary>XCSourceFile</primary><secondary>buildPhase</secondary></indexterm>
+<para><computeroutput>- (XcodeMemberType) buildPhase  </computeroutput></para><para>
+Reimplemented from <link linkend="_protocol_x_c_build_file-p">&lt;XCBuildFile&gt;</link>.</para>
+</section>
+<anchor xml:id="_interface_x_c_source_file_1a94f914a09f7abbbf3048a86ced9f7d10"/><section>
+    <title>isBuildFile</title>
+<indexterm><primary>isBuildFile</primary><secondary>XCSourceFile</secondary></indexterm>
+<indexterm><primary>XCSourceFile</primary><secondary>isBuildFile</secondary></indexterm>
+<para><computeroutput>- (BOOL) isBuildFile  </computeroutput></para>
+<para>If yes, indicates the file is able to be included for compilation in an <computeroutput><link linkend="_interface_x_c_target">XCTarget</link></computeroutput>. </para>
+<para>
+Reimplemented from <link linkend="_protocol_x_c_build_file-p">&lt;XCBuildFile&gt;</link>.</para>
+</section>
+<anchor xml:id="_interface_x_c_source_file_1ab4a6d4d99379dbdb99f8e1214ffed356"/><section>
+    <title>removeBuildFile</title>
+<indexterm><primary>removeBuildFile</primary><secondary>XCSourceFile</secondary></indexterm>
+<indexterm><primary>XCSourceFile</primary><secondary>removeBuildFile</secondary></indexterm>
+<para><computeroutput>- (void) removeBuildFile  </computeroutput></para>
+<para>Removes this file as an <computeroutput>xcode_BuildFile</computeroutput> from the project. </para>
+</section>
+<anchor xml:id="_interface_x_c_source_file_1a9694571d4b026b428a056162f20a6dd3"/><section>
+    <title>setCompilerFlags:</title>
+<indexterm><primary>setCompilerFlags:</primary><secondary>XCSourceFile</secondary></indexterm>
+<indexterm><primary>XCSourceFile</primary><secondary>setCompilerFlags:</secondary></indexterm>
+<para><computeroutput>- (void) setCompilerFlags: (NSString *) value</computeroutput></para>
+<para>Method for setting Compiler Flags for individual build files</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>String value to set in Compiler Flags </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_interface_x_c_source_file_1a009a3627573419fb5f9cb67c5afa3f87"/><section>
+    <title>setWeakReference</title>
+<indexterm><primary>setWeakReference</primary><secondary>XCSourceFile</secondary></indexterm>
+<indexterm><primary>XCSourceFile</primary><secondary>setWeakReference</secondary></indexterm>
+<para><computeroutput>- (void) setWeakReference  </computeroutput></para>
+<para>Method for setting the build file is a weak reference </para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCSourceFile.hXCSourceFile.m</section>
+</section>

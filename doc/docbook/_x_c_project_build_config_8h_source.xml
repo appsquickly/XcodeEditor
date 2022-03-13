@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_project_build_config_8h_source" xml:lang="en-US">
+<title>XCProjectBuildConfig.h</title>
+<indexterm><primary>XCProjectBuildConfig.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+13 
+14 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project">XCProject</link>;
+15 
+16 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link>&#32;:&#32;NSObject
+17 {
+18 <emphasis role="keyword">@private</emphasis>
+19 &#32;&#32;&#32;&#32;__weak&#32;<link linkend="_interface_x_c_project">XCProject</link>*&#32;_project;
+20 &#32;&#32;&#32;&#32;NSString*&#32;_key;
+21 
+22 &#32;&#32;&#32;&#32;NSMutableDictionary*&#32;_buildSettings;
+23 &#32;&#32;&#32;&#32;NSMutableDictionary*&#32;_xcconfigSettings;
+24 }
+25 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;key;
+26 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;readonly)&#32;NSDictionary*&#32;specifiedBuildSettings;
+27 
+28 +&#32;(NSDictionary&lt;NSString*,NSString*&gt;*)buildConfigurationsFromArray:(NSArray&lt;<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link>*&gt;*)array&#32;inProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project;
+29 
+30 -&#32;(instancetype)initWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key;
+31 
+32 -&#32;(void)addBuildSettings:(NSDictionary*)buildSettings;
+33 
+34 -&#32;(void)addOrReplaceSetting:(<emphasis role="keywordtype">id</emphasis>&#32;&lt;NSCopying&gt;)setting&#32;forKey:(NSString*)key;
+35 
+36 -&#32;(<emphasis role="keywordtype">id</emphasis>&#32;&lt;NSCopying&gt;)valueForKey:(NSString*)key;
+37 
+38 -(void)removeSettingByKey:(NSString*)key;
+39 
+40 +&#32;(NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey&#32;inProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project
+41 &#32;&#32;&#32;&#32;withBuildConfigurationVisitor:(<emphasis role="keywordtype">void</emphasis>&#32;(^)(NSMutableDictionary*))buildConfigurationVisitor;
+42 
+43 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

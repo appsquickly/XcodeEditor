@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_build_shell_script_definition" xml:lang="en-US">
+<title>XCBuildShellScriptDefinition Class Reference</title>
+<indexterm><primary>XCBuildShellScriptDefinition</primary></indexterm>
+<para>Inheritance diagram for XCBuildShellScriptDefinition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_build_shell_script_definition.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1a6da6cb540f62b4f60daa622f583319b0"/>(instancetype _Nonnull) - <emphasis role="strong">initWithName:files:inputPaths:outputPaths:runOnlyForDeploymentPostprocessing:shellPath:shellScript:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1ae61f52f8e27e373b73de4d5a813ace74"/>(<link linkend="_interface_x_c_build_shell_script_definition">XCBuildShellScriptDefinition</link> *_Nonnull) + <emphasis role="strong">shellScriptDefinitionWithName:files:inputPaths:outputPaths:runOnlyForDeploymentPostprocessing:shellPath:shellScript:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1a78d2a6ce6dfc4f239454e4707f029a0b"/>NSString * <emphasis role="strong">_key</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1a72b0cd7e8ea5bf38cb548992d82244ef"/>NSString * <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1a1f1a1003dcc7451ef27d39b0d911d176"/>NSString * <emphasis role="strong">name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1aa0d83a2385278ec41184c5002185483f"/>BOOL <emphasis role="strong">runOnlyForDeploymentPostprocessing</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1ab9dd4e3c901959f29d3bd67e67626e34"/>NSString * <emphasis role="strong">shellScript</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1acdfb1ba09449fd3caaf3370f2f106fb4"/>NSString * <emphasis role="strong">shellPath</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1aa04c6111c3736016c391fb39681d6cd7"/>NSArray&lt; NSString * &gt; * <emphasis role="strong">files</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1a22dc77450412e8c1422344c5719938c8"/>NSArray&lt; NSString * &gt; * <emphasis role="strong">inputPaths</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_build_shell_script_definition_1a404e502b97fa0ee9f62a7a2fbda4ced5"/>NSArray&lt; NSString * &gt; * <emphasis role="strong">outputPaths</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCBuildShellScriptDefinition.hXCBuildShellScriptDefinition.m</section>

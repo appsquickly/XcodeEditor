@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__xcode_editor_8h_source" xml:lang="en-US">
+<title>XcodeEditor.h</title>
+<indexterm><primary>XcodeEditor.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+13 
+15 FOUNDATION_EXPORT&#32;<emphasis role="keywordtype">double</emphasis>&#32;XcodeEditorVersionNumber;
+16 
+18 FOUNDATION_EXPORT&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;XcodeEditorVersionString[];
+19 
+20 <emphasis role="comment">//&#32;In&#32;this&#32;header,&#32;you&#32;should&#32;import&#32;all&#32;the&#32;public&#32;headers&#32;of&#32;your&#32;framework&#32;using&#32;statements&#32;like&#32;#import&#32;&lt;XcodeEditor/PublicHeader.h&gt;</emphasis>
+21 
+22 
+23 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCAbstractDefinition.h&gt;</emphasis>
+24 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCGroup.h&gt;</emphasis>
+25 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCClassDefinition.h&gt;</emphasis>
+26 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCFileOperationQueue.h&gt;</emphasis>
+27 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCFrameworkDefinition.h&gt;</emphasis>
+28 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCProject.h&gt;</emphasis>
+29 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCSourceFile.h&gt;</emphasis>
+30 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCSourceFileDefinition.h&gt;</emphasis>
+31 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCSubProjectDefinition.h&gt;</emphasis>
+32 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCTarget.h&gt;</emphasis>
+33 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCXibDefinition.h&gt;</emphasis>
+34 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCKeyBuilder.h&gt;</emphasis>
+35 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCProject+SubProject.h&gt;</emphasis>
+36 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCProjectBuildConfig.h&gt;</emphasis>
+37 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCBuildShellScript.h&gt;</emphasis>
+38 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCBuildShellScriptDefinition.h&gt;</emphasis>
+39 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCVersionGroup.h&gt;</emphasis>
+</programlisting></section>

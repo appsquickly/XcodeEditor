@@ -1,0 +1,53 @@
+.TH "XCProjectBuildConfig" 3 "Fri Mar 4 2022" "Version 1.1" "XcodeEditor-master" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XCProjectBuildConfig
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits NSObject\&.
+.SS "Instance Methods"
+
+.in +1c
+.ti -1c
+.RI "(instancetype) \- \fBinitWithProject:key:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBaddBuildSettings:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBaddOrReplaceSetting:forKey:\fP"
+.br
+.ti -1c
+.RI "(id< NSCopying >) \- \fBvalueForKey:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveSettingByKey:\fP"
+.br
+.in -1c
+.SS "Class Methods"
+
+.in +1c
+.ti -1c
+.RI "(NSDictionary< NSString *, NSString * > *) + \fBbuildConfigurationsFromArray:inProject:\fP"
+.br
+.ti -1c
+.RI "(NSString *) + \fBduplicatedBuildConfigurationListWithKey:inProject:withBuildConfigurationVisitor:\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "NSString * \fBkey\fP"
+.br
+.ti -1c
+.RI "NSDictionary * \fBspecifiedBuildSettings\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for XcodeEditor-master from the source code\&.

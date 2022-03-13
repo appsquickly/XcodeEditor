@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_target" xml:lang="en-US">
+<title>XCTarget Class Reference</title>
+<indexterm><primary>XCTarget</primary></indexterm>
+<para>
+<computeroutput>#import &lt;XCTarget.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for XCTarget:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_target.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1afad674edc98884edb24f090b5d378e31"/>(id) - <emphasis role="strong">initWithProject:key:name:productName:productReference:productType:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1ab8e51f2d194a3e5d49cfe21b1a4f2988"/>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <emphasis role="strong">resources</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1abeef4fa09df4f49cf068688fada18f36"/>(NSArray&lt; id&lt; <link linkend="_protocol_x_c_build_file-p">XCBuildFile</link> &gt; &gt; *) - <emphasis role="strong">members</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a8f874868fd7f7abec6f901abe9b360fc"/>(NSArray&lt; <link linkend="_interface_x_c_build_shell_script">XCBuildShellScript</link> * &gt; *) - <emphasis role="strong">buildShellScripts</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1aca1ec28004d29928d3eac511e25da744"/>(NSDictionary&lt; NSString *, <link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link> * &gt; *) - <emphasis role="strong">configurations</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a37f0c80efa42c78224b6b3e802e2dfc3"/>(<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link> *) - <emphasis role="strong">configurationWithName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a8de328b2d78a913fe647eeae916e6953"/>(<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link> *) - <emphasis role="strong">defaultConfiguration</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a4772a23624ec530a93df654bd898cb64"/>(void) - <emphasis role="strong">addMember:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a7cf3b7f36adbe8f3fc8dd025fcb4f439"/>(void) - <emphasis role="strong">makeAndAddShellScript:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a6f33f5bdc159aa797a75b93af71d4365"/>(void) - <emphasis role="strong">removeShellScriptByName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a3aaed35866dc400d4b88e79ee9717b36"/>(void) - <emphasis role="strong">removeMemberWithKey:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a1a8fb69f0caceadc054e6826465fecf7"/>(void) - <emphasis role="strong">removeMembersWithKeys:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1af0c91f3ee07278742e9a0a7fa3374db7"/>(void) - <emphasis role="strong">removeResourceWithKey:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a7762ceb98c4f5f8005988378cb03bb6e"/>(void) - <emphasis role="strong">removeResourcesWithKeys:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1afa9f6565fa69e8f456312435903816f5"/>(void) - <emphasis role="strong">addDependency:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1afec49a376a2f4856cda389ab5ad3e604"/>(instancetype) - <emphasis role="strong">duplicateWithTargetName:productName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a3b89d4c5550b832921fc5efc52ff41cd"/>(BOOL) - <emphasis role="strong">isApplicationType</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1ae48bbab918d1fe83afb0abac701224ab"/>(<link linkend="_interface_x_c_target">XCTarget</link> *) + <emphasis role="strong">targetWithProject:key:name:productName:productReference:productType:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a1eb6b30e6683e053774fe99e71467263"/><link linkend="_interface_x_c_project">XCProject</link> * <emphasis role="strong">_project</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a8150da4d6b50ee82d9c34069560c0755"/>NSString * <emphasis role="strong">_key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1ad0d40c5cb0fe2d9495fd07d7575cb3c9"/>NSString * <emphasis role="strong">_name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a95f516c6e639d53e399d2f1453017ed0"/>NSString * <emphasis role="strong">_productName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a6e35f7e1a3b65198b62d8e7b9cd43bcf"/>NSString * <emphasis role="strong">_productReference</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1ad6e0170a3c489e63b073d1f273e26c36"/>NSString * <emphasis role="strong">_productType</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1ab2630c299a5e77c0dcc9d9f134d98e40"/>NSString * <emphasis role="strong">_defaultConfigurationName</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a72e25adbcc07cf3df26734321465d926"/>NSString * <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a7a5f548eb9e5dd17334bce543ce76a20"/>NSString * <emphasis role="strong">name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a5dc8a5b6b476e7adacd0d7d3b57e3660"/>NSString * <emphasis role="strong">productName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1acc530e4c19cd4a6a73595cdd3d5ec4cb"/>NSString * <emphasis role="strong">productReference</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_target_1a132365ae8379582e0f5ee3b45f9849f9"/>NSString * <emphasis role="strong">productType</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Represents a target in an xcode project. </para>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCTarget.hXCTarget.m</section>
+</section>

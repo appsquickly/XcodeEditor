@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__xcode_member_type_8h_source" xml:lang="en-US">
+<title>XcodeMemberType.h</title>
+<indexterm><primary>XcodeMemberType.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+13 
+14 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+15 {
+16 &#32;&#32;&#32;&#32;PBXNilType,
+17 &#32;&#32;&#32;&#32;PBXBuildFileType,
+18 &#32;&#32;&#32;&#32;PBXContainerItemProxyType,
+19 &#32;&#32;&#32;&#32;PBXCopyFilesBuildPhaseType,
+20 &#32;&#32;&#32;&#32;PBXFileReferenceType,
+21 &#32;&#32;&#32;&#32;PBXFrameworksBuildPhaseType,
+22 &#32;&#32;&#32;&#32;PBXGroupType,
+23 &#32;&#32;&#32;&#32;PBXNativeTargetType,
+24 &#32;&#32;&#32;&#32;PBXProjectType,
+25 &#32;&#32;&#32;&#32;PBXReferenceProxyType,
+26 &#32;&#32;&#32;&#32;PBXResourcesBuildPhaseType,
+27 &#32;&#32;&#32;&#32;PBXSourcesBuildPhaseType,
+28 &#32;&#32;&#32;&#32;PBXTargetDependencyType,
+29 &#32;&#32;&#32;&#32;PBXVariantGroupType,
+30 &#32;&#32;&#32;&#32;XCBuildConfigurationType,
+31 &#32;&#32;&#32;&#32;XCConfigurationListType,
+32 &#32;&#32;&#32;&#32;PBXShellScriptBuildPhase,
+33 &#32;&#32;&#32;&#32;XCVersionGroupType
+34 }&#32;XcodeMemberType;
+35 
+36 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_category_n_s_string_07_xcode_member_type_extensions_08">NSString (XcodeMemberTypeExtensions)</link>
+37 
+38 +&#32;(NSString*)xce_stringFromMemberType:(XcodeMemberType)nodeType;
+39 
+40 -&#32;(XcodeMemberType)xce_asMemberType;
+41 
+42 -&#32;(BOOL)xce_hasFileReferenceType;
+43 -&#32;(BOOL)xce_hasFileReferenceOrReferenceProxyType;
+44 -&#32;(BOOL)xce_hasReferenceProxyType;
+45 -&#32;(BOOL)xce_hasGroupType;
+46 -&#32;(BOOL)xce_hasProjectType;
+47 -&#32;(BOOL)xce_hasNativeTargetType;
+48 -&#32;(BOOL)xce_hasBuildFileType;
+49 -&#32;(BOOL)xce_hasBuildConfigurationType;
+50 -&#32;(BOOL)xce_hasContainerItemProxyType;
+51 -&#32;(BOOL)xce_hasResourcesBuildPhaseType;
+52 -&#32;(BOOL)xce_hasShellScriptBuildPhase;
+53 -&#32;(BOOL)xce_hasSourcesOrFrameworksBuildPhaseType;
+54 -&#32;(BOOL)xce_hasVersionedGroupType;
+55 
+56 <emphasis role="keyword">@end</emphasis>
+57 
+</programlisting></section>

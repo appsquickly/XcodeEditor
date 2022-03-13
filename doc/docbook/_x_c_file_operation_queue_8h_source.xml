@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_file_operation_queue_8h_source" xml:lang="en-US">
+<title>XCFileOperationQueue.h</title>
+<indexterm><primary>XCFileOperationQueue.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+14 
+15 
+16 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_file_operation_queue">XCFileOperationQueue</link>&#32;:&#32;NSObject
+17 {
+18 
+19 <emphasis role="keyword">@private</emphasis>
+20 &#32;&#32;&#32;&#32;NSString*&#32;_baseDirectory;
+21 &#32;&#32;&#32;&#32;NSMutableDictionary*&#32;_filesToWrite;
+22 &#32;&#32;&#32;&#32;NSMutableDictionary*&#32;_frameworksToCopy;
+23 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_filesToDelete;
+24 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_directoriesToCreate;
+25 }
+26 
+27 
+28 -&#32;(id)initWithBaseDirectory:(NSString*)baseDirectory;
+29 
+30 -&#32;(BOOL)fileWithName:(NSString*)name&#32;existsInProjectDirectory:(NSString*)directory;
+31 
+32 -&#32;(void)queueTextFile:(NSString*)fileName&#32;inDirectory:(NSString*)directory&#32;withContents:(NSString*)contents;
+33 
+34 -&#32;(void)queueDataFile:(NSString*)fileName&#32;inDirectory:(NSString*)directory&#32;withContents:(NSData*)contents;
+35 
+36 -&#32;(void)queueFrameworkWithFilePath:(NSString*)filePath&#32;inDirectory:(NSString*)directory;
+37 
+38 -&#32;(void)queueDeletion:(NSString*)filePath;
+39 
+40 -&#32;(void)queueDirectory:(NSString*)withName&#32;inDirectory:(NSString*)parentDirectory;
+41 
+42 -&#32;(void)commitFileOperations;
+43 
+44 <emphasis role="keyword">@end</emphasis>
+45 
+</programlisting></section>

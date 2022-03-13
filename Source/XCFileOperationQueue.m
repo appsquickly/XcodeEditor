@@ -150,7 +150,7 @@
 
         if (![[NSFileManager defaultManager] removeItemAtPath:fullPath error:&error])
         {
-            if ( DEBUG ) fprintf(stderr, "failed to remove item at path; error == %s\n", error.description.UTF8String);
+            fprintf(stderr, "failed to remove item at path; error == %s\n", error.description.UTF8String);
             [NSException raise:NSInternalInconsistencyException format:@"Error deleting file at filePath: %@", filePath];
         }
         else

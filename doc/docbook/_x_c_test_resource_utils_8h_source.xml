@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_test_resource_utils_8h_source" xml:lang="en-US">
+<title>XCTestResourceUtils.h</title>
+<indexterm><primary>XCTestResourceUtils.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+14 
+15 <emphasis role="comment">//TODO:&#32;Just&#32;use&#32;one&#32;sample&#32;project</emphasis>
+16 
+17 NSString&#32;*XCTestResourcePath(<emphasis role="keywordtype">void</emphasis>);
+18 
+19 NSString&#32;*XCSample1FolderPath(<emphasis role="keywordtype">void</emphasis>);
+20 
+21 NSString&#32;*XCSample1XcodeProjectPath(<emphasis role="keywordtype">void</emphasis>);
+22 
+23 NSString&#32;*XCBox2dSampleContainingFolderPath(<emphasis role="keywordtype">void</emphasis>);
+24 
+25 NSString&#32;*XCBox2dSampleProjectPath(<emphasis role="keywordtype">void</emphasis>);
+26 
+27 NSString&#32;*XCMasterDetailContainerFolderPath(<emphasis role="keywordtype">void</emphasis>);
+28 
+29 NSString&#32;*XCMasterDetailProjectPath(<emphasis role="keywordtype">void</emphasis>);
+30 
+31 
+32 NSString&#32;*NSStringWithXCTestResource(NSString&#32;*resourceName);
+33 
+34 NSData&#32;*NSDataWithXCTestResource(NSString&#32;*resourceName);
+</programlisting></section>
