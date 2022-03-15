@@ -12,6 +12,7 @@
 
 
 #import "XCFileOperationQueue.h"
+#import "XcodeEditor-Prefix.pch"
 
 @interface XCFileOperationQueue ()
 

@@ -25,6 +25,7 @@
 #import "XCProject+SubProject.h"
 #import "XcodeMemberType.h"
 #import "XCVersionGroup.h"
+#import "XcodeEditor-Prefix.pch"
 
 @implementation XCGroup
 

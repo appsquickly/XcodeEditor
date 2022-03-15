@@ -17,6 +17,7 @@
 #import "XCFileOperationQueue.h"
 #import "XCProjectBuildConfig.h"
 #import "XCVersionGroup.h"
+#import "XcodeEditor-Prefix.pch"
 
 NSString *const XCProjectNotFoundException;
 

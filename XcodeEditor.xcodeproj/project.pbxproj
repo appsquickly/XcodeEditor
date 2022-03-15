@@ -40,7 +40,7 @@
 		BA798DF4DEEA8368A42FACA9 /* XCSubProjectDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B849BC7E9D7F2F00491 /* XCSubProjectDefinitionTests.m */; };
 		BA798EAA17988686D3D7E8B2 /* XCProject+SubProject.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798CB9BB3A4BD2E144BF89 /* XCProject+SubProject.m */; };
 		BA798EC723A793B612052BE7 /* XcodeSourceFileType.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983F73E0C257372AF1F3B /* XcodeSourceFileType.m */; };
-		BA798F0DCBD407799127F9F2 /* XcodeEditor-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = BA79899DAF14541468FCDC2C /* XcodeEditor-Prefix.pch */; };
+		BA798F0DCBD407799127F9F2 /* XcodeEditor-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = BA79899DAF14541468FCDC2C /* XcodeEditor-Prefix.pch */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA798F8C7A905D2F1C2B700D /* XCAbstractDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C43B7ADCEEA466EC35E /* XCAbstractDefinition.m */; };
 		E892C1292014A14300BED02B /* NSString+RemoveEmoji.h in Headers */ = {isa = PBXBuildFile; fileRef = E892C1112014A10300BED02B /* NSString+RemoveEmoji.h */; };
 		E892C12A2014A14300BED02B /* XCAbstractDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = E892C1122014A10300BED02B /* XCAbstractDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -579,6 +579,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA798F0DCBD407799127F9F2 /* XcodeEditor-Prefix.pch in Headers */,
 				E892C12A2014A14300BED02B /* XCAbstractDefinition.h in Headers */,
 				E892C12B2014A14300BED02B /* XCBuildFile.h in Headers */,
 				E892C12C2014A14300BED02B /* XCBuildShellScript.h in Headers */,
@@ -602,7 +603,6 @@
 				E892C13E2014A14300BED02B /* XCTarget.h in Headers */,
 				E892C13F2014A14300BED02B /* XCVersionGroup.h in Headers */,
 				E892C1402014A14300BED02B /* XCXibDefinition.h in Headers */,
-				BA798F0DCBD407799127F9F2 /* XcodeEditor-Prefix.pch in Headers */,
 				E892C1292014A14300BED02B /* NSString+RemoveEmoji.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -928,7 +928,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.xcode.XcodeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -945,10 +945,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				"OTHER_CFLAGS[arch=*]" = "-DDEBUG=0";
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.xcode.XcodeEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};

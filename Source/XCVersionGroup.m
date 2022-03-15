@@ -14,6 +14,7 @@
 #import "XCKeyBuilder.h"
 #import "XCSourceFileDefinition.h"
 #import "XCProject+SubProject.h"
+#import "XcodeEditor-Prefix.pch"
 
 @implementation XCVersionGroup
 
