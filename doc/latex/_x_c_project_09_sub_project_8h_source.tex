@@ -1,0 +1,48 @@
+\hypertarget{_x_c_project_09_sub_project_8h_source}{}\doxysection{XCProject+\+Sub\+Project.h}
+\label{_x_c_project_09_sub_project_8h_source}\index{XCProject+SubProject.h@{XCProject+SubProject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#import <XcodeEditor/XCProject.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{@interface }\mbox{\hyperlink{category_x_c_project_07_sub_project_08}{XCProject (SubProject)}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 -\/ (NSString *)referenceProxyKeyForName:(NSString *)name;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 -\/ (NSArray<\mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}}*> *)buildProductsForTargets:(NSString *)xcodeprojKey;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 -\/ (void)addAsTargetDependency:(\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}} *)xcodeprojDefinition toTargets:(NSArray<\mbox{\hyperlink{interface_x_c_target}{XCTarget}}*>*)targets;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 -\/ (NSArray<NSString*> *)keysForProjectObjectsOfType:(XcodeMemberType)memberType withIdentifier:(NSString *)identifier}
+\DoxyCodeLine{27     singleton:(BOOL)singleton required:(BOOL)required;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 -\/ (NSMutableDictionary *)PBXProjectDict;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 -\/ (void)removeProxies:(NSString *)xcodeprojKey;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 -\/ (void)addProxies:(\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}} *)xcodeproj;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 -\/ (void)removeFromProjectReferences:(NSString *)key forProductsGroup:(NSString *)productsGroupKey;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 -\/ (void)removeTargetDependencies:(NSString *)name;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 -\/ (NSString *)containerItemProxyKeyForName:(NSString *)name proxyType:(NSString *)proxyType;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 -\/ (NSString *)productsGroupKeyForKey:(NSString *)key;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_source_file_definition" xml:lang="en-US">
+<title>XCSourceFileDefinition Class Reference</title>
+<indexterm><primary>XCSourceFileDefinition</primary></indexterm>
+<para>Inheritance diagram for XCSourceFileDefinition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_source_file_definition.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1ab0ce23ddeb76786ea11d5baee28cb608"/>(id) - <emphasis role="strong">initWithName:text:type:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1a8e77fb8abd13a719d8e2ebb02fdc8d7a"/>(id) - <emphasis role="strong">initWithName:data:type:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1a91c12cde86894c007a0f1995e44ac7c1"/>(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link> *) + <emphasis role="strong">sourceDefinitionWithName:text:type:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1a79e91c49704ce9504a94e9e1b0307760"/>(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link> *) + <emphasis role="strong">sourceDefinitionWithName:data:type:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1a387acd3e10ac68b221f2e96aa811453b"/>(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link> *) + <emphasis role="strong">sourceDefinitionWithAssetCatalogName:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1aa603abd339463d91dce002f8e0c8b5e8"/>NSString * <emphasis role="strong">_sourceFileName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1a1bbeb08f884f2b7d973dcf43e80cc4b4"/>XcodeSourceFileType <emphasis role="strong">_type</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1ae8a4564b2d6ac56857b949450bad909a"/>NSData * <emphasis role="strong">_data</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1aa178243081bf2ea2bfbd23528a413180"/>NSString * <emphasis role="strong">sourceFileName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1a4e16359e1c3b2f3f07b1c87b056a24a7"/>NSData * <emphasis role="strong">data</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_source_file_definition_1a89ca94c0a2b6bf90b7c181ed8614c584"/>XcodeSourceFileType <emphasis role="strong">type</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCSourceFileDefinition.hXCSourceFileDefinition.m</section>

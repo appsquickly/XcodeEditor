@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_category_x_c_project_07_sub_project_08" xml:lang="en-US">
+<title>XCProject(SubProject) Category Reference</title>
+<indexterm><primary>XCProject(SubProject)</primary></indexterm>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a92dd68dc215dfed3ee2fcaab5b72346e"/>(NSString *) - <emphasis role="strong">referenceProxyKeyForName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a1909100224b2527bc609caf8eab7a5f0"/>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <emphasis role="strong">buildProductsForTargets:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1aca0d762dbf21a7515beb0cf49f636fbc"/>(void) - <emphasis role="strong">addAsTargetDependency:toTargets:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1ac1f47cda658191013bd6184356255d1f"/>(NSArray&lt; NSString * &gt; *) - <emphasis role="strong">keysForProjectObjectsOfType:withIdentifier:singleton:required:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a54669d671dac484cf5d207657f7c92a2"/>(NSMutableDictionary *) - <emphasis role="strong">PBXProjectDict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1aaa724f5876db3d4f5f82c4a5d9a48ae3"/>(void) - <emphasis role="strong">removeProxies:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a235e112109c93d5987e2b29c836000a6"/>(void) - <emphasis role="strong">addProxies:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a9caf756e7c08abe60d82258f251c0c8e"/>(void) - <emphasis role="strong">removeFromProjectReferences:forProductsGroup:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a17db0fff9e79f69dd267d5a6474625dc"/>(void) - <emphasis role="strong">removeTargetDependencies:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a05186f24cbaeca02ae5a78dbddf9ab7e"/>(NSString *) - <emphasis role="strong">containerItemProxyKeyForName:proxyType:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_x_c_project_07_sub_project_08_1a1fbbe1cda07f9e1d543abef4b1f251d4"/>(NSString *) - <emphasis role="strong">productsGroupKeyForKey:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this category was generated from the following files:</para>
+XCProject+SubProject.hXCProject+SubProject.m</section>

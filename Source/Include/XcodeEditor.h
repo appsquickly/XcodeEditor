@@ -20,20 +20,20 @@ FOUNDATION_EXPORT const unsigned char XcodeEditorVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <XcodeEditor/PublicHeader.h>
 
 
-#import "XCAbstractDefinition.h"
-#import "XCGroup.h"
-#import "XCClassDefinition.h"
-#import "XCFileOperationQueue.h"
-#import "XCFrameworkDefinition.h"
-#import "XCProject.h"
-#import "XCSourceFile.h"
-#import "XCSourceFileDefinition.h"
-#import "XCSubProjectDefinition.h"
-#import "XCTarget.h"
-#import "XCXibDefinition.h"
-#import "XCKeyBuilder.h"
-#import "XCProject+SubProject.h"
-#import "XCProjectBuildConfig.h"
-#import "XCBuildShellScript.h"
-#import "XCBuildShellScriptDefinition.h"
-#import "XCVersionGroup.h"
+#import <XcodeEditor/XCAbstractDefinition.h>
+#import <XcodeEditor/XCGroup.h>
+#import <XcodeEditor/XCClassDefinition.h>
+#import <XcodeEditor/XCFileOperationQueue.h>
+#import <XcodeEditor/XCFrameworkDefinition.h>
+#import <XcodeEditor/XCProject.h>
+#import <XcodeEditor/XCSourceFile.h>
+#import <XcodeEditor/XCSourceFileDefinition.h>
+#import <XcodeEditor/XCSubProjectDefinition.h>
+#import <XcodeEditor/XCTarget.h>
+#import <XcodeEditor/XCXibDefinition.h>
+#import <XcodeEditor/XCKeyBuilder.h>
+#import <XcodeEditor/XCProject+SubProject.h>
+#import <XcodeEditor/XCProjectBuildConfig.h>
+#import <XcodeEditor/XCBuildShellScript.h>
+#import <XcodeEditor/XCBuildShellScriptDefinition.h>
+#import <XcodeEditor/XCVersionGroup.h>

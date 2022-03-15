@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_source_file_definition_8h_source" xml:lang="en-US">
+<title>XCSourceFileDefinition.h</title>
+<indexterm><primary>XCSourceFileDefinition.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 
+14 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+15 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCAbstractDefinition.h&gt;</emphasis>
+16 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeSourceFileType.h&gt;</emphasis>
+17 
+18 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>&#32;:&#32;<link linkend="_interface_x_c_abstract_definition">XCAbstractDefinition</link>
+19 {
+20 
+21 &#32;&#32;&#32;&#32;NSString*&#32;_sourceFileName;
+22 &#32;&#32;&#32;&#32;XcodeSourceFileType&#32;_type;
+23 &#32;&#32;&#32;&#32;NSData*&#32;_data;
+24 
+25 }
+26 
+27 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;sourceFileName;
+28 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSData*&#32;data;
+29 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;readonly)&#32;XcodeSourceFileType&#32;type;
+30 
+31 +&#32;(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>*)sourceDefinitionWithName:(NSString*)name&#32;text:(NSString*)text&#32;type:(XcodeSourceFileType)type;
+32 
+33 +&#32;(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>*)sourceDefinitionWithName:(NSString*)name&#32;data:(NSData*)data&#32;type:(XcodeSourceFileType)type;
+34 
+35 <emphasis role="comment">//&#32;For&#32;now&#32;you&#32;can&#32;add&#32;Asset&#32;Catalog&#32;only&#32;as&#32;reference</emphasis>
+36 +&#32;(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>*)sourceDefinitionWithAssetCatalogName:(NSString*)name;
+37 
+38 -&#32;(id)initWithName:(NSString*)name&#32;text:(NSString*)text&#32;type:(XcodeSourceFileType)type;
+39 
+40 -&#32;(id)initWithName:(NSString*)name&#32;data:(NSData*)data&#32;type:(XcodeSourceFileType)type;
+41 
+42 
+43 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

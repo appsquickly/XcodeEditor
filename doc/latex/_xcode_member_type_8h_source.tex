@@ -1,0 +1,62 @@
+\hypertarget{_xcode_member_type_8h_source}{}\doxysection{Xcode\+Member\+Type.\+h}
+\label{_xcode_member_type_8h_source}\index{XcodeMemberType.h@{XcodeMemberType.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     PBXNilType,}
+\DoxyCodeLine{17     PBXBuildFileType,}
+\DoxyCodeLine{18     PBXContainerItemProxyType,}
+\DoxyCodeLine{19     PBXCopyFilesBuildPhaseType,}
+\DoxyCodeLine{20     PBXFileReferenceType,}
+\DoxyCodeLine{21     PBXFrameworksBuildPhaseType,}
+\DoxyCodeLine{22     PBXGroupType,}
+\DoxyCodeLine{23     PBXNativeTargetType,}
+\DoxyCodeLine{24     PBXProjectType,}
+\DoxyCodeLine{25     PBXReferenceProxyType,}
+\DoxyCodeLine{26     PBXResourcesBuildPhaseType,}
+\DoxyCodeLine{27     PBXSourcesBuildPhaseType,}
+\DoxyCodeLine{28     PBXTargetDependencyType,}
+\DoxyCodeLine{29     PBXVariantGroupType,}
+\DoxyCodeLine{30     XCBuildConfigurationType,}
+\DoxyCodeLine{31     XCConfigurationListType,}
+\DoxyCodeLine{32     PBXShellScriptBuildPhase,}
+\DoxyCodeLine{33     XCVersionGroupType}
+\DoxyCodeLine{34 \} XcodeMemberType;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{@interface }\mbox{\hyperlink{category_n_s_string_07_xcode_member_type_extensions_08}{NSString (XcodeMemberTypeExtensions)}}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 + (NSString*)xce\_stringFromMemberType:(XcodeMemberType)nodeType;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 -\/ (XcodeMemberType)xce\_asMemberType;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 -\/ (BOOL)xce\_hasFileReferenceType;}
+\DoxyCodeLine{43 -\/ (BOOL)xce\_hasFileReferenceOrReferenceProxyType;}
+\DoxyCodeLine{44 -\/ (BOOL)xce\_hasReferenceProxyType;}
+\DoxyCodeLine{45 -\/ (BOOL)xce\_hasGroupType;}
+\DoxyCodeLine{46 -\/ (BOOL)xce\_hasProjectType;}
+\DoxyCodeLine{47 -\/ (BOOL)xce\_hasNativeTargetType;}
+\DoxyCodeLine{48 -\/ (BOOL)xce\_hasBuildFileType;}
+\DoxyCodeLine{49 -\/ (BOOL)xce\_hasBuildConfigurationType;}
+\DoxyCodeLine{50 -\/ (BOOL)xce\_hasContainerItemProxyType;}
+\DoxyCodeLine{51 -\/ (BOOL)xce\_hasResourcesBuildPhaseType;}
+\DoxyCodeLine{52 -\/ (BOOL)xce\_hasShellScriptBuildPhase;}
+\DoxyCodeLine{53 -\/ (BOOL)xce\_hasSourcesOrFrameworksBuildPhaseType;}
+\DoxyCodeLine{54 -\/ (BOOL)xce\_hasVersionedGroupType;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{@end}}
+\DoxyCodeLine{57 }
+
+\end{DoxyCode}

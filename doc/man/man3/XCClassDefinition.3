@@ -1,0 +1,81 @@
+.TH "XCClassDefinition" 3 "Fri Mar 4 2022" "Version 1.1" "XcodeEditor-master" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XCClassDefinition
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBXCAbstractDefinition\fP\&.
+.SS "Instance Methods"
+
+.in +1c
+.ti -1c
+.RI "(id) \- \fBinitWithName:\fP"
+.br
+.ti -1c
+.RI "(id) \- \fBinitWithName:language:\fP"
+.br
+.ti -1c
+.RI "(BOOL) \- \fBisObjectiveC\fP"
+.br
+.ti -1c
+.RI "(BOOL) \- \fBisObjectiveCPlusPlus\fP"
+.br
+.ti -1c
+.RI "(BOOL) \- \fBisCPlusPlus\fP"
+.br
+.ti -1c
+.RI "(NSString *) \- \fBheaderFileName\fP"
+.br
+.ti -1c
+.RI "(NSString *) \- \fBsourceFileName\fP"
+.br
+.in -1c
+.SS "Class Methods"
+
+.in +1c
+.ti -1c
+.RI "(\fBXCClassDefinition\fP *) + \fBclassDefinitionWithName:\fP"
+.br
+.ti -1c
+.RI "(\fBXCClassDefinition\fP *) + \fBclassDefinitionWithName:language:\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "NSString * \fB_className\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_header\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_source\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "NSString * \fBclassName\fP"
+.br
+.ti -1c
+.RI "NSString * \fBheader\fP"
+.br
+.ti -1c
+.RI "NSString * \fBsource\fP"
+.br
+.in -1c
+.SH "Method Documentation"
+.PP 
+.SS "\- (id) initWithName: (NSString*) fileName"
+Initializes a new objective-c class definition\&. 
+.SS "\- (id) \fBinitWithName:\fP (NSString*) className(ClassDefinitionLanguage) language"
+Initializes a new class definition with the specified language\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for XcodeEditor-master from the source code\&.

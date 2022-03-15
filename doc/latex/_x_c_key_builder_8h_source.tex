@@ -1,0 +1,44 @@
+\hypertarget{_x_c_key_builder_8h_source}{}\doxysection{XCKey\+Builder.\+h}
+\label{_x_c_key_builder_8h_source}\index{XCKeyBuilder.h@{XCKeyBuilder.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 -\/ 2013 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define HASH\_VALUE\_STORAGE\_SIZE 48}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MD5\_DIGEST\_LENGTH 16}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21     \textcolor{keywordtype}{char} value[MD5\_DIGEST\_LENGTH];}
+\DoxyCodeLine{22 \} \mbox{\hyperlink{struct_hash_value_m_d5_hash}{HashValueMD5Hash}};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_key_builder}{XCKeyBuilder}} : NSObject}
+\DoxyCodeLine{26 \{}
+\DoxyCodeLine{27     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \_value[HASH\_VALUE\_STORAGE\_SIZE];}
+\DoxyCodeLine{28 \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 + (\mbox{\hyperlink{interface_x_c_key_builder}{XCKeyBuilder}}*)forItemNamed:(NSString*)name;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 + (\mbox{\hyperlink{interface_x_c_key_builder}{XCKeyBuilder}}*)createUnique;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 -\/ (id)initHashValueMD5HashWithBytes:(const \textcolor{keywordtype}{void}*)bytes length:(NSUInteger)length;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 -\/ (NSString*)build;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{@end}}
+\DoxyCodeLine{39 }
+
+\end{DoxyCode}

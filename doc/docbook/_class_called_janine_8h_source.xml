@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__class_called_janine_8h_source" xml:lang="en-US">
+<title>ClassCalledJanine.h</title>
+<indexterm><primary>ClassCalledJanine.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+2 
+3 
+4 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_class_called_janine">ClassCalledJanine</link>&#32;:&#32;NSObject
+5 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

@@ -1,0 +1,90 @@
+\hypertarget{_x_c_target_8h_source}{}\doxysection{XCTarget.\+h}
+\label{_x_c_target_8h_source}\index{XCTarget.h@{XCTarget.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_project}{XCProject}};}
+\DoxyCodeLine{16 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}};}
+\DoxyCodeLine{17 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_project_build_config}{XCProjectBuildConfig}};}
+\DoxyCodeLine{18 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_build_shell_script}{XCBuildShellScript}};}
+\DoxyCodeLine{19 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_build_shell_script_definition}{XCBuildShellScriptDefinition}};}
+\DoxyCodeLine{20 \textcolor{keyword}{@protocol }\mbox{\hyperlink{protocol_x_c_build_file-p}{XCBuildFile}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{25 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_target}{XCTarget}} : NSObject}
+\DoxyCodeLine{26 \{}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \mbox{\hyperlink{interface_x_c_project}{XCProject}}* \_project;}
+\DoxyCodeLine{29     NSString* \_key;}
+\DoxyCodeLine{30     NSString* \_name;}
+\DoxyCodeLine{31     NSString* \_productName;}
+\DoxyCodeLine{32     NSString* \_productReference;}
+\DoxyCodeLine{33     NSString* \_productType;}
+\DoxyCodeLine{34     NSString* \_defaultConfigurationName;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{@private}}
+\DoxyCodeLine{37     NSMutableArray* \_members;}
+\DoxyCodeLine{38     NSMutableArray* \_resources;}
+\DoxyCodeLine{39     NSMutableDictionary* \_configurations;}
+\DoxyCodeLine{40     NSMutableArray *\_buildShellScripts;}
+\DoxyCodeLine{41 \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* key;}
+\DoxyCodeLine{44 \textcolor{keyword}{@property}(nonatomic, strong) NSString* name;}
+\DoxyCodeLine{45 \textcolor{keyword}{@property}(nonatomic, strong) NSString* productName;}
+\DoxyCodeLine{46 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* productReference;}
+\DoxyCodeLine{47 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* productType;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 + (\mbox{\hyperlink{interface_x_c_target}{XCTarget}}*)targetWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName}
+\DoxyCodeLine{50     productReference:(NSString*)productReference productType:(NSString*)productType;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 -\/ (id)initWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key name:(NSString*)name productName:(NSString*)productName}
+\DoxyCodeLine{53     productReference:(NSString*)productReference productType:(NSString*)productType;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 -\/ (NSArray<\mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}}*>*)resources;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 -\/ (NSArray<id<\mbox{\hyperlink{protocol_x_c_build_file-p}{XCBuildFile}}>>*)members;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 -\/ (NSArray<\mbox{\hyperlink{interface_x_c_build_shell_script}{XCBuildShellScript}}*>*)buildShellScripts;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 -\/ (NSDictionary<NSString*,\mbox{\hyperlink{interface_x_c_project_build_config}{XCProjectBuildConfig}}*>*)configurations;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 -\/ (\mbox{\hyperlink{interface_x_c_project_build_config}{XCProjectBuildConfig}} *)configurationWithName:(NSString*)name;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 -\/ (\mbox{\hyperlink{interface_x_c_project_build_config}{XCProjectBuildConfig}} *)defaultConfiguration;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 -\/ (void)addMember:(\textcolor{keywordtype}{id}<\mbox{\hyperlink{protocol_x_c_build_file-p}{XCBuildFile}}>)member;}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 -\/ (void)makeAndAddShellScript:(\mbox{\hyperlink{interface_x_c_build_shell_script_definition}{XCBuildShellScriptDefinition}}*)shellScript;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 -\/ (void)removeShellScriptByName:(NSString*)name;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 -\/ (void)removeMemberWithKey:(NSString*)key;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 -\/ (void)removeMembersWithKeys:(NSArray<NSString*>*)keys;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 -\/ (void)removeResourceWithKey:(NSString*)key;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 -\/ (void)removeResourcesWithKeys:(NSArray<NSString*>*)keys;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 -\/ (void)addDependency:(NSString*)key;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 -\/ (instancetype)duplicateWithTargetName:(NSString*)targetName productName:(NSString*)productName;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 -\/ (BOOL)isApplicationType;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{keyword}{@end}}
+\DoxyCodeLine{88 }
+
+\end{DoxyCode}

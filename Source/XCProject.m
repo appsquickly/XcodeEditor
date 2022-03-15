@@ -17,6 +17,7 @@
 #import "XCFileOperationQueue.h"
 #import "XCProjectBuildConfig.h"
 #import "XCVersionGroup.h"
+#import "XcodeEditor-Prefix.pch"
 
 NSString *const XCProjectNotFoundException;
 
@@ -436,8 +437,7 @@ NSString *const XCProjectNotFoundException;
     
     // Don't forget to reset the cache so that we'll always get the latest data.
     [self dropCache];
-
-    NSLog(@"Saved project");
+    if ( DEBUG ) printf("Project %s saved\n", _filePath.lastPathComponent.UTF8String);
 }
 
 - (NSMutableDictionary *)objects

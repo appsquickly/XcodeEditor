@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_category_n_s_string_07_xcode_source_tree_type_extensions_08" xml:lang="en-US">
+<title>NSString(XcodeSourceTreeTypeExtensions) Category Reference</title>
+<indexterm><primary>NSString(XcodeSourceTreeTypeExtensions)</primary></indexterm>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_source_tree_type_extensions_08_1aa71895eb3611dc52402d8c5e2d34908f"/>(XcodeSourceTreeType) - <emphasis role="strong">xce_asSourceTreeType</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_xcode_source_tree_type_extensions_08_1a6c173a5ecd5deaf2d62a25c6dd34eb9e"/>(NSString *) + <emphasis role="strong">xce_stringFromSourceTreeType:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this category was generated from the following files:</para>
+XcodeSourceTreeType.hXcodeSourceTreeType.m</section>

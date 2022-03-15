@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_abstract_definition" xml:lang="en-US">
+<title>XCAbstractDefinition Class Reference</title>
+<indexterm><primary>XCAbstractDefinition</primary></indexterm>
+<para>
+<computeroutput>#import &lt;XCAbstractDefinition.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for XCAbstractDefinition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_abstract_definition.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_abstract_definition_1a7403687ee4cd520f5a67743965744c07"/>XCFileOperationType <emphasis role="strong">_fileOperationType</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_abstract_definition_1a1d6a905c3233209a6557aa3d730dfa84"/>XCFileOperationType <emphasis role="strong">fileOperationType</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Holds properties to all types of resource that can be added to an Xcode project. </para>
+<para>
+The documentation for this class was generated from the following file:</para>
+XCAbstractDefinition.h</section>
+</section>

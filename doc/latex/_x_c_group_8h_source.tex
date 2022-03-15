@@ -1,0 +1,144 @@
+\hypertarget{_x_c_group_8h_source}{}\doxysection{XCGroup.\+h}
+\label{_x_c_group_8h_source}\index{XCGroup.h@{XCGroup.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeGroupMember.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeSourceFileType.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#import <XcodeEditor/XCBuildFile.h>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_project}{XCProject}};}
+\DoxyCodeLine{19 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}};}
+\DoxyCodeLine{20 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}};}
+\DoxyCodeLine{21 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}};}
+\DoxyCodeLine{22 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_file_operation_queue}{XCFileOperationQueue}};}
+\DoxyCodeLine{23 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}};}
+\DoxyCodeLine{24 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}};}
+\DoxyCodeLine{25 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}};}
+\DoxyCodeLine{26 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_target}{XCTarget}};}
+\DoxyCodeLine{27 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_version_group}{XCVersionGroup}};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{33 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_group}{XCGroup}} : NSObject <\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}, \mbox{\hyperlink{protocol_x_c_build_file-p}{XCBuildFile}}>}
+\DoxyCodeLine{34 \{}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     NSString* \_pathRelativeToParent;}
+\DoxyCodeLine{37     NSString* \_key;}
+\DoxyCodeLine{38     NSString* \_alias;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{@private}}
+\DoxyCodeLine{42     NSString* \_pathRelativeToProjectRoot;}
+\DoxyCodeLine{43     NSMutableArray* \_children;}
+\DoxyCodeLine{44     NSMutableArray* \_members;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     NSNumber *\_isBuildFile;}
+\DoxyCodeLine{47     NSString *\_buildFileKey;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \mbox{\hyperlink{interface_x_c_file_operation_queue}{XCFileOperationQueue}}* \_fileOperationQueue;}
+\DoxyCodeLine{50     \mbox{\hyperlink{interface_x_c_project}{XCProject}}* \_project;}
+\DoxyCodeLine{51     XcodeMemberType \_memberType;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 }
+\DoxyCodeLine{61 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* alias;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{68 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* pathRelativeToParent;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{73 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* key;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{78 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSMutableArray<id<XcodeGroupMember>>* children;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#pragma mark Initializers}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 + (\mbox{\hyperlink{interface_x_c_group}{XCGroup}}*)groupWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<\textcolor{keywordtype}{id}<\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}>>*)children;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 + (\mbox{\hyperlink{interface_x_c_group}{XCGroup}}*)groupWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<\textcolor{keywordtype}{id}<\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}>>*)children memberType:(XcodeMemberType)groupType;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 -\/ (id)initWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<\textcolor{keywordtype}{id}<\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}>>*)children;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 -\/ (id)initWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key alias:(NSString*)alias path:(NSString*)path children:(NSArray<\textcolor{keywordtype}{id}<\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}>>*)children memberType:(XcodeMemberType)groupType;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#pragma mark Parent group}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 -\/ (void)removeFromParentGroup;}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 -\/ (void)removeFromParentDeletingChildren:(BOOL)deleteChildren;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 -\/ (\mbox{\hyperlink{interface_x_c_group}{XCGroup}}*)parentGroup;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 -\/ (BOOL)isRootGroup;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 -\/ (BOOL)isEmpty;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#pragma mark Adding children}}
+\DoxyCodeLine{108 -\/ (void)addClass:(\mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}}*)classDefinition;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{113 -\/ (void)addClass:(\mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}}*)classDefinition toTargets:(NSArray<\mbox{\hyperlink{interface_x_c_target}{XCTarget}}*>*)targets;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{118 -\/ (void)removeClass:(\mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}}*)classDefinition fromTargets:(NSArray*)targets;}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{123 -\/ (void)removeHeader:(\mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}}*)classDefinition;}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{129 -\/ (void)addFramework:(\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}}*)frameworkDefinition;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{134 -\/ (void) removeFramework:(\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}} *)frameworkDefinition fromTargets:(NSArray *)targets;}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{139 -\/ (\mbox{\hyperlink{interface_x_c_group}{XCGroup}}*)addGroupWithPath:(NSString*)path;}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{144 -\/ (\mbox{\hyperlink{interface_x_c_group}{XCGroup}}*)addGroupWithAlias:(NSString *)alias;}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{149 -\/ (\mbox{\hyperlink{interface_x_c_group}{XCGroup}}*)addGroupWithAlias:(NSString *)alias groupType:(XcodeMemberType)type;}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{154 -\/ (\mbox{\hyperlink{interface_x_c_version_group}{XCVersionGroup}}*)addVersionGroupWithPath:(NSString*)path;}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{159 -\/ (void)addFolderReference:(NSString*)sourceFolder;}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 -\/ (void)addFileReference:(NSString *)filePath withType:(XcodeSourceFileType)type;}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{166 -\/ (\mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}}*)addFramework:(\mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}}*)framework toTargets:(NSArray<\mbox{\hyperlink{interface_x_c_target}{XCTarget}}*>*)targets;}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{171 -\/ (void)addSourceFile:(\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}*)sourceFileDefinition;}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173 }
+\DoxyCodeLine{177 -\/ (void)addXib:(\mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}}*)xibDefinition;}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{182 -\/ (void)addXib:(\mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}}*)xibDefinition toTargets:(NSArray<\mbox{\hyperlink{interface_x_c_target}{XCTarget}}*>*)targets;}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{190 -\/ (void)addSubProject:(\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}}*)projectDefinition;}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{195 -\/ (void)addSubProject:(\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}}*)projectDefinition toTargets:(NSArray<\mbox{\hyperlink{interface_x_c_target}{XCTarget}}*>*)targets;}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 -\/ (void)removeSubProject:(\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}}*)projectDefinition;}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199 -\/ (void)removeSubProject:(\mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}}*)projectDefinition fromTargets:(NSArray<\mbox{\hyperlink{interface_x_c_target}{XCTarget}}*>*)targets;}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#pragma mark Locating children}}
+\DoxyCodeLine{206 -\/ (NSArray<id<\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}>>*)members;}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{211 -\/ (NSArray<NSString*>*)recursiveMembers;}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{216 -\/ (NSArray<NSString*>*)buildFileKeys;}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{221 -\/ (\textcolor{keywordtype}{id} <\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}>)memberWithKey:(NSString*)key;}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{226 -\/ (\textcolor{keywordtype}{id} <\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}}>)memberWithDisplayName:(NSString*)name;}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{231 -\/ (void)removeMemberWithKey:(NSString*)key;}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

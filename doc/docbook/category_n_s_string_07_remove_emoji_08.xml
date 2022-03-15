@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_category_n_s_string_07_remove_emoji_08" xml:lang="en-US">
+<title>NSString(RemoveEmoji) Category Reference</title>
+<indexterm><primary>NSString(RemoveEmoji)</primary></indexterm>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_remove_emoji_08_1ac1f0436d5d2e1c710f616b4d7acd1253"/>(BOOL) - <emphasis role="strong">isIncludingEmoji</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_remove_emoji_08_1aac8e33ce5dacdfbed2811f341b69bf5d"/>(instancetype) - <emphasis role="strong">stringByRemovingEmoji</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_category_n_s_string_07_remove_emoji_08_1a595b600cfebed475788feed38314af98"/>((deprecated) - <emphasis role="strong">__attribute__</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this category was generated from the following files:</para>
+NSString+RemoveEmoji.hNSString+RemoveEmoji.m</section>

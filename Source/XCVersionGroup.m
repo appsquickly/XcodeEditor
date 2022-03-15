@@ -14,6 +14,7 @@
 #import "XCKeyBuilder.h"
 #import "XCSourceFileDefinition.h"
 #import "XCProject+SubProject.h"
+#import "XcodeEditor-Prefix.pch"
 
 @implementation XCVersionGroup
 
@@ -69,20 +70,21 @@
         [_fileOperationQueue queueDeletion:[self pathRelativeToProjectRoot]];
     }
     NSDictionary* dictionary = [_project objects][_key];
-    NSLog(@"Here's the dictionary: %@", dictionary);
-    
+    if (( dictionary ) &&( DEBUG )) printf("Dictionary: %s\n", dictionary.description.UTF8String ); else if ( DEBUG ) printf("No Dictionary\n");
+
     [[_project objects] removeObjectForKey:_key];
     
     dictionary = [_project objects][_key];
-    NSLog(@"Here's the dictionary: %@", dictionary);
-    
+    if ( DEBUG ) printf("%s",__func__);
+    if (( dictionary ) && ( DEBUG )) printf("Dictionary: %s\n", dictionary.description.UTF8String ); else if ( DEBUG ) printf("No Dictionary\n");
+
     for (XCTarget* target in [_project targets])
     {
         for (XCSourceFile *source in [self members]) {
             [target removeMemberWithKey:source.key];
         }
     }
-    NSLog(@"Done!!!");
+    if ( DEBUG ) puts("group removed");
 }
 
 - (XCGroup*)parentGroup

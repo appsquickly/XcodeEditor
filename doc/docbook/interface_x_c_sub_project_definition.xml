@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_sub_project_definition" xml:lang="en-US">
+<title>XCSubProjectDefinition Class Reference</title>
+<indexterm><primary>XCSubProjectDefinition</primary></indexterm>
+<para>Inheritance diagram for XCSubProjectDefinition:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_sub_project_definition.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a53d521ea7fae7db7e9aedcb38b7ae801"/>(id) - <emphasis role="strong">initWithName:path:parentProject:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a6547ce2981677bb48ada29f755578bab"/>(NSString *) - <emphasis role="strong">projectFileName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1ae86cd94d3b946147cf9f85aa232fc48d"/>(NSString *) - <emphasis role="strong">fullPathName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a7f1306be6f728cee5fff0a227965adfa"/>(NSArray&lt; NSString * &gt; *) - <emphasis role="strong">buildProductNames</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a4fef8b1017918476188ac37e4ef35c8a"/>(NSString *) - <emphasis role="strong">projectKey</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1ac77271ef0fb480fef436edec4da52e38"/>(NSString *) - <emphasis role="strong">pathRelativeToProjectRoot</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1ab1665e46fec97cc08298b7e1da0ead41"/>(void) - <emphasis role="strong">initFullProjectPath:groupPath:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a0caa409f6624fff4c7ccfa725700320b"/>(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link> *) + <emphasis role="strong">withName:path:parentProject:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a072b5d3edfc113540ae2b3eae0013599"/>NSString * <emphasis role="strong">_name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a584269eeb584b4420ff0ffa069696ac1"/>NSString * <emphasis role="strong">_path</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1aa37c5dedcbb833305484f4f6d044d740"/>XcodeSourceFileType <emphasis role="strong">_type</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a33a8195d958daadb4246fae77f06996e"/><link linkend="_interface_x_c_project">XCProject</link> * <emphasis role="strong">_subProject</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a1523a192c4e777b49e99c1917510e15c"/><link linkend="_interface_x_c_project">XCProject</link> * <emphasis role="strong">_parentProject</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a4f6c5012222b6a82ab7b8cbeab37a26c"/>NSString * <emphasis role="strong">_key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a4c3a4943f32b50b230a1d9be0a8e219f"/>NSString * <emphasis role="strong">_fullProjectPath</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a551d51ffe95bc16877bcfdcdc1a7d5e0"/>NSString * <emphasis role="strong">_relativePath</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a67afe67729dc553562b66a7651650e98"/>NSString * <emphasis role="strong">name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a655b86f19b418a200951fca36d82f3de"/>NSString * <emphasis role="strong">path</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1ae5394747200ae66dd78766930d478d96"/>XcodeSourceFileType <emphasis role="strong">type</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1ab011e26759fe6f64e2a0ed31d830ecad"/><link linkend="_interface_x_c_project">XCProject</link> * <emphasis role="strong">subProject</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1ad4d922689ef099b044a05842d6f93e9b"/><link linkend="_interface_x_c_project">XCProject</link> * <emphasis role="strong">parentProject</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1acce7c006ddf1978a968ec9a9e49be358"/>NSString * <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_sub_project_definition_1a76bb73ad50d92eb16225b774428b1723"/>NSString * <emphasis role="strong">fullProjectPath</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCSubProjectDefinition.hXCSubProjectDefinition.m</section>

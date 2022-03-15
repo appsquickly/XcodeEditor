@@ -1,0 +1,91 @@
+\hypertarget{_x_c_version_group_8h_source}{}\doxysection{XCVersion\+Group.\+h}
+\label{_x_c_version_group_8h_source}\index{XCVersionGroup.h@{XCVersionGroup.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{//  XCCoreDataModelVersioned.h}}
+\DoxyCodeLine{3 \textcolor{comment}{//  xcode-\/editor}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{//  Created by joel on 04/09/15.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeGroupMember.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#import <XcodeEditor/XCGroup.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#import <XcodeEditor/XCBuildFile.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_project}{XCProject}};}
+\DoxyCodeLine{15 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_class_definition}{XCClassDefinition}};}
+\DoxyCodeLine{16 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}};}
+\DoxyCodeLine{17 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_xib_definition}{XCXibDefinition}};}
+\DoxyCodeLine{18 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_file_operation_queue}{XCFileOperationQueue}};}
+\DoxyCodeLine{19 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_framework_definition}{XCFrameworkDefinition}};}
+\DoxyCodeLine{20 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}};}
+\DoxyCodeLine{21 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_sub_project_definition}{XCSubProjectDefinition}};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_version_group}{XCVersionGroup}} : NSObject <\mbox{\hyperlink{protocol_xcode_group_member-p}{XcodeGroupMember}},\mbox{\hyperlink{protocol_x_c_build_file-p}{XCBuildFile}}>}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     NSString* \_pathRelativeToParent;}
+\DoxyCodeLine{26     NSString* \_key;}
+\DoxyCodeLine{27     }
+\DoxyCodeLine{28 \textcolor{keyword}{@private}}
+\DoxyCodeLine{29     NSString* \_pathRelativeToProjectRoot;}
+\DoxyCodeLine{30     NSMutableArray* \_children;}
+\DoxyCodeLine{31     NSMutableArray* \_members;}
+\DoxyCodeLine{32     NSString *\_currentVersion;}
+\DoxyCodeLine{33     NSString *\_versionGroupType;}
+\DoxyCodeLine{34     }
+\DoxyCodeLine{35     NSNumber *\_isBuildFile;}
+\DoxyCodeLine{36     NSString *\_buildFileKey;}
+\DoxyCodeLine{37     }
+\DoxyCodeLine{38     \mbox{\hyperlink{interface_x_c_file_operation_queue}{XCFileOperationQueue}}* \_fileOperationQueue; \textcolor{comment}{// weak}}
+\DoxyCodeLine{39     \mbox{\hyperlink{interface_x_c_project}{XCProject}}* \_project;}
+\DoxyCodeLine{40     }
+\DoxyCodeLine{41 \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{49 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* alias;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{56 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* pathRelativeToParent;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{61 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* key;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{66 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSMutableArray* versions;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{keyword}{@property}(nonatomic,strong) NSString*currentVersion;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#pragma mark Initializers}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 + (\mbox{\hyperlink{interface_x_c_version_group}{XCVersionGroup}}*)versionGroupWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key path:(NSString*)path children:(NSArray*)children currentVersion:(NSString*)currentVersion;}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 -\/ (id)initWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key path:(NSString*)path children:(NSArray*)children currentVersion:(NSString*)currentVersion;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#pragma mark Parent group}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 -\/ (void)removeFromParentGroup;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 -\/ (void)removeFromParentDeletingChildren:(BOOL)deleteChildren;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 -\/ (\mbox{\hyperlink{interface_x_c_group}{XCGroup}}*)parentGroup;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#pragma mark Adding children}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{90 -\/ (void)addDataModelSource:(\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}*)sourceFileDefinition;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#pragma mark Locating children}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 -\/ (NSArray<\mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}}*>*)members;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 -\/ (NSArray<NSString*>*)buildFileKeys;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{101 -\/ (\mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}}*)memberWithKey:(NSString*)key;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{106 -\/ (\mbox{\hyperlink{interface_x_c_source_file}{XCSourceFile}}*)memberWithDisplayName:(NSString*)name;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 -\/ (NSDictionary*)asDictionary;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

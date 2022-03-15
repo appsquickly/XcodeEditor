@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_key_builder_8h_source" xml:lang="en-US">
+<title>XCKeyBuilder.h</title>
+<indexterm><primary>XCKeyBuilder.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;-&#32;2013&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+14 
+15 
+16 <emphasis role="preprocessor">#define&#32;HASH_VALUE_STORAGE_SIZE&#32;48</emphasis>
+17 <emphasis role="preprocessor">#define&#32;MD5_DIGEST_LENGTH&#32;16</emphasis>
+18 
+19 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+20 {
+21 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;value[MD5_DIGEST_LENGTH];
+22 }&#32;<link linkend="_struct_hash_value_m_d5_hash">HashValueMD5Hash</link>;
+23 
+24 
+25 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_key_builder">XCKeyBuilder</link>&#32;:&#32;NSObject
+26 {
+27 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;_value[HASH_VALUE_STORAGE_SIZE];
+28 }
+29 
+30 +&#32;(<link linkend="_interface_x_c_key_builder">XCKeyBuilder</link>*)forItemNamed:(NSString*)name;
+31 
+32 +&#32;(<link linkend="_interface_x_c_key_builder">XCKeyBuilder</link>*)createUnique;
+33 
+34 -&#32;(id)initHashValueMD5HashWithBytes:(const&#32;<emphasis role="keywordtype">void</emphasis>*)bytes&#32;length:(NSUInteger)length;
+35 
+36 -&#32;(NSString*)build;
+37 
+38 <emphasis role="keyword">@end</emphasis>
+39 
+</programlisting></section>

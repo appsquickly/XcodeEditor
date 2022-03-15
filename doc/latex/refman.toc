@@ -1,0 +1,180 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Description}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Usage}{1}{section.1.1}% 
+\contentsline {subsubsection}{\numberline {1.1.0.1}Adding Source Files to a Project}{1}{subsubsection.1.1.0.1}% 
+\contentsline {subsubsection}{\numberline {1.1.0.2}Duplicating Targets}{1}{subsubsection.1.1.0.2}% 
+\contentsline {subsubsection}{\numberline {1.1.0.3}Specifying Source File Belongs to Target}{1}{subsubsection.1.1.0.3}% 
+\contentsline {subsubsection}{\numberline {1.1.0.4}Adding a Xib File}{1}{subsubsection.1.1.0.4}% 
+\contentsline {subsubsection}{\numberline {1.1.0.5}Adding a Framework}{1}{subsubsection.1.1.0.5}% 
+\contentsline {subsubsection}{\numberline {1.1.0.6}Adding an Image Resource}{2}{subsubsection.1.1.0.6}% 
+\contentsline {subsubsection}{\numberline {1.1.0.7}Adding Asset Catalog (\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Image\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Set)}{2}{subsubsection.1.1.0.7}% 
+\contentsline {subsubsection}{\numberline {1.1.0.8}Adding a Header}{2}{subsubsection.1.1.0.8}% 
+\contentsline {subsubsection}{\numberline {1.1.0.9}Adding a sub-\/project}{2}{subsubsection.1.1.0.9}% 
+\contentsline {subsubsection}{\numberline {1.1.0.10}Removing a sub-\/project}{2}{subsubsection.1.1.0.10}% 
+\contentsline {subsubsection}{\numberline {1.1.0.11}Configuring targets}{2}{subsubsection.1.1.0.11}% 
+\contentsline {subsubsection}{\numberline {1.1.0.12}Adding a Library}{3}{subsubsection.1.1.0.12}% 
+\contentsline {subsubsection}{\numberline {1.1.0.13}File write behavior}{3}{subsubsection.1.1.0.13}% 
+\contentsline {section}{\numberline {1.2}Building}{3}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Feature Requests and Contributions}{3}{section.1.3}% 
+\contentsline {section}{\numberline {1.4}Compatibility}{3}{section.1.4}% 
+\contentsline {section}{\numberline {1.5}Who\textquotesingle {}s using it?}{3}{section.1.5}% 
+\contentsline {section}{\numberline {1.6}Authors}{4}{section.1.6}% 
+\contentsline {subsubsection}{\numberline {1.6.0.1}With contributions from\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}:}{4}{subsubsection.1.6.0.1}% 
+\contentsline {section}{\numberline {1.7}LICENSE}{4}{section.1.7}% 
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{5}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{5}{section.2.1}% 
+\contentsline {chapter}{\numberline {3}Class Index}{7}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Class List}{7}{section.3.1}% 
+\contentsline {chapter}{\numberline {4}File Index}{9}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}File List}{9}{section.4.1}% 
+\contentsline {chapter}{\numberline {5}Class Documentation}{11}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Class\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Called\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Janine Class Reference}{11}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Hash\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Value\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}MD5\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Hash Struct Reference}{11}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}NSString(Remove\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Emoji) Category Reference}{11}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}NSString(Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Member\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Type\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Extensions) Category Reference}{12}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}NSString(Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Source\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tree\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Type\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Extensions) Category Reference}{12}{section.5.5}% 
+\contentsline {section}{\numberline {5.6}XCAbstract\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition Class Reference}{13}{section.5.6}% 
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{13}{subsection.5.6.1}% 
+\contentsline {section}{\numberline {5.7}$<$XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File$>$ Protocol Reference}{13}{section.5.7}% 
+\contentsline {subsection}{\numberline {5.7.1}Method Documentation}{14}{subsection.5.7.1}% 
+\contentsline {subsubsection}{\numberline {5.7.1.1}becomeBuildFile}{14}{subsubsection.5.7.1.1}% 
+\contentsline {subsubsection}{\numberline {5.7.1.2}isBuildFile}{14}{subsubsection.5.7.1.2}% 
+\contentsline {section}{\numberline {5.8}XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Shell\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Script Class Reference}{14}{section.5.8}% 
+\contentsline {section}{\numberline {5.9}XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Shell\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Script\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition Class Reference}{15}{section.5.9}% 
+\contentsline {section}{\numberline {5.10}XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Shell\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Script\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{16}{section.5.10}% 
+\contentsline {section}{\numberline {5.11}XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Shell\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Script\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{16}{section.5.11}% 
+\contentsline {section}{\numberline {5.12}XCClass\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition Class Reference}{17}{section.5.12}% 
+\contentsline {subsection}{\numberline {5.12.1}Method Documentation}{17}{subsection.5.12.1}% 
+\contentsline {subsubsection}{\numberline {5.12.1.1}initWithName:}{17}{subsubsection.5.12.1.1}% 
+\contentsline {subsubsection}{\numberline {5.12.1.2}initWithName:language:}{18}{subsubsection.5.12.1.2}% 
+\contentsline {section}{\numberline {5.13}XCClass\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{18}{section.5.13}% 
+\contentsline {section}{\numberline {5.14}XCFile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Operation\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Queue Class Reference}{18}{section.5.14}% 
+\contentsline {section}{\numberline {5.15}XCFile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Operation\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Queue() Category Reference}{19}{section.5.15}% 
+\contentsline {section}{\numberline {5.16}XCFramework\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition Class Reference}{19}{section.5.16}% 
+\contentsline {section}{\numberline {5.17}XCFramework\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path Class Reference}{20}{section.5.17}% 
+\contentsline {section}{\numberline {5.18}XCGroup Class Reference}{20}{section.5.18}% 
+\contentsline {subsection}{\numberline {5.18.1}Detailed Description}{22}{subsection.5.18.1}% 
+\contentsline {subsection}{\numberline {5.18.2}Method Documentation}{22}{subsection.5.18.2}% 
+\contentsline {subsubsection}{\numberline {5.18.2.1}addClass:}{22}{subsubsection.5.18.2.1}% 
+\contentsline {subsubsection}{\numberline {5.18.2.2}addClass:toTargets:}{22}{subsubsection.5.18.2.2}% 
+\contentsline {subsubsection}{\numberline {5.18.2.3}addFolderReference:}{22}{subsubsection.5.18.2.3}% 
+\contentsline {subsubsection}{\numberline {5.18.2.4}addFramework:}{22}{subsubsection.5.18.2.4}% 
+\contentsline {subsubsection}{\numberline {5.18.2.5}addFramework:toTargets:}{22}{subsubsection.5.18.2.5}% 
+\contentsline {subsubsection}{\numberline {5.18.2.6}addGroupWithAlias:}{23}{subsubsection.5.18.2.6}% 
+\contentsline {subsubsection}{\numberline {5.18.2.7}addGroupWithAlias:groupType:}{23}{subsubsection.5.18.2.7}% 
+\contentsline {subsubsection}{\numberline {5.18.2.8}addGroupWithPath:}{23}{subsubsection.5.18.2.8}% 
+\contentsline {subsubsection}{\numberline {5.18.2.9}addSourceFile:}{23}{subsubsection.5.18.2.9}% 
+\contentsline {subsubsection}{\numberline {5.18.2.10}addSubProject:}{23}{subsubsection.5.18.2.10}% 
+\contentsline {subsubsection}{\numberline {5.18.2.11}addSubProject:toTargets:}{23}{subsubsection.5.18.2.11}% 
+\contentsline {subsubsection}{\numberline {5.18.2.12}addVersionGroupWithPath:}{24}{subsubsection.5.18.2.12}% 
+\contentsline {subsubsection}{\numberline {5.18.2.13}addXib:}{24}{subsubsection.5.18.2.13}% 
+\contentsline {subsubsection}{\numberline {5.18.2.14}addXib:toTargets:}{24}{subsubsection.5.18.2.14}% 
+\contentsline {subsubsection}{\numberline {5.18.2.15}buildFileKeys}{24}{subsubsection.5.18.2.15}% 
+\contentsline {subsubsection}{\numberline {5.18.2.16}members}{24}{subsubsection.5.18.2.16}% 
+\contentsline {subsubsection}{\numberline {5.18.2.17}memberWithDisplayName:}{24}{subsubsection.5.18.2.17}% 
+\contentsline {subsubsection}{\numberline {5.18.2.18}memberWithKey:}{24}{subsubsection.5.18.2.18}% 
+\contentsline {subsubsection}{\numberline {5.18.2.19}recursiveMembers}{25}{subsubsection.5.18.2.19}% 
+\contentsline {subsubsection}{\numberline {5.18.2.20}removeClass:fromTargets:}{25}{subsubsection.5.18.2.20}% 
+\contentsline {subsubsection}{\numberline {5.18.2.21}removeFramework:fromTargets:}{25}{subsubsection.5.18.2.21}% 
+\contentsline {subsubsection}{\numberline {5.18.2.22}removeHeader:}{25}{subsubsection.5.18.2.22}% 
+\contentsline {subsubsection}{\numberline {5.18.2.23}removeMemberWithKey:}{25}{subsubsection.5.18.2.23}% 
+\contentsline {subsection}{\numberline {5.18.3}Property Documentation}{25}{subsection.5.18.3}% 
+\contentsline {subsubsection}{\numberline {5.18.3.1}alias}{25}{subsubsection.5.18.3.1}% 
+\contentsline {subsubsection}{\numberline {5.18.3.2}children}{26}{subsubsection.5.18.3.2}% 
+\contentsline {subsubsection}{\numberline {5.18.3.3}key}{26}{subsubsection.5.18.3.3}% 
+\contentsline {subsubsection}{\numberline {5.18.3.4}pathRelativeToParent}{26}{subsubsection.5.18.3.4}% 
+\contentsline {section}{\numberline {5.19}XCGroup\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{26}{section.5.19}% 
+\contentsline {section}{\numberline {5.20}XCKey\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Builder Class Reference}{26}{section.5.20}% 
+\contentsline {section}{\numberline {5.21}XCKey\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Builder\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{27}{section.5.21}% 
+\contentsline {section}{\numberline {5.22}Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Reference\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Type\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{27}{section.5.22}% 
+\contentsline {section}{\numberline {5.23}$<$Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Group\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Member$>$ Protocol Reference}{28}{section.5.23}% 
+\contentsline {subsection}{\numberline {5.23.1}Method Documentation}{28}{subsection.5.23.1}% 
+\contentsline {subsubsection}{\numberline {5.23.1.1}groupMemberType}{28}{subsubsection.5.23.1.1}% 
+\contentsline {section}{\numberline {5.24}XCProject Class Reference}{28}{section.5.24}% 
+\contentsline {subsection}{\numberline {5.24.1}Method Documentation}{30}{subsection.5.24.1}% 
+\contentsline {subsubsection}{\numberline {5.24.1.1}applicationTargets}{30}{subsubsection.5.24.1.1}% 
+\contentsline {subsubsection}{\numberline {5.24.1.2}configurations}{30}{subsubsection.5.24.1.2}% 
+\contentsline {subsubsection}{\numberline {5.24.1.3}configurationWithName:}{30}{subsubsection.5.24.1.3}% 
+\contentsline {subsubsection}{\numberline {5.24.1.4}files}{30}{subsubsection.5.24.1.4}% 
+\contentsline {subsubsection}{\numberline {5.24.1.5}fileWithKey:}{31}{subsubsection.5.24.1.5}% 
+\contentsline {subsubsection}{\numberline {5.24.1.6}fileWithName:}{31}{subsubsection.5.24.1.6}% 
+\contentsline {subsubsection}{\numberline {5.24.1.7}groupForGroupMemberWithKey:}{31}{subsubsection.5.24.1.7}% 
+\contentsline {subsubsection}{\numberline {5.24.1.8}groups}{31}{subsubsection.5.24.1.8}% 
+\contentsline {subsubsection}{\numberline {5.24.1.9}groupWithDisplayName:}{31}{subsubsection.5.24.1.9}% 
+\contentsline {subsubsection}{\numberline {5.24.1.10}groupWithKey:}{31}{subsubsection.5.24.1.10}% 
+\contentsline {subsubsection}{\numberline {5.24.1.11}groupWithPathFromRoot:}{31}{subsubsection.5.24.1.11}% 
+\contentsline {subsubsection}{\numberline {5.24.1.12}groupWithSourceFile:}{32}{subsubsection.5.24.1.12}% 
+\contentsline {subsubsection}{\numberline {5.24.1.13}headerFiles}{32}{subsubsection.5.24.1.13}% 
+\contentsline {subsubsection}{\numberline {5.24.1.14}initWithFilePath:}{32}{subsubsection.5.24.1.14}% 
+\contentsline {subsubsection}{\numberline {5.24.1.15}mainGroup}{32}{subsubsection.5.24.1.15}% 
+\contentsline {subsubsection}{\numberline {5.24.1.16}objectiveCFiles}{32}{subsubsection.5.24.1.16}% 
+\contentsline {subsubsection}{\numberline {5.24.1.17}objectiveCPlusPlusFiles}{32}{subsubsection.5.24.1.17}% 
+\contentsline {subsubsection}{\numberline {5.24.1.18}objects}{32}{subsubsection.5.24.1.18}% 
+\contentsline {subsubsection}{\numberline {5.24.1.19}pruneEmptyGroups}{33}{subsubsection.5.24.1.19}% 
+\contentsline {subsubsection}{\numberline {5.24.1.20}rootGroup}{33}{subsubsection.5.24.1.20}% 
+\contentsline {subsubsection}{\numberline {5.24.1.21}rootGroups}{33}{subsubsection.5.24.1.21}% 
+\contentsline {subsubsection}{\numberline {5.24.1.22}save}{33}{subsubsection.5.24.1.22}% 
+\contentsline {subsubsection}{\numberline {5.24.1.23}targets}{33}{subsubsection.5.24.1.23}% 
+\contentsline {subsubsection}{\numberline {5.24.1.24}targetWithName:}{33}{subsubsection.5.24.1.24}% 
+\contentsline {subsubsection}{\numberline {5.24.1.25}versionGroups}{33}{subsubsection.5.24.1.25}% 
+\contentsline {subsubsection}{\numberline {5.24.1.26}versionGroupWithKey:}{34}{subsubsection.5.24.1.26}% 
+\contentsline {subsubsection}{\numberline {5.24.1.27}versionGroupWithName:}{34}{subsubsection.5.24.1.27}% 
+\contentsline {subsubsection}{\numberline {5.24.1.28}xibFiles}{34}{subsubsection.5.24.1.28}% 
+\contentsline {section}{\numberline {5.25}XCProject(Sub\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Project) Category Reference}{34}{section.5.25}% 
+\contentsline {section}{\numberline {5.26}XCProject\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Build\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Config Class Reference}{35}{section.5.26}% 
+\contentsline {section}{\numberline {5.27}XCProject\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{35}{section.5.27}% 
+\contentsline {section}{\numberline {5.28}XCSource\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File Class Reference}{36}{section.5.28}% 
+\contentsline {subsection}{\numberline {5.28.1}Detailed Description}{36}{subsection.5.28.1}% 
+\contentsline {subsection}{\numberline {5.28.2}Method Documentation}{36}{subsection.5.28.2}% 
+\contentsline {subsubsection}{\numberline {5.28.2.1}becomeBuildFile}{37}{subsubsection.5.28.2.1}% 
+\contentsline {subsubsection}{\numberline {5.28.2.2}buildFileKey}{37}{subsubsection.5.28.2.2}% 
+\contentsline {subsubsection}{\numberline {5.28.2.3}buildPhase}{37}{subsubsection.5.28.2.3}% 
+\contentsline {subsubsection}{\numberline {5.28.2.4}isBuildFile}{37}{subsubsection.5.28.2.4}% 
+\contentsline {subsubsection}{\numberline {5.28.2.5}removeBuildFile}{37}{subsubsection.5.28.2.5}% 
+\contentsline {subsubsection}{\numberline {5.28.2.6}setCompilerFlags:}{37}{subsubsection.5.28.2.6}% 
+\contentsline {subsubsection}{\numberline {5.28.2.7}setWeakReference}{38}{subsubsection.5.28.2.7}% 
+\contentsline {section}{\numberline {5.29}XCSource\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition Class Reference}{38}{section.5.29}% 
+\contentsline {section}{\numberline {5.30}XCSub\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Project\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition Class Reference}{39}{section.5.30}% 
+\contentsline {section}{\numberline {5.31}XCSub\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Project\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition() Category Reference}{40}{section.5.31}% 
+\contentsline {section}{\numberline {5.32}XCSub\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Project\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{40}{section.5.32}% 
+\contentsline {section}{\numberline {5.33}XCTarget Class Reference}{40}{section.5.33}% 
+\contentsline {subsection}{\numberline {5.33.1}Detailed Description}{41}{subsection.5.33.1}% 
+\contentsline {section}{\numberline {5.34}XCTarget\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tests Class Reference}{42}{section.5.34}% 
+\contentsline {section}{\numberline {5.35}XCVersion\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Group Class Reference}{42}{section.5.35}% 
+\contentsline {subsection}{\numberline {5.35.1}Method Documentation}{43}{subsection.5.35.1}% 
+\contentsline {subsubsection}{\numberline {5.35.1.1}addDataModelSource:}{43}{subsubsection.5.35.1.1}% 
+\contentsline {subsubsection}{\numberline {5.35.1.2}memberWithDisplayName:}{43}{subsubsection.5.35.1.2}% 
+\contentsline {subsubsection}{\numberline {5.35.1.3}memberWithKey:}{43}{subsubsection.5.35.1.3}% 
+\contentsline {subsection}{\numberline {5.35.2}Property Documentation}{43}{subsection.5.35.2}% 
+\contentsline {subsubsection}{\numberline {5.35.2.1}alias}{43}{subsubsection.5.35.2.1}% 
+\contentsline {subsubsection}{\numberline {5.35.2.2}key}{44}{subsubsection.5.35.2.2}% 
+\contentsline {subsubsection}{\numberline {5.35.2.3}pathRelativeToParent}{44}{subsubsection.5.35.2.3}% 
+\contentsline {subsubsection}{\numberline {5.35.2.4}versions}{44}{subsubsection.5.35.2.4}% 
+\contentsline {section}{\numberline {5.36}XCXib\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition Class Reference}{44}{section.5.36}% 
+\contentsline {chapter}{\numberline {6}File Documentation}{47}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}NSString+\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Remove\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Emoji.h}{47}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}XCAbstract\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{47}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{48}{section.6.3}% 
+\contentsline {section}{\numberline {6.4}XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Shell\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Script.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{48}{section.6.4}% 
+\contentsline {section}{\numberline {6.5}XCBuild\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Shell\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Script\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{49}{section.6.5}% 
+\contentsline {section}{\numberline {6.6}XCClass\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{49}{section.6.6}% 
+\contentsline {section}{\numberline {6.7}XCFile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Operation\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Queue.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{50}{section.6.7}% 
+\contentsline {section}{\numberline {6.8}XCFramework\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{51}{section.6.8}% 
+\contentsline {section}{\numberline {6.9}XCGroup.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{51}{section.6.9}% 
+\contentsline {section}{\numberline {6.10}XCKey\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Builder.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{53}{section.6.10}% 
+\contentsline {section}{\numberline {6.11}Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Editor.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{53}{section.6.11}% 
+\contentsline {section}{\numberline {6.12}Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Group\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Member.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{54}{section.6.12}% 
+\contentsline {section}{\numberline {6.13}Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Member\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Type.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{54}{section.6.13}% 
+\contentsline {section}{\numberline {6.14}Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Source\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Type.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{55}{section.6.14}% 
+\contentsline {section}{\numberline {6.15}Xcode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Source\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tree\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Type.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{56}{section.6.15}% 
+\contentsline {section}{\numberline {6.16}XCProject+\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Sub\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Project.h}{56}{section.6.16}% 
+\contentsline {section}{\numberline {6.17}XCProject.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{57}{section.6.17}% 
+\contentsline {section}{\numberline {6.18}XCProject\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Build\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Config.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{58}{section.6.18}% 
+\contentsline {section}{\numberline {6.19}XCSource\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{59}{section.6.19}% 
+\contentsline {section}{\numberline {6.20}XCSource\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}File\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{60}{section.6.20}% 
+\contentsline {section}{\numberline {6.21}XCSub\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Project\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{60}{section.6.21}% 
+\contentsline {section}{\numberline {6.22}XCTarget.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{61}{section.6.22}% 
+\contentsline {section}{\numberline {6.23}XCVersion\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Group.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{62}{section.6.23}% 
+\contentsline {section}{\numberline {6.24}XCXib\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Definition.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{63}{section.6.24}% 
+\contentsline {section}{\numberline {6.25}Class\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Called\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Janine.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{64}{section.6.25}% 
+\contentsline {section}{\numberline {6.26}XCTest\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Resource\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Utils.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{64}{section.6.26}% 

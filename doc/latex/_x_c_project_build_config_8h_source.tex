@@ -1,0 +1,48 @@
+\hypertarget{_x_c_project_build_config_8h_source}{}\doxysection{XCProject\+Build\+Config.\+h}
+\label{_x_c_project_build_config_8h_source}\index{XCProjectBuildConfig.h@{XCProjectBuildConfig.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{@class} \mbox{\hyperlink{interface_x_c_project}{XCProject}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_project_build_config}{XCProjectBuildConfig}} : NSObject}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18 \textcolor{keyword}{@private}}
+\DoxyCodeLine{19     \_\_weak \mbox{\hyperlink{interface_x_c_project}{XCProject}}* \_project;}
+\DoxyCodeLine{20     NSString* \_key;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     NSMutableDictionary* \_buildSettings;}
+\DoxyCodeLine{23     NSMutableDictionary* \_xcconfigSettings;}
+\DoxyCodeLine{24 \}}
+\DoxyCodeLine{25 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* key;}
+\DoxyCodeLine{26 \textcolor{keyword}{@property}(nonatomic, readonly) NSDictionary* specifiedBuildSettings;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 + (NSDictionary<NSString*,NSString*>*)buildConfigurationsFromArray:(NSArray<\mbox{\hyperlink{interface_x_c_project_build_config}{XCProjectBuildConfig}}*>*)array inProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 -\/ (instancetype)initWithProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project key:(NSString*)key;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 -\/ (void)addBuildSettings:(NSDictionary*)buildSettings;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 -\/ (void)addOrReplaceSetting:(\textcolor{keywordtype}{id} <NSCopying>)setting forKey:(NSString*)key;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 -\/ (\textcolor{keywordtype}{id} <NSCopying>)valueForKey:(NSString*)key;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 -\/(void)removeSettingByKey:(NSString*)key;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 + (NSString*)duplicatedBuildConfigurationListWithKey:(NSString*)buildConfigurationListKey inProject:(\mbox{\hyperlink{interface_x_c_project}{XCProject}}*)project}
+\DoxyCodeLine{41     withBuildConfigurationVisitor:(\textcolor{keywordtype}{void} (\string^)(NSMutableDictionary*))buildConfigurationVisitor;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

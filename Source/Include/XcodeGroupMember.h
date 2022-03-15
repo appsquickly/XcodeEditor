@@ -11,7 +11,7 @@
 
 
 
-#import "XcodeMemberType.h"
+#import <XcodeEditor/XcodeMemberType.h>
 
 @protocol XcodeGroupMember <NSObject>
 

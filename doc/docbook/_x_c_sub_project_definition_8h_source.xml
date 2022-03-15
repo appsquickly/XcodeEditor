@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_sub_project_definition_8h_source" xml:lang="en-US">
+<title>XCSubProjectDefinition.h</title>
+<indexterm><primary>XCSubProjectDefinition.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 
+14 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+15 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCAbstractDefinition.h&gt;</emphasis>
+16 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeSourceFileType.h&gt;</emphasis>
+17 
+18 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project">XCProject</link>;
+19 
+20 
+21 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>&#32;:&#32;<link linkend="_interface_x_c_abstract_definition">XCAbstractDefinition</link>
+22 {
+23 
+24 &#32;&#32;&#32;&#32;NSString&#32;*_name;
+25 &#32;&#32;&#32;&#32;NSString&#32;*_path;
+26 &#32;&#32;&#32;&#32;XcodeSourceFileType&#32;_type;
+27 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_project">XCProject</link>&#32;*_subProject;
+28 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_project">XCProject</link>&#32;*_parentProject;
+29 &#32;&#32;&#32;&#32;NSString&#32;*_key;
+30 &#32;&#32;&#32;&#32;NSString&#32;*_fullProjectPath;
+31 &#32;&#32;&#32;&#32;NSString&#32;*_relativePath;
+32 }
+33 
+34 
+35 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readonly)&#32;NSString&#32;*name;
+36 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readonly)&#32;NSString&#32;*path;
+37 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;readonly)&#32;XcodeSourceFileType&#32;type;
+38 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readonly)&#32;<link linkend="_interface_x_c_project">XCProject</link>&#32;*subProject;
+39 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readonly)&#32;<link linkend="_interface_x_c_project">XCProject</link>&#32;*parentProject;
+40 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readonly)&#32;NSString&#32;*key;
+41 <emphasis role="keyword">@property</emphasis>&#32;(nonatomic,&#32;strong,&#32;readwrite)&#32;NSString&#32;*fullProjectPath;
+42 
+43 +&#32;(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>&#32;*)withName:(NSString&#32;*)name&#32;path:(NSString&#32;*)path&#32;parentProject:(<link linkend="_interface_x_c_project">XCProject</link>&#32;*)parentProject;
+44 
+45 -&#32;(id)initWithName:(NSString&#32;*)name&#32;path:(NSString&#32;*)path&#32;parentProject:(<link linkend="_interface_x_c_project">XCProject</link>&#32;*)parentProject;
+46 
+47 -&#32;(NSString&#32;*)projectFileName;
+48 
+49 -&#32;(NSString&#32;*)fullPathName;
+50 
+51 -&#32;(NSArray&lt;NSString*&gt;&#32;*)buildProductNames;
+52 
+53 -&#32;(NSString&#32;*)projectKey;
+54 
+55 -&#32;(NSString&#32;*)pathRelativeToProjectRoot;
+56 
+57 -&#32;(void)initFullProjectPath:(NSString&#32;*)fullProjectPath&#32;groupPath:(NSString&#32;*)groupPath;
+58 
+59 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

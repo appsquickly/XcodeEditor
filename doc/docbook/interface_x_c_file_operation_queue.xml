@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_file_operation_queue" xml:lang="en-US">
+<title>XCFileOperationQueue Class Reference</title>
+<indexterm><primary>XCFileOperationQueue</primary></indexterm>
+<para>Inheritance diagram for XCFileOperationQueue:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_file_operation_queue.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1a580ee6b6c0df85cb533376feb0dcf470"/>(id) - <emphasis role="strong">initWithBaseDirectory:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1aa77e6c7278dffdf5c0d1a9895ea696b7"/>(BOOL) - <emphasis role="strong">fileWithName:existsInProjectDirectory:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1afa988e09a85dfc39ee594c16c3791d17"/>(void) - <emphasis role="strong">queueTextFile:inDirectory:withContents:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1a4d89200d1ae0025c2033419225a6e8a9"/>(void) - <emphasis role="strong">queueDataFile:inDirectory:withContents:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1ad190028004951117f463ddb5d5484b74"/>(void) - <emphasis role="strong">queueFrameworkWithFilePath:inDirectory:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1acee5306e88d22c322134064724a1227d"/>(void) - <emphasis role="strong">queueDeletion:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1a7143342f5652922181dc982ce0a5ed71"/>(void) - <emphasis role="strong">queueDirectory:inDirectory:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_file_operation_queue_1af3cda6fb196b8a4ccc377e06c5fbafb9"/>(void) - <emphasis role="strong">commitFileOperations</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCFileOperationQueue.hXCFileOperationQueue.m</section>

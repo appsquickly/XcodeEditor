@@ -10,9 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "XcodeMemberType.h"
-#import "XcodeSourceFileType.h"
-#import "XcodeGroupMember.h"
+#import <XcodeEditor/XcodeMemberType.h>
+#import <XcodeEditor/XcodeSourceFileType.h>
+#import <XcodeEditor/XcodeGroupMember.h>
 
 @class XCClassDefinition;
 @class XCGroup;

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_hash_value_m_d5_hash" xml:lang="en-US">
+<title>HashValueMD5Hash Struct Reference</title>
+<indexterm><primary>HashValueMD5Hash</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_hash_value_m_d5_hash_1adc99db30c947c996c6e20aaed14e5a7b"/>char <emphasis role="strong">value</emphasis> [MD5_DIGEST_LENGTH]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+XCKeyBuilder.h</section>

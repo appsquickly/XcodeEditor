@@ -1,0 +1,48 @@
+\hypertarget{_x_c_source_file_definition_8h_source}{}\doxysection{XCSource\+File\+Definition.\+h}
+\label{_x_c_source_file_definition_8h_source}\index{XCSourceFileDefinition.h@{XCSourceFileDefinition.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{//  JASPER BLUES}}
+\DoxyCodeLine{4 \textcolor{comment}{//  Copyright 2012 Jasper Blues}}
+\DoxyCodeLine{5 \textcolor{comment}{//  All Rights Reserved.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file}}
+\DoxyCodeLine{8 \textcolor{comment}{//  in accordance with the terms of the license agreement accompanying it.}}
+\DoxyCodeLine{9 \textcolor{comment}{//}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#import <Foundation/Foundation.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#import <XcodeEditor/XCAbstractDefinition.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#import <XcodeEditor/XcodeSourceFileType.h>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{@interface }\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}} : \mbox{\hyperlink{interface_x_c_abstract_definition}{XCAbstractDefinition}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     NSString* \_sourceFileName;}
+\DoxyCodeLine{22     XcodeSourceFileType \_type;}
+\DoxyCodeLine{23     NSData* \_data;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSString* sourceFileName;}
+\DoxyCodeLine{28 \textcolor{keyword}{@property}(nonatomic, strong, readonly) NSData* data;}
+\DoxyCodeLine{29 \textcolor{keyword}{@property}(nonatomic, readonly) XcodeSourceFileType type;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 + (\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}*)sourceDefinitionWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 + (\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}*)sourceDefinitionWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{// For now you can add Asset Catalog only as reference}}
+\DoxyCodeLine{36 + (\mbox{\hyperlink{interface_x_c_source_file_definition}{XCSourceFileDefinition}}*)sourceDefinitionWithAssetCatalogName:(NSString*)name;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 -\/ (id)initWithName:(NSString*)name text:(NSString*)text type:(XcodeSourceFileType)type;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 -\/ (id)initWithName:(NSString*)name data:(NSData*)data type:(XcodeSourceFileType)type;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{@end}}
+
+\end{DoxyCode}

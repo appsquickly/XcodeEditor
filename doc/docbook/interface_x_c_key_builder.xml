@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_key_builder" xml:lang="en-US">
+<title>XCKeyBuilder Class Reference</title>
+<indexterm><primary>XCKeyBuilder</primary></indexterm>
+<para>Inheritance diagram for XCKeyBuilder:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_key_builder.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_key_builder_1aca64c85e90a00e1234b3909d32db8c15"/>(id) - <emphasis role="strong">initHashValueMD5HashWithBytes:length:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_key_builder_1a809ff460ab0e01ab7b8912d202ba2f01"/>(NSString *) - <emphasis role="strong">build</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_key_builder_1a5811a756cdef15206a69eff593046138"/>(<link linkend="_interface_x_c_key_builder">XCKeyBuilder</link> *) + <emphasis role="strong">forItemNamed:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_key_builder_1aef0933f07779c85c0304a844aeef9828"/>(<link linkend="_interface_x_c_key_builder">XCKeyBuilder</link> *) + <emphasis role="strong">createUnique</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_key_builder_1a8b47ac1c493fd0e6a31a5e60c18ced63"/>unsigned char <emphasis role="strong">_value</emphasis> [HASH_VALUE_STORAGE_SIZE]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCKeyBuilder.hXCKeyBuilder.m</section>

@@ -1,0 +1,136 @@
+\hypertarget{interface_x_c_source_file}{}\doxysection{XCSource\+File Class Reference}
+\label{interface_x_c_source_file}\index{XCSourceFile@{XCSourceFile}}
+
+
+{\ttfamily \#import $<$XCSource\+File.\+h$>$}
+
+Inheritance diagram for XCSource\+File\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_x_c_source_file}
+\end{center}
+\end{figure}
+\doxysubsection*{Instance Methods}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_ac8615e3a5e8ef18bef470b67499356d2}\label{interface_x_c_source_file_ac8615e3a5e8ef18bef470b67499356d2}} 
+(id) -\/ {\bfseries init\+With\+Project\+:key\+:type\+:name\+:source\+Tree\+:path\+:}
+\item 
+(BOOL) -\/ \mbox{\hyperlink{interface_x_c_source_file_a94f914a09f7abbbf3048a86ced9f7d10}{is\+Build\+File}}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_a8901719779cfa15805ff292b3b242d07}\label{interface_x_c_source_file_a8901719779cfa15805ff292b3b242d07}} 
+(BOOL) -\/ {\bfseries can\+Become\+Build\+File}
+\item 
+(Xcode\+Member\+Type) -\/ \mbox{\hyperlink{interface_x_c_source_file_a32b82cd21f7ce2e00c05c331f5ca922d}{build\+Phase}}
+\item 
+(NSString $\ast$) -\/ \mbox{\hyperlink{interface_x_c_source_file_a01b5137080ebdcbfb927e8c541f2ecfe}{build\+File\+Key}}
+\item 
+(void) -\/ \mbox{\hyperlink{interface_x_c_source_file_a69feb820711a44a5d3adf4bc25669e37}{become\+Build\+File}}
+\item 
+(void) -\/ \mbox{\hyperlink{interface_x_c_source_file_ab4a6d4d99379dbdb99f8e1214ffed356}{remove\+Build\+File}}
+\item 
+(void) -\/ \mbox{\hyperlink{interface_x_c_source_file_a9694571d4b026b428a056162f20a6dd3}{set\+Compiler\+Flags\+:}}
+\item 
+(void) -\/ \mbox{\hyperlink{interface_x_c_source_file_a009a3627573419fb5f9cb67c5afa3f87}{set\+Weak\+Reference}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Class Methods}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_a97625fb8853a21d30bf8033fc766859f}\label{interface_x_c_source_file_a97625fb8853a21d30bf8033fc766859f}} 
+(\mbox{\hyperlink{interface_x_c_source_file}{XCSource\+File}} $\ast$) + {\bfseries source\+File\+With\+Project\+:key\+:type\+:name\+:source\+Tree\+:path\+:}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_a73402fcd99aa8e97837f1adc998c2304}\label{interface_x_c_source_file_a73402fcd99aa8e97837f1adc998c2304}} 
+Xcode\+Source\+File\+Type {\bfseries type}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_a82cbd166469f86d7b92ebd970a9e148b}\label{interface_x_c_source_file_a82cbd166469f86d7b92ebd970a9e148b}} 
+NSString $\ast$ {\bfseries key}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_a2a8feb4272e7439f072411462f82911f}\label{interface_x_c_source_file_a2a8feb4272e7439f072411462f82911f}} 
+NSString $\ast$ {\bfseries name}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_a135b3d0390f10bcd740055081e65524a}\label{interface_x_c_source_file_a135b3d0390f10bcd740055081e65524a}} 
+NSString $\ast$ {\bfseries source\+Tree}
+\item 
+\mbox{\Hypertarget{interface_x_c_source_file_a0f8c01b546123f88b839bdbb14138d4d}\label{interface_x_c_source_file_a0f8c01b546123f88b839bdbb14138d4d}} 
+NSString $\ast$ {\bfseries path}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a file resource in an xcode project. 
+
+\doxysubsection{Method Documentation}
+\mbox{\Hypertarget{interface_x_c_source_file_a69feb820711a44a5d3adf4bc25669e37}\label{interface_x_c_source_file_a69feb820711a44a5d3adf4bc25669e37}} 
+\index{XCSourceFile@{XCSourceFile}!becomeBuildFile@{becomeBuildFile}}
+\index{becomeBuildFile@{becomeBuildFile}!XCSourceFile@{XCSourceFile}}
+\doxysubsubsection{\texorpdfstring{becomeBuildFile}{becomeBuildFile}}
+{\footnotesize\ttfamily -\/ (void) become\+Build\+File \begin{DoxyParamCaption}{ }\end{DoxyParamCaption}}
+
+Adds this file to the project as an {\ttfamily xcode\+\_\+\+Build\+File}, ready to be included in targets. 
+
+Reimplemented from \mbox{\hyperlink{protocol_x_c_build_file-p}{$<$\+XCBuild\+File$>$}}.
+
+\mbox{\Hypertarget{interface_x_c_source_file_a01b5137080ebdcbfb927e8c541f2ecfe}\label{interface_x_c_source_file_a01b5137080ebdcbfb927e8c541f2ecfe}} 
+\index{XCSourceFile@{XCSourceFile}!buildFileKey@{buildFileKey}}
+\index{buildFileKey@{buildFileKey}!XCSourceFile@{XCSourceFile}}
+\doxysubsubsection{\texorpdfstring{buildFileKey}{buildFileKey}}
+{\footnotesize\ttfamily -\/ (NSString $\ast$) build\+File\+Key \begin{DoxyParamCaption}{ }\end{DoxyParamCaption}}
+
+
+
+Reimplemented from \mbox{\hyperlink{protocol_x_c_build_file-p}{$<$\+XCBuild\+File$>$}}.
+
+\mbox{\Hypertarget{interface_x_c_source_file_a32b82cd21f7ce2e00c05c331f5ca922d}\label{interface_x_c_source_file_a32b82cd21f7ce2e00c05c331f5ca922d}} 
+\index{XCSourceFile@{XCSourceFile}!buildPhase@{buildPhase}}
+\index{buildPhase@{buildPhase}!XCSourceFile@{XCSourceFile}}
+\doxysubsubsection{\texorpdfstring{buildPhase}{buildPhase}}
+{\footnotesize\ttfamily -\/ (Xcode\+Member\+Type) build\+Phase \begin{DoxyParamCaption}{ }\end{DoxyParamCaption}}
+
+
+
+Reimplemented from \mbox{\hyperlink{protocol_x_c_build_file-p}{$<$\+XCBuild\+File$>$}}.
+
+\mbox{\Hypertarget{interface_x_c_source_file_a94f914a09f7abbbf3048a86ced9f7d10}\label{interface_x_c_source_file_a94f914a09f7abbbf3048a86ced9f7d10}} 
+\index{XCSourceFile@{XCSourceFile}!isBuildFile@{isBuildFile}}
+\index{isBuildFile@{isBuildFile}!XCSourceFile@{XCSourceFile}}
+\doxysubsubsection{\texorpdfstring{isBuildFile}{isBuildFile}}
+{\footnotesize\ttfamily -\/ (BOOL) is\+Build\+File \begin{DoxyParamCaption}{ }\end{DoxyParamCaption}}
+
+If yes, indicates the file is able to be included for compilation in an {\ttfamily \mbox{\hyperlink{interface_x_c_target}{XCTarget}}}. 
+
+Reimplemented from \mbox{\hyperlink{protocol_x_c_build_file-p}{$<$\+XCBuild\+File$>$}}.
+
+\mbox{\Hypertarget{interface_x_c_source_file_ab4a6d4d99379dbdb99f8e1214ffed356}\label{interface_x_c_source_file_ab4a6d4d99379dbdb99f8e1214ffed356}} 
+\index{XCSourceFile@{XCSourceFile}!removeBuildFile@{removeBuildFile}}
+\index{removeBuildFile@{removeBuildFile}!XCSourceFile@{XCSourceFile}}
+\doxysubsubsection{\texorpdfstring{removeBuildFile}{removeBuildFile}}
+{\footnotesize\ttfamily -\/ (void) remove\+Build\+File \begin{DoxyParamCaption}{ }\end{DoxyParamCaption}}
+
+Removes this file as an {\ttfamily xcode\+\_\+\+Build\+File} from the project. \mbox{\Hypertarget{interface_x_c_source_file_a9694571d4b026b428a056162f20a6dd3}\label{interface_x_c_source_file_a9694571d4b026b428a056162f20a6dd3}} 
+\index{XCSourceFile@{XCSourceFile}!setCompilerFlags:@{setCompilerFlags:}}
+\index{setCompilerFlags:@{setCompilerFlags:}!XCSourceFile@{XCSourceFile}}
+\doxysubsubsection{\texorpdfstring{setCompilerFlags:}{setCompilerFlags:}}
+{\footnotesize\ttfamily -\/ (void) set\+Compiler\+Flags\+: \begin{DoxyParamCaption}\item[{(NSString $\ast$)}]{value }\end{DoxyParamCaption}}
+
+Method for setting Compiler Flags for individual build files
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & String value to set in Compiler Flags \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_x_c_source_file_a009a3627573419fb5f9cb67c5afa3f87}\label{interface_x_c_source_file_a009a3627573419fb5f9cb67c5afa3f87}} 
+\index{XCSourceFile@{XCSourceFile}!setWeakReference@{setWeakReference}}
+\index{setWeakReference@{setWeakReference}!XCSourceFile@{XCSourceFile}}
+\doxysubsubsection{\texorpdfstring{setWeakReference}{setWeakReference}}
+{\footnotesize\ttfamily -\/ (void) set\+Weak\+Reference \begin{DoxyParamCaption}{ }\end{DoxyParamCaption}}
+
+Method for setting the build file is a weak reference 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+XCSource\+File.\+h\item 
+XCSource\+File.\+m\end{DoxyCompactItemize}

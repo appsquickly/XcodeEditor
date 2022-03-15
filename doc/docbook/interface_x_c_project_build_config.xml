@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_project_build_config" xml:lang="en-US">
+<title>XCProjectBuildConfig Class Reference</title>
+<indexterm><primary>XCProjectBuildConfig</primary></indexterm>
+<para>Inheritance diagram for XCProjectBuildConfig:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_project_build_config.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a6aa3921a24aa1a04ed146d1bc01aa830"/>(instancetype) - <emphasis role="strong">initWithProject:key:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a3b31022ad4a5a68e6d78a52fd9cc8b5a"/>(void) - <emphasis role="strong">addBuildSettings:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a86561120cb7c5ceefaa2423b50df4aea"/>(void) - <emphasis role="strong">addOrReplaceSetting:forKey:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a314cc154633199f17ba9f0a6abb56fe2"/>(id&lt; NSCopying &gt;) - <emphasis role="strong">valueForKey:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a7e02f019e67fc5b36444bfcb21fa6886"/>(void) - <emphasis role="strong">removeSettingByKey:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1ad0f82eebf4648908c2d410dcdbd52149"/>(NSDictionary&lt; NSString *, NSString * &gt; *) + <emphasis role="strong">buildConfigurationsFromArray:inProject:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a95d856873a021db2c92734a43f86801c"/>(NSString *) + <emphasis role="strong">duplicatedBuildConfigurationListWithKey:inProject:withBuildConfigurationVisitor:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a15d0aa4eb48fdb07bde07ba2c5fa42a4"/>NSString * <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_build_config_1a23deb664a0d8ac6dcfca4c9f8f51f44e"/>NSDictionary * <emphasis role="strong">specifiedBuildSettings</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCProjectBuildConfig.hXCProjectBuildConfig.m</section>

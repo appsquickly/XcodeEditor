@@ -1,0 +1,259 @@
+.TH "XCProject" 3 "Fri Mar 4 2022" "Version 1.1" "XcodeEditor-master" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XCProject
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits NSObject\&.
+.SS "Instance Methods"
+
+.in +1c
+.ti -1c
+.RI "(id) \- \fBinitWithFilePath:\fP"
+.br
+.ti -1c
+.RI "(id< \fBXcodeGroupMember\fP >) \- \fBgroupMemberWithKey:\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBfiles\fP"
+.br
+.ti -1c
+.RI "(\fBXCSourceFile\fP *) \- \fBfileWithKey:\fP"
+.br
+.ti -1c
+.RI "(\fBXCSourceFile\fP *) \- \fBfileWithName:\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBheaderFiles\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBobjectiveCFiles\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBobjectiveCPlusPlusFiles\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBxibFiles\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBimagePNGFiles\fP"
+.br
+.ti -1c
+.RI "(NSString *) \- \fBfilePath\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCGroup\fP * > *) \- \fBgroups\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBrootGroup\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCGroup\fP * > *) \- \fBrootGroups\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBmainGroup\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBgroupWithKey:\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBgroupWithDisplayName:\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBgroupWithPathFromRoot:\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBgroupForGroupMemberWithKey:\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBgroupWithSourceFile:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBpruneEmptyGroups\fP"
+.br
+.ti -1c
+.RI "(NSArray *) \- \fBversionGroups\fP"
+.br
+.ti -1c
+.RI "(\fBXCVersionGroup\fP *) \- \fBversionGroupWithKey:\fP"
+.br
+.ti -1c
+.RI "(\fBXCVersionGroup\fP *) \- \fBversionGroupWithName:\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCTarget\fP * > *) \- \fBtargets\fP"
+.br
+.ti -1c
+.RI "(\fBXCTarget\fP *) \- \fBtargetWithName:\fP"
+.br
+.ti -1c
+.RI "(NSArray *) \- \fBapplicationTargets\fP"
+.br
+.ti -1c
+.RI "(NSDictionary< NSString *, \fBXCProjectBuildConfig\fP * > *) \- \fBconfigurations\fP"
+.br
+.ti -1c
+.RI "(\fBXCProjectBuildConfig\fP *) \- \fBconfigurationWithName:\fP"
+.br
+.ti -1c
+.RI "(\fBXCProjectBuildConfig\fP *) \- \fBdefaultConfiguration\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveObjectWithKey:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBsave\fP"
+.br
+.ti -1c
+.RI "(NSMutableDictionary *) \- \fBobjects\fP"
+.br
+.ti -1c
+.RI "(NSMutableDictionary *) \- \fBdataStore\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBdropCache\fP"
+.br
+.ti -1c
+.RI "(NSString *) \- \fBreferenceProxyKeyForName:\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBbuildProductsForTargets:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBaddAsTargetDependency:toTargets:\fP"
+.br
+.ti -1c
+.RI "(NSArray< NSString * > *) \- \fBkeysForProjectObjectsOfType:withIdentifier:singleton:required:\fP"
+.br
+.ti -1c
+.RI "(NSMutableDictionary *) \- \fBPBXProjectDict\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveProxies:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBaddProxies:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveFromProjectReferences:forProductsGroup:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveTargetDependencies:\fP"
+.br
+.ti -1c
+.RI "(NSString *) \- \fBcontainerItemProxyKeyForName:proxyType:\fP"
+.br
+.ti -1c
+.RI "(NSString *) \- \fBproductsGroupKeyForKey:\fP"
+.br
+.in -1c
+.SS "Class Methods"
+
+.in +1c
+.ti -1c
+.RI "(\fBXCProject\fP *) + \fBprojectWithFilePath:\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBXCFileOperationQueue\fP * \fB_fileOperationQueue\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_filePath\fP"
+.br
+.ti -1c
+.RI "NSMutableDictionary * \fB_dataStore\fP"
+.br
+.ti -1c
+.RI "NSMutableArray * \fB_targets\fP"
+.br
+.ti -1c
+.RI "NSMutableDictionary * \fB_groups\fP"
+.br
+.ti -1c
+.RI "NSMutableDictionary * \fB_versionGroups\fP"
+.br
+.ti -1c
+.RI "NSMutableDictionary * \fB_configurations\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_defaultConfigurationName\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_rootObjectKey\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBXCFileOperationQueue\fP * \fBfileOperationQueue\fP"
+.br
+.in -1c
+.SH "Method Documentation"
+.PP 
+.SS "\- (NSArray *) applicationTargets "
+Lists the targets which are of application type\&. 
+.SS "\- (NSDictionary *) configurations "
+Lists the configurations in an xcode project\&. 
+.SS "\- (\fBXCProjectBuildConfig\fP *) configurationWithName: (NSString*) name"
+Returns the configuration with the specified name, or nil\&. 
+.SS "\- (NSArray *) files "
+Returns all file resources in the project, as an array of \fC\fBXCSourceFile\fP\fP objects\&. 
+.SS "\- (\fBXCSourceFile\fP *) fileWithKey: (NSString*) key"
+Returns the project file with the specified key, or nil\&. 
+.SS "\- (\fBXCSourceFile\fP *) fileWithName: (NSString*) name"
+Returns the project file with the specified name, or nil\&. If more than one project file matches the specified name, which one is returned is undefined\&. 
+.SS "\- (\fBXCGroup\fP *) groupForGroupMemberWithKey: (NSString*) key"
+Returns the parent _group for the _group or file with the given key; 
+.SS "\- (NSArray *) groups "
+Lists the groups in an xcode project, returning an array of \fC\fBXCGroup\fP\fP objects\&. 
+.SS "\- (\fBXCGroup\fP *) groupWithDisplayName: (NSString*) name"
+Returns the \fIfirst\fP group in the project with the given name, or nil\&. 
+.SS "\- (\fBXCGroup\fP *) groupWithKey: (NSString*) key"
+Returns the group with the given key, or nil\&. 
+.SS "\- (\fBXCGroup\fP *) groupWithPathFromRoot: (NSString*) path"
+Returns the _group with the specified display name path - the directory relative to the root _group\&. Eg Source/Main 
+.SS "\- (\fBXCGroup\fP *) groupWithSourceFile: (\fBXCSourceFile\fP*) sourceFile"
+Returns the parent group for the group or file with the source file 
+.SS "\- (NSArray *) headerFiles "
+Returns all header files in the project, as an array of \fC\fBXCSourceFile\fP\fP objects\&. 
+.SS "\- (id) initWithFilePath: (NSString*) filePath"
+Creates a new project editor instance with the specified Project\&.xcodeproj file\&. 
+.SS "\- (\fBXCGroup\fP *) mainGroup "
+Returns the main group under root object 
+.SS "\- (NSArray *) objectiveCFiles "
+Returns all implementation obj-c implementation files in the project, as an array of \fC\fBXCSourceFile\fP\fP objects\&. 
+.SS "\- (NSArray *) objectiveCPlusPlusFiles "
+Returns all implementation obj-c++ implementation files in the project, as an array of \fC\fBXCSourceFile\fP\fP objects\&. 
+.SS "\- (NSMutableDictionary *) objects "
+Raw project data\&. 
+.SS "\- (void) pruneEmptyGroups "
+Removes all empty groups from the project\&. 
+.SS "\- (\fBXCGroup\fP *) rootGroup "
+Returns the root (top-level) _group\&. 
+.SS "\- (NSArray *) rootGroups "
+Returns the root (top-level) groups, if there are multiple\&. An array of rootGroup if there is only one\&. 
+.SS "\- (void) save "
+Saves a project after editing\&. 
+.SS "\- (NSArray *) targets "
+Lists the targets in an xcode project, returning an array of \fC\fBXCTarget\fP\fP objects\&. 
+.SS "\- (\fBXCTarget\fP *) targetWithName: (NSString*) name"
+Returns the target with the specified name, or nil\&. 
+.SS "\- (NSArray *) versionGroups "
+Lists the version groups in an xcode project, returning an array of \fC\fBXCVersionGroup\fP\fP objects\&. 
+.SS "\- (\fBXCVersionGroup\fP *) versionGroupWithKey: (NSString*) key"
+Returns the version group with the given key, or nil\&. 
+.SS "\- (\fBXCVersionGroup\fP *) versionGroupWithName: (NSString*) name"
+Returns the version group with the given file name, or nil\&. 
+.SS "\- (NSArray *) xibFiles "
+Returns all the xib files in the project, as an array of \fC\fBXCSourceFile\fP\fP objects\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for XcodeEditor-master from the source code\&.

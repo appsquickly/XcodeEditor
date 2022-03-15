@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_project" xml:lang="en-US">
+<title>XCProject Class Reference</title>
+<indexterm><primary>XCProject</primary></indexterm>
+<para>Inheritance diagram for XCProject:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_project.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para>(id) - <link linkend="_interface_x_c_project_1a88eb4b9317a0a1e232f7d1a37eed6b7c">initWithFilePath:</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a96e2f90d957fe6c8200e0af5daad7917"/>(id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt;) - <emphasis role="strong">groupMemberWithKey:</emphasis></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <link linkend="_interface_x_c_project_1a131d039952cd8bbd455fa1a1d4f6f1f0">files</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) - <link linkend="_interface_x_c_project_1a8e37d7a871da0916f01ca46be04bd68a">fileWithKey:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) - <link linkend="_interface_x_c_project_1af0ec1bda5ecf6777521993732e5ce081">fileWithName:</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <link linkend="_interface_x_c_project_1aa036faece156d323fd2b52d32eacddcf">headerFiles</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <link linkend="_interface_x_c_project_1aa2611412e68a6a85e13aeacb47c27c9e">objectiveCFiles</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <link linkend="_interface_x_c_project_1a00a2007e659b99510355a3f0d259c487">objectiveCPlusPlusFiles</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <link linkend="_interface_x_c_project_1ab4e7d3f18d4026fd136e2710ea38f7ec">xibFiles</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a0a12420d166e1899d7d864c4e432729b"/>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <emphasis role="strong">imagePNGFiles</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a96bd2795c2056788b54d569fbecfeca8"/>(NSString *) - <emphasis role="strong">filePath</emphasis></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_group">XCGroup</link> * &gt; *) - <link linkend="_interface_x_c_project_1a02c11d0e7e8bd59140d4a1cfc3b07101">groups</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_project_1a6fff64e311f1a406c25a64191232a36c">rootGroup</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_group">XCGroup</link> * &gt; *) - <link linkend="_interface_x_c_project_1a02602c3235f28a5a4a3b175bc79031d1">rootGroups</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_project_1ae92eccb36eef3337d7623ee1d890481e">mainGroup</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_project_1a7a612074deba05dbfdc4bd2c8fbfc5a8">groupWithKey:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_project_1a42b4f74d42d8554a2d0e967416aa99a6">groupWithDisplayName:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_project_1a5c29526ae6ec53f9a20b887dbaecff39">groupWithPathFromRoot:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_project_1ab4c661b07ed8ee9ce5a3c0d256b11f17">groupForGroupMemberWithKey:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <link linkend="_interface_x_c_project_1a5ca26311344e697b5935435d32c76e9d">groupWithSourceFile:</link></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_project_1a8f240e15a2f922ea6dab7ed67830263e">pruneEmptyGroups</link></para>
+</listitem>
+            <listitem><para>(NSArray *) - <link linkend="_interface_x_c_project_1a12a30d4884d3ba06914d711558bb22a7">versionGroups</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_version_group">XCVersionGroup</link> *) - <link linkend="_interface_x_c_project_1ae6bd0577d0e4c93368961b86ad108fee">versionGroupWithKey:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_version_group">XCVersionGroup</link> *) - <link linkend="_interface_x_c_project_1a7b2745077b7872bff0979b8f8f772adc">versionGroupWithName:</link></para>
+</listitem>
+            <listitem><para>(NSArray&lt; <link linkend="_interface_x_c_target">XCTarget</link> * &gt; *) - <link linkend="_interface_x_c_project_1a3ee5cb7c9774166ff175e527d95ae61a">targets</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_target">XCTarget</link> *) - <link linkend="_interface_x_c_project_1abaa9a7968fad5ec90d41f89e63887ed7">targetWithName:</link></para>
+</listitem>
+            <listitem><para>(NSArray *) - <link linkend="_interface_x_c_project_1a4410361e238bd7b0c713904fec310a2a">applicationTargets</link></para>
+</listitem>
+            <listitem><para>(NSDictionary&lt; NSString *, <link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link> * &gt; *) - <link linkend="_interface_x_c_project_1a265cc594ffba012b5bebfc64f301b6ff">configurations</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link> *) - <link linkend="_interface_x_c_project_1a1b7d7949bad44777252ac4aa9a1d42a1">configurationWithName:</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a8cd3b721551f90b55b55dc0da39ee9ee"/>(<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link> *) - <emphasis role="strong">defaultConfiguration</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a960203178c72583f5e4ae2d42b60e4f8"/>(void) - <emphasis role="strong">removeObjectWithKey:</emphasis></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_project_1a2802de6cf0bb6e8550d713a188b35d52">save</link></para>
+</listitem>
+            <listitem><para>(NSMutableDictionary *) - <link linkend="_interface_x_c_project_1a0a4c7be71a2f8fd0c5b732bd03ff7fd6">objects</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1afbfbf5df3134d5fe516c496e543b5abe"/>(NSMutableDictionary *) - <emphasis role="strong">dataStore</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1aaa574f2ab415a7ca5ded893d8f1dc5da"/>(void) - <emphasis role="strong">dropCache</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a92dd68dc215dfed3ee2fcaab5b72346e"/>(NSString *) - <emphasis role="strong">referenceProxyKeyForName:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a1909100224b2527bc609caf8eab7a5f0"/>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <emphasis role="strong">buildProductsForTargets:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1aca0d762dbf21a7515beb0cf49f636fbc"/>(void) - <emphasis role="strong">addAsTargetDependency:toTargets:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1ac1f47cda658191013bd6184356255d1f"/>(NSArray&lt; NSString * &gt; *) - <emphasis role="strong">keysForProjectObjectsOfType:withIdentifier:singleton:required:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a54669d671dac484cf5d207657f7c92a2"/>(NSMutableDictionary *) - <emphasis role="strong">PBXProjectDict</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1aaa724f5876db3d4f5f82c4a5d9a48ae3"/>(void) - <emphasis role="strong">removeProxies:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a235e112109c93d5987e2b29c836000a6"/>(void) - <emphasis role="strong">addProxies:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a9caf756e7c08abe60d82258f251c0c8e"/>(void) - <emphasis role="strong">removeFromProjectReferences:forProductsGroup:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a17db0fff9e79f69dd267d5a6474625dc"/>(void) - <emphasis role="strong">removeTargetDependencies:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a05186f24cbaeca02ae5a78dbddf9ab7e"/>(NSString *) - <emphasis role="strong">containerItemProxyKeyForName:proxyType:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a1fbbe1cda07f9e1d543abef4b1f251d4"/>(NSString *) - <emphasis role="strong">productsGroupKeyForKey:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1abf4324ba26ad1e5575aabd9fbdf01a7b"/>(<link linkend="_interface_x_c_project">XCProject</link> *) + <emphasis role="strong">projectWithFilePath:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a173619eac2f16acb2df97bd260a5fa67"/><link linkend="_interface_x_c_file_operation_queue">XCFileOperationQueue</link> * <emphasis role="strong">_fileOperationQueue</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1ad6c4a515034b224b14539d41e3ff2ad0"/>NSString * <emphasis role="strong">_filePath</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a761fe57b6f262db7a654cc99b7b6953d"/>NSMutableDictionary * <emphasis role="strong">_dataStore</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a8a80a0b2e1c4d2056d8f030446d85253"/>NSMutableArray * <emphasis role="strong">_targets</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a1e25dda852501fc14a96e0ca4e5bc23a"/>NSMutableDictionary * <emphasis role="strong">_groups</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a2b5b056b0df27bfc0ead818136c357a0"/>NSMutableDictionary * <emphasis role="strong">_versionGroups</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a580f988f798957d8e0c8cb641e3baa1f"/>NSMutableDictionary * <emphasis role="strong">_configurations</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a234f33077598c48ffdf08af4b6cd3395"/>NSString * <emphasis role="strong">_defaultConfigurationName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1ac7a8e11957c774711cabfa4821acb053"/>NSString * <emphasis role="strong">_rootObjectKey</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_project_1a695fa34a29d8e9545fcbc45d3f73147e"/><link linkend="_interface_x_c_file_operation_queue">XCFileOperationQueue</link> * <emphasis role="strong">fileOperationQueue</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Method Documentation</title>
+<anchor xml:id="_interface_x_c_project_1a4410361e238bd7b0c713904fec310a2a"/><section>
+    <title>applicationTargets</title>
+<indexterm><primary>applicationTargets</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>applicationTargets</secondary></indexterm>
+<para><computeroutput>- (NSArray *) applicationTargets  </computeroutput></para>
+<para>Lists the targets which are of application type. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a265cc594ffba012b5bebfc64f301b6ff"/><section>
+    <title>configurations</title>
+<indexterm><primary>configurations</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>configurations</secondary></indexterm>
+<para><computeroutput>- (NSDictionary *) configurations  </computeroutput></para>
+<para>Lists the configurations in an xcode project. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a1b7d7949bad44777252ac4aa9a1d42a1"/><section>
+    <title>configurationWithName:</title>
+<indexterm><primary>configurationWithName:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>configurationWithName:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_project_build_config">XCProjectBuildConfig</link> *) configurationWithName: (NSString*) name</computeroutput></para>
+<para>Returns the configuration with the specified name, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a131d039952cd8bbd455fa1a1d4f6f1f0"/><section>
+    <title>files</title>
+<indexterm><primary>files</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>files</secondary></indexterm>
+<para><computeroutput>- (NSArray *) files  </computeroutput></para>
+<para>Returns all file resources in the project, as an array of <computeroutput><link linkend="_interface_x_c_source_file">XCSourceFile</link></computeroutput> objects. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a8e37d7a871da0916f01ca46be04bd68a"/><section>
+    <title>fileWithKey:</title>
+<indexterm><primary>fileWithKey:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>fileWithKey:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) fileWithKey: (NSString*) key</computeroutput></para>
+<para>Returns the project file with the specified key, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1af0ec1bda5ecf6777521993732e5ce081"/><section>
+    <title>fileWithName:</title>
+<indexterm><primary>fileWithName:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>fileWithName:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) fileWithName: (NSString*) name</computeroutput></para>
+<para>Returns the project file with the specified name, or nil. If more than one project file matches the specified name, which one is returned is undefined. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1ab4c661b07ed8ee9ce5a3c0d256b11f17"/><section>
+    <title>groupForGroupMemberWithKey:</title>
+<indexterm><primary>groupForGroupMemberWithKey:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>groupForGroupMemberWithKey:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) groupForGroupMemberWithKey: (NSString*) key</computeroutput></para>
+<para>Returns the parent _group for the _group or file with the given key; </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a02c11d0e7e8bd59140d4a1cfc3b07101"/><section>
+    <title>groups</title>
+<indexterm><primary>groups</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>groups</secondary></indexterm>
+<para><computeroutput>- (NSArray *) groups  </computeroutput></para>
+<para>Lists the groups in an xcode project, returning an array of <computeroutput><link linkend="_interface_x_c_group">XCGroup</link></computeroutput> objects. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a42b4f74d42d8554a2d0e967416aa99a6"/><section>
+    <title>groupWithDisplayName:</title>
+<indexterm><primary>groupWithDisplayName:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>groupWithDisplayName:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) groupWithDisplayName: (NSString*) name</computeroutput></para>
+<para>Returns the <emphasis>first</emphasis> group in the project with the given name, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a7a612074deba05dbfdc4bd2c8fbfc5a8"/><section>
+    <title>groupWithKey:</title>
+<indexterm><primary>groupWithKey:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>groupWithKey:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) groupWithKey: (NSString*) key</computeroutput></para>
+<para>Returns the group with the given key, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a5c29526ae6ec53f9a20b887dbaecff39"/><section>
+    <title>groupWithPathFromRoot:</title>
+<indexterm><primary>groupWithPathFromRoot:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>groupWithPathFromRoot:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) groupWithPathFromRoot: (NSString*) path</computeroutput></para>
+<para>Returns the _group with the specified display name path - the directory relative to the root _group. Eg Source/Main </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a5ca26311344e697b5935435d32c76e9d"/><section>
+    <title>groupWithSourceFile:</title>
+<indexterm><primary>groupWithSourceFile:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>groupWithSourceFile:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) groupWithSourceFile: (<link linkend="_interface_x_c_source_file">XCSourceFile</link>*) sourceFile</computeroutput></para>
+<para>Returns the parent group for the group or file with the source file </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1aa036faece156d323fd2b52d32eacddcf"/><section>
+    <title>headerFiles</title>
+<indexterm><primary>headerFiles</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>headerFiles</secondary></indexterm>
+<para><computeroutput>- (NSArray *) headerFiles  </computeroutput></para>
+<para>Returns all header files in the project, as an array of <computeroutput><link linkend="_interface_x_c_source_file">XCSourceFile</link></computeroutput> objects. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a88eb4b9317a0a1e232f7d1a37eed6b7c"/><section>
+    <title>initWithFilePath:</title>
+<indexterm><primary>initWithFilePath:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>initWithFilePath:</secondary></indexterm>
+<para><computeroutput>- (id) initWithFilePath: (NSString*) filePath</computeroutput></para>
+<para>Creates a new project editor instance with the specified Project.xcodeproj file. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1ae92eccb36eef3337d7623ee1d890481e"/><section>
+    <title>mainGroup</title>
+<indexterm><primary>mainGroup</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>mainGroup</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) mainGroup  </computeroutput></para>
+<para>Returns the main group under root object </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1aa2611412e68a6a85e13aeacb47c27c9e"/><section>
+    <title>objectiveCFiles</title>
+<indexterm><primary>objectiveCFiles</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>objectiveCFiles</secondary></indexterm>
+<para><computeroutput>- (NSArray *) objectiveCFiles  </computeroutput></para>
+<para>Returns all implementation obj-c implementation files in the project, as an array of <computeroutput><link linkend="_interface_x_c_source_file">XCSourceFile</link></computeroutput> objects. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a00a2007e659b99510355a3f0d259c487"/><section>
+    <title>objectiveCPlusPlusFiles</title>
+<indexterm><primary>objectiveCPlusPlusFiles</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>objectiveCPlusPlusFiles</secondary></indexterm>
+<para><computeroutput>- (NSArray *) objectiveCPlusPlusFiles  </computeroutput></para>
+<para>Returns all implementation obj-c++ implementation files in the project, as an array of <computeroutput><link linkend="_interface_x_c_source_file">XCSourceFile</link></computeroutput> objects. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a0a4c7be71a2f8fd0c5b732bd03ff7fd6"/><section>
+    <title>objects</title>
+<indexterm><primary>objects</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>objects</secondary></indexterm>
+<para><computeroutput>- (NSMutableDictionary *) objects  </computeroutput></para>
+<para>Raw project data. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a8f240e15a2f922ea6dab7ed67830263e"/><section>
+    <title>pruneEmptyGroups</title>
+<indexterm><primary>pruneEmptyGroups</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>pruneEmptyGroups</secondary></indexterm>
+<para><computeroutput>- (void) pruneEmptyGroups  </computeroutput></para>
+<para>Removes all empty groups from the project. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a6fff64e311f1a406c25a64191232a36c"/><section>
+    <title>rootGroup</title>
+<indexterm><primary>rootGroup</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>rootGroup</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_group">XCGroup</link> *) rootGroup  </computeroutput></para>
+<para>Returns the root (top-level) _group. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a02602c3235f28a5a4a3b175bc79031d1"/><section>
+    <title>rootGroups</title>
+<indexterm><primary>rootGroups</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>rootGroups</secondary></indexterm>
+<para><computeroutput>- (NSArray *) rootGroups  </computeroutput></para>
+<para>Returns the root (top-level) groups, if there are multiple. An array of rootGroup if there is only one. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a2802de6cf0bb6e8550d713a188b35d52"/><section>
+    <title>save</title>
+<indexterm><primary>save</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>save</secondary></indexterm>
+<para><computeroutput>- (void) save  </computeroutput></para>
+<para>Saves a project after editing. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a3ee5cb7c9774166ff175e527d95ae61a"/><section>
+    <title>targets</title>
+<indexterm><primary>targets</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>targets</secondary></indexterm>
+<para><computeroutput>- (NSArray *) targets  </computeroutput></para>
+<para>Lists the targets in an xcode project, returning an array of <computeroutput><link linkend="_interface_x_c_target">XCTarget</link></computeroutput> objects. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1abaa9a7968fad5ec90d41f89e63887ed7"/><section>
+    <title>targetWithName:</title>
+<indexterm><primary>targetWithName:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>targetWithName:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_target">XCTarget</link> *) targetWithName: (NSString*) name</computeroutput></para>
+<para>Returns the target with the specified name, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a12a30d4884d3ba06914d711558bb22a7"/><section>
+    <title>versionGroups</title>
+<indexterm><primary>versionGroups</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>versionGroups</secondary></indexterm>
+<para><computeroutput>- (NSArray *) versionGroups  </computeroutput></para>
+<para>Lists the version groups in an xcode project, returning an array of <computeroutput><link linkend="_interface_x_c_version_group">XCVersionGroup</link></computeroutput> objects. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1ae6bd0577d0e4c93368961b86ad108fee"/><section>
+    <title>versionGroupWithKey:</title>
+<indexterm><primary>versionGroupWithKey:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>versionGroupWithKey:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_version_group">XCVersionGroup</link> *) versionGroupWithKey: (NSString*) key</computeroutput></para>
+<para>Returns the version group with the given key, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1a7b2745077b7872bff0979b8f8f772adc"/><section>
+    <title>versionGroupWithName:</title>
+<indexterm><primary>versionGroupWithName:</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>versionGroupWithName:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_version_group">XCVersionGroup</link> *) versionGroupWithName: (NSString*) name</computeroutput></para>
+<para>Returns the version group with the given file name, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_project_1ab4e7d3f18d4026fd136e2710ea38f7ec"/><section>
+    <title>xibFiles</title>
+<indexterm><primary>xibFiles</primary><secondary>XCProject</secondary></indexterm>
+<indexterm><primary>XCProject</primary><secondary>xibFiles</secondary></indexterm>
+<para><computeroutput>- (NSArray *) xibFiles  </computeroutput></para>
+<para>Returns all the xib files in the project, as an array of <computeroutput><link linkend="_interface_x_c_source_file">XCSourceFile</link></computeroutput> objects. </para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCProject.hXCProject.m</section>
+</section>

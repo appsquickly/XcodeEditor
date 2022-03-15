@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_project_09_sub_project_8h_source" xml:lang="en-US">
+<title>XCProject+SubProject.h</title>
+<indexterm><primary>XCProject+SubProject.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 
+14 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+15 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCProject.h&gt;</emphasis>
+16 
+17 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_category_x_c_project_07_sub_project_08">XCProject (SubProject)</link>
+18 
+19 
+20 -&#32;(NSString&#32;*)referenceProxyKeyForName:(NSString&#32;*)name;
+21 
+22 -&#32;(NSArray&lt;<link linkend="_interface_x_c_source_file">XCSourceFile</link>*&gt;&#32;*)buildProductsForTargets:(NSString&#32;*)xcodeprojKey;
+23 
+24 -&#32;(void)addAsTargetDependency:(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>&#32;*)xcodeprojDefinition&#32;toTargets:(NSArray&lt;<link linkend="_interface_x_c_target">XCTarget</link>*&gt;*)targets;
+25 
+26 -&#32;(NSArray&lt;NSString*&gt;&#32;*)keysForProjectObjectsOfType:(XcodeMemberType)memberType&#32;withIdentifier:(NSString&#32;*)identifier
+27 &#32;&#32;&#32;&#32;singleton:(BOOL)singleton&#32;required:(BOOL)required;
+28 
+29 -&#32;(NSMutableDictionary&#32;*)PBXProjectDict;
+30 
+31 -&#32;(void)removeProxies:(NSString&#32;*)xcodeprojKey;
+32 
+33 -&#32;(void)addProxies:(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>&#32;*)xcodeproj;
+34 
+35 -&#32;(void)removeFromProjectReferences:(NSString&#32;*)key&#32;forProductsGroup:(NSString&#32;*)productsGroupKey;
+36 
+37 -&#32;(void)removeTargetDependencies:(NSString&#32;*)name;
+38 
+39 -&#32;(NSString&#32;*)containerItemProxyKeyForName:(NSString&#32;*)name&#32;proxyType:(NSString&#32;*)proxyType;
+40 
+41 -&#32;(NSString&#32;*)productsGroupKeyForKey:(NSString&#32;*)key;
+42 
+43 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_protocol_xcode_group_member-p" xml:lang="en-US">
+<title>&lt;XcodeGroupMember&gt; Protocol Reference</title>
+<indexterm><primary>&lt;XcodeGroupMember&gt;</primary></indexterm>
+<para>Inheritance diagram for &lt;XcodeGroupMember&gt;:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="protocol_xcode_group_member-p.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_protocol_xcode_group_member-p_1a9c26d7fb8e5b8e9a70514cd82f17a753"/>(NSString *) - <emphasis role="strong">key</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_protocol_xcode_group_member-p_1aaa904107027b7f93f9770816ee6e9af4"/>(NSString *) - <emphasis role="strong">displayName</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_protocol_xcode_group_member-p_1ace875c36516c8431fa545cdbd7539247"/>(NSString *) - <emphasis role="strong">pathRelativeToProjectRoot</emphasis></para>
+</listitem>
+            <listitem><para>(XcodeMemberType) - <link linkend="_protocol_xcode_group_member-p_1a37e9e9f28d597028f66ae694b3efd1d8">groupMemberType</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Method Documentation</title>
+<anchor xml:id="_protocol_xcode_group_member-p_1a37e9e9f28d597028f66ae694b3efd1d8"/><section>
+    <title>groupMemberType</title>
+<indexterm><primary>groupMemberType</primary><secondary>&lt;XcodeGroupMember&gt;</secondary></indexterm>
+<indexterm><primary>&lt;XcodeGroupMember&gt;</primary><secondary>groupMemberType</secondary></indexterm>
+<para><computeroutput>- (XcodeMemberType) groupMemberType  </computeroutput></para>
+<para>Group members can either be other groups (PBXGroup) or source files (PBXFileReference). </para>
+</section>
+<para>
+The documentation for this protocol was generated from the following file:</para>
+XcodeGroupMember.h</section>
+</section>

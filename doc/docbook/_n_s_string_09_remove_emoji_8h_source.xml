@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__n_s_string_09_remove_emoji_8h_source" xml:lang="en-US">
+<title>NSString+RemoveEmoji.h</title>
+<indexterm><primary>NSString+RemoveEmoji.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+2 
+3 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_category_n_s_string_07_remove_emoji_08">NSString (RemoveEmoji)</link>
+4 
+5 -&#32;(BOOL)isIncludingEmoji;
+6 
+7 -&#32;(instancetype)stringByRemovingEmoji;
+8 
+9 -&#32;(instancetype)removedEmojiString&#32;__attribute__((deprecated));
+10 
+11 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

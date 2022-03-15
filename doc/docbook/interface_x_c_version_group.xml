@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_x_c_version_group" xml:lang="en-US">
+<title>XCVersionGroup Class Reference</title>
+<indexterm><primary>XCVersionGroup</primary></indexterm>
+<para>Inheritance diagram for XCVersionGroup:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_x_c_version_group.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Instance Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1af213f9c00a675f35026b80085ad94aa0"/>(id) - <emphasis role="strong">initWithProject:key:path:children:currentVersion:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a13ebb5e30e489a4fa4740b2f34c8883f"/>(void) - <emphasis role="strong">removeFromParentGroup</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a661019987c21b0b3d8d65710ab25f5ec"/>(void) - <emphasis role="strong">removeFromParentDeletingChildren:</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a98addd255bf7c092b89e278d2a872dee"/>(<link linkend="_interface_x_c_group">XCGroup</link> *) - <emphasis role="strong">parentGroup</emphasis></para>
+</listitem>
+            <listitem><para>(void) - <link linkend="_interface_x_c_version_group_1a95f29cd0630223ec7273c3c98c669b37">addDataModelSource:</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a03df67da6147478982e1b1cf7b8f8f41"/>(NSArray&lt; <link linkend="_interface_x_c_source_file">XCSourceFile</link> * &gt; *) - <emphasis role="strong">members</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a3fb5d4fe976d45f1c31dde0f8bd635fa"/>(NSArray&lt; NSString * &gt; *) - <emphasis role="strong">buildFileKeys</emphasis></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) - <link linkend="_interface_x_c_version_group_1a80b556d4c32df75d842e15ca1e64b2cd">memberWithKey:</link></para>
+</listitem>
+            <listitem><para>(<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) - <link linkend="_interface_x_c_version_group_1a162fb995f778781d25e2c94cd242a1d6">memberWithDisplayName:</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a21f2d321fdfbde3a982db53bac486a25"/>(NSDictionary *) - <emphasis role="strong">asDictionary</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Class Methods    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a54ef892c65df40da1bdde4642d2a3dc1"/>(<link linkend="_interface_x_c_version_group">XCVersionGroup</link> *) + <emphasis role="strong">versionGroupWithProject:key:path:children:currentVersion:</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a80e4bc62286f79aee7dd98295d5df963"/>NSString * <emphasis role="strong">_pathRelativeToParent</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a17f1e0eb958b4c0501480fa138ba8aed"/>NSString * <emphasis role="strong">_key</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para>NSString * <link linkend="_interface_x_c_version_group_1afd3e95e73e576b608f6f5e2416898885">alias</link></para>
+</listitem>
+            <listitem><para>NSString * <link linkend="_interface_x_c_version_group_1af93e68eb50e9c368f2f94b1e3e81ef5b">pathRelativeToParent</link></para>
+</listitem>
+            <listitem><para>NSString * <link linkend="_interface_x_c_version_group_1acf4f1652b83fc6cc7fc3165d65c7655c">key</link></para>
+</listitem>
+            <listitem><para>NSMutableArray * <link linkend="_interface_x_c_version_group_1ac094cb0b196c580cbac574781a642d0c">versions</link></para>
+</listitem>
+            <listitem><para><anchor xml:id="_interface_x_c_version_group_1a338bab4567342ddc6ff152304876a5c2"/>NSString * <emphasis role="strong">currentVersion</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Method Documentation</title>
+<anchor xml:id="_interface_x_c_version_group_1a95f29cd0630223ec7273c3c98c669b37"/><section>
+    <title>addDataModelSource:</title>
+<indexterm><primary>addDataModelSource:</primary><secondary>XCVersionGroup</secondary></indexterm>
+<indexterm><primary>XCVersionGroup</primary><secondary>addDataModelSource:</secondary></indexterm>
+<para><computeroutput>- (void) addDataModelSource: (<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>*) sourceFileDefinition</computeroutput></para>
+<para>Adds a source file. The only valid file type is XCDataModel </para>
+</section>
+<anchor xml:id="_interface_x_c_version_group_1a162fb995f778781d25e2c94cd242a1d6"/><section>
+    <title>memberWithDisplayName:</title>
+<indexterm><primary>memberWithDisplayName:</primary><secondary>XCVersionGroup</secondary></indexterm>
+<indexterm><primary>XCVersionGroup</primary><secondary>memberWithDisplayName:</secondary></indexterm>
+<para><computeroutput>- (id&lt; <link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> &gt;) memberWithDisplayName: (NSString*) name</computeroutput></para>
+<para>Returns the child with the specified name, or nil. </para>
+</section>
+<anchor xml:id="_interface_x_c_version_group_1a80b556d4c32df75d842e15ca1e64b2cd"/><section>
+    <title>memberWithKey:</title>
+<indexterm><primary>memberWithKey:</primary><secondary>XCVersionGroup</secondary></indexterm>
+<indexterm><primary>XCVersionGroup</primary><secondary>memberWithKey:</secondary></indexterm>
+<para><computeroutput>- (<link linkend="_interface_x_c_source_file">XCSourceFile</link> *) memberWithKey: (NSString*) key</computeroutput></para>
+<para>Returns the child with the specified key, or nil. </para>
+</section>
+</section>
+<section>
+<title>Property Documentation</title>
+<anchor xml:id="_interface_x_c_version_group_1afd3e95e73e576b608f6f5e2416898885"/><section>
+    <title>alias</title>
+<indexterm><primary>alias</primary><secondary>XCVersionGroup</secondary></indexterm>
+<indexterm><primary>XCVersionGroup</primary><secondary>alias</secondary></indexterm>
+<para><computeroutput>- (NSString*) alias<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>The alias of the group, which can be used to give the group a name other than the last path component.</para>
+
+<para>See: [<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> displayName] </para>
+</section>
+<anchor xml:id="_interface_x_c_version_group_1acf4f1652b83fc6cc7fc3165d65c7655c"/><section>
+    <title>key</title>
+<indexterm><primary>key</primary><secondary>XCVersionGroup</secondary></indexterm>
+<indexterm><primary>XCVersionGroup</primary><secondary>key</secondary></indexterm>
+<para><computeroutput>- (NSString*) key<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>The group&apos;s unique key. </para>
+</section>
+<anchor xml:id="_interface_x_c_version_group_1af93e68eb50e9c368f2f94b1e3e81ef5b"/><section>
+    <title>pathRelativeToParent</title>
+<indexterm><primary>pathRelativeToParent</primary><secondary>XCVersionGroup</secondary></indexterm>
+<indexterm><primary>XCVersionGroup</primary><secondary>pathRelativeToParent</secondary></indexterm>
+<para><computeroutput>- (NSString*) pathRelativeToParent<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>The path of the group relative to the group&apos;s parent.</para>
+
+<para>See: [<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link> displayName] </para>
+</section>
+<anchor xml:id="_interface_x_c_version_group_1ac094cb0b196c580cbac574781a642d0c"/><section>
+    <title>versions</title>
+<indexterm><primary>versions</primary><secondary>XCVersionGroup</secondary></indexterm>
+<indexterm><primary>XCVersionGroup</primary><secondary>versions</secondary></indexterm>
+<para><computeroutput>- (NSMutableArray*) versions<computeroutput>[read]</computeroutput>, <computeroutput>[nonatomic]</computeroutput>, <computeroutput>[strong]</computeroutput></computeroutput></para>
+<para>An array containing the groups members as <computeroutput><link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link></computeroutput> types. </para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+XCVersionGroup.hXCVersionGroup.m</section>
+</section>

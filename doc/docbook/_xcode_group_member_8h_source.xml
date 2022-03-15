@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__xcode_group_member_8h_source" xml:lang="en-US">
+<title>XcodeGroupMember.h</title>
+<indexterm><primary>XcodeGroupMember.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 
+14 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeMemberType.h&gt;</emphasis>
+15 
+16 <emphasis role="keyword">@protocol&#32;</emphasis><link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&#32;&lt;NSObject&gt;
+17 
+18 -&#32;(NSString*)key;
+19 
+20 -&#32;(NSString*)displayName;
+21 
+22 -&#32;(NSString*)pathRelativeToProjectRoot;
+23 
+27 -&#32;(XcodeMemberType)<link linkend="_protocol_xcode_group_member-p_1a37e9e9f28d597028f66ae694b3efd1d8">groupMemberType</link>;
+28 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

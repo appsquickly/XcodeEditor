@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_build_file_8h_source" xml:lang="en-US">
+<title>XCBuildFile.h</title>
+<indexterm><primary>XCBuildFile.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="comment">//</emphasis>
+2 <emphasis role="comment">//&#32;&#32;XCBuildFile.h</emphasis>
+3 <emphasis role="comment">//&#32;&#32;XcodeEditor</emphasis>
+4 <emphasis role="comment">//</emphasis>
+5 <emphasis role="comment">//&#32;&#32;Created&#32;by&#32;joel&#32;on&#32;01/02/16.</emphasis>
+6 <emphasis role="comment">//&#32;&#32;Copyright&#32;©&#32;2016&#32;appsquickly.&#32;All&#32;rights&#32;reserved.</emphasis>
+7 <emphasis role="comment">//</emphasis>
+8 
+9 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+10 <emphasis role="comment">//#import&#32;&quot;XcodeMemberType.h&quot;</emphasis>
+11 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeMemberType.h&gt;</emphasis>
+12 
+13 <emphasis role="keyword">@protocol&#32;</emphasis><link linkend="_protocol_x_c_build_file-p">XCBuildFile</link>&#32;&lt;NSObject&gt;
+14 
+15 -&#32;(void)becomeBuildFile;
+16 -&#32;(XcodeMemberType)buildPhase;
+17 -&#32;(NSString&#32;*)buildFileKey;
+18 -&#32;(BOOL)isBuildFile;
+19 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_build_shell_script_8h_source" xml:lang="en-US">
+<title>XCBuildShellScript.h</title>
+<indexterm><primary>XCBuildShellScript.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="comment">//</emphasis>
+2 <emphasis role="comment">//&#32;&#32;XCBuildShellScript.h</emphasis>
+3 <emphasis role="comment">//&#32;&#32;xcode-editor</emphasis>
+4 <emphasis role="comment">//</emphasis>
+5 <emphasis role="comment">//&#32;&#32;Created&#32;by&#32;joel&#32;on&#32;03/02/16.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//</emphasis>
+8 
+9 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+10 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeGroupMember.h&gt;</emphasis>
+11 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeSourceFileType.h&gt;</emphasis>
+12 
+13 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project">XCProject</link>;
+14 
+15 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_build_shell_script">XCBuildShellScript</link>&#32;:&#32;NSObject
+16 {
+17 &#32;&#32;&#32;&#32;NSString*&#32;_key;
+18 
+19 <emphasis role="keyword">@private</emphasis>
+20 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_project">XCProject</link>*_project;
+21 &#32;&#32;&#32;&#32;BOOL&#32;_runOnlyForDeploymentPostprocessing;
+22 &#32;&#32;&#32;&#32;NSArray*_files;
+23 &#32;&#32;&#32;&#32;NSArray*_inputPaths;
+24 &#32;&#32;&#32;&#32;NSArray*_outputPaths;
+25 &#32;&#32;&#32;&#32;NSString*_name;
+26 &#32;&#32;&#32;&#32;NSString*_shellPath;
+27 &#32;&#32;&#32;&#32;NSString*_shellScript;
+28 }
+29 
+30 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly,nonnull)&#32;NSString*&#32;key;
+31 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly,nonnull)&#32;NSString*&#32;name;
+32 <emphasis role="keyword">@property</emphasis>(nonatomic,readonly)&#32;BOOL&#32;runOnlyForDeploymentPostprocessing;
+33 <emphasis role="keyword">@property</emphasis>(nonatomic,nonnull,strong,readonly)&#32;NSString*shellScript;
+34 <emphasis role="keyword">@property</emphasis>(nonatomic,nonnull,strong,readonly)&#32;NSString*shellPath;
+35 <emphasis role="keyword">@property</emphasis>(nonatomic,nonnull,strong,readonly)&#32;NSArray&lt;NSString*&gt;*files;
+36 <emphasis role="keyword">@property</emphasis>(nonatomic,nonnull,strong,readonly)&#32;NSArray&lt;NSString*&gt;*inputPaths;
+37 <emphasis role="keyword">@property</emphasis>(nonatomic,nonnull,strong,readonly)&#32;NSArray&lt;NSString*&gt;*outputPaths;
+38 
+39 <emphasis role="comment">//-------------------------------------------------------------------------------------------</emphasis>
+40 <emphasis role="preprocessor">#pragma&#32;mark&#32;-&#32;Initialization&#32;&amp;&#32;Destruction</emphasis>
+41 <emphasis role="comment">//-------------------------------------------------------------------------------------------</emphasis>
+42 
+43 +&#32;(<link linkend="_interface_x_c_build_shell_script">XCBuildShellScript</link>*_Nonnull)shellScriptWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*_Nonnull)project
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;key:(NSString&#32;*_Nonnull)key
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name:(&#32;NSString*&#32;_Nullable&#32;)name
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;files:&#32;(NSArray&lt;NSString*&gt;*&#32;_Nullable)files
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;inputPaths:(NSArray&lt;NSString*&gt;*&#32;_Nullable)inputPaths
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outputPaths:(NSArray&lt;NSString*&gt;*&#32;_Nullable)outputPaths
+49 runOnlyForDeploymentPostprocessing:(BOOL)runOnlyForDeploymentPostprocessing
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;shellPath:(NSString*_Nullable)shellPath
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;shellScript:(NSString*_Nonnull)shellScript;
+52 
+53 -&#32;(instancetype&#32;_Nonnull)initWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*_Nonnull)project
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;key:(NSString&#32;*_Nonnull)key
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name:(&#32;NSString*&#32;_Nullable&#32;)name
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;files:&#32;(NSArray&lt;NSString*&gt;*&#32;_Nullable)files
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;inputPaths:(NSArray&lt;NSString*&gt;*&#32;_Nullable)inputPaths
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outputPaths:(NSArray&lt;NSString*&gt;*&#32;_Nullable)outputPaths
+59 runOnlyForDeploymentPostprocessing:(BOOL)runOnlyForDeploymentPostprocessing
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;shellPath:(NSString*_Nullable)shellPath
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;shellScript:(NSString*_Nonnull)shellScript;
+62 
+63 
+64 
+65 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

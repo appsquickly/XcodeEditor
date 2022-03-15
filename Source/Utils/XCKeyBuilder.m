@@ -45,7 +45,8 @@
     self = [super init];
     if (self != nil)
     {
-        CC_MD5(bytes, (int) length, _value);
+       // CC_MD5(bytes, (int) length, _value);
+        CC_SHA256(bytes, ( CC_LONG )length, _value);
     }
     return self;
 }

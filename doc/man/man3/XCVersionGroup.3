@@ -1,0 +1,106 @@
+.TH "XCVersionGroup" 3 "Fri Mar 4 2022" "Version 1.1" "XcodeEditor-master" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+XCVersionGroup
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits NSObject, \fB<XcodeGroupMember>\fP, and \fB<XCBuildFile>\fP\&.
+.SS "Instance Methods"
+
+.in +1c
+.ti -1c
+.RI "(id) \- \fBinitWithProject:key:path:children:currentVersion:\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveFromParentGroup\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBremoveFromParentDeletingChildren:\fP"
+.br
+.ti -1c
+.RI "(\fBXCGroup\fP *) \- \fBparentGroup\fP"
+.br
+.ti -1c
+.RI "(void) \- \fBaddDataModelSource:\fP"
+.br
+.ti -1c
+.RI "(NSArray< \fBXCSourceFile\fP * > *) \- \fBmembers\fP"
+.br
+.ti -1c
+.RI "(NSArray< NSString * > *) \- \fBbuildFileKeys\fP"
+.br
+.ti -1c
+.RI "(\fBXCSourceFile\fP *) \- \fBmemberWithKey:\fP"
+.br
+.ti -1c
+.RI "(\fBXCSourceFile\fP *) \- \fBmemberWithDisplayName:\fP"
+.br
+.ti -1c
+.RI "(NSDictionary *) \- \fBasDictionary\fP"
+.br
+.in -1c
+.SS "Class Methods"
+
+.in +1c
+.ti -1c
+.RI "(\fBXCVersionGroup\fP *) + \fBversionGroupWithProject:key:path:children:currentVersion:\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "NSString * \fB_pathRelativeToParent\fP"
+.br
+.ti -1c
+.RI "NSString * \fB_key\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "NSString * \fBalias\fP"
+.br
+.ti -1c
+.RI "NSString * \fBpathRelativeToParent\fP"
+.br
+.ti -1c
+.RI "NSString * \fBkey\fP"
+.br
+.ti -1c
+.RI "NSMutableArray * \fBversions\fP"
+.br
+.ti -1c
+.RI "NSString * \fBcurrentVersion\fP"
+.br
+.in -1c
+.SH "Method Documentation"
+.PP 
+.SS "\- (void) addDataModelSource: (\fBXCSourceFileDefinition\fP*) sourceFileDefinition"
+Adds a source file\&. The only valid file type is XCDataModel 
+.SS "\- (id< \fBXcodeGroupMember\fP >) memberWithDisplayName: (NSString*) name"
+Returns the child with the specified name, or nil\&. 
+.SS "\- (\fBXCSourceFile\fP *) memberWithKey: (NSString*) key"
+Returns the child with the specified key, or nil\&. 
+.SH "Property Documentation"
+.PP 
+.SS "\- (NSString*) alias\fC [read]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+The alias of the group, which can be used to give the group a name other than the last path component\&.
+.PP
+See: [\fBXcodeGroupMember\fP displayName] 
+.SS "\- (NSString*) key\fC [read]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+The group's unique key\&. 
+.SS "\- (NSString*) pathRelativeToParent\fC [read]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+The path of the group relative to the group's parent\&.
+.PP
+See: [\fBXcodeGroupMember\fP displayName] 
+.SS "\- (NSMutableArray*) versions\fC [read]\fP, \fC [nonatomic]\fP, \fC [strong]\fP"
+An array containing the groups members as \fC\fBXcodeGroupMember\fP\fP types\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for XcodeEditor-master from the source code\&.

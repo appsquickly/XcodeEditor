@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XcodeGroupMember.h"
-#import "XcodeSourceFileType.h"
+#import <XcodeEditor/XcodeGroupMember.h>
+#import <XcodeEditor/XcodeSourceFileType.h>
 
 @class XCProject;
 

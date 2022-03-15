@@ -244,7 +244,7 @@ enum {
 
 - (void) ccTouchEnded:(UITouch*)touch withEvent:(UIEvent*)event {
     CCLOG(@"Stop touching!!!!!");
-    NSLog(@"Stop touchin' !!!!!!!!!!!");
+    if ( DEBUG ) puts("Stop touchin' !!!!!!!!!!!");
     if (_mouseJoint) {
         _world->DestroyJoint(_mouseJoint);
         _mouseJoint = NULL;

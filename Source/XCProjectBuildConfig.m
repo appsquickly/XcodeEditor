@@ -67,7 +67,7 @@
 
                 if (![[NSFileManager defaultManager] fileExistsAtPath:path])
                 {
-                    NSLog(@"XCConfig not found. Unable to find XCConfig file at %@", path);
+                    fprintf(stderr, "XCConfig not found. Unable to find XCConfig file at %s\n", path.UTF8String);
                 }
 
             }

@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_c_group_8h_source" xml:lang="en-US">
+<title>XCGroup.h</title>
+<indexterm><primary>XCGroup.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="comment">//</emphasis>
+3 <emphasis role="comment">//&#32;&#32;JASPER&#32;BLUES</emphasis>
+4 <emphasis role="comment">//&#32;&#32;Copyright&#32;2012&#32;Jasper&#32;Blues</emphasis>
+5 <emphasis role="comment">//&#32;&#32;All&#32;Rights&#32;Reserved.</emphasis>
+6 <emphasis role="comment">//</emphasis>
+7 <emphasis role="comment">//&#32;&#32;NOTICE:&#32;Jasper&#32;Blues&#32;permits&#32;you&#32;to&#32;use,&#32;modify,&#32;and&#32;distribute&#32;this&#32;file</emphasis>
+8 <emphasis role="comment">//&#32;&#32;in&#32;accordance&#32;with&#32;the&#32;terms&#32;of&#32;the&#32;license&#32;agreement&#32;accompanying&#32;it.</emphasis>
+9 <emphasis role="comment">//</emphasis>
+11 <emphasis role="comment"></emphasis>
+12 
+13 <emphasis role="preprocessor">#import&#32;&lt;Foundation/Foundation.h&gt;</emphasis>
+14 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeGroupMember.h&gt;</emphasis>
+15 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XcodeSourceFileType.h&gt;</emphasis>
+16 <emphasis role="preprocessor">#import&#32;&lt;XcodeEditor/XCBuildFile.h&gt;</emphasis>
+17 
+18 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_project">XCProject</link>;
+19 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>;
+20 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_source_file">XCSourceFile</link>;
+21 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link>;
+22 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_file_operation_queue">XCFileOperationQueue</link>;
+23 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link>;
+24 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>;
+25 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>;
+26 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_target">XCTarget</link>;
+27 <emphasis role="keyword">@class</emphasis>&#32;<link linkend="_interface_x_c_version_group">XCVersionGroup</link>;
+28 
+33 <emphasis role="keyword">@interface&#32;</emphasis><link linkend="_interface_x_c_group">XCGroup</link>&#32;:&#32;NSObject&#32;&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>,&#32;<link linkend="_protocol_x_c_build_file-p">XCBuildFile</link>&gt;
+34 {
+35 
+36 &#32;&#32;&#32;&#32;NSString*&#32;_pathRelativeToParent;
+37 &#32;&#32;&#32;&#32;NSString*&#32;_key;
+38 &#32;&#32;&#32;&#32;NSString*&#32;_alias;
+39 
+40 
+41 <emphasis role="keyword">@private</emphasis>
+42 &#32;&#32;&#32;&#32;NSString*&#32;_pathRelativeToProjectRoot;
+43 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_children;
+44 &#32;&#32;&#32;&#32;NSMutableArray*&#32;_members;
+45 
+46 &#32;&#32;&#32;&#32;NSNumber&#32;*_isBuildFile;
+47 &#32;&#32;&#32;&#32;NSString&#32;*_buildFileKey;
+48 
+49 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_file_operation_queue">XCFileOperationQueue</link>*&#32;_fileOperationQueue;
+50 &#32;&#32;&#32;&#32;<link linkend="_interface_x_c_project">XCProject</link>*&#32;_project;
+51 &#32;&#32;&#32;&#32;XcodeMemberType&#32;_memberType;
+52 
+53 }
+54 
+55 
+61 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;alias;
+62 
+68 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;pathRelativeToParent;
+69 
+73 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSString*&#32;key;
+74 
+78 <emphasis role="keyword">@property</emphasis>(nonatomic,&#32;strong,&#32;readonly)&#32;NSMutableArray&lt;id&lt;XcodeGroupMember&gt;&gt;*&#32;children;
+79 
+80 
+81 <emphasis role="preprocessor">#pragma&#32;mark&#32;Initializers</emphasis>
+82 
+83 +&#32;(<link linkend="_interface_x_c_group">XCGroup</link>*)groupWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;alias:(NSString*)alias&#32;path:(NSString*)path&#32;children:(NSArray&lt;<emphasis role="keywordtype">id</emphasis>&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt;&gt;*)children;
+84 
+85 +&#32;(<link linkend="_interface_x_c_group">XCGroup</link>*)groupWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;alias:(NSString*)alias&#32;path:(NSString*)path&#32;children:(NSArray&lt;<emphasis role="keywordtype">id</emphasis>&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt;&gt;*)children&#32;memberType:(XcodeMemberType)groupType;
+86 
+87 -&#32;(id)initWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;alias:(NSString*)alias&#32;path:(NSString*)path&#32;children:(NSArray&lt;<emphasis role="keywordtype">id</emphasis>&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt;&gt;*)children;
+88 
+89 -&#32;(id)initWithProject:(<link linkend="_interface_x_c_project">XCProject</link>*)project&#32;key:(NSString*)key&#32;alias:(NSString*)alias&#32;path:(NSString*)path&#32;children:(NSArray&lt;<emphasis role="keywordtype">id</emphasis>&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt;&gt;*)children&#32;memberType:(XcodeMemberType)groupType;
+90 
+91 <emphasis role="preprocessor">#pragma&#32;mark&#32;Parent&#32;group</emphasis>
+92 
+93 -&#32;(void)removeFromParentGroup;
+94 
+95 -&#32;(void)removeFromParentDeletingChildren:(BOOL)deleteChildren;
+96 
+97 -&#32;(<link linkend="_interface_x_c_group">XCGroup</link>*)parentGroup;
+98 
+99 -&#32;(BOOL)isRootGroup;
+100 
+101 -&#32;(BOOL)isEmpty;
+102 
+103 <emphasis role="preprocessor">#pragma&#32;mark&#32;Adding&#32;children</emphasis>
+108 -&#32;(void)addClass:(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*)classDefinition;
+109 
+113 -&#32;(void)addClass:(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*)classDefinition&#32;toTargets:(NSArray&lt;<link linkend="_interface_x_c_target">XCTarget</link>*&gt;*)targets;
+114 
+118 -&#32;(void)removeClass:(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*)classDefinition&#32;fromTargets:(NSArray*)targets;
+119 
+123 -&#32;(void)removeHeader:(<link linkend="_interface_x_c_class_definition">XCClassDefinition</link>*)classDefinition;
+124 
+129 -&#32;(void)addFramework:(<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link>*)frameworkDefinition;
+130 
+134 -&#32;(void)&#32;removeFramework:(<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link>&#32;*)frameworkDefinition&#32;fromTargets:(NSArray&#32;*)targets;
+135 
+139 -&#32;(<link linkend="_interface_x_c_group">XCGroup</link>*)addGroupWithPath:(NSString*)path;
+140 
+144 -&#32;(<link linkend="_interface_x_c_group">XCGroup</link>*)addGroupWithAlias:(NSString&#32;*)alias;
+145 
+149 -&#32;(<link linkend="_interface_x_c_group">XCGroup</link>*)addGroupWithAlias:(NSString&#32;*)alias&#32;groupType:(XcodeMemberType)type;
+150 
+154 -&#32;(<link linkend="_interface_x_c_version_group">XCVersionGroup</link>*)addVersionGroupWithPath:(NSString*)path;
+155 
+159 -&#32;(void)addFolderReference:(NSString*)sourceFolder;
+160 
+161 -&#32;(void)addFileReference:(NSString&#32;*)filePath&#32;withType:(XcodeSourceFileType)type;
+162 
+166 -&#32;(<link linkend="_interface_x_c_source_file">XCSourceFile</link>*)addFramework:(<link linkend="_interface_x_c_framework_definition">XCFrameworkDefinition</link>*)framework&#32;toTargets:(NSArray&lt;<link linkend="_interface_x_c_target">XCTarget</link>*&gt;*)targets;
+167 
+171 -&#32;(void)addSourceFile:(<link linkend="_interface_x_c_source_file_definition">XCSourceFileDefinition</link>*)sourceFileDefinition;
+172 
+173 
+177 -&#32;(void)addXib:(<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link>*)xibDefinition;
+178 
+182 -&#32;(void)addXib:(<link linkend="_interface_x_c_xib_definition">XCXibDefinition</link>*)xibDefinition&#32;toTargets:(NSArray&lt;<link linkend="_interface_x_c_target">XCTarget</link>*&gt;*)targets;
+183 
+190 -&#32;(void)addSubProject:(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>*)projectDefinition;
+191 
+195 -&#32;(void)addSubProject:(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>*)projectDefinition&#32;toTargets:(NSArray&lt;<link linkend="_interface_x_c_target">XCTarget</link>*&gt;*)targets;
+196 
+197 -&#32;(void)removeSubProject:(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>*)projectDefinition;
+198 
+199 -&#32;(void)removeSubProject:(<link linkend="_interface_x_c_sub_project_definition">XCSubProjectDefinition</link>*)projectDefinition&#32;fromTargets:(NSArray&lt;<link linkend="_interface_x_c_target">XCTarget</link>*&gt;*)targets;
+200 
+201 
+202 <emphasis role="preprocessor">#pragma&#32;mark&#32;Locating&#32;children</emphasis>
+206 -&#32;(NSArray&lt;id&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt;&gt;*)members;
+207 
+211 -&#32;(NSArray&lt;NSString*&gt;*)recursiveMembers;
+212 
+216 -&#32;(NSArray&lt;NSString*&gt;*)buildFileKeys;
+217 
+221 -&#32;(<emphasis role="keywordtype">id</emphasis>&#32;&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt;)memberWithKey:(NSString*)key;
+222 
+226 -&#32;(<emphasis role="keywordtype">id</emphasis>&#32;&lt;<link linkend="_protocol_xcode_group_member-p">XcodeGroupMember</link>&gt;)memberWithDisplayName:(NSString*)name;
+227 
+231 -&#32;(void)removeMemberWithKey:(NSString*)key;
+232 
+233 <emphasis role="keyword">@end</emphasis>
+</programlisting></section>

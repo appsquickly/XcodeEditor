@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_category_x_c_sub_project_definition_07_08" xml:lang="en-US">
+<title>XCSubProjectDefinition() Category Reference</title>
+<indexterm><primary>XCSubProjectDefinition()</primary></indexterm>
+<simplesect>
+    <title>Properties    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_category_x_c_sub_project_definition_07_08_1a72acb788ea0676c7704f138b533a3a77"/>NSString * <emphasis role="strong">relativePath</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this category was generated from the following file:</para>
+XCSubProjectDefinition.m</section>
